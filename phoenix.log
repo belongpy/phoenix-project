@@ -1,0 +1,78 @@
+2025-05-21 15:25:24,062 - phoenix - INFO - Created default configuration file at C:\Users\Administrator/.phoenix_config.json
+2025-05-21 15:26:58,600 - phoenix - INFO - Configuration saved to C:\Users\Administrator/.phoenix_config.json
+2025-05-21 15:27:19,853 - phoenix - INFO - Configuration saved to C:\Users\Administrator/.phoenix_config.json
+2025-05-21 15:29:07,849 - phoenix - INFO - Configuration saved to C:\Users\Administrator/.phoenix_config.json
+2025-05-21 15:30:45,010 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-21 15:30:45,026 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-21 15:30:45,954 - phoenix - INFO - Loaded 1 channel IDs from C:\Users\Administrator\Desktop\phoenix-project\channels.txt
+2025-05-21 15:30:45,954 - phoenix - INFO - Loaded 104 wallet addresses from C:\Users\Administrator\Desktop\phoenix-project\wallets.txt
+2025-05-21 15:31:05,107 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-21 15:31:05,202 - telethon.network.mtprotosender - INFO - Connecting to 149.154.167.51:443/TcpFull...
+2025-05-21 15:31:08,133 - telethon.network.mtprotosender - INFO - Connection to 149.154.167.51:443/TcpFull complete!
+2025-05-21 15:31:14,043 - telethon.client.users - INFO - Phone migrated to 1
+2025-05-21 15:31:14,058 - telethon.client.telegrambaseclient - INFO - Reconnecting to new data center 1
+2025-05-21 15:31:14,090 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.167.51:443/TcpFull...
+2025-05-21 15:31:14,090 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.167.51:443/TcpFull complete!
+2025-05-21 15:31:14,090 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-21 15:31:15,730 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-21 15:31:24,509 - phoenix.telegram - INFO - Connected to Telegram
+2025-05-21 15:31:24,509 - phoenix.telegram - INFO - Analyzing channel 1960616143 for the past 14 days
+2025-05-21 15:31:24,509 - phoenix.telegram - INFO - Scraping 14 days of messages from 1960616143
+2025-05-21 15:31:24,668 - phoenix.telegram - ERROR - Error retrieving messages from 1960616143: Cannot find any entity corresponding to "1960616143"
+2025-05-21 15:31:24,668 - phoenix.telegram - INFO - Disconnecting from Telegram...
+2025-05-21 15:31:24,668 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-21 15:31:24,668 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-21 15:31:24,684 - phoenix.telegram - INFO - Disconnected from Telegram
+2025-05-21 15:31:24,684 - phoenix.wallet - INFO - Batch analyzing 104 wallets
+2025-05-21 15:31:24,684 - phoenix.wallet - INFO - Analyzing wallet 2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd for the past 14 days
+2025-05-21 15:31:24,827 - phoenix.birdeye - WARNING - Request failed (attempt 1/3): 404 Client Error: Not Found for url: https://public-api.birdeye.so/v1/wallet/transaction_history?wallet=2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd&limit=100
+2025-05-21 15:31:24,827 - phoenix.birdeye - INFO - Retrying in 2 seconds...
+2025-05-21 15:31:26,865 - phoenix.birdeye - WARNING - Request failed (attempt 2/3): 404 Client Error: Not Found for url: https://public-api.birdeye.so/v1/wallet/transaction_history?wallet=2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd&limit=100
+2025-05-21 15:31:26,865 - phoenix.birdeye - INFO - Retrying in 4 seconds...
+2025-05-21 15:31:30,982 - phoenix.birdeye - WARNING - Request failed (attempt 3/3): 404 Client Error: Not Found for url: https://public-api.birdeye.so/v1/wallet/transaction_history?wallet=2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd&limit=100
+2025-05-21 15:31:30,982 - phoenix.birdeye - ERROR - Request failed after 3 attempts
+2025-05-21 15:31:30,982 - phoenix.wallet - ERROR - Error analyzing wallet 2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd: 404 Client Error: Not Found for url: https://public-api.birdeye.so/v1/wallet/transaction_history?wallet=2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd&limit=100
+2025-05-21 15:31:30,982 - phoenix.wallet - INFO - Analyzing wallet 5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex for the past 14 days
+2025-05-21 15:31:31,045 - phoenix.birdeye - WARNING - Request failed (attempt 1/3): 404 Client Error: Not Found for url: https://public-api.birdeye.so/v1/wallet/transaction_history?wallet=5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex&limit=100
+2025-05-21 15:31:31,045 - phoenix.birdeye - INFO - Retrying in 2 seconds...
+2025-05-21 15:31:33,136 - phoenix.birdeye - WARNING - Request failed (attempt 2/3): 404 Client Error: Not Found for url: https://public-api.birdeye.so/v1/wallet/transaction_history?wallet=5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex&limit=100
+2025-05-21 15:31:33,151 - phoenix.birdeye - INFO - Retrying in 4 seconds...
+2025-05-21 15:31:37,259 - phoenix.birdeye - WARNING - Request failed (attempt 3/3): 404 Client Error: Not Found for url: https://public-api.birdeye.so/v1/wallet/transaction_history?wallet=5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex&limit=100
+2025-05-21 15:31:37,259 - phoenix.birdeye - ERROR - Request failed after 3 attempts
+2025-05-21 15:31:37,259 - phoenix.wallet - ERROR - Error analyzing wallet 5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex: 404 Client Error: Not Found for url: https://public-api.birdeye.so/v1/wallet/transaction_history?wallet=5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex&limit=100
+2025-05-21 15:31:37,259 - phoenix.wallet - INFO - Analyzing wallet Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e for the past 14 days
+2025-05-21 15:31:37,303 - phoenix.birdeye - WARNING - Request failed (attempt 1/3): 404 Client Error: Not Found for url: https://public-api.birdeye.so/v1/wallet/transaction_history?wallet=Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e&limit=100
+2025-05-21 15:31:37,303 - phoenix.birdeye - INFO - Retrying in 2 seconds...
+2025-05-21 15:31:39,384 - phoenix.birdeye - WARNING - Request failed (attempt 2/3): 404 Client Error: Not Found for url: https://public-api.birdeye.so/v1/wallet/transaction_history?wallet=Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e&limit=100
+2025-05-21 15:31:39,384 - phoenix.birdeye - INFO - Retrying in 4 seconds...
+2025-05-21 15:31:43,463 - phoenix.birdeye - WARNING - Request failed (attempt 3/3): 404 Client Error: Not Found for url: https://public-api.birdeye.so/v1/wallet/transaction_history?wallet=Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e&limit=100
+2025-05-21 15:31:43,463 - phoenix.birdeye - ERROR - Request failed after 3 attempts
+2025-05-21 15:31:43,463 - phoenix.wallet - ERROR - Error analyzing wallet Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e: 404 Client Error: Not Found for url: https://public-api.birdeye.so/v1/wallet/transaction_history?wallet=Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e&limit=100
+2025-05-21 15:31:43,463 - phoenix.wallet - INFO - Analyzing wallet 8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i for the past 14 days
+2025-05-21 15:31:43,540 - phoenix.birdeye - WARNING - Request failed (attempt 1/3): 404 Client Error: Not Found for url: https://public-api.birdeye.so/v1/wallet/transaction_history?wallet=8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i&limit=100
+2025-05-21 15:31:43,540 - phoenix.birdeye - INFO - Retrying in 2 seconds...
+2025-05-21 15:31:45,640 - phoenix.birdeye - WARNING - Request failed (attempt 2/3): 404 Client Error: Not Found for url: https://public-api.birdeye.so/v1/wallet/transaction_history?wallet=8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i&limit=100
+2025-05-21 15:31:45,640 - phoenix.birdeye - INFO - Retrying in 4 seconds...
+2025-05-21 15:31:49,759 - phoenix.birdeye - WARNING - Request failed (attempt 3/3): 404 Client Error: Not Found for url: https://public-api.birdeye.so/v1/wallet/transaction_history?wallet=8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i&limit=100
+2025-05-21 15:31:49,759 - phoenix.birdeye - ERROR - Request failed after 3 attempts
+2025-05-21 15:31:49,759 - phoenix.wallet - ERROR - Error analyzing wallet 8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i: 404 Client Error: Not Found for url: https://public-api.birdeye.so/v1/wallet/transaction_history?wallet=8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i&limit=100
+2025-05-21 15:31:49,759 - phoenix.wallet - INFO - Analyzing wallet A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o for the past 14 days
+2025-05-21 15:31:49,790 - phoenix.birdeye - WARNING - Request failed (attempt 1/3): 404 Client Error: Not Found for url: https://public-api.birdeye.so/v1/wallet/transaction_history?wallet=A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o&limit=100
+2025-05-21 15:31:49,790 - phoenix.birdeye - INFO - Retrying in 2 seconds...
+2025-05-21 15:31:51,915 - phoenix.birdeye - WARNING - Request failed (attempt 2/3): 404 Client Error: Not Found for url: https://public-api.birdeye.so/v1/wallet/transaction_history?wallet=A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o&limit=100
+2025-05-21 15:31:55,112 - phoenix.birdeye - INFO - Retrying in 4 seconds...
+2025-05-21 16:23:47,145 - phoenix - INFO - Configuration saved to C:\Users\Administrator/.phoenix_config.json
+2025-05-21 16:24:21,559 - phoenix - INFO - Loaded 104 wallet addresses from C:\Users\Administrator\Desktop\phoenix-project\wallets.txt
+2025-05-21 16:24:21,559 - phoenix - INFO - Loaded 1 channel IDs from C:\Users\Administrator\Desktop\phoenix-project\channels.txt
+2025-05-21 16:24:39,605 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-21 16:24:39,605 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-21 16:24:40,636 - phoenix - INFO - Loaded 1 channel IDs from C:\Users\Administrator\Desktop\phoenix-project\channels.txt
+2025-05-21 16:24:40,636 - phoenix - INFO - Loaded 104 wallet addresses from C:\Users\Administrator\Desktop\phoenix-project\wallets.txt
+2025-05-21 16:24:50,468 - phoenix - ERROR - An unexpected error occurred: BirdeyeAPI.__init__() got an unexpected keyword argument 'birdeye_api_key'
+Traceback (most recent call last):
+  File "C:\Users\Administrator\Desktop\phoenix-project\phoenix_cli.py", line 1187, in main
+    handle_combined_analysis(config)
+  File "C:\Users\Administrator\Desktop\phoenix-project\phoenix_cli.py", line 1009, in handle_combined_analysis
+    birdeye_api = BirdeyeAPI(
+                  ^^^^^^^^^^^
+TypeError: BirdeyeAPI.__init__() got an unexpected keyword argument 'birdeye_api_key'
