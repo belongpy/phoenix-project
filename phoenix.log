@@ -15210,3 +15210,957 @@ ME GUSTA first posted by @MarksGems has since been posted by ...
 2025-05-22 08:03:54,539 - phoenix.birdeye - WARNING - No transaction data available for DkX9gYhxb4W8rsZq5zFWCRhUYjGbM3u4vXDiUtUmc9V1
 2025-05-22 08:03:54,540 - phoenix.wallet - WARNING - No transactions found for wallet DkX9gYhxb4W8rsZq5zFWCRhUYjGbM3u4vXDiUtUmc9V1
 2025-05-22 08:03:54,541 - phoenix - ERROR - Enhanced wallet analysis error: Batch analysis failed: No wallets could be successfully analyzed
+2025-05-22 08:13:46,851 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-22 08:13:46,852 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-22 08:13:47,423 - phoenix - INFO - Analyzing SpyDefi channel for the past 1 day(s).
+2025-05-22 08:13:47,423 - phoenix - INFO - Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.csv
+2025-05-22 08:13:47,423 - phoenix - INFO - SpyDefi channel detected. Analyzing KOLs from SpyDefi.
+2025-05-22 08:13:47,424 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-22 08:13:47,426 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-22 08:13:47,542 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-22 08:13:48,330 - phoenix.telegram - INFO - Connected to Telegram
+2025-05-22 08:13:48,330 - phoenix.telegram - INFO - Scraping SpyDefi channel spydefi for KOL mentions
+2025-05-22 08:13:48,331 - phoenix.telegram - INFO - Scanning SpyDefi channel (past 24h)...
+2025-05-22 08:13:48,331 - phoenix.telegram - INFO - Trying to get entity: @spydefi
+2025-05-22 08:13:48,459 - phoenix.telegram - INFO - Successfully found entity: @spydefi
+2025-05-22 08:13:48,459 - phoenix.telegram - INFO - Entity found: SpyDefi
+2025-05-22 08:13:48,460 - phoenix.telegram - INFO - Starting message iteration...
+2025-05-22 08:13:48,756 - phoenix.telegram - INFO - Message 1 (2025-05-22 15:13:43+00:00): 🟣 Achievement Unlocked: x15! 
+
+@GentleCatCalls made a x15+ call on CHARLES. 
+
+$466K -> $7M
+
+👁View Call 📊View Stats
+
+🔥 TRENDING #2🔹
+Whispr Chat - A Mes...
+2025-05-22 08:13:48,761 - phoenix.telegram - INFO -   EXTRACTION - Contracts: [], KOLs: ['gentlecatcalls'], Tokens: ['CHARLES']
+2025-05-22 08:13:48,761 - phoenix.telegram - INFO -   Processing 1 tokens from message 1
+2025-05-22 08:13:48,761 - phoenix.telegram - INFO - Message 2 (2025-05-22 15:13:43+00:00): 🟣 Achievement Unlocked: x3! 🤟
+
+@KareliceCalls made a x3+ call on CHARLES. 
+
+$2.3M -> $7M
+
+👁View Call 📊View Stats
+
+🔥 TRENDING #1🔹
+Boochie by Ma... - Ma...
+2025-05-22 08:13:48,762 - phoenix.telegram - INFO -   EXTRACTION - Contracts: [], KOLs: ['karelicecalls'], Tokens: ['CHARLES']
+2025-05-22 08:13:48,762 - phoenix.telegram - INFO -   Processing 1 tokens from message 2
+2025-05-22 08:13:48,763 - phoenix.telegram - INFO - Message 3 (2025-05-22 15:13:43+00:00): 🟣 Achievement Unlocked: x5! 👋
+
+@gorgo_crew made a x5+ call on CHARLES. 
+
+$1.4M -> $7M
+
+👁View Call 📊View Stats
+
+🔥 TRENDING #1🔵
+Sui (Universa... - Wealt...
+2025-05-22 08:13:48,763 - phoenix.telegram - INFO -   EXTRACTION - Contracts: [], KOLs: ['gorgo_crew'], Tokens: ['CHARLES']
+2025-05-22 08:13:48,763 - phoenix.telegram - INFO -   Processing 1 tokens from message 3
+2025-05-22 08:13:48,764 - phoenix.telegram - INFO - Message 4 (2025-05-22 15:13:12+00:00): Achievement Unlocked: Degen Level 9000 🥳
+
+@GM_Degencalls has made 10+ calls today.
+
+Profit if investing $100 into each:
++$1.1K
+
+📊View Stats
+
+🔊Ad - Boo...
+2025-05-22 08:13:48,764 - phoenix.telegram - INFO -   EXTRACTION - Contracts: [], KOLs: ['gm_degencalls'], Tokens: []
+2025-05-22 08:13:48,765 - phoenix.telegram - INFO - Message 5 (2025-05-22 15:12:58+00:00): 🟣 Achievement Unlocked: Powerhouse! 💪
+
+Guse.io called by @InsiderAlphaHunter went x2 within 2 minutes of being posted. 
+
+$65K -> $151K
+
+👁View Call 📊Vi...
+2025-05-22 08:13:48,765 - phoenix.telegram - INFO -   EXTRACTION - Contracts: [], KOLs: ['insideralphahunter'], Tokens: []
+2025-05-22 08:13:48,765 - phoenix.telegram - INFO -   Processing 1 tokens from message 6
+2025-05-22 08:13:48,766 - phoenix.telegram - INFO -   Processing 1 tokens from message 7
+2025-05-22 08:13:48,766 - phoenix.telegram - INFO -   Processing 1 tokens from message 8
+2025-05-22 08:13:48,766 - phoenix.telegram - INFO -   Processing 1 tokens from message 9
+2025-05-22 08:13:48,766 - phoenix.telegram - INFO -   Processing 1 tokens from message 10
+2025-05-22 08:13:48,769 - phoenix.telegram - INFO -   Processing 1 tokens from message 11
+2025-05-22 08:13:48,769 - phoenix.telegram - INFO -   Processing 1 tokens from message 12
+2025-05-22 08:13:48,770 - phoenix.telegram - INFO -   Processing 1 tokens from message 13
+2025-05-22 08:13:48,770 - phoenix.telegram - INFO -   Processing 1 tokens from message 14
+2025-05-22 08:13:48,770 - phoenix.telegram - INFO -   Processing 1 tokens from message 15
+2025-05-22 08:13:48,771 - phoenix.telegram - INFO -   Processing 1 tokens from message 16
+2025-05-22 08:13:48,771 - phoenix.telegram - INFO -   Processing 1 tokens from message 17
+2025-05-22 08:13:48,771 - phoenix.telegram - INFO -   Processing 1 tokens from message 18
+2025-05-22 08:13:48,772 - phoenix.telegram - INFO -   Processing 1 tokens from message 19
+2025-05-22 08:13:48,772 - phoenix.telegram - INFO -   Processing 1 tokens from message 21
+2025-05-22 08:13:48,772 - phoenix.telegram - INFO -   Processing 1 tokens from message 22
+2025-05-22 08:13:48,773 - phoenix.telegram - INFO -   Processing 1 tokens from message 24
+2025-05-22 08:13:48,773 - phoenix.telegram - INFO -   Processing 1 tokens from message 25
+2025-05-22 08:13:48,773 - phoenix.telegram - INFO -   Processing 1 tokens from message 26
+2025-05-22 08:13:48,774 - phoenix.telegram - INFO -   Processing 1 tokens from message 27
+2025-05-22 08:13:48,774 - phoenix.telegram - INFO -   Processing 1 tokens from message 28
+2025-05-22 08:13:48,774 - phoenix.telegram - INFO -   Processing 1 tokens from message 29
+2025-05-22 08:13:48,775 - phoenix.telegram - INFO -   Processing 1 tokens from message 32
+2025-05-22 08:13:48,775 - phoenix.telegram - INFO -   Processing 1 tokens from message 33
+2025-05-22 08:13:48,776 - phoenix.telegram - INFO -   Processing 1 tokens from message 34
+2025-05-22 08:13:48,776 - phoenix.telegram - INFO -   Processing 1 tokens from message 35
+2025-05-22 08:13:48,776 - phoenix.telegram - INFO -   Processing 1 tokens from message 36
+2025-05-22 08:13:48,777 - phoenix.telegram - INFO -   Processing 1 tokens from message 37
+2025-05-22 08:13:48,777 - phoenix.telegram - INFO -   Processing 1 tokens from message 39
+2025-05-22 08:13:48,777 - phoenix.telegram - INFO -   Processing 1 tokens from message 40
+2025-05-22 08:13:48,778 - phoenix.telegram - INFO -   Processing 1 tokens from message 42
+2025-05-22 08:13:48,780 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 44
+2025-05-22 08:13:48,780 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 45
+2025-05-22 08:13:48,780 - phoenix.telegram - INFO -   Processing 1 tokens from message 48
+2025-05-22 08:13:48,781 - phoenix.telegram - INFO -   Processing 1 tokens from message 49
+2025-05-22 08:13:48,781 - phoenix.telegram - INFO -   Processing 1 tokens from message 50
+2025-05-22 08:13:48,781 - phoenix.telegram - INFO -   Processing 1 tokens from message 51
+2025-05-22 08:13:48,782 - phoenix.telegram - INFO -   Processing 1 tokens from message 52
+2025-05-22 08:13:48,782 - phoenix.telegram - INFO -   Processing 1 tokens from message 53
+2025-05-22 08:13:48,782 - phoenix.telegram - INFO -   Processing 1 tokens from message 54
+2025-05-22 08:13:48,783 - phoenix.telegram - INFO -   Processing 1 tokens from message 56
+2025-05-22 08:13:48,783 - phoenix.telegram - INFO -   Processing 1 tokens from message 58
+2025-05-22 08:13:48,784 - phoenix.telegram - INFO -   Processing 1 tokens from message 60
+2025-05-22 08:13:48,784 - phoenix.telegram - INFO -   Processing 1 tokens from message 61
+2025-05-22 08:13:48,784 - phoenix.telegram - INFO -   Processing 1 tokens from message 62
+2025-05-22 08:13:48,785 - phoenix.telegram - INFO -   Processing 1 tokens from message 63
+2025-05-22 08:13:48,785 - phoenix.telegram - INFO -   Processing 1 tokens from message 64
+2025-05-22 08:13:48,785 - phoenix.telegram - INFO -   Processing 1 tokens from message 65
+2025-05-22 08:13:48,786 - phoenix.telegram - INFO -   Processing 1 tokens from message 66
+2025-05-22 08:13:48,786 - phoenix.telegram - INFO -   Processing 1 tokens from message 67
+2025-05-22 08:13:48,786 - phoenix.telegram - INFO -   Processing 1 tokens from message 68
+2025-05-22 08:13:48,787 - phoenix.telegram - INFO -   Processing 1 tokens from message 69
+2025-05-22 08:13:48,787 - phoenix.telegram - INFO -   Processing 1 tokens from message 70
+2025-05-22 08:13:48,787 - phoenix.telegram - INFO -   Processing 1 tokens from message 71
+2025-05-22 08:13:48,788 - phoenix.telegram - INFO -   Processing 1 tokens from message 72
+2025-05-22 08:13:48,789 - phoenix.telegram - INFO -   Processing 1 tokens from message 73
+2025-05-22 08:13:48,789 - phoenix.telegram - INFO -   Processing 1 tokens from message 74
+2025-05-22 08:13:48,790 - phoenix.telegram - INFO -   Processing 1 tokens from message 75
+2025-05-22 08:13:48,790 - phoenix.telegram - INFO -   Processing 1 tokens from message 77
+2025-05-22 08:13:48,790 - phoenix.telegram - INFO -   Processing 1 tokens from message 79
+2025-05-22 08:13:48,791 - phoenix.telegram - INFO -   Processing 1 tokens from message 81
+2025-05-22 08:13:48,791 - phoenix.telegram - INFO -   Processing 1 tokens from message 82
+2025-05-22 08:13:48,791 - phoenix.telegram - INFO -   Processing 1 tokens from message 83
+2025-05-22 08:13:48,792 - phoenix.telegram - INFO -   Processing 1 tokens from message 84
+2025-05-22 08:13:48,792 - phoenix.telegram - INFO -   Processing 1 tokens from message 85
+2025-05-22 08:13:48,792 - phoenix.telegram - INFO -   Processing 1 tokens from message 86
+2025-05-22 08:13:48,793 - phoenix.telegram - INFO -   Processing 1 tokens from message 87
+2025-05-22 08:13:48,793 - phoenix.telegram - INFO -   Processing 1 tokens from message 88
+2025-05-22 08:13:48,793 - phoenix.telegram - INFO -   Processing 1 tokens from message 89
+2025-05-22 08:13:48,794 - phoenix.telegram - INFO -   Processing 1 tokens from message 90
+2025-05-22 08:13:48,794 - phoenix.telegram - INFO -   Processing 1 tokens from message 91
+2025-05-22 08:13:48,794 - phoenix.telegram - INFO -   Processing 1 tokens from message 92
+2025-05-22 08:13:48,795 - phoenix.telegram - INFO -   Processing 1 tokens from message 93
+2025-05-22 08:13:48,795 - phoenix.telegram - INFO -   Processing 1 tokens from message 94
+2025-05-22 08:13:48,795 - phoenix.telegram - INFO -   Processing 1 tokens from message 96
+2025-05-22 08:13:48,796 - phoenix.telegram - INFO -   Processing 1 tokens from message 97
+2025-05-22 08:13:48,796 - phoenix.telegram - INFO -   Processing 1 tokens from message 99
+2025-05-22 08:13:49,152 - phoenix.telegram - INFO -   Processing 1 tokens from message 100
+2025-05-22 08:13:49,152 - phoenix.telegram - INFO -   Processing 1 tokens from message 101
+2025-05-22 08:13:49,153 - phoenix.telegram - INFO -   Processing 1 tokens from message 102
+2025-05-22 08:13:49,153 - phoenix.telegram - INFO -   Processing 1 tokens from message 104
+2025-05-22 08:13:49,153 - phoenix.telegram - INFO -   Processing 1 tokens from message 105
+2025-05-22 08:13:49,154 - phoenix.telegram - INFO -   Processing 1 tokens from message 106
+2025-05-22 08:13:49,154 - phoenix.telegram - INFO -   Processing 1 tokens from message 107
+2025-05-22 08:13:49,154 - phoenix.telegram - INFO -   Processing 1 tokens from message 108
+2025-05-22 08:13:49,155 - phoenix.telegram - INFO -   Processing 1 tokens from message 109
+2025-05-22 08:13:49,155 - phoenix.telegram - INFO -   Processing 1 tokens from message 110
+2025-05-22 08:13:49,155 - phoenix.telegram - INFO -   Processing 1 tokens from message 111
+2025-05-22 08:13:49,156 - phoenix.telegram - INFO -   Processing 1 tokens from message 112
+2025-05-22 08:13:49,156 - phoenix.telegram - INFO -   Processing 1 tokens from message 113
+2025-05-22 08:13:49,157 - phoenix.telegram - INFO -   Processing 1 tokens from message 114
+2025-05-22 08:13:49,157 - phoenix.telegram - INFO -   Processing 1 tokens from message 115
+2025-05-22 08:13:49,157 - phoenix.telegram - INFO -   Processing 1 tokens from message 116
+2025-05-22 08:13:49,158 - phoenix.telegram - INFO -   Processing 1 tokens from message 117
+2025-05-22 08:13:49,158 - phoenix.telegram - INFO -   Processing 1 tokens from message 118
+2025-05-22 08:13:49,158 - phoenix.telegram - INFO -   Processing 1 tokens from message 119
+2025-05-22 08:13:49,159 - phoenix.telegram - INFO -   Processing 1 tokens from message 120
+2025-05-22 08:13:49,159 - phoenix.telegram - INFO -   Processing 1 tokens from message 121
+2025-05-22 08:13:49,159 - phoenix.telegram - INFO -   Processing 1 tokens from message 122
+2025-05-22 08:13:49,160 - phoenix.telegram - INFO -   Processing 1 tokens from message 123
+2025-05-22 08:13:49,160 - phoenix.telegram - INFO -   Processing 1 tokens from message 124
+2025-05-22 08:13:49,160 - phoenix.telegram - INFO -   Processing 1 tokens from message 125
+2025-05-22 08:13:49,161 - phoenix.telegram - INFO -   Processing 1 tokens from message 126
+2025-05-22 08:13:49,162 - phoenix.telegram - INFO -   Processing 1 tokens from message 127
+2025-05-22 08:13:49,163 - phoenix.telegram - INFO -   Processing 1 tokens from message 128
+2025-05-22 08:13:49,164 - phoenix.telegram - INFO -   Processing 1 tokens from message 129
+2025-05-22 08:13:49,164 - phoenix.telegram - INFO -   Processing 1 tokens from message 130
+2025-05-22 08:13:49,164 - phoenix.telegram - INFO -   Processing 1 tokens from message 131
+2025-05-22 08:13:49,165 - phoenix.telegram - INFO -   Processing 1 tokens from message 132
+2025-05-22 08:13:49,165 - phoenix.telegram - INFO -   Processing 1 tokens from message 133
+2025-05-22 08:13:49,165 - phoenix.telegram - INFO -   Processing 1 tokens from message 134
+2025-05-22 08:13:49,166 - phoenix.telegram - INFO -   Processing 1 tokens from message 135
+2025-05-22 08:13:49,166 - phoenix.telegram - INFO -   Processing 1 tokens from message 136
+2025-05-22 08:13:49,166 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 137
+2025-05-22 08:13:49,167 - phoenix.telegram - INFO -   Processing 1 tokens from message 138
+2025-05-22 08:13:49,167 - phoenix.telegram - INFO -   Processing 1 tokens from message 139
+2025-05-22 08:13:49,167 - phoenix.telegram - INFO -   Processing 1 tokens from message 140
+2025-05-22 08:13:49,169 - phoenix.telegram - INFO -   Processing 1 tokens from message 141
+2025-05-22 08:13:49,169 - phoenix.telegram - INFO -   Processing 1 tokens from message 143
+2025-05-22 08:13:49,169 - phoenix.telegram - INFO -   Processing 1 tokens from message 144
+2025-05-22 08:13:49,170 - phoenix.telegram - INFO -   Processing 1 tokens from message 145
+2025-05-22 08:13:49,170 - phoenix.telegram - INFO -   Processing 1 tokens from message 146
+2025-05-22 08:13:49,170 - phoenix.telegram - INFO -   Processing 1 tokens from message 147
+2025-05-22 08:13:49,171 - phoenix.telegram - INFO -   Processing 1 tokens from message 148
+2025-05-22 08:13:49,171 - phoenix.telegram - INFO -   Processing 1 tokens from message 149
+2025-05-22 08:13:49,171 - phoenix.telegram - INFO -   Processing 1 tokens from message 150
+2025-05-22 08:13:49,172 - phoenix.telegram - INFO -   Processing 1 tokens from message 151
+2025-05-22 08:13:49,173 - phoenix.telegram - INFO -   Processing 1 tokens from message 152
+2025-05-22 08:13:49,173 - phoenix.telegram - INFO -   Processing 1 tokens from message 153
+2025-05-22 08:13:49,174 - phoenix.telegram - INFO -   Processing 1 tokens from message 154
+2025-05-22 08:13:49,174 - phoenix.telegram - INFO -   Processing 1 tokens from message 156
+2025-05-22 08:13:49,174 - phoenix.telegram - INFO -   Processing 1 tokens from message 157
+2025-05-22 08:13:49,175 - phoenix.telegram - INFO -   Processing 1 tokens from message 158
+2025-05-22 08:13:49,175 - phoenix.telegram - INFO -   Processing 1 tokens from message 159
+2025-05-22 08:13:49,175 - phoenix.telegram - INFO -   Processing 1 tokens from message 160
+2025-05-22 08:13:49,176 - phoenix.telegram - INFO -   Processing 1 tokens from message 161
+2025-05-22 08:13:49,176 - phoenix.telegram - INFO -   Processing 1 tokens from message 162
+2025-05-22 08:13:49,176 - phoenix.telegram - INFO -   Processing 1 tokens from message 163
+2025-05-22 08:13:49,177 - phoenix.telegram - INFO -   Processing 1 tokens from message 164
+2025-05-22 08:13:49,177 - phoenix.telegram - INFO -   Processing 1 tokens from message 165
+2025-05-22 08:13:49,177 - phoenix.telegram - INFO -   Processing 1 tokens from message 166
+2025-05-22 08:13:49,178 - phoenix.telegram - INFO -   Processing 1 tokens from message 167
+2025-05-22 08:13:49,178 - phoenix.telegram - INFO -   Processing 1 tokens from message 168
+2025-05-22 08:13:49,178 - phoenix.telegram - INFO -   Processing 1 tokens from message 169
+2025-05-22 08:13:49,179 - phoenix.telegram - INFO -   Processing 1 tokens from message 170
+2025-05-22 08:13:49,179 - phoenix.telegram - INFO -   Processing 1 tokens from message 171
+2025-05-22 08:13:49,180 - phoenix.telegram - INFO -   Processing 1 tokens from message 172
+2025-05-22 08:13:49,180 - phoenix.telegram - INFO -   Processing 1 tokens from message 173
+2025-05-22 08:13:49,180 - phoenix.telegram - INFO -   Processing 1 tokens from message 174
+2025-05-22 08:13:49,181 - phoenix.telegram - INFO -   Processing 1 tokens from message 175
+2025-05-22 08:13:49,181 - phoenix.telegram - INFO -   Processing 1 tokens from message 176
+2025-05-22 08:13:49,181 - phoenix.telegram - INFO -   Processing 1 tokens from message 177
+2025-05-22 08:13:49,182 - phoenix.telegram - INFO -   Processing 1 tokens from message 178
+2025-05-22 08:13:49,183 - phoenix.telegram - INFO -   Processing 1 tokens from message 179
+2025-05-22 08:13:49,184 - phoenix.telegram - INFO -   Processing 1 tokens from message 180
+2025-05-22 08:13:49,184 - phoenix.telegram - INFO -   Processing 1 tokens from message 181
+2025-05-22 08:13:49,184 - phoenix.telegram - INFO -   Processing 1 tokens from message 182
+2025-05-22 08:13:49,184 - phoenix.telegram - INFO -   Processing 1 tokens from message 183
+2025-05-22 08:13:49,185 - phoenix.telegram - INFO -   Processing 1 tokens from message 184
+2025-05-22 08:13:49,185 - phoenix.telegram - INFO -   Processing 1 tokens from message 185
+2025-05-22 08:13:49,185 - phoenix.telegram - INFO -   Processing 1 tokens from message 187
+2025-05-22 08:13:49,186 - phoenix.telegram - INFO -   Processing 1 tokens from message 190
+2025-05-22 08:13:49,186 - phoenix.telegram - INFO -   Processing 1 tokens from message 192
+2025-05-22 08:13:49,186 - phoenix.telegram - INFO -   Processing 1 tokens from message 193
+2025-05-22 08:13:49,187 - phoenix.telegram - INFO -   Processing 1 tokens from message 194
+2025-05-22 08:13:49,187 - phoenix.telegram - INFO -   Processing 1 tokens from message 195
+2025-05-22 08:13:49,187 - phoenix.telegram - INFO -   Processing 1 tokens from message 196
+2025-05-22 08:13:49,188 - phoenix.telegram - INFO -   Processing 1 tokens from message 197
+2025-05-22 08:13:49,188 - phoenix.telegram - INFO -   Processing 1 tokens from message 198
+2025-05-22 08:13:49,188 - phoenix.telegram - INFO -   Processing 1 tokens from message 199
+2025-05-22 08:13:49,499 - phoenix.telegram - INFO -   Processing 1 tokens from message 200
+2025-05-22 08:13:49,499 - phoenix.telegram - INFO -   Processing 1 tokens from message 201
+2025-05-22 08:13:49,500 - phoenix.telegram - INFO -   Processing 1 tokens from message 202
+2025-05-22 08:13:49,501 - phoenix.telegram - INFO -   Processing 1 tokens from message 205
+2025-05-22 08:13:49,501 - phoenix.telegram - INFO -   Processing 1 tokens from message 207
+2025-05-22 08:13:49,501 - phoenix.telegram - INFO -   Processing 1 tokens from message 208
+2025-05-22 08:13:49,502 - phoenix.telegram - INFO -   Processing 1 tokens from message 209
+2025-05-22 08:13:49,502 - phoenix.telegram - INFO -   Processing 1 tokens from message 210
+2025-05-22 08:13:49,502 - phoenix.telegram - INFO -   Processing 1 tokens from message 211
+2025-05-22 08:13:49,503 - phoenix.telegram - INFO -   Processing 1 tokens from message 212
+2025-05-22 08:13:49,503 - phoenix.telegram - INFO -   Processing 1 tokens from message 213
+2025-05-22 08:13:49,503 - phoenix.telegram - INFO -   Processing 1 tokens from message 214
+2025-05-22 08:13:49,504 - phoenix.telegram - INFO -   Processing 1 tokens from message 215
+2025-05-22 08:13:49,504 - phoenix.telegram - INFO -   Processing 1 tokens from message 216
+2025-05-22 08:13:49,504 - phoenix.telegram - INFO -   Processing 1 tokens from message 217
+2025-05-22 08:13:49,505 - phoenix.telegram - INFO -   Processing 1 tokens from message 218
+2025-05-22 08:13:49,505 - phoenix.telegram - INFO -   Processing 1 tokens from message 219
+2025-05-22 08:13:49,506 - phoenix.telegram - INFO -   Processing 1 tokens from message 221
+2025-05-22 08:13:49,506 - phoenix.telegram - INFO -   Processing 1 tokens from message 222
+2025-05-22 08:13:49,506 - phoenix.telegram - INFO -   Processing 1 tokens from message 223
+2025-05-22 08:13:49,507 - phoenix.telegram - INFO -   Processing 1 tokens from message 224
+2025-05-22 08:13:49,507 - phoenix.telegram - INFO -   Processing 1 tokens from message 225
+2025-05-22 08:13:49,507 - phoenix.telegram - INFO -   Processing 1 tokens from message 226
+2025-05-22 08:13:49,508 - phoenix.telegram - INFO -   Processing 1 tokens from message 227
+2025-05-22 08:13:49,508 - phoenix.telegram - INFO -   Processing 1 tokens from message 229
+2025-05-22 08:13:49,508 - phoenix.telegram - INFO -   Processing 1 tokens from message 230
+2025-05-22 08:13:49,509 - phoenix.telegram - INFO -   Processing 1 tokens from message 231
+2025-05-22 08:13:49,510 - phoenix.telegram - INFO -   Processing 1 tokens from message 232
+2025-05-22 08:13:49,512 - phoenix.telegram - INFO -   Processing 1 tokens from message 233
+2025-05-22 08:13:49,512 - phoenix.telegram - INFO -   Processing 1 tokens from message 234
+2025-05-22 08:13:49,512 - phoenix.telegram - INFO -   Processing 1 tokens from message 235
+2025-05-22 08:13:49,512 - phoenix.telegram - INFO -   Processing 1 tokens from message 236
+2025-05-22 08:13:49,513 - phoenix.telegram - INFO -   Processing 1 tokens from message 237
+2025-05-22 08:13:49,513 - phoenix.telegram - INFO -   Processing 1 tokens from message 238
+2025-05-22 08:13:49,513 - phoenix.telegram - INFO -   Processing 1 tokens from message 239
+2025-05-22 08:13:49,513 - phoenix.telegram - INFO -   Processing 1 tokens from message 240
+2025-05-22 08:13:49,514 - phoenix.telegram - INFO -   Processing 1 tokens from message 241
+2025-05-22 08:13:49,514 - phoenix.telegram - INFO -   Processing 1 tokens from message 244
+2025-05-22 08:13:49,514 - phoenix.telegram - INFO -   Processing 1 tokens from message 245
+2025-05-22 08:13:49,515 - phoenix.telegram - INFO -   Processing 1 tokens from message 246
+2025-05-22 08:13:49,515 - phoenix.telegram - INFO -   Processing 1 tokens from message 248
+2025-05-22 08:13:49,515 - phoenix.telegram - INFO -   Processing 1 tokens from message 249
+2025-05-22 08:13:49,516 - phoenix.telegram - INFO -   Processing 1 tokens from message 250
+2025-05-22 08:13:49,516 - phoenix.telegram - INFO -   Processing 1 tokens from message 251
+2025-05-22 08:13:49,516 - phoenix.telegram - INFO -   Processing 1 tokens from message 252
+2025-05-22 08:13:49,517 - phoenix.telegram - INFO -   Processing 1 tokens from message 253
+2025-05-22 08:13:49,517 - phoenix.telegram - INFO -   Processing 1 tokens from message 254
+2025-05-22 08:13:49,517 - phoenix.telegram - INFO -   Processing 1 tokens from message 255
+2025-05-22 08:13:49,518 - phoenix.telegram - INFO -   Processing 1 tokens from message 256
+2025-05-22 08:13:49,518 - phoenix.telegram - INFO -   Processing 1 tokens from message 257
+2025-05-22 08:13:49,518 - phoenix.telegram - INFO -   Processing 1 tokens from message 258
+2025-05-22 08:13:49,519 - phoenix.telegram - INFO -   Processing 1 tokens from message 259
+2025-05-22 08:13:49,519 - phoenix.telegram - INFO -   Processing 1 tokens from message 262
+2025-05-22 08:13:49,520 - phoenix.telegram - INFO -   Processing 1 tokens from message 263
+2025-05-22 08:13:49,521 - phoenix.telegram - INFO -   Processing 1 tokens from message 265
+2025-05-22 08:13:49,522 - phoenix.telegram - INFO -   Processing 1 tokens from message 266
+2025-05-22 08:13:49,522 - phoenix.telegram - INFO -   Processing 1 tokens from message 267
+2025-05-22 08:13:49,522 - phoenix.telegram - INFO -   Processing 1 tokens from message 268
+2025-05-22 08:13:49,523 - phoenix.telegram - INFO -   Processing 1 tokens from message 270
+2025-05-22 08:13:49,523 - phoenix.telegram - INFO -   Processing 1 tokens from message 271
+2025-05-22 08:13:49,524 - phoenix.telegram - INFO -   Processing 1 tokens from message 276
+2025-05-22 08:13:49,524 - phoenix.telegram - INFO -   Processing 1 tokens from message 277
+2025-05-22 08:13:49,524 - phoenix.telegram - INFO -   Processing 1 tokens from message 278
+2025-05-22 08:13:49,525 - phoenix.telegram - INFO -   Processing 1 tokens from message 279
+2025-05-22 08:13:49,525 - phoenix.telegram - INFO -   Processing 1 tokens from message 280
+2025-05-22 08:13:49,525 - phoenix.telegram - INFO -   Processing 1 tokens from message 281
+2025-05-22 08:13:49,526 - phoenix.telegram - INFO -   Processing 1 tokens from message 282
+2025-05-22 08:13:49,526 - phoenix.telegram - INFO -   Processing 1 tokens from message 283
+2025-05-22 08:13:49,526 - phoenix.telegram - INFO -   Processing 1 tokens from message 284
+2025-05-22 08:13:49,527 - phoenix.telegram - INFO -   Processing 1 tokens from message 285
+2025-05-22 08:13:49,527 - phoenix.telegram - INFO -   Processing 1 tokens from message 286
+2025-05-22 08:13:49,527 - phoenix.telegram - INFO -   Processing 1 tokens from message 287
+2025-05-22 08:13:49,528 - phoenix.telegram - INFO -   Processing 1 tokens from message 288
+2025-05-22 08:13:49,528 - phoenix.telegram - INFO -   Processing 1 tokens from message 289
+2025-05-22 08:13:49,528 - phoenix.telegram - INFO -   Processing 1 tokens from message 290
+2025-05-22 08:13:49,529 - phoenix.telegram - INFO -   Processing 1 tokens from message 291
+2025-05-22 08:13:49,529 - phoenix.telegram - INFO -   Processing 1 tokens from message 292
+2025-05-22 08:13:49,529 - phoenix.telegram - INFO -   Processing 1 tokens from message 293
+2025-05-22 08:13:49,531 - phoenix.telegram - INFO -   Processing 1 tokens from message 294
+2025-05-22 08:13:49,531 - phoenix.telegram - INFO -   Processing 1 tokens from message 295
+2025-05-22 08:13:49,532 - phoenix.telegram - INFO -   Processing 1 tokens from message 296
+2025-05-22 08:13:49,532 - phoenix.telegram - INFO -   Processing 1 tokens from message 297
+2025-05-22 08:13:49,838 - phoenix.telegram - INFO -   Processing 1 tokens from message 300
+2025-05-22 08:13:49,839 - phoenix.telegram - INFO -   Processing 1 tokens from message 301
+2025-05-22 08:13:49,839 - phoenix.telegram - INFO -   Processing 1 tokens from message 302
+2025-05-22 08:13:49,840 - phoenix.telegram - INFO -   Processing 1 tokens from message 303
+2025-05-22 08:13:49,840 - phoenix.telegram - INFO -   Processing 1 tokens from message 304
+2025-05-22 08:13:49,840 - phoenix.telegram - INFO -   Processing 1 tokens from message 305
+2025-05-22 08:13:49,841 - phoenix.telegram - INFO -   Processing 1 tokens from message 306
+2025-05-22 08:13:49,841 - phoenix.telegram - INFO -   Processing 1 tokens from message 307
+2025-05-22 08:13:49,842 - phoenix.telegram - INFO -   Processing 1 tokens from message 309
+2025-05-22 08:13:49,842 - phoenix.telegram - INFO -   Processing 1 tokens from message 310
+2025-05-22 08:13:49,842 - phoenix.telegram - INFO -   Processing 1 tokens from message 311
+2025-05-22 08:13:49,843 - phoenix.telegram - INFO -   Processing 1 tokens from message 313
+2025-05-22 08:13:49,843 - phoenix.telegram - INFO -   Processing 1 tokens from message 314
+2025-05-22 08:13:49,843 - phoenix.telegram - INFO -   Processing 1 tokens from message 315
+2025-05-22 08:13:49,844 - phoenix.telegram - INFO -   Processing 1 tokens from message 316
+2025-05-22 08:13:49,844 - phoenix.telegram - INFO -   Processing 1 tokens from message 318
+2025-05-22 08:13:49,844 - phoenix.telegram - INFO -   Processing 1 tokens from message 319
+2025-05-22 08:13:49,845 - phoenix.telegram - INFO -   Processing 1 tokens from message 320
+2025-05-22 08:13:49,845 - phoenix.telegram - INFO -   Processing 1 tokens from message 321
+2025-05-22 08:13:49,845 - phoenix.telegram - INFO -   Processing 1 tokens from message 323
+2025-05-22 08:13:49,846 - phoenix.telegram - INFO -   Processing 1 tokens from message 324
+2025-05-22 08:13:49,846 - phoenix.telegram - INFO -   Processing 1 tokens from message 325
+2025-05-22 08:13:49,846 - phoenix.telegram - INFO -   Processing 1 tokens from message 327
+2025-05-22 08:13:49,847 - phoenix.telegram - INFO -   Processing 1 tokens from message 329
+2025-05-22 08:13:49,847 - phoenix.telegram - INFO -   Processing 1 tokens from message 331
+2025-05-22 08:13:49,847 - phoenix.telegram - INFO -   Processing 1 tokens from message 332
+2025-05-22 08:13:49,849 - phoenix.telegram - INFO -   Processing 1 tokens from message 334
+2025-05-22 08:13:49,849 - phoenix.telegram - INFO -   Processing 1 tokens from message 336
+2025-05-22 08:13:49,850 - phoenix.telegram - INFO -   Processing 1 tokens from message 338
+2025-05-22 08:13:49,850 - phoenix.telegram - INFO -   Processing 1 tokens from message 339
+2025-05-22 08:13:49,850 - phoenix.telegram - INFO -   Processing 1 tokens from message 340
+2025-05-22 08:13:49,851 - phoenix.telegram - INFO -   Processing 1 tokens from message 341
+2025-05-22 08:13:49,851 - phoenix.telegram - INFO -   Processing 1 tokens from message 342
+2025-05-22 08:13:49,851 - phoenix.telegram - INFO -   Processing 1 tokens from message 343
+2025-05-22 08:13:49,852 - phoenix.telegram - INFO -   Processing 1 tokens from message 345
+2025-05-22 08:13:49,852 - phoenix.telegram - INFO -   Processing 1 tokens from message 346
+2025-05-22 08:13:49,853 - phoenix.telegram - INFO -   Processing 1 tokens from message 347
+2025-05-22 08:13:49,853 - phoenix.telegram - INFO -   Processing 1 tokens from message 348
+2025-05-22 08:13:49,853 - phoenix.telegram - INFO -   Processing 1 tokens from message 349
+2025-05-22 08:13:49,854 - phoenix.telegram - INFO -   Processing 1 tokens from message 350
+2025-05-22 08:13:49,854 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 351
+2025-05-22 08:13:49,854 - phoenix.telegram - INFO -   Processing 1 tokens from message 352
+2025-05-22 08:13:49,855 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 353
+2025-05-22 08:13:49,855 - phoenix.telegram - INFO -   Processing 1 tokens from message 354
+2025-05-22 08:13:49,855 - phoenix.telegram - INFO -   Processing 1 tokens from message 355
+2025-05-22 08:13:49,855 - phoenix.telegram - INFO -   Processing 1 tokens from message 356
+2025-05-22 08:13:49,856 - phoenix.telegram - INFO -   Processing 1 tokens from message 357
+2025-05-22 08:13:49,856 - phoenix.telegram - INFO -   Processing 1 tokens from message 359
+2025-05-22 08:13:49,856 - phoenix.telegram - INFO -   Processing 1 tokens from message 360
+2025-05-22 08:13:49,857 - phoenix.telegram - INFO -   Processing 1 tokens from message 361
+2025-05-22 08:13:49,857 - phoenix.telegram - INFO -   Processing 1 tokens from message 362
+2025-05-22 08:13:49,857 - phoenix.telegram - INFO -   Processing 1 tokens from message 363
+2025-05-22 08:13:49,858 - phoenix.telegram - INFO -   Processing 1 tokens from message 364
+2025-05-22 08:13:49,859 - phoenix.telegram - INFO -   Processing 1 tokens from message 365
+2025-05-22 08:13:49,860 - phoenix.telegram - INFO -   Processing 1 tokens from message 366
+2025-05-22 08:13:49,860 - phoenix.telegram - INFO -   Processing 1 tokens from message 368
+2025-05-22 08:13:49,860 - phoenix.telegram - INFO -   Processing 1 tokens from message 369
+2025-05-22 08:13:49,861 - phoenix.telegram - INFO -   Processing 1 tokens from message 374
+2025-05-22 08:13:49,861 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 375
+2025-05-22 08:13:49,862 - phoenix.telegram - INFO -   Processing 1 tokens from message 376
+2025-05-22 08:13:49,862 - phoenix.telegram - INFO -   Processing 1 tokens from message 377
+2025-05-22 08:13:49,862 - phoenix.telegram - INFO -   Processing 1 tokens from message 378
+2025-05-22 08:13:49,863 - phoenix.telegram - INFO -   Processing 1 tokens from message 386
+2025-05-22 08:13:49,863 - phoenix.telegram - INFO -   Processing 1 tokens from message 387
+2025-05-22 08:13:49,864 - phoenix.telegram - INFO -   Processing 1 tokens from message 388
+2025-05-22 08:13:49,864 - phoenix.telegram - INFO -   Processing 1 tokens from message 390
+2025-05-22 08:13:49,864 - phoenix.telegram - INFO -   Processing 1 tokens from message 391
+2025-05-22 08:13:49,865 - phoenix.telegram - INFO -   Processing 1 tokens from message 392
+2025-05-22 08:13:49,865 - phoenix.telegram - INFO -   Processing 1 tokens from message 393
+2025-05-22 08:13:49,865 - phoenix.telegram - INFO -   Processing 1 tokens from message 394
+2025-05-22 08:13:49,866 - phoenix.telegram - INFO -   Processing 1 tokens from message 395
+2025-05-22 08:13:49,866 - phoenix.telegram - INFO -   Processing 1 tokens from message 396
+2025-05-22 08:13:50,162 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 400
+2025-05-22 08:13:50,162 - phoenix.telegram - INFO -   Processing 1 tokens from message 403
+2025-05-22 08:13:50,163 - phoenix.telegram - INFO -   Processing 1 tokens from message 404
+2025-05-22 08:13:50,163 - phoenix.telegram - INFO -   Processing 1 tokens from message 406
+2025-05-22 08:13:50,163 - phoenix.telegram - INFO -   Processing 1 tokens from message 407
+2025-05-22 08:13:50,164 - phoenix.telegram - INFO -   Processing 1 tokens from message 409
+2025-05-22 08:13:50,164 - phoenix.telegram - INFO -   Processing 1 tokens from message 410
+2025-05-22 08:13:50,165 - phoenix.telegram - INFO -   Processing 1 tokens from message 412
+2025-05-22 08:13:50,165 - phoenix.telegram - INFO -   Processing 1 tokens from message 414
+2025-05-22 08:13:50,166 - phoenix.telegram - INFO -   Processing 1 tokens from message 417
+2025-05-22 08:13:50,166 - phoenix.telegram - INFO -   Processing 1 tokens from message 418
+2025-05-22 08:13:50,166 - phoenix.telegram - INFO -   Processing 1 tokens from message 419
+2025-05-22 08:13:50,167 - phoenix.telegram - INFO -   Processing 1 tokens from message 420
+2025-05-22 08:13:50,167 - phoenix.telegram - INFO -   Processing 1 tokens from message 421
+2025-05-22 08:13:50,167 - phoenix.telegram - INFO -   Processing 1 tokens from message 422
+2025-05-22 08:13:50,168 - phoenix.telegram - INFO -   Processing 1 tokens from message 424
+2025-05-22 08:13:50,168 - phoenix.telegram - INFO -   Processing 1 tokens from message 425
+2025-05-22 08:13:50,168 - phoenix.telegram - INFO -   Processing 1 tokens from message 426
+2025-05-22 08:13:50,168 - phoenix.telegram - INFO -   Processing 1 tokens from message 427
+2025-05-22 08:13:50,169 - phoenix.telegram - INFO -   Processing 1 tokens from message 428
+2025-05-22 08:13:50,169 - phoenix.telegram - INFO -   Processing 1 tokens from message 429
+2025-05-22 08:13:50,169 - phoenix.telegram - INFO -   Processing 1 tokens from message 430
+2025-05-22 08:13:50,170 - phoenix.telegram - INFO -   Processing 1 tokens from message 431
+2025-05-22 08:13:50,170 - phoenix.telegram - INFO -   Processing 1 tokens from message 432
+2025-05-22 08:13:50,170 - phoenix.telegram - INFO -   Processing 1 tokens from message 433
+2025-05-22 08:13:50,172 - phoenix.telegram - INFO -   Processing 1 tokens from message 435
+2025-05-22 08:13:50,173 - phoenix.telegram - INFO -   Processing 1 tokens from message 438
+2025-05-22 08:13:50,173 - phoenix.telegram - INFO -   Processing 1 tokens from message 439
+2025-05-22 08:13:50,173 - phoenix.telegram - INFO -   Processing 1 tokens from message 440
+2025-05-22 08:13:50,174 - phoenix.telegram - INFO -   Processing 1 tokens from message 441
+2025-05-22 08:13:50,174 - phoenix.telegram - INFO -   Processing 1 tokens from message 442
+2025-05-22 08:13:50,174 - phoenix.telegram - INFO -   Processing 1 tokens from message 443
+2025-05-22 08:13:50,175 - phoenix.telegram - INFO -   Processing 1 tokens from message 444
+2025-05-22 08:13:50,175 - phoenix.telegram - INFO -   Processing 1 tokens from message 446
+2025-05-22 08:13:50,175 - phoenix.telegram - INFO -   Processing 1 tokens from message 448
+2025-05-22 08:13:50,176 - phoenix.telegram - INFO -   Processing 1 tokens from message 449
+2025-05-22 08:13:50,176 - phoenix.telegram - INFO -   Processing 1 tokens from message 450
+2025-05-22 08:13:50,176 - phoenix.telegram - INFO -   Processing 1 tokens from message 451
+2025-05-22 08:13:50,177 - phoenix.telegram - INFO -   Processing 1 tokens from message 452
+2025-05-22 08:13:50,177 - phoenix.telegram - INFO -   Processing 1 tokens from message 453
+2025-05-22 08:13:50,177 - phoenix.telegram - INFO -   Processing 1 tokens from message 454
+2025-05-22 08:13:50,178 - phoenix.telegram - INFO -   Processing 1 tokens from message 455
+2025-05-22 08:13:50,178 - phoenix.telegram - INFO -   Processing 1 tokens from message 456
+2025-05-22 08:13:50,178 - phoenix.telegram - INFO -   Processing 1 tokens from message 457
+2025-05-22 08:13:50,179 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 459
+2025-05-22 08:13:50,187 - phoenix.telegram - INFO -   Processing 1 tokens from message 460
+2025-05-22 08:13:50,187 - phoenix.telegram - INFO -   Processing 1 tokens from message 461
+2025-05-22 08:13:50,187 - phoenix.telegram - INFO -   Processing 1 tokens from message 462
+2025-05-22 08:13:50,188 - phoenix.telegram - INFO -   Processing 1 tokens from message 463
+2025-05-22 08:13:50,188 - phoenix.telegram - INFO -   Processing 1 tokens from message 465
+2025-05-22 08:13:50,189 - phoenix.telegram - INFO -   Processing 1 tokens from message 466
+2025-05-22 08:13:50,189 - phoenix.telegram - INFO -   Processing 1 tokens from message 467
+2025-05-22 08:13:50,189 - phoenix.telegram - INFO -   Processing 1 tokens from message 468
+2025-05-22 08:13:50,190 - phoenix.telegram - INFO -   Processing 1 tokens from message 473
+2025-05-22 08:13:50,190 - phoenix.telegram - INFO -   Processing 1 tokens from message 478
+2025-05-22 08:13:50,191 - phoenix.telegram - INFO -   Processing 1 tokens from message 479
+2025-05-22 08:13:50,192 - phoenix.telegram - INFO -   Processing 1 tokens from message 480
+2025-05-22 08:13:50,192 - phoenix.telegram - INFO -   Processing 1 tokens from message 481
+2025-05-22 08:13:50,192 - phoenix.telegram - INFO -   Processing 1 tokens from message 482
+2025-05-22 08:13:50,193 - phoenix.telegram - INFO -   Processing 1 tokens from message 483
+2025-05-22 08:13:50,193 - phoenix.telegram - INFO -   Processing 1 tokens from message 485
+2025-05-22 08:13:50,193 - phoenix.telegram - INFO -   Processing 1 tokens from message 486
+2025-05-22 08:13:50,194 - phoenix.telegram - INFO -   Processing 1 tokens from message 487
+2025-05-22 08:13:50,194 - phoenix.telegram - INFO -   Processing 1 tokens from message 488
+2025-05-22 08:13:50,194 - phoenix.telegram - INFO -   Processing 1 tokens from message 489
+2025-05-22 08:13:50,195 - phoenix.telegram - INFO -   Processing 1 tokens from message 490
+2025-05-22 08:13:50,195 - phoenix.telegram - INFO -   Processing 1 tokens from message 491
+2025-05-22 08:13:50,195 - phoenix.telegram - INFO -   Processing 1 tokens from message 492
+2025-05-22 08:13:50,196 - phoenix.telegram - INFO -   Processing 1 tokens from message 493
+2025-05-22 08:13:50,196 - phoenix.telegram - INFO -   Processing 1 tokens from message 495
+2025-05-22 08:13:50,196 - phoenix.telegram - INFO -   Processing 1 tokens from message 496
+2025-05-22 08:13:50,197 - phoenix.telegram - INFO -   Processing 1 tokens from message 497
+2025-05-22 08:13:50,197 - phoenix.telegram - INFO -   Processing 1 tokens from message 498
+2025-05-22 08:13:50,198 - phoenix.telegram - INFO -   Processing 1 tokens from message 499
+2025-05-22 08:13:50,332 - phoenix.telegram - INFO -   Processing 1 tokens from message 500
+2025-05-22 08:13:50,332 - phoenix.telegram - INFO - Processed 500 total messages
+2025-05-22 08:13:50,333 - phoenix.telegram - INFO - Found 394 token calls from 144 KOLs
+2025-05-22 08:13:50,334 - phoenix.telegram - INFO - Analyzing call 1/394: CHARLES
+2025-05-22 08:13:50,334 - phoenix.telegram - INFO - Analyzing call 2/394: CHARLES
+2025-05-22 08:13:50,334 - phoenix.telegram - INFO - Analyzing call 3/394: CHARLES
+2025-05-22 08:13:50,335 - phoenix.telegram - INFO - Analyzing call 4/394: CHARLES
+2025-05-22 08:13:50,335 - phoenix.telegram - INFO - Analyzing call 5/394: CHARLES
+2025-05-22 08:13:50,335 - phoenix.telegram - INFO - Analyzing call 6/394: CHARLES
+2025-05-22 08:13:50,336 - phoenix.telegram - INFO - Analyzing call 7/394: CHARLES
+2025-05-22 08:13:50,336 - phoenix.telegram - INFO - Analyzing call 8/394: CHARLES
+2025-05-22 08:13:50,336 - phoenix.telegram - INFO - Analyzing call 9/394: CHARLES
+2025-05-22 08:13:50,337 - phoenix.telegram - INFO - Analyzing call 10/394: CHARLES
+2025-05-22 08:13:50,337 - phoenix.telegram - INFO - Analyzing call 11/394: LABUBU
+2025-05-22 08:13:50,337 - phoenix.telegram - INFO - Analyzing call 12/394: LABUBU
+2025-05-22 08:13:50,338 - phoenix.telegram - INFO - Analyzing call 13/394: LABUBU
+2025-05-22 08:13:50,338 - phoenix.telegram - INFO - Analyzing call 14/394: CHARLES
+2025-05-22 08:13:50,338 - phoenix.telegram - INFO - Analyzing call 15/394: CHARLES
+2025-05-22 08:13:50,339 - phoenix.telegram - INFO - Analyzing call 16/394: CHARLES
+2025-05-22 08:13:50,339 - phoenix.telegram - INFO - Analyzing call 17/394: CHARLES
+2025-05-22 08:13:50,339 - phoenix.telegram - INFO - Analyzing call 18/394: Call Your Frien
+2025-05-22 08:13:50,340 - phoenix.telegram - INFO - Analyzing call 19/394: CHARLES
+2025-05-22 08:13:50,340 - phoenix.telegram - INFO - Analyzing call 20/394: CHARLES
+2025-05-22 08:13:50,340 - phoenix.telegram - INFO - Analyzing call 21/394: CHARLES
+2025-05-22 08:13:50,341 - phoenix.telegram - INFO - Analyzing call 22/394: CHARLES
+2025-05-22 08:13:50,341 - phoenix.telegram - INFO - Analyzing call 23/394: CHARLES
+2025-05-22 08:13:50,341 - phoenix.telegram - INFO - Analyzing call 24/394: CHARLES
+2025-05-22 08:13:50,342 - phoenix.telegram - INFO - Analyzing call 25/394: CHARLES
+2025-05-22 08:13:50,343 - phoenix.telegram - INFO - Analyzing call 26/394: NEXT BIG THING
+2025-05-22 08:13:50,344 - phoenix.telegram - INFO - Analyzing call 27/394: CHARLES
+2025-05-22 08:13:50,344 - phoenix.telegram - INFO - Analyzing call 28/394: CHARLES
+2025-05-22 08:13:50,344 - phoenix.telegram - INFO - Analyzing call 29/394: CHARLES
+2025-05-22 08:13:50,344 - phoenix.telegram - INFO - Analyzing call 30/394: CHARLES
+2025-05-22 08:13:50,345 - phoenix.telegram - INFO - Analyzing call 31/394: CHARLES
+2025-05-22 08:13:50,345 - phoenix.telegram - INFO - Analyzing call 32/394: CHARLES
+2025-05-22 08:13:50,345 - phoenix.telegram - INFO - Analyzing call 33/394: CHARLES
+2025-05-22 08:13:50,345 - phoenix.telegram - INFO - Analyzing call 34/394: CHARLES
+2025-05-22 08:13:50,346 - phoenix.telegram - INFO - Analyzing call 35/394: Trump Bitcoin P
+2025-05-22 08:13:50,346 - phoenix.telegram - INFO - Analyzing call 36/394: moondog
+2025-05-22 08:13:50,346 - phoenix.telegram - INFO - Analyzing call 37/394: moondog
+2025-05-22 08:13:50,346 - phoenix.telegram - INFO - Analyzing call 38/394: moondog
+2025-05-22 08:13:50,347 - phoenix.telegram - INFO - Analyzing call 39/394: moondog
+2025-05-22 08:13:50,347 - phoenix.telegram - INFO - Analyzing call 40/394: moondog
+2025-05-22 08:13:50,347 - phoenix.telegram - INFO - Analyzing call 41/394: moondog
+2025-05-22 08:13:50,348 - phoenix.telegram - INFO - Analyzing call 42/394: CHARLES
+2025-05-22 08:13:50,348 - phoenix.telegram - INFO - Analyzing call 43/394: Mu-Chan
+2025-05-22 08:13:50,348 - phoenix.telegram - INFO - Analyzing call 44/394: NovaQ
+2025-05-22 08:13:50,348 - phoenix.telegram - INFO - Analyzing call 45/394: NovaQ
+2025-05-22 08:13:50,349 - phoenix.telegram - INFO - Analyzing call 46/394: NovaQ
+2025-05-22 08:13:50,349 - phoenix.telegram - INFO - Analyzing call 47/394: NovaQ
+2025-05-22 08:13:50,349 - phoenix.telegram - INFO - Analyzing call 48/394: NovaQ
+2025-05-22 08:13:50,349 - phoenix.telegram - INFO - Analyzing call 49/394: NovaQ
+2025-05-22 08:13:50,350 - phoenix.telegram - INFO - Analyzing call 50/394: CHARLES
+2025-05-22 08:13:50,350 - phoenix.telegram - INFO - Analyzing call 51/394: CHARLES
+2025-05-22 08:13:50,350 - phoenix.telegram - INFO - Analyzing call 52/394: ape your last p
+2025-05-22 08:13:50,350 - phoenix.telegram - INFO - Analyzing call 53/394: NovaQ
+2025-05-22 08:13:50,351 - phoenix.telegram - INFO - Analyzing call 54/394: CHARLES
+2025-05-22 08:13:50,351 - phoenix.telegram - INFO - Analyzing call 55/394: CHARLES
+2025-05-22 08:13:50,351 - phoenix.telegram - INFO - Analyzing call 56/394: NovaQ
+2025-05-22 08:13:50,351 - phoenix.telegram - INFO - Analyzing call 57/394: NovaQ
+2025-05-22 08:13:50,352 - phoenix.telegram - INFO - Analyzing call 58/394: CHARLES
+2025-05-22 08:13:50,354 - phoenix.telegram - INFO - Analyzing call 59/394: CHARLES
+2025-05-22 08:13:50,354 - phoenix.telegram - INFO - Analyzing call 60/394: CHARLES
+2025-05-22 08:13:50,354 - phoenix.telegram - INFO - Analyzing call 61/394: Trump Bitcoin P
+2025-05-22 08:13:50,354 - phoenix.telegram - INFO - Analyzing call 62/394: SUIcide
+2025-05-22 08:13:50,355 - phoenix.telegram - INFO - Analyzing call 63/394: SUIcide
+2025-05-22 08:13:50,356 - phoenix.telegram - INFO - Analyzing call 64/394: SUIcide
+2025-05-22 08:13:50,356 - phoenix.telegram - INFO - Analyzing call 65/394: SUIcide
+2025-05-22 08:13:50,356 - phoenix.telegram - INFO - Analyzing call 66/394: SUIcide
+2025-05-22 08:13:50,357 - phoenix.telegram - INFO - Analyzing call 67/394: CHARLES
+2025-05-22 08:13:50,357 - phoenix.telegram - INFO - Analyzing call 68/394: SUIcide
+2025-05-22 08:13:50,357 - phoenix.telegram - INFO - Analyzing call 69/394: SUIcide
+2025-05-22 08:13:50,357 - phoenix.telegram - INFO - Analyzing call 70/394: SUIcide
+2025-05-22 08:13:50,358 - phoenix.telegram - INFO - Analyzing call 71/394: SUIcide
+2025-05-22 08:13:50,358 - phoenix.telegram - INFO - Analyzing call 72/394: SUIcide
+2025-05-22 08:13:50,358 - phoenix.telegram - INFO - Analyzing call 73/394: SUIcide
+2025-05-22 08:13:50,358 - phoenix.telegram - INFO - Analyzing call 74/394: LABUBU
+2025-05-22 08:13:50,359 - phoenix.telegram - INFO - Analyzing call 75/394: LABUBU
+2025-05-22 08:13:50,359 - phoenix.telegram - INFO - Analyzing call 76/394: LABUBU
+2025-05-22 08:13:50,359 - phoenix.telegram - INFO - Analyzing call 77/394: LABUBU
+2025-05-22 08:13:50,359 - phoenix.telegram - INFO - Analyzing call 78/394: LABUBU
+2025-05-22 08:13:50,360 - phoenix.telegram - INFO - Analyzing call 79/394: LABUBU
+2025-05-22 08:13:50,360 - phoenix.telegram - INFO - Analyzing call 80/394: Sonny Angels
+2025-05-22 08:13:50,360 - phoenix.telegram - INFO - Analyzing call 81/394: Sonny Angels
+2025-05-22 08:13:50,360 - phoenix.telegram - INFO - Analyzing call 82/394: Komugi Kun
+2025-05-22 08:13:50,361 - phoenix.telegram - INFO - Analyzing call 83/394: Komugi Kun
+2025-05-22 08:13:50,361 - phoenix.telegram - INFO - Analyzing call 84/394: Boochie by Matt
+2025-05-22 08:13:50,361 - phoenix.telegram - INFO - Analyzing call 85/394: Boochie by Matt
+2025-05-22 08:13:50,361 - phoenix.telegram - INFO - Analyzing call 86/394: Boochie by Matt
+2025-05-22 08:13:50,362 - phoenix.telegram - INFO - Analyzing call 87/394: Boochie by Matt
+2025-05-22 08:13:50,362 - phoenix.telegram - INFO - Analyzing call 88/394: Sonny Angels
+2025-05-22 08:13:50,362 - phoenix.telegram - INFO - Analyzing call 89/394: Boochie by Matt
+2025-05-22 08:13:50,362 - phoenix.telegram - INFO - Analyzing call 90/394: Boochie by Matt
+2025-05-22 08:13:50,364 - phoenix.telegram - INFO - Analyzing call 91/394: Boochie by Matt
+2025-05-22 08:13:50,365 - phoenix.telegram - INFO - Analyzing call 92/394: Boochie by Matt
+2025-05-22 08:13:50,365 - phoenix.telegram - INFO - Analyzing call 93/394: Boochie by Matt
+2025-05-22 08:13:50,365 - phoenix.telegram - INFO - Analyzing call 94/394: Boochie by Matt
+2025-05-22 08:13:50,366 - phoenix.telegram - INFO - Analyzing call 95/394: Boochie by Matt
+2025-05-22 08:13:50,366 - phoenix.telegram - INFO - Analyzing call 96/394: Boochie by Matt
+2025-05-22 08:13:50,366 - phoenix.telegram - INFO - Analyzing call 97/394: Boochie by Matt
+2025-05-22 08:13:50,367 - phoenix.telegram - INFO - Analyzing call 98/394: Boochie by Matt
+2025-05-22 08:13:50,367 - phoenix.telegram - INFO - Analyzing call 99/394: Boochie by Matt
+2025-05-22 08:13:50,367 - phoenix.telegram - INFO - Analyzing call 100/394: Boochie by Matt
+2025-05-22 08:13:50,368 - phoenix.telegram - INFO - Analyzing call 101/394: Boochie by Matt
+2025-05-22 08:13:50,368 - phoenix.telegram - INFO - Analyzing call 102/394: Boochie by Matt
+2025-05-22 08:13:50,368 - phoenix.telegram - INFO - Analyzing call 103/394: WLFIDOG
+2025-05-22 08:13:50,369 - phoenix.telegram - INFO - Analyzing call 104/394: Komugi Kun
+2025-05-22 08:13:50,369 - phoenix.telegram - INFO - Analyzing call 105/394: Komugi Kun
+2025-05-22 08:13:50,369 - phoenix.telegram - INFO - Analyzing call 106/394: Komugi Kun
+2025-05-22 08:13:50,370 - phoenix.telegram - INFO - Analyzing call 107/394: Komugi Kun
+2025-05-22 08:13:50,370 - phoenix.telegram - INFO - Analyzing call 108/394: Komugi Kun
+2025-05-22 08:13:50,370 - phoenix.telegram - INFO - Analyzing call 109/394: Komugi Kun
+2025-05-22 08:13:50,371 - phoenix.telegram - INFO - Analyzing call 110/394: Komugi Kun
+2025-05-22 08:13:50,371 - phoenix.telegram - INFO - Analyzing call 111/394: Komugi Kun
+2025-05-22 08:13:50,371 - phoenix.telegram - INFO - Analyzing call 112/394: Komugi Kun
+2025-05-22 08:13:50,371 - phoenix.telegram - INFO - Analyzing call 113/394: Komugi Kun
+2025-05-22 08:13:50,372 - phoenix.telegram - INFO - Analyzing call 114/394: Komugi Kun
+2025-05-22 08:13:50,372 - phoenix.telegram - INFO - Analyzing call 115/394: Komugi Kun
+2025-05-22 08:13:50,372 - phoenix.telegram - INFO - Analyzing call 116/394: Komugi Kun
+2025-05-22 08:13:50,374 - phoenix.telegram - INFO - Analyzing call 117/394: Komugi Kun
+2025-05-22 08:13:50,375 - phoenix.telegram - INFO - Analyzing call 118/394: Komugi Kun
+2025-05-22 08:13:50,375 - phoenix.telegram - INFO - Analyzing call 119/394: Komugi Kun
+2025-05-22 08:13:50,375 - phoenix.telegram - INFO - Analyzing call 120/394: Komugi Kun
+2025-05-22 08:13:50,375 - phoenix.telegram - INFO - Analyzing call 121/394: if i lived in b
+2025-05-22 08:13:50,376 - phoenix.telegram - INFO - Analyzing call 122/394: if i lived in b
+2025-05-22 08:13:50,376 - phoenix.telegram - INFO - Analyzing call 123/394: Trump Bitcoin P
+2025-05-22 08:13:50,376 - phoenix.telegram - INFO - Analyzing call 124/394: LABUBU
+2025-05-22 08:13:50,376 - phoenix.telegram - INFO - Analyzing call 125/394: LABUBU
+2025-05-22 08:13:50,377 - phoenix.telegram - INFO - Analyzing call 126/394: LABUBU
+2025-05-22 08:13:50,377 - phoenix.telegram - INFO - Analyzing call 127/394: Sonny Angels
+2025-05-22 08:13:50,377 - phoenix.telegram - INFO - Analyzing call 128/394: LABUBU
+2025-05-22 08:13:50,377 - phoenix.telegram - INFO - Analyzing call 129/394: Sonny Angels
+2025-05-22 08:13:50,378 - phoenix.telegram - INFO - Analyzing call 130/394: SAITAMA INU
+2025-05-22 08:13:50,378 - phoenix.telegram - WARNING - No ROI data found in message: Achievement Unlocked: Alpha caller! 🤫
+
+SAITAMA INU first posted by @Shitscooksbyharrison has since b...
+2025-05-22 08:13:50,378 - phoenix.telegram - INFO - Analyzing call 131/394: SUIcide
+2025-05-22 08:13:50,379 - phoenix.telegram - INFO - Analyzing call 132/394: SUIcide
+2025-05-22 08:13:50,379 - phoenix.telegram - INFO - Analyzing call 133/394: SUIcide
+2025-05-22 08:13:50,379 - phoenix.telegram - INFO - Analyzing call 134/394: LEGO Minifigure...
+2025-05-22 08:13:50,380 - phoenix.telegram - WARNING - No ROI data found in message: Achievement Unlocked: Alpha caller! 🤫
+
+LEGO Minifigure... first posted by @ChapoInsider has since be...
+2025-05-22 08:13:50,380 - phoenix.telegram - INFO - Analyzing call 135/394: SUIcide
+2025-05-22 08:13:50,380 - phoenix.telegram - INFO - Analyzing call 136/394: SUIcide
+2025-05-22 08:13:50,381 - phoenix.telegram - INFO - Analyzing call 137/394: SUIcide
+2025-05-22 08:13:50,381 - phoenix.telegram - INFO - Analyzing call 138/394: SUIcide
+2025-05-22 08:13:50,381 - phoenix.telegram - INFO - Analyzing call 139/394: SUIcide
+2025-05-22 08:13:50,382 - phoenix.telegram - INFO - Analyzing call 140/394: SUIcide
+2025-05-22 08:13:50,382 - phoenix.telegram - INFO - Analyzing call 141/394: SUIcide
+2025-05-22 08:13:50,382 - phoenix.telegram - INFO - Analyzing call 142/394: SUIcide
+2025-05-22 08:13:50,383 - phoenix.telegram - INFO - Analyzing call 143/394: SUIcide
+2025-05-22 08:13:50,385 - phoenix.telegram - INFO - Analyzing call 144/394: SUIcide
+2025-05-22 08:13:50,385 - phoenix.telegram - INFO - Analyzing call 145/394: Tokenized Stock
+2025-05-22 08:13:50,385 - phoenix.telegram - INFO - Analyzing call 146/394: Tokenized Stock
+2025-05-22 08:13:50,385 - phoenix.telegram - INFO - Analyzing call 147/394: Tokenized Stock
+2025-05-22 08:13:50,386 - phoenix.telegram - INFO - Analyzing call 148/394: Tokenized Stock
+2025-05-22 08:13:50,386 - phoenix.telegram - INFO - Analyzing call 149/394: Tokenized Stock
+2025-05-22 08:13:50,386 - phoenix.telegram - INFO - Analyzing call 150/394: SolCypher
+2025-05-22 08:13:50,386 - phoenix.telegram - INFO - Analyzing call 151/394: Tokenized Stock
+2025-05-22 08:13:50,387 - phoenix.telegram - INFO - Analyzing call 152/394: Tokenized Stock
+2025-05-22 08:13:50,388 - phoenix.telegram - INFO - Analyzing call 153/394: Tokenized Stock
+2025-05-22 08:13:50,388 - phoenix.telegram - INFO - Analyzing call 154/394: Tokenized Stock
+2025-05-22 08:13:50,388 - phoenix.telegram - INFO - Analyzing call 155/394: Tokenized Stock
+2025-05-22 08:13:50,388 - phoenix.telegram - INFO - Analyzing call 156/394: Tokenized Stock
+2025-05-22 08:13:50,388 - phoenix.telegram - INFO - Analyzing call 157/394: Tokenized Stock
+2025-05-22 08:13:50,389 - phoenix.telegram - INFO - Analyzing call 158/394: Tokenized Stock
+2025-05-22 08:13:50,389 - phoenix.telegram - INFO - Analyzing call 159/394: Tokenized Stock
+2025-05-22 08:13:50,390 - phoenix.telegram - INFO - Analyzing call 160/394: Tokenized Stock
+2025-05-22 08:13:50,390 - phoenix.telegram - INFO - Analyzing call 161/394: Tokenized Stock
+2025-05-22 08:13:50,390 - phoenix.telegram - INFO - Analyzing call 162/394: garbage
+2025-05-22 08:13:50,390 - phoenix.telegram - WARNING - No ROI data found in message: Achievement Unlocked: Alpha caller! 🤫
+
+garbage first posted by @PrintingShitcoin has since been post...
+2025-05-22 08:13:50,391 - phoenix.telegram - INFO - Analyzing call 163/394: SUIcide
+2025-05-22 08:13:50,391 - phoenix.telegram - INFO - Analyzing call 164/394: SUIcide
+2025-05-22 08:13:50,391 - phoenix.telegram - INFO - Analyzing call 165/394: SUIcide
+2025-05-22 08:13:50,392 - phoenix.telegram - INFO - Analyzing call 166/394: SUIcide
+2025-05-22 08:13:50,392 - phoenix.telegram - INFO - Analyzing call 167/394: SUIcide
+2025-05-22 08:13:50,392 - phoenix.telegram - INFO - Analyzing call 168/394: ME GUSTA
+2025-05-22 08:13:50,392 - phoenix.telegram - INFO - Analyzing call 169/394: Sonny Angels
+2025-05-22 08:13:50,393 - phoenix.telegram - INFO - Analyzing call 170/394: Prickle
+2025-05-22 08:13:50,394 - phoenix.telegram - INFO - Analyzing call 171/394: Tokenized Stock
+2025-05-22 08:13:50,395 - phoenix.telegram - INFO - Analyzing call 172/394: SUIcide
+2025-05-22 08:13:50,395 - phoenix.telegram - INFO - Analyzing call 173/394: SUIcide
+2025-05-22 08:13:50,395 - phoenix.telegram - INFO - Analyzing call 174/394: Komugi Kun
+2025-05-22 08:13:50,396 - phoenix.telegram - INFO - Analyzing call 175/394: Komugi Kun
+2025-05-22 08:13:50,396 - phoenix.telegram - INFO - Analyzing call 176/394: Komugi Kun
+2025-05-22 08:13:50,396 - phoenix.telegram - INFO - Analyzing call 177/394: Komugi Kun
+2025-05-22 08:13:50,397 - phoenix.telegram - INFO - Analyzing call 178/394: Komugi Kun
+2025-05-22 08:13:50,397 - phoenix.telegram - INFO - Analyzing call 179/394: Komugi Kun
+2025-05-22 08:13:50,397 - phoenix.telegram - INFO - Analyzing call 180/394: LanLan Cat
+2025-05-22 08:13:50,398 - phoenix.telegram - INFO - Analyzing call 181/394: LanLan Cat
+2025-05-22 08:13:50,398 - phoenix.telegram - INFO - Analyzing call 182/394: LanLan Cat
+2025-05-22 08:13:50,398 - phoenix.telegram - INFO - Analyzing call 183/394: Everybody
+2025-05-22 08:13:50,399 - phoenix.telegram - INFO - Analyzing call 184/394: Everybody
+2025-05-22 08:13:50,399 - phoenix.telegram - INFO - Analyzing call 185/394: Everybody
+2025-05-22 08:13:50,399 - phoenix.telegram - INFO - Analyzing call 186/394: Everybody
+2025-05-22 08:13:50,400 - phoenix.telegram - INFO - Analyzing call 187/394: Everybody
+2025-05-22 08:13:50,400 - phoenix.telegram - INFO - Analyzing call 188/394: Everybody
+2025-05-22 08:13:50,400 - phoenix.telegram - INFO - Analyzing call 189/394: Everybody
+2025-05-22 08:13:50,401 - phoenix.telegram - INFO - Analyzing call 190/394: Everybody
+2025-05-22 08:13:50,401 - phoenix.telegram - INFO - Analyzing call 191/394: Everybody
+2025-05-22 08:13:50,401 - phoenix.telegram - INFO - Analyzing call 192/394: Rannou
+2025-05-22 08:13:50,402 - phoenix.telegram - INFO - Analyzing call 193/394: Rannou
+2025-05-22 08:13:50,402 - phoenix.telegram - INFO - Analyzing call 194/394: stockcoin
+2025-05-22 08:13:50,402 - phoenix.telegram - INFO - Analyzing call 195/394: LanLan Cat
+2025-05-22 08:13:50,403 - phoenix.telegram - INFO - Analyzing call 196/394: Komugi Kun
+2025-05-22 08:13:50,404 - phoenix.telegram - INFO - Analyzing call 197/394: Komugi Kun
+2025-05-22 08:13:50,405 - phoenix.telegram - INFO - Analyzing call 198/394: Komugi Kun
+2025-05-22 08:13:50,405 - phoenix.telegram - INFO - Analyzing call 199/394: ME GUSTA
+2025-05-22 08:13:50,405 - phoenix.telegram - INFO - Analyzing call 200/394: ME GUSTA
+2025-05-22 08:13:50,405 - phoenix.telegram - INFO - Analyzing call 201/394: ME GUSTA
+2025-05-22 08:13:50,406 - phoenix.telegram - INFO - Analyzing call 202/394: Komugi Kun
+2025-05-22 08:13:50,406 - phoenix.telegram - INFO - Analyzing call 203/394: Komugi Kun
+2025-05-22 08:13:50,406 - phoenix.telegram - INFO - Analyzing call 204/394: Komugi Kun
+2025-05-22 08:13:50,406 - phoenix.telegram - INFO - Analyzing call 205/394: Komugi Kun
+2025-05-22 08:13:50,407 - phoenix.telegram - INFO - Analyzing call 206/394: Komugi Kun
+2025-05-22 08:13:50,407 - phoenix.telegram - INFO - Analyzing call 207/394: VALCOIN
+2025-05-22 08:13:50,407 - phoenix.telegram - INFO - Analyzing call 208/394: LanLan Cat
+2025-05-22 08:13:50,407 - phoenix.telegram - INFO - Analyzing call 209/394: LanLan Cat
+2025-05-22 08:13:50,408 - phoenix.telegram - INFO - Analyzing call 210/394: Nvidia On Solan...
+2025-05-22 08:13:50,408 - phoenix.telegram - WARNING - No ROI data found in message: Achievement Unlocked: Alpha caller! 🤫
+
+Nvidia On Solan... first posted by @timetomakefuckyoumoney ha...
+2025-05-22 08:13:50,408 - phoenix.telegram - INFO - Analyzing call 211/394: Komugi Kun
+2025-05-22 08:13:50,408 - phoenix.telegram - INFO - Analyzing call 212/394: Komugi Kun
+2025-05-22 08:13:50,409 - phoenix.telegram - INFO - Analyzing call 213/394: Komugi Kun
+2025-05-22 08:13:50,409 - phoenix.telegram - INFO - Analyzing call 214/394: Komugi Kun
+2025-05-22 08:13:50,409 - phoenix.telegram - INFO - Analyzing call 215/394: Komugi Kun
+2025-05-22 08:13:50,410 - phoenix.telegram - INFO - Analyzing call 216/394: Komugi Kun
+2025-05-22 08:13:50,410 - phoenix.telegram - INFO - Analyzing call 217/394: CHARLES
+2025-05-22 08:13:50,410 - phoenix.telegram - INFO - Analyzing call 218/394: CHARLES
+2025-05-22 08:13:50,410 - phoenix.telegram - INFO - Analyzing call 219/394: CHARLES
+2025-05-22 08:13:50,411 - phoenix.telegram - INFO - Analyzing call 220/394: CHARLES
+2025-05-22 08:13:50,411 - phoenix.telegram - INFO - Analyzing call 221/394: CHARLES
+2025-05-22 08:13:50,411 - phoenix.telegram - INFO - Analyzing call 222/394: CHARLES
+2025-05-22 08:13:50,412 - phoenix.telegram - INFO - Analyzing call 223/394: CHARLES
+2025-05-22 08:13:50,412 - phoenix.telegram - INFO - Analyzing call 224/394: CHARLES
+2025-05-22 08:13:50,412 - phoenix.telegram - INFO - Analyzing call 225/394: CHARLES
+2025-05-22 08:13:50,413 - phoenix.telegram - INFO - Analyzing call 226/394: CHARLES
+2025-05-22 08:13:50,415 - phoenix.telegram - INFO - Analyzing call 227/394: CHARLES
+2025-05-22 08:13:50,415 - phoenix.telegram - INFO - Analyzing call 228/394: CHARLES
+2025-05-22 08:13:50,415 - phoenix.telegram - INFO - Analyzing call 229/394: SUIcide
+2025-05-22 08:13:50,415 - phoenix.telegram - INFO - Analyzing call 230/394: XBT
+2025-05-22 08:13:50,416 - phoenix.telegram - INFO - Analyzing call 231/394: New Pumpfun Ter
+2025-05-22 08:13:50,416 - phoenix.telegram - INFO - Analyzing call 232/394: New Pumpfun Ter
+2025-05-22 08:13:50,416 - phoenix.telegram - INFO - Analyzing call 233/394: New Pumpfun Ter
+2025-05-22 08:13:50,416 - phoenix.telegram - INFO - Analyzing call 234/394: New Pumpfun Ter
+2025-05-22 08:13:50,417 - phoenix.telegram - INFO - Analyzing call 235/394: New Pumpfun Ter
+2025-05-22 08:13:50,417 - phoenix.telegram - INFO - Analyzing call 236/394: New Pumpfun Ter
+2025-05-22 08:13:50,417 - phoenix.telegram - INFO - Analyzing call 237/394: New Pumpfun Ter
+2025-05-22 08:13:50,417 - phoenix.telegram - INFO - Analyzing call 238/394: New Pumpfun Ter
+2025-05-22 08:13:50,418 - phoenix.telegram - INFO - Analyzing call 239/394: CHARLES
+2025-05-22 08:13:50,419 - phoenix.telegram - WARNING - No ROI data found in message: Achievement Unlocked: Alpha caller! 🤫
+
+CHARLES first posted by @nomsgems has since been posted by 10...
+2025-05-22 08:13:50,419 - phoenix.telegram - INFO - Analyzing call 240/394: Are You
+2025-05-22 08:13:50,419 - phoenix.telegram - INFO - Analyzing call 241/394: Are You
+2025-05-22 08:13:50,420 - phoenix.telegram - INFO - Analyzing call 242/394: New Pumpfun Ter
+2025-05-22 08:13:50,420 - phoenix.telegram - INFO - Analyzing call 243/394: New Pumpfun Ter
+2025-05-22 08:13:50,420 - phoenix.telegram - INFO - Analyzing call 244/394: New Pumpfun Ter
+2025-05-22 08:13:50,421 - phoenix.telegram - INFO - Analyzing call 245/394: New Pumpfun Ter
+2025-05-22 08:13:50,421 - phoenix.telegram - INFO - Analyzing call 246/394: New Pumpfun Ter
+2025-05-22 08:13:50,421 - phoenix.telegram - INFO - Analyzing call 247/394: New Pumpfun Ter
+2025-05-22 08:13:50,421 - phoenix.telegram - INFO - Analyzing call 248/394: New Pumpfun Ter
+2025-05-22 08:13:50,422 - phoenix.telegram - INFO - Analyzing call 249/394: New Pumpfun Ter
+2025-05-22 08:13:50,422 - phoenix.telegram - INFO - Analyzing call 250/394: New Pumpfun Ter
+2025-05-22 08:13:50,422 - phoenix.telegram - INFO - Analyzing call 251/394: New Pumpfun Ter
+2025-05-22 08:13:50,422 - phoenix.telegram - INFO - Analyzing call 252/394: New Pumpfun Ter
+2025-05-22 08:13:50,423 - phoenix.telegram - INFO - Analyzing call 253/394: New Pumpfun Ter
+2025-05-22 08:13:50,423 - phoenix.telegram - INFO - Analyzing call 254/394: New Pumpfun Ter
+2025-05-22 08:13:50,423 - phoenix.telegram - INFO - Analyzing call 255/394: New Pumpfun Ter
+2025-05-22 08:13:50,423 - phoenix.telegram - INFO - Analyzing call 256/394: New Pumpfun Ter
+2025-05-22 08:13:50,424 - phoenix.telegram - INFO - Analyzing call 257/394: New Pumpfun Ter
+2025-05-22 08:13:50,426 - phoenix.telegram - INFO - Analyzing call 258/394: New Pumpfun Ter
+2025-05-22 08:13:50,426 - phoenix.telegram - INFO - Analyzing call 259/394: New Pumpfun Ter
+2025-05-22 08:13:50,427 - phoenix.telegram - INFO - Analyzing call 260/394: New Pumpfun Ter
+2025-05-22 08:13:50,427 - phoenix.telegram - INFO - Analyzing call 261/394: New Pumpfun Ter
+2025-05-22 08:13:50,427 - phoenix.telegram - INFO - Analyzing call 262/394: Ape Your Last C
+2025-05-22 08:13:50,428 - phoenix.telegram - INFO - Analyzing call 263/394: ME GUSTA
+2025-05-22 08:13:50,428 - phoenix.telegram - INFO - Analyzing call 264/394: ME GUSTA
+2025-05-22 08:13:50,428 - phoenix.telegram - INFO - Analyzing call 265/394: Ape Your Last C
+2025-05-22 08:13:50,429 - phoenix.telegram - INFO - Analyzing call 266/394: New Pumpfun Ter
+2025-05-22 08:13:50,429 - phoenix.telegram - INFO - Analyzing call 267/394: New Pumpfun Ter
+2025-05-22 08:13:50,429 - phoenix.telegram - INFO - Analyzing call 268/394: New Pumpfun Ter
+2025-05-22 08:13:50,429 - phoenix.telegram - INFO - Analyzing call 269/394: New Pumpfun Ter
+2025-05-22 08:13:50,430 - phoenix.telegram - INFO - Analyzing call 270/394: New Pumpfun Ter
+2025-05-22 08:13:50,430 - phoenix.telegram - INFO - Analyzing call 271/394: New Pumpfun Ter
+2025-05-22 08:13:50,430 - phoenix.telegram - INFO - Analyzing call 272/394: New Pumpfun Ter
+2025-05-22 08:13:50,431 - phoenix.telegram - INFO - Analyzing call 273/394: New Pumpfun Ter
+2025-05-22 08:13:50,431 - phoenix.telegram - INFO - Analyzing call 274/394: New Pumpfun Ter
+2025-05-22 08:13:50,431 - phoenix.telegram - INFO - Analyzing call 275/394: New Pumpfun Ter
+2025-05-22 08:13:50,432 - phoenix.telegram - INFO - Analyzing call 276/394: New Pumpfun Ter
+2025-05-22 08:13:50,432 - phoenix.telegram - INFO - Analyzing call 277/394: Komugi Kun
+2025-05-22 08:13:50,432 - phoenix.telegram - INFO - Analyzing call 278/394: Komugi Kun
+2025-05-22 08:13:50,433 - phoenix.telegram - INFO - Analyzing call 279/394: opTrade AI
+2025-05-22 08:13:50,433 - phoenix.telegram - INFO - Analyzing call 280/394: opTrade AI
+2025-05-22 08:13:50,433 - phoenix.telegram - INFO - Analyzing call 281/394: Komugi Kun
+2025-05-22 08:13:50,434 - phoenix.telegram - INFO - Analyzing call 282/394: SUIcide
+2025-05-22 08:13:50,434 - phoenix.telegram - INFO - Analyzing call 283/394: Komugi Kun
+2025-05-22 08:13:50,434 - phoenix.telegram - INFO - Analyzing call 284/394: Komugi Kun
+2025-05-22 08:13:50,435 - phoenix.telegram - INFO - Analyzing call 285/394: Komugi Kun
+2025-05-22 08:13:50,437 - phoenix.telegram - INFO - Analyzing call 286/394: Trump Bitcoin P
+2025-05-22 08:13:50,437 - phoenix.telegram - INFO - Analyzing call 287/394: Laika
+2025-05-22 08:13:50,437 - phoenix.telegram - INFO - Analyzing call 288/394: HodlCat
+2025-05-22 08:13:50,437 - phoenix.telegram - INFO - Analyzing call 289/394: HodlCat
+2025-05-22 08:13:50,438 - phoenix.telegram - INFO - Analyzing call 290/394: HodlCat
+2025-05-22 08:13:50,438 - phoenix.telegram - INFO - Analyzing call 291/394: HodlCat
+2025-05-22 08:13:50,438 - phoenix.telegram - INFO - Analyzing call 292/394: NovaQ
+2025-05-22 08:13:50,438 - phoenix.telegram - INFO - Analyzing call 293/394: NovaQ
+2025-05-22 08:13:50,439 - phoenix.telegram - INFO - Analyzing call 294/394: NovaQ
+2025-05-22 08:13:50,439 - phoenix.telegram - INFO - Analyzing call 295/394: NovaQ
+2025-05-22 08:13:50,439 - phoenix.telegram - INFO - Analyzing call 296/394: SUIcide
+2025-05-22 08:13:50,439 - phoenix.telegram - INFO - Analyzing call 297/394: Komugi Kun
+2025-05-22 08:13:50,440 - phoenix.telegram - INFO - Analyzing call 298/394: Komugi Kun
+2025-05-22 08:13:50,440 - phoenix.telegram - INFO - Analyzing call 299/394: Komugi Kun
+2025-05-22 08:13:50,440 - phoenix.telegram - INFO - Analyzing call 300/394: Komugi Kun
+2025-05-22 08:13:50,440 - phoenix.telegram - INFO - Analyzing call 301/394: Komugi Kun
+2025-05-22 08:13:50,441 - phoenix.telegram - INFO - Analyzing call 302/394: Komugi Kun
+2025-05-22 08:13:50,441 - phoenix.telegram - INFO - Analyzing call 303/394: Komugi Kun
+2025-05-22 08:13:50,441 - phoenix.telegram - INFO - Analyzing call 304/394: Komugi Kun
+2025-05-22 08:13:50,441 - phoenix.telegram - INFO - Analyzing call 305/394: TrancheVest
+2025-05-22 08:13:50,442 - phoenix.telegram - INFO - Analyzing call 306/394: TrancheVest
+2025-05-22 08:13:50,442 - phoenix.telegram - INFO - Analyzing call 307/394: TURTLE
+2025-05-22 08:13:50,442 - phoenix.telegram - INFO - Analyzing call 308/394: TrancheVest
+2025-05-22 08:13:50,442 - phoenix.telegram - INFO - Analyzing call 309/394: TURTLE
+2025-05-22 08:13:50,443 - phoenix.telegram - INFO - Analyzing call 310/394: TURTLE
+2025-05-22 08:13:50,443 - phoenix.telegram - INFO - Analyzing call 311/394: Arabic Languag
+2025-05-22 08:13:50,443 - phoenix.telegram - INFO - Analyzing call 312/394: Mythical Mammal
+2025-05-22 08:13:50,443 - phoenix.telegram - INFO - Analyzing call 313/394: Mythical Mammal
+2025-05-22 08:13:50,444 - phoenix.telegram - INFO - Analyzing call 314/394: Mythical Mammal
+2025-05-22 08:13:50,444 - phoenix.telegram - INFO - Analyzing call 315/394: Tony
+2025-05-22 08:13:50,444 - phoenix.telegram - INFO - Analyzing call 316/394: Tony
+2025-05-22 08:13:50,444 - phoenix.telegram - INFO - Analyzing call 317/394: Mythical Mammal
+2025-05-22 08:13:50,445 - phoenix.telegram - INFO - Analyzing call 318/394: Hieronymus Bosc...
+2025-05-22 08:13:50,447 - phoenix.telegram - WARNING - No ROI data found in message: Achievement Unlocked: Alpha caller! 🤫
+
+Hieronymus Bosc... first posted by @POSEIDON_DEGEN_CALLS has ...
+2025-05-22 08:13:50,447 - phoenix.telegram - INFO - Analyzing call 319/394: Tony
+2025-05-22 08:13:50,447 - phoenix.telegram - WARNING - No ROI data found in message: Achievement Unlocked: Alpha caller! 🤫
+
+Tony first posted by @DONALD_CALL has since been posted by 10...
+2025-05-22 08:13:50,448 - phoenix.telegram - INFO - Analyzing call 320/394: TURTLE
+2025-05-22 08:13:50,448 - phoenix.telegram - INFO - Analyzing call 321/394: Mythical Mammal...
+2025-05-22 08:13:50,448 - phoenix.telegram - WARNING - No ROI data found in message: Achievement Unlocked: Alpha caller! 🤫
+
+Mythical Mammal... first posted by @ChapoInsider has since be...
+2025-05-22 08:13:50,449 - phoenix.telegram - INFO - Analyzing call 322/394: CHARLES
+2025-05-22 08:13:50,450 - phoenix.telegram - INFO - Analyzing call 323/394: Trump Bitcoin P
+2025-05-22 08:13:50,450 - phoenix.telegram - INFO - Analyzing call 324/394: CHARLES
+2025-05-22 08:13:50,450 - phoenix.telegram - INFO - Analyzing call 325/394: CHARLES
+2025-05-22 08:13:50,450 - phoenix.telegram - INFO - Analyzing call 326/394: Joe Cool
+2025-05-22 08:13:50,451 - phoenix.telegram - INFO - Analyzing call 327/394: Joe Cool
+2025-05-22 08:13:50,451 - phoenix.telegram - INFO - Analyzing call 328/394: Joe Cool
+2025-05-22 08:13:50,451 - phoenix.telegram - INFO - Analyzing call 329/394: mpg
+2025-05-22 08:13:50,452 - phoenix.telegram - WARNING - No ROI data found in message: Achievement Unlocked: Alpha caller! 🤫
+
+mpg first posted by @HellsingGamble has since been posted by ...
+2025-05-22 08:13:50,452 - phoenix.telegram - INFO - Analyzing call 330/394: mpg
+2025-05-22 08:13:50,452 - phoenix.telegram - INFO - Analyzing call 331/394: mpg
+2025-05-22 08:13:50,453 - phoenix.telegram - INFO - Analyzing call 332/394: mpg
+2025-05-22 08:13:50,453 - phoenix.telegram - INFO - Analyzing call 333/394: mpg
+2025-05-22 08:13:50,453 - phoenix.telegram - INFO - Analyzing call 334/394: mpg
+2025-05-22 08:13:50,454 - phoenix.telegram - INFO - Analyzing call 335/394: mpg
+2025-05-22 08:13:50,454 - phoenix.telegram - INFO - Analyzing call 336/394: mpg
+2025-05-22 08:13:50,454 - phoenix.telegram - INFO - Analyzing call 337/394: mpg
+2025-05-22 08:13:50,455 - phoenix.telegram - INFO - Analyzing call 338/394: mpg
+2025-05-22 08:13:50,455 - phoenix.telegram - INFO - Analyzing call 339/394: mpg
+2025-05-22 08:13:50,455 - phoenix.telegram - INFO - Analyzing call 340/394: mpg
+2025-05-22 08:13:50,455 - phoenix.telegram - INFO - Analyzing call 341/394: mpg
+2025-05-22 08:13:50,458 - phoenix.telegram - INFO - Analyzing call 342/394: mpg
+2025-05-22 08:13:50,458 - phoenix.telegram - INFO - Analyzing call 343/394: mpg
+2025-05-22 08:13:50,458 - phoenix.telegram - INFO - Analyzing call 344/394: mpg
+2025-05-22 08:13:50,458 - phoenix.telegram - INFO - Analyzing call 345/394: mpg
+2025-05-22 08:13:50,459 - phoenix.telegram - INFO - Analyzing call 346/394: Komugi Kun
+2025-05-22 08:13:50,459 - phoenix.telegram - INFO - Analyzing call 347/394: Pepes Dog
+2025-05-22 08:13:50,459 - phoenix.telegram - WARNING - No ROI data found in message: Achievement Unlocked: Alpha caller! 🤫
+
+Pepes Dog first posted by @AnimeGems has since been posted by...
+2025-05-22 08:13:50,459 - phoenix.telegram - INFO - Analyzing call 348/394: Komugi Kun
+2025-05-22 08:13:50,460 - phoenix.telegram - INFO - Analyzing call 349/394: Komugi Kun
+2025-05-22 08:13:50,460 - phoenix.telegram - INFO - Analyzing call 350/394: MLM Coin
+2025-05-22 08:13:50,460 - phoenix.telegram - INFO - Analyzing call 351/394: MLM Coin
+2025-05-22 08:13:50,460 - phoenix.telegram - INFO - Analyzing call 352/394: Clayification
+2025-05-22 08:13:50,461 - phoenix.telegram - INFO - Analyzing call 353/394: Komugi Kun
+2025-05-22 08:13:50,461 - phoenix.telegram - WARNING - No ROI data found in message: Achievement Unlocked: Alpha caller! 🤫
+
+Komugi Kun first posted by @bidaopd has since been posted by ...
+2025-05-22 08:13:50,461 - phoenix.telegram - INFO - Analyzing call 354/394: MLM Coin
+2025-05-22 08:13:50,462 - phoenix.telegram - WARNING - No ROI data found in message: Achievement Unlocked: Alpha caller! 🤫
+
+MLM Coin first posted by @hulkgemscalls_real has since been p...
+2025-05-22 08:13:50,462 - phoenix.telegram - INFO - Analyzing call 355/394: Komugi Kun
+2025-05-22 08:13:50,462 - phoenix.telegram - INFO - Analyzing call 356/394: Komugi Kun
+2025-05-22 08:13:50,462 - phoenix.telegram - INFO - Analyzing call 357/394: Komugi Kun
+2025-05-22 08:13:50,463 - phoenix.telegram - INFO - Analyzing call 358/394: Komugi Kun
+2025-05-22 08:13:50,463 - phoenix.telegram - INFO - Analyzing call 359/394: My Curves Are P
+2025-05-22 08:13:50,463 - phoenix.telegram - INFO - Analyzing call 360/394: My Curves Are P
+2025-05-22 08:13:50,463 - phoenix.telegram - INFO - Analyzing call 361/394: My Curves Are P
+2025-05-22 08:13:50,464 - phoenix.telegram - INFO - Analyzing call 362/394: NETWORKCITIES
+2025-05-22 08:13:50,464 - phoenix.telegram - INFO - Analyzing call 363/394: NETWORKCITIES
+2025-05-22 08:13:50,464 - phoenix.telegram - INFO - Analyzing call 364/394: NETWORKCITIES
+2025-05-22 08:13:50,464 - phoenix.telegram - INFO - Analyzing call 365/394: Komugi Kun
+2025-05-22 08:13:50,465 - phoenix.telegram - INFO - Analyzing call 366/394: Komugi Kun
+2025-05-22 08:13:50,465 - phoenix.telegram - INFO - Analyzing call 367/394: Komugi Kun
+2025-05-22 08:13:50,465 - phoenix.telegram - INFO - Analyzing call 368/394: Komugi Kun
+2025-05-22 08:13:50,465 - phoenix.telegram - INFO - Analyzing call 369/394: Komugi Kun
+2025-05-22 08:13:50,466 - phoenix.telegram - INFO - Analyzing call 370/394: Komugi Kun
+2025-05-22 08:13:50,466 - phoenix.telegram - INFO - Analyzing call 371/394: Komugi Kun
+2025-05-22 08:13:50,466 - phoenix.telegram - INFO - Analyzing call 372/394: Komugi Kun
+2025-05-22 08:13:50,466 - phoenix.telegram - INFO - Analyzing call 373/394: SUIcide
+2025-05-22 08:13:50,467 - phoenix.telegram - WARNING - No ROI data found in message: Achievement Unlocked: Alpha caller! 🤫
+
+SUIcide first posted by @kariusgemscalls has since been poste...
+2025-05-22 08:13:50,469 - phoenix.telegram - INFO - Analyzing call 374/394: SUIcide
+2025-05-22 08:13:50,469 - phoenix.telegram - INFO - Analyzing call 375/394: PVS
+2025-05-22 08:13:50,470 - phoenix.telegram - INFO - Analyzing call 376/394: PVS
+2025-05-22 08:13:50,470 - phoenix.telegram - INFO - Analyzing call 377/394: MLM Coin
+2025-05-22 08:13:50,470 - phoenix.telegram - INFO - Analyzing call 378/394: Whispr Chat
+2025-05-22 08:13:50,471 - phoenix.telegram - INFO - Analyzing call 379/394: Whispr Chat
+2025-05-22 08:13:50,471 - phoenix.telegram - INFO - Analyzing call 380/394: this balloon on
+2025-05-22 08:13:50,471 - phoenix.telegram - INFO - Analyzing call 381/394: this balloon on
+2025-05-22 08:13:50,472 - phoenix.telegram - INFO - Analyzing call 382/394: this balloon on
+2025-05-22 08:13:50,472 - phoenix.telegram - INFO - Analyzing call 383/394: this balloon on
+2025-05-22 08:13:50,472 - phoenix.telegram - INFO - Analyzing call 384/394: this balloon on
+2025-05-22 08:13:50,473 - phoenix.telegram - INFO - Analyzing call 385/394: this balloon on
+2025-05-22 08:13:50,473 - phoenix.telegram - INFO - Analyzing call 386/394: this balloon on
+2025-05-22 08:13:50,473 - phoenix.telegram - INFO - Analyzing call 387/394: this balloon on
+2025-05-22 08:13:50,474 - phoenix.telegram - INFO - Analyzing call 388/394: this balloon on
+2025-05-22 08:13:50,474 - phoenix.telegram - INFO - Analyzing call 389/394: this balloon on
+2025-05-22 08:13:50,474 - phoenix.telegram - INFO - Analyzing call 390/394: this balloon on
+2025-05-22 08:13:50,475 - phoenix.telegram - INFO - Analyzing call 391/394: Whispr Chat
+2025-05-22 08:13:50,475 - phoenix.telegram - INFO - Analyzing call 392/394: Whispr Chat
+2025-05-22 08:13:50,475 - phoenix.telegram - INFO - Analyzing call 393/394: Whispr Chat
+2025-05-22 08:13:50,476 - phoenix.telegram - INFO - Analyzing call 394/394: Whispr Chat
+2025-05-22 08:13:50,480 - phoenix.telegram - INFO - Getting channel IDs for top KOLs (this may take a while due to rate limits)...
+2025-05-22 08:13:50,481 - phoenix.telegram - INFO - Getting channel ID for KOL 1/10: @insider_eca
+2025-05-22 08:13:50,630 - phoenix.telegram - INFO - Found channel for @insider_eca: 1851567457
+2025-05-22 08:13:52,631 - phoenix.telegram - INFO - Getting channel ID for KOL 2/10: @mrbigbagcalls
+2025-05-22 08:13:52,884 - phoenix.telegram - INFO - Found channel for @mrbigbagcalls: 2051055592
+2025-05-22 08:13:54,885 - phoenix.telegram - INFO - Getting channel ID for KOL 3/10: @topcallerschannel
+2025-05-22 08:13:55,010 - phoenix.telegram - INFO - Found channel for @topcallerschannel: 1915321527
+2025-05-22 08:13:57,011 - phoenix.telegram - INFO - Getting channel ID for KOL 4/10: @michacalls
+2025-05-22 08:13:57,139 - phoenix.telegram - INFO - Found channel for @michacalls: 1655443406
+2025-05-22 08:13:59,140 - phoenix.telegram - INFO - Getting channel ID for KOL 5/10: @demoncryptoplayground
+2025-05-22 08:13:59,269 - phoenix.telegram - INFO - Found channel for @demoncryptoplayground: 1723664962
+2025-05-22 08:14:01,270 - phoenix.telegram - INFO - Getting channel ID for KOL 6/10: @kariusgemscalls
+2025-05-22 08:14:01,397 - phoenix.telegram - INFO - Found channel for @kariusgemscalls: 2222968620
+2025-05-22 08:14:03,397 - phoenix.telegram - INFO - Getting channel ID for KOL 7/10: @nomsgems
+2025-05-22 08:14:03,523 - phoenix.telegram - INFO - Found channel for @nomsgems: 1635741540
+2025-05-22 08:14:05,525 - phoenix.telegram - INFO - Getting channel ID for KOL 8/10: @piggiescall
+2025-05-22 08:14:05,655 - phoenix.telegram - INFO - Found channel for @piggiescall: 1601300719
+2025-05-22 08:14:07,656 - phoenix.telegram - INFO - Getting channel ID for KOL 9/10: @bruisersgambles
+2025-05-22 08:14:07,782 - phoenix.telegram - INFO - Found channel for @bruisersgambles: 1537838682
+2025-05-22 08:14:09,782 - phoenix.telegram - INFO - Getting channel ID for KOL 10/10: @bgbcncall
+2025-05-22 08:14:09,907 - phoenix.telegram - INFO - Found channel for @bgbcncall: 2297451987
+2025-05-22 08:14:09,907 - phoenix.telegram - INFO - Analysis Complete!
+2025-05-22 08:14:09,908 - phoenix.telegram - INFO - Tokens mentioned: 381
+2025-05-22 08:14:09,908 - phoenix.telegram - INFO - Tokens that made x2: 379
+2025-05-22 08:14:09,908 - phoenix.telegram - INFO - Tokens that made x5: 181
+2025-05-22 08:14:09,909 - phoenix.telegram - INFO - Success rate (2x): 99.48%
+2025-05-22 08:14:09,909 - phoenix.telegram - INFO - Success rate (5x): 47.51%
+2025-05-22 08:14:09,914 - phoenix.telegram - INFO - Exported 381 calls to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.csv
+2025-05-22 08:14:09,915 - phoenix.telegram - INFO - Exported KOL performance to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_kol_performance.csv
+2025-05-22 08:14:09,916 - phoenix.telegram - INFO - Exported summary to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_summary.txt
+2025-05-22 08:14:09,924 - phoenix.telegram - INFO - Disconnecting from Telegram...
+2025-05-22 08:14:09,924 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-22 08:14:09,925 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-22 08:14:09,933 - phoenix.telegram - INFO - Disconnected from Telegram
+2025-05-22 08:14:09,933 - phoenix - INFO - SpyDefi analysis completed.
+2025-05-22 08:14:09,934 - phoenix - INFO - Telegram analysis completed. Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.csv
+2025-05-22 08:14:10,227 - phoenix.export - INFO - Creating consolidated Excel export: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-22 08:14:10,258 - phoenix.export - ERROR - Error creating Excel export: 'str' object has no attribute 'get'
+2025-05-22 08:14:10,258 - phoenix - ERROR - Error exporting to Excel: 'str' object has no attribute 'get'
+2025-05-22 08:49:06,805 - phoenix - INFO - Loaded 104 wallet addresses from wallets.txt
+2025-05-22 08:49:23,670 - phoenix - INFO - Loaded 104 wallet addresses from wallets.txt
+2025-05-22 08:49:23,972 - phoenix - INFO - ✅ Cielo Finance API initialized successfully
+2025-05-22 08:49:23,983 - phoenix.cielo - ERROR - Cielo Finance API request failed for /health: HTTPSConnectionPool(host='api.cielo.finance', port=443): Max retries exceeded with url: /health (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002386DB4EF00>: Failed to resolve 'api.cielo.finance' ([Errno 11001] getaddrinfo failed)"))
+2025-05-22 08:49:23,985 - phoenix.cielo - ERROR - Cielo Finance API request failed for /api/v1/status: HTTPSConnectionPool(host='api.cielo.finance', port=443): Max retries exceeded with url: /api/v1/status (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002386DB4F020>: Failed to resolve 'api.cielo.finance' ([Errno 11001] getaddrinfo failed)"))
+2025-05-22 08:49:23,985 - phoenix - WARNING - ⚠️ Cielo Finance API connection test failed
+2025-05-22 08:49:23,986 - phoenix - INFO - ✅ Birdeye API initialized for token metadata
+2025-05-22 08:49:24,071 - phoenix.cielo - ERROR - Cielo Finance API request failed for /health: HTTPSConnectionPool(host='api.cielo.finance', port=443): Max retries exceeded with url: /health (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002387EA6C950>: Failed to resolve 'api.cielo.finance' ([Errno 11001] getaddrinfo failed)"))
+2025-05-22 08:49:24,073 - phoenix.cielo - ERROR - Cielo Finance API request failed for /api/v1/status: HTTPSConnectionPool(host='api.cielo.finance', port=443): Max retries exceeded with url: /api/v1/status (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002387EA6C980>: Failed to resolve 'api.cielo.finance' ([Errno 11001] getaddrinfo failed)"))
+2025-05-22 08:49:24,073 - phoenix.wallet - ERROR - ❌ Cielo Finance API health check failed
+2025-05-22 08:49:24,074 - phoenix - ERROR - Enhanced wallet analysis error: Cannot connect to Cielo Finance API

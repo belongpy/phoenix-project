@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Phoenix Project - Solana Chain Analysis CLI Tool (Updated)
+Phoenix Project - Solana Chain Analysis CLI Tool (FIXED)
 
-Auto-defaults for Telegram analysis - no prompts needed
-Enhanced with RPC configuration for contested analysis
+Properly integrates Cielo Finance API for wallet analysis
+Fixed P9 RPC integration and API initialization
 """
 
 import os
@@ -40,12 +40,12 @@ def load_config() -> Dict[str, Any]:
         "telegram_api_id": "",
         "telegram_api_hash": "",
         "telegram_session": "",
-        "solana_rpc_url": "https://api.mainnet-beta.solana.com",  # Default RPC
+        "solana_rpc_url": "http://cce3ed699d4aeb004e634221f36e87a3.p9nodes.io",  # Your P9 RPC
         "sources": {
             "telegram_groups": ["spydefi"],
             "wallets": []
         },
-        "analysis_period_days": 1  # Changed to 1 day (24 hours)
+        "analysis_period_days": 1
     }
 
 def ensure_output_dir(output_path: str) -> str:
@@ -228,9 +228,10 @@ class PhoenixCLI:
         print("="*60)
         
         # Check API configuration first
-        if not self.config.get("birdeye_api_key") and not self.config.get("cielo_api_key"):
-            print("\n❌ No API keys configured!")
-            print("Please configure your API keys first (Option 1).")
+        if not self.config.get("cielo_api_key"):
+            print("\n❌ Cielo Finance API key not configured!")
+            print("Please configure your Cielo Finance API key first (Option 1).")
+            print("Cielo Finance is required for wallet analysis.")
             input("Press Enter to continue...")
             return
         
@@ -301,9 +302,9 @@ class PhoenixCLI:
         print("="*50)
         
         # Check API configuration
-        if not self.config.get("birdeye_api_key") and not self.config.get("cielo_api_key"):
-            print("\n❌ No API keys configured!")
-            print("Please configure your API keys first (Option 1).")
+        if not self.config.get("cielo_api_key"):
+            print("\n❌ Cielo Finance API key not configured!")
+            print("Please configure your Cielo Finance API key first (Option 1).")
             input("Press Enter to continue...")
             return
         
@@ -353,41 +354,53 @@ class PhoenixCLI:
     def _run_enhanced_wallet_analysis(self, wallets: List[str], days: int, 
                                     min_winrate: float, output_file: str, 
                                     include_contested: bool = True):
-        """Run the enhanced wallet analysis with contested detection."""
+        """Run the enhanced wallet analysis with proper Cielo Finance integration."""
         # Ensure output directory exists
         full_output_path = ensure_output_dir(output_file)
         
-        # Initialize APIs
+        # Initialize APIs - FIXED: Proper Cielo Finance integration
         cielo_api = None
         if self.config.get("cielo_api_key"):
             try:
-                # Import and create Cielo Finance API (you'll need to create this)
-                logger.info("Cielo Finance API key found, but API client not implemented yet.")
-                logger.info("Will use Birdeye API for now.")
+                from cielo_api import CieloFinanceAPI
+                cielo_api = CieloFinanceAPI(self.config["cielo_api_key"])
+                logger.info("✅ Cielo Finance API initialized successfully")
+                
+                # Test the connection
+                if cielo_api.health_check():
+                    logger.info("✅ Cielo Finance API connection verified")
+                else:
+                    logger.warning("⚠️ Cielo Finance API connection test failed")
+                    
             except Exception as e:
-                logger.warning(f"Could not initialize Cielo Finance API: {str(e)}")
+                logger.error(f"❌ Could not initialize Cielo Finance API: {str(e)}")
+                raise Exception(f"Cielo Finance API initialization failed: {str(e)}")
+        else:
+            raise Exception("Cielo Finance API key is required for wallet analysis")
         
+        # Initialize Birdeye API (for token metadata only)
         birdeye_api = None
         if self.config.get("birdeye_api_key"):
             try:
                 from birdeye_api import BirdeyeAPI
                 birdeye_api = BirdeyeAPI(self.config["birdeye_api_key"])
+                logger.info("✅ Birdeye API initialized for token metadata")
             except Exception as e:
-                logger.warning(f"Could not initialize Birdeye API: {str(e)}")
+                logger.warning(f"⚠️ Could not initialize Birdeye API: {str(e)}")
+                logger.info("Continuing without Birdeye API - token metadata will be limited")
         
-        if not cielo_api and not birdeye_api:
-            raise Exception("No API clients available for wallet analysis")
-        
-        # Initialize enhanced wallet analyzer
+        # Initialize enhanced wallet analyzer with proper RPC
         from wallet_module import WalletAnalyzer
         
         analyzer = WalletAnalyzer(
             cielo_api=cielo_api,
-            birdeye_api=birdeye_api,
-            rpc_url=self.config.get("solana_rpc_url", "https://api.mainnet-beta.solana.com")
+            birdeye_api=birdeye_api,  # For token metadata only
+            rpc_url=self.config.get("solana_rpc_url", "http://cce3ed699d4aeb004e634221f36e87a3.p9nodes.io")
         )
         
-        logger.info(f"Using RPC: {self.config.get('solana_rpc_url', 'Default')}")
+        logger.info(f"🌐 Using RPC: {self.config.get('solana_rpc_url')}")
+        logger.info(f"💰 Primary API: Cielo Finance (wallet analysis)")
+        logger.info(f"🔍 Secondary API: {'Birdeye (token metadata)' if birdeye_api else 'None'}")
         
         # Run batch analysis with contested detection
         result = analyzer.batch_analyze_wallets(
@@ -398,7 +411,15 @@ class PhoenixCLI:
         )
         
         if result.get("success"):
-            analyzer.export_batch_analysis(result, full_output_path)
+            # Export results with proper formatting
+            try:
+                from export_utils import export_to_excel
+                export_to_excel({}, result, full_output_path)
+                logger.info(f"✅ Results exported to Excel: {full_output_path}")
+            except Exception as e:
+                logger.error(f"❌ Excel export failed: {str(e)}")
+                # Fallback to CSV export
+                analyzer.export_batch_analysis(result, full_output_path.replace('.xlsx', '.csv'))
             
             # Log summary
             logger.info(f"\n📊 ANALYSIS SUMMARY:")
@@ -447,6 +468,21 @@ class PhoenixCLI:
         print("    API CONNECTIVITY TEST")
         print("="*50)
         
+        # Test Cielo Finance API
+        if self.config.get("cielo_api_key"):
+            print("\n💰 Testing Cielo Finance API...")
+            try:
+                from cielo_api import CieloFinanceAPI
+                cielo_api = CieloFinanceAPI(self.config["cielo_api_key"])
+                if cielo_api.health_check():
+                    print("✅ Cielo Finance API: Connected successfully")
+                else:
+                    print("❌ Cielo Finance API: Health check failed")
+            except Exception as e:
+                print(f"❌ Cielo Finance API: Error - {str(e)}")
+        else:
+            print("❌ Cielo Finance API: Not configured")
+        
         # Test Birdeye API
         if self.config.get("birdeye_api_key"):
             print("\n🔍 Testing Birdeye API...")
@@ -462,13 +498,6 @@ class PhoenixCLI:
                 print(f"❌ Birdeye API: Error - {str(e)}")
         else:
             print("❌ Birdeye API: Not configured")
-        
-        # Test Cielo Finance API
-        if self.config.get("cielo_api_key"):
-            print("\n💰 Testing Cielo Finance API...")
-            print("ℹ️  Cielo Finance API client not implemented yet")
-        else:
-            print("❌ Cielo Finance API: Not configured")
         
         # Test Telegram API
         if self.config.get("telegram_api_id") and self.config.get("telegram_api_hash"):
@@ -487,7 +516,7 @@ class PhoenixCLI:
         try:
             import requests
             response = requests.post(
-                self.config.get("solana_rpc_url", "https://api.mainnet-beta.solana.com"),
+                self.config.get("solana_rpc_url", "http://cce3ed699d4aeb004e634221f36e87a3.p9nodes.io"),
                 json={"jsonrpc": "2.0", "id": 1, "method": "getHealth"},
                 timeout=10
             )
@@ -506,23 +535,7 @@ class PhoenixCLI:
         print("    CONFIGURATION SETUP")
         print("="*50)
         
-        # Birdeye API Key
-        current_birdeye = self.config.get("birdeye_api_key", "")
-        if current_birdeye:
-            print(f"\n🔑 Current Birdeye API Key: {current_birdeye[:8]}...")
-            change_birdeye = input("Change Birdeye API key? (y/N): ").lower().strip()
-            if change_birdeye == 'y':
-                new_key = input("Enter new Birdeye API key: ").strip()
-                if new_key:
-                    self.config["birdeye_api_key"] = new_key
-                    print("✅ Birdeye API key updated")
-        else:
-            new_key = input("Enter Birdeye API key: ").strip()
-            if new_key:
-                self.config["birdeye_api_key"] = new_key
-                print("✅ Birdeye API key configured")
-        
-        # Cielo Finance API Key
+        # Cielo Finance API Key (PRIMARY)
         current_cielo = self.config.get("cielo_api_key", "")
         if current_cielo:
             print(f"\n💰 Current Cielo Finance API Key: {current_cielo[:8]}...")
@@ -533,19 +546,37 @@ class PhoenixCLI:
                     self.config["cielo_api_key"] = new_key
                     print("✅ Cielo Finance API key updated")
         else:
-            new_key = input("Enter Cielo Finance API key (optional): ").strip()
+            new_key = input("Enter Cielo Finance API key (REQUIRED for wallet analysis): ").strip()
             if new_key:
                 self.config["cielo_api_key"] = new_key
                 print("✅ Cielo Finance API key configured")
+            else:
+                print("⚠️ Warning: Wallet analysis will not work without Cielo Finance API key")
+        
+        # Birdeye API Key (SECONDARY)
+        current_birdeye = self.config.get("birdeye_api_key", "")
+        if current_birdeye:
+            print(f"\n🔑 Current Birdeye API Key: {current_birdeye[:8]}...")
+            change_birdeye = input("Change Birdeye API key? (y/N): ").lower().strip()
+            if change_birdeye == 'y':
+                new_key = input("Enter new Birdeye API key: ").strip()
+                if new_key:
+                    self.config["birdeye_api_key"] = new_key
+                    print("✅ Birdeye API key updated")
+        else:
+            new_key = input("Enter Birdeye API key (optional, for token metadata): ").strip()
+            if new_key:
+                self.config["birdeye_api_key"] = new_key
+                print("✅ Birdeye API key configured")
         
         # Solana RPC URL
-        current_rpc = self.config.get("solana_rpc_url", "https://api.mainnet-beta.solana.com")
+        current_rpc = self.config.get("solana_rpc_url", "http://cce3ed699d4aeb004e634221f36e87a3.p9nodes.io")
         print(f"\n🌐 Current Solana RPC URL: {current_rpc}")
         change_rpc = input("Change RPC URL? (y/N): ").lower().strip()
         if change_rpc == 'y':
             print("\nCommon RPC Providers:")
-            print("1. Solana Mainnet (Free): https://api.mainnet-beta.solana.com")
-            print("2. P9 (Your Provider): https://your-p9-endpoint.com")
+            print("1. Your P9 (Current): http://cce3ed699d4aeb004e634221f36e87a3.p9nodes.io")
+            print("2. Solana Mainnet (Free): https://api.mainnet-beta.solana.com")
             print("3. QuickNode: https://your-quicknode-endpoint.solana-mainnet.quiknode.pro")
             print("4. Alchemy: https://solana-mainnet.g.alchemy.com/v2/YOUR_API_KEY")
             print("5. Custom: Enter your own URL")
@@ -553,9 +584,9 @@ class PhoenixCLI:
             choice = input("\nSelect option (1-5) or enter custom URL: ").strip()
             
             if choice == '1':
-                new_rpc = "https://api.mainnet-beta.solana.com"
+                new_rpc = "http://cce3ed699d4aeb004e634221f36e87a3.p9nodes.io"
             elif choice == '2':
-                new_rpc = input("Enter your P9 RPC URL: ").strip()
+                new_rpc = "https://api.mainnet-beta.solana.com"
             elif choice == '3':
                 new_rpc = input("Enter your QuickNode URL: ").strip()
             elif choice == '4':
@@ -582,7 +613,7 @@ class PhoenixCLI:
                     self.config["telegram_api_hash"] = new_hash
                     print("✅ Telegram API credentials updated")
         else:
-            new_id = input("Enter Telegram API ID (optional): ").strip()
+            new_id = input("Enter Telegram API ID (optional, for channel analysis): ").strip()
             new_hash = input("Enter Telegram API Hash (optional): ").strip()
             if new_id and new_hash:
                 self.config["telegram_api_id"] = new_id
@@ -599,8 +630,8 @@ class PhoenixCLI:
         print("    CURRENT CONFIGURATION")
         print("="*50)
         
-        print(f"\n🔑 Birdeye API Key: {'✅ Configured' if self.config.get('birdeye_api_key') else '❌ Not configured'}")
-        print(f"💰 Cielo Finance API Key: {'✅ Configured' if self.config.get('cielo_api_key') else '❌ Not configured'}")
+        print(f"\n💰 Cielo Finance API Key: {'✅ Configured' if self.config.get('cielo_api_key') else '❌ Not configured (REQUIRED)'}")
+        print(f"🔑 Birdeye API Key: {'✅ Configured' if self.config.get('birdeye_api_key') else '❌ Not configured (optional)'}")
         print(f"📱 Telegram API ID: {'✅ Configured' if self.config.get('telegram_api_id') else '❌ Not configured'}")
         print(f"📱 Telegram API Hash: {'✅ Configured' if self.config.get('telegram_api_hash') else '❌ Not configured'}")
         print(f"🌐 Solana RPC URL: {self.config.get('solana_rpc_url', 'Default')}")
@@ -631,7 +662,7 @@ class PhoenixCLI:
             print("\n📝 Create a wallets.txt file with the following format:")
             print("# This is a comment")
             print("DJPKomwbTTsjyc3bZZZayE9mHhwAkJHkpwRvePYjV9VR")
-            print("9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM")
+            print("9WzDXwBbmkg8ZTb NMqUxvQRAyrZzDsGYdLVL9zYtAWWM")
             print("# Another comment")
             print("AnotherWalletAddressHere...")
         else:
@@ -675,10 +706,10 @@ class PhoenixCLI:
         
         print("\n📖 GETTING STARTED:")
         print("1. Configure API keys (Option 1)")
-        print("   - Birdeye API: https://birdeye.so")
-        print("   - Cielo Finance API: https://cielo.finance") 
-        print("   - Telegram API: https://my.telegram.org")
-        print("   - Solana RPC: Your P9 provider or other RPC endpoint")
+        print("   - Cielo Finance API: https://cielo.finance (REQUIRED for wallets)")
+        print("   - Birdeye API: https://birdeye.so (optional, for token metadata)") 
+        print("   - Telegram API: https://my.telegram.org (for channel analysis)")
+        print("   - P9 RPC: Already configured for you")
         print()
         print("2. Create wallets.txt file with wallet addresses")
         print("   - One wallet address per line")
@@ -692,26 +723,26 @@ class PhoenixCLI:
         print("   - Option 6: Auto-analyze all wallets in wallets.txt")
         print("   - Option 7: Analyze a single wallet")
         
-        print("\n✨ NEW FEATURES:")
+        print("\n✨ FIXED FEATURES:")
+        print("• 💰 Cielo Finance Integration - PRIMARY API for wallet analysis") 
+        print("• 🔍 Birdeye Integration - SECONDARY API for token metadata")
+        print("• 🌐 P9 RPC - Your fast RPC endpoint pre-configured")
         print("• ⚔️  Contested Wallet Analysis - Detect copy traders using RPC calls")
-        print("• 💰 Cielo Finance Integration - Enhanced P&L analysis") 
-        print("• 🌐 Custom RPC Support - Use P9 or other providers")
         print("• 📊 Comprehensive Metrics - ROI distribution, platform analysis")
         print("• 🎯 Smart Strategy Generation - Competition-aware recommendations")
         print("• 📈 Excel Export - Multi-sheet detailed reports")
         
-        print("\n💡 TIPS:")
-        print("• Configure your P9 RPC URL for best performance")
-        print("• Contested analysis shows how many traders copy each wallet")
-        print("• Use fast RPC providers for better contested detection")
-        print("• Check outputs folder for all generated files")
-        print("• Results include trading strategies and risk assessments")
+        print("\n💡 API STRATEGY:")
+        print("• Cielo Finance: Wallet P&L, transactions, performance metrics")
+        print("• Birdeye: Token metadata, prices, market cap (when needed)")
+        print("• P9 RPC: Direct blockchain queries for contested analysis")
+        print("• Clear separation of concerns - no API conflicts")
         
-        print("\n🔧 RPC PROVIDERS:")
-        print("• P9: Fast, reliable (your current provider)")
-        print("• QuickNode: Professional grade")
-        print("• Alchemy: Developer-friendly")
-        print("• Free Solana RPC: Basic but functional")
+        print("\n🔧 CONFIGURATION TIPS:")
+        print("• Your P9 RPC is already configured: http://cce3ed699d4aeb004e634221f36e87a3.p9nodes.io")
+        print("• Cielo Finance API key is REQUIRED for wallet analysis")
+        print("• Birdeye API key is optional but recommended for richer data")
+        print("• Check outputs folder for all generated files")
         
         input("\nPress Enter to continue...")
     
@@ -796,13 +827,13 @@ class PhoenixCLI:
     
     def _handle_configure(self, args: argparse.Namespace) -> None:
         """Handle the configure command."""
-        if args.birdeye_api_key:
-            self.config["birdeye_api_key"] = args.birdeye_api_key
-            logger.info("Birdeye API key configured.")
-        
         if args.cielo_api_key:
             self.config["cielo_api_key"] = args.cielo_api_key
             logger.info("Cielo Finance API key configured.")
+        
+        if args.birdeye_api_key:
+            self.config["birdeye_api_key"] = args.birdeye_api_key
+            logger.info("Birdeye API key configured.")
         
         if args.rpc_url:
             self.config["solana_rpc_url"] = args.rpc_url
@@ -895,12 +926,12 @@ class PhoenixCLI:
             logger.error(f"No valid wallets found in {args.wallets_file}")
             return
         
-        if not self.config.get("birdeye_api_key") and not self.config.get("cielo_api_key"):
-            logger.error("No API keys configured. Configure at least one API key.")
+        if not self.config.get("cielo_api_key"):
+            logger.error("Cielo Finance API key not configured. This is required for wallet analysis.")
             return
         
         logger.info(f"Running enhanced wallet analysis on {len(wallets_to_analyze)} wallets")
-        logger.info(f"RPC URL: {self.config.get('solana_rpc_url', 'Default')}")
+        logger.info(f"RPC URL: {self.config.get('solana_rpc_url')}")
         
         try:
             self._run_enhanced_wallet_analysis(

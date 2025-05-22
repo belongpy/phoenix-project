@@ -1,70 +1,70 @@
 === SPYDEFI PERFORMANCE ANALYSIS ===
 
 Analysis period: 1 days
-Tokens mentioned: 366
-Tokens that made x2: 364
-Tokens that made x5: 186
-Success rate (2x): 99.45%
-Success rate (5x): 50.82%
+Tokens mentioned: 381
+Tokens that made x2: 379
+Tokens that made x5: 181
+Success rate (2x): 99.48%
+Success rate (5x): 47.51%
 
 === TOP KOLs ===
-1. @jeetycall
-   Channel ID: 1712900374
+1. @insider_eca
+   Channel ID: 1851567457
    Tokens mentioned: 14
    Tokens that made x2: 14
    Success rate: 100.0%
 
-2. @marksgems
-   Channel ID: 1508785153
-   Tokens mentioned: 28
-   Tokens that made x2: 28
-   Success rate: 100.0%
-
-3. @hellsinggamble
-   Channel ID: 1715502498
-   Tokens mentioned: 8
-   Tokens that made x2: 8
-   Success rate: 100.0%
-
-4. @kariusgemscalls
-   Channel ID: 2222968620
-   Tokens mentioned: 16
-   Tokens that made x2: 16
-   Success rate: 100.0%
-
-5. @chinapumpcommunity
-   Channel ID: 1502458504
-   Tokens mentioned: 8
-   Tokens that made x2: 8
-   Success rate: 100.0%
-
-6. @mrbigbagcalls
+2. @mrbigbagcalls
    Channel ID: 2051055592
-   Tokens mentioned: 5
-   Tokens that made x2: 5
-   Success rate: 100.0%
-
-7. @topcallerschannel
-   Channel ID: 1915321527
    Tokens mentioned: 10
    Tokens that made x2: 10
    Success rate: 100.0%
 
-8. @shitcoinneverland
-   Channel ID: 1983450418
-   Tokens mentioned: 5
-   Tokens that made x2: 5
+3. @topcallerschannel
+   Channel ID: 1915321527
+   Tokens mentioned: 13
+   Tokens that made x2: 13
    Success rate: 100.0%
 
-9. @crikeycallz
-   Channel ID: 2276696688
-   Tokens mentioned: 5
-   Tokens that made x2: 5
+4. @michacalls
+   Channel ID: 1655443406
+   Tokens mentioned: 10
+   Tokens that made x2: 10
    Success rate: 100.0%
 
-10. @vortex_gamble
-   Channel ID: 2017983706
+5. @demoncryptoplayground
+   Channel ID: 1723664962
+   Tokens mentioned: 8
+   Tokens that made x2: 8
+   Success rate: 100.0%
+
+6. @kariusgemscalls
+   Channel ID: 2222968620
+   Tokens mentioned: 12
+   Tokens that made x2: 12
+   Success rate: 100.0%
+
+7. @nomsgems
+   Channel ID: 1635741540
    Tokens mentioned: 7
    Tokens that made x2: 7
+   Success rate: 100.0%
+
+8. @piggiescall
+   Channel ID: 1601300719
+   Tokens mentioned: 8
+   Tokens that made x2: 8
+   Success rate: 100.0%
+
+9. @bruisersgambles
+   Channel ID: 1537838682
+   Tokens mentioned: 6
+   Tokens that made x2: 6
+   Success rate: 100.0%
+
+10. @bgbcncall
+   Channel ID: 2297451987
+   Tokens mentioned: 9
+   Tokens that made x2: 9
    Success rate: 100.0%
 
