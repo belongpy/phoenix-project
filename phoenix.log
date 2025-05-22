@@ -196,3 +196,72 @@ TypeError: BirdeyeAPI.__init__() got an unexpected keyword argument 'birdeye_api
 2025-05-21 16:43:11,604 - phoenix.wallet - INFO - Paired 0 trades
 2025-05-21 16:43:11,604 - phoenix.wallet - INFO - Wallet type: unknown
 2025-05-21 16:43:11,604 - phoenix.wallet - INFO - Analyzing wallet FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W for the past 14 days
+2025-05-21 17:23:33,423 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-21 17:23:33,423 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-21 17:23:34,117 - phoenix - INFO - Loaded 1 channel IDs from C:\Users\Administrator\Desktop\phoenix-project\channels.txt
+2025-05-21 17:23:34,117 - phoenix - INFO - Loaded 104 wallet addresses from C:\Users\Administrator\Desktop\phoenix-project\wallets.txt
+2025-05-21 17:23:36,628 - phoenix.birdeye - INFO - Helius API key configured - will use Helius for wallet transaction data
+2025-05-21 17:23:36,628 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-21 17:23:36,628 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-21 17:23:36,772 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-21 17:23:37,868 - phoenix.telegram - INFO - Connected to Telegram
+2025-05-21 17:23:37,868 - phoenix.telegram - INFO - Scraping Spydefi channel spydefi for KOL mentions
+2025-05-21 17:23:37,868 - phoenix.telegram - INFO - SpyDefi channel detected, limiting to 7 days and 1000 messages
+2025-05-21 17:23:37,868 - phoenix.telegram - INFO - Scraping 7 days of messages from spydefi
+2025-05-21 17:23:38,390 - phoenix.telegram - INFO - Retrieved 100 messages from SpyDefi
+2025-05-21 17:23:38,734 - phoenix.telegram - INFO - Retrieved 200 messages from SpyDefi
+2025-05-21 17:23:39,093 - phoenix.telegram - INFO - Retrieved 300 messages from SpyDefi
+2025-05-21 17:23:39,437 - phoenix.telegram - INFO - Retrieved 400 messages from SpyDefi
+2025-05-21 17:23:39,796 - phoenix.telegram - INFO - Retrieved 500 messages from SpyDefi
+2025-05-21 17:23:40,156 - phoenix.telegram - INFO - Retrieved 600 messages from SpyDefi
+2025-05-21 17:23:40,500 - phoenix.telegram - INFO - Retrieved 700 messages from SpyDefi
+2025-05-21 17:23:40,970 - phoenix.telegram - INFO - Retrieved 800 messages from SpyDefi
+2025-05-21 17:23:41,319 - phoenix.telegram - INFO - Retrieved 900 messages from SpyDefi
+2025-05-21 17:23:41,653 - phoenix.telegram - INFO - Retrieved 1000 messages from SpyDefi
+2025-05-21 17:23:41,653 - phoenix.telegram - INFO - Finished retrieving messages from SpyDefi. Found 972 relevant messages.
+2025-05-21 17:23:41,668 - phoenix.telegram - INFO - Found 267 potential KOL channels/usernames
+2025-05-21 17:23:41,668 - phoenix.telegram - INFO - Analyzing KOL: MarksGems
+2025-05-21 17:23:41,668 - phoenix.telegram - INFO - Analyzing channel MarksGems for the past 14 days
+2025-05-21 17:23:41,668 - phoenix.telegram - INFO - Scraping 14 days of messages from MarksGems
+2025-05-21 17:23:42,382 - phoenix.telegram - INFO - Retrieved 100 messages from MarksGems
+2025-05-21 17:23:42,731 - phoenix.telegram - INFO - Retrieved 200 messages from MarksGems
+2025-05-21 17:23:43,095 - phoenix.telegram - INFO - Retrieved 300 messages from MarksGems
+2025-05-21 17:23:43,484 - phoenix.telegram - INFO - Retrieved 400 messages from MarksGems
+2025-05-21 17:23:44,001 - phoenix.telegram - INFO - Retrieved 500 messages from MarksGems
+2025-05-21 17:23:44,390 - phoenix.telegram - INFO - Retrieved 600 messages from MarksGems
+2025-05-21 17:23:44,765 - phoenix.telegram - INFO - Retrieved 700 messages from MarksGems
+2025-05-21 17:23:45,109 - phoenix.telegram - INFO - Retrieved 800 messages from MarksGems
+2025-05-21 17:23:45,453 - phoenix.telegram - INFO - Retrieved 900 messages from MarksGems
+2025-05-21 17:23:45,781 - phoenix.telegram - INFO - Retrieved 1000 messages from MarksGems
+2025-05-21 17:23:46,126 - phoenix.telegram - INFO - Retrieved 1100 messages from MarksGems
+2025-05-21 17:23:46,464 - phoenix.telegram - INFO - Retrieved 1200 messages from MarksGems
+2025-05-21 17:23:46,812 - phoenix.telegram - INFO - Retrieved 1300 messages from MarksGems
+2025-05-21 17:23:47,173 - phoenix.telegram - INFO - Retrieved 1400 messages from MarksGems
+2025-05-21 17:23:47,522 - phoenix.telegram - INFO - Retrieved 1500 messages from MarksGems
+2025-05-21 17:23:47,890 - phoenix.telegram - INFO - Retrieved 1600 messages from MarksGems
+2025-05-21 17:23:48,251 - phoenix.telegram - INFO - Retrieved 1700 messages from MarksGems
+2025-05-21 17:23:48,609 - phoenix.telegram - INFO - Retrieved 1800 messages from MarksGems
+2025-05-21 17:23:48,971 - phoenix.telegram - INFO - Finished retrieving messages from MarksGems. Found 1552 relevant messages.
+2025-05-21 17:23:49,762 - phoenix.birdeye - WARNING - No price history available for 3GkswkppQgD4ZZJjX4DCuoXxK3WZQWHnowowp1n7pump
+2025-05-21 17:23:50,054 - phoenix.telegram - ERROR - Error identifying platform for 3GkswkppQgD4ZZJjX4DCuoXxK3WZQWHnowowp1n7pump: 'str' object has no attribute 'get'
+2025-05-21 17:23:50,787 - phoenix.birdeye - WARNING - No price history available for 9vG3diqh1eNYCZUpLdbcQV36bCZ4opxLyC5vt3zxpump
+2025-05-21 17:23:51,344 - phoenix.telegram - ERROR - Error identifying platform for 9vG3diqh1eNYCZUpLdbcQV36bCZ4opxLyC5vt3zxpump: 'str' object has no attribute 'get'
+2025-05-21 17:23:52,324 - phoenix.birdeye - WARNING - No price history available for CxaZQEZFeoQEXS2Y3ZFzT1TCVii9CQC11NSeZSg3pump
+2025-05-21 17:23:52,797 - phoenix.telegram - ERROR - Error identifying platform for CxaZQEZFeoQEXS2Y3ZFzT1TCVii9CQC11NSeZSg3pump: 'str' object has no attribute 'get'
+2025-05-21 17:23:54,495 - phoenix.birdeye - WARNING - No price history available for FbAVVRA3nNt942yWynQLTXpgqryDNRimSW4KBK38QVtg
+2025-05-21 17:23:55,109 - phoenix.telegram - ERROR - Error identifying platform for FbAVVRA3nNt942yWynQLTXpgqryDNRimSW4KBK38QVtg: 'str' object has no attribute 'get'
+2025-05-21 17:23:55,819 - phoenix.birdeye - WARNING - No price history available for HVvP5DGpaoBucaCxHLNNHqymtR9buRe4hxSvwgVYpump
+2025-05-21 17:23:56,109 - phoenix.telegram - ERROR - Error identifying platform for HVvP5DGpaoBucaCxHLNNHqymtR9buRe4hxSvwgVYpump: 'str' object has no attribute 'get'
+2025-05-21 17:23:56,857 - phoenix.birdeye - WARNING - No price history available for BvkyZShChs1NX9JFMzmPFUJwhEhLBtZLe2JLMCEbpump
+2025-05-21 17:23:57,184 - phoenix.telegram - ERROR - Error identifying platform for BvkyZShChs1NX9JFMzmPFUJwhEhLBtZLe2JLMCEbpump: 'str' object has no attribute 'get'
+2025-05-21 17:23:58,930 - phoenix.birdeye - WARNING - No price history available for CtQHLxNc3FHVw6fkiyfZ5xRtBpN8Dk3WzYAGpJt3pump
+2025-05-21 17:23:59,249 - phoenix.telegram - ERROR - Error identifying platform for CtQHLxNc3FHVw6fkiyfZ5xRtBpN8Dk3WzYAGpJt3pump: 'str' object has no attribute 'get'
+2025-05-21 17:23:59,976 - phoenix.birdeye - WARNING - No price history available for AowzoamAach6hkJ9R33Qj6VwBxUgEbgJ3jgSy9P8pump
+2025-05-21 17:24:00,299 - phoenix.telegram - ERROR - Error identifying platform for AowzoamAach6hkJ9R33Qj6VwBxUgEbgJ3jgSy9P8pump: 'str' object has no attribute 'get'
+2025-05-21 17:24:01,179 - phoenix.birdeye - WARNING - No price history available for D1fXx7HYruPTyPCKduQ1ecaNPjqqkNhrYnm5FsJnpump
+2025-05-21 17:24:01,547 - phoenix.telegram - ERROR - Error identifying platform for D1fXx7HYruPTyPCKduQ1ecaNPjqqkNhrYnm5FsJnpump: 'str' object has no attribute 'get'
+2025-05-21 17:24:02,359 - phoenix.birdeye - WARNING - No price history available for Az8LX1mVRwYQu8yuaF3arbtnVYbFztsAdiY1Lyogpump
+2025-05-21 17:24:03,749 - phoenix.telegram - ERROR - Error identifying platform for Az8LX1mVRwYQu8yuaF3arbtnVYbFztsAdiY1Lyogpump: 'str' object has no attribute 'get'
+2025-05-21 17:24:04,485 - phoenix.birdeye - WARNING - No price history available for 2M7sYwMzJbpHs9umwrfnae1BfAuWbQ42QzbJJHgQpump
+2025-05-21 17:24:04,799 - phoenix.telegram - ERROR - Error identifying platform for 2M7sYwMzJbpHs9umwrfnae1BfAuWbQ42QzbJJHgQpump: 'str' object has no attribute 'get'
+2025-05-21 17:24:05,854 - phoenix.telegram - ERROR - Error identifying platform for 7LT1zpqCWHCQabQmLhHPbPGJsZ9VE4JXLE7sVX5Qpump: 'str' object has no attribute 'get'
