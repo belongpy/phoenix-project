@@ -30,12 +30,11 @@ logger = logging.getLogger("phoenix")
 CONFIG_FILE = os.path.expanduser("~/.phoenix_config.json")
 
 def load_config() -> Dict[str, Any]:
-    """Load configuration from the config file."""
-    if os.path.exists(CONFIG_FILE):
-        with open(CONFIG_FILE, 'r') as f:
-            return json.load(f)
-    return {
-        "cielo_finance_api_key": "",  # Changed from birdeye_api_key
+    """Load configuration from the config file and text files."""
+    # Load from JSON config file
+    config = {
+        "birdeye_api_key": "",  # Back to Birdeye for Telegram
+        "cielo_finance_api_key": "",  # Cielo for wallets only
         "telegram_api_id": "",
         "telegram_api_hash": "",
         "telegram_session": "",
@@ -44,8 +43,40 @@ def load_config() -> Dict[str, Any]:
             "wallets": []
         },
         "analysis_period_days": 7,
-        "api_provider": "cielo_finance"  # New field to track API provider
+        "api_provider": "mixed"  # Mixed: Birdeye + Cielo
     }
+    
+    if os.path.exists(CONFIG_FILE):
+        with open(CONFIG_FILE, 'r') as f:
+            config.update(json.load(f))
+    
+    # Load from text files if they exist
+    channels_file = "channels.txt"
+    wallets_file = "wallets.txt"
+    
+    # Load Telegram channels from channels.txt
+    if os.path.exists(channels_file):
+        try:
+            with open(channels_file, 'r') as f:
+                channels = [line.strip() for line in f.readlines() if line.strip() and not line.startswith('#')]
+                if channels:
+                    config["sources"]["telegram_groups"] = channels
+                    logger.info(f"Loaded {len(channels)} Telegram channels from {channels_file}")
+        except Exception as e:
+            logger.warning(f"Error reading {channels_file}: {str(e)}")
+    
+    # Load wallets from wallets.txt
+    if os.path.exists(wallets_file):
+        try:
+            with open(wallets_file, 'r') as f:
+                wallets = [line.strip() for line in f.readlines() if line.strip() and not line.startswith('#')]
+                if wallets:
+                    config["sources"]["wallets"] = wallets
+                    logger.info(f"Loaded {len(wallets)} wallets from {wallets_file}")
+        except Exception as e:
+            logger.warning(f"Error reading {wallets_file}: {str(e)}")
+    
+    return config
 
 def ensure_output_dir(output_path: str) -> str:
     """
@@ -93,7 +124,8 @@ class PhoenixCLI:
         
         # Configure command
         configure_parser = subparsers.add_parser("configure", help="Configure API keys and sources")
-        configure_parser.add_argument("--cielo-api-key", help="Cielo Finance API key")
+        configure_parser.add_argument("--birdeye-api-key", help="Birdeye API key (for Telegram analysis)")
+        configure_parser.add_argument("--cielo-api-key", help="Cielo Finance API key (for wallet analysis)")
         configure_parser.add_argument("--telegram-api-id", help="Telegram API ID")
         configure_parser.add_argument("--telegram-api-hash", help="Telegram API hash")
         configure_parser.add_argument("--check", action="store_true", help="Check current configuration")
@@ -186,13 +218,13 @@ class PhoenixCLI:
                 elif choice == "9":
                     self._show_help_examples()
                 else:
-                    print("\n❌ Invalid choice. Please enter a number between 0-9.")
+                    print("\n[ERROR] Invalid choice. Please enter a number between 0-9.")
                     
             except KeyboardInterrupt:
                 print("\n\n👋 Thanks for using Phoenix Project!")
                 sys.exit(0)
             except Exception as e:
-                print(f"\n❌ Error: {str(e)}")
+                print(f"\n[ERROR] Error: {str(e)}")
                 
             input("\nPress Enter to continue...")
     
@@ -201,9 +233,14 @@ class PhoenixCLI:
         print("\n🔧 Configuration Setup")
         print("-" * 30)
         
+        # Birdeye API Key
+        current_birdeye = "Set" if self.config.get("birdeye_api_key") else "Not set"
+        print(f"\nBirdeye API Key (for Telegram): {current_birdeye}")
+        birdeye_key = input("Enter new Birdeye API key (or press Enter to skip): ").strip()
+        
         # Cielo Finance API Key
         current_cielo = "Set" if self.config.get("cielo_finance_api_key") else "Not set"
-        print(f"\nCielo Finance API Key: {current_cielo}")
+        print(f"\nCielo Finance API Key (for Wallets): {current_cielo}")
         cielo_key = input("Enter new Cielo Finance API key (or press Enter to skip): ").strip()
         
         # Telegram API credentials
@@ -216,24 +253,27 @@ class PhoenixCLI:
         tg_hash = input("Enter Telegram API Hash (or press Enter to skip): ").strip()
         
         # Apply changes
+        if birdeye_key:
+            self.config["birdeye_api_key"] = birdeye_key
+            print("[SUCCESS] Birdeye API key updated")
+        
         if cielo_key:
             self.config["cielo_finance_api_key"] = cielo_key
-            self.config["api_provider"] = "cielo_finance"
-            print("✅ Cielo Finance API key updated")
+            print("[SUCCESS] Cielo Finance API key updated")
         
         if tg_id:
             self.config["telegram_api_id"] = tg_id
-            print("✅ Telegram API ID updated")
+            print("[SUCCESS] Telegram API ID updated")
         
         if tg_hash:
             self.config["telegram_api_hash"] = tg_hash
-            print("✅ Telegram API Hash updated")
+            print("[SUCCESS] Telegram API Hash updated")
         
-        if cielo_key or tg_id or tg_hash:
+        if birdeye_key or cielo_key or tg_id or tg_hash:
             save_config(self.config)
-            print(f"\n✅ Configuration saved to {CONFIG_FILE}")
+            print(f"\n[SUCCESS] Configuration saved to {CONFIG_FILE}")
         else:
-            print("\nℹ️ No changes made")
+            print("\n[INFO] No changes made")
     
     def _interactive_add_source(self) -> None:
         """Interactive source addition."""
@@ -256,7 +296,7 @@ class PhoenixCLI:
         elif choice == "0":
             return
         else:
-            print("❌ Invalid choice")
+            print("[ERROR] Invalid choice")
     
     def _interactive_telegram_analysis(self) -> None:
         """Interactive Telegram analysis."""
@@ -265,7 +305,8 @@ class PhoenixCLI:
         
         channels = self.config["sources"]["telegram_groups"]
         if not channels:
-            print("❌ No Telegram channels configured. Add some first!")
+            print("[ERROR] No Telegram channels configured.")
+            print("Create a 'channels.txt' file with one channel per line, or use option 4 to add sources.")
             return
         
         print(f"Configured channels: {', '.join(channels)}")
@@ -295,7 +336,8 @@ class PhoenixCLI:
         
         wallets = self.config["sources"]["wallets"]
         if not wallets:
-            print("❌ No wallets configured. Add some first!")
+            print("[ERROR] No wallets configured.")
+            print("Create a 'wallets.txt' file with one wallet address per line, or use option 4 to add sources.")
             return
         
         print(f"Configured wallets: {len(wallets)} total")
@@ -331,7 +373,8 @@ class PhoenixCLI:
         wallets = self.config["sources"]["wallets"]
         
         if not telegram_groups and not wallets:
-            print("❌ No sources configured. Add some first!")
+            print("[ERROR] No sources configured.")
+            print("Create 'channels.txt' and/or 'wallets.txt' files, or use option 4 to add sources.")
             return
         
         print(f"Sources: {len(telegram_groups)} Telegram, {len(wallets)} Wallets")
@@ -379,6 +422,21 @@ class PhoenixCLI:
                 print(f"  {i}. {wallet[:8]}...{wallet[-8:]}")
         else:
             print("  None configured")
+        
+        # Show source files status
+        print(f"\n📄 Source Files:")
+        channels_file = "channels.txt"
+        wallets_file = "wallets.txt"
+        
+        if os.path.exists(channels_file):
+            print(f"  ✓ {channels_file} found")
+        else:
+            print(f"  ✗ {channels_file} not found")
+        
+        if os.path.exists(wallets_file):
+            print(f"  ✓ {wallets_file} found")
+        else:
+            print(f"  ✗ {wallets_file} not found")
     
     def _show_help_examples(self) -> None:
         """Show help and examples."""
@@ -410,8 +468,9 @@ class PhoenixCLI:
         """Run the CLI application."""
         args = self.parser.parse_args()
         
+        # If no command provided, show numbered menu
         if not args.command:
-            self.parser.print_help()
+            self._handle_numbered_menu()
             return
         
         # Execute the appropriate command
@@ -433,17 +492,21 @@ class PhoenixCLI:
         if args.check:
             # Display current configuration
             logger.info("Current Configuration:")
-            logger.info(f"- Cielo Finance API Key: {'✓ Set' if self.config.get('cielo_finance_api_key') else '✗ Not set'}")
-            logger.info(f"- Telegram API ID: {'✓ Set' if self.config.get('telegram_api_id') else '✗ Not set'}")
-            logger.info(f"- Telegram API Hash: {'✓ Set' if self.config.get('telegram_api_hash') else '✗ Not set'}")
+            logger.info(f"- Birdeye API Key: {'[SET]' if self.config.get('birdeye_api_key') else '[NOT SET]'}")
+            logger.info(f"- Cielo Finance API Key: {'[SET]' if self.config.get('cielo_finance_api_key') else '[NOT SET]'}")
+            logger.info(f"- Telegram API ID: {'[SET]' if self.config.get('telegram_api_id') else '[NOT SET]'}")
+            logger.info(f"- Telegram API Hash: {'[SET]' if self.config.get('telegram_api_hash') else '[NOT SET]'}")
             logger.info(f"- Telegram Groups: {len(self.config['sources']['telegram_groups'])} configured")
             logger.info(f"- Wallets: {len(self.config['sources']['wallets'])} configured")
-            logger.info(f"- API Provider: {self.config.get('api_provider', 'cielo_finance')}")
+            logger.info(f"- API Provider: {self.config.get('api_provider', 'mixed')}")
             return
+        
+        if args.birdeye_api_key:
+            self.config["birdeye_api_key"] = args.birdeye_api_key
+            logger.info("Birdeye API key configured.")
         
         if args.cielo_api_key:
             self.config["cielo_finance_api_key"] = args.cielo_api_key
-            self.config["api_provider"] = "cielo_finance"
             logger.info("Cielo Finance API key configured.")
         
         if args.telegram_api_id:
@@ -467,28 +530,51 @@ class PhoenixCLI:
                 return
             
             try:
-                from cielo_finance_api import CieloFinanceAPI
+                from cielo_api import CieloFinanceAPI
                 
                 cielo_api = CieloFinanceAPI(self.config["cielo_finance_api_key"])
                 health_check = cielo_api.health_check()
                 
                 if health_check.get("success", True):
-                    logger.info("✓ Cielo Finance API connection successful")
+                    logger.info("[SUCCESS] Cielo Finance API connection successful")
                     
                     # Test API usage endpoint
                     try:
                         usage = cielo_api.get_api_usage()
                         if usage.get("success"):
-                            logger.info("✓ API usage data retrieved successfully")
+                            logger.info("[SUCCESS] API usage data retrieved successfully")
                         else:
-                            logger.warning("⚠ API usage data not available")
+                            logger.warning("[WARNING] API usage data not available")
                     except Exception as e:
-                        logger.warning(f"⚠ API usage check failed: {str(e)}")
+                        logger.warning(f"[WARNING] API usage check failed: {str(e)}")
                 else:
-                    logger.error(f"✗ Cielo Finance API connection failed: {health_check.get('error', 'Unknown error')}")
+                    logger.error(f"[ERROR] Cielo Finance API connection failed: {health_check.get('error', 'Unknown error')}")
             
             except Exception as e:
-                logger.error(f"✗ Cielo Finance API test failed: {str(e)}")
+                logger.error(f"[ERROR] Cielo Finance API test failed: {str(e)}")
+        
+        # Test Birdeye API
+        if args.api in ["birdeye", "all"]:
+            logger.info("Testing Birdeye API connectivity...")
+            
+            if not self.config.get("birdeye_api_key"):
+                logger.error("Birdeye API key not configured. Run 'phoenix configure --birdeye-api-key YOUR_KEY'")
+                return
+            
+            try:
+                from birdeye_api import BirdeyeAPI
+                
+                birdeye_api = BirdeyeAPI(self.config["birdeye_api_key"])
+                # Simple test - try to get token info for a known token
+                test_result = birdeye_api.get_token_info("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v")  # USDC
+                
+                if test_result.get("success"):
+                    logger.info("[SUCCESS] Birdeye API connection successful")
+                else:
+                    logger.error(f"[ERROR] Birdeye API connection failed: {test_result.get('error', 'Unknown error')}")
+            
+            except Exception as e:
+                logger.error(f"[ERROR] Birdeye API test failed: {str(e)}")
         
         if args.api in ["telegram", "all"]:
             logger.info("Testing Telegram API connectivity...")
@@ -510,10 +596,10 @@ class PhoenixCLI:
                 async def test_telegram():
                     try:
                         await telegram_scraper.connect()
-                        logger.info("✓ Telegram API connection successful")
+                        logger.info("[SUCCESS] Telegram API connection successful")
                         return True
                     except Exception as e:
-                        logger.error(f"✗ Telegram API connection failed: {str(e)}")
+                        logger.error(f"[ERROR] Telegram API connection failed: {str(e)}")
                         return False
                     finally:
                         await telegram_scraper.disconnect()
@@ -521,13 +607,13 @@ class PhoenixCLI:
                 asyncio.run(test_telegram())
             
             except Exception as e:
-                logger.error(f"✗ Telegram API test failed: {str(e)}")
+                logger.error(f"[ERROR] Telegram API test failed: {str(e)}")
     
     def _handle_telegram_analysis(self, args: argparse.Namespace) -> None:
         """Handle the telegram analysis command."""
         import asyncio
         from telegram_module import TelegramScraper
-        from cielo_finance_api import CieloFinanceAPI
+        from birdeye_api import BirdeyeAPI  # Use Birdeye for Telegram analysis
         
         channels = args.channels or self.config["sources"]["telegram_groups"]
         if not channels:
@@ -535,8 +621,8 @@ class PhoenixCLI:
             return
         
         # Check if we have the necessary API keys
-        if not self.config.get("cielo_finance_api_key"):
-            logger.error("Cielo Finance API key not configured. Run 'phoenix configure --cielo-api-key YOUR_KEY'")
+        if not self.config.get("birdeye_api_key"):
+            logger.error("Birdeye API key not configured. Run 'phoenix configure --birdeye-api-key YOUR_KEY'")
             return
             
         if not self.config.get("telegram_api_id") or not self.config.get("telegram_api_hash"):
@@ -546,12 +632,12 @@ class PhoenixCLI:
         # Ensure output directory exists and get full path
         output_file = ensure_output_dir(args.output)
         
-        logger.info(f"Analyzing {len(channels)} Telegram channels for the past {args.days} days using Cielo Finance API.")
+        logger.info(f"Analyzing {len(channels)} Telegram channels for the past {args.days} days using Birdeye API.")
         logger.info(f"Results will be saved to {output_file}")
         
         # Initialize API clients
         try:
-            cielo_api = CieloFinanceAPI(self.config["cielo_finance_api_key"])
+            birdeye_api = BirdeyeAPI(self.config["birdeye_api_key"])  # Use Birdeye for Telegram
             telegram_scraper = TelegramScraper(
                 self.config["telegram_api_id"],
                 self.config["telegram_api_hash"],
@@ -579,7 +665,7 @@ class PhoenixCLI:
                         analysis = await telegram_scraper.scrape_spydefi(
                             spydefi_channel,
                             args.days,
-                            cielo_api  # Using Cielo Finance API instead of Birdeye
+                            birdeye_api  # Using Birdeye API for token analysis
                         )
                         await telegram_scraper.export_spydefi_analysis(analysis, output_file)
                         return analysis
@@ -605,7 +691,7 @@ class PhoenixCLI:
                             analysis = await telegram_scraper.analyze_channel(
                                 channel,
                                 args.days,
-                                cielo_api  # Using Cielo Finance API instead of Birdeye
+                                birdeye_api  # Using Birdeye API for token analysis
                             )
                             
                             # Customize output file for each channel
@@ -646,7 +732,7 @@ class PhoenixCLI:
     def _handle_wallet_analysis(self, args: argparse.Namespace) -> None:
         """Handle the wallet analysis command."""
         from wallet_module import WalletAnalyzer
-        from cielo_finance_api import CieloFinanceAPI
+        from cielo_api import CieloFinanceAPI  # Use Cielo for wallet analysis
         
         wallets = args.wallets or self.config["sources"]["wallets"]
         if not wallets:
@@ -668,7 +754,7 @@ class PhoenixCLI:
         # Initialize API client and wallet analyzer
         try:
             cielo_api = CieloFinanceAPI(self.config["cielo_finance_api_key"])
-            wallet_analyzer = WalletAnalyzer(cielo_api)  # Using Cielo Finance API instead of Birdeye
+            wallet_analyzer = WalletAnalyzer(cielo_api)  # Using Cielo Finance API for wallet analysis
         except Exception as e:
             logger.error(f"Failed to initialize Cielo Finance API: {str(e)}")
             logger.error("Please check your API key and network connection.")
@@ -754,156 +840,8 @@ class PhoenixCLI:
     
     def _handle_combined_analysis(self, args: argparse.Namespace) -> None:
         """Handle the combined analysis command."""
-        import asyncio
-        from telegram_module import TelegramScraper
-        from wallet_module import WalletAnalyzer
-        from cielo_finance_api import CieloFinanceAPI
-        from export_utils import export_to_excel
-        
-        # Check if we have the necessary configurations
-        if not self.config.get("cielo_finance_api_key"):
-            logger.error("Cielo Finance API key not configured. Run 'phoenix configure --cielo-api-key YOUR_KEY'")
-            return
-            
-        if not self.config.get("telegram_api_id") or not self.config.get("telegram_api_hash"):
-            logger.error("Telegram API credentials not configured. Run 'phoenix configure --telegram-api-id ID --telegram-api-hash HASH'")
-            return
-        
-        # Ensure output directory exists and get full path
-        output_file = ensure_output_dir(args.output)
-        
-        telegram_groups = self.config["sources"]["telegram_groups"]
-        wallets = self.config["sources"]["wallets"]
-        
-        if not telegram_groups:
-            logger.warning("No Telegram groups configured. Add some with 'phoenix add-source telegram CHANNEL_ID'")
-        
-        if not wallets:
-            logger.warning("No wallets configured. Add some with 'phoenix add-source wallet ADDRESS'")
-        
-        if not telegram_groups and not wallets:
-            logger.error("No sources configured. Cannot perform analysis.")
-            return
-        
-        logger.info(f"Starting combined analysis using Cielo Finance API. Results will be saved to {output_file}")
-        
-        # Initialize API clients
-        try:
-            cielo_api = CieloFinanceAPI(self.config["cielo_finance_api_key"])
-        except Exception as e:
-            logger.error(f"Failed to initialize Cielo Finance API: {str(e)}")
-            return
-        
-        # Run Telegram analysis
-        telegram_analyses = {"ranked_kols": []}
-        if telegram_groups:
-            logger.info(f"Analyzing {len(telegram_groups)} Telegram channels for the past {args.telegram_days} days.")
-            
-            try:
-                telegram_scraper = TelegramScraper(
-                    self.config["telegram_api_id"],
-                    self.config["telegram_api_hash"],
-                    self.config.get("telegram_session", "phoenix")
-                )
-            except Exception as e:
-                logger.error(f"Failed to initialize Telegram scraper: {str(e)}")
-                return
-            
-            # Handle special case for Spydefi
-            if any(ch.lower() == "spydefi" for ch in telegram_groups):
-                logger.info("Spydefi channel detected. Analyzing KOLs from Spydefi.")
-                
-                try:
-                    # Find the Spydefi channel ID
-                    spydefi_channel = next((ch for ch in telegram_groups if ch.lower() == "spydefi"), None)
-                    
-                    # Run the analysis asynchronously
-                    async def run_spydefi_analysis():
-                        try:
-                            await telegram_scraper.connect()
-                            return await telegram_scraper.scrape_spydefi(
-                                spydefi_channel,
-                                args.telegram_days,
-                                cielo_api  # Using Cielo Finance API
-                            )
-                        finally:
-                            await telegram_scraper.disconnect()
-                    
-                    # Run the async function
-                    telegram_analyses = asyncio.run(run_spydefi_analysis())
-                    logger.info(f"Spydefi analysis completed.")
-                    
-                except Exception as e:
-                    logger.error(f"Error analyzing Spydefi: {str(e)}", exc_info=True)
-            else:
-                # Regular channel analysis
-                channel_analyses = []
-                for channel in telegram_groups:
-                    try:
-                        # Run the analysis asynchronously
-                        async def run_channel_analysis():
-                            try:
-                                await telegram_scraper.connect()
-                                return await telegram_scraper.analyze_channel(
-                                    channel,
-                                    args.telegram_days,
-                                    cielo_api  # Using Cielo Finance API
-                                )
-                            finally:
-                                await telegram_scraper.disconnect()
-                        
-                        # Run the async function
-                        analysis = asyncio.run(run_channel_analysis())
-                        channel_analyses.append(analysis)
-                        logger.info(f"Analysis for channel {channel} completed")
-                        
-                    except Exception as e:
-                        logger.error(f"Error analyzing channel {channel}: {str(e)}", exc_info=True)
-                
-                telegram_analyses = {
-                    "ranked_kols": channel_analyses
-                }
-            
-            logger.info(f"Telegram analysis completed.")
-        
-        # Run wallet analysis
-        wallet_analyses = {}
-        if wallets:
-            logger.info(f"Analyzing {len(wallets)} wallets for the past {args.wallet_days} days.")
-            
-            try:
-                wallet_analyzer = WalletAnalyzer(cielo_api)  # Using Cielo Finance API
-            except Exception as e:
-                logger.error(f"Failed to initialize wallet analyzer: {str(e)}")
-                return
-            
-            try:
-                wallet_analyses = wallet_analyzer.batch_analyze_wallets(
-                    wallets,
-                    args.wallet_days,
-                    args.min_winrate
-                )
-                
-                if wallet_analyses.get("success"):
-                    logger.info(f"Wallet analysis completed.")
-                    logger.info(f"- Gem Finders: {len(wallet_analyses['gem_finders'])}")
-                    logger.info(f"- Consistent: {len(wallet_analyses['consistent'])}")
-                    logger.info(f"- Flippers: {len(wallet_analyses['flippers'])}")
-                    logger.info(f"- Failed: {wallet_analyses.get('failed_wallets', 0)}")
-                else:
-                    logger.error(f"Wallet analysis failed: {wallet_analyses.get('error', 'Unknown error')}")
-                    wallet_analyses = {}  # Set to empty dict to avoid export issues
-                
-            except Exception as e:
-                logger.error(f"Error during wallet analysis: {str(e)}", exc_info=True)
-                wallet_analyses = {}
-        
-        # Export combined results to Excel
-        try:
-            export_to_excel(telegram_analyses, wallet_analyses, output_file)
-            logger.info(f"Combined analysis exported to Excel: {output_file}")
-        except Exception as e:
-            logger.error(f"Error exporting to Excel: {str(e)}", exc_info=True)
+        print("🚧 Combined analysis functionality coming soon with Cielo Finance API integration!")
+        print("This feature is being updated to work with the new API.")
 
 def main():
     """Main entry point for the Phoenix CLI."""

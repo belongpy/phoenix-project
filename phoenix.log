@@ -641,3 +641,125 @@ TypeError: BirdeyeAPI.__init__() got an unexpected keyword argument 'birdeye_api
 2025-05-21 18:13:38,391 - phoenix.wallet - WARNING - No transactions found for wallet 3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B
 2025-05-21 18:13:38,391 - phoenix.wallet - INFO - Analyzing wallet 7Hy2bJvqPRXGVybQ18zLW2sc8E2DnorXqPrCxARAxWQC for the past 14 days
 2025-05-21 18:13:38,485 - phoenix.birdeye - WARNING - Rate limit hit, waiting longer...
+2025-05-21 18:43:27,956 - phoenix - INFO - Testing Cielo Finance API connectivity...
+2025-05-21 18:43:27,956 - phoenix - ERROR - Cielo Finance API key not configured. Run 'phoenix configure --cielo-api-key YOUR_KEY'
+2025-05-21 18:44:40,275 - phoenix - INFO - Testing Cielo Finance API connectivity...
+2025-05-21 18:44:40,293 - phoenix - INFO - Testing Telegram API connectivity...
+2025-05-21 18:44:40,356 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-21 18:44:40,356 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-21 18:44:40,678 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-21 18:44:40,679 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-21 18:44:40,867 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-21 18:44:42,038 - phoenix.telegram - INFO - Connected to Telegram
+2025-05-21 18:44:42,056 - phoenix.telegram - INFO - Disconnecting from Telegram...
+2025-05-21 18:44:42,057 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-21 18:44:42,057 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-21 18:44:42,069 - phoenix.telegram - INFO - Disconnected from Telegram
+2025-05-21 18:52:42,150 - phoenix - INFO - Testing Cielo Finance API connectivity...
+2025-05-21 18:52:42,151 - phoenix - ERROR - [ERROR] Cielo Finance API test failed: No module named 'cielo_api'
+2025-05-21 18:52:42,151 - phoenix - INFO - Testing Telegram API connectivity...
+2025-05-21 18:52:42,218 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-21 18:52:42,219 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-21 18:52:42,600 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-21 18:52:42,601 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-21 18:52:42,755 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-21 18:52:43,675 - phoenix.telegram - INFO - Connected to Telegram
+2025-05-21 18:52:43,676 - phoenix - INFO - [SUCCESS] Telegram API connection successful
+2025-05-21 18:52:43,676 - phoenix.telegram - INFO - Disconnecting from Telegram...
+2025-05-21 18:52:43,676 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-21 18:52:43,677 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-21 18:52:43,696 - phoenix.telegram - INFO - Disconnected from Telegram
+2025-05-21 18:54:52,894 - phoenix - INFO - Testing Cielo Finance API connectivity...
+2025-05-21 18:54:53,242 - phoenix - INFO - [SUCCESS] Cielo Finance API connection successful
+2025-05-21 18:54:53,243 - phoenix - INFO - [SUCCESS] API usage data retrieved successfully
+2025-05-21 18:54:53,243 - phoenix - INFO - Testing Telegram API connectivity...
+2025-05-21 18:54:53,309 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-21 18:54:53,311 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-21 18:54:53,625 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-21 18:54:53,626 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-21 18:54:53,786 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-21 18:54:54,784 - phoenix.telegram - INFO - Connected to Telegram
+2025-05-21 18:54:54,784 - phoenix - INFO - [SUCCESS] Telegram API connection successful
+2025-05-21 18:54:54,784 - phoenix.telegram - INFO - Disconnecting from Telegram...
+2025-05-21 18:54:54,784 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-21 18:54:54,784 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-21 18:54:54,804 - phoenix.telegram - INFO - Disconnected from Telegram
+2025-05-21 18:55:25,329 - phoenix - INFO - Current Configuration:
+2025-05-21 18:55:25,330 - phoenix - INFO - - Cielo Finance API Key: [SET]
+2025-05-21 18:55:25,330 - phoenix - INFO - - Telegram API ID: [SET]
+2025-05-21 18:55:25,331 - phoenix - INFO - - Telegram API Hash: [SET]
+2025-05-21 18:55:25,331 - phoenix - INFO - - Telegram Groups: 0 configured
+2025-05-21 18:55:25,331 - phoenix - INFO - - Wallets: 0 configured
+2025-05-21 18:55:25,332 - phoenix - INFO - - API Provider: cielo_finance
+2025-05-21 18:58:51,722 - phoenix - INFO - Loaded 1 Telegram channels from channels.txt
+2025-05-21 18:58:51,723 - phoenix - INFO - Loaded 104 wallets from wallets.txt
+2025-05-21 18:58:56,094 - phoenix - INFO - Current Configuration:
+2025-05-21 18:58:56,094 - phoenix - INFO - - Cielo Finance API Key: [SET]
+2025-05-21 18:58:56,095 - phoenix - INFO - - Telegram API ID: [SET]
+2025-05-21 18:58:56,095 - phoenix - INFO - - Telegram API Hash: [SET]
+2025-05-21 18:58:56,095 - phoenix - INFO - - Telegram Groups: 1 configured
+2025-05-21 18:58:56,095 - phoenix - INFO - - Wallets: 104 configured
+2025-05-21 18:58:56,095 - phoenix - INFO - - API Provider: cielo_finance
+2025-05-21 19:04:19,445 - phoenix - INFO - Loaded 1 Telegram channels from channels.txt
+2025-05-21 19:04:19,446 - phoenix - INFO - Loaded 104 wallets from wallets.txt
+2025-05-21 19:04:25,417 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-21 19:04:25,417 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-21 19:04:26,028 - phoenix - INFO - Analyzing 1 Telegram channels for the past 7 days using Birdeye API.
+2025-05-21 19:04:26,029 - phoenix - INFO - Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\telegram_analysis.csv
+2025-05-21 19:04:26,029 - phoenix - INFO - Spydefi channel detected. Analyzing KOLs from Spydefi.
+2025-05-21 19:04:26,030 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-21 19:04:26,031 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-21 19:04:26,254 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-21 19:04:27,463 - phoenix.telegram - INFO - Connected to Telegram
+2025-05-21 19:04:27,463 - phoenix.telegram - INFO - Disconnecting from Telegram...
+2025-05-21 19:04:27,463 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-21 19:04:27,464 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-21 19:04:27,479 - phoenix.telegram - INFO - Disconnected from Telegram
+2025-05-21 19:04:27,480 - phoenix - ERROR - Error analyzing Spydefi: 'TelegramScraper' object has no attribute 'scrape_spydefi'
+Traceback (most recent call last):
+  File "C:\Users\Administrator\Desktop\phoenix-project\phoenix_cli.py", line 676, in _handle_telegram_analysis
+    telegram_analyses = asyncio.run(run_spydefi_analysis())
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Desktop\phoenix-project\phoenix_cli.py", line 665, in run_spydefi_analysis
+    analysis = await telegram_scraper.scrape_spydefi(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'TelegramScraper' object has no attribute 'scrape_spydefi'
+2025-05-21 19:04:27,483 - phoenix - INFO - Telegram analysis completed. Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\telegram_analysis.csv and related files.
+2025-05-21 19:04:27,759 - phoenix.export - INFO - Creating consolidated Excel export: C:\Users\Administrator\Desktop\phoenix-project\outputs\telegram_analysis.xlsx
+2025-05-21 19:04:27,818 - phoenix.export - INFO - Successfully created Excel workbook: C:\Users\Administrator\Desktop\phoenix-project\outputs\telegram_analysis.xlsx
+2025-05-21 19:04:27,818 - phoenix - INFO - Excel export completed: C:\Users\Administrator\Desktop\phoenix-project\outputs\telegram_analysis.xlsx
+2025-05-21 19:10:40,880 - phoenix - INFO - Loaded 1 Telegram channels from channels.txt
+2025-05-21 19:10:40,881 - phoenix - INFO - Loaded 104 wallets from wallets.txt
+2025-05-21 19:10:47,541 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-21 19:10:47,541 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-21 19:10:48,156 - phoenix - INFO - Analyzing 1 Telegram channels for the past 7 days using Birdeye API.
+2025-05-21 19:10:48,157 - phoenix - INFO - Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\telegram_analysis.csv
+2025-05-21 19:10:48,157 - phoenix - INFO - Spydefi channel detected. Analyzing KOLs from Spydefi.
+2025-05-21 19:10:48,158 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-21 19:10:48,159 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-21 19:10:48,318 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-21 19:10:49,499 - phoenix.telegram - INFO - Connected to Telegram
+2025-05-21 19:10:49,500 - phoenix.telegram - INFO - Scraping Spydefi channel spydefi for KOL mentions
+2025-05-21 19:10:49,500 - phoenix.telegram - INFO - SpyDefi channel detected, limiting to 7 days and 1000 messages
+2025-05-21 19:10:49,500 - phoenix.telegram - INFO - Scraping 7 days of messages from spydefi
+2025-05-21 19:10:50,187 - phoenix.telegram - ERROR - Error retrieving messages from SpyDefi: can't compare offset-naive and offset-aware datetimes
+2025-05-21 19:10:50,187 - phoenix.telegram - INFO - Found 0 potential KOL channels/usernames
+2025-05-21 19:10:50,188 - phoenix.telegram - WARNING - No KOL analyses to export
+2025-05-21 19:10:50,188 - phoenix.telegram - INFO - Disconnecting from Telegram...
+2025-05-21 19:10:50,189 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-21 19:10:50,189 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-21 19:10:50,204 - phoenix.telegram - INFO - Disconnected from Telegram
+2025-05-21 19:10:50,205 - phoenix - INFO - Spydefi analysis completed. Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\telegram_analysis.csv
+2025-05-21 19:10:50,206 - phoenix - INFO - Telegram analysis completed. Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\telegram_analysis.csv and related files.
+2025-05-21 19:10:50,475 - phoenix.export - INFO - Creating consolidated Excel export: C:\Users\Administrator\Desktop\phoenix-project\outputs\telegram_analysis.xlsx
+2025-05-21 19:10:50,510 - phoenix.export - INFO - Successfully created Excel workbook: C:\Users\Administrator\Desktop\phoenix-project\outputs\telegram_analysis.xlsx
+2025-05-21 19:10:50,510 - phoenix - INFO - Excel export completed: C:\Users\Administrator\Desktop\phoenix-project\outputs\telegram_analysis.xlsx
