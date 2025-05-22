@@ -763,3 +763,701 @@ AttributeError: 'TelegramScraper' object has no attribute 'scrape_spydefi'
 2025-05-21 19:10:50,475 - phoenix.export - INFO - Creating consolidated Excel export: C:\Users\Administrator\Desktop\phoenix-project\outputs\telegram_analysis.xlsx
 2025-05-21 19:10:50,510 - phoenix.export - INFO - Successfully created Excel workbook: C:\Users\Administrator\Desktop\phoenix-project\outputs\telegram_analysis.xlsx
 2025-05-21 19:10:50,510 - phoenix - INFO - Excel export completed: C:\Users\Administrator\Desktop\phoenix-project\outputs\telegram_analysis.xlsx
+2025-05-21 19:29:44,807 - phoenix - INFO - Loaded 1 Telegram channels from channels.txt
+2025-05-21 19:29:44,808 - phoenix - INFO - Loaded 104 wallets from wallets.txt
+2025-05-21 19:29:52,331 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-21 19:29:52,332 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-21 19:29:53,190 - phoenix - INFO - Analyzing 1 Telegram channels for the past 7 days using Birdeye API.
+2025-05-21 19:29:53,191 - phoenix - INFO - Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\telegram_analysis.csv
+2025-05-21 19:29:53,191 - phoenix - INFO - Spydefi channel detected. Analyzing KOLs from Spydefi.
+2025-05-21 19:29:53,193 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-21 19:29:53,195 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-21 19:29:53,346 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-21 19:29:54,349 - phoenix.telegram - INFO - Connected to Telegram
+2025-05-21 19:29:54,350 - phoenix.telegram - INFO - Scraping Spydefi channel spydefi for KOL mentions
+2025-05-21 19:29:54,350 - phoenix.telegram - INFO - SpyDefi channel detected, limiting to 7 days and 1000 messages
+2025-05-21 19:29:54,350 - phoenix.telegram - INFO - Scraping 7 days of messages from spydefi
+2025-05-21 19:29:54,862 - phoenix.telegram - ERROR - Error retrieving messages from SpyDefi: can't compare offset-naive and offset-aware datetimes
+2025-05-21 19:29:54,862 - phoenix.telegram - INFO - Found 0 potential KOL channels/usernames
+2025-05-21 19:29:54,863 - phoenix.telegram - WARNING - No KOL analyses to export
+2025-05-21 19:29:54,863 - phoenix.telegram - INFO - Disconnecting from Telegram...
+2025-05-21 19:29:54,864 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-21 19:29:54,864 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-21 19:29:54,879 - phoenix.telegram - INFO - Disconnected from Telegram
+2025-05-21 19:29:54,880 - phoenix - INFO - Spydefi analysis completed. Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\telegram_analysis.csv
+2025-05-21 19:29:54,880 - phoenix - INFO - Telegram analysis completed. Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\telegram_analysis.csv and related files.
+2025-05-21 19:29:55,151 - phoenix.export - INFO - Creating consolidated Excel export: C:\Users\Administrator\Desktop\phoenix-project\outputs\telegram_analysis.xlsx
+2025-05-21 19:29:55,187 - phoenix.export - INFO - Successfully created Excel workbook: C:\Users\Administrator\Desktop\phoenix-project\outputs\telegram_analysis.xlsx
+2025-05-21 19:29:55,188 - phoenix - INFO - Excel export completed: C:\Users\Administrator\Desktop\phoenix-project\outputs\telegram_analysis.xlsx
+2025-05-21 19:37:19,991 - phoenix - INFO - Loaded 1 Telegram channels from channels.txt
+2025-05-21 19:37:19,992 - phoenix - INFO - Loaded 104 wallets from wallets.txt
+2025-05-21 19:37:26,187 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-21 19:37:26,188 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-21 19:37:26,801 - phoenix - INFO - Analyzing 1 Telegram channels for the past 7 days using Birdeye API.
+2025-05-21 19:37:26,801 - phoenix - INFO - Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\telegram_analysis.csv
+2025-05-21 19:37:26,802 - phoenix - INFO - Spydefi channel detected. Analyzing KOLs from Spydefi.
+2025-05-21 19:37:26,802 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-21 19:37:26,804 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-21 19:37:26,947 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-21 19:37:28,026 - phoenix.telegram - INFO - Connected to Telegram
+2025-05-21 19:37:28,026 - phoenix.telegram - INFO - Scraping Spydefi channel spydefi for KOL mentions
+2025-05-21 19:37:28,026 - phoenix.telegram - INFO - SpyDefi channel detected, limiting to 7 days and 1000 messages
+2025-05-21 19:37:28,026 - phoenix.telegram - INFO - Scraping 7 days of messages from spydefi
+2025-05-21 19:37:28,593 - phoenix.telegram - INFO - Retrieved 100 total messages from SpyDefi, found 98 relevant messages in this batch
+2025-05-21 19:37:28,964 - phoenix.telegram - INFO - Retrieved 200 total messages from SpyDefi, found 100 relevant messages in this batch
+2025-05-21 19:37:29,337 - phoenix.telegram - INFO - Retrieved 300 total messages from SpyDefi, found 99 relevant messages in this batch
+2025-05-21 19:37:29,690 - phoenix.telegram - INFO - Retrieved 400 total messages from SpyDefi, found 100 relevant messages in this batch
+2025-05-21 19:37:30,082 - phoenix.telegram - INFO - Retrieved 500 total messages from SpyDefi, found 98 relevant messages in this batch
+2025-05-21 19:37:30,476 - phoenix.telegram - INFO - Retrieved 600 total messages from SpyDefi, found 100 relevant messages in this batch
+2025-05-21 19:37:30,885 - phoenix.telegram - INFO - Retrieved 700 total messages from SpyDefi, found 99 relevant messages in this batch
+2025-05-21 19:37:31,265 - phoenix.telegram - INFO - Retrieved 800 total messages from SpyDefi, found 99 relevant messages in this batch
+2025-05-21 19:37:31,617 - phoenix.telegram - INFO - Retrieved 900 total messages from SpyDefi, found 100 relevant messages in this batch
+2025-05-21 19:37:32,070 - phoenix.telegram - INFO - Retrieved 1000 total messages from SpyDefi, found 99 relevant messages in this batch
+2025-05-21 19:37:32,070 - phoenix.telegram - INFO - Finished retrieving messages from SpyDefi. Found 992 relevant messages.
+2025-05-21 19:37:32,112 - phoenix.telegram - INFO - Found 247 potential KOL channels/usernames
+2025-05-21 19:37:32,112 - phoenix.telegram - INFO - Analyzing KOL: MarksGems
+2025-05-21 19:37:32,112 - phoenix.telegram - INFO - Analyzing channel MarksGems for the past 7 days
+2025-05-21 19:37:32,112 - phoenix.telegram - INFO - Scraping 7 days of messages from MarksGems
+2025-05-21 19:37:32,630 - phoenix.telegram - INFO - Retrieved 100 total messages from MarksGems, found 90 relevant messages in this batch
+2025-05-21 19:37:32,983 - phoenix.telegram - INFO - Retrieved 200 total messages from MarksGems, found 92 relevant messages in this batch
+2025-05-21 19:37:33,335 - phoenix.telegram - INFO - Retrieved 300 total messages from MarksGems, found 87 relevant messages in this batch
+2025-05-21 19:37:33,720 - phoenix.telegram - INFO - Retrieved 400 total messages from MarksGems, found 83 relevant messages in this batch
+2025-05-21 19:37:34,138 - phoenix.telegram - INFO - Retrieved 500 total messages from MarksGems, found 87 relevant messages in this batch
+2025-05-21 19:37:34,707 - phoenix.telegram - INFO - Retrieved 600 total messages from MarksGems, found 93 relevant messages in this batch
+2025-05-21 19:37:35,080 - phoenix.telegram - INFO - Retrieved 700 total messages from MarksGems, found 83 relevant messages in this batch
+2025-05-21 19:37:35,576 - phoenix.telegram - INFO - Retrieved 800 total messages from MarksGems, found 85 relevant messages in this batch
+2025-05-21 19:37:36,013 - phoenix.telegram - INFO - Retrieved 900 total messages from MarksGems, found 87 relevant messages in this batch
+2025-05-21 19:37:36,476 - phoenix.telegram - INFO - Finished retrieving messages from MarksGems. Found 858 relevant messages.
+2025-05-21 19:37:37,538 - phoenix.telegram - ERROR - Error identifying platform for AVGuygVeBmbYiJ47V7tgBNLSukNqW7pWZYJsKUNWhHpc: 'str' object has no attribute 'get'
+2025-05-21 19:37:38,532 - phoenix.telegram - ERROR - Error identifying platform for 5TScvcijRc159yFC6pFEgjSUkCvC2JyBM8aYMK15pump: 'str' object has no attribute 'get'
+2025-05-21 19:37:39,562 - phoenix.telegram - ERROR - Error identifying platform for 7zk6zXHFEgRAo3LkyxWUsMC8mRbRw5V8jxRAGyxXpump: 'str' object has no attribute 'get'
+2025-05-21 19:37:40,573 - phoenix.telegram - ERROR - Error identifying platform for 3pNdjzHzJZi5jsDm8z6sJE5AXUG8KigKF66GqFHmpump: 'str' object has no attribute 'get'
+2025-05-21 19:37:41,598 - phoenix.telegram - ERROR - Error identifying platform for 7otocNzWQcRFdR3QkxALpJqP4oFjrbfr4Jh58jmtpump: 'str' object has no attribute 'get'
+2025-05-21 19:37:43,438 - phoenix.telegram - ERROR - Error identifying platform for YEEZYxfpUGiuyJby1vgSX932LrMztw8btwuHj9x2jnP: 'str' object has no attribute 'get'
+2025-05-21 19:37:44,413 - phoenix.telegram - ERROR - Error identifying platform for FnEFBNtGZ3d8BAR2bF8xup5heY3LZkYVrpGNeo2Kpump: 'str' object has no attribute 'get'
+2025-05-21 19:37:45,372 - phoenix.telegram - ERROR - Error identifying platform for GYJmc5QZ4NZx7qbLn1sH4YyQzjJsP4SiU7weNeNqpump: 'str' object has no attribute 'get'
+2025-05-21 19:37:46,358 - phoenix.telegram - ERROR - Error identifying platform for JBgxyKrPanHKo2w7yJiNrz1WmUh3aT5V3VyMGB4gpump: 'str' object has no attribute 'get'
+2025-05-21 19:37:47,387 - phoenix.telegram - ERROR - Error identifying platform for 2kgams8kaAsBUr4ntgR2E8vrtxXsDtNcK9FYjvjCbonk: 'str' object has no attribute 'get'
+2025-05-21 19:37:48,352 - phoenix.telegram - ERROR - Error identifying platform for HmVefZPcgJTQ2JpgojNeqifHXGmdP6JdUNY1CtSpump: 'str' object has no attribute 'get'
+2025-05-21 19:37:49,282 - phoenix.telegram - ERROR - Error identifying platform for 25zjt3iCf6YfiSdWoeqiSaxQnMU2o3gp5ZARLSB2pump: 'str' object has no attribute 'get'
+2025-05-21 19:37:50,295 - phoenix.telegram - ERROR - Error identifying platform for EK87DCrnXi1dgUrZxfdqmJKexeJTfRbkvkUwfRc3pump: 'str' object has no attribute 'get'
+2025-05-21 19:37:51,269 - phoenix.telegram - ERROR - Error identifying platform for m6bvtizoavwC3BuS4V5xgFWc5poqgjCmUWdwKL7pump: 'str' object has no attribute 'get'
+2025-05-21 19:37:54,993 - phoenix.telegram - ERROR - Error identifying platform for 3GkswkppQgD4ZZJjX4DCuoXxK3WZQWHnowowp1n7pump: 'str' object has no attribute 'get'
+2025-05-21 19:41:37,709 - phoenix - INFO - Loaded 1 Telegram channels from channels.txt
+2025-05-21 19:41:37,709 - phoenix - INFO - Loaded 104 wallets from wallets.txt
+2025-05-21 19:41:46,283 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-21 19:41:46,284 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-21 19:41:46,855 - phoenix - INFO - Analyzing 1 Telegram channels for the past 3 days using Birdeye API.
+2025-05-21 19:41:46,855 - phoenix - INFO - Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\telegram_analysis.csv
+2025-05-21 19:41:46,855 - phoenix - INFO - Spydefi channel detected. Analyzing KOLs from Spydefi.
+2025-05-21 19:41:46,856 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-21 19:41:46,857 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-21 19:41:47,059 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-21 19:41:48,408 - phoenix.telegram - INFO - Connected to Telegram
+2025-05-21 19:41:48,408 - phoenix.telegram - INFO - Scraping Spydefi channel spydefi for KOL mentions
+2025-05-21 19:41:48,408 - phoenix.telegram - INFO - SpyDefi channel detected, limiting to 3 days and 1000 messages
+2025-05-21 19:41:48,409 - phoenix.telegram - INFO - Scraping 3 days of messages from spydefi
+2025-05-21 19:41:49,023 - phoenix.telegram - INFO - Retrieved 100 total messages from SpyDefi, found 98 relevant messages in this batch
+2025-05-21 19:41:49,423 - phoenix.telegram - INFO - Retrieved 200 total messages from SpyDefi, found 100 relevant messages in this batch
+2025-05-21 19:41:49,921 - phoenix.telegram - INFO - Retrieved 300 total messages from SpyDefi, found 99 relevant messages in this batch
+2025-05-21 19:41:50,338 - phoenix.telegram - INFO - Retrieved 400 total messages from SpyDefi, found 100 relevant messages in this batch
+2025-05-21 19:41:50,853 - phoenix.telegram - INFO - Retrieved 500 total messages from SpyDefi, found 98 relevant messages in this batch
+2025-05-21 19:41:51,296 - phoenix.telegram - INFO - Retrieved 600 total messages from SpyDefi, found 100 relevant messages in this batch
+2025-05-21 19:41:51,854 - phoenix.telegram - INFO - Retrieved 700 total messages from SpyDefi, found 99 relevant messages in this batch
+2025-05-21 19:41:52,418 - phoenix.telegram - INFO - Retrieved 800 total messages from SpyDefi, found 99 relevant messages in this batch
+2025-05-21 19:41:52,898 - phoenix.telegram - INFO - Retrieved 900 total messages from SpyDefi, found 100 relevant messages in this batch
+2025-05-21 19:41:53,265 - phoenix.telegram - INFO - Retrieved 1000 total messages from SpyDefi, found 99 relevant messages in this batch
+2025-05-21 19:41:53,265 - phoenix.telegram - INFO - Finished retrieving messages from SpyDefi. Found 992 relevant messages.
+2025-05-21 19:41:53,302 - phoenix.telegram - INFO - Found 247 potential KOL channels/usernames
+2025-05-21 19:41:53,302 - phoenix.telegram - INFO - Analyzing KOL: MarksGems
+2025-05-21 19:41:53,302 - phoenix.telegram - INFO - Analyzing channel MarksGems for the past 3 days
+2025-05-21 19:41:53,302 - phoenix.telegram - INFO - Scraping 3 days of messages from MarksGems
+2025-05-21 19:41:53,947 - phoenix.telegram - INFO - Retrieved 100 total messages from MarksGems, found 90 relevant messages in this batch
+2025-05-21 19:41:54,365 - phoenix.telegram - INFO - Retrieved 200 total messages from MarksGems, found 92 relevant messages in this batch
+2025-05-21 19:41:54,715 - phoenix.telegram - INFO - Retrieved 300 total messages from MarksGems, found 87 relevant messages in this batch
+2025-05-21 19:41:55,098 - phoenix.telegram - INFO - Retrieved 400 total messages from MarksGems, found 83 relevant messages in this batch
+2025-05-21 19:41:55,508 - phoenix.telegram - INFO - Finished retrieving messages from MarksGems. Found 402 relevant messages.
+2025-05-21 19:42:14,667 - phoenix.birdeye - WARNING - No price history available for FbAVVRA3nNt942yWynQLTXpgqryDNRimSW4KBK38QVtg
+2025-05-21 19:42:14,990 - phoenix.birdeye - WARNING - No price history available for performance calculation: FbAVVRA3nNt942yWynQLTXpgqryDNRimSW4KBK38QVtg
+2025-05-21 19:42:48,708 - phoenix.birdeye - WARNING - No price history available for HU7cm1iwiDmAgPVF8e4Uqbhnz5fnZiQbJyXu6NwGM5g6
+2025-05-21 19:42:49,032 - phoenix.birdeye - WARNING - No price history available for performance calculation: HU7cm1iwiDmAgPVF8e4Uqbhnz5fnZiQbJyXu6NwGM5g6
+2025-05-21 19:42:49,772 - phoenix.birdeye - WARNING - No price history available for J9T2HnFGMzxTgVQsg44vffSephgisQov7kKv1aE3rsH8
+2025-05-21 19:42:50,088 - phoenix.birdeye - WARNING - No price history available for performance calculation: J9T2HnFGMzxTgVQsg44vffSephgisQov7kKv1aE3rsH8
+2025-05-21 19:42:52,784 - phoenix.birdeye - WARNING - Bad request for /defi/token_overview with params {'address': 'V8rG66mFfSGLjzRBnN1ZFv2FUiK6aMa2z16u9pump'}: {"success":false,"message":"address is invalid format"}
+2025-05-21 19:42:52,784 - phoenix.birdeye - INFO - Token V8rG66mFfSGLjzRBnN1ZFv2FUiK6aMa2z16u9pump appears to be a pump.fun token with limited data
+2025-05-21 19:42:52,911 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'V8rG66mFfSGLjzRBnN1ZFv2FUiK6aMa2z16u9pump', 'address_type': 'token', 'type': '15m', 'time_from': 1747838766, 'time_to': 1747881772}: {"success":false,"message":"address is invalid format"}
+2025-05-21 19:42:52,912 - phoenix.birdeye - WARNING - No price history available for V8rG66mFfSGLjzRBnN1ZFv2FUiK6aMa2z16u9pump
+2025-05-21 19:42:53,036 - phoenix.birdeye - WARNING - Bad request for /defi/price with params {'address': 'V8rG66mFfSGLjzRBnN1ZFv2FUiK6aMa2z16u9pump'}: {"success":false,"message":"address is invalid format"}
+2025-05-21 19:42:53,036 - phoenix.birdeye - WARNING - No price data available for V8rG66mFfSGLjzRBnN1ZFv2FUiK6aMa2z16u9pump
+2025-05-21 19:42:53,153 - phoenix.birdeye - WARNING - Bad request for /defi/token_overview with params {'address': 'V8rG66mFfSGLjzRBnN1ZFv2FUiK6aMa2z16u9pump'}: {"success":false,"message":"address is invalid format"}
+2025-05-21 19:42:53,153 - phoenix.birdeye - INFO - Token V8rG66mFfSGLjzRBnN1ZFv2FUiK6aMa2z16u9pump appears to be a pump.fun token with limited data
+2025-05-21 19:42:53,155 - phoenix.birdeye - WARNING - No price history available for performance calculation: V8rG66mFfSGLjzRBnN1ZFv2FUiK6aMa2z16u9pump
+2025-05-21 19:42:53,263 - phoenix.birdeye - WARNING - Bad request for /defi/token_overview with params {'address': 'V8rG66mFfSGLjzRBnN1ZFv2FUiK6aMa2z16u9pump'}: {"success":false,"message":"address is invalid format"}
+2025-05-21 19:42:53,264 - phoenix.birdeye - INFO - Token V8rG66mFfSGLjzRBnN1ZFv2FUiK6aMa2z16u9pump appears to be a pump.fun token with limited data
+2025-05-21 19:42:53,325 - phoenix.birdeye - WARNING - Bad request for /defi/txs/token with params {'address': 'V8rG66mFfSGLjzRBnN1ZFv2FUiK6aMa2z16u9pump', 'tx_type': 'swap', 'limit': 5}: {"success":false,"message":"address is invalid format"}
+2025-05-21 19:42:53,326 - phoenix.birdeye - WARNING - No trade data available for V8rG66mFfSGLjzRBnN1ZFv2FUiK6aMa2z16u9pump
+2025-05-21 19:42:54,621 - phoenix.birdeye - WARNING - No price history available for 5Go1r8UVEPc3kpvx1UxAqtBaiQFWwxvpntCXcNwdKnGq
+2025-05-21 19:42:54,937 - phoenix.birdeye - WARNING - No price history available for performance calculation: 5Go1r8UVEPc3kpvx1UxAqtBaiQFWwxvpntCXcNwdKnGq
+2025-05-21 19:43:16,604 - phoenix.birdeye - WARNING - No price history available for 3YVbTqHctR7SKCfdYSAJJACriMTfi5AC4uVtUcvCTtdY
+2025-05-21 19:43:16,950 - phoenix.birdeye - WARNING - No price history available for performance calculation: 3YVbTqHctR7SKCfdYSAJJACriMTfi5AC4uVtUcvCTtdY
+2025-05-21 19:43:47,323 - phoenix.birdeye - WARNING - No price history available for DFHADernc2HtQbnPGmk3BEMbt5kU7hnn6TSNcSHyv1M1
+2025-05-21 19:43:47,671 - phoenix.birdeye - WARNING - No price history available for performance calculation: DFHADernc2HtQbnPGmk3BEMbt5kU7hnn6TSNcSHyv1M1
+2025-05-21 19:43:50,409 - phoenix.birdeye - WARNING - No price history available for 9DVdzpNr4tmaH2WBCydksP3X2gdAMDWCyRWWU5zQif6z
+2025-05-21 19:43:50,751 - phoenix.birdeye - WARNING - No price history available for performance calculation: 9DVdzpNr4tmaH2WBCydksP3X2gdAMDWCyRWWU5zQif6z
+2025-05-21 19:43:56,535 - phoenix.birdeye - WARNING - No price history available for AjqvzN2iMt5HdAD6HYHizkgQdf3EXxyQn5oVUPiheasK
+2025-05-21 19:51:58,921 - phoenix - INFO - Loaded 1 Telegram channels from channels.txt
+2025-05-21 19:51:58,921 - phoenix - INFO - Loaded 104 wallets from wallets.txt
+2025-05-21 19:52:05,423 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-21 19:52:05,424 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-21 19:52:05,987 - phoenix - INFO - Analyzing 1 Telegram channels for the past 7 days using Birdeye API.
+2025-05-21 19:52:05,987 - phoenix - INFO - Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\telegram_analysis.csv
+2025-05-21 19:52:05,987 - phoenix - INFO - Spydefi channel detected. Analyzing KOLs from Spydefi.
+2025-05-21 19:52:05,988 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-21 19:52:05,990 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-21 19:52:06,124 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-21 19:52:07,018 - phoenix.telegram - INFO - Connected to Telegram
+2025-05-21 19:52:07,019 - phoenix.telegram - INFO - Scraping Spydefi channel spydefi for KOL mentions
+2025-05-21 19:52:07,019 - phoenix.telegram - INFO - SpyDefi channel detected, limiting to 1 day and 500 messages
+2025-05-21 19:52:07,019 - phoenix.telegram - INFO - Scraping 1 days of messages from spydefi
+2025-05-21 19:52:07,526 - phoenix.telegram - INFO - Retrieved 100 total messages from SpyDefi, found 99 relevant messages in this batch
+2025-05-21 19:52:07,889 - phoenix.telegram - INFO - Retrieved 200 total messages from SpyDefi, found 99 relevant messages in this batch
+2025-05-21 19:52:08,242 - phoenix.telegram - INFO - Retrieved 300 total messages from SpyDefi, found 99 relevant messages in this batch
+2025-05-21 19:52:08,560 - phoenix.telegram - INFO - Retrieved 400 total messages from SpyDefi, found 100 relevant messages in this batch
+2025-05-21 19:52:08,910 - phoenix.telegram - INFO - Retrieved 500 total messages from SpyDefi, found 98 relevant messages in this batch
+2025-05-21 19:52:08,910 - phoenix.telegram - INFO - Finished retrieving messages from SpyDefi. Found 495 relevant messages.
+2025-05-21 19:52:08,929 - phoenix.telegram - INFO - Found 162 potential KOL channels/usernames
+2025-05-21 19:52:08,929 - phoenix.telegram - INFO - Analyzing KOL: MarksGems - FAST MODE (last 3 calls)
+2025-05-21 19:52:08,929 - phoenix.telegram - INFO - Analyzing channel MarksGems - FAST MODE: Last 3 calls only
+2025-05-21 19:52:08,929 - phoenix.telegram - INFO - Scraping 7 days of messages from MarksGems
+2025-05-21 19:52:09,590 - phoenix.telegram - INFO - Retrieved 100 total messages from MarksGems, found 90 relevant messages in this batch
+2025-05-21 19:52:10,074 - phoenix.telegram - INFO - Retrieved 200 total messages from MarksGems, found 92 relevant messages in this batch
+2025-05-21 19:52:10,424 - phoenix.telegram - INFO - Retrieved 300 total messages from MarksGems, found 87 relevant messages in this batch
+2025-05-21 19:52:10,827 - phoenix.telegram - INFO - Retrieved 400 total messages from MarksGems, found 83 relevant messages in this batch
+2025-05-21 19:52:11,254 - phoenix.telegram - INFO - Retrieved 500 total messages from MarksGems, found 87 relevant messages in this batch
+2025-05-21 19:52:11,773 - phoenix.telegram - INFO - Retrieved 600 total messages from MarksGems, found 93 relevant messages in this batch
+2025-05-21 19:52:12,125 - phoenix.telegram - INFO - Retrieved 700 total messages from MarksGems, found 83 relevant messages in this batch
+2025-05-21 19:52:12,637 - phoenix.telegram - INFO - Retrieved 800 total messages from MarksGems, found 85 relevant messages in this batch
+2025-05-21 19:52:12,992 - phoenix.telegram - INFO - Retrieved 900 total messages from MarksGems, found 87 relevant messages in this batch
+2025-05-21 19:52:13,375 - phoenix.telegram - INFO - Finished retrieving messages from MarksGems. Found 858 relevant messages.
+2025-05-21 19:52:13,890 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'AVGuygVeBmbYiJ47V7tgBNLSukNqW7pWZYJsKUNWhHpc', 'address_type': 'token', 'type': '1h', 'time_from': 1747277533784, 'time_to': 1747882333784}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:13,890 - phoenix.birdeye - WARNING - No price history available for AVGuygVeBmbYiJ47V7tgBNLSukNqW7pWZYJsKUNWhHpc
+2025-05-21 19:52:14,000 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'AVGuygVeBmbYiJ47V7tgBNLSukNqW7pWZYJsKUNWhHpc', 'address_type': 'token', 'type': '4h', 'time_from': 1747277533892, 'time_to': 1747882333892}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:14,000 - phoenix.birdeye - WARNING - No price history available for AVGuygVeBmbYiJ47V7tgBNLSukNqW7pWZYJsKUNWhHpc
+2025-05-21 19:52:14,111 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'AVGuygVeBmbYiJ47V7tgBNLSukNqW7pWZYJsKUNWhHpc', 'address_type': 'token', 'type': '1d', 'time_from': 1747277534001, 'time_to': 1747882334001}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:14,111 - phoenix.birdeye - WARNING - No price history available for AVGuygVeBmbYiJ47V7tgBNLSukNqW7pWZYJsKUNWhHpc
+2025-05-21 19:52:14,229 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'AVGuygVeBmbYiJ47V7tgBNLSukNqW7pWZYJsKUNWhHpc', 'address_type': 'token', 'type': '1w', 'time_from': 1747277534112, 'time_to': 1747882334112}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:14,230 - phoenix.birdeye - WARNING - No price history available for AVGuygVeBmbYiJ47V7tgBNLSukNqW7pWZYJsKUNWhHpc
+2025-05-21 19:52:14,231 - phoenix.telegram - INFO - Got ATH data for AVGuygVeBmbYiJ47V7tgBNLSukNqW7pWZYJsKUNWhHpc: ATH=$0.00009674, Current=$0.00009674
+2025-05-21 19:52:14,724 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '5TScvcijRc159yFC6pFEgjSUkCvC2JyBM8aYMK15pump', 'address_type': 'token', 'type': '1h', 'time_from': 1747277534614, 'time_to': 1747882334614}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:14,724 - phoenix.birdeye - WARNING - No price history available for 5TScvcijRc159yFC6pFEgjSUkCvC2JyBM8aYMK15pump
+2025-05-21 19:52:14,851 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '5TScvcijRc159yFC6pFEgjSUkCvC2JyBM8aYMK15pump', 'address_type': 'token', 'type': '4h', 'time_from': 1747277534726, 'time_to': 1747882334726}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:14,851 - phoenix.birdeye - WARNING - No price history available for 5TScvcijRc159yFC6pFEgjSUkCvC2JyBM8aYMK15pump
+2025-05-21 19:52:14,962 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '5TScvcijRc159yFC6pFEgjSUkCvC2JyBM8aYMK15pump', 'address_type': 'token', 'type': '1d', 'time_from': 1747277534853, 'time_to': 1747882334853}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:14,963 - phoenix.birdeye - WARNING - No price history available for 5TScvcijRc159yFC6pFEgjSUkCvC2JyBM8aYMK15pump
+2025-05-21 19:52:15,070 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '5TScvcijRc159yFC6pFEgjSUkCvC2JyBM8aYMK15pump', 'address_type': 'token', 'type': '1w', 'time_from': 1747277534964, 'time_to': 1747882334964}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:15,070 - phoenix.birdeye - WARNING - No price history available for 5TScvcijRc159yFC6pFEgjSUkCvC2JyBM8aYMK15pump
+2025-05-21 19:52:15,071 - phoenix.telegram - INFO - Got ATH data for 5TScvcijRc159yFC6pFEgjSUkCvC2JyBM8aYMK15pump: ATH=$0.00004162, Current=$0.00004162
+2025-05-21 19:52:15,517 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '7zk6zXHFEgRAo3LkyxWUsMC8mRbRw5V8jxRAGyxXpump', 'address_type': 'token', 'type': '1h', 'time_from': 1747277535408, 'time_to': 1747882335408}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:15,517 - phoenix.birdeye - WARNING - No price history available for 7zk6zXHFEgRAo3LkyxWUsMC8mRbRw5V8jxRAGyxXpump
+2025-05-21 19:52:15,641 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '7zk6zXHFEgRAo3LkyxWUsMC8mRbRw5V8jxRAGyxXpump', 'address_type': 'token', 'type': '4h', 'time_from': 1747277535519, 'time_to': 1747882335519}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:15,642 - phoenix.birdeye - WARNING - No price history available for 7zk6zXHFEgRAo3LkyxWUsMC8mRbRw5V8jxRAGyxXpump
+2025-05-21 19:52:15,753 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '7zk6zXHFEgRAo3LkyxWUsMC8mRbRw5V8jxRAGyxXpump', 'address_type': 'token', 'type': '1d', 'time_from': 1747277535643, 'time_to': 1747882335643}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:15,754 - phoenix.birdeye - WARNING - No price history available for 7zk6zXHFEgRAo3LkyxWUsMC8mRbRw5V8jxRAGyxXpump
+2025-05-21 19:52:15,862 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '7zk6zXHFEgRAo3LkyxWUsMC8mRbRw5V8jxRAGyxXpump', 'address_type': 'token', 'type': '1w', 'time_from': 1747277535755, 'time_to': 1747882335755}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:15,862 - phoenix.birdeye - WARNING - No price history available for 7zk6zXHFEgRAo3LkyxWUsMC8mRbRw5V8jxRAGyxXpump
+2025-05-21 19:52:15,864 - phoenix.telegram - INFO - Got ATH data for 7zk6zXHFEgRAo3LkyxWUsMC8mRbRw5V8jxRAGyxXpump: ATH=$0.00001304, Current=$0.00001304
+2025-05-21 19:52:15,864 - phoenix.telegram - INFO - Analyzing KOL: kariusgemscalls - FAST MODE (last 3 calls)
+2025-05-21 19:52:15,865 - phoenix.telegram - INFO - Analyzing channel kariusgemscalls - FAST MODE: Last 3 calls only
+2025-05-21 19:52:15,865 - phoenix.telegram - INFO - Scraping 7 days of messages from kariusgemscalls
+2025-05-21 19:52:16,481 - phoenix.telegram - INFO - Retrieved 100 total messages from kariusgemscalls, found 99 relevant messages in this batch
+2025-05-21 19:52:16,886 - phoenix.telegram - INFO - Retrieved 200 total messages from kariusgemscalls, found 100 relevant messages in this batch
+2025-05-21 19:52:17,299 - phoenix.telegram - INFO - Retrieved 300 total messages from kariusgemscalls, found 100 relevant messages in this batch
+2025-05-21 19:52:17,734 - phoenix.telegram - INFO - Finished retrieving messages from kariusgemscalls. Found 395 relevant messages.
+2025-05-21 19:52:17,882 - phoenix.birdeye - WARNING - Bad request for /defi/token_overview with params {'address': 'cqsdunzd6w8sgj5he7ca8ujmhnbtmj4ehebgxddqenhx'}: {"success":false,"message":"address is invalid format"}
+2025-05-21 19:52:17,989 - phoenix.birdeye - WARNING - Bad request for /defi/price with params {'address': 'cqsdunzd6w8sgj5he7ca8ujmhnbtmj4ehebgxddqenhx'}: {"success":false,"message":"address is invalid format"}
+2025-05-21 19:52:17,989 - phoenix.birdeye - WARNING - No price data available for cqsdunzd6w8sgj5he7ca8ujmhnbtmj4ehebgxddqenhx
+2025-05-21 19:52:18,121 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'cqsdunzd6w8sgj5he7ca8ujmhnbtmj4ehebgxddqenhx', 'address_type': 'token', 'type': '1h', 'time_from': 1747277537990, 'time_to': 1747882337990}: {"success":false,"message":"address is invalid format"}
+2025-05-21 19:52:18,121 - phoenix.birdeye - WARNING - No price history available for cqsdunzd6w8sgj5he7ca8ujmhnbtmj4ehebgxddqenhx
+2025-05-21 19:52:18,258 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'cqsdunzd6w8sgj5he7ca8ujmhnbtmj4ehebgxddqenhx', 'address_type': 'token', 'type': '4h', 'time_from': 1747277538123, 'time_to': 1747882338123}: {"success":false,"message":"address is invalid format"}
+2025-05-21 19:52:18,258 - phoenix.birdeye - WARNING - No price history available for cqsdunzd6w8sgj5he7ca8ujmhnbtmj4ehebgxddqenhx
+2025-05-21 19:52:18,365 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'cqsdunzd6w8sgj5he7ca8ujmhnbtmj4ehebgxddqenhx', 'address_type': 'token', 'type': '1d', 'time_from': 1747277538259, 'time_to': 1747882338259}: {"success":false,"message":"address is invalid format"}
+2025-05-21 19:52:18,365 - phoenix.birdeye - WARNING - No price history available for cqsdunzd6w8sgj5he7ca8ujmhnbtmj4ehebgxddqenhx
+2025-05-21 19:52:18,480 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'cqsdunzd6w8sgj5he7ca8ujmhnbtmj4ehebgxddqenhx', 'address_type': 'token', 'type': '1w', 'time_from': 1747277538366, 'time_to': 1747882338366}: {"success":false,"message":"address is invalid format"}
+2025-05-21 19:52:18,480 - phoenix.birdeye - WARNING - No price history available for cqsdunzd6w8sgj5he7ca8ujmhnbtmj4ehebgxddqenhx
+2025-05-21 19:52:18,482 - phoenix.telegram - INFO - Got ATH data for cqsdunzd6w8sgj5he7ca8ujmhnbtmj4ehebgxddqenhx: ATH=$0.00000000, Current=$0.00000000
+2025-05-21 19:52:18,978 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'mumiSjLdywb7ZJvTw3i2sMBEH2xZFVYsiABzdJspump', 'address_type': 'token', 'type': '1h', 'time_from': 1747277538836, 'time_to': 1747882338836}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:18,978 - phoenix.birdeye - WARNING - No price history available for mumiSjLdywb7ZJvTw3i2sMBEH2xZFVYsiABzdJspump
+2025-05-21 19:52:19,095 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'mumiSjLdywb7ZJvTw3i2sMBEH2xZFVYsiABzdJspump', 'address_type': 'token', 'type': '4h', 'time_from': 1747277538979, 'time_to': 1747882338979}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:19,095 - phoenix.birdeye - WARNING - No price history available for mumiSjLdywb7ZJvTw3i2sMBEH2xZFVYsiABzdJspump
+2025-05-21 19:52:19,206 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'mumiSjLdywb7ZJvTw3i2sMBEH2xZFVYsiABzdJspump', 'address_type': 'token', 'type': '1d', 'time_from': 1747277539096, 'time_to': 1747882339096}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:19,207 - phoenix.birdeye - WARNING - No price history available for mumiSjLdywb7ZJvTw3i2sMBEH2xZFVYsiABzdJspump
+2025-05-21 19:52:19,332 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'mumiSjLdywb7ZJvTw3i2sMBEH2xZFVYsiABzdJspump', 'address_type': 'token', 'type': '1w', 'time_from': 1747277539208, 'time_to': 1747882339208}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:19,332 - phoenix.birdeye - WARNING - No price history available for mumiSjLdywb7ZJvTw3i2sMBEH2xZFVYsiABzdJspump
+2025-05-21 19:52:19,333 - phoenix.telegram - INFO - Got ATH data for mumiSjLdywb7ZJvTw3i2sMBEH2xZFVYsiABzdJspump: ATH=$0.00034059, Current=$0.00034059
+2025-05-21 19:52:19,801 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'AVGuygVeBmbYiJ47V7tgBNLSukNqW7pWZYJsKUNWhHpc', 'address_type': 'token', 'type': '1h', 'time_from': 1747277539673, 'time_to': 1747882339673}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:19,802 - phoenix.birdeye - WARNING - No price history available for AVGuygVeBmbYiJ47V7tgBNLSukNqW7pWZYJsKUNWhHpc
+2025-05-21 19:52:19,922 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'AVGuygVeBmbYiJ47V7tgBNLSukNqW7pWZYJsKUNWhHpc', 'address_type': 'token', 'type': '4h', 'time_from': 1747277539803, 'time_to': 1747882339803}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:19,922 - phoenix.birdeye - WARNING - No price history available for AVGuygVeBmbYiJ47V7tgBNLSukNqW7pWZYJsKUNWhHpc
+2025-05-21 19:52:20,058 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'AVGuygVeBmbYiJ47V7tgBNLSukNqW7pWZYJsKUNWhHpc', 'address_type': 'token', 'type': '1d', 'time_from': 1747277539923, 'time_to': 1747882339923}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:20,058 - phoenix.birdeye - WARNING - No price history available for AVGuygVeBmbYiJ47V7tgBNLSukNqW7pWZYJsKUNWhHpc
+2025-05-21 19:52:20,174 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'AVGuygVeBmbYiJ47V7tgBNLSukNqW7pWZYJsKUNWhHpc', 'address_type': 'token', 'type': '1w', 'time_from': 1747277540060, 'time_to': 1747882340060}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:20,174 - phoenix.birdeye - WARNING - No price history available for AVGuygVeBmbYiJ47V7tgBNLSukNqW7pWZYJsKUNWhHpc
+2025-05-21 19:52:20,176 - phoenix.telegram - INFO - Got ATH data for AVGuygVeBmbYiJ47V7tgBNLSukNqW7pWZYJsKUNWhHpc: ATH=$0.00010232, Current=$0.00010232
+2025-05-21 19:52:20,177 - phoenix.telegram - INFO - Analyzing KOL: TopCallersChannel - FAST MODE (last 3 calls)
+2025-05-21 19:52:20,177 - phoenix.telegram - INFO - Analyzing channel TopCallersChannel - FAST MODE: Last 3 calls only
+2025-05-21 19:52:20,177 - phoenix.telegram - INFO - Scraping 7 days of messages from TopCallersChannel
+2025-05-21 19:52:20,678 - phoenix.telegram - INFO - Retrieved 100 total messages from TopCallersChannel, found 85 relevant messages in this batch
+2025-05-21 19:52:21,057 - phoenix.telegram - INFO - Retrieved 200 total messages from TopCallersChannel, found 96 relevant messages in this batch
+2025-05-21 19:52:21,480 - phoenix.telegram - INFO - Retrieved 300 total messages from TopCallersChannel, found 87 relevant messages in this batch
+2025-05-21 19:52:21,854 - phoenix.telegram - INFO - Finished retrieving messages from TopCallersChannel. Found 268 relevant messages.
+2025-05-21 19:52:22,291 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '4sbywy5uuxybwuj8fwhdfxun6mbtacrqbjwiz9mxworp', 'address_type': 'token', 'type': '1h', 'time_from': 1747277542183, 'time_to': 1747882342183}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:22,291 - phoenix.birdeye - WARNING - No price history available for 4sbywy5uuxybwuj8fwhdfxun6mbtacrqbjwiz9mxworp
+2025-05-21 19:52:22,420 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '4sbywy5uuxybwuj8fwhdfxun6mbtacrqbjwiz9mxworp', 'address_type': 'token', 'type': '4h', 'time_from': 1747277542293, 'time_to': 1747882342293}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:22,421 - phoenix.birdeye - WARNING - No price history available for 4sbywy5uuxybwuj8fwhdfxun6mbtacrqbjwiz9mxworp
+2025-05-21 19:52:22,555 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '4sbywy5uuxybwuj8fwhdfxun6mbtacrqbjwiz9mxworp', 'address_type': 'token', 'type': '1d', 'time_from': 1747277542422, 'time_to': 1747882342422}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:22,555 - phoenix.birdeye - WARNING - No price history available for 4sbywy5uuxybwuj8fwhdfxun6mbtacrqbjwiz9mxworp
+2025-05-21 19:52:22,721 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '4sbywy5uuxybwuj8fwhdfxun6mbtacrqbjwiz9mxworp', 'address_type': 'token', 'type': '1w', 'time_from': 1747277542556, 'time_to': 1747882342556}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:22,721 - phoenix.birdeye - WARNING - No price history available for 4sbywy5uuxybwuj8fwhdfxun6mbtacrqbjwiz9mxworp
+2025-05-21 19:52:22,723 - phoenix.telegram - INFO - Got ATH data for 4sbywy5uuxybwuj8fwhdfxun6mbtacrqbjwiz9mxworp: ATH=$0.00000000, Current=$0.00000000
+2025-05-21 19:52:23,186 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'EVqkPanBKrx6q2cuej5CwjdEoK8CM2UPdYi9nmSPbonk', 'address_type': 'token', 'type': '1h', 'time_from': 1747277543072, 'time_to': 1747882343072}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:23,187 - phoenix.birdeye - WARNING - No price history available for EVqkPanBKrx6q2cuej5CwjdEoK8CM2UPdYi9nmSPbonk
+2025-05-21 19:52:23,309 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'EVqkPanBKrx6q2cuej5CwjdEoK8CM2UPdYi9nmSPbonk', 'address_type': 'token', 'type': '4h', 'time_from': 1747277543190, 'time_to': 1747882343190}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:23,310 - phoenix.birdeye - WARNING - No price history available for EVqkPanBKrx6q2cuej5CwjdEoK8CM2UPdYi9nmSPbonk
+2025-05-21 19:52:23,420 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'EVqkPanBKrx6q2cuej5CwjdEoK8CM2UPdYi9nmSPbonk', 'address_type': 'token', 'type': '1d', 'time_from': 1747277543311, 'time_to': 1747882343311}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:23,421 - phoenix.birdeye - WARNING - No price history available for EVqkPanBKrx6q2cuej5CwjdEoK8CM2UPdYi9nmSPbonk
+2025-05-21 19:52:23,553 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'EVqkPanBKrx6q2cuej5CwjdEoK8CM2UPdYi9nmSPbonk', 'address_type': 'token', 'type': '1w', 'time_from': 1747277543422, 'time_to': 1747882343422}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:23,553 - phoenix.birdeye - WARNING - No price history available for EVqkPanBKrx6q2cuej5CwjdEoK8CM2UPdYi9nmSPbonk
+2025-05-21 19:52:23,555 - phoenix.telegram - INFO - Got ATH data for EVqkPanBKrx6q2cuej5CwjdEoK8CM2UPdYi9nmSPbonk: ATH=$0.00041396, Current=$0.00041396
+2025-05-21 19:52:24,017 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '95qzctrcjdw2gyxefjswpyqn5fbrgg92b4huvaykastp', 'address_type': 'token', 'type': '1h', 'time_from': 1747277543890, 'time_to': 1747882343890}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:24,017 - phoenix.birdeye - WARNING - No price history available for 95qzctrcjdw2gyxefjswpyqn5fbrgg92b4huvaykastp
+2025-05-21 19:52:24,169 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '95qzctrcjdw2gyxefjswpyqn5fbrgg92b4huvaykastp', 'address_type': 'token', 'type': '4h', 'time_from': 1747277544019, 'time_to': 1747882344019}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:24,169 - phoenix.birdeye - WARNING - No price history available for 95qzctrcjdw2gyxefjswpyqn5fbrgg92b4huvaykastp
+2025-05-21 19:52:24,284 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '95qzctrcjdw2gyxefjswpyqn5fbrgg92b4huvaykastp', 'address_type': 'token', 'type': '1d', 'time_from': 1747277544171, 'time_to': 1747882344171}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:24,285 - phoenix.birdeye - WARNING - No price history available for 95qzctrcjdw2gyxefjswpyqn5fbrgg92b4huvaykastp
+2025-05-21 19:52:24,412 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '95qzctrcjdw2gyxefjswpyqn5fbrgg92b4huvaykastp', 'address_type': 'token', 'type': '1w', 'time_from': 1747277544286, 'time_to': 1747882344286}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:24,412 - phoenix.birdeye - WARNING - No price history available for 95qzctrcjdw2gyxefjswpyqn5fbrgg92b4huvaykastp
+2025-05-21 19:52:24,414 - phoenix.telegram - INFO - Got ATH data for 95qzctrcjdw2gyxefjswpyqn5fbrgg92b4huvaykastp: ATH=$0.00000000, Current=$0.00000000
+2025-05-21 19:52:24,414 - phoenix.telegram - INFO - Analyzing KOL: JeetyCall - FAST MODE (last 3 calls)
+2025-05-21 19:52:24,414 - phoenix.telegram - INFO - Analyzing channel JeetyCall - FAST MODE: Last 3 calls only
+2025-05-21 19:52:24,415 - phoenix.telegram - INFO - Scraping 7 days of messages from JeetyCall
+2025-05-21 19:52:24,981 - phoenix.telegram - INFO - Retrieved 100 total messages from JeetyCall, found 39 relevant messages in this batch
+2025-05-21 19:52:25,276 - phoenix.telegram - INFO - Finished retrieving messages from JeetyCall. Found 71 relevant messages.
+2025-05-21 19:52:25,791 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'BWKqYfgC9SiiSJ8Rrynu7P5xrswwsqNxWmS87rFRpump', 'address_type': 'token', 'type': '1h', 'time_from': 1747277545633, 'time_to': 1747882345633}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:25,791 - phoenix.birdeye - WARNING - No price history available for BWKqYfgC9SiiSJ8Rrynu7P5xrswwsqNxWmS87rFRpump
+2025-05-21 19:52:25,918 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'BWKqYfgC9SiiSJ8Rrynu7P5xrswwsqNxWmS87rFRpump', 'address_type': 'token', 'type': '4h', 'time_from': 1747277545793, 'time_to': 1747882345793}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:25,918 - phoenix.birdeye - WARNING - No price history available for BWKqYfgC9SiiSJ8Rrynu7P5xrswwsqNxWmS87rFRpump
+2025-05-21 19:52:26,053 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'BWKqYfgC9SiiSJ8Rrynu7P5xrswwsqNxWmS87rFRpump', 'address_type': 'token', 'type': '1d', 'time_from': 1747277545919, 'time_to': 1747882345919}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:26,054 - phoenix.birdeye - WARNING - No price history available for BWKqYfgC9SiiSJ8Rrynu7P5xrswwsqNxWmS87rFRpump
+2025-05-21 19:52:26,162 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'BWKqYfgC9SiiSJ8Rrynu7P5xrswwsqNxWmS87rFRpump', 'address_type': 'token', 'type': '1w', 'time_from': 1747277546055, 'time_to': 1747882346055}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:26,163 - phoenix.birdeye - WARNING - No price history available for BWKqYfgC9SiiSJ8Rrynu7P5xrswwsqNxWmS87rFRpump
+2025-05-21 19:52:26,164 - phoenix.telegram - INFO - Got ATH data for BWKqYfgC9SiiSJ8Rrynu7P5xrswwsqNxWmS87rFRpump: ATH=$0.00001715, Current=$0.00001715
+2025-05-21 19:52:26,686 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'AKDtofiNfKx9ArYdqPL877757Wmy8PJDBTT9JHTKpump', 'address_type': 'token', 'type': '1h', 'time_from': 1747277546556, 'time_to': 1747882346556}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:26,686 - phoenix.birdeye - WARNING - No price history available for AKDtofiNfKx9ArYdqPL877757Wmy8PJDBTT9JHTKpump
+2025-05-21 19:52:26,809 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'AKDtofiNfKx9ArYdqPL877757Wmy8PJDBTT9JHTKpump', 'address_type': 'token', 'type': '4h', 'time_from': 1747277546688, 'time_to': 1747882346688}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:26,810 - phoenix.birdeye - WARNING - No price history available for AKDtofiNfKx9ArYdqPL877757Wmy8PJDBTT9JHTKpump
+2025-05-21 19:52:26,921 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'AKDtofiNfKx9ArYdqPL877757Wmy8PJDBTT9JHTKpump', 'address_type': 'token', 'type': '1d', 'time_from': 1747277546811, 'time_to': 1747882346811}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:26,921 - phoenix.birdeye - WARNING - No price history available for AKDtofiNfKx9ArYdqPL877757Wmy8PJDBTT9JHTKpump
+2025-05-21 19:52:27,058 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'AKDtofiNfKx9ArYdqPL877757Wmy8PJDBTT9JHTKpump', 'address_type': 'token', 'type': '1w', 'time_from': 1747277546922, 'time_to': 1747882346922}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:27,059 - phoenix.birdeye - WARNING - No price history available for AKDtofiNfKx9ArYdqPL877757Wmy8PJDBTT9JHTKpump
+2025-05-21 19:52:27,060 - phoenix.telegram - INFO - Got ATH data for AKDtofiNfKx9ArYdqPL877757Wmy8PJDBTT9JHTKpump: ATH=$0.00007413, Current=$0.00007413
+2025-05-21 19:52:27,527 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '73mhFXKkUXMRGisAp4zBQ66RURHdboFGm6cuiJpopump', 'address_type': 'token', 'type': '1h', 'time_from': 1747277547421, 'time_to': 1747882347421}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:27,527 - phoenix.birdeye - WARNING - No price history available for 73mhFXKkUXMRGisAp4zBQ66RURHdboFGm6cuiJpopump
+2025-05-21 19:52:27,637 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '73mhFXKkUXMRGisAp4zBQ66RURHdboFGm6cuiJpopump', 'address_type': 'token', 'type': '4h', 'time_from': 1747277547529, 'time_to': 1747882347529}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:27,638 - phoenix.birdeye - WARNING - No price history available for 73mhFXKkUXMRGisAp4zBQ66RURHdboFGm6cuiJpopump
+2025-05-21 19:52:27,757 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '73mhFXKkUXMRGisAp4zBQ66RURHdboFGm6cuiJpopump', 'address_type': 'token', 'type': '1d', 'time_from': 1747277547639, 'time_to': 1747882347639}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:27,757 - phoenix.birdeye - WARNING - No price history available for 73mhFXKkUXMRGisAp4zBQ66RURHdboFGm6cuiJpopump
+2025-05-21 19:52:27,861 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '73mhFXKkUXMRGisAp4zBQ66RURHdboFGm6cuiJpopump', 'address_type': 'token', 'type': '1w', 'time_from': 1747277547758, 'time_to': 1747882347758}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:27,862 - phoenix.birdeye - WARNING - No price history available for 73mhFXKkUXMRGisAp4zBQ66RURHdboFGm6cuiJpopump
+2025-05-21 19:52:27,863 - phoenix.telegram - INFO - Got ATH data for 73mhFXKkUXMRGisAp4zBQ66RURHdboFGm6cuiJpopump: ATH=$0.00003330, Current=$0.00003330
+2025-05-21 19:52:27,863 - phoenix.telegram - INFO - Analyzing KOL: ChapoInsider - FAST MODE (last 3 calls)
+2025-05-21 19:52:27,864 - phoenix.telegram - INFO - Analyzing channel ChapoInsider - FAST MODE: Last 3 calls only
+2025-05-21 19:52:27,864 - phoenix.telegram - INFO - Scraping 7 days of messages from ChapoInsider
+2025-05-21 19:52:28,341 - phoenix.telegram - INFO - Retrieved 100 total messages from ChapoInsider, found 93 relevant messages in this batch
+2025-05-21 19:52:28,679 - phoenix.telegram - INFO - Retrieved 200 total messages from ChapoInsider, found 96 relevant messages in this batch
+2025-05-21 19:52:28,997 - phoenix.telegram - INFO - Retrieved 300 total messages from ChapoInsider, found 93 relevant messages in this batch
+2025-05-21 19:52:29,318 - phoenix.telegram - INFO - Retrieved 400 total messages from ChapoInsider, found 96 relevant messages in this batch
+2025-05-21 19:52:35,389 - phoenix.telegram - INFO - Finished retrieving messages from ChapoInsider. Found 439 relevant messages.
+2025-05-21 19:52:35,886 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'BRPhmqcFTT5nT8cxwybyF45Fv6uW68jKBeKWZzNFpump', 'address_type': 'token', 'type': '1h', 'time_from': 1747277555762, 'time_to': 1747882355762}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:35,886 - phoenix.birdeye - WARNING - No price history available for BRPhmqcFTT5nT8cxwybyF45Fv6uW68jKBeKWZzNFpump
+2025-05-21 19:52:36,001 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'BRPhmqcFTT5nT8cxwybyF45Fv6uW68jKBeKWZzNFpump', 'address_type': 'token', 'type': '4h', 'time_from': 1747277555887, 'time_to': 1747882355887}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:36,002 - phoenix.birdeye - WARNING - No price history available for BRPhmqcFTT5nT8cxwybyF45Fv6uW68jKBeKWZzNFpump
+2025-05-21 19:52:36,126 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'BRPhmqcFTT5nT8cxwybyF45Fv6uW68jKBeKWZzNFpump', 'address_type': 'token', 'type': '1d', 'time_from': 1747277556002, 'time_to': 1747882356002}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:36,127 - phoenix.birdeye - WARNING - No price history available for BRPhmqcFTT5nT8cxwybyF45Fv6uW68jKBeKWZzNFpump
+2025-05-21 19:52:36,262 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'BRPhmqcFTT5nT8cxwybyF45Fv6uW68jKBeKWZzNFpump', 'address_type': 'token', 'type': '1w', 'time_from': 1747277556128, 'time_to': 1747882356128}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:36,262 - phoenix.birdeye - WARNING - No price history available for BRPhmqcFTT5nT8cxwybyF45Fv6uW68jKBeKWZzNFpump
+2025-05-21 19:52:36,264 - phoenix.telegram - INFO - Got ATH data for BRPhmqcFTT5nT8cxwybyF45Fv6uW68jKBeKWZzNFpump: ATH=$0.00000410, Current=$0.00000410
+2025-05-21 19:52:36,768 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'YEEZYxfpUGiuyJby1vgSX932LrMztw8btwuHj9x2jnP', 'address_type': 'token', 'type': '1h', 'time_from': 1747277556627, 'time_to': 1747882356627}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:36,769 - phoenix.birdeye - WARNING - No price history available for YEEZYxfpUGiuyJby1vgSX932LrMztw8btwuHj9x2jnP
+2025-05-21 19:52:36,896 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'YEEZYxfpUGiuyJby1vgSX932LrMztw8btwuHj9x2jnP', 'address_type': 'token', 'type': '4h', 'time_from': 1747277556770, 'time_to': 1747882356770}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:36,897 - phoenix.birdeye - WARNING - No price history available for YEEZYxfpUGiuyJby1vgSX932LrMztw8btwuHj9x2jnP
+2025-05-21 19:52:37,038 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'YEEZYxfpUGiuyJby1vgSX932LrMztw8btwuHj9x2jnP', 'address_type': 'token', 'type': '1d', 'time_from': 1747277556898, 'time_to': 1747882356898}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:37,039 - phoenix.birdeye - WARNING - No price history available for YEEZYxfpUGiuyJby1vgSX932LrMztw8btwuHj9x2jnP
+2025-05-21 19:52:37,163 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'YEEZYxfpUGiuyJby1vgSX932LrMztw8btwuHj9x2jnP', 'address_type': 'token', 'type': '1w', 'time_from': 1747277557040, 'time_to': 1747882357040}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:37,164 - phoenix.birdeye - WARNING - No price history available for YEEZYxfpUGiuyJby1vgSX932LrMztw8btwuHj9x2jnP
+2025-05-21 19:52:37,165 - phoenix.telegram - INFO - Got ATH data for YEEZYxfpUGiuyJby1vgSX932LrMztw8btwuHj9x2jnP: ATH=$0.00000679, Current=$0.00000679
+2025-05-21 19:52:37,678 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'EK87DCrnXi1dgUrZxfdqmJKexeJTfRbkvkUwfRc3pump', 'address_type': 'token', 'type': '1h', 'time_from': 1747277557543, 'time_to': 1747882357543}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:37,679 - phoenix.birdeye - WARNING - No price history available for EK87DCrnXi1dgUrZxfdqmJKexeJTfRbkvkUwfRc3pump
+2025-05-21 19:52:37,819 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'EK87DCrnXi1dgUrZxfdqmJKexeJTfRbkvkUwfRc3pump', 'address_type': 'token', 'type': '4h', 'time_from': 1747277557680, 'time_to': 1747882357680}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:37,819 - phoenix.birdeye - WARNING - No price history available for EK87DCrnXi1dgUrZxfdqmJKexeJTfRbkvkUwfRc3pump
+2025-05-21 19:52:37,963 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'EK87DCrnXi1dgUrZxfdqmJKexeJTfRbkvkUwfRc3pump', 'address_type': 'token', 'type': '1d', 'time_from': 1747277557820, 'time_to': 1747882357820}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:37,963 - phoenix.birdeye - WARNING - No price history available for EK87DCrnXi1dgUrZxfdqmJKexeJTfRbkvkUwfRc3pump
+2025-05-21 19:52:38,083 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'EK87DCrnXi1dgUrZxfdqmJKexeJTfRbkvkUwfRc3pump', 'address_type': 'token', 'type': '1w', 'time_from': 1747277557964, 'time_to': 1747882357964}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:38,083 - phoenix.birdeye - WARNING - No price history available for EK87DCrnXi1dgUrZxfdqmJKexeJTfRbkvkUwfRc3pump
+2025-05-21 19:52:38,084 - phoenix.telegram - INFO - Got ATH data for EK87DCrnXi1dgUrZxfdqmJKexeJTfRbkvkUwfRc3pump: ATH=$0.00000591, Current=$0.00000591
+2025-05-21 19:52:38,085 - phoenix.telegram - INFO - Analyzing KOL: CrikeyCallz - FAST MODE (last 3 calls)
+2025-05-21 19:52:38,085 - phoenix.telegram - INFO - Analyzing channel CrikeyCallz - FAST MODE: Last 3 calls only
+2025-05-21 19:52:38,086 - phoenix.telegram - INFO - Scraping 7 days of messages from CrikeyCallz
+2025-05-21 19:52:38,547 - phoenix.telegram - INFO - Retrieved 100 total messages from CrikeyCallz, found 48 relevant messages in this batch
+2025-05-21 19:52:38,877 - phoenix.telegram - INFO - Retrieved 200 total messages from CrikeyCallz, found 48 relevant messages in this batch
+2025-05-21 19:52:39,180 - phoenix.telegram - INFO - Retrieved 300 total messages from CrikeyCallz, found 40 relevant messages in this batch
+2025-05-21 19:52:39,483 - phoenix.telegram - INFO - Retrieved 400 total messages from CrikeyCallz, found 51 relevant messages in this batch
+2025-05-21 19:52:39,810 - phoenix.telegram - INFO - Retrieved 500 total messages from CrikeyCallz, found 46 relevant messages in this batch
+2025-05-21 19:52:40,179 - phoenix.telegram - INFO - Finished retrieving messages from CrikeyCallz. Found 270 relevant messages.
+2025-05-21 19:52:40,646 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'A21Hy3kzgkiAiN6oN3hNcFabX5fKTdbAutDcqp1ipump', 'address_type': 'token', 'type': '1h', 'time_from': 1747277560532, 'time_to': 1747882360532}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:40,647 - phoenix.birdeye - WARNING - No price history available for A21Hy3kzgkiAiN6oN3hNcFabX5fKTdbAutDcqp1ipump
+2025-05-21 19:52:40,768 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'A21Hy3kzgkiAiN6oN3hNcFabX5fKTdbAutDcqp1ipump', 'address_type': 'token', 'type': '4h', 'time_from': 1747277560648, 'time_to': 1747882360648}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:40,769 - phoenix.birdeye - WARNING - No price history available for A21Hy3kzgkiAiN6oN3hNcFabX5fKTdbAutDcqp1ipump
+2025-05-21 19:52:40,894 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'A21Hy3kzgkiAiN6oN3hNcFabX5fKTdbAutDcqp1ipump', 'address_type': 'token', 'type': '1d', 'time_from': 1747277560770, 'time_to': 1747882360770}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:40,894 - phoenix.birdeye - WARNING - No price history available for A21Hy3kzgkiAiN6oN3hNcFabX5fKTdbAutDcqp1ipump
+2025-05-21 19:52:41,018 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'A21Hy3kzgkiAiN6oN3hNcFabX5fKTdbAutDcqp1ipump', 'address_type': 'token', 'type': '1w', 'time_from': 1747277560896, 'time_to': 1747882360896}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:41,018 - phoenix.birdeye - WARNING - No price history available for A21Hy3kzgkiAiN6oN3hNcFabX5fKTdbAutDcqp1ipump
+2025-05-21 19:52:41,020 - phoenix.telegram - INFO - Got ATH data for A21Hy3kzgkiAiN6oN3hNcFabX5fKTdbAutDcqp1ipump: ATH=$0.00004460, Current=$0.00004460
+2025-05-21 19:52:41,524 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'DoAgBGMChpNYLzHgQc2jKhT1QhrSJS1TAkUMNtVspump', 'address_type': 'token', 'type': '1h', 'time_from': 1747277561381, 'time_to': 1747882361381}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:41,525 - phoenix.birdeye - WARNING - No price history available for DoAgBGMChpNYLzHgQc2jKhT1QhrSJS1TAkUMNtVspump
+2025-05-21 19:52:42,342 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'DoAgBGMChpNYLzHgQc2jKhT1QhrSJS1TAkUMNtVspump', 'address_type': 'token', 'type': '4h', 'time_from': 1747277561525, 'time_to': 1747882361525}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:42,342 - phoenix.birdeye - WARNING - No price history available for DoAgBGMChpNYLzHgQc2jKhT1QhrSJS1TAkUMNtVspump
+2025-05-21 19:52:42,457 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'DoAgBGMChpNYLzHgQc2jKhT1QhrSJS1TAkUMNtVspump', 'address_type': 'token', 'type': '1d', 'time_from': 1747277562344, 'time_to': 1747882362344}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:42,457 - phoenix.birdeye - WARNING - No price history available for DoAgBGMChpNYLzHgQc2jKhT1QhrSJS1TAkUMNtVspump
+2025-05-21 19:52:42,586 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'DoAgBGMChpNYLzHgQc2jKhT1QhrSJS1TAkUMNtVspump', 'address_type': 'token', 'type': '1w', 'time_from': 1747277562458, 'time_to': 1747882362458}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:42,586 - phoenix.birdeye - WARNING - No price history available for DoAgBGMChpNYLzHgQc2jKhT1QhrSJS1TAkUMNtVspump
+2025-05-21 19:52:42,588 - phoenix.telegram - INFO - Got ATH data for DoAgBGMChpNYLzHgQc2jKhT1QhrSJS1TAkUMNtVspump: ATH=$0.00000722, Current=$0.00000722
+2025-05-21 19:52:43,077 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'DgXYkMBrE9Q7qjpgkRpsNetH4JEXtUH6JjSjxo35pump', 'address_type': 'token', 'type': '1h', 'time_from': 1747277562963, 'time_to': 1747882362963}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:43,077 - phoenix.birdeye - WARNING - No price history available for DgXYkMBrE9Q7qjpgkRpsNetH4JEXtUH6JjSjxo35pump
+2025-05-21 19:52:43,212 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'DgXYkMBrE9Q7qjpgkRpsNetH4JEXtUH6JjSjxo35pump', 'address_type': 'token', 'type': '4h', 'time_from': 1747277563079, 'time_to': 1747882363079}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:43,212 - phoenix.birdeye - WARNING - No price history available for DgXYkMBrE9Q7qjpgkRpsNetH4JEXtUH6JjSjxo35pump
+2025-05-21 19:52:43,328 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'DgXYkMBrE9Q7qjpgkRpsNetH4JEXtUH6JjSjxo35pump', 'address_type': 'token', 'type': '1d', 'time_from': 1747277563213, 'time_to': 1747882363213}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:43,328 - phoenix.birdeye - WARNING - No price history available for DgXYkMBrE9Q7qjpgkRpsNetH4JEXtUH6JjSjxo35pump
+2025-05-21 19:52:43,450 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'DgXYkMBrE9Q7qjpgkRpsNetH4JEXtUH6JjSjxo35pump', 'address_type': 'token', 'type': '1w', 'time_from': 1747277563330, 'time_to': 1747882363330}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:43,450 - phoenix.birdeye - WARNING - No price history available for DgXYkMBrE9Q7qjpgkRpsNetH4JEXtUH6JjSjxo35pump
+2025-05-21 19:52:43,452 - phoenix.telegram - INFO - Got ATH data for DgXYkMBrE9Q7qjpgkRpsNetH4JEXtUH6JjSjxo35pump: ATH=$0.00000736, Current=$0.00000736
+2025-05-21 19:52:43,452 - phoenix.telegram - INFO - Analyzing KOL: AnimeGems - FAST MODE (last 3 calls)
+2025-05-21 19:52:43,453 - phoenix.telegram - INFO - Analyzing channel AnimeGems - FAST MODE: Last 3 calls only
+2025-05-21 19:52:43,453 - phoenix.telegram - INFO - Scraping 7 days of messages from AnimeGems
+2025-05-21 19:52:44,020 - phoenix.telegram - INFO - Retrieved 100 total messages from AnimeGems, found 45 relevant messages in this batch
+2025-05-21 19:52:44,497 - phoenix.telegram - INFO - Finished retrieving messages from AnimeGems. Found 51 relevant messages.
+2025-05-21 19:52:44,953 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '6Y1MEf2XrvyZo7hi9ZHBhuke9iTewBSPaUr6SQsDMhqS', 'address_type': 'token', 'type': '1h', 'time_from': 1747277564820, 'time_to': 1747882364820}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:44,953 - phoenix.birdeye - WARNING - No price history available for 6Y1MEf2XrvyZo7hi9ZHBhuke9iTewBSPaUr6SQsDMhqS
+2025-05-21 19:52:45,078 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '6Y1MEf2XrvyZo7hi9ZHBhuke9iTewBSPaUr6SQsDMhqS', 'address_type': 'token', 'type': '4h', 'time_from': 1747277564954, 'time_to': 1747882364954}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:45,078 - phoenix.birdeye - WARNING - No price history available for 6Y1MEf2XrvyZo7hi9ZHBhuke9iTewBSPaUr6SQsDMhqS
+2025-05-21 19:52:45,215 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '6Y1MEf2XrvyZo7hi9ZHBhuke9iTewBSPaUr6SQsDMhqS', 'address_type': 'token', 'type': '1d', 'time_from': 1747277565079, 'time_to': 1747882365079}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:45,215 - phoenix.birdeye - WARNING - No price history available for 6Y1MEf2XrvyZo7hi9ZHBhuke9iTewBSPaUr6SQsDMhqS
+2025-05-21 19:52:45,352 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '6Y1MEf2XrvyZo7hi9ZHBhuke9iTewBSPaUr6SQsDMhqS', 'address_type': 'token', 'type': '1w', 'time_from': 1747277565216, 'time_to': 1747882365216}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:45,353 - phoenix.birdeye - WARNING - No price history available for 6Y1MEf2XrvyZo7hi9ZHBhuke9iTewBSPaUr6SQsDMhqS
+2025-05-21 19:52:45,354 - phoenix.telegram - INFO - Got ATH data for 6Y1MEf2XrvyZo7hi9ZHBhuke9iTewBSPaUr6SQsDMhqS: ATH=$0.00000000, Current=$0.00000000
+2025-05-21 19:52:45,864 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T', 'address_type': 'token', 'type': '1h', 'time_from': 1747277565730, 'time_to': 1747882365730}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:45,865 - phoenix.birdeye - WARNING - No price history available for HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T
+2025-05-21 19:52:45,976 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T', 'address_type': 'token', 'type': '4h', 'time_from': 1747277565866, 'time_to': 1747882365866}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:45,980 - phoenix.birdeye - WARNING - No price history available for HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T
+2025-05-21 19:52:46,089 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T', 'address_type': 'token', 'type': '1d', 'time_from': 1747277565981, 'time_to': 1747882365981}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:46,089 - phoenix.birdeye - WARNING - No price history available for HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T
+2025-05-21 19:52:46,209 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T', 'address_type': 'token', 'type': '1w', 'time_from': 1747277566091, 'time_to': 1747882366091}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:46,210 - phoenix.birdeye - WARNING - No price history available for HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T
+2025-05-21 19:52:46,211 - phoenix.telegram - INFO - Got ATH data for HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T: ATH=$0.00000000, Current=$0.00000000
+2025-05-21 19:52:46,682 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T', 'address_type': 'token', 'type': '1h', 'time_from': 1747277566569, 'time_to': 1747882366569}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:46,682 - phoenix.birdeye - WARNING - No price history available for HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T
+2025-05-21 19:52:46,808 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T', 'address_type': 'token', 'type': '4h', 'time_from': 1747277566683, 'time_to': 1747882366683}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:46,808 - phoenix.birdeye - WARNING - No price history available for HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T
+2025-05-21 19:52:46,930 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T', 'address_type': 'token', 'type': '1d', 'time_from': 1747277566810, 'time_to': 1747882366810}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:46,931 - phoenix.birdeye - WARNING - No price history available for HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T
+2025-05-21 19:52:47,056 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T', 'address_type': 'token', 'type': '1w', 'time_from': 1747277566932, 'time_to': 1747882366932}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:47,056 - phoenix.birdeye - WARNING - No price history available for HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T
+2025-05-21 19:52:47,057 - phoenix.telegram - INFO - Got ATH data for HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T: ATH=$0.00000000, Current=$0.00000000
+2025-05-21 19:52:47,058 - phoenix.telegram - INFO - Analyzing KOL: Vortex_Gamble - FAST MODE (last 3 calls)
+2025-05-21 19:52:47,058 - phoenix.telegram - INFO - Analyzing channel Vortex_Gamble - FAST MODE: Last 3 calls only
+2025-05-21 19:52:47,058 - phoenix.telegram - INFO - Scraping 7 days of messages from Vortex_Gamble
+2025-05-21 19:52:47,715 - phoenix.telegram - INFO - Retrieved 100 total messages from Vortex_Gamble, found 67 relevant messages in this batch
+2025-05-21 19:52:48,233 - phoenix.telegram - INFO - Finished retrieving messages from Vortex_Gamble. Found 126 relevant messages.
+2025-05-21 19:52:48,690 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '7F3o2x9YVC34yKmkWmMcNjHjPWSHcoAVyrppVguxpump', 'address_type': 'token', 'type': '1h', 'time_from': 1747277568582, 'time_to': 1747882368582}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:48,691 - phoenix.birdeye - WARNING - No price history available for 7F3o2x9YVC34yKmkWmMcNjHjPWSHcoAVyrppVguxpump
+2025-05-21 19:52:48,820 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '7F3o2x9YVC34yKmkWmMcNjHjPWSHcoAVyrppVguxpump', 'address_type': 'token', 'type': '4h', 'time_from': 1747277568692, 'time_to': 1747882368692}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:48,820 - phoenix.birdeye - WARNING - No price history available for 7F3o2x9YVC34yKmkWmMcNjHjPWSHcoAVyrppVguxpump
+2025-05-21 19:52:48,959 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '7F3o2x9YVC34yKmkWmMcNjHjPWSHcoAVyrppVguxpump', 'address_type': 'token', 'type': '1d', 'time_from': 1747277568821, 'time_to': 1747882368821}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:48,959 - phoenix.birdeye - WARNING - No price history available for 7F3o2x9YVC34yKmkWmMcNjHjPWSHcoAVyrppVguxpump
+2025-05-21 19:52:49,075 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '7F3o2x9YVC34yKmkWmMcNjHjPWSHcoAVyrppVguxpump', 'address_type': 'token', 'type': '1w', 'time_from': 1747277568960, 'time_to': 1747882368960}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 19:52:49,075 - phoenix.birdeye - WARNING - No price history available for 7F3o2x9YVC34yKmkWmMcNjHjPWSHcoAVyrppVguxpump
+2025-05-21 19:52:49,076 - phoenix.telegram - INFO - Got ATH data for 7F3o2x9YVC34yKmkWmMcNjHjPWSHcoAVyrppVguxpump: ATH=$0.00015721, Current=$0.00015721
+2025-05-21 19:52:49,573 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'GqXZiPLmcEvS3ZwiBrtYCfxWjqeXE8vEMUnWyVuApump', 'address_type': 'token', 'type': '1h', 'time_from': 1747277569438, 'time_to': 1747882369438}: {"success":false,"message":"time_from invalid format"}
+2025-05-21 20:01:59,006 - phoenix - INFO - Loaded 1 Telegram channels from channels.txt
+2025-05-21 20:01:59,007 - phoenix - INFO - Loaded 104 wallets from wallets.txt
+2025-05-21 20:01:59,077 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-21 20:01:59,078 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-21 20:01:59,613 - phoenix - INFO - Analyzing 1 Telegram channels for the past 1 days using Birdeye API.
+2025-05-21 20:01:59,613 - phoenix - INFO - Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_fast_analysis.csv
+2025-05-21 20:01:59,614 - phoenix - INFO - Spydefi channel detected. Analyzing KOLs from Spydefi.
+2025-05-21 20:01:59,614 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-21 20:01:59,616 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-21 20:01:59,748 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-21 20:02:00,614 - phoenix.telegram - INFO - Connected to Telegram
+2025-05-21 20:02:00,614 - phoenix.telegram - INFO - Scraping Spydefi channel spydefi for KOL mentions
+2025-05-21 20:02:00,615 - phoenix.telegram - INFO - SpyDefi channel detected, limiting to 1 day and 500 messages
+2025-05-21 20:02:00,615 - phoenix.telegram - INFO - Scraping 1 days of messages from spydefi
+2025-05-21 20:02:01,103 - phoenix.telegram - INFO - Retrieved 100 total messages from SpyDefi, found 100 relevant messages in this batch
+2025-05-21 20:02:01,434 - phoenix.telegram - INFO - Retrieved 200 total messages from SpyDefi, found 98 relevant messages in this batch
+2025-05-21 20:02:01,774 - phoenix.telegram - INFO - Retrieved 300 total messages from SpyDefi, found 99 relevant messages in this batch
+2025-05-21 20:02:02,222 - phoenix.telegram - INFO - Retrieved 400 total messages from SpyDefi, found 100 relevant messages in this batch
+2025-05-21 20:02:02,554 - phoenix.telegram - INFO - Retrieved 500 total messages from SpyDefi, found 98 relevant messages in this batch
+2025-05-21 20:02:02,554 - phoenix.telegram - INFO - Finished retrieving messages from SpyDefi. Found 495 relevant messages.
+2025-05-21 20:02:02,573 - phoenix.telegram - INFO - Found 161 potential KOL channels/usernames
+2025-05-21 20:02:02,573 - phoenix.telegram - INFO - Analyzing KOL: MarksGems - FAST MODE (last 3 calls)
+2025-05-21 20:02:02,573 - phoenix.telegram - INFO - Analyzing channel MarksGems - FAST MODE: Last 3 calls only
+2025-05-21 20:02:02,573 - phoenix.telegram - INFO - Scraping 1 days of messages from MarksGems
+2025-05-21 20:02:03,184 - phoenix.telegram - INFO - Retrieved 100 total messages from MarksGems, found 90 relevant messages in this batch
+2025-05-21 20:02:03,528 - phoenix.telegram - INFO - Finished retrieving messages from MarksGems. Found 154 relevant messages.
+2025-05-21 20:02:04,405 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'AVGuygVeBmbYiJ47V7tgBNLSukNqW7pWZYJsKUNWhHpc', 'address_type': 'token', 'type': '1h', 'time_from': 1747796524, 'time_to': 1747882924}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:04,406 - phoenix.birdeye - WARNING - No price history available for AVGuygVeBmbYiJ47V7tgBNLSukNqW7pWZYJsKUNWhHpc
+2025-05-21 20:02:04,529 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'AVGuygVeBmbYiJ47V7tgBNLSukNqW7pWZYJsKUNWhHpc', 'address_type': 'token', 'type': '4h', 'time_from': 1747796524, 'time_to': 1747882924}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:04,530 - phoenix.birdeye - WARNING - No price history available for AVGuygVeBmbYiJ47V7tgBNLSukNqW7pWZYJsKUNWhHpc
+2025-05-21 20:02:04,530 - phoenix.telegram - INFO - ATH Summary for AVGuygVeBmbYiJ47V7tgBNLSukNqW7pWZYJsKUNWhHpc: ATH=$0.00010345, Current=$0.00010345, Max ROI: 0.00%
+2025-05-21 20:02:05,375 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '5TScvcijRc159yFC6pFEgjSUkCvC2JyBM8aYMK15pump', 'address_type': 'token', 'type': '1h', 'time_from': 1747796525, 'time_to': 1747882925}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:05,375 - phoenix.birdeye - WARNING - No price history available for 5TScvcijRc159yFC6pFEgjSUkCvC2JyBM8aYMK15pump
+2025-05-21 20:02:05,485 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '5TScvcijRc159yFC6pFEgjSUkCvC2JyBM8aYMK15pump', 'address_type': 'token', 'type': '4h', 'time_from': 1747796525, 'time_to': 1747882925}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:05,486 - phoenix.birdeye - WARNING - No price history available for 5TScvcijRc159yFC6pFEgjSUkCvC2JyBM8aYMK15pump
+2025-05-21 20:02:05,487 - phoenix.telegram - INFO - ATH Summary for 5TScvcijRc159yFC6pFEgjSUkCvC2JyBM8aYMK15pump: ATH=$0.00004547, Current=$0.00004547, Max ROI: 0.00%
+2025-05-21 20:02:06,490 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '7zk6zXHFEgRAo3LkyxWUsMC8mRbRw5V8jxRAGyxXpump', 'address_type': 'token', 'type': '1h', 'time_from': 1747796526, 'time_to': 1747882926}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:06,492 - phoenix.birdeye - WARNING - No price history available for 7zk6zXHFEgRAo3LkyxWUsMC8mRbRw5V8jxRAGyxXpump
+2025-05-21 20:02:06,617 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '7zk6zXHFEgRAo3LkyxWUsMC8mRbRw5V8jxRAGyxXpump', 'address_type': 'token', 'type': '4h', 'time_from': 1747796526, 'time_to': 1747882926}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:06,617 - phoenix.birdeye - WARNING - No price history available for 7zk6zXHFEgRAo3LkyxWUsMC8mRbRw5V8jxRAGyxXpump
+2025-05-21 20:02:06,618 - phoenix.telegram - INFO - ATH Summary for 7zk6zXHFEgRAo3LkyxWUsMC8mRbRw5V8jxRAGyxXpump: ATH=$0.00001138, Current=$0.00001138, Max ROI: 0.00%
+2025-05-21 20:02:06,619 - phoenix.telegram - INFO - Analyzing KOL: kariusgemscalls - FAST MODE (last 3 calls)
+2025-05-21 20:02:06,619 - phoenix.telegram - INFO - Analyzing channel kariusgemscalls - FAST MODE: Last 3 calls only
+2025-05-21 20:02:06,619 - phoenix.telegram - INFO - Scraping 1 days of messages from kariusgemscalls
+2025-05-21 20:02:07,199 - phoenix.telegram - INFO - Finished retrieving messages from kariusgemscalls. Found 83 relevant messages.
+2025-05-21 20:02:08,022 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'BmghuZ4hFCpwEQa2EKAofSBAQQcrggx8jhK2jpDrpump', 'address_type': 'token', 'type': '1h', 'time_from': 1747796527, 'time_to': 1747882927}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:08,022 - phoenix.birdeye - WARNING - No price history available for BmghuZ4hFCpwEQa2EKAofSBAQQcrggx8jhK2jpDrpump
+2025-05-21 20:02:08,156 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'BmghuZ4hFCpwEQa2EKAofSBAQQcrggx8jhK2jpDrpump', 'address_type': 'token', 'type': '4h', 'time_from': 1747796528, 'time_to': 1747882928}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:08,156 - phoenix.birdeye - WARNING - No price history available for BmghuZ4hFCpwEQa2EKAofSBAQQcrggx8jhK2jpDrpump
+2025-05-21 20:02:08,157 - phoenix.telegram - INFO - ATH Summary for BmghuZ4hFCpwEQa2EKAofSBAQQcrggx8jhK2jpDrpump: ATH=$0.00008706, Current=$0.00008706, Max ROI: 0.00%
+2025-05-21 20:02:08,984 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'XNxJtjs2JbAV9N8LJ59L8Uox9Av7fmn75gLcgtSpump', 'address_type': 'token', 'type': '1h', 'time_from': 1747796528, 'time_to': 1747882928}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:08,985 - phoenix.birdeye - WARNING - No price history available for XNxJtjs2JbAV9N8LJ59L8Uox9Av7fmn75gLcgtSpump
+2025-05-21 20:02:09,109 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'XNxJtjs2JbAV9N8LJ59L8Uox9Av7fmn75gLcgtSpump', 'address_type': 'token', 'type': '4h', 'time_from': 1747796528, 'time_to': 1747882928}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:09,110 - phoenix.birdeye - WARNING - No price history available for XNxJtjs2JbAV9N8LJ59L8Uox9Av7fmn75gLcgtSpump
+2025-05-21 20:02:09,111 - phoenix.telegram - INFO - ATH Summary for XNxJtjs2JbAV9N8LJ59L8Uox9Av7fmn75gLcgtSpump: ATH=$0.00000407, Current=$0.00000407, Max ROI: 0.00%
+2025-05-21 20:02:09,926 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'mumiSjLdywb7ZJvTw3i2sMBEH2xZFVYsiABzdJspump', 'address_type': 'token', 'type': '1h', 'time_from': 1747796529, 'time_to': 1747882929}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:09,926 - phoenix.birdeye - WARNING - No price history available for mumiSjLdywb7ZJvTw3i2sMBEH2xZFVYsiABzdJspump
+2025-05-21 20:02:10,046 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'mumiSjLdywb7ZJvTw3i2sMBEH2xZFVYsiABzdJspump', 'address_type': 'token', 'type': '4h', 'time_from': 1747796529, 'time_to': 1747882929}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:10,046 - phoenix.birdeye - WARNING - No price history available for mumiSjLdywb7ZJvTw3i2sMBEH2xZFVYsiABzdJspump
+2025-05-21 20:02:10,047 - phoenix.telegram - INFO - ATH Summary for mumiSjLdywb7ZJvTw3i2sMBEH2xZFVYsiABzdJspump: ATH=$0.00033609, Current=$0.00033609, Max ROI: 0.00%
+2025-05-21 20:02:10,047 - phoenix.telegram - INFO - Analyzing KOL: TopCallersChannel - FAST MODE (last 3 calls)
+2025-05-21 20:02:10,048 - phoenix.telegram - INFO - Analyzing channel TopCallersChannel - FAST MODE: Last 3 calls only
+2025-05-21 20:02:10,048 - phoenix.telegram - INFO - Scraping 1 days of messages from TopCallersChannel
+2025-05-21 20:02:10,528 - phoenix.telegram - INFO - Finished retrieving messages from TopCallersChannel. Found 42 relevant messages.
+2025-05-21 20:02:11,037 - phoenix.birdeye - WARNING - No price history available for 4sbywy5uuxybwuj8fwhdfxun6mbtacrqbjwiz9mxworp
+2025-05-21 20:02:11,223 - phoenix.birdeye - WARNING - No price history available for 4sbywy5uuxybwuj8fwhdfxun6mbtacrqbjwiz9mxworp
+2025-05-21 20:02:11,350 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '4sbywy5uuxybwuj8fwhdfxun6mbtacrqbjwiz9mxworp', 'address_type': 'token', 'type': '1h', 'time_from': 1747796531, 'time_to': 1747882931}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:11,350 - phoenix.birdeye - WARNING - No price history available for 4sbywy5uuxybwuj8fwhdfxun6mbtacrqbjwiz9mxworp
+2025-05-21 20:02:11,479 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '4sbywy5uuxybwuj8fwhdfxun6mbtacrqbjwiz9mxworp', 'address_type': 'token', 'type': '4h', 'time_from': 1747796531, 'time_to': 1747882931}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:11,479 - phoenix.birdeye - WARNING - No price history available for 4sbywy5uuxybwuj8fwhdfxun6mbtacrqbjwiz9mxworp
+2025-05-21 20:02:11,480 - phoenix.telegram - INFO - ATH Summary for 4sbywy5uuxybwuj8fwhdfxun6mbtacrqbjwiz9mxworp: ATH=$0.00000000, Current=$0.00000000, Max ROI: 0.00%
+2025-05-21 20:02:12,301 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'EVqkPanBKrx6q2cuej5CwjdEoK8CM2UPdYi9nmSPbonk', 'address_type': 'token', 'type': '1h', 'time_from': 1747796532, 'time_to': 1747882932}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:12,302 - phoenix.birdeye - WARNING - No price history available for EVqkPanBKrx6q2cuej5CwjdEoK8CM2UPdYi9nmSPbonk
+2025-05-21 20:02:12,421 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'EVqkPanBKrx6q2cuej5CwjdEoK8CM2UPdYi9nmSPbonk', 'address_type': 'token', 'type': '4h', 'time_from': 1747796532, 'time_to': 1747882932}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:12,422 - phoenix.birdeye - WARNING - No price history available for EVqkPanBKrx6q2cuej5CwjdEoK8CM2UPdYi9nmSPbonk
+2025-05-21 20:02:12,423 - phoenix.telegram - INFO - ATH Summary for EVqkPanBKrx6q2cuej5CwjdEoK8CM2UPdYi9nmSPbonk: ATH=$0.00046358, Current=$0.00046358, Max ROI: 0.00%
+2025-05-21 20:02:12,941 - phoenix.birdeye - WARNING - No price history available for 95qzctrcjdw2gyxefjswpyqn5fbrgg92b4huvaykastp
+2025-05-21 20:02:13,143 - phoenix.birdeye - WARNING - No price history available for 95qzctrcjdw2gyxefjswpyqn5fbrgg92b4huvaykastp
+2025-05-21 20:02:13,274 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '95qzctrcjdw2gyxefjswpyqn5fbrgg92b4huvaykastp', 'address_type': 'token', 'type': '1h', 'time_from': 1747796533, 'time_to': 1747882933}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:13,274 - phoenix.birdeye - WARNING - No price history available for 95qzctrcjdw2gyxefjswpyqn5fbrgg92b4huvaykastp
+2025-05-21 20:02:13,391 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '95qzctrcjdw2gyxefjswpyqn5fbrgg92b4huvaykastp', 'address_type': 'token', 'type': '4h', 'time_from': 1747796533, 'time_to': 1747882933}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:13,391 - phoenix.birdeye - WARNING - No price history available for 95qzctrcjdw2gyxefjswpyqn5fbrgg92b4huvaykastp
+2025-05-21 20:02:13,392 - phoenix.telegram - INFO - ATH Summary for 95qzctrcjdw2gyxefjswpyqn5fbrgg92b4huvaykastp: ATH=$0.00000000, Current=$0.00000000, Max ROI: 0.00%
+2025-05-21 20:02:13,393 - phoenix.telegram - INFO - Analyzing KOL: JeetyCall - FAST MODE (last 3 calls)
+2025-05-21 20:02:13,393 - phoenix.telegram - INFO - Analyzing channel JeetyCall - FAST MODE: Last 3 calls only
+2025-05-21 20:02:13,393 - phoenix.telegram - INFO - Scraping 1 days of messages from JeetyCall
+2025-05-21 20:02:13,829 - phoenix.telegram - INFO - Finished retrieving messages from JeetyCall. Found 16 relevant messages.
+2025-05-21 20:02:14,619 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'BWKqYfgC9SiiSJ8Rrynu7P5xrswwsqNxWmS87rFRpump', 'address_type': 'token', 'type': '1h', 'time_from': 1747796534, 'time_to': 1747882934}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:14,620 - phoenix.birdeye - WARNING - No price history available for BWKqYfgC9SiiSJ8Rrynu7P5xrswwsqNxWmS87rFRpump
+2025-05-21 20:02:14,765 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'BWKqYfgC9SiiSJ8Rrynu7P5xrswwsqNxWmS87rFRpump', 'address_type': 'token', 'type': '4h', 'time_from': 1747796534, 'time_to': 1747882934}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:14,765 - phoenix.birdeye - WARNING - No price history available for BWKqYfgC9SiiSJ8Rrynu7P5xrswwsqNxWmS87rFRpump
+2025-05-21 20:02:14,767 - phoenix.telegram - INFO - ATH Summary for BWKqYfgC9SiiSJ8Rrynu7P5xrswwsqNxWmS87rFRpump: ATH=$0.00001428, Current=$0.00001428, Max ROI: 0.00%
+2025-05-21 20:02:15,627 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'AKDtofiNfKx9ArYdqPL877757Wmy8PJDBTT9JHTKpump', 'address_type': 'token', 'type': '1h', 'time_from': 1747796535, 'time_to': 1747882935}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:15,628 - phoenix.birdeye - WARNING - No price history available for AKDtofiNfKx9ArYdqPL877757Wmy8PJDBTT9JHTKpump
+2025-05-21 20:02:15,764 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'AKDtofiNfKx9ArYdqPL877757Wmy8PJDBTT9JHTKpump', 'address_type': 'token', 'type': '4h', 'time_from': 1747796535, 'time_to': 1747882935}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:15,765 - phoenix.birdeye - WARNING - No price history available for AKDtofiNfKx9ArYdqPL877757Wmy8PJDBTT9JHTKpump
+2025-05-21 20:02:15,766 - phoenix.telegram - INFO - ATH Summary for AKDtofiNfKx9ArYdqPL877757Wmy8PJDBTT9JHTKpump: ATH=$0.00010019, Current=$0.00010019, Max ROI: 0.00%
+2025-05-21 20:02:16,647 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '73mhFXKkUXMRGisAp4zBQ66RURHdboFGm6cuiJpopump', 'address_type': 'token', 'type': '1h', 'time_from': 1747796536, 'time_to': 1747882936}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:16,648 - phoenix.birdeye - WARNING - No price history available for 73mhFXKkUXMRGisAp4zBQ66RURHdboFGm6cuiJpopump
+2025-05-21 20:02:16,756 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '73mhFXKkUXMRGisAp4zBQ66RURHdboFGm6cuiJpopump', 'address_type': 'token', 'type': '4h', 'time_from': 1747796536, 'time_to': 1747882936}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:16,757 - phoenix.birdeye - WARNING - No price history available for 73mhFXKkUXMRGisAp4zBQ66RURHdboFGm6cuiJpopump
+2025-05-21 20:02:16,758 - phoenix.telegram - INFO - ATH Summary for 73mhFXKkUXMRGisAp4zBQ66RURHdboFGm6cuiJpopump: ATH=$0.00002648, Current=$0.00002648, Max ROI: 0.00%
+2025-05-21 20:02:16,759 - phoenix.telegram - INFO - Analyzing KOL: ChapoInsider - FAST MODE (last 3 calls)
+2025-05-21 20:02:16,759 - phoenix.telegram - INFO - Analyzing channel ChapoInsider - FAST MODE: Last 3 calls only
+2025-05-21 20:02:16,759 - phoenix.telegram - INFO - Scraping 1 days of messages from ChapoInsider
+2025-05-21 20:02:17,250 - phoenix.telegram - INFO - Finished retrieving messages from ChapoInsider. Found 45 relevant messages.
+2025-05-21 20:02:18,067 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'BRPhmqcFTT5nT8cxwybyF45Fv6uW68jKBeKWZzNFpump', 'address_type': 'token', 'type': '1h', 'time_from': 1747796537, 'time_to': 1747882937}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:18,067 - phoenix.birdeye - WARNING - No price history available for BRPhmqcFTT5nT8cxwybyF45Fv6uW68jKBeKWZzNFpump
+2025-05-21 20:02:18,181 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'BRPhmqcFTT5nT8cxwybyF45Fv6uW68jKBeKWZzNFpump', 'address_type': 'token', 'type': '4h', 'time_from': 1747796538, 'time_to': 1747882938}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:18,181 - phoenix.birdeye - WARNING - No price history available for BRPhmqcFTT5nT8cxwybyF45Fv6uW68jKBeKWZzNFpump
+2025-05-21 20:02:18,182 - phoenix.telegram - INFO - ATH Summary for BRPhmqcFTT5nT8cxwybyF45Fv6uW68jKBeKWZzNFpump: ATH=$0.00000410, Current=$0.00000410, Max ROI: 0.00%
+2025-05-21 20:02:19,010 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'YEEZYxfpUGiuyJby1vgSX932LrMztw8btwuHj9x2jnP', 'address_type': 'token', 'type': '1h', 'time_from': 1747796538, 'time_to': 1747882938}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:19,010 - phoenix.birdeye - WARNING - No price history available for YEEZYxfpUGiuyJby1vgSX932LrMztw8btwuHj9x2jnP
+2025-05-21 20:02:19,144 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'YEEZYxfpUGiuyJby1vgSX932LrMztw8btwuHj9x2jnP', 'address_type': 'token', 'type': '4h', 'time_from': 1747796539, 'time_to': 1747882939}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:19,144 - phoenix.birdeye - WARNING - No price history available for YEEZYxfpUGiuyJby1vgSX932LrMztw8btwuHj9x2jnP
+2025-05-21 20:02:19,145 - phoenix.telegram - INFO - ATH Summary for YEEZYxfpUGiuyJby1vgSX932LrMztw8btwuHj9x2jnP: ATH=$0.00000679, Current=$0.00000679, Max ROI: 0.00%
+2025-05-21 20:02:19,966 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'EK87DCrnXi1dgUrZxfdqmJKexeJTfRbkvkUwfRc3pump', 'address_type': 'token', 'type': '1h', 'time_from': 1747796539, 'time_to': 1747882939}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:19,967 - phoenix.birdeye - WARNING - No price history available for EK87DCrnXi1dgUrZxfdqmJKexeJTfRbkvkUwfRc3pump
+2025-05-21 20:02:20,118 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'EK87DCrnXi1dgUrZxfdqmJKexeJTfRbkvkUwfRc3pump', 'address_type': 'token', 'type': '4h', 'time_from': 1747796539, 'time_to': 1747882939}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:20,119 - phoenix.birdeye - WARNING - No price history available for EK87DCrnXi1dgUrZxfdqmJKexeJTfRbkvkUwfRc3pump
+2025-05-21 20:02:20,120 - phoenix.telegram - INFO - ATH Summary for EK87DCrnXi1dgUrZxfdqmJKexeJTfRbkvkUwfRc3pump: ATH=$0.00000622, Current=$0.00000622, Max ROI: 0.00%
+2025-05-21 20:02:20,120 - phoenix.telegram - INFO - Analyzing KOL: CrikeyCallz - FAST MODE (last 3 calls)
+2025-05-21 20:02:20,121 - phoenix.telegram - INFO - Analyzing channel CrikeyCallz - FAST MODE: Last 3 calls only
+2025-05-21 20:02:20,121 - phoenix.telegram - INFO - Scraping 1 days of messages from CrikeyCallz
+2025-05-21 20:02:20,556 - phoenix.telegram - INFO - Finished retrieving messages from CrikeyCallz. Found 27 relevant messages.
+2025-05-21 20:02:21,370 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'A21Hy3kzgkiAiN6oN3hNcFabX5fKTdbAutDcqp1ipump', 'address_type': 'token', 'type': '1h', 'time_from': 1747796541, 'time_to': 1747882941}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:21,371 - phoenix.birdeye - WARNING - No price history available for A21Hy3kzgkiAiN6oN3hNcFabX5fKTdbAutDcqp1ipump
+2025-05-21 20:02:21,496 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'A21Hy3kzgkiAiN6oN3hNcFabX5fKTdbAutDcqp1ipump', 'address_type': 'token', 'type': '4h', 'time_from': 1747796541, 'time_to': 1747882941}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:21,496 - phoenix.birdeye - WARNING - No price history available for A21Hy3kzgkiAiN6oN3hNcFabX5fKTdbAutDcqp1ipump
+2025-05-21 20:02:21,497 - phoenix.telegram - INFO - ATH Summary for A21Hy3kzgkiAiN6oN3hNcFabX5fKTdbAutDcqp1ipump: ATH=$0.00004341, Current=$0.00004341, Max ROI: 0.00%
+2025-05-21 20:02:22,329 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'DoAgBGMChpNYLzHgQc2jKhT1QhrSJS1TAkUMNtVspump', 'address_type': 'token', 'type': '1h', 'time_from': 1747796542, 'time_to': 1747882942}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:22,330 - phoenix.birdeye - WARNING - No price history available for DoAgBGMChpNYLzHgQc2jKhT1QhrSJS1TAkUMNtVspump
+2025-05-21 20:02:22,459 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'DoAgBGMChpNYLzHgQc2jKhT1QhrSJS1TAkUMNtVspump', 'address_type': 'token', 'type': '4h', 'time_from': 1747796542, 'time_to': 1747882942}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:22,460 - phoenix.birdeye - WARNING - No price history available for DoAgBGMChpNYLzHgQc2jKhT1QhrSJS1TAkUMNtVspump
+2025-05-21 20:02:22,461 - phoenix.telegram - INFO - ATH Summary for DoAgBGMChpNYLzHgQc2jKhT1QhrSJS1TAkUMNtVspump: ATH=$0.00000700, Current=$0.00000700, Max ROI: 0.00%
+2025-05-21 20:02:23,309 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'DgXYkMBrE9Q7qjpgkRpsNetH4JEXtUH6JjSjxo35pump', 'address_type': 'token', 'type': '1h', 'time_from': 1747796543, 'time_to': 1747882943}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:23,310 - phoenix.birdeye - WARNING - No price history available for DgXYkMBrE9Q7qjpgkRpsNetH4JEXtUH6JjSjxo35pump
+2025-05-21 20:02:23,450 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'DgXYkMBrE9Q7qjpgkRpsNetH4JEXtUH6JjSjxo35pump', 'address_type': 'token', 'type': '4h', 'time_from': 1747796543, 'time_to': 1747882943}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:23,451 - phoenix.birdeye - WARNING - No price history available for DgXYkMBrE9Q7qjpgkRpsNetH4JEXtUH6JjSjxo35pump
+2025-05-21 20:02:23,452 - phoenix.telegram - INFO - ATH Summary for DgXYkMBrE9Q7qjpgkRpsNetH4JEXtUH6JjSjxo35pump: ATH=$0.00000795, Current=$0.00000795, Max ROI: 0.00%
+2025-05-21 20:02:23,453 - phoenix.telegram - INFO - Analyzing KOL: AnimeGems - FAST MODE (last 3 calls)
+2025-05-21 20:02:23,453 - phoenix.telegram - INFO - Analyzing channel AnimeGems - FAST MODE: Last 3 calls only
+2025-05-21 20:02:23,453 - phoenix.telegram - INFO - Scraping 1 days of messages from AnimeGems
+2025-05-21 20:02:24,049 - phoenix.telegram - INFO - Finished retrieving messages from AnimeGems. Found 13 relevant messages.
+2025-05-21 20:02:24,544 - phoenix.birdeye - WARNING - No price history available for 6Y1MEf2XrvyZo7hi9ZHBhuke9iTewBSPaUr6SQsDMhqS
+2025-05-21 20:02:24,699 - phoenix.birdeye - WARNING - No price history available for 6Y1MEf2XrvyZo7hi9ZHBhuke9iTewBSPaUr6SQsDMhqS
+2025-05-21 20:02:24,814 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '6Y1MEf2XrvyZo7hi9ZHBhuke9iTewBSPaUr6SQsDMhqS', 'address_type': 'token', 'type': '1h', 'time_from': 1747796544, 'time_to': 1747882944}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:24,815 - phoenix.birdeye - WARNING - No price history available for 6Y1MEf2XrvyZo7hi9ZHBhuke9iTewBSPaUr6SQsDMhqS
+2025-05-21 20:02:24,942 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '6Y1MEf2XrvyZo7hi9ZHBhuke9iTewBSPaUr6SQsDMhqS', 'address_type': 'token', 'type': '4h', 'time_from': 1747796544, 'time_to': 1747882944}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:24,943 - phoenix.birdeye - WARNING - No price history available for 6Y1MEf2XrvyZo7hi9ZHBhuke9iTewBSPaUr6SQsDMhqS
+2025-05-21 20:02:24,944 - phoenix.telegram - INFO - ATH Summary for 6Y1MEf2XrvyZo7hi9ZHBhuke9iTewBSPaUr6SQsDMhqS: ATH=$0.00000000, Current=$0.00000000, Max ROI: 0.00%
+2025-05-21 20:02:25,403 - phoenix.birdeye - WARNING - No price history available for HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T
+2025-05-21 20:02:25,580 - phoenix.birdeye - WARNING - No price history available for HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T
+2025-05-21 20:02:25,708 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T', 'address_type': 'token', 'type': '1h', 'time_from': 1747796545, 'time_to': 1747882945}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:25,709 - phoenix.birdeye - WARNING - No price history available for HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T
+2025-05-21 20:02:25,821 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T', 'address_type': 'token', 'type': '4h', 'time_from': 1747796545, 'time_to': 1747882945}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:25,821 - phoenix.birdeye - WARNING - No price history available for HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T
+2025-05-21 20:02:25,822 - phoenix.telegram - INFO - ATH Summary for HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T: ATH=$0.00000000, Current=$0.00000000, Max ROI: 0.00%
+2025-05-21 20:02:26,338 - phoenix.birdeye - WARNING - No price history available for HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T
+2025-05-21 20:02:26,497 - phoenix.birdeye - WARNING - No price history available for HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T
+2025-05-21 20:02:26,626 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T', 'address_type': 'token', 'type': '1h', 'time_from': 1747796546, 'time_to': 1747882946}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:26,626 - phoenix.birdeye - WARNING - No price history available for HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T
+2025-05-21 20:02:26,750 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T', 'address_type': 'token', 'type': '4h', 'time_from': 1747796546, 'time_to': 1747882946}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:26,750 - phoenix.birdeye - WARNING - No price history available for HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T
+2025-05-21 20:02:26,752 - phoenix.telegram - INFO - ATH Summary for HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T: ATH=$0.00000000, Current=$0.00000000, Max ROI: 0.00%
+2025-05-21 20:02:26,752 - phoenix.telegram - INFO - Analyzing KOL: Vortex_Gamble - FAST MODE (last 3 calls)
+2025-05-21 20:02:26,752 - phoenix.telegram - INFO - Analyzing channel Vortex_Gamble - FAST MODE: Last 3 calls only
+2025-05-21 20:02:26,753 - phoenix.telegram - INFO - Scraping 1 days of messages from Vortex_Gamble
+2025-05-21 20:02:27,355 - phoenix.telegram - INFO - Finished retrieving messages from Vortex_Gamble. Found 29 relevant messages.
+2025-05-21 20:02:28,206 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '7F3o2x9YVC34yKmkWmMcNjHjPWSHcoAVyrppVguxpump', 'address_type': 'token', 'type': '1h', 'time_from': 1747796548, 'time_to': 1747882948}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:28,206 - phoenix.birdeye - WARNING - No price history available for 7F3o2x9YVC34yKmkWmMcNjHjPWSHcoAVyrppVguxpump
+2025-05-21 20:02:28,343 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '7F3o2x9YVC34yKmkWmMcNjHjPWSHcoAVyrppVguxpump', 'address_type': 'token', 'type': '4h', 'time_from': 1747796548, 'time_to': 1747882948}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:28,343 - phoenix.birdeye - WARNING - No price history available for 7F3o2x9YVC34yKmkWmMcNjHjPWSHcoAVyrppVguxpump
+2025-05-21 20:02:28,344 - phoenix.telegram - INFO - ATH Summary for 7F3o2x9YVC34yKmkWmMcNjHjPWSHcoAVyrppVguxpump: ATH=$0.00016263, Current=$0.00016263, Max ROI: 0.00%
+2025-05-21 20:02:29,200 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'GqXZiPLmcEvS3ZwiBrtYCfxWjqeXE8vEMUnWyVuApump', 'address_type': 'token', 'type': '1h', 'time_from': 1747796549, 'time_to': 1747882949}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:29,200 - phoenix.birdeye - WARNING - No price history available for GqXZiPLmcEvS3ZwiBrtYCfxWjqeXE8vEMUnWyVuApump
+2025-05-21 20:02:29,312 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'GqXZiPLmcEvS3ZwiBrtYCfxWjqeXE8vEMUnWyVuApump', 'address_type': 'token', 'type': '4h', 'time_from': 1747796549, 'time_to': 1747882949}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:29,312 - phoenix.birdeye - WARNING - No price history available for GqXZiPLmcEvS3ZwiBrtYCfxWjqeXE8vEMUnWyVuApump
+2025-05-21 20:02:29,313 - phoenix.telegram - INFO - ATH Summary for GqXZiPLmcEvS3ZwiBrtYCfxWjqeXE8vEMUnWyVuApump: ATH=$0.00048650, Current=$0.00048650, Max ROI: 0.00%
+2025-05-21 20:02:30,206 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '7NwzyLYSGaYMSzMKFWJi5F2bTHnobzvxnohehBckpump', 'address_type': 'token', 'type': '1h', 'time_from': 1747796550, 'time_to': 1747882950}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:30,206 - phoenix.birdeye - WARNING - No price history available for 7NwzyLYSGaYMSzMKFWJi5F2bTHnobzvxnohehBckpump
+2025-05-21 20:02:30,321 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '7NwzyLYSGaYMSzMKFWJi5F2bTHnobzvxnohehBckpump', 'address_type': 'token', 'type': '4h', 'time_from': 1747796550, 'time_to': 1747882950}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:30,322 - phoenix.birdeye - WARNING - No price history available for 7NwzyLYSGaYMSzMKFWJi5F2bTHnobzvxnohehBckpump
+2025-05-21 20:02:30,323 - phoenix.telegram - INFO - ATH Summary for 7NwzyLYSGaYMSzMKFWJi5F2bTHnobzvxnohehBckpump: ATH=$0.00005578, Current=$0.00005578, Max ROI: 0.00%
+2025-05-21 20:02:30,323 - phoenix.telegram - INFO - Analyzing KOL: michiosuzukiofsatoshicalls - FAST MODE (last 3 calls)
+2025-05-21 20:02:30,324 - phoenix.telegram - INFO - Analyzing channel michiosuzukiofsatoshicalls - FAST MODE: Last 3 calls only
+2025-05-21 20:02:30,324 - phoenix.telegram - INFO - Scraping 1 days of messages from michiosuzukiofsatoshicalls
+2025-05-21 20:02:30,739 - phoenix.telegram - INFO - Retrieved 100 total messages from michiosuzukiofsatoshicalls, found 50 relevant messages in this batch
+2025-05-21 20:02:31,055 - phoenix.telegram - INFO - Finished retrieving messages from michiosuzukiofsatoshicalls. Found 78 relevant messages.
+2025-05-21 20:02:31,920 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'YEEZYxfpUGiuyJby1vgSX932LrMztw8btwuHj9x2jnP', 'address_type': 'token', 'type': '1h', 'time_from': 1747796551, 'time_to': 1747882951}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:31,920 - phoenix.birdeye - WARNING - No price history available for YEEZYxfpUGiuyJby1vgSX932LrMztw8btwuHj9x2jnP
+2025-05-21 20:02:32,039 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'YEEZYxfpUGiuyJby1vgSX932LrMztw8btwuHj9x2jnP', 'address_type': 'token', 'type': '4h', 'time_from': 1747796551, 'time_to': 1747882951}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:32,039 - phoenix.birdeye - WARNING - No price history available for YEEZYxfpUGiuyJby1vgSX932LrMztw8btwuHj9x2jnP
+2025-05-21 20:02:32,040 - phoenix.telegram - INFO - ATH Summary for YEEZYxfpUGiuyJby1vgSX932LrMztw8btwuHj9x2jnP: ATH=$0.00000679, Current=$0.00000679, Max ROI: 0.00%
+2025-05-21 20:02:32,910 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'A8X4hSCmad31bWw2xC2GB9pVs22HzYpzeuXemRtupump', 'address_type': 'token', 'type': '1h', 'time_from': 1747796552, 'time_to': 1747882952}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:32,910 - phoenix.birdeye - WARNING - No price history available for A8X4hSCmad31bWw2xC2GB9pVs22HzYpzeuXemRtupump
+2025-05-21 20:02:33,020 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'A8X4hSCmad31bWw2xC2GB9pVs22HzYpzeuXemRtupump', 'address_type': 'token', 'type': '4h', 'time_from': 1747796552, 'time_to': 1747882952}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:33,020 - phoenix.birdeye - WARNING - No price history available for A8X4hSCmad31bWw2xC2GB9pVs22HzYpzeuXemRtupump
+2025-05-21 20:02:33,022 - phoenix.telegram - INFO - ATH Summary for A8X4hSCmad31bWw2xC2GB9pVs22HzYpzeuXemRtupump: ATH=$0.00010899, Current=$0.00010899, Max ROI: 0.00%
+2025-05-21 20:02:33,873 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'HRdyCK3HQNWca8XY5Y4pGtfpH1Xgn9pW2RAaBbBApump', 'address_type': 'token', 'type': '1h', 'time_from': 1747796553, 'time_to': 1747882953}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:33,874 - phoenix.birdeye - WARNING - No price history available for HRdyCK3HQNWca8XY5Y4pGtfpH1Xgn9pW2RAaBbBApump
+2025-05-21 20:02:34,003 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'HRdyCK3HQNWca8XY5Y4pGtfpH1Xgn9pW2RAaBbBApump', 'address_type': 'token', 'type': '4h', 'time_from': 1747796553, 'time_to': 1747882953}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:34,004 - phoenix.birdeye - WARNING - No price history available for HRdyCK3HQNWca8XY5Y4pGtfpH1Xgn9pW2RAaBbBApump
+2025-05-21 20:02:34,005 - phoenix.telegram - INFO - ATH Summary for HRdyCK3HQNWca8XY5Y4pGtfpH1Xgn9pW2RAaBbBApump: ATH=$0.00022862, Current=$0.00022862, Max ROI: 0.00%
+2025-05-21 20:02:34,005 - phoenix.telegram - INFO - Analyzing KOL: CentralHub_News - FAST MODE (last 3 calls)
+2025-05-21 20:02:34,005 - phoenix.telegram - INFO - Analyzing channel CentralHub_News - FAST MODE: Last 3 calls only
+2025-05-21 20:02:34,006 - phoenix.telegram - INFO - Scraping 1 days of messages from CentralHub_News
+2025-05-21 20:02:34,547 - phoenix.telegram - INFO - Finished retrieving messages from CentralHub_News. Found 34 relevant messages.
+2025-05-21 20:02:35,046 - phoenix.birdeye - WARNING - No price history available for 7edkwp93maqnwynm44rwdk3bmd3zygfkdba3ycrrjvkn
+2025-05-21 20:02:35,212 - phoenix.birdeye - WARNING - No price history available for 7edkwp93maqnwynm44rwdk3bmd3zygfkdba3ycrrjvkn
+2025-05-21 20:02:35,338 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '7edkwp93maqnwynm44rwdk3bmd3zygfkdba3ycrrjvkn', 'address_type': 'token', 'type': '1h', 'time_from': 1747796555, 'time_to': 1747882955}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:35,338 - phoenix.birdeye - WARNING - No price history available for 7edkwp93maqnwynm44rwdk3bmd3zygfkdba3ycrrjvkn
+2025-05-21 20:02:35,450 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '7edkwp93maqnwynm44rwdk3bmd3zygfkdba3ycrrjvkn', 'address_type': 'token', 'type': '4h', 'time_from': 1747796555, 'time_to': 1747882955}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:35,450 - phoenix.birdeye - WARNING - No price history available for 7edkwp93maqnwynm44rwdk3bmd3zygfkdba3ycrrjvkn
+2025-05-21 20:02:35,452 - phoenix.telegram - INFO - ATH Summary for 7edkwp93maqnwynm44rwdk3bmd3zygfkdba3ycrrjvkn: ATH=$0.00000000, Current=$0.00000000, Max ROI: 0.00%
+2025-05-21 20:02:35,936 - phoenix.birdeye - WARNING - No price history available for 6VKwjoZgzQjfXpxJ9SMo7BYRxHh71xtSLuxzbJ8LXoeF
+2025-05-21 20:02:36,110 - phoenix.birdeye - WARNING - No price history available for 6VKwjoZgzQjfXpxJ9SMo7BYRxHh71xtSLuxzbJ8LXoeF
+2025-05-21 20:02:36,234 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '6VKwjoZgzQjfXpxJ9SMo7BYRxHh71xtSLuxzbJ8LXoeF', 'address_type': 'token', 'type': '1h', 'time_from': 1747796556, 'time_to': 1747882956}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:36,234 - phoenix.birdeye - WARNING - No price history available for 6VKwjoZgzQjfXpxJ9SMo7BYRxHh71xtSLuxzbJ8LXoeF
+2025-05-21 20:02:36,362 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '6VKwjoZgzQjfXpxJ9SMo7BYRxHh71xtSLuxzbJ8LXoeF', 'address_type': 'token', 'type': '4h', 'time_from': 1747796556, 'time_to': 1747882956}: {"success":false,"message":"type invalid format"}
+2025-05-21 20:02:36,362 - phoenix.birdeye - WARNING - No price history available for 6VKwjoZgzQjfXpxJ9SMo7BYRxHh71xtSLuxzbJ8LXoeF
+2025-05-21 20:02:36,363 - phoenix.telegram - INFO - ATH Summary for 6VKwjoZgzQjfXpxJ9SMo7BYRxHh71xtSLuxzbJ8LXoeF: ATH=$0.00000000, Current=$0.00000000, Max ROI: 0.00%
+2025-05-21 20:02:36,364 - phoenix.telegram - INFO - Exported 10 KOL analyses to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_fast_analysis.csv
+2025-05-21 20:02:36,365 - phoenix.telegram - INFO - Exported 3 token calls to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_fast_analysis_MarksGems.csv
+2025-05-21 20:02:36,373 - phoenix.telegram - INFO - Exported strategy to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_fast_analysis_MarksGems_strategy.csv
+2025-05-21 20:02:36,373 - phoenix.telegram - INFO - Exported 3 token calls to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_fast_analysis_kariusgemscalls.csv
+2025-05-21 20:02:36,374 - phoenix.telegram - INFO - Exported strategy to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_fast_analysis_kariusgemscalls_strategy.csv
+2025-05-21 20:02:36,374 - phoenix.telegram - INFO - Exported 3 token calls to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_fast_analysis_TopCallersChannel.csv
+2025-05-21 20:02:36,375 - phoenix.telegram - INFO - Exported strategy to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_fast_analysis_TopCallersChannel_strategy.csv
+2025-05-21 20:02:36,375 - phoenix.telegram - INFO - Exported 3 token calls to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_fast_analysis_JeetyCall.csv
+2025-05-21 20:02:36,376 - phoenix.telegram - INFO - Exported strategy to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_fast_analysis_JeetyCall_strategy.csv
+2025-05-21 20:02:36,376 - phoenix.telegram - INFO - Exported 3 token calls to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_fast_analysis_ChapoInsider.csv
+2025-05-21 20:02:36,377 - phoenix.telegram - INFO - Exported strategy to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_fast_analysis_ChapoInsider_strategy.csv
+2025-05-21 20:02:36,377 - phoenix.telegram - ERROR - Error exporting channel analysis: 'charmap' codec can't encode character '\U0001f7e0' in position 111: character maps to <undefined>
+2025-05-21 20:02:36,378 - phoenix.telegram - INFO - Exported 3 token calls to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_fast_analysis_AnimeGems.csv
+2025-05-21 20:02:36,379 - phoenix.telegram - INFO - Exported strategy to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_fast_analysis_AnimeGems_strategy.csv
+2025-05-21 20:02:36,379 - phoenix.telegram - INFO - Exported 3 token calls to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_fast_analysis_Vortex_Gamble.csv
+2025-05-21 20:02:36,380 - phoenix.telegram - INFO - Exported strategy to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_fast_analysis_Vortex_Gamble_strategy.csv
+2025-05-21 20:02:36,380 - phoenix.telegram - INFO - Exported 3 token calls to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_fast_analysis_michiosuzukiofsatoshicalls.csv
+2025-05-21 20:02:36,380 - phoenix.telegram - INFO - Exported strategy to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_fast_analysis_michiosuzukiofsatoshicalls_strategy.csv
+2025-05-21 20:02:36,381 - phoenix.telegram - INFO - Exported 2 token calls to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_fast_analysis_CentralHub_News.csv
+2025-05-21 20:02:36,383 - phoenix.telegram - INFO - Exported strategy to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_fast_analysis_CentralHub_News_strategy.csv
+2025-05-21 20:02:36,383 - phoenix.telegram - INFO - Disconnecting from Telegram...
+2025-05-21 20:02:36,384 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-21 20:02:36,384 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-21 20:02:36,393 - phoenix.telegram - INFO - Disconnected from Telegram
+2025-05-21 20:02:36,393 - phoenix - INFO - Spydefi analysis completed. Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_fast_analysis.csv
+2025-05-21 20:02:36,393 - phoenix - INFO - Telegram analysis completed. Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_fast_analysis.csv and related files.
+2025-05-21 20:02:36,680 - phoenix.export - INFO - Creating consolidated Excel export: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_fast_analysis.xlsx
+2025-05-21 20:02:36,720 - phoenix.export - INFO - Successfully created Excel workbook: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_fast_analysis.xlsx
+2025-05-21 20:02:36,721 - phoenix - INFO - Excel export completed: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_fast_analysis.xlsx
+2025-05-21 20:04:23,967 - phoenix - INFO - Loaded 1 Telegram channels from channels.txt
+2025-05-21 20:04:23,967 - phoenix - INFO - Loaded 104 wallets from wallets.txt
+2025-05-21 20:04:24,050 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-21 20:04:24,051 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-21 20:04:24,616 - phoenix - INFO - Analyzing 1 Telegram channels for the past 3 days using Birdeye API.
+2025-05-21 20:04:24,617 - phoenix - INFO - Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\telegram_analysis.csv
+2025-05-21 20:04:24,617 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-21 20:04:24,619 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-21 20:04:24,777 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-21 20:04:25,699 - phoenix.telegram - INFO - Connected to Telegram
+2025-05-21 20:04:25,699 - phoenix.telegram - INFO - Analyzing channel 1697916852 - FAST MODE: Last 3 calls only
+2025-05-21 20:04:25,700 - phoenix.telegram - INFO - Scraping 3 days of messages from 1697916852
+2025-05-21 20:04:25,855 - phoenix.telegram - ERROR - Error retrieving messages from 1697916852: Cannot find any entity corresponding to "1697916852"
+2025-05-21 20:04:25,855 - phoenix.telegram - WARNING - No token calls to export
+2025-05-21 20:04:25,855 - phoenix.telegram - INFO - Disconnecting from Telegram...
+2025-05-21 20:04:25,856 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-21 20:04:25,856 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-21 20:04:25,871 - phoenix.telegram - INFO - Disconnected from Telegram
+2025-05-21 20:04:25,872 - phoenix - INFO - Analysis for channel 1697916852 completed
+2025-05-21 20:04:25,872 - phoenix - INFO - Telegram analysis completed. Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\telegram_analysis.csv and related files.
+2025-05-21 20:04:26,141 - phoenix.export - INFO - Creating consolidated Excel export: C:\Users\Administrator\Desktop\phoenix-project\outputs\telegram_analysis.xlsx
+2025-05-21 20:04:26,187 - phoenix.export - INFO - Successfully created Excel workbook: C:\Users\Administrator\Desktop\phoenix-project\outputs\telegram_analysis.xlsx
+2025-05-21 20:04:26,188 - phoenix - INFO - Excel export completed: C:\Users\Administrator\Desktop\phoenix-project\outputs\telegram_analysis.xlsx

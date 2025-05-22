@@ -1,0 +1,4 @@
+channel_id,message_id,date,contract_address,token_name,token_symbol,initial_price,current_price,max_price,roi_percent,max_roi_percent,max_drawdown_percent,market_cap_usd,platform
+michiosuzukiofsatoshicalls,13260,2025-05-22T00:44:02+00:00,YEEZYxfpUGiuyJby1vgSX932LrMztw8btwuHj9x2jnP,YEEZY TOKEN,YZYTKN,0,6.794124856359335e-06,,0,0,,6564.530892856467,
+michiosuzukiofsatoshicalls,13245,2025-05-22T00:35:21+00:00,A8X4hSCmad31bWw2xC2GB9pVs22HzYpzeuXemRtupump,ZERO,ZERO,0,0.00010899197261051855,,0,0,,108987.6138668702,pumpfun
+michiosuzukiofsatoshicalls,13240,2025-05-22T00:05:04+00:00,HRdyCK3HQNWca8XY5Y4pGtfpH1Xgn9pW2RAaBbBApump,Sonny Angels,ANGELS,0,0.00022862388427208693,,0,0,,228212.42288562452,pumpfun

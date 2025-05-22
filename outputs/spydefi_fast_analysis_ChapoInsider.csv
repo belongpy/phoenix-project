@@ -1,0 +1,4 @@
+channel_id,message_id,date,contract_address,token_name,token_symbol,initial_price,current_price,max_price,roi_percent,max_roi_percent,max_drawdown_percent,market_cap_usd,platform
+ChapoInsider,3771,2025-05-22T00:50:24+00:00,BRPhmqcFTT5nT8cxwybyF45Fv6uW68jKBeKWZzNFpump,NOTUS Memes,NOTUS,0,4.100060974863999e-06,,0,0,,4099.473586846453,pumpfun
+ChapoInsider,3770,2025-05-22T00:41:07+00:00,YEEZYxfpUGiuyJby1vgSX932LrMztw8btwuHj9x2jnP,YEEZY TOKEN,YZYTKN,0,6.794124856359335e-06,,0,0,,6564.530892856467,
+ChapoInsider,3767,2025-05-22T00:16:19+00:00,EK87DCrnXi1dgUrZxfdqmJKexeJTfRbkvkUwfRc3pump,Alpaca,ALPACA,0,6.218305679441708e-06,,0,0,,6217.987344501716,pumpfun

@@ -1,0 +1,4 @@
+channel_id,message_id,date,contract_address,token_name,token_symbol,initial_price,current_price,max_price,roi_percent,max_roi_percent,max_drawdown_percent,market_cap_usd,platform
+kariusgemscalls,13785,2025-05-22T02:58:49+00:00,BmghuZ4hFCpwEQa2EKAofSBAQQcrggx8jhK2jpDrpump,EURO COIN,EURO,0,8.706000013269261e-05,,0,0,,87060.00013269261,pumpfun
+kariusgemscalls,13784,2025-05-22T02:54:21+00:00,XNxJtjs2JbAV9N8LJ59L8Uox9Av7fmn75gLcgtSpump,my name is,Jeff,0,4.067347087839362e-06,,0,0,,4067.3470878393614,pumpfun
+kariusgemscalls,13781,2025-05-22T02:30:21+00:00,mumiSjLdywb7ZJvTw3i2sMBEH2xZFVYsiABzdJspump,CURVE,CURVE,0,0.00033609484785427707,,0,0,,336094.84785427706,pumpfun

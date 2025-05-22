@@ -1,0 +1,4 @@
+channel_id,message_id,date,contract_address,token_name,token_symbol,initial_price,current_price,max_price,roi_percent,max_roi_percent,max_drawdown_percent,market_cap_usd,platform
+TopCallersChannel,29295,2025-05-22T02:08:12+00:00,4sbywy5uuxybwuj8fwhdfxun6mbtacrqbjwiz9mxworp,,,0,0,,0,0,,0,solana
+TopCallersChannel,29260,2025-05-21T18:17:42+00:00,EVqkPanBKrx6q2cuej5CwjdEoK8CM2UPdYi9nmSPbonk,Nani Coin,NANI,0,0.0004635840128978901,,0,0,,463582.8235415016,solana
+TopCallersChannel,29260,2025-05-21T18:17:42+00:00,95qzctrcjdw2gyxefjswpyqn5fbrgg92b4huvaykastp,,,0,0,,0,0,,0,solana

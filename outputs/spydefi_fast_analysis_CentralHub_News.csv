@@ -1,0 +1,3 @@
+channel_id,message_id,date,contract_address,token_name,token_symbol,initial_price,current_price,max_price,roi_percent,max_roi_percent,max_drawdown_percent,market_cap_usd,platform
+CentralHub_News,15761,2025-05-21T07:18:11+00:00,7edkwp93maqnwynm44rwdk3bmd3zygfkdba3ycrrjvkn,,,0,0,,0,0,,0,solana
+CentralHub_News,15761,2025-05-21T07:18:11+00:00,6VKwjoZgzQjfXpxJ9SMo7BYRxHh71xtSLuxzbJ8LXoeF,,,0,0,,0,0,,0,solana
