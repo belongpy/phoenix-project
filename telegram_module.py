@@ -10,7 +10,7 @@ import csv
 import os
 import logging
 from typing import Dict, List, Any, Optional, Set, Tuple
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from telethon import TelegramClient
 from telethon.errors import SessionPasswordNeededError
 from telethon.tl.functions.messages import GetHistoryRequest
@@ -72,6 +72,36 @@ class TelegramScraper:
             await self.client.disconnect()
             self.client = None
             logger.info("Disconnected from Telegram")
+    
+    def _make_timezone_aware(self, dt) -> datetime:
+        """
+        Make a datetime object timezone-aware if it isn't already.
+        
+        Args:
+            dt: datetime object
+            
+        Returns:
+            timezone-aware datetime object
+        """
+        if dt.tzinfo is None:
+            # If naive, assume UTC
+            return dt.replace(tzinfo=timezone.utc)
+        return dt
+    
+    def _make_timezone_naive(self, dt) -> datetime:
+        """
+        Make a datetime object timezone-naive.
+        
+        Args:
+            dt: datetime object
+            
+        Returns:
+            timezone-naive datetime object
+        """
+        if dt.tzinfo is not None:
+            # Convert to UTC and then make naive
+            return dt.astimezone(timezone.utc).replace(tzinfo=None)
+        return dt
     
     def extract_contract_addresses(self, text: str) -> List[str]:
         """
@@ -203,8 +233,9 @@ class TelegramScraper:
                 
             entity = await self.client.get_entity(channel_id)
             
-            # Calculate the date limit
-            date_limit = datetime.now() - timedelta(days=days_to_scrape)
+            # Calculate the date limit - make sure both dates are timezone-aware or naive
+            now = datetime.now(timezone.utc)  # Make timezone-aware
+            date_limit = now - timedelta(days=days_to_scrape)
             
             # Get messages
             messages = []
@@ -228,8 +259,11 @@ class TelegramScraper:
                     break
                 
                 for message in history.messages:
+                    # Ensure message.date is timezone-aware for comparison
+                    message_date = self._make_timezone_aware(message.date)
+                    
                     # Stop if we've reached the date limit
-                    if message.date < date_limit:
+                    if message_date < date_limit:
                         break
                     
                     # Extract message data
@@ -247,7 +281,7 @@ class TelegramScraper:
                         
                         message_data = {
                             "id": message.id,
-                            "date": message.date.isoformat(),
+                            "date": self._make_timezone_naive(message_date).isoformat(),
                             "text": message.message,
                             "is_call": self.is_likely_token_call(message.message),
                             "contract_addresses": self.extract_contract_addresses(message.message),
@@ -259,8 +293,10 @@ class TelegramScraper:
                             messages.append(message_data)
                 
                 # Break if we've reached the date limit
-                if history.messages and history.messages[-1].date < date_limit:
-                    break
+                if history.messages:
+                    last_message_date = self._make_timezone_aware(history.messages[-1].date)
+                    if last_message_date < date_limit:
+                        break
                 
                 # Update offset for next batch
                 offset_id = history.messages[-1].id

@@ -3,7 +3,7 @@
 Phoenix Project - Solana Chain Analysis CLI Tool
 
 A menu-driven interface tool for analyzing Solana blockchain signals and wallet behaviors
-using Birdeye API and data from Telegram groups.
+using Birdeye API and Helius API for enhanced wallet transaction data.
 """
 
 import os
@@ -252,8 +252,8 @@ def test_birdeye_api(api_key: str) -> Dict[str, Any]:
     
     try:
         # Try a simple API call - get SOL token info
-        url = "https://public-api.birdeye.so/v1/token/info?address=So11111111111111111111111111111111111111112"
-        response = requests.get(url, headers=headers)
+        url = "https://public-api.birdeye.so/defi/token_overview?address=So11111111111111111111111111111111111111112"
+        response = requests.get(url, headers=headers, timeout=10)
         
         if response.status_code == 200:
             return {"success": True, "message": "API connection successful"}
@@ -270,6 +270,7 @@ def print_header():
     os.system('cls' if os.name == 'nt' else 'clear')
     print("\n" + "=" * 60)
     print("             PHOENIX - Solana Chain Analysis Tool")
+    print("                    with Helius Integration")
     print("=" * 60)
 
 def print_menu():
@@ -298,12 +299,15 @@ def set_api_keys(config: Dict[str, Any]):
     print_header()
     print("\nAPI KEY CONFIGURATION")
     print("-" * 60)
+    print("\nHelius API is recommended for wallet transaction data.")
+    print("Birdeye API is used for token pricing and market data.")
+    print()
     
     birdeye_key = input(f"Birdeye API Key [{config.get('birdeye_api_key', '')}]: ").strip()
     if birdeye_key:
         config["birdeye_api_key"] = birdeye_key
     
-    helius_key = input(f"Helius API Key [{config.get('helius_api_key', '')}]: ").strip()
+    helius_key = input(f"Helius API Key (recommended) [{config.get('helius_api_key', '')}]: ").strip()
     if helius_key:
         config["helius_api_key"] = helius_key
     
@@ -473,10 +477,12 @@ def test_api_connection(config: Dict[str, Any]):
     helius_key = config.get("helius_api_key", "")
     if not helius_key:
         print("  ❌ No Helius API key configured!")
+        print("     Wallet analysis will use Birdeye (may have limitations)")
     else:
         result = test_helius_api(helius_key)
         if result["success"]:
             print(f"  ✅ {result['message']}")
+            print("     Wallet analysis will use Helius (recommended)")
         else:
             print(f"  ❌ {result['message']}")
     
@@ -574,17 +580,6 @@ def handle_wallet_analysis(config: Dict[str, Any]):
             input("\nPress Enter to continue...")
             return
         
-        if not config.get("helius_api_key"):
-            print("\nWarning: Helius API key not configured!")
-            print("Helius provides better wallet transaction data than Birdeye.")
-            print("You can still proceed with Birdeye, but Helius is recommended.")
-            
-            proceed_anyway = input("\nProceed with Birdeye only? (yes/no): ").strip().lower()
-            if proceed_anyway not in ("yes", "y", "true", "t"):
-                print("\nPlease configure your Helius API key in the Configuration menu.")
-                input("\nPress Enter to continue...")
-                return
-        
         # Load settings from config
         settings = config.get("settings", {})
         days = settings.get("wallet_days", 30)
@@ -630,6 +625,12 @@ def handle_wallet_analysis(config: Dict[str, Any]):
         print(f"Minimum win rate: {min_winrate}%")
         print(f"Output directory: {output_dir}")
         
+        # Show API status
+        if config.get("helius_api_key"):
+            print("✅ Using Helius API for wallet transaction data (recommended)")
+        else:
+            print("⚠️  Using Birdeye API for wallet data (Helius recommended for better results)")
+        
         proceed = input("\nProceed with analysis? (yes/no): ").strip().lower()
         if proceed not in ("yes", "y", "true", "t"):
             print("\nAnalysis cancelled.")
@@ -641,7 +642,7 @@ def handle_wallet_analysis(config: Dict[str, Any]):
         
         # Create BirdeyeAPI with both keys
         birdeye_api = BirdeyeAPI(
-            birdeye_api_key=config["birdeye_api_key"],
+            api_key=config["birdeye_api_key"],
             helius_api_key=config.get("helius_api_key"),
             max_retries=settings.get("max_retries", 5),
             retry_delay=settings.get("retry_delay", 2),
@@ -791,7 +792,7 @@ def handle_telegram_analysis(config: Dict[str, Any]):
         
         # Create BirdeyeAPI with both keys
         birdeye_api = BirdeyeAPI(
-            birdeye_api_key=config["birdeye_api_key"],
+            api_key=config["birdeye_api_key"],
             helius_api_key=config.get("helius_api_key"),
             max_retries=settings.get("max_retries", 5),
             retry_delay=settings.get("retry_delay", 2),
@@ -992,6 +993,12 @@ def handle_combined_analysis(config: Dict[str, Any]):
         print(f"Minimum win rate: {min_winrate}%")
         print(f"Output directory: {output_dir}")
         
+        # Show API status
+        if config.get("helius_api_key"):
+            print("✅ Using Helius API for wallet transaction data (recommended)")
+        else:
+            print("⚠️  Using Birdeye API for wallet data (Helius recommended for better results)")
+        
         # Prepare output file
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         output_file = os.path.join(output_dir, f"combined_analysis_{timestamp}.xlsx")
@@ -1007,7 +1014,7 @@ def handle_combined_analysis(config: Dict[str, Any]):
         
         # Create BirdeyeAPI with both keys
         birdeye_api = BirdeyeAPI(
-            birdeye_api_key=config["birdeye_api_key"],
+            api_key=config["birdeye_api_key"],
             helius_api_key=config.get("helius_api_key"),
             max_retries=settings.get("max_retries", 5),
             retry_delay=settings.get("retry_delay", 2),

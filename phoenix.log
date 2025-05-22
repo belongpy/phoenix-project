@@ -76,3 +76,123 @@ Traceback (most recent call last):
     birdeye_api = BirdeyeAPI(
                   ^^^^^^^^^^^
 TypeError: BirdeyeAPI.__init__() got an unexpected keyword argument 'birdeye_api_key'
+2025-05-21 16:41:40,749 - phoenix - INFO - Configuration saved to C:\Users\Administrator/.phoenix_config.json
+2025-05-21 16:41:46,939 - phoenix - INFO - Loaded 104 wallet addresses from C:\Users\Administrator\Desktop\phoenix-project\wallets.txt
+2025-05-21 16:41:46,939 - phoenix - INFO - Loaded 1 channel IDs from C:\Users\Administrator\Desktop\phoenix-project\channels.txt
+2025-05-21 16:42:01,002 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-21 16:42:01,002 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-21 16:42:01,642 - phoenix - INFO - Loaded 1 channel IDs from C:\Users\Administrator\Desktop\phoenix-project\channels.txt
+2025-05-21 16:42:01,642 - phoenix - INFO - Loaded 104 wallet addresses from C:\Users\Administrator\Desktop\phoenix-project\wallets.txt
+2025-05-21 16:42:04,611 - phoenix.birdeye - INFO - Helius API key configured - will use Helius for wallet transaction data
+2025-05-21 16:42:04,611 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-21 16:42:04,627 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-21 16:42:04,752 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-21 16:42:05,705 - phoenix.telegram - INFO - Connected to Telegram
+2025-05-21 16:42:05,705 - phoenix.telegram - INFO - Scraping Spydefi channel spydefi for KOL mentions
+2025-05-21 16:42:05,705 - phoenix.telegram - INFO - SpyDefi channel detected, limiting to 7 days and 1000 messages
+2025-05-21 16:42:05,705 - phoenix.telegram - INFO - Scraping 7 days of messages from spydefi
+2025-05-21 16:42:06,204 - phoenix.telegram - ERROR - Error retrieving messages from SpyDefi: can't compare offset-naive and offset-aware datetimes
+2025-05-21 16:42:06,204 - phoenix.telegram - INFO - Found 0 potential KOL channels/usernames
+2025-05-21 16:42:06,204 - phoenix.telegram - INFO - Disconnecting from Telegram...
+2025-05-21 16:42:06,204 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-21 16:42:06,204 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-21 16:42:06,220 - phoenix.telegram - INFO - Disconnected from Telegram
+2025-05-21 16:42:06,220 - phoenix.wallet - INFO - Batch analyzing 104 wallets
+2025-05-21 16:42:06,220 - phoenix.wallet - INFO - Analyzing wallet 2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd for the past 14 days
+2025-05-21 16:42:10,837 - phoenix.wallet - INFO - Found 0 transactions in the last 14 days
+2025-05-21 16:42:10,837 - phoenix.wallet - INFO - Extracted 0 trades
+2025-05-21 16:42:10,837 - phoenix.wallet - INFO - Paired 0 trades
+2025-05-21 16:42:10,837 - phoenix.wallet - INFO - Wallet type: unknown
+2025-05-21 16:42:10,837 - phoenix.wallet - INFO - Analyzing wallet 5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex for the past 14 days
+2025-05-21 16:42:14,475 - phoenix.wallet - INFO - Found 0 transactions in the last 14 days
+2025-05-21 16:42:14,475 - phoenix.wallet - INFO - Extracted 0 trades
+2025-05-21 16:42:14,475 - phoenix.wallet - INFO - Paired 0 trades
+2025-05-21 16:42:14,475 - phoenix.wallet - INFO - Wallet type: unknown
+2025-05-21 16:42:14,475 - phoenix.wallet - INFO - Analyzing wallet Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e for the past 14 days
+2025-05-21 16:42:17,637 - phoenix.wallet - INFO - Found 0 transactions in the last 14 days
+2025-05-21 16:42:17,637 - phoenix.wallet - INFO - Extracted 0 trades
+2025-05-21 16:42:17,637 - phoenix.wallet - INFO - Paired 0 trades
+2025-05-21 16:42:17,637 - phoenix.wallet - INFO - Wallet type: unknown
+2025-05-21 16:42:17,637 - phoenix.wallet - INFO - Analyzing wallet 8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i for the past 14 days
+2025-05-21 16:42:19,987 - phoenix.wallet - INFO - Found 0 transactions in the last 14 days
+2025-05-21 16:42:19,987 - phoenix.wallet - INFO - Extracted 0 trades
+2025-05-21 16:42:19,987 - phoenix.wallet - INFO - Paired 0 trades
+2025-05-21 16:42:19,987 - phoenix.wallet - INFO - Wallet type: unknown
+2025-05-21 16:42:19,987 - phoenix.wallet - INFO - Analyzing wallet A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o for the past 14 days
+2025-05-21 16:42:22,661 - phoenix.wallet - INFO - Found 0 transactions in the last 14 days
+2025-05-21 16:42:22,661 - phoenix.wallet - INFO - Extracted 0 trades
+2025-05-21 16:42:22,677 - phoenix.wallet - INFO - Paired 0 trades
+2025-05-21 16:42:22,677 - phoenix.wallet - INFO - Wallet type: unknown
+2025-05-21 16:42:22,677 - phoenix.wallet - INFO - Analyzing wallet 4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq for the past 14 days
+2025-05-21 16:42:25,084 - phoenix.wallet - INFO - Found 0 transactions in the last 14 days
+2025-05-21 16:42:25,084 - phoenix.wallet - INFO - Extracted 0 trades
+2025-05-21 16:42:25,084 - phoenix.wallet - INFO - Paired 0 trades
+2025-05-21 16:42:25,084 - phoenix.wallet - INFO - Wallet type: unknown
+2025-05-21 16:42:25,084 - phoenix.wallet - INFO - Analyzing wallet 9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn for the past 14 days
+2025-05-21 16:42:28,783 - phoenix.wallet - INFO - Found 0 transactions in the last 14 days
+2025-05-21 16:42:28,783 - phoenix.wallet - INFO - Extracted 0 trades
+2025-05-21 16:42:28,783 - phoenix.wallet - INFO - Paired 0 trades
+2025-05-21 16:42:28,783 - phoenix.wallet - INFO - Wallet type: unknown
+2025-05-21 16:42:28,783 - phoenix.wallet - INFO - Analyzing wallet 3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B for the past 14 days
+2025-05-21 16:42:30,814 - phoenix.wallet - INFO - Found 0 transactions in the last 14 days
+2025-05-21 16:42:30,814 - phoenix.wallet - INFO - Extracted 0 trades
+2025-05-21 16:42:30,814 - phoenix.wallet - INFO - Paired 0 trades
+2025-05-21 16:42:30,814 - phoenix.wallet - INFO - Wallet type: unknown
+2025-05-21 16:42:30,814 - phoenix.wallet - INFO - Analyzing wallet BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r for the past 14 days
+2025-05-21 16:42:33,817 - phoenix.wallet - INFO - Found 0 transactions in the last 14 days
+2025-05-21 16:42:33,817 - phoenix.wallet - INFO - Extracted 0 trades
+2025-05-21 16:42:33,817 - phoenix.wallet - INFO - Paired 0 trades
+2025-05-21 16:42:33,817 - phoenix.wallet - INFO - Wallet type: unknown
+2025-05-21 16:42:33,817 - phoenix.wallet - INFO - Analyzing wallet 96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu for the past 14 days
+2025-05-21 16:42:35,894 - phoenix.wallet - INFO - Found 0 transactions in the last 14 days
+2025-05-21 16:42:41,138 - phoenix.wallet - INFO - Extracted 0 trades
+2025-05-21 16:42:41,138 - phoenix.wallet - INFO - Paired 0 trades
+2025-05-21 16:42:41,138 - phoenix.wallet - INFO - Wallet type: unknown
+2025-05-21 16:42:41,153 - phoenix.wallet - INFO - Analyzing wallet 6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK for the past 14 days
+2025-05-21 16:42:43,474 - phoenix.wallet - INFO - Found 0 transactions in the last 14 days
+2025-05-21 16:42:43,474 - phoenix.wallet - INFO - Extracted 0 trades
+2025-05-21 16:42:43,474 - phoenix.wallet - INFO - Paired 0 trades
+2025-05-21 16:42:43,474 - phoenix.wallet - INFO - Wallet type: unknown
+2025-05-21 16:42:43,474 - phoenix.wallet - INFO - Analyzing wallet 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr for the past 14 days
+2025-05-21 16:42:43,809 - phoenix.wallet - WARNING - No transactions found for wallet 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr
+2025-05-21 16:42:43,809 - phoenix.wallet - INFO - Analyzing wallet FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL for the past 14 days
+2025-05-21 16:42:48,949 - phoenix.wallet - INFO - Found 0 transactions in the last 14 days
+2025-05-21 16:42:48,949 - phoenix.wallet - INFO - Extracted 0 trades
+2025-05-21 16:42:48,949 - phoenix.wallet - INFO - Paired 0 trades
+2025-05-21 16:42:48,949 - phoenix.wallet - INFO - Wallet type: unknown
+2025-05-21 16:42:48,965 - phoenix.wallet - INFO - Analyzing wallet 7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB for the past 14 days
+2025-05-21 16:42:51,594 - phoenix.wallet - INFO - Found 0 transactions in the last 14 days
+2025-05-21 16:42:51,594 - phoenix.wallet - INFO - Extracted 0 trades
+2025-05-21 16:42:51,596 - phoenix.wallet - INFO - Paired 0 trades
+2025-05-21 16:42:51,596 - phoenix.wallet - INFO - Wallet type: unknown
+2025-05-21 16:42:51,596 - phoenix.wallet - INFO - Analyzing wallet FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q for the past 14 days
+2025-05-21 16:42:56,218 - phoenix.wallet - INFO - Found 0 transactions in the last 14 days
+2025-05-21 16:42:56,218 - phoenix.wallet - INFO - Extracted 0 trades
+2025-05-21 16:42:56,218 - phoenix.wallet - INFO - Paired 0 trades
+2025-05-21 16:42:56,218 - phoenix.wallet - INFO - Wallet type: unknown
+2025-05-21 16:42:56,218 - phoenix.wallet - INFO - Analyzing wallet F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe for the past 14 days
+2025-05-21 16:42:58,666 - phoenix.wallet - INFO - Found 0 transactions in the last 14 days
+2025-05-21 16:42:58,666 - phoenix.wallet - INFO - Extracted 0 trades
+2025-05-21 16:42:58,666 - phoenix.wallet - INFO - Paired 0 trades
+2025-05-21 16:42:58,666 - phoenix.wallet - INFO - Wallet type: unknown
+2025-05-21 16:42:58,681 - phoenix.wallet - INFO - Analyzing wallet 5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn for the past 14 days
+2025-05-21 16:43:02,734 - phoenix.wallet - INFO - Found 0 transactions in the last 14 days
+2025-05-21 16:43:02,734 - phoenix.wallet - INFO - Extracted 0 trades
+2025-05-21 16:43:02,734 - phoenix.wallet - INFO - Paired 0 trades
+2025-05-21 16:43:02,734 - phoenix.wallet - INFO - Wallet type: unknown
+2025-05-21 16:43:02,734 - phoenix.wallet - INFO - Analyzing wallet 8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2 for the past 14 days
+2025-05-21 16:43:04,980 - phoenix.wallet - INFO - Found 0 transactions in the last 14 days
+2025-05-21 16:43:04,980 - phoenix.wallet - INFO - Extracted 0 trades
+2025-05-21 16:43:04,980 - phoenix.wallet - INFO - Paired 0 trades
+2025-05-21 16:43:04,980 - phoenix.wallet - INFO - Wallet type: unknown
+2025-05-21 16:43:04,995 - phoenix.wallet - INFO - Analyzing wallet D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz for the past 14 days
+2025-05-21 16:43:07,767 - phoenix.wallet - INFO - Found 0 transactions in the last 14 days
+2025-05-21 16:43:07,767 - phoenix.wallet - INFO - Extracted 0 trades
+2025-05-21 16:43:07,778 - phoenix.wallet - INFO - Paired 0 trades
+2025-05-21 16:43:07,778 - phoenix.wallet - INFO - Wallet type: unknown
+2025-05-21 16:43:07,778 - phoenix.wallet - INFO - Analyzing wallet CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ for the past 14 days
+2025-05-21 16:43:11,604 - phoenix.wallet - INFO - Found 0 transactions in the last 14 days
+2025-05-21 16:43:11,604 - phoenix.wallet - INFO - Extracted 0 trades
+2025-05-21 16:43:11,604 - phoenix.wallet - INFO - Paired 0 trades
+2025-05-21 16:43:11,604 - phoenix.wallet - INFO - Wallet type: unknown
+2025-05-21 16:43:11,604 - phoenix.wallet - INFO - Analyzing wallet FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W for the past 14 days
