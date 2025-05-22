@@ -1,20 +1,19 @@
 #!/usr/bin/env python3
 """
-Phoenix Project - Solana Chain Analysis CLI Tool
+Phoenix Project - Solana Chain Analysis CLI Tool (Updated for Cielo Finance API)
 
-A menu-driven interface tool for analyzing Solana blockchain signals and wallet behaviors
-using Birdeye API and Helius API for enhanced wallet transaction data.
+A command-line interface tool for analyzing Solana blockchain signals and wallet behaviors
+using Cielo Finance API and data from Telegram groups.
 """
 
 import os
 import sys
+import argparse
 import json
 import csv
 import logging
 from datetime import datetime, timedelta
 from typing import Dict, List, Any, Optional, Tuple
-import time
-import requests
 
 # Setup logging
 logging.basicConfig(
@@ -27,803 +26,551 @@ logging.basicConfig(
 )
 logger = logging.getLogger("phoenix")
 
-# Configuration and file paths
+# Configuration
 CONFIG_FILE = os.path.expanduser("~/.phoenix_config.json")
-DEFAULT_WALLET_FILE = "wallets.txt" 
-DEFAULT_CHANNEL_FILE = "channels.txt"
 
 def load_config() -> Dict[str, Any]:
     """Load configuration from the config file."""
     if os.path.exists(CONFIG_FILE):
         with open(CONFIG_FILE, 'r') as f:
             return json.load(f)
-    
-    # Create default config if it doesn't exist
-    default_config = {
-        "birdeye_api_key": "",
-        "helius_api_key": "",
+    return {
+        "cielo_finance_api_key": "",  # Changed from birdeye_api_key
         "telegram_api_id": "",
         "telegram_api_hash": "",
-        "telegram_session": "phoenix",
+        "telegram_session": "",
         "sources": {
             "telegram_groups": [],
             "wallets": []
         },
-        "settings": {
-            "telegram_days": 7,
-            "wallet_days": 30,
-            "min_winrate": 45.0,
-            "use_excel": True,
-            "wallet_file": DEFAULT_WALLET_FILE,
-            "channel_file": DEFAULT_CHANNEL_FILE,
-            "output_dir": "outputs",
-            "max_retries": 5,
-            "retry_delay": 2,
-            "rate_limit_pause": 10
-        }
+        "analysis_period_days": 7,
+        "api_provider": "cielo_finance"  # New field to track API provider
     }
+
+def ensure_output_dir(output_path: str) -> str:
+    """
+    Ensure the output directory exists and return the full path.
     
-    with open(CONFIG_FILE, 'w') as f:
-        json.dump(default_config, f, indent=4)
-    logger.info(f"Created default configuration file at {CONFIG_FILE}")
+    Args:
+        output_path (str): Relative or absolute output path
+        
+    Returns:
+        str: Full path with output directory
+    """
+    # Create outputs directory if it doesn't exist
+    output_dir = os.path.join(os.getcwd(), "outputs")
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+        logger.info(f"Created outputs directory: {output_dir}")
     
-    return default_config
+    # If path doesn't include directory, add outputs dir
+    if not os.path.dirname(output_path):
+        return os.path.join(output_dir, output_path)
+    
+    return output_path
 
 def save_config(config: Dict[str, Any]) -> None:
     """Save configuration to the config file."""
     with open(CONFIG_FILE, 'w') as f:
         json.dump(config, f, indent=4)
-    logger.info(f"Configuration saved to {CONFIG_FILE}")
 
-def ensure_output_dir(config: Dict[str, Any]) -> str:
-    """
-    Ensure the output directory exists and return the path.
+class PhoenixCLI:
+    """Main CLI class for the Phoenix Project."""
     
-    Args:
-        config (Dict[str, Any]): Configuration dictionary
-        
-    Returns:
-        str: Path to the output directory
-    """
-    output_dir = config.get("settings", {}).get("output_dir", "outputs")
+    def __init__(self):
+        self.config = load_config()
+        self.parser = self._create_parser()
     
-    # Create outputs directory if it doesn't exist
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
-        logger.info(f"Created outputs directory: {output_dir}")
-    
-    return output_dir
-
-def load_wallets_from_file(file_path: str) -> List[str]:
-    """
-    Load wallet addresses from a text file (one address per line).
-    
-    Args:
-        file_path (str): Path to the wallet addresses file
-        
-    Returns:
-        List[str]: List of wallet addresses
-    """
-    if not os.path.exists(file_path):
-        logger.error(f"Wallet file not found: {file_path}")
-        return []
-    
-    try:
-        with open(file_path, 'r') as f:
-            # Read lines and strip whitespace, ignore empty lines and comments
-            wallets = [line.strip() for line in f if line.strip() and not line.strip().startswith('#')]
-        logger.info(f"Loaded {len(wallets)} wallet addresses from {file_path}")
-        return wallets
-    except Exception as e:
-        logger.error(f"Error reading wallet file: {str(e)}")
-        return []
-
-def load_channels_from_file(file_path: str) -> List[str]:
-    """
-    Load Telegram channel IDs from a text file (one ID per line).
-    
-    Args:
-        file_path (str): Path to the channel IDs file
-        
-    Returns:
-        List[str]: List of channel IDs
-    """
-    if not os.path.exists(file_path):
-        logger.error(f"Channel file not found: {file_path}")
-        return []
-    
-    try:
-        with open(file_path, 'r') as f:
-            # Read lines and strip whitespace, ignore empty lines and comments
-            channels = [line.strip() for line in f if line.strip() and not line.strip().startswith('#')]
-        logger.info(f"Loaded {len(channels)} channel IDs from {file_path}")
-        return channels
-    except Exception as e:
-        logger.error(f"Error reading channel file: {str(e)}")
-        return []
-
-def validate_wallet_address(address: str) -> bool:
-    """
-    Validate a Solana wallet address format.
-    
-    Args:
-        address (str): Wallet address to validate
-        
-    Returns:
-        bool: True if the address format is valid
-    """
-    # Basic validation - Solana addresses are typically base58 encoded
-    # and between 32-44 characters
-    if not address:
-        return False
-    
-    # Check length
-    if not 32 <= len(address) <= 44:
-        return False
-    
-    # Check for valid base58 characters (alphanumeric without 0, O, I, l)
-    valid_chars = set("123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz")
-    return all(c in valid_chars for c in address)
-
-def validate_telegram_id(channel_id: str) -> bool:
-    """
-    Validate a Telegram channel/group ID or username.
-    
-    Args:
-        channel_id (str): Channel ID to validate
-        
-    Returns:
-        bool: True if the ID format is valid
-    """
-    if not channel_id:
-        return False
-    
-    # Handle usernames
-    if channel_id.startswith('@'):
-        username = channel_id[1:]
-        # Usernames must be 5-32 characters and contain only allowed characters
-        if not 5 <= len(username) <= 32:
-            return False
-        allowed_chars = set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_")
-        return all(c in allowed_chars for c in username)
-    
-    # Handle channel IDs (usually numeric)
-    if channel_id.isdigit():
-        return True
-    
-    # Handle channel links (t.me/...)
-    if channel_id.startswith(('https://t.me/', 't.me/')):
-        return True
-    
-    # Special case for SpyDefi
-    if channel_id.lower() == "spydefi":
-        return True
-    
-    # For other formats, just ensure it's not empty and has a reasonable length
-    return 3 <= len(channel_id) <= 100
-
-def test_helius_api(api_key: str) -> Dict[str, Any]:
-    """
-    Test Helius API connectivity and return status.
-    
-    Args:
-        api_key (str): Helius API key to test
-        
-    Returns:
-        Dict[str, Any]: Test result with status and message
-    """
-    if not api_key:
-        return {"success": False, "message": "No API key provided"}
-    
-    try:
-        # Try a simple API call - get transactions for a known wallet
-        test_wallet = "11111111111111111111111111111112"  # System program address (always exists)
-        url = f"https://api.helius.xyz/v0/addresses/{test_wallet}/transactions"
-        params = {"api-key": api_key, "limit": 1}
-        response = requests.get(url, params=params, timeout=10)
-        
-        if response.status_code == 200:
-            return {"success": True, "message": "API connection successful"}
-        elif response.status_code == 401 or response.status_code == 403:
-            return {"success": False, "message": f"API key unauthorized (Status {response.status_code})"}
-        else:
-            return {"success": False, "message": f"API request failed with status {response.status_code}"}
-            
-    except requests.RequestException as e:
-        return {"success": False, "message": f"Connection error: {str(e)}"}
-
-def test_birdeye_api(api_key: str) -> Dict[str, Any]:
-    """
-    Test Birdeye API connectivity and return status.
-    
-    Args:
-        api_key (str): Birdeye API key to test
-        
-    Returns:
-        Dict[str, Any]: Test result with status and message
-    """
-    if not api_key:
-        return {"success": False, "message": "No API key provided"}
-    
-    headers = {
-        "X-API-KEY": api_key,
-        "Content-Type": "application/json"
-    }
-    
-    try:
-        # Try a simple API call - get SOL token info
-        url = "https://public-api.birdeye.so/defi/token_overview?address=So11111111111111111111111111111111111111112"
-        response = requests.get(url, headers=headers, timeout=10)
-        
-        if response.status_code == 200:
-            return {"success": True, "message": "API connection successful"}
-        elif response.status_code == 401 or response.status_code == 403:
-            return {"success": False, "message": f"API key unauthorized (Status {response.status_code})"}
-        else:
-            return {"success": False, "message": f"API request failed with status {response.status_code}"}
-            
-    except requests.RequestException as e:
-        return {"success": False, "message": f"Connection error: {str(e)}"}
-
-def print_header():
-    """Print the Phoenix CLI header."""
-    os.system('cls' if os.name == 'nt' else 'clear')
-    print("\n" + "=" * 60)
-    print("             PHOENIX - Solana Chain Analysis Tool")
-    print("                    with Helius Integration")
-    print("=" * 60)
-
-def print_menu():
-    """Print the main menu options."""
-    print("\nMAIN MENU:")
-    print("1. Wallet Analysis")
-    print("2. Telegram Analysis")
-    print("3. Combined Analysis")
-    print("4. Configuration")
-    print("5. Exit")
-    print("\nSelect an option (1-5): ", end='')
-
-def print_config_menu():
-    """Print the configuration menu options."""
-    print("\nCONFIGURATION MENU:")
-    print("1. Set API Keys")
-    print("2. Set Analysis Settings")
-    print("3. Manage File Paths")
-    print("4. API Connection Test")
-    print("5. Advanced Settings")
-    print("6. Return to Main Menu")
-    print("\nSelect an option (1-6): ", end='')
-
-def set_api_keys(config: Dict[str, Any]):
-    """Set API keys in the configuration."""
-    print_header()
-    print("\nAPI KEY CONFIGURATION")
-    print("-" * 60)
-    print("\nHelius API is recommended for wallet transaction data.")
-    print("Birdeye API is used for token pricing and market data.")
-    print()
-    
-    birdeye_key = input(f"Birdeye API Key [{config.get('birdeye_api_key', '')}]: ").strip()
-    if birdeye_key:
-        config["birdeye_api_key"] = birdeye_key
-    
-    helius_key = input(f"Helius API Key (recommended) [{config.get('helius_api_key', '')}]: ").strip()
-    if helius_key:
-        config["helius_api_key"] = helius_key
-    
-    telegram_api_id = input(f"Telegram API ID [{config.get('telegram_api_id', '')}]: ").strip()
-    if telegram_api_id:
-        config["telegram_api_id"] = telegram_api_id
-    
-    telegram_api_hash = input(f"Telegram API Hash [{config.get('telegram_api_hash', '')}]: ").strip()
-    if telegram_api_hash:
-        config["telegram_api_hash"] = telegram_api_hash
-    
-    # Save the configuration
-    save_config(config)
-    print("\nAPI keys updated successfully!")
-    input("\nPress Enter to continue...")
-
-def set_analysis_settings(config: Dict[str, Any]):
-    """Set analysis settings in the configuration."""
-    print_header()
-    print("\nANALYSIS SETTINGS")
-    print("-" * 60)
-    
-    settings = config.get("settings", {})
-    
-    # Get and validate Telegram days
-    try:
-        telegram_days_str = input(f"Telegram Analysis Days [{settings.get('telegram_days', 7)}]: ").strip()
-        if telegram_days_str:
-            telegram_days = int(telegram_days_str)
-            if telegram_days > 0:
-                settings["telegram_days"] = telegram_days
-            else:
-                print("Days must be a positive number. Using default.")
-    except ValueError:
-        print("Invalid input. Keeping existing value.")
-    
-    # Get and validate Wallet days
-    try:
-        wallet_days_str = input(f"Wallet Analysis Days [{settings.get('wallet_days', 30)}]: ").strip()
-        if wallet_days_str:
-            wallet_days = int(wallet_days_str)
-            if wallet_days > 0:
-                settings["wallet_days"] = wallet_days
-            else:
-                print("Days must be a positive number. Using default.")
-    except ValueError:
-        print("Invalid input. Keeping existing value.")
-    
-    # Get and validate Min Win Rate
-    try:
-        min_winrate_str = input(f"Minimum Win Rate % [{settings.get('min_winrate', 45.0)}]: ").strip()
-        if min_winrate_str:
-            min_winrate = float(min_winrate_str)
-            if 0 <= min_winrate <= 100:
-                settings["min_winrate"] = min_winrate
-            else:
-                print("Win rate must be between 0 and 100. Using default.")
-    except ValueError:
-        print("Invalid input. Keeping existing value.")
-    
-    # Set Excel output option
-    use_excel_str = input(f"Always use Excel output (yes/no) [{settings.get('use_excel', True)}]: ").strip().lower()
-    if use_excel_str in ("yes", "y", "true", "t"):
-        settings["use_excel"] = True
-    elif use_excel_str in ("no", "n", "false", "f"):
-        settings["use_excel"] = False
-    
-    # Update config and save
-    config["settings"] = settings
-    save_config(config)
-    print("\nAnalysis settings updated successfully!")
-    input("\nPress Enter to continue...")
-
-def manage_file_paths(config: Dict[str, Any]):
-    """Manage file paths in the configuration."""
-    print_header()
-    print("\nFILE PATH SETTINGS")
-    print("-" * 60)
-    
-    settings = config.get("settings", {})
-    
-    wallet_file = input(f"Wallet File Path [{settings.get('wallet_file', DEFAULT_WALLET_FILE)}]: ").strip()
-    if wallet_file:
-        settings["wallet_file"] = wallet_file
-    
-    channel_file = input(f"Channel File Path [{settings.get('channel_file', DEFAULT_CHANNEL_FILE)}]: ").strip()
-    if channel_file:
-        settings["channel_file"] = channel_file
-    
-    output_dir = input(f"Output Directory [{settings.get('output_dir', 'outputs')}]: ").strip()
-    if output_dir:
-        settings["output_dir"] = output_dir
-    
-    # Update config and save
-    config["settings"] = settings
-    save_config(config)
-    print("\nFile paths updated successfully!")
-    input("\nPress Enter to continue...")
-
-def set_advanced_settings(config: Dict[str, Any]):
-    """Set advanced settings in the configuration."""
-    print_header()
-    print("\nADVANCED SETTINGS")
-    print("-" * 60)
-    
-    settings = config.get("settings", {})
-    
-    try:
-        max_retries_str = input(f"API Max Retries [{settings.get('max_retries', 5)}]: ").strip()
-        if max_retries_str:
-            max_retries = int(max_retries_str)
-            if max_retries > 0:
-                settings["max_retries"] = max_retries
-            else:
-                print("Max retries must be a positive number. Using default.")
-    except ValueError:
-        print("Invalid input. Keeping existing value.")
-    
-    try:
-        retry_delay_str = input(f"Initial Retry Delay (seconds) [{settings.get('retry_delay', 2)}]: ").strip()
-        if retry_delay_str:
-            retry_delay = int(retry_delay_str)
-            if retry_delay > 0:
-                settings["retry_delay"] = retry_delay
-            else:
-                print("Retry delay must be a positive number. Using default.")
-    except ValueError:
-        print("Invalid input. Keeping existing value.")
-    
-    try:
-        rate_limit_pause_str = input(f"Rate Limit Pause (seconds) [{settings.get('rate_limit_pause', 10)}]: ").strip()
-        if rate_limit_pause_str:
-            rate_limit_pause = int(rate_limit_pause_str)
-            if rate_limit_pause > 0:
-                settings["rate_limit_pause"] = rate_limit_pause
-            else:
-                print("Rate limit pause must be a positive number. Using default.")
-    except ValueError:
-        print("Invalid input. Keeping existing value.")
-    
-    # Update config and save
-    config["settings"] = settings
-    save_config(config)
-    print("\nAdvanced settings updated successfully!")
-    input("\nPress Enter to continue...")
-
-def test_api_connection(config: Dict[str, Any]):
-    """Test API connections and display results."""
-    print_header()
-    print("\nAPI CONNECTION TEST")
-    print("-" * 60)
-    
-    # Test Birdeye API
-    print("\nTesting Birdeye API connection...")
-    birdeye_key = config.get("birdeye_api_key", "")
-    if not birdeye_key:
-        print("  ❌ No Birdeye API key configured!")
-    else:
-        result = test_birdeye_api(birdeye_key)
-        if result["success"]:
-            print(f"  ✅ {result['message']}")
-        else:
-            print(f"  ❌ {result['message']}")
-    
-    # Test Helius API
-    print("\nTesting Helius API connection...")
-    helius_key = config.get("helius_api_key", "")
-    if not helius_key:
-        print("  ❌ No Helius API key configured!")
-        print("     Wallet analysis will use Birdeye (may have limitations)")
-    else:
-        result = test_helius_api(helius_key)
-        if result["success"]:
-            print(f"  ✅ {result['message']}")
-            print("     Wallet analysis will use Helius (recommended)")
-        else:
-            print(f"  ❌ {result['message']}")
-    
-    # Check Telegram credentials
-    print("\nChecking Telegram API credentials...")
-    telegram_api_id = config.get("telegram_api_id", "")
-    telegram_api_hash = config.get("telegram_api_hash", "")
-    
-    if not telegram_api_id or not telegram_api_hash:
-        print("  ❌ Telegram API credentials are missing!")
-    else:
-        print("  ✅ Telegram API credentials are configured")
-        print("     (Note: Full connection test requires user interaction)")
-    
-    # Check for wallet file
-    wallet_file = config.get("settings", {}).get("wallet_file", DEFAULT_WALLET_FILE)
-    print(f"\nChecking wallet file: {wallet_file}")
-    if os.path.exists(wallet_file):
-        wallets = load_wallets_from_file(wallet_file)
-        print(f"  ✅ Found {len(wallets)} wallet addresses")
-        
-        # Validate a sample of wallets
-        if wallets:
-            sample_size = min(5, len(wallets))
-            invalid_wallets = []
-            
-            for i in range(sample_size):
-                if not validate_wallet_address(wallets[i]):
-                    invalid_wallets.append(wallets[i])
-            
-            if invalid_wallets:
-                print(f"  ⚠️  Warning: {len(invalid_wallets)} wallet(s) have invalid format")
-                for w in invalid_wallets[:3]:  # Show first 3 invalid wallets
-                    print(f"      - {w}")
-                if len(invalid_wallets) > 3:
-                    print(f"      - ... and {len(invalid_wallets) - 3} more")
-    else:
-        print(f"  ❌ Wallet file not found")
-    
-    # Check for channel file
-    channel_file = config.get("settings", {}).get("channel_file", DEFAULT_CHANNEL_FILE)
-    print(f"\nChecking channel file: {channel_file}")
-    if os.path.exists(channel_file):
-        channels = load_channels_from_file(channel_file)
-        print(f"  ✅ Found {len(channels)} channel IDs")
-        
-        # Validate a sample of channels
-        if channels:
-            sample_size = min(5, len(channels))
-            invalid_channels = []
-            
-            for i in range(sample_size):
-                if not validate_telegram_id(channels[i]):
-                    invalid_channels.append(channels[i])
-            
-            if invalid_channels:
-                print(f"  ⚠️  Warning: {len(invalid_channels)} channel(s) have suspicious format")
-                for c in invalid_channels[:3]:  # Show first 3 invalid channels
-                    print(f"      - {c}")
-                if len(invalid_channels) > 3:
-                    print(f"      - ... and {len(invalid_channels) - 3} more")
-                    
-            # Check for SpyDefi
-            has_spydefi = any(ch.lower() == "spydefi" for ch in channels)
-            if has_spydefi:
-                print("  ✓ SpyDefi channel found (KOL analysis available)")
-    else:
-        print(f"  ❌ Channel file not found")
-    
-    # Check for output directory
-    output_dir = config.get("settings", {}).get("output_dir", "outputs")
-    print(f"\nChecking output directory: {output_dir}")
-    if os.path.exists(output_dir):
-        print(f"  ✅ Output directory exists")
-    else:
-        print(f"  ⚠️  Output directory does not exist (will be created when needed)")
-    
-    print("\nAPI connection test completed!")
-    input("\nPress Enter to continue...")
-
-def handle_wallet_analysis(config: Dict[str, Any]):
-    """Handle wallet analysis functionality."""
-    try:
-        from wallet_module import WalletAnalyzer
-        from birdeye_api import BirdeyeAPI
-        
-        print_header()
-        print("\nWALLET ANALYSIS")
-        print("-" * 60)
-        
-        # Check for API keys
-        if not config.get("birdeye_api_key"):
-            print("\nError: Birdeye API key not configured!")
-            print("Please set up your API keys in the Configuration menu.")
-            input("\nPress Enter to continue...")
-            return
-        
-        # Load settings from config
-        settings = config.get("settings", {})
-        days = settings.get("wallet_days", 30)
-        min_winrate = settings.get("min_winrate", 45.0)
-        use_excel = settings.get("use_excel", True)
-        wallet_file = settings.get("wallet_file", DEFAULT_WALLET_FILE)
-        output_dir = ensure_output_dir(config)
-        
-        # Load wallets from file
-        print(f"\nLoading wallets from file: {wallet_file}")
-        wallets = load_wallets_from_file(wallet_file)
-        
-        if not wallets:
-            print(f"\nNo wallet addresses found in {wallet_file}!")
-            print(f"Please add wallet addresses to {wallet_file} (one per line).")
-            input("\nPress Enter to continue...")
-            return
-        
-        # Validate wallets
-        invalid_wallets = [w for w in wallets if not validate_wallet_address(w)]
-        if invalid_wallets:
-            print(f"\nWarning: {len(invalid_wallets)} wallet addresses have invalid format.")
-            print("Invalid addresses may cause errors during analysis.")
-            
-            if len(invalid_wallets) <= 5:
-                print("\nInvalid addresses:")
-                for w in invalid_wallets:
-                    print(f"- {w}")
-            else:
-                print(f"\nFirst 5 invalid addresses:")
-                for w in invalid_wallets[:5]:
-                    print(f"- {w}")
-                print(f"... and {len(invalid_wallets) - 5} more")
-            
-            continue_anyway = input("\nContinue anyway? (yes/no): ").strip().lower()
-            if continue_anyway not in ("yes", "y", "true", "t"):
-                print("\nAnalysis cancelled.")
-                input("\nPress Enter to continue...")
-                return
-        
-        print(f"\nFound {len(wallets)} wallet addresses.")
-        print(f"Analysis period: {days} days")
-        print(f"Minimum win rate: {min_winrate}%")
-        print(f"Output directory: {output_dir}")
-        
-        # Show API status
-        if config.get("helius_api_key"):
-            print("✅ Using Helius API for wallet transaction data (recommended)")
-        else:
-            print("⚠️  Using Birdeye API for wallet data (Helius recommended for better results)")
-        
-        proceed = input("\nProceed with analysis? (yes/no): ").strip().lower()
-        if proceed not in ("yes", "y", "true", "t"):
-            print("\nAnalysis cancelled.")
-            input("\nPress Enter to continue...")
-            return
-        
-        # Initialize API client and wallet analyzer
-        print("\nInitializing APIs...")
-        
-        # Create BirdeyeAPI with both keys
-        birdeye_api = BirdeyeAPI(
-            api_key=config["birdeye_api_key"],
-            helius_api_key=config.get("helius_api_key"),
-            max_retries=settings.get("max_retries", 5),
-            retry_delay=settings.get("retry_delay", 2),
-            rate_limit_pause=settings.get("rate_limit_pause", 10)
+    def _create_parser(self) -> argparse.ArgumentParser:
+        """Create and configure the argument parser."""
+        parser = argparse.ArgumentParser(
+            description="Phoenix Project - Solana Chain Analysis CLI Tool (Cielo Finance Edition)",
+            formatter_class=argparse.RawDescriptionHelpFormatter,
+            add_help=False  # We'll handle help manually to show numbered menu
         )
         
-        wallet_analyzer = WalletAnalyzer(birdeye_api)
+        subparsers = parser.add_subparsers(dest="command", help="Command")
         
-        # Prepare output file
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        output_base = os.path.join(output_dir, f"wallet_analysis_{timestamp}")
-        output_file = f"{output_base}.csv"
+        # Configure command
+        configure_parser = subparsers.add_parser("configure", help="Configure API keys and sources")
+        configure_parser.add_argument("--cielo-api-key", help="Cielo Finance API key")
+        configure_parser.add_argument("--telegram-api-id", help="Telegram API ID")
+        configure_parser.add_argument("--telegram-api-hash", help="Telegram API hash")
+        configure_parser.add_argument("--check", action="store_true", help="Check current configuration")
         
-        print(f"\nAnalyzing {len(wallets)} wallets...")
+        # Telegram analysis command
+        telegram_parser = subparsers.add_parser("telegram", help="Analyze Telegram channels")
+        telegram_parser.add_argument("--channels", nargs="+", help="Telegram channel IDs to analyze")
+        telegram_parser.add_argument("--days", type=int, default=7, help="Number of days to analyze")
+        telegram_parser.add_argument("--output", default="telegram_analysis.csv", help="Output CSV file")
+        telegram_parser.add_argument("--excel", action="store_true", help="Export results to Excel format")
         
-        try:
-            # Batch analyze wallets
-            wallet_analyses = wallet_analyzer.batch_analyze_wallets(
-                wallets,
-                days,
-                min_winrate
-            )
-            
-            wallet_analyzer.export_batch_analysis(wallet_analyses, output_file)
-            print(f"\nBatch analysis completed!")
-            
-            # Print summary
-            print("\nAnalysis Summary:")
-            print(f"- Total wallets: {wallet_analyses['total_wallets']}")
-            print(f"- Analyzed wallets: {wallet_analyses['analyzed_wallets']}")
-            print(f"- Filtered wallets: {wallet_analyses['filtered_wallets']}")
-            print(f"- Gem Finders: {len(wallet_analyses.get('gem_finders', []))}")
-            print(f"- Consistent: {len(wallet_analyses.get('consistent', []))}")
-            print(f"- Flippers: {len(wallet_analyses.get('flippers', []))}")
-            
-            print(f"\nResults saved to CSV: {output_file}")
-            
-            # Export to Excel if requested
-            if use_excel:
-                try:
-                    from export_utils import export_to_excel
-                    excel_file = f"{output_base}.xlsx"
-                    export_to_excel({}, wallet_analyses, excel_file)
-                    print(f"Results saved to Excel: {excel_file}")
-                except Exception as e:
-                    logger.error(f"Error exporting to Excel: {str(e)}")
-                    print(f"Error exporting to Excel: {str(e)}")
+        # Wallet analysis command
+        wallet_parser = subparsers.add_parser("wallet", help="Analyze wallets for copy trading")
+        wallet_parser.add_argument("--wallets", nargs="+", help="Wallet addresses to analyze")
+        wallet_parser.add_argument("--days", type=int, default=30, help="Number of days to analyze")
+        wallet_parser.add_argument("--min-winrate", type=float, default=45.0, help="Minimum win rate percentage")
+        wallet_parser.add_argument("--output", default="wallet_analysis.csv", help="Output CSV file")
+        wallet_parser.add_argument("--excel", action="store_true", help="Export results to Excel format")
         
-        except Exception as e:
-            logger.error(f"Error during wallet analysis: {str(e)}", exc_info=True)
-            print(f"\nError during analysis: {str(e)}")
+        # Add source command
+        add_source_parser = subparsers.add_parser("add-source", help="Add a new data source")
+        add_source_parser.add_argument("type", choices=["telegram", "wallet"], help="Source type")
+        add_source_parser.add_argument("identifier", help="Channel ID or wallet address")
         
-        print("\nWallet analysis completed!")
-        input("\nPress Enter to continue...")
+        # Combined analysis command
+        combined_parser = subparsers.add_parser("analyze", help="Run combined Telegram and wallet analysis")
+        combined_parser.add_argument("--telegram-days", type=int, default=7, help="Number of days for Telegram analysis")
+        combined_parser.add_argument("--wallet-days", type=int, default=30, help="Number of days for wallet analysis")
+        combined_parser.add_argument("--min-winrate", type=float, default=45.0, help="Minimum win rate percentage for wallets")
+        combined_parser.add_argument("--output", default="phoenix_analysis.xlsx", help="Output Excel file")
+        
+        # Test API command
+        test_parser = subparsers.add_parser("test", help="Test API connectivity")
+        test_parser.add_argument("--api", choices=["cielo", "telegram", "all"], default="all", help="Which API to test")
+        
+        return parser
     
-    except ImportError as e:
-        print(f"\nError: Could not import required module: {str(e)}")
-        print("Please ensure all dependencies are installed.")
-        input("\nPress Enter to continue...")
-
-def handle_telegram_analysis(config: Dict[str, Any]):
-    """Handle Telegram analysis functionality."""
-    try:
+    def _show_numbered_menu(self) -> None:
+        """Show the numbered menu interface."""
+        print("\n" + "="*60)
+        print("🔥 Phoenix Project - Solana Chain Analysis Tool 🔥")
+        print("         (Cielo Finance Edition)")
+        print("="*60)
+        print("\nSelect an option:")
+        print("\n📋 CONFIGURATION:")
+        print("  1. Configure API Keys")
+        print("  2. Check Configuration")
+        print("  3. Test API Connectivity")
+        print("  4. Add Data Sources")
+        
+        print("\n📊 ANALYSIS:")
+        print("  5. Analyze Telegram Channels")
+        print("  6. Analyze Wallets")
+        print("  7. Combined Analysis (Telegram + Wallets)")
+        
+        print("\n🔧 UTILITIES:")
+        print("  8. View Current Sources")
+        print("  9. Help & Examples")
+        print("  0. Exit")
+        
+        print("\n" + "="*60)
+    
+    def _handle_numbered_menu(self) -> None:
+        """Handle the numbered menu interface."""
+        while True:
+            self._show_numbered_menu()
+            
+            try:
+                choice = input("\nEnter your choice (0-9): ").strip()
+                
+                if choice == "0":
+                    print("\n👋 Thanks for using Phoenix Project!")
+                    sys.exit(0)
+                elif choice == "1":
+                    self._interactive_configure()
+                elif choice == "2":
+                    self._handle_configure(argparse.Namespace(check=True, cielo_api_key=None, telegram_api_id=None, telegram_api_hash=None))
+                elif choice == "3":
+                    self._handle_test_api(argparse.Namespace(api="all"))
+                elif choice == "4":
+                    self._interactive_add_source()
+                elif choice == "5":
+                    self._interactive_telegram_analysis()
+                elif choice == "6":
+                    self._interactive_wallet_analysis()
+                elif choice == "7":
+                    self._interactive_combined_analysis()
+                elif choice == "8":
+                    self._show_current_sources()
+                elif choice == "9":
+                    self._show_help_examples()
+                else:
+                    print("\n❌ Invalid choice. Please enter a number between 0-9.")
+                    
+            except KeyboardInterrupt:
+                print("\n\n👋 Thanks for using Phoenix Project!")
+                sys.exit(0)
+            except Exception as e:
+                print(f"\n❌ Error: {str(e)}")
+                
+            input("\nPress Enter to continue...")
+    
+    def _interactive_configure(self) -> None:
+        """Interactive configuration setup."""
+        print("\n🔧 Configuration Setup")
+        print("-" * 30)
+        
+        # Cielo Finance API Key
+        current_cielo = "Set" if self.config.get("cielo_finance_api_key") else "Not set"
+        print(f"\nCielo Finance API Key: {current_cielo}")
+        cielo_key = input("Enter new Cielo Finance API key (or press Enter to skip): ").strip()
+        
+        # Telegram API credentials
+        current_tg_id = "Set" if self.config.get("telegram_api_id") else "Not set"
+        current_tg_hash = "Set" if self.config.get("telegram_api_hash") else "Not set"
+        print(f"\nTelegram API ID: {current_tg_id}")
+        print(f"Telegram API Hash: {current_tg_hash}")
+        
+        tg_id = input("Enter Telegram API ID (or press Enter to skip): ").strip()
+        tg_hash = input("Enter Telegram API Hash (or press Enter to skip): ").strip()
+        
+        # Apply changes
+        if cielo_key:
+            self.config["cielo_finance_api_key"] = cielo_key
+            self.config["api_provider"] = "cielo_finance"
+            print("✅ Cielo Finance API key updated")
+        
+        if tg_id:
+            self.config["telegram_api_id"] = tg_id
+            print("✅ Telegram API ID updated")
+        
+        if tg_hash:
+            self.config["telegram_api_hash"] = tg_hash
+            print("✅ Telegram API Hash updated")
+        
+        if cielo_key or tg_id or tg_hash:
+            save_config(self.config)
+            print(f"\n✅ Configuration saved to {CONFIG_FILE}")
+        else:
+            print("\nℹ️ No changes made")
+    
+    def _interactive_add_source(self) -> None:
+        """Interactive source addition."""
+        print("\n📝 Add Data Source")
+        print("-" * 20)
+        print("1. Telegram Channel/Group")
+        print("2. Wallet Address")
+        print("0. Back to main menu")
+        
+        choice = input("\nSelect source type: ").strip()
+        
+        if choice == "1":
+            identifier = input("Enter Telegram channel ID or username: ").strip()
+            if identifier:
+                self._handle_add_source(argparse.Namespace(type="telegram", identifier=identifier))
+        elif choice == "2":
+            identifier = input("Enter wallet address: ").strip()
+            if identifier:
+                self._handle_add_source(argparse.Namespace(type="wallet", identifier=identifier))
+        elif choice == "0":
+            return
+        else:
+            print("❌ Invalid choice")
+    
+    def _interactive_telegram_analysis(self) -> None:
+        """Interactive Telegram analysis."""
+        print("\n📱 Telegram Analysis")
+        print("-" * 20)
+        
+        channels = self.config["sources"]["telegram_groups"]
+        if not channels:
+            print("❌ No Telegram channels configured. Add some first!")
+            return
+        
+        print(f"Configured channels: {', '.join(channels)}")
+        
+        # Get analysis parameters
+        days = input(f"Days to analyze (default 7): ").strip()
+        days = int(days) if days.isdigit() else 7
+        
+        output = input("Output filename (default: telegram_analysis.csv): ").strip()
+        output = output if output else "telegram_analysis.csv"
+        
+        excel = input("Export to Excel? (y/N): ").strip().lower() == 'y'
+        
+        # Run analysis
+        args = argparse.Namespace(
+            channels=channels,
+            days=days,
+            output=output,
+            excel=excel
+        )
+        self._handle_telegram_analysis(args)
+    
+    def _interactive_wallet_analysis(self) -> None:
+        """Interactive wallet analysis."""
+        print("\n💼 Wallet Analysis")
+        print("-" * 18)
+        
+        wallets = self.config["sources"]["wallets"]
+        if not wallets:
+            print("❌ No wallets configured. Add some first!")
+            return
+        
+        print(f"Configured wallets: {len(wallets)} total")
+        
+        # Get analysis parameters
+        days = input(f"Days to analyze (default 30): ").strip()
+        days = int(days) if days.isdigit() else 30
+        
+        min_winrate = input("Minimum win rate % (default 45): ").strip()
+        min_winrate = float(min_winrate) if min_winrate else 45.0
+        
+        output = input("Output filename (default: wallet_analysis.csv): ").strip()
+        output = output if output else "wallet_analysis.csv"
+        
+        excel = input("Export to Excel? (y/N): ").strip().lower() == 'y'
+        
+        # Run analysis
+        args = argparse.Namespace(
+            wallets=wallets,
+            days=days,
+            min_winrate=min_winrate,
+            output=output,
+            excel=excel
+        )
+        self._handle_wallet_analysis(args)
+    
+    def _interactive_combined_analysis(self) -> None:
+        """Interactive combined analysis."""
+        print("\n🔄 Combined Analysis")
+        print("-" * 20)
+        
+        telegram_groups = self.config["sources"]["telegram_groups"]
+        wallets = self.config["sources"]["wallets"]
+        
+        if not telegram_groups and not wallets:
+            print("❌ No sources configured. Add some first!")
+            return
+        
+        print(f"Sources: {len(telegram_groups)} Telegram, {len(wallets)} Wallets")
+        
+        # Get analysis parameters
+        tg_days = input(f"Telegram analysis days (default 7): ").strip()
+        tg_days = int(tg_days) if tg_days.isdigit() else 7
+        
+        wallet_days = input(f"Wallet analysis days (default 30): ").strip()
+        wallet_days = int(wallet_days) if wallet_days.isdigit() else 30
+        
+        min_winrate = input("Minimum win rate % (default 45): ").strip()
+        min_winrate = float(min_winrate) if min_winrate else 45.0
+        
+        output = input("Output filename (default: combined_analysis.xlsx): ").strip()
+        output = output if output else "combined_analysis.xlsx"
+        
+        # Run analysis
+        args = argparse.Namespace(
+            telegram_days=tg_days,
+            wallet_days=wallet_days,
+            min_winrate=min_winrate,
+            output=output
+        )
+        self._handle_combined_analysis(args)
+    
+    def _show_current_sources(self) -> None:
+        """Show currently configured sources."""
+        print("\n📋 Current Data Sources")
+        print("-" * 25)
+        
+        telegram_groups = self.config["sources"]["telegram_groups"]
+        wallets = self.config["sources"]["wallets"]
+        
+        print(f"\n📱 Telegram Channels ({len(telegram_groups)}):")
+        if telegram_groups:
+            for i, channel in enumerate(telegram_groups, 1):
+                print(f"  {i}. {channel}")
+        else:
+            print("  None configured")
+        
+        print(f"\n💼 Wallets ({len(wallets)}):")
+        if wallets:
+            for i, wallet in enumerate(wallets, 1):
+                print(f"  {i}. {wallet[:8]}...{wallet[-8:]}")
+        else:
+            print("  None configured")
+    
+    def _show_help_examples(self) -> None:
+        """Show help and examples."""
+        print("\n📚 Help & Examples")
+        print("-" * 20)
+        print("\n🔧 CLI Commands:")
+        print("  phoenix configure --cielo-api-key YOUR_KEY")
+        print("  phoenix telegram --channels spydefi --days 7")
+        print("  phoenix wallet --wallets ADDRESS1 ADDRESS2 --days 30")
+        print("  phoenix analyze --output consolidated_analysis.xlsx")
+        print("  phoenix test --api all")
+        
+        print("\n📱 Telegram Analysis:")
+        print("  - Analyzes KOL calls and token mentions")
+        print("  - Supports Spydefi channel for KOL discovery")
+        print("  - Calculates success rates and ROI metrics")
+        
+        print("\n💼 Wallet Analysis:")
+        print("  - Categorizes wallets: Gem Finders, Consistent, Flippers")
+        print("  - Calculates win rates, ROI, and trading patterns")
+        print("  - Generates trading strategies based on performance")
+        
+        print("\n🔄 Combined Analysis:")
+        print("  - Runs both Telegram and Wallet analysis")
+        print("  - Creates comprehensive Excel reports")
+        print("  - Includes correlation analysis and clustering")
+    
+    def run(self) -> None:
+        """Run the CLI application."""
+        args = self.parser.parse_args()
+        
+        if not args.command:
+            self.parser.print_help()
+            return
+        
+        # Execute the appropriate command
+        if args.command == "configure":
+            self._handle_configure(args)
+        elif args.command == "telegram":
+            self._handle_telegram_analysis(args)
+        elif args.command == "wallet":
+            self._handle_wallet_analysis(args)
+        elif args.command == "add-source":
+            self._handle_add_source(args)
+        elif args.command == "analyze":
+            self._handle_combined_analysis(args)
+        elif args.command == "test":
+            self._handle_test_api(args)
+    
+    def _handle_configure(self, args: argparse.Namespace) -> None:
+        """Handle the configure command."""
+        if args.check:
+            # Display current configuration
+            logger.info("Current Configuration:")
+            logger.info(f"- Cielo Finance API Key: {'✓ Set' if self.config.get('cielo_finance_api_key') else '✗ Not set'}")
+            logger.info(f"- Telegram API ID: {'✓ Set' if self.config.get('telegram_api_id') else '✗ Not set'}")
+            logger.info(f"- Telegram API Hash: {'✓ Set' if self.config.get('telegram_api_hash') else '✗ Not set'}")
+            logger.info(f"- Telegram Groups: {len(self.config['sources']['telegram_groups'])} configured")
+            logger.info(f"- Wallets: {len(self.config['sources']['wallets'])} configured")
+            logger.info(f"- API Provider: {self.config.get('api_provider', 'cielo_finance')}")
+            return
+        
+        if args.cielo_api_key:
+            self.config["cielo_finance_api_key"] = args.cielo_api_key
+            self.config["api_provider"] = "cielo_finance"
+            logger.info("Cielo Finance API key configured.")
+        
+        if args.telegram_api_id:
+            self.config["telegram_api_id"] = args.telegram_api_id
+            logger.info("Telegram API ID configured.")
+        
+        if args.telegram_api_hash:
+            self.config["telegram_api_hash"] = args.telegram_api_hash
+            logger.info("Telegram API hash configured.")
+        
+        save_config(self.config)
+        logger.info(f"Configuration saved to {CONFIG_FILE}")
+    
+    def _handle_test_api(self, args: argparse.Namespace) -> None:
+        """Handle the test API command."""
+        if args.api in ["cielo", "all"]:
+            logger.info("Testing Cielo Finance API connectivity...")
+            
+            if not self.config.get("cielo_finance_api_key"):
+                logger.error("Cielo Finance API key not configured. Run 'phoenix configure --cielo-api-key YOUR_KEY'")
+                return
+            
+            try:
+                from cielo_finance_api import CieloFinanceAPI
+                
+                cielo_api = CieloFinanceAPI(self.config["cielo_finance_api_key"])
+                health_check = cielo_api.health_check()
+                
+                if health_check.get("success", True):
+                    logger.info("✓ Cielo Finance API connection successful")
+                    
+                    # Test API usage endpoint
+                    try:
+                        usage = cielo_api.get_api_usage()
+                        if usage.get("success"):
+                            logger.info("✓ API usage data retrieved successfully")
+                        else:
+                            logger.warning("⚠ API usage data not available")
+                    except Exception as e:
+                        logger.warning(f"⚠ API usage check failed: {str(e)}")
+                else:
+                    logger.error(f"✗ Cielo Finance API connection failed: {health_check.get('error', 'Unknown error')}")
+            
+            except Exception as e:
+                logger.error(f"✗ Cielo Finance API test failed: {str(e)}")
+        
+        if args.api in ["telegram", "all"]:
+            logger.info("Testing Telegram API connectivity...")
+            
+            if not self.config.get("telegram_api_id") or not self.config.get("telegram_api_hash"):
+                logger.error("Telegram API credentials not configured. Run 'phoenix configure --telegram-api-id ID --telegram-api-hash HASH'")
+                return
+            
+            try:
+                import asyncio
+                from telegram_module import TelegramScraper
+                
+                telegram_scraper = TelegramScraper(
+                    self.config["telegram_api_id"],
+                    self.config["telegram_api_hash"],
+                    self.config.get("telegram_session", "phoenix")
+                )
+                
+                async def test_telegram():
+                    try:
+                        await telegram_scraper.connect()
+                        logger.info("✓ Telegram API connection successful")
+                        return True
+                    except Exception as e:
+                        logger.error(f"✗ Telegram API connection failed: {str(e)}")
+                        return False
+                    finally:
+                        await telegram_scraper.disconnect()
+                
+                asyncio.run(test_telegram())
+            
+            except Exception as e:
+                logger.error(f"✗ Telegram API test failed: {str(e)}")
+    
+    def _handle_telegram_analysis(self, args: argparse.Namespace) -> None:
+        """Handle the telegram analysis command."""
         import asyncio
         from telegram_module import TelegramScraper
-        from birdeye_api import BirdeyeAPI
+        from cielo_finance_api import CieloFinanceAPI
         
-        print_header()
-        print("\nTELEGRAM ANALYSIS")
-        print("-" * 60)
-        
-        # Check for required API keys
-        if not config.get("birdeye_api_key"):
-            print("\nError: Birdeye API key not configured!")
-            print("Please set up your API keys in the Configuration menu.")
-            input("\nPress Enter to continue...")
-            return
-        
-        if not config.get("telegram_api_id") or not config.get("telegram_api_hash"):
-            print("\nError: Telegram API credentials not configured!")
-            print("Please set up your API keys in the Configuration menu.")
-            input("\nPress Enter to continue...")
-            return
-        
-        # Load settings from config
-        settings = config.get("settings", {})
-        days = settings.get("telegram_days", 7)
-        use_excel = settings.get("use_excel", True)
-        channel_file = settings.get("channel_file", DEFAULT_CHANNEL_FILE)
-        output_dir = ensure_output_dir(config)
-        
-        # Load channels from file
-        print(f"\nLoading channels from file: {channel_file}")
-        channels = load_channels_from_file(channel_file)
-        
+        channels = args.channels or self.config["sources"]["telegram_groups"]
         if not channels:
-            print(f"\nNo channel IDs found in {channel_file}!")
-            print(f"Please add channel IDs to {channel_file} (one per line).")
-            input("\nPress Enter to continue...")
+            logger.error("No Telegram channels specified. Use --channels or add sources with add-source command.")
             return
         
-        # Validate channels
-        invalid_channels = [c for c in channels if not validate_telegram_id(c)]
-        if invalid_channels:
-            print(f"\nWarning: {len(invalid_channels)} channel IDs have suspicious format.")
-            print("Invalid channels may cause errors during analysis.")
-            
-            if len(invalid_channels) <= 5:
-                print("\nSuspicious channels:")
-                for c in invalid_channels:
-                    print(f"- {c}")
-            else:
-                print(f"\nFirst 5 suspicious channels:")
-                for c in invalid_channels[:5]:
-                    print(f"- {c}")
-                print(f"... and {len(invalid_channels) - 5} more")
-            
-            continue_anyway = input("\nContinue anyway? (yes/no): ").strip().lower()
-            if continue_anyway not in ("yes", "y", "true", "t"):
-                print("\nAnalysis cancelled.")
-                input("\nPress Enter to continue...")
-                return
-        
-        print(f"\nFound {len(channels)} channel IDs.")
-        print(f"Analysis period: {days} days")
-        print(f"Output directory: {output_dir}")
-        
-        # Check for Spydefi channel
-        has_spydefi = any(ch.lower() == "spydefi" for ch in channels)
-        if has_spydefi:
-            print("\nNote: Spydefi channel detected! KOL analysis will be performed.")
-            
-            # Inform about the need to provide phone number for first run
-            print("\nIMPORTANT: When connecting to Telegram for the first time, you'll need to:")
-            print("1. Enter your phone number (e.g., +15623778250)")
-            print("2. Enter the verification code sent to your Telegram app")
-            print("3. This is only required once as the session will be saved")
-        
-        proceed = input("\nProceed with analysis? (yes/no): ").strip().lower()
-        if proceed not in ("yes", "y", "true", "t"):
-            print("\nAnalysis cancelled.")
-            input("\nPress Enter to continue...")
+        # Check if we have the necessary API keys
+        if not self.config.get("cielo_finance_api_key"):
+            logger.error("Cielo Finance API key not configured. Run 'phoenix configure --cielo-api-key YOUR_KEY'")
             return
+            
+        if not self.config.get("telegram_api_id") or not self.config.get("telegram_api_hash"):
+            logger.error("Telegram API credentials not configured. Run 'phoenix configure --telegram-api-id ID --telegram-api-hash HASH'")
+            return
+        
+        # Ensure output directory exists and get full path
+        output_file = ensure_output_dir(args.output)
+        
+        logger.info(f"Analyzing {len(channels)} Telegram channels for the past {args.days} days using Cielo Finance API.")
+        logger.info(f"Results will be saved to {output_file}")
         
         # Initialize API clients
-        print("\nInitializing APIs...")
+        try:
+            cielo_api = CieloFinanceAPI(self.config["cielo_finance_api_key"])
+            telegram_scraper = TelegramScraper(
+                self.config["telegram_api_id"],
+                self.config["telegram_api_hash"],
+                self.config.get("telegram_session", "phoenix")
+            )
+        except Exception as e:
+            logger.error(f"Failed to initialize API clients: {str(e)}")
+            return
         
-        # Create BirdeyeAPI with both keys
-        birdeye_api = BirdeyeAPI(
-            api_key=config["birdeye_api_key"],
-            helius_api_key=config.get("helius_api_key"),
-            max_retries=settings.get("max_retries", 5),
-            retry_delay=settings.get("retry_delay", 2),
-            rate_limit_pause=settings.get("rate_limit_pause", 10)
-        )
-        
-        telegram_scraper = TelegramScraper(
-            config["telegram_api_id"],
-            config["telegram_api_hash"],
-            config.get("telegram_session", "phoenix"),
-            max_days=days
-        )
-        
-        # Prepare output file
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        output_base = os.path.join(output_dir, f"telegram_analysis_{timestamp}")
-        output_file = f"{output_base}.csv"
-        
-        print(f"\nAnalyzing {len(channels)} Telegram channels...")
-        print("\nNote: If this is your first time, you'll need to authenticate with Telegram.")
-        print("Please check the console for prompts to enter your phone number and verification code.")
-        
-        # Store analysis results
+        # Store all analysis results
         telegram_analyses = {"ranked_kols": []}
         
-        # Handle Spydefi specifically
-        if has_spydefi:
+        # Handle special case for Spydefi
+        if any(ch.lower() == "spydefi" for ch in channels):
+            logger.info("Spydefi channel detected. Analyzing KOLs from Spydefi.")
+            
             try:
                 # Find the Spydefi channel ID
                 spydefi_channel = next((ch for ch in channels if ch.lower() == "spydefi"), None)
-                print(f"\nAnalyzing Spydefi and discovering KOLs...")
                 
                 # Run the analysis asynchronously
                 async def run_spydefi_analysis():
@@ -831,50 +578,42 @@ def handle_telegram_analysis(config: Dict[str, Any]):
                         await telegram_scraper.connect()
                         analysis = await telegram_scraper.scrape_spydefi(
                             spydefi_channel,
-                            days,
-                            birdeye_api
+                            args.days,
+                            cielo_api  # Using Cielo Finance API instead of Birdeye
                         )
-                        spydefi_output = f"{output_base}_spydefi.csv"
-                        await telegram_scraper.export_spydefi_analysis(analysis, spydefi_output)
+                        await telegram_scraper.export_spydefi_analysis(analysis, output_file)
                         return analysis
                     finally:
                         await telegram_scraper.disconnect()
                 
                 # Run the async function
                 telegram_analyses = asyncio.run(run_spydefi_analysis())
-                print(f"\nSpydefi analysis completed!")
-                print(f"Found {len(telegram_analyses.get('ranked_kols', []))} KOL channels.")
+                logger.info(f"Spydefi analysis completed. Results saved to {output_file}")
                 
             except Exception as e:
                 logger.error(f"Error analyzing Spydefi: {str(e)}", exc_info=True)
-                print(f"\nError analyzing Spydefi: {str(e)}")
                 
-                if "Cannot find any entity" in str(e):
-                    print("\nTroubleshooting tip: Make sure the Spydefi channel name/ID is correct.")
-                    print("The channel might have changed its username or been deleted.")
-                elif "SessionPasswordNeededError" in str(e):
-                    print("\nTroubleshooting tip: Your Telegram account has two-factor authentication.")
-                    print("Please delete the 'phoenix.session' file and try again.")
-                
-        # Handle regular channels
         else:
+            # Regular channel analysis
             channel_analyses = []
-            for idx, channel in enumerate(channels):
+            for channel in channels:
                 try:
-                    print(f"\nAnalyzing channel {idx+1}/{len(channels)}: {channel}...")
-                    
                     # Run the analysis asynchronously
                     async def run_channel_analysis():
                         try:
                             await telegram_scraper.connect()
                             analysis = await telegram_scraper.analyze_channel(
                                 channel,
-                                days,
-                                birdeye_api
+                                args.days,
+                                cielo_api  # Using Cielo Finance API instead of Birdeye
                             )
                             
                             # Customize output file for each channel
-                            channel_output = f"{output_base}_{channel.replace('@', '')}.csv"
+                            channel_output = output_file
+                            if len(channels) > 1:
+                                base, ext = os.path.splitext(output_file)
+                                channel_output = f"{base}_{channel}{ext}"
+                            
                             await telegram_scraper.export_channel_analysis(analysis, channel_output)
                             return analysis
                         finally:
@@ -883,163 +622,200 @@ def handle_telegram_analysis(config: Dict[str, Any]):
                     # Run the async function
                     analysis = asyncio.run(run_channel_analysis())
                     channel_analyses.append(analysis)
-                    print(f"Analysis for channel {channel} completed")
+                    logger.info(f"Analysis for channel {channel} completed")
                     
                 except Exception as e:
                     logger.error(f"Error analyzing channel {channel}: {str(e)}", exc_info=True)
-                    print(f"Error analyzing channel {channel}: {str(e)}")
-                    
-                    if "Cannot find any entity" in str(e):
-                        print(f"Troubleshooting tip: Unable to find channel '{channel}'.")
-                        print("Make sure the channel ID/username is correct and your account has access to it.")
-                    elif "FloodWaitError" in str(e):
-                        wait_time = int(str(e).split("of ")[1].split(" seconds")[0])
-                        print(f"Telegram rate limit hit. Must wait {wait_time} seconds.")
-                        print(f"Pausing for {wait_time + 5} seconds before continuing...")
-                        time.sleep(wait_time + 5)
             
             telegram_analyses = {
                 "ranked_kols": channel_analyses
             }
         
+        logger.info(f"Telegram analysis completed. Results saved to {output_file} and related files.")
+        
         # Export to Excel if requested
-        if use_excel:
+        if args.excel:
             try:
                 from export_utils import export_to_excel
-                excel_file = f"{output_base}.xlsx"
+                excel_file = output_file.replace(".csv", ".xlsx")
                 export_to_excel(telegram_analyses, {}, excel_file)
-                print(f"\nResults saved to Excel: {excel_file}")
+                logger.info(f"Excel export completed: {excel_file}")
             except Exception as e:
-                logger.error(f"Error exporting to Excel: {str(e)}")
-                print(f"Error exporting to Excel: {str(e)}")
-        
-        print("\nTelegram analysis completed!")
-        input("\nPress Enter to continue...")
+                logger.error(f"Error exporting to Excel: {str(e)}", exc_info=True)
     
-    except ImportError as e:
-        print(f"\nError: Could not import required module: {str(e)}")
-        print("Please ensure all dependencies are installed.")
-        input("\nPress Enter to continue...")
-
-def handle_combined_analysis(config: Dict[str, Any]):
-    """Handle combined Telegram and wallet analysis."""
-    try:
+    def _handle_wallet_analysis(self, args: argparse.Namespace) -> None:
+        """Handle the wallet analysis command."""
+        from wallet_module import WalletAnalyzer
+        from cielo_finance_api import CieloFinanceAPI
+        
+        wallets = args.wallets or self.config["sources"]["wallets"]
+        if not wallets:
+            logger.error("No wallets specified. Use --wallets or add sources with add-source command.")
+            return
+        
+        # Check if we have the necessary API key
+        if not self.config.get("cielo_finance_api_key"):
+            logger.error("Cielo Finance API key not configured. Run 'phoenix configure --cielo-api-key YOUR_KEY'")
+            return
+        
+        # Ensure output directory exists and get full path
+        output_file = ensure_output_dir(args.output)
+        
+        logger.info(f"Analyzing {len(wallets)} wallets for the past {args.days} days using Cielo Finance API.")
+        logger.info(f"Minimum win rate: {args.min_winrate}%")
+        logger.info(f"Results will be saved to {output_file}")
+        
+        # Initialize API client and wallet analyzer
+        try:
+            cielo_api = CieloFinanceAPI(self.config["cielo_finance_api_key"])
+            wallet_analyzer = WalletAnalyzer(cielo_api)  # Using Cielo Finance API instead of Birdeye
+        except Exception as e:
+            logger.error(f"Failed to initialize Cielo Finance API: {str(e)}")
+            logger.error("Please check your API key and network connection.")
+            return
+        
+        try:
+            # Batch analyze wallets
+            if len(wallets) > 1:
+                logger.info("Performing batch wallet analysis...")
+                wallet_analyses = wallet_analyzer.batch_analyze_wallets(
+                    wallets,
+                    args.days,
+                    args.min_winrate
+                )
+                
+                if not wallet_analyses.get("success"):
+                    logger.error(f"Batch analysis failed: {wallet_analyses.get('error', 'Unknown error')}")
+                    return
+                
+                wallet_analyzer.export_batch_analysis(wallet_analyses, output_file)
+                logger.info(f"Batch analysis completed. Results saved to {output_file} and related files.")
+                
+                # Print summary
+                logger.info(f"Analysis Summary:")
+                logger.info(f"- Total wallets: {wallet_analyses['total_wallets']}")
+                logger.info(f"- Analyzed wallets: {wallet_analyses['analyzed_wallets']}")
+                logger.info(f"- Failed wallets: {wallet_analyses.get('failed_wallets', 0)}")
+                logger.info(f"- Filtered wallets: {wallet_analyses['filtered_wallets']}")
+                logger.info(f"- Gem Finders: {len(wallet_analyses['gem_finders'])}")
+                logger.info(f"- Consistent: {len(wallet_analyses['consistent'])}")
+                logger.info(f"- Flippers: {len(wallet_analyses['flippers'])}")
+                
+                # Export to Excel if requested
+                if args.excel:
+                    try:
+                        from export_utils import export_to_excel
+                        excel_file = output_file.replace(".csv", ".xlsx")
+                        export_to_excel({}, wallet_analyses, excel_file)
+                        logger.info(f"Excel export completed: {excel_file}")
+                    except Exception as e:
+                        logger.error(f"Error exporting to Excel: {str(e)}", exc_info=True)
+                
+            # Analyze single wallet
+            else:
+                logger.info(f"Analyzing wallet {wallets[0]}...")
+                wallet_analysis = wallet_analyzer.analyze_wallet(wallets[0], args.days)
+                
+                if wallet_analysis.get("success"):
+                    wallet_analyzer.export_wallet_analysis(wallet_analysis, output_file)
+                    
+                    # Print summary
+                    metrics = wallet_analysis["metrics"]
+                    logger.info(f"Analysis completed for {wallets[0]}")
+                    logger.info(f"- Wallet type: {wallet_analysis['wallet_type']}")
+                    logger.info(f"- Win rate: {metrics['win_rate']:.2f}%")
+                    logger.info(f"- Total trades: {metrics['total_trades']}")
+                    logger.info(f"- ROI stats: median={metrics['median_roi']:.2f}%, max={metrics['max_roi']:.2f}%")
+                    logger.info(f"Results saved to {output_file} and related files.")
+                else:
+                    logger.error(f"Analysis failed: {wallet_analysis.get('error', 'Unknown error')}")
+                    if wallet_analysis.get("error_type") == "API_ERROR":
+                        logger.error("This appears to be a Cielo Finance API issue. Please check your API key and try again.")
+        
+        except Exception as e:
+            logger.error(f"Error during wallet analysis: {str(e)}", exc_info=True)
+    
+    def _handle_add_source(self, args: argparse.Namespace) -> None:
+        """Handle the add source command."""
+        if args.type == "telegram":
+            if args.identifier not in self.config["sources"]["telegram_groups"]:
+                self.config["sources"]["telegram_groups"].append(args.identifier)
+                logger.info(f"Added Telegram group/channel: {args.identifier}")
+            else:
+                logger.info(f"Telegram group/channel already exists: {args.identifier}")
+        elif args.type == "wallet":
+            if args.identifier not in self.config["sources"]["wallets"]:
+                self.config["sources"]["wallets"].append(args.identifier)
+                logger.info(f"Added wallet: {args.identifier}")
+            else:
+                logger.info(f"Wallet already exists: {args.identifier}")
+        
+        save_config(self.config)
+    
+    def _handle_combined_analysis(self, args: argparse.Namespace) -> None:
+        """Handle the combined analysis command."""
         import asyncio
         from telegram_module import TelegramScraper
         from wallet_module import WalletAnalyzer
-        from birdeye_api import BirdeyeAPI
+        from cielo_finance_api import CieloFinanceAPI
         from export_utils import export_to_excel
         
-        print_header()
-        print("\nCOMBINED ANALYSIS")
-        print("-" * 60)
-        
-        # Check for required API keys
-        if not config.get("birdeye_api_key"):
-            print("\nError: Birdeye API key not configured!")
-            print("Please set up your API keys in the Configuration menu.")
-            input("\nPress Enter to continue...")
+        # Check if we have the necessary configurations
+        if not self.config.get("cielo_finance_api_key"):
+            logger.error("Cielo Finance API key not configured. Run 'phoenix configure --cielo-api-key YOUR_KEY'")
             return
-        
-        if not config.get("telegram_api_id") or not config.get("telegram_api_hash"):
-            print("\nError: Telegram API credentials not configured!")
-            print("Please set up your API keys in the Configuration menu.")
-            input("\nPress Enter to continue...")
-            return
-        
-        # Load settings from config
-        settings = config.get("settings", {})
-        telegram_days = settings.get("telegram_days", 7)
-        wallet_days = settings.get("wallet_days", 30)
-        min_winrate = settings.get("min_winrate", 45.0)
-        wallet_file = settings.get("wallet_file", DEFAULT_WALLET_FILE)
-        channel_file = settings.get("channel_file", DEFAULT_CHANNEL_FILE)
-        output_dir = ensure_output_dir(config)
-        
-        # Load channels and wallets from files
-        print(f"\nLoading channels from file: {channel_file}")
-        channels = load_channels_from_file(channel_file)
-        
-        print(f"Loading wallets from file: {wallet_file}")
-        wallets = load_wallets_from_file(wallet_file)
-        
-        if not channels and not wallets:
-            print("\nNo channels or wallets found in config files!")
-            print("Please add data sources before running analysis.")
-            input("\nPress Enter to continue...")
-            return
-        
-        # Validate wallets and channels
-        invalid_wallets = [w for w in wallets if not validate_wallet_address(w)]
-        invalid_channels = [c for c in channels if not validate_telegram_id(c)]
-        
-        if invalid_wallets or invalid_channels:
-            print("\nWarnings:")
-            if invalid_wallets:
-                print(f"- {len(invalid_wallets)} wallet addresses have invalid format")
-            if invalid_channels:
-                print(f"- {len(invalid_channels)} channel IDs have suspicious format")
-            print("These invalid inputs may cause errors during analysis.")
             
-            continue_anyway = input("\nContinue anyway? (yes/no): ").strip().lower()
-            if continue_anyway not in ("yes", "y", "true", "t"):
-                print("\nAnalysis cancelled.")
-                input("\nPress Enter to continue...")
-                return
-        
-        print(f"\nFound {len(channels)} channel IDs and {len(wallets)} wallet addresses.")
-        print(f"Telegram analysis period: {telegram_days} days")
-        print(f"Wallet analysis period: {wallet_days} days")
-        print(f"Minimum win rate: {min_winrate}%")
-        print(f"Output directory: {output_dir}")
-        
-        # Show API status
-        if config.get("helius_api_key"):
-            print("✅ Using Helius API for wallet transaction data (recommended)")
-        else:
-            print("⚠️  Using Birdeye API for wallet data (Helius recommended for better results)")
-        
-        # Prepare output file
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        output_file = os.path.join(output_dir, f"combined_analysis_{timestamp}.xlsx")
-        
-        proceed = input("\nProceed with analysis? (yes/no): ").strip().lower()
-        if proceed not in ("yes", "y", "true", "t"):
-            print("\nAnalysis cancelled.")
-            input("\nPress Enter to continue...")
+        if not self.config.get("telegram_api_id") or not self.config.get("telegram_api_hash"):
+            logger.error("Telegram API credentials not configured. Run 'phoenix configure --telegram-api-id ID --telegram-api-hash HASH'")
             return
+        
+        # Ensure output directory exists and get full path
+        output_file = ensure_output_dir(args.output)
+        
+        telegram_groups = self.config["sources"]["telegram_groups"]
+        wallets = self.config["sources"]["wallets"]
+        
+        if not telegram_groups:
+            logger.warning("No Telegram groups configured. Add some with 'phoenix add-source telegram CHANNEL_ID'")
+        
+        if not wallets:
+            logger.warning("No wallets configured. Add some with 'phoenix add-source wallet ADDRESS'")
+        
+        if not telegram_groups and not wallets:
+            logger.error("No sources configured. Cannot perform analysis.")
+            return
+        
+        logger.info(f"Starting combined analysis using Cielo Finance API. Results will be saved to {output_file}")
         
         # Initialize API clients
-        print("\nInitializing APIs...")
-        
-        # Create BirdeyeAPI with both keys
-        birdeye_api = BirdeyeAPI(
-            api_key=config["birdeye_api_key"],
-            helius_api_key=config.get("helius_api_key"),
-            max_retries=settings.get("max_retries", 5),
-            retry_delay=settings.get("retry_delay", 2),
-            rate_limit_pause=settings.get("rate_limit_pause", 10)
-        )
+        try:
+            cielo_api = CieloFinanceAPI(self.config["cielo_finance_api_key"])
+        except Exception as e:
+            logger.error(f"Failed to initialize Cielo Finance API: {str(e)}")
+            return
         
         # Run Telegram analysis
         telegram_analyses = {"ranked_kols": []}
-        if channels:
-            print(f"\nAnalyzing {len(channels)} Telegram channels...")
+        if telegram_groups:
+            logger.info(f"Analyzing {len(telegram_groups)} Telegram channels for the past {args.telegram_days} days.")
             
-            telegram_scraper = TelegramScraper(
-                config["telegram_api_id"],
-                config["telegram_api_hash"],
-                config.get("telegram_session", "phoenix"),
-                max_days=telegram_days
-            )
+            try:
+                telegram_scraper = TelegramScraper(
+                    self.config["telegram_api_id"],
+                    self.config["telegram_api_hash"],
+                    self.config.get("telegram_session", "phoenix")
+                )
+            except Exception as e:
+                logger.error(f"Failed to initialize Telegram scraper: {str(e)}")
+                return
             
-            # Check for Spydefi channel
-            has_spydefi = any(ch.lower() == "spydefi" for ch in channels)
-            if has_spydefi:
+            # Handle special case for Spydefi
+            if any(ch.lower() == "spydefi" for ch in telegram_groups):
+                logger.info("Spydefi channel detected. Analyzing KOLs from Spydefi.")
+                
                 try:
                     # Find the Spydefi channel ID
-                    spydefi_channel = next((ch for ch in channels if ch.lower() == "spydefi"), None)
-                    print(f"\nAnalyzing Spydefi and discovering KOLs...")
+                    spydefi_channel = next((ch for ch in telegram_groups if ch.lower() == "spydefi"), None)
                     
                     # Run the analysis asynchronously
                     async def run_spydefi_analysis():
@@ -1047,39 +823,31 @@ def handle_combined_analysis(config: Dict[str, Any]):
                             await telegram_scraper.connect()
                             return await telegram_scraper.scrape_spydefi(
                                 spydefi_channel,
-                                telegram_days,
-                                birdeye_api
+                                args.telegram_days,
+                                cielo_api  # Using Cielo Finance API
                             )
                         finally:
                             await telegram_scraper.disconnect()
                     
                     # Run the async function
                     telegram_analyses = asyncio.run(run_spydefi_analysis())
-                    print(f"Spydefi analysis completed!")
-                    print(f"Found {len(telegram_analyses.get('ranked_kols', []))} KOL channels.")
+                    logger.info(f"Spydefi analysis completed.")
                     
                 except Exception as e:
                     logger.error(f"Error analyzing Spydefi: {str(e)}", exc_info=True)
-                    print(f"Error analyzing Spydefi: {str(e)}")
-                    
-                    if "Cannot find any entity" in str(e):
-                        print("\nTroubleshooting tip: Make sure the Spydefi channel name/ID is correct.")
-                        print("The channel might have changed its username or been deleted.")
             else:
                 # Regular channel analysis
                 channel_analyses = []
-                for idx, channel in enumerate(channels):
+                for channel in telegram_groups:
                     try:
-                        print(f"\nAnalyzing channel {idx+1}/{len(channels)}: {channel}...")
-                        
                         # Run the analysis asynchronously
                         async def run_channel_analysis():
                             try:
                                 await telegram_scraper.connect()
                                 return await telegram_scraper.analyze_channel(
                                     channel,
-                                    telegram_days,
-                                    birdeye_api
+                                    args.telegram_days,
+                                    cielo_api  # Using Cielo Finance API
                                 )
                             finally:
                                 await telegram_scraper.disconnect()
@@ -1087,131 +855,66 @@ def handle_combined_analysis(config: Dict[str, Any]):
                         # Run the async function
                         analysis = asyncio.run(run_channel_analysis())
                         channel_analyses.append(analysis)
-                        print(f"Analysis for channel {channel} completed")
+                        logger.info(f"Analysis for channel {channel} completed")
                         
                     except Exception as e:
                         logger.error(f"Error analyzing channel {channel}: {str(e)}", exc_info=True)
-                        print(f"Error analyzing channel {channel}: {str(e)}")
-                        
-                        if "Cannot find any entity" in str(e):
-                            print(f"Troubleshooting tip: Unable to find channel '{channel}'.")
-                            print("Make sure the channel ID/username is correct and your account has access to it.")
                 
                 telegram_analyses = {
                     "ranked_kols": channel_analyses
                 }
             
-            print(f"Telegram analysis completed!")
+            logger.info(f"Telegram analysis completed.")
         
         # Run wallet analysis
         wallet_analyses = {}
         if wallets:
-            print(f"\nAnalyzing {len(wallets)} wallets...")
+            logger.info(f"Analyzing {len(wallets)} wallets for the past {args.wallet_days} days.")
             
-            wallet_analyzer = WalletAnalyzer(birdeye_api)
+            try:
+                wallet_analyzer = WalletAnalyzer(cielo_api)  # Using Cielo Finance API
+            except Exception as e:
+                logger.error(f"Failed to initialize wallet analyzer: {str(e)}")
+                return
             
             try:
                 wallet_analyses = wallet_analyzer.batch_analyze_wallets(
                     wallets,
-                    wallet_days,
-                    min_winrate
+                    args.wallet_days,
+                    args.min_winrate
                 )
                 
-                print(f"Wallet analysis completed!")
-                if wallet_analyses.get('gem_finders'):
-                    print(f"- Gem Finders: {len(wallet_analyses['gem_finders'])}")
-                if wallet_analyses.get('consistent'):
-                    print(f"- Consistent: {len(wallet_analyses['consistent'])}")
-                if wallet_analyses.get('flippers'):
-                    print(f"- Flippers: {len(wallet_analyses['flippers'])}")
+                if wallet_analyses.get("success"):
+                    logger.info(f"Wallet analysis completed.")
+                    logger.info(f"- Gem Finders: {len(wallet_analyses['gem_finders'])}")
+                    logger.info(f"- Consistent: {len(wallet_analyses['consistent'])}")
+                    logger.info(f"- Flippers: {len(wallet_analyses['flippers'])}")
+                    logger.info(f"- Failed: {wallet_analyses.get('failed_wallets', 0)}")
+                else:
+                    logger.error(f"Wallet analysis failed: {wallet_analyses.get('error', 'Unknown error')}")
+                    wallet_analyses = {}  # Set to empty dict to avoid export issues
                 
             except Exception as e:
                 logger.error(f"Error during wallet analysis: {str(e)}", exc_info=True)
-                print(f"Error during wallet analysis: {str(e)}")
+                wallet_analyses = {}
         
         # Export combined results to Excel
         try:
             export_to_excel(telegram_analyses, wallet_analyses, output_file)
-            print(f"\nCombined analysis exported to Excel: {output_file}")
+            logger.info(f"Combined analysis exported to Excel: {output_file}")
         except Exception as e:
             logger.error(f"Error exporting to Excel: {str(e)}", exc_info=True)
-            print(f"Error exporting to Excel: {str(e)}")
-        
-        print("\nCombined analysis completed!")
-        input("\nPress Enter to continue...")
-    
-    except ImportError as e:
-        print(f"\nError: Could not import required module: {str(e)}")
-        print("Please ensure all dependencies are installed.")
-        input("\nPress Enter to continue...")
-
-def handle_config_menu(config: Dict[str, Any]):
-    """Handle the configuration menu."""
-    while True:
-        print_header()
-        print_config_menu()
-        
-        try:
-            choice = int(input().strip())
-            
-            if choice == 1:
-                set_api_keys(config)
-            elif choice == 2:
-                set_analysis_settings(config)
-            elif choice == 3:
-                manage_file_paths(config)
-            elif choice == 4:
-                test_api_connection(config)
-            elif choice == 5:
-                set_advanced_settings(config)
-            elif choice == 6:
-                return
-            else:
-                print("\nInvalid choice. Please try again.")
-                time.sleep(1)
-        
-        except ValueError:
-            print("\nInvalid input. Please enter a number.")
-            time.sleep(1)
 
 def main():
     """Main entry point for the Phoenix CLI."""
     try:
-        config = load_config()
-        
-        while True:
-            print_header()
-            print_menu()
-            
-            try:
-                choice = int(input().strip())
-                
-                if choice == 1:
-                    handle_wallet_analysis(config)
-                elif choice == 2:
-                    handle_telegram_analysis(config)
-                elif choice == 3:
-                    handle_combined_analysis(config)
-                elif choice == 4:
-                    handle_config_menu(config)
-                elif choice == 5:
-                    print("\nExiting Phoenix. Goodbye!")
-                    sys.exit(0)
-                else:
-                    print("\nInvalid choice. Please try again.")
-                    time.sleep(1)
-            
-            except ValueError:
-                print("\nInvalid input. Please enter a number.")
-                time.sleep(1)
-    
+        cli = PhoenixCLI()
+        cli.run()
     except KeyboardInterrupt:
-        print("\n\nOperation cancelled by user.")
+        logger.info("Operation cancelled by user.")
         sys.exit(1)
     except Exception as e:
-        logger.error(f"An unexpected error occurred: {str(e)}", exc_info=True)
-        print(f"\nAn unexpected error occurred: {str(e)}")
-        print("Check the log file for details.")
+        logger.error(f"An error occurred: {str(e)}", exc_info=True)
         sys.exit(1)
 
 if __name__ == "__main__":

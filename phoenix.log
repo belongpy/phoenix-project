@@ -265,3 +265,379 @@ TypeError: BirdeyeAPI.__init__() got an unexpected keyword argument 'birdeye_api
 2025-05-21 17:24:04,485 - phoenix.birdeye - WARNING - No price history available for 2M7sYwMzJbpHs9umwrfnae1BfAuWbQ42QzbJJHgQpump
 2025-05-21 17:24:04,799 - phoenix.telegram - ERROR - Error identifying platform for 2M7sYwMzJbpHs9umwrfnae1BfAuWbQ42QzbJJHgQpump: 'str' object has no attribute 'get'
 2025-05-21 17:24:05,854 - phoenix.telegram - ERROR - Error identifying platform for 7LT1zpqCWHCQabQmLhHPbPGJsZ9VE4JXLE7sVX5Qpump: 'str' object has no attribute 'get'
+2025-05-21 17:24:08,656 - phoenix.telegram - ERROR - Error identifying platform for LppLJniYrdhYuiU9pB1SwJmnm2NxVyHZftfNYPmpump: 'str' object has no attribute 'get'
+2025-05-21 17:24:11,454 - phoenix.telegram - ERROR - Error identifying platform for 3JsCv2n6WBJcTAXoAGNGZn4uPBdMGsg67zaB4XYWpump: 'str' object has no attribute 'get'
+2025-05-21 17:24:13,033 - phoenix.telegram - ERROR - Error identifying platform for CeRGxqTcbrDqyq7315yukUi9qbQnMt9FJyfxSKASpump: 'str' object has no attribute 'get'
+2025-05-21 17:24:13,857 - phoenix.birdeye - WARNING - No price history available for HU7cm1iwiDmAgPVF8e4Uqbhnz5fnZiQbJyXu6NwGM5g6
+2025-05-21 17:24:14,240 - phoenix.telegram - ERROR - Error identifying platform for HU7cm1iwiDmAgPVF8e4Uqbhnz5fnZiQbJyXu6NwGM5g6: 'str' object has no attribute 'get'
+2025-05-21 17:24:15,949 - phoenix.birdeye - WARNING - No price history available for J9T2HnFGMzxTgVQsg44vffSephgisQov7kKv1aE3rsH8
+2025-05-21 17:24:16,342 - phoenix.telegram - ERROR - Error identifying platform for J9T2HnFGMzxTgVQsg44vffSephgisQov7kKv1aE3rsH8: 'str' object has no attribute 'get'
+2025-05-21 17:24:16,479 - phoenix.birdeye - WARNING - Request failed (attempt 1/3): 400 Client Error: Bad Request for url: https://public-api.birdeye.so/defi/token_overview?address=V8rG66mFfSGLjzRBnN1ZFv2FUiK6aMa2z16u9pump
+2025-05-21 17:24:16,479 - phoenix.birdeye - INFO - Retrying in 2 seconds...
+2025-05-21 17:24:18,630 - phoenix.birdeye - WARNING - Request failed (attempt 2/3): 400 Client Error: Bad Request for url: https://public-api.birdeye.so/defi/token_overview?address=V8rG66mFfSGLjzRBnN1ZFv2FUiK6aMa2z16u9pump
+2025-05-21 17:24:18,630 - phoenix.birdeye - INFO - Retrying in 4 seconds...
+2025-05-21 17:24:22,766 - phoenix.birdeye - WARNING - Request failed (attempt 3/3): 400 Client Error: Bad Request for url: https://public-api.birdeye.so/defi/token_overview?address=V8rG66mFfSGLjzRBnN1ZFv2FUiK6aMa2z16u9pump
+2025-05-21 17:24:22,766 - phoenix.birdeye - ERROR - Request failed after 3 attempts
+2025-05-21 17:24:22,891 - phoenix.birdeye - WARNING - Request failed (attempt 1/3): 400 Client Error: Bad Request for url: https://public-api.birdeye.so/defi/history_price?address=V8rG66mFfSGLjzRBnN1ZFv2FUiK6aMa2z16u9pump&address_type=token&type=5m&time_from=1747863966&time_to=1747873462
+2025-05-21 17:24:22,893 - phoenix.birdeye - INFO - Retrying in 2 seconds...
+2025-05-21 17:24:25,024 - phoenix.birdeye - WARNING - Request failed (attempt 2/3): 400 Client Error: Bad Request for url: https://public-api.birdeye.so/defi/history_price?address=V8rG66mFfSGLjzRBnN1ZFv2FUiK6aMa2z16u9pump&address_type=token&type=5m&time_from=1747863966&time_to=1747873462
+2025-05-21 17:24:25,025 - phoenix.birdeye - INFO - Retrying in 4 seconds...
+2025-05-21 17:24:29,175 - phoenix.birdeye - WARNING - Request failed (attempt 3/3): 400 Client Error: Bad Request for url: https://public-api.birdeye.so/defi/history_price?address=V8rG66mFfSGLjzRBnN1ZFv2FUiK6aMa2z16u9pump&address_type=token&type=5m&time_from=1747863966&time_to=1747873462
+2025-05-21 17:24:29,175 - phoenix.birdeye - ERROR - Request failed after 3 attempts
+2025-05-21 17:24:29,297 - phoenix.birdeye - WARNING - Request failed (attempt 1/3): 400 Client Error: Bad Request for url: https://public-api.birdeye.so/defi/price?address=V8rG66mFfSGLjzRBnN1ZFv2FUiK6aMa2z16u9pump
+2025-05-21 17:24:29,297 - phoenix.birdeye - INFO - Retrying in 2 seconds...
+2025-05-21 17:24:31,438 - phoenix.birdeye - WARNING - Request failed (attempt 2/3): 400 Client Error: Bad Request for url: https://public-api.birdeye.so/defi/price?address=V8rG66mFfSGLjzRBnN1ZFv2FUiK6aMa2z16u9pump
+2025-05-21 17:24:31,438 - phoenix.birdeye - INFO - Retrying in 4 seconds...
+2025-05-21 17:24:35,583 - phoenix.birdeye - WARNING - Request failed (attempt 3/3): 400 Client Error: Bad Request for url: https://public-api.birdeye.so/defi/price?address=V8rG66mFfSGLjzRBnN1ZFv2FUiK6aMa2z16u9pump
+2025-05-21 17:24:35,583 - phoenix.birdeye - ERROR - Request failed after 3 attempts
+2025-05-21 17:24:35,704 - phoenix.birdeye - WARNING - Request failed (attempt 1/3): 400 Client Error: Bad Request for url: https://public-api.birdeye.so/defi/token_overview?address=V8rG66mFfSGLjzRBnN1ZFv2FUiK6aMa2z16u9pump
+2025-05-21 17:24:35,704 - phoenix.birdeye - INFO - Retrying in 2 seconds...
+2025-05-21 17:24:37,829 - phoenix.birdeye - WARNING - Request failed (attempt 2/3): 400 Client Error: Bad Request for url: https://public-api.birdeye.so/defi/token_overview?address=V8rG66mFfSGLjzRBnN1ZFv2FUiK6aMa2z16u9pump
+2025-05-21 17:24:37,829 - phoenix.birdeye - INFO - Retrying in 4 seconds...
+2025-05-21 17:24:41,979 - phoenix.birdeye - WARNING - Request failed (attempt 3/3): 400 Client Error: Bad Request for url: https://public-api.birdeye.so/defi/token_overview?address=V8rG66mFfSGLjzRBnN1ZFv2FUiK6aMa2z16u9pump
+2025-05-21 17:24:41,979 - phoenix.birdeye - ERROR - Request failed after 3 attempts
+2025-05-21 17:24:41,981 - phoenix.telegram - ERROR - Error getting token data for V8rG66mFfSGLjzRBnN1ZFv2FUiK6aMa2z16u9pump: 'list' object has no attribute 'get'
+2025-05-21 17:24:42,699 - phoenix.birdeye - WARNING - No price history available for 5Go1r8UVEPc3kpvx1UxAqtBaiQFWwxvpntCXcNwdKnGq
+2025-05-21 17:24:43,072 - phoenix.telegram - ERROR - Error identifying platform for 5Go1r8UVEPc3kpvx1UxAqtBaiQFWwxvpntCXcNwdKnGq: 'str' object has no attribute 'get'
+2025-05-21 17:24:44,190 - phoenix.telegram - ERROR - Error identifying platform for 4cdJLXBtLjtPqDBmoZs6xWJ6tKVUpeCRDcefy1Lzpump: 'str' object has no attribute 'get'
+2025-05-21 17:24:46,344 - phoenix.telegram - ERROR - Error identifying platform for 8fttegQTLDffaENVdBw5U5C3NFE8FpLSY1jnqNXwpump: 'str' object has no attribute 'get'
+2025-05-21 17:24:52,830 - phoenix.telegram - ERROR - Error identifying platform for GiWXfG2AHE3w7JWXpiFNwMr6ctLrpMAgKgCKWEc7pump: 'str' object has no attribute 'get'
+2025-05-21 17:24:53,859 - phoenix.telegram - ERROR - Error identifying platform for 8n2MDDes1X86tnfwJBdKxeZ89UDMbwisLgNfuP5Ppump: 'str' object has no attribute 'get'
+2025-05-21 17:24:55,912 - phoenix.telegram - ERROR - Error identifying platform for 5E326kvyYpK3yimrK5VTjBH3raku1irL7fLD8fWpump: 'str' object has no attribute 'get'
+2025-05-21 17:24:56,923 - phoenix.telegram - ERROR - Error identifying platform for 9aViTZwChBhp8QdN1dLV7JwG89t9SzbSfb2J3SrApump: 'str' object has no attribute 'get'
+2025-05-21 17:24:57,569 - phoenix.birdeye - WARNING - No price history available for 3YVbTqHctR7SKCfdYSAJJACriMTfi5AC4uVtUcvCTtdY
+2025-05-21 17:24:58,052 - phoenix.telegram - ERROR - Error identifying platform for 3YVbTqHctR7SKCfdYSAJJACriMTfi5AC4uVtUcvCTtdY: 'str' object has no attribute 'get'
+2025-05-21 17:25:00,073 - phoenix.telegram - ERROR - Error identifying platform for H6AEoGawUpmGuZ6thaLN94o8rLTD1y9Y2oT2tNfipump: 'str' object has no attribute 'get'
+2025-05-21 17:25:02,252 - phoenix.telegram - ERROR - Error identifying platform for CbUZBmqscyHUENeb8HViMPt9exnjuxTcCJbio6Topump: 'str' object has no attribute 'get'
+2025-05-21 17:25:03,534 - phoenix.telegram - ERROR - Error identifying platform for 4Kpe3MVtawDgiH6q27rCETQyXPvmPmimcvUNg3RZpump: 'str' object has no attribute 'get'
+2025-05-21 17:25:04,603 - phoenix.telegram - ERROR - Error identifying platform for 4yRtaLycyB5t3ensrr8ud8Deq7TDeKZAZJDRsJahpump: 'str' object has no attribute 'get'
+2025-05-21 17:25:07,628 - phoenix.telegram - ERROR - Error identifying platform for 4wXZ7XTMUzDbTftNZZaGhG1oxg2T2JsLDNMrpFjKpump: 'str' object has no attribute 'get'
+2025-05-21 17:47:02,211 - phoenix - INFO - Configuration saved to C:\Users\Administrator/.phoenix_config.json
+2025-05-21 17:47:08,955 - phoenix - INFO - Loaded 104 wallet addresses from C:\Users\Administrator\Desktop\phoenix-project\wallets.txt
+2025-05-21 17:47:08,955 - phoenix - INFO - Loaded 1 channel IDs from C:\Users\Administrator\Desktop\phoenix-project\channels.txt
+2025-05-21 18:11:55,624 - phoenix - INFO - Loaded 1 channels from channels.txt
+2025-05-21 18:11:55,631 - phoenix - INFO - Loaded 104 wallets from wallets.txt
+2025-05-21 18:11:55,631 - phoenix - INFO - Loaded 1 channels from channels.txt
+2025-05-21 18:11:55,631 - phoenix - INFO - Total channels: 1 (config: 0, file: 1)
+2025-05-21 18:11:55,631 - phoenix - INFO - Loaded 104 wallets from wallets.txt
+2025-05-21 18:11:55,631 - phoenix - INFO - Total wallets: 101 (config: 0, file: 104)
+2025-05-21 18:12:12,427 - phoenix - INFO - Loaded 1 channels from channels.txt
+2025-05-21 18:12:12,427 - phoenix - INFO - Total channels: 1 (config: 0, file: 1)
+2025-05-21 18:12:12,427 - phoenix - INFO - Loaded 104 wallets from wallets.txt
+2025-05-21 18:12:12,427 - phoenix - INFO - Total wallets: 101 (config: 0, file: 104)
+2025-05-21 18:12:28,864 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-21 18:12:28,864 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-21 18:12:29,793 - phoenix.api_manager - INFO - Birdeye API initialized for token analysis
+2025-05-21 18:12:29,793 - phoenix.api_manager - ERROR - Failed to initialize Cielo Finance API: No module named 'cielo_api'
+2025-05-21 18:12:29,793 - phoenix.api_manager - WARNING - Wallet analysis will use Birdeye API as fallback
+2025-05-21 18:12:29,793 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-21 18:12:29,888 - telethon.network.mtprotosender - INFO - Connecting to 149.154.167.51:443/TcpFull...
+2025-05-21 18:12:31,719 - telethon.network.mtprotosender - INFO - Connection to 149.154.167.51:443/TcpFull complete!
+2025-05-21 18:12:54,656 - telethon.client.users - INFO - Phone migrated to 1
+2025-05-21 18:12:54,672 - telethon.client.telegrambaseclient - INFO - Reconnecting to new data center 1
+2025-05-21 18:12:54,719 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.167.51:443/TcpFull...
+2025-05-21 18:12:54,719 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.167.51:443/TcpFull complete!
+2025-05-21 18:12:54,719 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-21 18:12:56,926 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-21 18:13:05,820 - phoenix.telegram - INFO - Connected to Telegram
+2025-05-21 18:13:05,820 - phoenix.telegram - INFO - Analyzing channel spydefi for the past 7 days
+2025-05-21 18:13:05,820 - phoenix.telegram - INFO - SpyDefi channel detected, limiting to 7 days and 1000 messages
+2025-05-21 18:13:05,820 - phoenix.telegram - INFO - Scraping 7 days of messages from spydefi
+2025-05-21 18:13:06,406 - phoenix.telegram - ERROR - Error retrieving messages from SpyDefi: can't compare offset-naive and offset-aware datetimes
+2025-05-21 18:13:06,406 - phoenix.telegram - INFO - Disconnecting from Telegram...
+2025-05-21 18:13:06,406 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-21 18:13:06,406 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-21 18:13:06,422 - phoenix.telegram - INFO - Disconnected from Telegram
+2025-05-21 18:13:06,422 - phoenix.wallet - INFO - Batch analyzing 101 wallets
+2025-05-21 18:13:06,422 - phoenix.wallet - INFO - Analyzing wallet CXZT2abrKxmzgJJ2JJcTGbXBxWypQyg8oxdXMi9r448W for the past 14 days
+2025-05-21 18:13:06,578 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'CXZT2abrKxmzgJJ2JJcTGbXBxWypQyg8oxdXMi9r448W', 'limit': 100}
+2025-05-21 18:13:06,578 - phoenix.birdeye - WARNING - No transaction data available for CXZT2abrKxmzgJJ2JJcTGbXBxWypQyg8oxdXMi9r448W
+2025-05-21 18:13:06,578 - phoenix.wallet - WARNING - No transactions found for wallet CXZT2abrKxmzgJJ2JJcTGbXBxWypQyg8oxdXMi9r448W
+2025-05-21 18:13:06,578 - phoenix.wallet - INFO - Analyzing wallet 5LdhxZJRicTyoVp6sXjDrmy17vADtK5GHE6DMm1FrB38 for the past 14 days
+2025-05-21 18:13:06,641 - phoenix.birdeye - WARNING - Token not found: {'wallet': '5LdhxZJRicTyoVp6sXjDrmy17vADtK5GHE6DMm1FrB38', 'limit': 100}
+2025-05-21 18:13:06,641 - phoenix.birdeye - WARNING - No transaction data available for 5LdhxZJRicTyoVp6sXjDrmy17vADtK5GHE6DMm1FrB38
+2025-05-21 18:13:06,641 - phoenix.wallet - WARNING - No transactions found for wallet 5LdhxZJRicTyoVp6sXjDrmy17vADtK5GHE6DMm1FrB38
+2025-05-21 18:13:06,641 - phoenix.wallet - INFO - Analyzing wallet CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ for the past 14 days
+2025-05-21 18:13:06,719 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ', 'limit': 100}
+2025-05-21 18:13:06,719 - phoenix.birdeye - WARNING - No transaction data available for CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ
+2025-05-21 18:13:06,719 - phoenix.wallet - WARNING - No transactions found for wallet CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ
+2025-05-21 18:13:06,719 - phoenix.wallet - INFO - Analyzing wallet 6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG for the past 14 days
+2025-05-21 18:13:06,828 - phoenix.birdeye - WARNING - Token not found: {'wallet': '6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG', 'limit': 100}
+2025-05-21 18:13:06,828 - phoenix.birdeye - WARNING - No transaction data available for 6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG
+2025-05-21 18:13:06,828 - phoenix.wallet - WARNING - No transactions found for wallet 6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG
+2025-05-21 18:13:06,828 - phoenix.wallet - INFO - Analyzing wallet 8aBXqjo2qjfCjZY2aDjpLJRmtnHnJ3UkApUfpYJf84MK for the past 14 days
+2025-05-21 18:13:06,875 - phoenix.birdeye - WARNING - Token not found: {'wallet': '8aBXqjo2qjfCjZY2aDjpLJRmtnHnJ3UkApUfpYJf84MK', 'limit': 100}
+2025-05-21 18:13:06,875 - phoenix.birdeye - WARNING - No transaction data available for 8aBXqjo2qjfCjZY2aDjpLJRmtnHnJ3UkApUfpYJf84MK
+2025-05-21 18:13:06,875 - phoenix.wallet - WARNING - No transactions found for wallet 8aBXqjo2qjfCjZY2aDjpLJRmtnHnJ3UkApUfpYJf84MK
+2025-05-21 18:13:06,875 - phoenix.wallet - INFO - Analyzing wallet Bzbt2UYkk6Kycp2ZR3dFpnypCLMckreXPHnw65NNd1eN for the past 14 days
+2025-05-21 18:13:06,969 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'Bzbt2UYkk6Kycp2ZR3dFpnypCLMckreXPHnw65NNd1eN', 'limit': 100}
+2025-05-21 18:13:06,969 - phoenix.birdeye - WARNING - No transaction data available for Bzbt2UYkk6Kycp2ZR3dFpnypCLMckreXPHnw65NNd1eN
+2025-05-21 18:13:06,969 - phoenix.wallet - WARNING - No transactions found for wallet Bzbt2UYkk6Kycp2ZR3dFpnypCLMckreXPHnw65NNd1eN
+2025-05-21 18:13:06,969 - phoenix.wallet - INFO - Analyzing wallet CGTC825yLj4wbbjfwX1UL4Wp3VrxkVwGcfKzp12vWUVY for the past 14 days
+2025-05-21 18:13:07,078 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'CGTC825yLj4wbbjfwX1UL4Wp3VrxkVwGcfKzp12vWUVY', 'limit': 100}
+2025-05-21 18:13:07,078 - phoenix.birdeye - WARNING - No transaction data available for CGTC825yLj4wbbjfwX1UL4Wp3VrxkVwGcfKzp12vWUVY
+2025-05-21 18:13:07,078 - phoenix.wallet - WARNING - No transactions found for wallet CGTC825yLj4wbbjfwX1UL4Wp3VrxkVwGcfKzp12vWUVY
+2025-05-21 18:13:07,078 - phoenix.wallet - INFO - Analyzing wallet GFsQ7v3pZeqgbf2pMgKRSzZ7SKqY2MaWVhZpz9U3pgCc for the past 14 days
+2025-05-21 18:13:07,219 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'GFsQ7v3pZeqgbf2pMgKRSzZ7SKqY2MaWVhZpz9U3pgCc', 'limit': 100}
+2025-05-21 18:13:07,219 - phoenix.birdeye - WARNING - No transaction data available for GFsQ7v3pZeqgbf2pMgKRSzZ7SKqY2MaWVhZpz9U3pgCc
+2025-05-21 18:13:07,219 - phoenix.wallet - WARNING - No transactions found for wallet GFsQ7v3pZeqgbf2pMgKRSzZ7SKqY2MaWVhZpz9U3pgCc
+2025-05-21 18:13:07,219 - phoenix.wallet - INFO - Analyzing wallet 9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj for the past 14 days
+2025-05-21 18:13:07,312 - phoenix.birdeye - WARNING - Token not found: {'wallet': '9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj', 'limit': 100}
+2025-05-21 18:13:07,312 - phoenix.birdeye - WARNING - No transaction data available for 9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj
+2025-05-21 18:13:07,312 - phoenix.wallet - WARNING - No transactions found for wallet 9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj
+2025-05-21 18:13:07,312 - phoenix.wallet - INFO - Analyzing wallet 8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q for the past 14 days
+2025-05-21 18:13:07,406 - phoenix.birdeye - WARNING - Token not found: {'wallet': '8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q', 'limit': 100}
+2025-05-21 18:13:07,406 - phoenix.birdeye - WARNING - No transaction data available for 8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q
+2025-05-21 18:13:07,406 - phoenix.wallet - WARNING - No transactions found for wallet 8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q
+2025-05-21 18:13:07,406 - phoenix.wallet - INFO - Analyzing wallet FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb for the past 14 days
+2025-05-21 18:13:07,469 - phoenix.birdeye - WARNING - Rate limit hit, waiting longer...
+2025-05-21 18:13:11,605 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb', 'limit': 100}
+2025-05-21 18:13:11,605 - phoenix.birdeye - WARNING - No transaction data available for FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb
+2025-05-21 18:13:11,605 - phoenix.wallet - WARNING - No transactions found for wallet FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb
+2025-05-21 18:13:11,605 - phoenix.wallet - INFO - Analyzing wallet 51TQpGzNzQDbXP3f6NE2RUMBXQC5Am13wS982m4gs36x for the past 14 days
+2025-05-21 18:13:11,668 - phoenix.birdeye - WARNING - Token not found: {'wallet': '51TQpGzNzQDbXP3f6NE2RUMBXQC5Am13wS982m4gs36x', 'limit': 100}
+2025-05-21 18:13:11,668 - phoenix.birdeye - WARNING - No transaction data available for 51TQpGzNzQDbXP3f6NE2RUMBXQC5Am13wS982m4gs36x
+2025-05-21 18:13:11,668 - phoenix.wallet - WARNING - No transactions found for wallet 51TQpGzNzQDbXP3f6NE2RUMBXQC5Am13wS982m4gs36x
+2025-05-21 18:13:11,668 - phoenix.wallet - INFO - Analyzing wallet CnxC3sqWqX546i3vrwBYJgbR8DvsfjHLXVHVesz6Lu5c for the past 14 days
+2025-05-21 18:13:11,796 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'CnxC3sqWqX546i3vrwBYJgbR8DvsfjHLXVHVesz6Lu5c', 'limit': 100}
+2025-05-21 18:13:11,796 - phoenix.birdeye - WARNING - No transaction data available for CnxC3sqWqX546i3vrwBYJgbR8DvsfjHLXVHVesz6Lu5c
+2025-05-21 18:13:11,796 - phoenix.wallet - WARNING - No transactions found for wallet CnxC3sqWqX546i3vrwBYJgbR8DvsfjHLXVHVesz6Lu5c
+2025-05-21 18:13:11,796 - phoenix.wallet - INFO - Analyzing wallet FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W for the past 14 days
+2025-05-21 18:13:11,828 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W', 'limit': 100}
+2025-05-21 18:13:11,828 - phoenix.birdeye - WARNING - No transaction data available for FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W
+2025-05-21 18:13:11,828 - phoenix.wallet - WARNING - No transactions found for wallet FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W
+2025-05-21 18:13:11,828 - phoenix.wallet - INFO - Analyzing wallet 5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex for the past 14 days
+2025-05-21 18:13:11,875 - phoenix.birdeye - WARNING - Token not found: {'wallet': '5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex', 'limit': 100}
+2025-05-21 18:13:11,875 - phoenix.birdeye - WARNING - No transaction data available for 5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex
+2025-05-21 18:13:11,891 - phoenix.wallet - WARNING - No transactions found for wallet 5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex
+2025-05-21 18:13:11,891 - phoenix.wallet - INFO - Analyzing wallet EzNwNef7TTPTsCpLQrpk6g2N8pA6pvzEdGM17Yh2HYoz for the past 14 days
+2025-05-21 18:13:12,000 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'EzNwNef7TTPTsCpLQrpk6g2N8pA6pvzEdGM17Yh2HYoz', 'limit': 100}
+2025-05-21 18:13:12,000 - phoenix.birdeye - WARNING - No transaction data available for EzNwNef7TTPTsCpLQrpk6g2N8pA6pvzEdGM17Yh2HYoz
+2025-05-21 18:13:12,000 - phoenix.wallet - WARNING - No transactions found for wallet EzNwNef7TTPTsCpLQrpk6g2N8pA6pvzEdGM17Yh2HYoz
+2025-05-21 18:13:12,000 - phoenix.wallet - INFO - Analyzing wallet GCGrJifLEs8zF4iPc7Vht4pxtVJZ4xqatauhq72VLDzH for the past 14 days
+2025-05-21 18:13:12,109 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'GCGrJifLEs8zF4iPc7Vht4pxtVJZ4xqatauhq72VLDzH', 'limit': 100}
+2025-05-21 18:13:12,109 - phoenix.birdeye - WARNING - No transaction data available for GCGrJifLEs8zF4iPc7Vht4pxtVJZ4xqatauhq72VLDzH
+2025-05-21 18:13:12,109 - phoenix.wallet - WARNING - No transactions found for wallet GCGrJifLEs8zF4iPc7Vht4pxtVJZ4xqatauhq72VLDzH
+2025-05-21 18:13:12,109 - phoenix.wallet - INFO - Analyzing wallet Gw71goDdGz2F9RhoEoSVcdts57bQRf8A5AWaSVNYSJNH for the past 14 days
+2025-05-21 18:13:12,141 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'Gw71goDdGz2F9RhoEoSVcdts57bQRf8A5AWaSVNYSJNH', 'limit': 100}
+2025-05-21 18:13:12,141 - phoenix.birdeye - WARNING - No transaction data available for Gw71goDdGz2F9RhoEoSVcdts57bQRf8A5AWaSVNYSJNH
+2025-05-21 18:13:12,141 - phoenix.wallet - WARNING - No transactions found for wallet Gw71goDdGz2F9RhoEoSVcdts57bQRf8A5AWaSVNYSJNH
+2025-05-21 18:13:12,141 - phoenix.wallet - INFO - Analyzing wallet 8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i for the past 14 days
+2025-05-21 18:13:12,234 - phoenix.birdeye - WARNING - Token not found: {'wallet': '8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i', 'limit': 100}
+2025-05-21 18:13:12,234 - phoenix.birdeye - WARNING - No transaction data available for 8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i
+2025-05-21 18:13:12,250 - phoenix.wallet - WARNING - No transactions found for wallet 8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i
+2025-05-21 18:13:12,250 - phoenix.wallet - INFO - Analyzing wallet 96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu for the past 14 days
+2025-05-21 18:13:12,375 - phoenix.birdeye - WARNING - Token not found: {'wallet': '96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu', 'limit': 100}
+2025-05-21 18:13:12,375 - phoenix.birdeye - WARNING - No transaction data available for 96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu
+2025-05-21 18:13:12,391 - phoenix.wallet - WARNING - No transactions found for wallet 96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu
+2025-05-21 18:13:12,391 - phoenix.wallet - INFO - Analyzing wallet EPHFZP6GRDUcsQpysd81E4yJkGkMkq1HzxyTUs6SJ1nb for the past 14 days
+2025-05-21 18:13:12,453 - phoenix.birdeye - WARNING - Rate limit hit, waiting longer...
+2025-05-21 18:13:16,578 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'EPHFZP6GRDUcsQpysd81E4yJkGkMkq1HzxyTUs6SJ1nb', 'limit': 100}
+2025-05-21 18:13:16,578 - phoenix.birdeye - WARNING - No transaction data available for EPHFZP6GRDUcsQpysd81E4yJkGkMkq1HzxyTUs6SJ1nb
+2025-05-21 18:13:16,578 - phoenix.wallet - WARNING - No transactions found for wallet EPHFZP6GRDUcsQpysd81E4yJkGkMkq1HzxyTUs6SJ1nb
+2025-05-21 18:13:16,578 - phoenix.wallet - INFO - Analyzing wallet 4mn4awCvhti4ybEMNe8q8D28KaoJ2LJiUViSqFgn6NZF for the past 14 days
+2025-05-21 18:13:16,609 - phoenix.birdeye - WARNING - Token not found: {'wallet': '4mn4awCvhti4ybEMNe8q8D28KaoJ2LJiUViSqFgn6NZF', 'limit': 100}
+2025-05-21 18:13:16,609 - phoenix.birdeye - WARNING - No transaction data available for 4mn4awCvhti4ybEMNe8q8D28KaoJ2LJiUViSqFgn6NZF
+2025-05-21 18:13:16,609 - phoenix.wallet - WARNING - No transactions found for wallet 4mn4awCvhti4ybEMNe8q8D28KaoJ2LJiUViSqFgn6NZF
+2025-05-21 18:13:16,609 - phoenix.wallet - INFO - Analyzing wallet E9AraWahsb1nDdsjcKNWXs9X7QXkyqALyZQexxKVMcsG for the past 14 days
+2025-05-21 18:13:16,750 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'E9AraWahsb1nDdsjcKNWXs9X7QXkyqALyZQexxKVMcsG', 'limit': 100}
+2025-05-21 18:13:16,750 - phoenix.birdeye - WARNING - No transaction data available for E9AraWahsb1nDdsjcKNWXs9X7QXkyqALyZQexxKVMcsG
+2025-05-21 18:13:16,750 - phoenix.wallet - WARNING - No transactions found for wallet E9AraWahsb1nDdsjcKNWXs9X7QXkyqALyZQexxKVMcsG
+2025-05-21 18:13:16,750 - phoenix.wallet - INFO - Analyzing wallet 9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn for the past 14 days
+2025-05-21 18:13:16,844 - phoenix.birdeye - WARNING - Token not found: {'wallet': '9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn', 'limit': 100}
+2025-05-21 18:13:16,844 - phoenix.birdeye - WARNING - No transaction data available for 9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn
+2025-05-21 18:13:16,844 - phoenix.wallet - WARNING - No transactions found for wallet 9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn
+2025-05-21 18:13:16,844 - phoenix.wallet - INFO - Analyzing wallet 8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2 for the past 14 days
+2025-05-21 18:13:16,954 - phoenix.birdeye - WARNING - Token not found: {'wallet': '8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2', 'limit': 100}
+2025-05-21 18:13:16,954 - phoenix.birdeye - WARNING - No transaction data available for 8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2
+2025-05-21 18:13:16,954 - phoenix.wallet - WARNING - No transactions found for wallet 8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2
+2025-05-21 18:13:16,954 - phoenix.wallet - INFO - Analyzing wallet E22jDFD1SwMKjxcFzZ7p4m1rmbAgaw7r5NoKjVZwgCbM for the past 14 days
+2025-05-21 18:13:17,049 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'E22jDFD1SwMKjxcFzZ7p4m1rmbAgaw7r5NoKjVZwgCbM', 'limit': 100}
+2025-05-21 18:13:17,049 - phoenix.birdeye - WARNING - No transaction data available for E22jDFD1SwMKjxcFzZ7p4m1rmbAgaw7r5NoKjVZwgCbM
+2025-05-21 18:13:17,049 - phoenix.wallet - WARNING - No transactions found for wallet E22jDFD1SwMKjxcFzZ7p4m1rmbAgaw7r5NoKjVZwgCbM
+2025-05-21 18:13:17,049 - phoenix.wallet - INFO - Analyzing wallet BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r for the past 14 days
+2025-05-21 18:13:17,094 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r', 'limit': 100}
+2025-05-21 18:13:17,097 - phoenix.birdeye - WARNING - No transaction data available for BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r
+2025-05-21 18:13:17,097 - phoenix.wallet - WARNING - No transactions found for wallet BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r
+2025-05-21 18:13:17,097 - phoenix.wallet - INFO - Analyzing wallet AHNRZKE42SxPWUFTAnrkeR9x69teWgBWMgtKip8wgsjM for the past 14 days
+2025-05-21 18:13:17,223 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'AHNRZKE42SxPWUFTAnrkeR9x69teWgBWMgtKip8wgsjM', 'limit': 100}
+2025-05-21 18:13:17,223 - phoenix.birdeye - WARNING - No transaction data available for AHNRZKE42SxPWUFTAnrkeR9x69teWgBWMgtKip8wgsjM
+2025-05-21 18:13:17,223 - phoenix.wallet - WARNING - No transactions found for wallet AHNRZKE42SxPWUFTAnrkeR9x69teWgBWMgtKip8wgsjM
+2025-05-21 18:13:17,223 - phoenix.wallet - INFO - Analyzing wallet Q9wxmeYRBhHHfBF2sHMnY6JmkB57nYPj39Komw3eMnE for the past 14 days
+2025-05-21 18:13:17,318 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'Q9wxmeYRBhHHfBF2sHMnY6JmkB57nYPj39Komw3eMnE', 'limit': 100}
+2025-05-21 18:13:17,318 - phoenix.birdeye - WARNING - No transaction data available for Q9wxmeYRBhHHfBF2sHMnY6JmkB57nYPj39Komw3eMnE
+2025-05-21 18:13:17,318 - phoenix.wallet - WARNING - No transactions found for wallet Q9wxmeYRBhHHfBF2sHMnY6JmkB57nYPj39Komw3eMnE
+2025-05-21 18:13:17,318 - phoenix.wallet - INFO - Analyzing wallet 52qgon7dMTu36Xr1wD7A47CtTEeo4NZmHhAezpLFjTZd for the past 14 days
+2025-05-21 18:13:17,438 - phoenix.birdeye - WARNING - Token not found: {'wallet': '52qgon7dMTu36Xr1wD7A47CtTEeo4NZmHhAezpLFjTZd', 'limit': 100}
+2025-05-21 18:13:17,438 - phoenix.birdeye - WARNING - No transaction data available for 52qgon7dMTu36Xr1wD7A47CtTEeo4NZmHhAezpLFjTZd
+2025-05-21 18:13:17,438 - phoenix.wallet - WARNING - No transactions found for wallet 52qgon7dMTu36Xr1wD7A47CtTEeo4NZmHhAezpLFjTZd
+2025-05-21 18:13:17,438 - phoenix.wallet - INFO - Analyzing wallet 5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD for the past 14 days
+2025-05-21 18:13:17,476 - phoenix.birdeye - WARNING - Rate limit hit, waiting longer...
+2025-05-21 18:13:21,516 - phoenix.birdeye - WARNING - Token not found: {'wallet': '5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD', 'limit': 100}
+2025-05-21 18:13:21,516 - phoenix.birdeye - WARNING - No transaction data available for 5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD
+2025-05-21 18:13:21,516 - phoenix.wallet - WARNING - No transactions found for wallet 5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD
+2025-05-21 18:13:21,516 - phoenix.wallet - INFO - Analyzing wallet B7KFXWo249cgbT1Lb9sCf8NZJwgDvRtWxkDJ1ndF6Tvk for the past 14 days
+2025-05-21 18:13:21,580 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'B7KFXWo249cgbT1Lb9sCf8NZJwgDvRtWxkDJ1ndF6Tvk', 'limit': 100}
+2025-05-21 18:13:21,580 - phoenix.birdeye - WARNING - No transaction data available for B7KFXWo249cgbT1Lb9sCf8NZJwgDvRtWxkDJ1ndF6Tvk
+2025-05-21 18:13:21,580 - phoenix.wallet - WARNING - No transactions found for wallet B7KFXWo249cgbT1Lb9sCf8NZJwgDvRtWxkDJ1ndF6Tvk
+2025-05-21 18:13:21,580 - phoenix.wallet - INFO - Analyzing wallet ESuJogU3kzLjZdfG93k6c4pYq8jJAu63wuv9NDvfesCi for the past 14 days
+2025-05-21 18:13:21,688 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'ESuJogU3kzLjZdfG93k6c4pYq8jJAu63wuv9NDvfesCi', 'limit': 100}
+2025-05-21 18:13:21,688 - phoenix.birdeye - WARNING - No transaction data available for ESuJogU3kzLjZdfG93k6c4pYq8jJAu63wuv9NDvfesCi
+2025-05-21 18:13:21,688 - phoenix.wallet - WARNING - No transactions found for wallet ESuJogU3kzLjZdfG93k6c4pYq8jJAu63wuv9NDvfesCi
+2025-05-21 18:13:21,688 - phoenix.wallet - INFO - Analyzing wallet 3jSyb337qfRhNCRTyVXqcoSeQLWm4Pobu8Axadizo8F7 for the past 14 days
+2025-05-21 18:13:21,723 - phoenix.birdeye - WARNING - Token not found: {'wallet': '3jSyb337qfRhNCRTyVXqcoSeQLWm4Pobu8Axadizo8F7', 'limit': 100}
+2025-05-21 18:13:21,723 - phoenix.birdeye - WARNING - No transaction data available for 3jSyb337qfRhNCRTyVXqcoSeQLWm4Pobu8Axadizo8F7
+2025-05-21 18:13:21,723 - phoenix.wallet - WARNING - No transactions found for wallet 3jSyb337qfRhNCRTyVXqcoSeQLWm4Pobu8Axadizo8F7
+2025-05-21 18:13:21,723 - phoenix.wallet - INFO - Analyzing wallet A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o for the past 14 days
+2025-05-21 18:13:21,834 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o', 'limit': 100}
+2025-05-21 18:13:21,834 - phoenix.birdeye - WARNING - No transaction data available for A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o
+2025-05-21 18:13:21,834 - phoenix.wallet - WARNING - No transactions found for wallet A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o
+2025-05-21 18:13:21,834 - phoenix.wallet - INFO - Analyzing wallet D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz for the past 14 days
+2025-05-21 18:13:21,898 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz', 'limit': 100}
+2025-05-21 18:13:21,907 - phoenix.birdeye - WARNING - No transaction data available for D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz
+2025-05-21 18:13:21,907 - phoenix.wallet - WARNING - No transactions found for wallet D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz
+2025-05-21 18:13:21,907 - phoenix.wallet - INFO - Analyzing wallet HmvPdsZnKv1KjEdiLmxdosiJPQ3eU1S2YKYUfyv3kvk3 for the past 14 days
+2025-05-21 18:13:22,016 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'HmvPdsZnKv1KjEdiLmxdosiJPQ3eU1S2YKYUfyv3kvk3', 'limit': 100}
+2025-05-21 18:13:22,016 - phoenix.birdeye - WARNING - No transaction data available for HmvPdsZnKv1KjEdiLmxdosiJPQ3eU1S2YKYUfyv3kvk3
+2025-05-21 18:13:22,016 - phoenix.wallet - WARNING - No transactions found for wallet HmvPdsZnKv1KjEdiLmxdosiJPQ3eU1S2YKYUfyv3kvk3
+2025-05-21 18:13:22,016 - phoenix.wallet - INFO - Analyzing wallet 4RSkAB6A2maMD7844VnXRfqhVuupu1XKVu3Qo5znTUDT for the past 14 days
+2025-05-21 18:13:22,128 - phoenix.birdeye - WARNING - Token not found: {'wallet': '4RSkAB6A2maMD7844VnXRfqhVuupu1XKVu3Qo5znTUDT', 'limit': 100}
+2025-05-21 18:13:22,128 - phoenix.birdeye - WARNING - No transaction data available for 4RSkAB6A2maMD7844VnXRfqhVuupu1XKVu3Qo5znTUDT
+2025-05-21 18:13:22,128 - phoenix.wallet - WARNING - No transactions found for wallet 4RSkAB6A2maMD7844VnXRfqhVuupu1XKVu3Qo5znTUDT
+2025-05-21 18:13:22,128 - phoenix.wallet - INFO - Analyzing wallet AxGu78Gp4fUvx1TgLb7zqTJJ4o2niJ9e8ZnT3cpywHZT for the past 14 days
+2025-05-21 18:13:22,255 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'AxGu78Gp4fUvx1TgLb7zqTJJ4o2niJ9e8ZnT3cpywHZT', 'limit': 100}
+2025-05-21 18:13:22,255 - phoenix.birdeye - WARNING - No transaction data available for AxGu78Gp4fUvx1TgLb7zqTJJ4o2niJ9e8ZnT3cpywHZT
+2025-05-21 18:13:22,255 - phoenix.wallet - WARNING - No transactions found for wallet AxGu78Gp4fUvx1TgLb7zqTJJ4o2niJ9e8ZnT3cpywHZT
+2025-05-21 18:13:22,255 - phoenix.wallet - INFO - Analyzing wallet EwcHQK2dTxnwMsEu7d3Mj5uRLzyJEsxFCCi3CowspoRv for the past 14 days
+2025-05-21 18:13:22,287 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'EwcHQK2dTxnwMsEu7d3Mj5uRLzyJEsxFCCi3CowspoRv', 'limit': 100}
+2025-05-21 18:13:22,287 - phoenix.birdeye - WARNING - No transaction data available for EwcHQK2dTxnwMsEu7d3Mj5uRLzyJEsxFCCi3CowspoRv
+2025-05-21 18:13:22,287 - phoenix.wallet - WARNING - No transactions found for wallet EwcHQK2dTxnwMsEu7d3Mj5uRLzyJEsxFCCi3CowspoRv
+2025-05-21 18:13:22,287 - phoenix.wallet - INFO - Analyzing wallet 933GChDAL2sfL7iubWqPdCEN9yiZia2Ti6RYGXMAJMEu for the past 14 days
+2025-05-21 18:13:22,376 - phoenix.birdeye - WARNING - Rate limit hit, waiting longer...
+2025-05-21 18:13:26,410 - phoenix.birdeye - WARNING - Token not found: {'wallet': '933GChDAL2sfL7iubWqPdCEN9yiZia2Ti6RYGXMAJMEu', 'limit': 100}
+2025-05-21 18:13:26,410 - phoenix.birdeye - WARNING - No transaction data available for 933GChDAL2sfL7iubWqPdCEN9yiZia2Ti6RYGXMAJMEu
+2025-05-21 18:13:26,410 - phoenix.wallet - WARNING - No transactions found for wallet 933GChDAL2sfL7iubWqPdCEN9yiZia2Ti6RYGXMAJMEu
+2025-05-21 18:13:26,410 - phoenix.wallet - INFO - Analyzing wallet 7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB for the past 14 days
+2025-05-21 18:13:26,473 - phoenix.birdeye - WARNING - Token not found: {'wallet': '7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB', 'limit': 100}
+2025-05-21 18:13:26,473 - phoenix.birdeye - WARNING - No transaction data available for 7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB
+2025-05-21 18:13:26,473 - phoenix.wallet - WARNING - No transactions found for wallet 7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB
+2025-05-21 18:13:26,473 - phoenix.wallet - INFO - Analyzing wallet 2RW1Rpziviysmj6aBGH4cMxhrahihBMc7oGyC25NgM1V for the past 14 days
+2025-05-21 18:13:26,552 - phoenix.birdeye - WARNING - Token not found: {'wallet': '2RW1Rpziviysmj6aBGH4cMxhrahihBMc7oGyC25NgM1V', 'limit': 100}
+2025-05-21 18:13:26,552 - phoenix.birdeye - WARNING - No transaction data available for 2RW1Rpziviysmj6aBGH4cMxhrahihBMc7oGyC25NgM1V
+2025-05-21 18:13:26,552 - phoenix.wallet - WARNING - No transactions found for wallet 2RW1Rpziviysmj6aBGH4cMxhrahihBMc7oGyC25NgM1V
+2025-05-21 18:13:26,552 - phoenix.wallet - INFO - Analyzing wallet AhxNr1GtSSyBcLb7GoYxJi9P5NGFHCznHeqscsnQ4pSe for the past 14 days
+2025-05-21 18:13:26,668 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'AhxNr1GtSSyBcLb7GoYxJi9P5NGFHCznHeqscsnQ4pSe', 'limit': 100}
+2025-05-21 18:13:26,668 - phoenix.birdeye - WARNING - No transaction data available for AhxNr1GtSSyBcLb7GoYxJi9P5NGFHCznHeqscsnQ4pSe
+2025-05-21 18:13:26,668 - phoenix.wallet - WARNING - No transactions found for wallet AhxNr1GtSSyBcLb7GoYxJi9P5NGFHCznHeqscsnQ4pSe
+2025-05-21 18:13:26,668 - phoenix.wallet - INFO - Analyzing wallet Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e for the past 14 days
+2025-05-21 18:13:26,795 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e', 'limit': 100}
+2025-05-21 18:13:26,811 - phoenix.birdeye - WARNING - No transaction data available for Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e
+2025-05-21 18:13:26,811 - phoenix.wallet - WARNING - No transactions found for wallet Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e
+2025-05-21 18:13:26,811 - phoenix.wallet - INFO - Analyzing wallet GftxZNiHcH4mjcJPpzwueoRdvJx9qaDyN69VvM64ipna for the past 14 days
+2025-05-21 18:13:26,922 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'GftxZNiHcH4mjcJPpzwueoRdvJx9qaDyN69VvM64ipna', 'limit': 100}
+2025-05-21 18:13:26,922 - phoenix.birdeye - WARNING - No transaction data available for GftxZNiHcH4mjcJPpzwueoRdvJx9qaDyN69VvM64ipna
+2025-05-21 18:13:26,922 - phoenix.wallet - WARNING - No transactions found for wallet GftxZNiHcH4mjcJPpzwueoRdvJx9qaDyN69VvM64ipna
+2025-05-21 18:13:26,922 - phoenix.wallet - INFO - Analyzing wallet 9LFLNWnpJZsBtQpWwkXD8r9HjbcXgExxgpNDenJiECAr for the past 14 days
+2025-05-21 18:13:26,969 - phoenix.birdeye - WARNING - Token not found: {'wallet': '9LFLNWnpJZsBtQpWwkXD8r9HjbcXgExxgpNDenJiECAr', 'limit': 100}
+2025-05-21 18:13:26,969 - phoenix.birdeye - WARNING - No transaction data available for 9LFLNWnpJZsBtQpWwkXD8r9HjbcXgExxgpNDenJiECAr
+2025-05-21 18:13:26,969 - phoenix.wallet - WARNING - No transactions found for wallet 9LFLNWnpJZsBtQpWwkXD8r9HjbcXgExxgpNDenJiECAr
+2025-05-21 18:13:26,969 - phoenix.wallet - INFO - Analyzing wallet 21qqB97qZzzWCeSmxv9qoLoaK74stUobmaxzw3mttMyt for the past 14 days
+2025-05-21 18:13:27,063 - phoenix.birdeye - WARNING - Token not found: {'wallet': '21qqB97qZzzWCeSmxv9qoLoaK74stUobmaxzw3mttMyt', 'limit': 100}
+2025-05-21 18:13:27,063 - phoenix.birdeye - WARNING - No transaction data available for 21qqB97qZzzWCeSmxv9qoLoaK74stUobmaxzw3mttMyt
+2025-05-21 18:13:27,063 - phoenix.wallet - WARNING - No transactions found for wallet 21qqB97qZzzWCeSmxv9qoLoaK74stUobmaxzw3mttMyt
+2025-05-21 18:13:27,063 - phoenix.wallet - INFO - Analyzing wallet CmBWTit8Dm84eZgucz7pFfpnuMjEvE4SNZc5M6XWrnyy for the past 14 days
+2025-05-21 18:13:27,125 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'CmBWTit8Dm84eZgucz7pFfpnuMjEvE4SNZc5M6XWrnyy', 'limit': 100}
+2025-05-21 18:13:27,125 - phoenix.birdeye - WARNING - No transaction data available for CmBWTit8Dm84eZgucz7pFfpnuMjEvE4SNZc5M6XWrnyy
+2025-05-21 18:13:27,125 - phoenix.wallet - WARNING - No transactions found for wallet CmBWTit8Dm84eZgucz7pFfpnuMjEvE4SNZc5M6XWrnyy
+2025-05-21 18:13:27,125 - phoenix.wallet - INFO - Analyzing wallet 3pzff3GGbeb5Tf2QTHXBeiYVyXwskUcCEKfAwzSwCMta for the past 14 days
+2025-05-21 18:13:27,195 - phoenix.birdeye - WARNING - Token not found: {'wallet': '3pzff3GGbeb5Tf2QTHXBeiYVyXwskUcCEKfAwzSwCMta', 'limit': 100}
+2025-05-21 18:13:27,195 - phoenix.birdeye - WARNING - No transaction data available for 3pzff3GGbeb5Tf2QTHXBeiYVyXwskUcCEKfAwzSwCMta
+2025-05-21 18:13:27,195 - phoenix.wallet - WARNING - No transactions found for wallet 3pzff3GGbeb5Tf2QTHXBeiYVyXwskUcCEKfAwzSwCMta
+2025-05-21 18:13:27,195 - phoenix.wallet - INFO - Analyzing wallet F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe for the past 14 days
+2025-05-21 18:13:27,298 - phoenix.birdeye - WARNING - Rate limit hit, waiting longer...
+2025-05-21 18:13:31,362 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe', 'limit': 100}
+2025-05-21 18:13:31,362 - phoenix.birdeye - WARNING - No transaction data available for F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe
+2025-05-21 18:13:31,362 - phoenix.wallet - WARNING - No transactions found for wallet F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe
+2025-05-21 18:13:31,362 - phoenix.wallet - INFO - Analyzing wallet DPn9USJxbkH6WTNeX9yo83fnvc3oLYJd9j6NTaXmhCHj for the past 14 days
+2025-05-21 18:13:31,501 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'DPn9USJxbkH6WTNeX9yo83fnvc3oLYJd9j6NTaXmhCHj', 'limit': 100}
+2025-05-21 18:13:31,501 - phoenix.birdeye - WARNING - No transaction data available for DPn9USJxbkH6WTNeX9yo83fnvc3oLYJd9j6NTaXmhCHj
+2025-05-21 18:13:31,501 - phoenix.wallet - WARNING - No transactions found for wallet DPn9USJxbkH6WTNeX9yo83fnvc3oLYJd9j6NTaXmhCHj
+2025-05-21 18:13:31,501 - phoenix.wallet - INFO - Analyzing wallet 5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn for the past 14 days
+2025-05-21 18:13:31,599 - phoenix.birdeye - WARNING - Token not found: {'wallet': '5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn', 'limit': 100}
+2025-05-21 18:13:31,599 - phoenix.birdeye - WARNING - No transaction data available for 5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn
+2025-05-21 18:13:31,599 - phoenix.wallet - WARNING - No transactions found for wallet 5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn
+2025-05-21 18:13:31,599 - phoenix.wallet - INFO - Analyzing wallet HHAfkPydWkSVnGTxQfBKaM7kmBk26AaLypSaE8nJYhmc for the past 14 days
+2025-05-21 18:13:31,662 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'HHAfkPydWkSVnGTxQfBKaM7kmBk26AaLypSaE8nJYhmc', 'limit': 100}
+2025-05-21 18:13:31,662 - phoenix.birdeye - WARNING - No transaction data available for HHAfkPydWkSVnGTxQfBKaM7kmBk26AaLypSaE8nJYhmc
+2025-05-21 18:13:31,662 - phoenix.wallet - WARNING - No transactions found for wallet HHAfkPydWkSVnGTxQfBKaM7kmBk26AaLypSaE8nJYhmc
+2025-05-21 18:13:31,662 - phoenix.wallet - INFO - Analyzing wallet GPhQZcHicRvEaSmiSKkEjJbXsPECJPBdPCtC1NQ6bv5D for the past 14 days
+2025-05-21 18:13:31,741 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'GPhQZcHicRvEaSmiSKkEjJbXsPECJPBdPCtC1NQ6bv5D', 'limit': 100}
+2025-05-21 18:13:31,741 - phoenix.birdeye - WARNING - No transaction data available for GPhQZcHicRvEaSmiSKkEjJbXsPECJPBdPCtC1NQ6bv5D
+2025-05-21 18:13:31,741 - phoenix.wallet - WARNING - No transactions found for wallet GPhQZcHicRvEaSmiSKkEjJbXsPECJPBdPCtC1NQ6bv5D
+2025-05-21 18:13:31,741 - phoenix.wallet - INFO - Analyzing wallet 6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP for the past 14 days
+2025-05-21 18:13:31,773 - phoenix.birdeye - WARNING - Token not found: {'wallet': '6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP', 'limit': 100}
+2025-05-21 18:13:31,773 - phoenix.birdeye - WARNING - No transaction data available for 6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP
+2025-05-21 18:13:31,773 - phoenix.wallet - WARNING - No transactions found for wallet 6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP
+2025-05-21 18:13:31,773 - phoenix.wallet - INFO - Analyzing wallet FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL for the past 14 days
+2025-05-21 18:13:31,836 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL', 'limit': 100}
+2025-05-21 18:13:31,844 - phoenix.birdeye - WARNING - No transaction data available for FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL
+2025-05-21 18:13:31,844 - phoenix.wallet - WARNING - No transactions found for wallet FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL
+2025-05-21 18:13:31,844 - phoenix.wallet - INFO - Analyzing wallet 4Q1s1UFYhsT2JAn8siF4XcXJUexFGMMJfivoKQQViHHr for the past 14 days
+2025-05-21 18:13:31,932 - phoenix.birdeye - WARNING - Token not found: {'wallet': '4Q1s1UFYhsT2JAn8siF4XcXJUexFGMMJfivoKQQViHHr', 'limit': 100}
+2025-05-21 18:13:31,932 - phoenix.birdeye - WARNING - No transaction data available for 4Q1s1UFYhsT2JAn8siF4XcXJUexFGMMJfivoKQQViHHr
+2025-05-21 18:13:31,932 - phoenix.wallet - WARNING - No transactions found for wallet 4Q1s1UFYhsT2JAn8siF4XcXJUexFGMMJfivoKQQViHHr
+2025-05-21 18:13:31,938 - phoenix.wallet - INFO - Analyzing wallet AvUm5BEYtyQnsTaYfiGJ29TYUkNC86bKXSE8ajrcQWkA for the past 14 days
+2025-05-21 18:13:32,032 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'AvUm5BEYtyQnsTaYfiGJ29TYUkNC86bKXSE8ajrcQWkA', 'limit': 100}
+2025-05-21 18:13:32,032 - phoenix.birdeye - WARNING - No transaction data available for AvUm5BEYtyQnsTaYfiGJ29TYUkNC86bKXSE8ajrcQWkA
+2025-05-21 18:13:32,032 - phoenix.wallet - WARNING - No transactions found for wallet AvUm5BEYtyQnsTaYfiGJ29TYUkNC86bKXSE8ajrcQWkA
+2025-05-21 18:13:32,032 - phoenix.wallet - INFO - Analyzing wallet Ghzb589bTzHSTRtySWAk9QY6Eg1SMU66BCzyX94ndvXF for the past 14 days
+2025-05-21 18:13:32,075 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'Ghzb589bTzHSTRtySWAk9QY6Eg1SMU66BCzyX94ndvXF', 'limit': 100}
+2025-05-21 18:13:32,075 - phoenix.birdeye - WARNING - No transaction data available for Ghzb589bTzHSTRtySWAk9QY6Eg1SMU66BCzyX94ndvXF
+2025-05-21 18:13:32,075 - phoenix.wallet - WARNING - No transactions found for wallet Ghzb589bTzHSTRtySWAk9QY6Eg1SMU66BCzyX94ndvXF
+2025-05-21 18:13:32,075 - phoenix.wallet - INFO - Analyzing wallet 53AkAhY9WsUnXEvMCXL2VxJdw6T74XLWPSuaLJz82rPS for the past 14 days
+2025-05-21 18:13:32,126 - phoenix.birdeye - WARNING - Rate limit hit, waiting longer...
+2025-05-21 18:13:36,239 - phoenix.birdeye - WARNING - Token not found: {'wallet': '53AkAhY9WsUnXEvMCXL2VxJdw6T74XLWPSuaLJz82rPS', 'limit': 100}
+2025-05-21 18:13:37,463 - phoenix.birdeye - WARNING - No transaction data available for 53AkAhY9WsUnXEvMCXL2VxJdw6T74XLWPSuaLJz82rPS
+2025-05-21 18:13:37,479 - phoenix.wallet - WARNING - No transactions found for wallet 53AkAhY9WsUnXEvMCXL2VxJdw6T74XLWPSuaLJz82rPS
+2025-05-21 18:13:37,479 - phoenix.wallet - INFO - Analyzing wallet BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX for the past 14 days
+2025-05-21 18:13:37,542 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX', 'limit': 100}
+2025-05-21 18:13:37,542 - phoenix.birdeye - WARNING - No transaction data available for BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX
+2025-05-21 18:13:37,542 - phoenix.wallet - WARNING - No transactions found for wallet BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX
+2025-05-21 18:13:37,542 - phoenix.wallet - INFO - Analyzing wallet 2b5C6Spji42ShwpRo5N7tcSNENGMxHQP6q3swfd5NoAQ for the past 14 days
+2025-05-21 18:13:37,637 - phoenix.birdeye - WARNING - Token not found: {'wallet': '2b5C6Spji42ShwpRo5N7tcSNENGMxHQP6q3swfd5NoAQ', 'limit': 100}
+2025-05-21 18:13:37,637 - phoenix.birdeye - WARNING - No transaction data available for 2b5C6Spji42ShwpRo5N7tcSNENGMxHQP6q3swfd5NoAQ
+2025-05-21 18:13:37,637 - phoenix.wallet - WARNING - No transactions found for wallet 2b5C6Spji42ShwpRo5N7tcSNENGMxHQP6q3swfd5NoAQ
+2025-05-21 18:13:37,637 - phoenix.wallet - INFO - Analyzing wallet Cw5Y4WZQ45b6HN92kRurLW3woywcMr6UHcRwsaf7zpfN for the past 14 days
+2025-05-21 18:13:37,782 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'Cw5Y4WZQ45b6HN92kRurLW3woywcMr6UHcRwsaf7zpfN', 'limit': 100}
+2025-05-21 18:13:37,782 - phoenix.birdeye - WARNING - No transaction data available for Cw5Y4WZQ45b6HN92kRurLW3woywcMr6UHcRwsaf7zpfN
+2025-05-21 18:13:37,782 - phoenix.wallet - WARNING - No transactions found for wallet Cw5Y4WZQ45b6HN92kRurLW3woywcMr6UHcRwsaf7zpfN
+2025-05-21 18:13:37,782 - phoenix.wallet - INFO - Analyzing wallet J6Wk8mEwekiow5EgtH7hQZvNN72v6YQUW4WCNS6Sf9WZ for the past 14 days
+2025-05-21 18:13:37,828 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'J6Wk8mEwekiow5EgtH7hQZvNN72v6YQUW4WCNS6Sf9WZ', 'limit': 100}
+2025-05-21 18:13:37,828 - phoenix.birdeye - WARNING - No transaction data available for J6Wk8mEwekiow5EgtH7hQZvNN72v6YQUW4WCNS6Sf9WZ
+2025-05-21 18:13:37,828 - phoenix.wallet - WARNING - No transactions found for wallet J6Wk8mEwekiow5EgtH7hQZvNN72v6YQUW4WCNS6Sf9WZ
+2025-05-21 18:13:37,828 - phoenix.wallet - INFO - Analyzing wallet BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor for the past 14 days
+2025-05-21 18:13:37,938 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor', 'limit': 100}
+2025-05-21 18:13:37,938 - phoenix.birdeye - WARNING - No transaction data available for BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor
+2025-05-21 18:13:37,938 - phoenix.wallet - WARNING - No transactions found for wallet BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor
+2025-05-21 18:13:37,938 - phoenix.wallet - INFO - Analyzing wallet 2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd for the past 14 days
+2025-05-21 18:13:37,985 - phoenix.birdeye - WARNING - Token not found: {'wallet': '2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd', 'limit': 100}
+2025-05-21 18:13:37,985 - phoenix.birdeye - WARNING - No transaction data available for 2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd
+2025-05-21 18:13:37,985 - phoenix.wallet - WARNING - No transactions found for wallet 2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd
+2025-05-21 18:13:37,985 - phoenix.wallet - INFO - Analyzing wallet BsQj6ApLH31zSF3gF8C5vXiU6n1cAoNR3ENRhqUp7t1f for the past 14 days
+2025-05-21 18:13:38,110 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'BsQj6ApLH31zSF3gF8C5vXiU6n1cAoNR3ENRhqUp7t1f', 'limit': 100}
+2025-05-21 18:13:38,110 - phoenix.birdeye - WARNING - No transaction data available for BsQj6ApLH31zSF3gF8C5vXiU6n1cAoNR3ENRhqUp7t1f
+2025-05-21 18:13:38,110 - phoenix.wallet - WARNING - No transactions found for wallet BsQj6ApLH31zSF3gF8C5vXiU6n1cAoNR3ENRhqUp7t1f
+2025-05-21 18:13:38,110 - phoenix.wallet - INFO - Analyzing wallet 26CSPXoJWTWeybxzUzHFqWdHgTu1mMb7pifVp57LtWDH for the past 14 days
+2025-05-21 18:13:38,172 - phoenix.birdeye - WARNING - Token not found: {'wallet': '26CSPXoJWTWeybxzUzHFqWdHgTu1mMb7pifVp57LtWDH', 'limit': 100}
+2025-05-21 18:13:38,172 - phoenix.birdeye - WARNING - No transaction data available for 26CSPXoJWTWeybxzUzHFqWdHgTu1mMb7pifVp57LtWDH
+2025-05-21 18:13:38,172 - phoenix.wallet - WARNING - No transactions found for wallet 26CSPXoJWTWeybxzUzHFqWdHgTu1mMb7pifVp57LtWDH
+2025-05-21 18:13:38,172 - phoenix.wallet - INFO - Analyzing wallet 7LBSXkWHqn33FJ82u4DG4gjZR7ENyfcTnsPUdrLD9BGf for the past 14 days
+2025-05-21 18:13:38,282 - phoenix.birdeye - WARNING - Token not found: {'wallet': '7LBSXkWHqn33FJ82u4DG4gjZR7ENyfcTnsPUdrLD9BGf', 'limit': 100}
+2025-05-21 18:13:38,282 - phoenix.birdeye - WARNING - No transaction data available for 7LBSXkWHqn33FJ82u4DG4gjZR7ENyfcTnsPUdrLD9BGf
+2025-05-21 18:13:38,282 - phoenix.wallet - WARNING - No transactions found for wallet 7LBSXkWHqn33FJ82u4DG4gjZR7ENyfcTnsPUdrLD9BGf
+2025-05-21 18:13:38,282 - phoenix.wallet - INFO - Analyzing wallet 3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B for the past 14 days
+2025-05-21 18:13:38,391 - phoenix.birdeye - WARNING - Token not found: {'wallet': '3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B', 'limit': 100}
+2025-05-21 18:13:38,391 - phoenix.birdeye - WARNING - No transaction data available for 3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B
+2025-05-21 18:13:38,391 - phoenix.wallet - WARNING - No transactions found for wallet 3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B
+2025-05-21 18:13:38,391 - phoenix.wallet - INFO - Analyzing wallet 7Hy2bJvqPRXGVybQ18zLW2sc8E2DnorXqPrCxARAxWQC for the past 14 days
+2025-05-21 18:13:38,485 - phoenix.birdeye - WARNING - Rate limit hit, waiting longer...

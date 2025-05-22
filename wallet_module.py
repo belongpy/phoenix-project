@@ -1,7 +1,7 @@
 """
-Wallet Analysis Module - Phoenix Project
+Wallet Analysis Module - Phoenix Project (Updated)
 
-This module handles wallet analysis for copy trading.
+This module handles wallet analysis using ONLY Cielo Finance API.
 """
 
 import csv
@@ -14,142 +14,233 @@ from collections import defaultdict
 
 logger = logging.getLogger("phoenix.wallet")
 
+class CieloFinanceAPIError(Exception):
+    """Custom exception for Cielo Finance API errors."""
+    pass
+
 class WalletAnalyzer:
-    """Class for analyzing wallets for copy trading."""
+    """Class for analyzing wallets for copy trading using Cielo Finance API."""
     
-    def __init__(self, birdeye_api: Any):
+    def __init__(self, cielo_api: Any):
         """
         Initialize the wallet analyzer.
         
         Args:
-            birdeye_api (BirdeyeAPI): Birdeye API client
+            cielo_api: Cielo Finance API client
         """
-        self.birdeye_api = birdeye_api
+        if not cielo_api:
+            raise CieloFinanceAPIError(
+                "Cielo Finance API client is required but not provided. "
+                "Please ensure you have configured the Cielo Finance API properly."
+            )
+        
+        self.cielo_api = cielo_api
+        
+        # Verify API connectivity
+        if not self._verify_api_connection():
+            raise CieloFinanceAPIError(
+                "Cannot connect to Cielo Finance API. Please check your API credentials and network connection."
+            )
         
         # Track entry times for tokens to detect correlated wallets
         self.token_entries = {}  # token_address -> {wallet_address -> timestamp}
     
+    def _verify_api_connection(self) -> bool:
+        """
+        Verify that the Cielo Finance API is accessible.
+        
+        Returns:
+            bool: True if API is accessible, False otherwise
+        """
+        try:
+            # Try a simple API call to verify connectivity
+            # This would depend on Cielo Finance's API structure
+            test_response = self.cielo_api.health_check() if hasattr(self.cielo_api, 'health_check') else True
+            return bool(test_response)
+        except Exception as e:
+            logger.error(f"Cielo Finance API connection failed: {str(e)}")
+            return False
+    
     def _extract_trades(self, transactions: List[Dict[str, Any]], wallet_address: str) -> List[Dict[str, Any]]:
         """
-        Extract and categorize trades from transaction history.
+        Extract and categorize trades from transaction history using Cielo Finance API.
         
         Args:
-            transactions (List[Dict[str, Any]]): Wallet transaction history
+            transactions (List[Dict[str, Any]]): Wallet transaction history from Cielo Finance
             wallet_address (str): The wallet address being analyzed
             
         Returns:
             List[Dict[str, Any]]: Categorized trades
         """
+        if not transactions:
+            logger.warning(f"No transactions provided for wallet {wallet_address}")
+            return []
+        
         trades = []
         
-        for tx in transactions:
-            # Skip transactions without proper data
-            if not tx.get("data") or not isinstance(tx["data"], dict):
-                continue
+        try:
+            for tx in transactions:
+                # Skip transactions without proper data
+                if not tx.get("data") or not isinstance(tx["data"], dict):
+                    continue
+                    
+                tx_data = tx["data"]
                 
-            tx_data = tx["data"]
+                # Extract common fields using Cielo Finance structure
+                trade = {
+                    "tx_hash": tx_data.get("signature", ""),
+                    "timestamp": tx_data.get("blockTime", 0),
+                    "date": datetime.fromtimestamp(tx_data.get("blockTime", 0)),
+                    "token_address": "",
+                    "token_symbol": "",
+                    "type": "",
+                    "amount": 0,
+                    "price": 0,
+                    "value_usd": 0,
+                    "amount_sol": 0,
+                    "market_cap_usd": 0,
+                    "platform": ""
+                }
+                
+                # Process token transfers using Cielo Finance API structure
+                if "tokenTransfers" in tx_data:
+                    for transfer in tx_data["tokenTransfers"]:
+                        if transfer.get("fromOwner") == "wallet":
+                            # Token is going out - it's a sell
+                            trade["type"] = "SELL"
+                            trade["token_address"] = transfer.get("mint", "")
+                            trade["token_symbol"] = transfer.get("symbol", "")
+                            trade["amount"] = float(transfer.get("amount", 0))
+                            
+                            if "priceUsd" in transfer:
+                                trade["price"] = float(transfer.get("priceUsd", 0))
+                                trade["value_usd"] = trade["amount"] * trade["price"]
+                            
+                            # Extract SOL amount from native transfers
+                            if "nativeTransfers" in tx_data:
+                                for native_transfer in tx_data["nativeTransfers"]:
+                                    if native_transfer.get("toOwner") == "wallet":
+                                        trade["amount_sol"] = float(native_transfer.get("amount", 0))
+                                        break
+                            
+                            trades.append(trade.copy())
+                        
+                        elif transfer.get("toOwner") == "wallet":
+                            # Token is coming in - it's a buy
+                            trade["type"] = "BUY"
+                            trade["token_address"] = transfer.get("mint", "")
+                            trade["token_symbol"] = transfer.get("symbol", "")
+                            trade["amount"] = float(transfer.get("amount", 0))
+                            
+                            if "priceUsd" in transfer:
+                                trade["price"] = float(transfer.get("priceUsd", 0))
+                                trade["value_usd"] = trade["amount"] * trade["price"]
+                            
+                            # Extract SOL amount from native transfers
+                            if "nativeTransfers" in tx_data:
+                                for native_transfer in tx_data["nativeTransfers"]:
+                                    if native_transfer.get("fromOwner") == "wallet":
+                                        trade["amount_sol"] = float(native_transfer.get("amount", 0))
+                                        break
+                            
+                            # Fetch additional token info using Cielo Finance API
+                            if trade["token_address"]:
+                                try:
+                                    token_info = self._get_token_info_cielo(trade["token_address"])
+                                    if token_info:
+                                        trade["market_cap_usd"] = token_info.get("marketCap", 0)
+                                        trade["platform"] = self._identify_platform_cielo(token_info)
+                                except Exception as e:
+                                    logger.warning(f"Error fetching token info for {trade['token_address']}: {str(e)}")
+                            
+                            # Store token entry for correlation analysis
+                            if trade["token_address"]:
+                                if trade["token_address"] not in self.token_entries:
+                                    self.token_entries[trade["token_address"]] = {}
+                                
+                                self.token_entries[trade["token_address"]][wallet_address] = trade["timestamp"]
+                            
+                            trades.append(trade.copy())
             
-            # Extract common fields
-            trade = {
-                "tx_hash": tx_data.get("signature", ""),
-                "timestamp": tx_data.get("blockTime", 0),
-                "date": datetime.fromtimestamp(tx_data.get("blockTime", 0)),
-                "token_address": "",
-                "token_symbol": "",
-                "type": "",
-                "amount": 0,
-                "price": 0,
-                "value_usd": 0,
-                "amount_sol": 0,
-                "market_cap_usd": 0,
-                "platform": ""
+            logger.info(f"Extracted {len(trades)} trades from {len(transactions)} transactions for wallet {wallet_address}")
+            return trades
+            
+        except Exception as e:
+            logger.error(f"Error extracting trades for wallet {wallet_address}: {str(e)}")
+            raise CieloFinanceAPIError(f"Failed to extract trades: {str(e)}")
+    
+    def _get_token_info_cielo(self, token_address: str) -> Optional[Dict[str, Any]]:
+        """
+        Get token information using Cielo Finance API.
+        
+        Args:
+            token_address (str): Token contract address
+            
+        Returns:
+            Optional[Dict[str, Any]]: Token information or None if failed
+        """
+        try:
+            if not hasattr(self.cielo_api, 'get_token_info'):
+                logger.warning("Cielo Finance API does not support get_token_info method")
+                return None
+            
+            token_info = self.cielo_api.get_token_info(token_address)
+            
+            if token_info and token_info.get("success"):
+                return token_info.get("data", {})
+            else:
+                logger.warning(f"Failed to get token info for {token_address}: {token_info.get('error', 'Unknown error')}")
+                return None
+                
+        except Exception as e:
+            logger.error(f"Cielo Finance API error getting token info for {token_address}: {str(e)}")
+            return None
+    
+    def _identify_platform_cielo(self, token_info: Dict[str, Any]) -> str:
+        """
+        Identify platform using Cielo Finance token data.
+        
+        Args:
+            token_info (Dict[str, Any]): Token information from Cielo Finance
+            
+        Returns:
+            str: Platform name or empty string
+        """
+        try:
+            # Known platform identifiers
+            platforms = {
+                "pumpfun": ["pump", "pf", "pump.fun"],
+                "raydium": ["ray", "raydium"],
+                "orca": ["orca"],
+                "jupiter": ["jup", "jupiter"],
+                "meteora": ["met", "meteora"],
+                "lifinity": ["lfnty"],
+                "saber": ["sbr", "saber"]
             }
             
-            # Determine if it's a buy or sell transaction
-            if "tokenTransfers" in tx_data:
-                for transfer in tx_data["tokenTransfers"]:
-                    if transfer.get("fromOwner") == "wallet":
-                        # Token is going out - it's a sell
-                        trade["type"] = "SELL"
-                        trade["token_address"] = transfer.get("mint", "")
-                        trade["token_symbol"] = transfer.get("symbol", "")
-                        trade["amount"] = float(transfer.get("amount", 0))
-                        if "priceUsd" in transfer:
-                            trade["price"] = float(transfer.get("priceUsd", 0))
-                            trade["value_usd"] = trade["amount"] * trade["price"]
-                        
-                        # Try to extract SOL amount
-                        if "nativeTransfers" in tx_data:
-                            for native_transfer in tx_data["nativeTransfers"]:
-                                if native_transfer.get("toOwner") == "wallet":
-                                    trade["amount_sol"] = float(native_transfer.get("amount", 0))
-                                    break
-                        
-                        trades.append(trade.copy())
-                    
-                    elif transfer.get("toOwner") == "wallet":
-                        # Token is coming in - it's a buy
-                        trade["type"] = "BUY"
-                        trade["token_address"] = transfer.get("mint", "")
-                        trade["token_symbol"] = transfer.get("symbol", "")
-                        trade["amount"] = float(transfer.get("amount", 0))
-                        if "priceUsd" in transfer:
-                            trade["price"] = float(transfer.get("priceUsd", 0))
-                            trade["value_usd"] = trade["amount"] * trade["price"]
-                        
-                        # Try to extract SOL amount
-                        if "nativeTransfers" in tx_data:
-                            for native_transfer in tx_data["nativeTransfers"]:
-                                if native_transfer.get("fromOwner") == "wallet":
-                                    trade["amount_sol"] = float(native_transfer.get("amount", 0))
-                                    break
-                        
-                        # Fetch market cap if we have a token address
-                        if trade["token_address"]:
-                            try:
-                                token_info = self.birdeye_api.get_token_info(trade["token_address"])
-                                if token_info.get("success") and "data" in token_info:
-                                    trade["market_cap_usd"] = token_info["data"].get("marketCap", 0)
-                                    
-                                    # Identify platform
-                                    token_data = token_info["data"]
-                                    platforms = {
-                                        "letsbonk": ["BONK", "BK"],
-                                        "raydium": ["RAY"],
-                                        "pumpfun": ["PUMP", "PF"],
-                                        "pumpswap": ["PUMP", "PS"],
-                                        "meteora": ["MTR"],
-                                        "launchpad": ["LP", "LAUNCH"]
-                                    }
-                                    
-                                    symbol = token_data.get("symbol", "")
-                                    for platform, identifiers in platforms.items():
-                                        for identifier in identifiers:
-                                            if identifier in symbol:
-                                                trade["platform"] = platform
-                                                break
-                                        if trade["platform"]:
-                                            break
-                                    
-                                    name = token_data.get("name", "")
-                                    if not trade["platform"]:
-                                        for platform in platforms.keys():
-                                            if platform.lower() in name.lower():
-                                                trade["platform"] = platform
-                                                break
-                            except Exception as e:
-                                logger.warning(f"Error fetching market cap for {trade['token_address']}: {str(e)}")
-                        
-                        # Store token entry for correlation analysis
-                        if trade["token_address"]:
-                            if trade["token_address"] not in self.token_entries:
-                                self.token_entries[trade["token_address"]] = {}
-                            
-                            self.token_entries[trade["token_address"]][wallet_address] = trade["timestamp"]
-                        
-                        trades.append(trade.copy())
-        
-        return trades
+            # Check token symbol
+            symbol = token_info.get("symbol", "").lower()
+            name = token_info.get("name", "").lower()
+            
+            for platform, identifiers in platforms.items():
+                for identifier in identifiers:
+                    if identifier in symbol or identifier in name:
+                        return platform
+            
+            # Check token tags if available
+            tags = token_info.get("tags", [])
+            for tag in tags:
+                tag_lower = tag.lower() if isinstance(tag, str) else ""
+                for platform, identifiers in platforms.items():
+                    for identifier in identifiers:
+                        if identifier in tag_lower:
+                            return platform
+            
+            return ""
+            
+        except Exception as e:
+            logger.error(f"Error identifying platform: {str(e)}")
+            return ""
     
     def _pair_trades(self, trades: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         """
@@ -161,6 +252,10 @@ class WalletAnalyzer:
         Returns:
             List[Dict[str, Any]]: Paired trades with ROI
         """
+        if not trades:
+            logger.warning("No trades to pair")
+            return []
+        
         # Group trades by token
         token_trades = defaultdict(list)
         for trade in trades:
@@ -214,6 +309,7 @@ class WalletAnalyzer:
                     
                     paired_trades.append(paired_trade)
         
+        logger.info(f"Paired {len(paired_trades)} trades from {len(trades)} individual trades")
         return paired_trades
     
     def _calculate_metrics(self, paired_trades: List[Dict[str, Any]]) -> Dict[str, Any]:
@@ -227,6 +323,7 @@ class WalletAnalyzer:
             Dict[str, Any]: Performance metrics
         """
         if not paired_trades:
+            logger.warning("No paired trades for metrics calculation")
             return {
                 "total_trades": 0,
                 "win_count": 0,
@@ -247,73 +344,78 @@ class WalletAnalyzer:
                 "total_tokens_traded": 0
             }
         
-        # Basic counts
-        total_trades = len(paired_trades)
-        win_count = sum(1 for trade in paired_trades if trade["is_win"])
-        loss_count = total_trades - win_count
-        
-        # ROI statistics
-        roi_values = [trade["roi_percent"] for trade in paired_trades]
-        avg_roi = np.mean(roi_values) if roi_values else 0
-        median_roi = np.median(roi_values) if roi_values else 0
-        std_dev_roi = np.std(roi_values) if roi_values else 0
-        max_roi = max(roi_values) if roi_values else 0
-        min_roi = min(roi_values) if roi_values else 0
-        
-        # Profit/loss
-        winning_trades = [t for t in paired_trades if t["is_win"]]
-        losing_trades = [t for t in paired_trades if not t["is_win"]]
-        
-        total_profit_usd = sum(t["sell_value_usd"] - t["buy_value_usd"] for t in winning_trades)
-        total_loss_usd = abs(sum(t["sell_value_usd"] - t["buy_value_usd"] for t in losing_trades))
-        net_profit_usd = total_profit_usd - total_loss_usd
-        profit_factor = total_profit_usd / total_loss_usd if total_loss_usd > 0 else float('inf')
-        
-        # Holding time
-        holding_times = [trade["holding_time_hours"] for trade in paired_trades]
-        avg_hold_time_hours = np.mean(holding_times) if holding_times else 0
-        
-        # Bet size
-        bet_sizes = [trade["buy_value_usd"] for trade in paired_trades]
-        total_bet_size_usd = sum(bet_sizes)
-        avg_bet_size_usd = np.mean(bet_sizes) if bet_sizes else 0
-        
-        # Unique tokens
-        unique_tokens = len(set(trade["token_address"] for trade in paired_trades))
-        
-        # ROI distribution buckets
-        roi_buckets = {
-            "5x_plus": len([t for t in paired_trades if t["roi_percent"] >= 500]),
-            "2x_to_5x": len([t for t in paired_trades if 200 <= t["roi_percent"] < 500]),
-            "1x_to_2x": len([t for t in paired_trades if 100 <= t["roi_percent"] < 200]),
-            "50_to_100": len([t for t in paired_trades if 50 <= t["roi_percent"] < 100]),
-            "20_to_50": len([t for t in paired_trades if 20 <= t["roi_percent"] < 50]),
-            "0_to_20": len([t for t in paired_trades if 0 <= t["roi_percent"] < 20]),
-            "minus20_to_0": len([t for t in paired_trades if -20 <= t["roi_percent"] < 0]),
-            "minus50_to_minus20": len([t for t in paired_trades if -50 <= t["roi_percent"] < -20]),
-            "below_minus50": len([t for t in paired_trades if t["roi_percent"] < -50])
-        }
-        
-        return {
-            "total_trades": total_trades,
-            "win_count": win_count,
-            "loss_count": loss_count,
-            "win_rate": (win_count / total_trades * 100) if total_trades > 0 else 0,
-            "total_profit_usd": total_profit_usd,
-            "total_loss_usd": total_loss_usd,
-            "net_profit_usd": net_profit_usd,
-            "profit_factor": profit_factor,
-            "avg_roi": avg_roi,
-            "median_roi": median_roi,
-            "std_dev_roi": std_dev_roi,
-            "max_roi": max_roi,
-            "min_roi": min_roi,
-            "avg_hold_time_hours": avg_hold_time_hours,
-            "total_bet_size_usd": total_bet_size_usd,
-            "avg_bet_size_usd": avg_bet_size_usd,
-            "total_tokens_traded": unique_tokens,
-            "roi_distribution": roi_buckets
-        }
+        try:
+            # Basic counts
+            total_trades = len(paired_trades)
+            win_count = sum(1 for trade in paired_trades if trade["is_win"])
+            loss_count = total_trades - win_count
+            
+            # ROI statistics
+            roi_values = [trade["roi_percent"] for trade in paired_trades]
+            avg_roi = np.mean(roi_values) if roi_values else 0
+            median_roi = np.median(roi_values) if roi_values else 0
+            std_dev_roi = np.std(roi_values) if roi_values else 0
+            max_roi = max(roi_values) if roi_values else 0
+            min_roi = min(roi_values) if roi_values else 0
+            
+            # Profit/loss
+            winning_trades = [t for t in paired_trades if t["is_win"]]
+            losing_trades = [t for t in paired_trades if not t["is_win"]]
+            
+            total_profit_usd = sum(t["sell_value_usd"] - t["buy_value_usd"] for t in winning_trades)
+            total_loss_usd = abs(sum(t["sell_value_usd"] - t["buy_value_usd"] for t in losing_trades))
+            net_profit_usd = total_profit_usd - total_loss_usd
+            profit_factor = total_profit_usd / total_loss_usd if total_loss_usd > 0 else float('inf')
+            
+            # Holding time
+            holding_times = [trade["holding_time_hours"] for trade in paired_trades]
+            avg_hold_time_hours = np.mean(holding_times) if holding_times else 0
+            
+            # Bet size
+            bet_sizes = [trade["buy_value_usd"] for trade in paired_trades]
+            total_bet_size_usd = sum(bet_sizes)
+            avg_bet_size_usd = np.mean(bet_sizes) if bet_sizes else 0
+            
+            # Unique tokens
+            unique_tokens = len(set(trade["token_address"] for trade in paired_trades))
+            
+            # ROI distribution buckets
+            roi_buckets = {
+                "5x_plus": len([t for t in paired_trades if t["roi_percent"] >= 500]),
+                "2x_to_5x": len([t for t in paired_trades if 200 <= t["roi_percent"] < 500]),
+                "1x_to_2x": len([t for t in paired_trades if 100 <= t["roi_percent"] < 200]),
+                "50_to_100": len([t for t in paired_trades if 50 <= t["roi_percent"] < 100]),
+                "20_to_50": len([t for t in paired_trades if 20 <= t["roi_percent"] < 50]),
+                "0_to_20": len([t for t in paired_trades if 0 <= t["roi_percent"] < 20]),
+                "minus20_to_0": len([t for t in paired_trades if -20 <= t["roi_percent"] < 0]),
+                "minus50_to_minus20": len([t for t in paired_trades if -50 <= t["roi_percent"] < -20]),
+                "below_minus50": len([t for t in paired_trades if t["roi_percent"] < -50])
+            }
+            
+            return {
+                "total_trades": total_trades,
+                "win_count": win_count,
+                "loss_count": loss_count,
+                "win_rate": (win_count / total_trades * 100) if total_trades > 0 else 0,
+                "total_profit_usd": total_profit_usd,
+                "total_loss_usd": total_loss_usd,
+                "net_profit_usd": net_profit_usd,
+                "profit_factor": profit_factor,
+                "avg_roi": avg_roi,
+                "median_roi": median_roi,
+                "std_dev_roi": std_dev_roi,
+                "max_roi": max_roi,
+                "min_roi": min_roi,
+                "avg_hold_time_hours": avg_hold_time_hours,
+                "total_bet_size_usd": total_bet_size_usd,
+                "avg_bet_size_usd": avg_bet_size_usd,
+                "total_tokens_traded": unique_tokens,
+                "roi_distribution": roi_buckets
+            }
+            
+        except Exception as e:
+            logger.error(f"Error calculating metrics: {str(e)}")
+            raise CieloFinanceAPIError(f"Failed to calculate metrics: {str(e)}")
     
     def _determine_wallet_type(self, metrics: Dict[str, Any]) -> str:
         """
@@ -329,31 +431,36 @@ class WalletAnalyzer:
         if metrics["total_trades"] < 5:
             return "unknown"
         
-        # Extract relevant metrics
-        win_rate = metrics["win_rate"]
-        median_roi = metrics["median_roi"]
-        std_dev_roi = metrics["std_dev_roi"]
-        avg_hold_time_hours = metrics["avg_hold_time_hours"]
-        roi_distribution = metrics["roi_distribution"]
-        
-        # Calculate key indicators
-        big_win_count = roi_distribution["5x_plus"] + roi_distribution["2x_to_5x"]
-        big_win_ratio = big_win_count / metrics["total_trades"] if metrics["total_trades"] > 0 else 0
-        
-        # Gem finder: High ROI potential, might have lower win rate but finds significant gems
-        if big_win_ratio >= 0.15 and metrics["max_roi"] >= 300:
-            return "gem_finder"
-        
-        # Flipper: Quick trades, lower hold time, may have good win rate but smaller ROIs
-        if avg_hold_time_hours < 12 and win_rate > 50:
-            return "flipper"
-        
-        # Consistent: Good win rate, stable returns, less volatility
-        if win_rate >= 45 and median_roi > 0 and std_dev_roi < 100:
-            return "consistent"
-        
-        # Default to unknown if no clear pattern
-        return "unknown"
+        try:
+            # Extract relevant metrics
+            win_rate = metrics["win_rate"]
+            median_roi = metrics["median_roi"]
+            std_dev_roi = metrics["std_dev_roi"]
+            avg_hold_time_hours = metrics["avg_hold_time_hours"]
+            roi_distribution = metrics["roi_distribution"]
+            
+            # Calculate key indicators
+            big_win_count = roi_distribution["5x_plus"] + roi_distribution["2x_to_5x"]
+            big_win_ratio = big_win_count / metrics["total_trades"] if metrics["total_trades"] > 0 else 0
+            
+            # Gem finder: High ROI potential, might have lower win rate but finds significant gems
+            if big_win_ratio >= 0.15 and metrics["max_roi"] >= 300:
+                return "gem_finder"
+            
+            # Flipper: Quick trades, lower hold time, may have good win rate but smaller ROIs
+            if avg_hold_time_hours < 12 and win_rate > 50:
+                return "flipper"
+            
+            # Consistent: Good win rate, stable returns, less volatility
+            if win_rate >= 45 and median_roi > 0 and std_dev_roi < 100:
+                return "consistent"
+            
+            # Default to unknown if no clear pattern
+            return "unknown"
+            
+        except Exception as e:
+            logger.error(f"Error determining wallet type: {str(e)}")
+            return "unknown"
     
     def _generate_strategy(self, wallet_type: str, metrics: Dict[str, Any]) -> Dict[str, Any]:
         """
@@ -366,112 +473,132 @@ class WalletAnalyzer:
         Returns:
             Dict[str, Any]: Trading strategy
         """
-        if wallet_type == "gem_finder":
-            # Check if this wallet has very high ROI values
-            if metrics["max_roi"] >= 500:  # 5x+ potential
-                return {
-                    "recommendation": "HOLD_MOON",
-                    "entry_type": "IMMEDIATE",
-                    "entry": "FAST_FOLLOW",
-                    "position_size": "SMALL",
-                    "take_profit_1": 100,  # 100% ROI
-                    "take_profit_2": 200,  # 200% ROI
-                    "take_profit_3": 500,  # 500% ROI
-                    "stop_loss": -30,  # 30% loss
-                    "trailing_stop": {
-                        "activation": 100,  # Activate at 100% profit
-                        "trailing_percent": 25  # 25% trailing stop
-                    },
-                    "notes": "This wallet finds massive moonshots. Take 30% at TP1, hold rest for major gains. Use smaller position size."
-                }
-            else:
-                return {
-                    "recommendation": "SCALP_AND_HOLD",
-                    "entry_type": "IMMEDIATE",
-                    "entry": "FAST_FOLLOW",
-                    "position_size": "SMALL",
-                    "take_profit_1": 50,  # 50% ROI
-                    "take_profit_2": 100,  # 100% ROI
-                    "take_profit_3": 300,  # 300% ROI
-                    "stop_loss": -30,  # 30% loss
-                    "trailing_stop": {
-                        "activation": 100,  # Activate at 100% profit
-                        "trailing_percent": 25  # 25% trailing stop
-                    },
-                    "notes": "This wallet finds potential moonshots. Take partial profits at each level and let the rest ride with a trailing stop."
-                }
-        
-        elif wallet_type == "consistent":
-            if metrics["win_rate"] > 65 and metrics["median_roi"] > 50:
-                return {
-                    "recommendation": "SCALP_AND_HOLD",
-                    "entry_type": "IMMEDIATE",
-                    "entry": "FOLLOW",
-                    "position_size": "MEDIUM",
-                    "take_profit_1": 40,  # 40% ROI
-                    "take_profit_2": 80,  # 80% ROI
-                    "take_profit_3": 150,  # 150% ROI
-                    "stop_loss": -25,  # 25% loss
-                    "trailing_stop": {
-                        "activation": 40,  # Activate at 40% profit
-                        "trailing_percent": 20  # 20% trailing stop
-                    },
-                    "notes": "High-performance consistent wallet. Follow with confidence and use larger position size."
-                }
-            else:
+        try:
+            if wallet_type == "gem_finder":
+                # Check if this wallet has very high ROI values
+                if metrics["max_roi"] >= 500:  # 5x+ potential
+                    return {
+                        "recommendation": "HOLD_MOON",
+                        "entry_type": "IMMEDIATE",
+                        "entry": "FAST_FOLLOW",
+                        "position_size": "SMALL",
+                        "take_profit_1": 100,  # 100% ROI
+                        "take_profit_2": 200,  # 200% ROI
+                        "take_profit_3": 500,  # 500% ROI
+                        "stop_loss": -30,  # 30% loss
+                        "trailing_stop": {
+                            "activation": 100,  # Activate at 100% profit
+                            "trailing_percent": 25  # 25% trailing stop
+                        },
+                        "notes": "This wallet finds massive moonshots. Take 30% at TP1, hold rest for major gains. Use smaller position size."
+                    }
+                else:
+                    return {
+                        "recommendation": "SCALP_AND_HOLD",
+                        "entry_type": "IMMEDIATE",
+                        "entry": "FAST_FOLLOW",
+                        "position_size": "SMALL",
+                        "take_profit_1": 50,  # 50% ROI
+                        "take_profit_2": 100,  # 100% ROI
+                        "take_profit_3": 300,  # 300% ROI
+                        "stop_loss": -30,  # 30% loss
+                        "trailing_stop": {
+                            "activation": 100,  # Activate at 100% profit
+                            "trailing_percent": 25  # 25% trailing stop
+                        },
+                        "notes": "This wallet finds potential moonshots. Take partial profits at each level and let the rest ride with a trailing stop."
+                    }
+            
+            elif wallet_type == "consistent":
+                if metrics["win_rate"] > 65 and metrics["median_roi"] > 50:
+                    return {
+                        "recommendation": "SCALP_AND_HOLD",
+                        "entry_type": "IMMEDIATE",
+                        "entry": "FOLLOW",
+                        "position_size": "MEDIUM",
+                        "take_profit_1": 40,  # 40% ROI
+                        "take_profit_2": 80,  # 80% ROI
+                        "take_profit_3": 150,  # 150% ROI
+                        "stop_loss": -25,  # 25% loss
+                        "trailing_stop": {
+                            "activation": 40,  # Activate at 40% profit
+                            "trailing_percent": 20  # 20% trailing stop
+                        },
+                        "notes": "High-performance consistent wallet. Follow with confidence and use larger position size."
+                    }
+                else:
+                    return {
+                        "recommendation": "SCALP",
+                        "entry_type": "IMMEDIATE",
+                        "entry": "FOLLOW",
+                        "position_size": "MEDIUM",
+                        "take_profit_1": 30,  # 30% ROI
+                        "take_profit_2": 50,  # 50% ROI
+                        "take_profit_3": 100,  # 100% ROI
+                        "stop_loss": -25,  # 25% loss
+                        "trailing_stop": {
+                            "activation": 30,  # Activate at 30% profit
+                            "trailing_percent": 15  # 15% trailing stop
+                        },
+                        "notes": "This wallet has consistent returns. Follow their trades with confidence but maintain disciplined exits."
+                    }
+            
+            elif wallet_type == "flipper":
                 return {
                     "recommendation": "SCALP",
                     "entry_type": "IMMEDIATE",
-                    "entry": "FOLLOW",
+                    "entry": "FAST_FOLLOW",
                     "position_size": "MEDIUM",
-                    "take_profit_1": 30,  # 30% ROI
-                    "take_profit_2": 50,  # 50% ROI
-                    "take_profit_3": 100,  # 100% ROI
-                    "stop_loss": -25,  # 25% loss
+                    "take_profit_1": 15,  # 15% ROI
+                    "take_profit_2": 30,  # 30% ROI
+                    "take_profit_3": 60,  # 60% ROI
+                    "stop_loss": -15,  # 15% loss
                     "trailing_stop": {
-                        "activation": 30,  # Activate at 30% profit
+                        "activation": 15,  # Activate at 15% profit
+                        "trailing_percent": 10  # 10% trailing stop
+                    },
+                    "notes": "This wallet makes quick flips. Enter and exit quickly, don't hold long-term."
+                }
+            
+            else:  # unknown
+                return {
+                    "recommendation": "CAUTIOUS",
+                    "entry_type": "WAIT_FOR_CONFIRMATION",
+                    "entry": "CAUTIOUS",
+                    "position_size": "SMALL",
+                    "take_profit_1": 20,  # 20% ROI
+                    "take_profit_2": 40,  # 40% ROI
+                    "take_profit_3": 80,  # 80% ROI
+                    "stop_loss": -20,  # 20% loss
+                    "trailing_stop": {
+                        "activation": 20,  # Activate at 20% profit
                         "trailing_percent": 15  # 15% trailing stop
                     },
-                    "notes": "This wallet has consistent returns. Follow their trades with confidence but maintain disciplined exits."
+                    "notes": "Limited data or unclear pattern. Use caution when following this wallet."
                 }
-        
-        elif wallet_type == "flipper":
-            return {
-                "recommendation": "SCALP",
-                "entry_type": "IMMEDIATE",
-                "entry": "FAST_FOLLOW",
-                "position_size": "MEDIUM",
-                "take_profit_1": 15,  # 15% ROI
-                "take_profit_2": 30,  # 30% ROI
-                "take_profit_3": 60,  # 60% ROI
-                "stop_loss": -15,  # 15% loss
-                "trailing_stop": {
-                    "activation": 15,  # Activate at 15% profit
-                    "trailing_percent": 10  # 10% trailing stop
-                },
-                "notes": "This wallet makes quick flips. Enter and exit quickly, don't hold long-term."
-            }
-        
-        else:  # unknown
+                
+        except Exception as e:
+            logger.error(f"Error generating strategy: {str(e)}")
+            # Return a safe default strategy
             return {
                 "recommendation": "CAUTIOUS",
                 "entry_type": "WAIT_FOR_CONFIRMATION",
                 "entry": "CAUTIOUS",
                 "position_size": "SMALL",
-                "take_profit_1": 20,  # 20% ROI
-                "take_profit_2": 40,  # 40% ROI
-                "take_profit_3": 80,  # 80% ROI
-                "stop_loss": -20,  # 20% loss
+                "take_profit_1": 20,
+                "take_profit_2": 40,
+                "take_profit_3": 80,
+                "stop_loss": -20,
                 "trailing_stop": {
-                    "activation": 20,  # Activate at 20% profit
-                    "trailing_percent": 15  # 15% trailing stop
+                    "activation": 20,
+                    "trailing_percent": 15
                 },
-                "notes": "Limited data or unclear pattern. Use caution when following this wallet."
+                "notes": "Error occurred during strategy generation. Using cautious default."
             }
     
     def analyze_wallet(self, wallet_address: str, days_back: int = 30) -> Dict[str, Any]:
         """
-        Analyze a wallet for copy trading.
+        Analyze a wallet for copy trading using Cielo Finance API.
         
         Args:
             wallet_address (str): Wallet address
@@ -480,18 +607,29 @@ class WalletAnalyzer:
         Returns:
             Dict[str, Any]: Wallet analysis results
         """
-        logger.info(f"Analyzing wallet {wallet_address} for the past {days_back} days")
+        logger.info(f"Analyzing wallet {wallet_address} for the past {days_back} days using Cielo Finance API")
         
         try:
-            # Get wallet transactions
-            transactions = self.birdeye_api.get_wallet_transactions(wallet_address)
+            # Verify API is still available
+            if not self._verify_api_connection():
+                raise CieloFinanceAPIError("Cielo Finance API is not accessible. Please check your connection and API credentials.")
             
-            if not transactions.get("data", []):
+            # Get wallet transactions using Cielo Finance API
+            if not hasattr(self.cielo_api, 'get_wallet_transactions'):
+                raise CieloFinanceAPIError(
+                    "Cielo Finance API does not support wallet transaction retrieval. "
+                    "Please ensure you're using the correct API version or contact support."
+                )
+            
+            transactions = self.cielo_api.get_wallet_transactions(wallet_address)
+            
+            if not transactions or not transactions.get("data", []):
                 logger.warning(f"No transactions found for wallet {wallet_address}")
                 return {
                     "success": False,
-                    "error": "No transactions found",
-                    "wallet_address": wallet_address
+                    "error": "No transactions found for this wallet",
+                    "wallet_address": wallet_address,
+                    "error_type": "NO_DATA"
                 }
             
             # Filter transactions by date
@@ -504,12 +642,38 @@ class WalletAnalyzer:
             
             logger.info(f"Found {len(filtered_transactions)} transactions in the last {days_back} days")
             
+            if not filtered_transactions:
+                return {
+                    "success": False,
+                    "error": f"No transactions found in the last {days_back} days",
+                    "wallet_address": wallet_address,
+                    "error_type": "NO_RECENT_DATA"
+                }
+            
             # Extract trades
             trades = self._extract_trades(filtered_transactions, wallet_address)
+            
+            if not trades:
+                return {
+                    "success": False,
+                    "error": "No valid trades could be extracted from transactions",
+                    "wallet_address": wallet_address,
+                    "error_type": "NO_VALID_TRADES"
+                }
+            
             logger.info(f"Extracted {len(trades)} trades")
             
             # Pair trades
             paired_trades = self._pair_trades(trades)
+            
+            if not paired_trades:
+                return {
+                    "success": False,
+                    "error": "No complete buy-sell pairs found",
+                    "wallet_address": wallet_address,
+                    "error_type": "NO_PAIRED_TRADES"
+                }
+            
             logger.info(f"Paired {len(paired_trades)} trades")
             
             # Calculate metrics
@@ -533,15 +697,25 @@ class WalletAnalyzer:
                 "metrics": metrics,
                 "strategy": strategy,
                 "trades": paired_trades,
-                "correlated_wallets": correlated_wallets
+                "correlated_wallets": correlated_wallets,
+                "api_source": "Cielo Finance"
             }
             
-        except Exception as e:
-            logger.error(f"Error analyzing wallet {wallet_address}: {str(e)}")
+        except CieloFinanceAPIError as e:
+            logger.error(f"Cielo Finance API error analyzing wallet {wallet_address}: {str(e)}")
             return {
                 "success": False,
                 "error": str(e),
-                "wallet_address": wallet_address
+                "wallet_address": wallet_address,
+                "error_type": "API_ERROR"
+            }
+        except Exception as e:
+            logger.error(f"Unexpected error analyzing wallet {wallet_address}: {str(e)}")
+            return {
+                "success": False,
+                "error": f"Unexpected error: {str(e)}",
+                "wallet_address": wallet_address,
+                "error_type": "UNEXPECTED_ERROR"
             }
     
     def _find_correlated_wallets(self, wallet_address: str, time_threshold: int = 300) -> List[Dict[str, Any]]:
@@ -555,58 +729,247 @@ class WalletAnalyzer:
         Returns:
             List[Dict[str, Any]]: List of correlated wallets with correlation details
         """
-        correlated_wallets = {}
-        
-        # Look for wallets that entered the same tokens within the time threshold
-        for token_address, entries in self.token_entries.items():
-            if wallet_address in entries:
-                main_timestamp = entries[wallet_address]
-                
-                # Find other wallets that entered within the time threshold
-                for other_wallet, other_timestamp in entries.items():
-                    if other_wallet != wallet_address:
-                        time_diff = abs(main_timestamp - other_timestamp)
-                        
-                        # If within threshold, consider correlated
-                        if time_diff <= time_threshold:
-                            if other_wallet not in correlated_wallets:
-                                correlated_wallets[other_wallet] = {
-                                    "wallet_address": other_wallet,
-                                    "common_tokens": 0,
-                                    "avg_time_diff": 0,
-                                    "tokens": []
-                                }
+        try:
+            correlated_wallets = {}
+            
+            # Look for wallets that entered the same tokens within the time threshold
+            for token_address, entries in self.token_entries.items():
+                if wallet_address in entries:
+                    main_timestamp = entries[wallet_address]
+                    
+                    # Find other wallets that entered within the time threshold
+                    for other_wallet, other_timestamp in entries.items():
+                        if other_wallet != wallet_address:
+                            time_diff = abs(main_timestamp - other_timestamp)
                             
-                            # Update correlation data
-                            correlated_wallets[other_wallet]["common_tokens"] += 1
-                            current_avg = correlated_wallets[other_wallet]["avg_time_diff"]
-                            current_count = len(correlated_wallets[other_wallet]["tokens"])
-                            new_avg = (current_avg * current_count + time_diff) / (current_count + 1)
-                            correlated_wallets[other_wallet]["avg_time_diff"] = new_avg
-                            correlated_wallets[other_wallet]["tokens"].append({
-                                "token_address": token_address,
-                                "time_diff": time_diff
-                            })
-        
-        # Sort by number of common tokens
-        sorted_wallets = sorted(
-            correlated_wallets.values(),
-            key=lambda x: (x["common_tokens"], -x["avg_time_diff"]),
-            reverse=True
-        )
-        
-        return sorted_wallets
+                            # If within threshold, consider correlated
+                            if time_diff <= time_threshold:
+                                if other_wallet not in correlated_wallets:
+                                    correlated_wallets[other_wallet] = {
+                                        "wallet_address": other_wallet,
+                                        "common_tokens": 0,
+                                        "avg_time_diff": 0,
+                                        "tokens": []
+                                    }
+                                
+                                # Update correlation data
+                                correlated_wallets[other_wallet]["common_tokens"] += 1
+                                current_avg = correlated_wallets[other_wallet]["avg_time_diff"]
+                                current_count = len(correlated_wallets[other_wallet]["tokens"])
+                                new_avg = (current_avg * current_count + time_diff) / (current_count + 1)
+                                correlated_wallets[other_wallet]["avg_time_diff"] = new_avg
+                                correlated_wallets[other_wallet]["tokens"].append({
+                                    "token_address": token_address,
+                                    "time_diff": time_diff
+                                })
+            
+            # Sort by number of common tokens
+            sorted_wallets = sorted(
+                correlated_wallets.values(),
+                key=lambda x: (x["common_tokens"], -x["avg_time_diff"]),
+                reverse=True
+            )
+            
+            return sorted_wallets
+            
+        except Exception as e:
+            logger.error(f"Error finding correlated wallets: {str(e)}")
+            return []
     
+    def batch_analyze_wallets(self, wallet_addresses: List[str], 
+                            days_back: int = 30,
+                            min_winrate: float = 45.0) -> Dict[str, Any]:
+        """
+        Batch analyze multiple wallets and categorize them using Cielo Finance API.
+        
+        Args:
+            wallet_addresses (List[str]): List of wallet addresses
+            days_back (int): Number of days to analyze
+            min_winrate (float): Minimum win rate percentage
+            
+        Returns:
+            Dict[str, Any]: Categorized wallet analyses
+        """
+        logger.info(f"Batch analyzing {len(wallet_addresses)} wallets using Cielo Finance API")
+        
+        if not wallet_addresses:
+            return {
+                "success": False,
+                "error": "No wallet addresses provided",
+                "error_type": "NO_INPUT"
+            }
+        
+        try:
+            # Verify API connectivity before starting batch analysis
+            if not self._verify_api_connection():
+                raise CieloFinanceAPIError(
+                    "Cielo Finance API is not accessible. Cannot perform batch analysis."
+                )
+            
+            # Analyze each wallet
+            wallet_analyses = []
+            failed_analyses = []
+            
+            for i, wallet_address in enumerate(wallet_addresses, 1):
+                logger.info(f"Analyzing wallet {i}/{len(wallet_addresses)}: {wallet_address}")
+                
+                try:
+                    analysis = self.analyze_wallet(wallet_address, days_back)
+                    
+                    if analysis.get("success"):
+                        wallet_analyses.append(analysis)
+                    else:
+                        failed_analyses.append({
+                            "wallet_address": wallet_address,
+                            "error": analysis.get("error", "Unknown error"),
+                            "error_type": analysis.get("error_type", "UNKNOWN")
+                        })
+                        
+                except Exception as e:
+                    logger.error(f"Error analyzing wallet {wallet_address}: {str(e)}")
+                    failed_analyses.append({
+                        "wallet_address": wallet_address,
+                        "error": str(e),
+                        "error_type": "ANALYSIS_ERROR"
+                    })
+            
+            if not wallet_analyses:
+                return {
+                    "success": False,
+                    "error": "No wallets could be successfully analyzed",
+                    "failed_analyses": failed_analyses,
+                    "error_type": "ALL_FAILED"
+                }
+            
+            # Filter by minimum win rate or profit factor
+            filtered_analyses = [
+                analysis for analysis in wallet_analyses
+                if analysis["metrics"]["win_rate"] >= min_winrate or
+                analysis["metrics"]["profit_factor"] > 1.5  # Allow lower win rate if profit factor is good
+            ]
+            
+            # Categorize wallets
+            gem_finders = [a for a in filtered_analyses if a["wallet_type"] == "gem_finder"]
+            consistent = [a for a in filtered_analyses if a["wallet_type"] == "consistent"]
+            flippers = [a for a in filtered_analyses if a["wallet_type"] == "flipper"]
+            others = [a for a in filtered_analyses if a["wallet_type"] == "unknown"]
+            
+            # Sort each category by performance metrics
+            gem_finders.sort(key=lambda x: x["metrics"]["max_roi"], reverse=True)
+            consistent.sort(key=lambda x: x["metrics"]["median_roi"], reverse=True)
+            flippers.sort(key=lambda x: x["metrics"]["win_rate"], reverse=True)
+            
+            # Find wallet clusters (groups of wallets that tend to trade together)
+            wallet_clusters = self._identify_wallet_clusters(
+                {a["wallet_address"]: a.get("correlated_wallets", []) for a in wallet_analyses}
+            )
+            
+            return {
+                "success": True,
+                "total_wallets": len(wallet_addresses),
+                "analyzed_wallets": len(wallet_analyses),
+                "failed_wallets": len(failed_analyses),
+                "filtered_wallets": len(filtered_analyses),
+                "gem_finders": gem_finders,
+                "consistent": consistent,
+                "flippers": flippers,
+                "others": others,
+                "wallet_correlations": {a["wallet_address"]: a.get("correlated_wallets", []) for a in wallet_analyses},
+                "wallet_clusters": wallet_clusters,
+                "failed_analyses": failed_analyses,
+                "api_source": "Cielo Finance"
+            }
+            
+        except CieloFinanceAPIError as e:
+            logger.error(f"Cielo Finance API error during batch analysis: {str(e)}")
+            return {
+                "success": False,
+                "error": str(e),
+                "error_type": "API_ERROR"
+            }
+        except Exception as e:
+            logger.error(f"Unexpected error during batch analysis: {str(e)}")
+            return {
+                "success": False,
+                "error": f"Unexpected error: {str(e)}",
+                "error_type": "UNEXPECTED_ERROR"
+            }
+    
+    def _identify_wallet_clusters(self, wallet_correlations: Dict[str, List[Dict[str, Any]]]) -> List[Dict[str, Any]]:
+        """
+        Identify clusters of wallets that appear to be trading together.
+        
+        Args:
+            wallet_correlations (Dict[str, List]): Dictionary of wallet addresses and their correlated wallets
+            
+        Returns:
+            List[Dict[str, Any]]: List of wallet clusters
+        """
+        try:
+            clusters = []
+            processed_wallets = set()
+            
+            for wallet, correlations in wallet_correlations.items():
+                if wallet in processed_wallets:
+                    continue
+                
+                # Start a new cluster with this wallet
+                cluster_wallets = {wallet}
+                cluster_correlation_strength = 0
+                
+                # Add all strongly correlated wallets
+                for correlation in correlations:
+                    correlated_wallet = correlation["wallet_address"]
+                    if correlated_wallet not in processed_wallets and correlation["common_tokens"] >= 2:
+                        cluster_wallets.add(correlated_wallet)
+                        cluster_correlation_strength += correlation["common_tokens"]
+                
+                # Only create clusters with multiple wallets
+                if len(cluster_wallets) > 1:
+                    clusters.append({
+                        "wallets": list(cluster_wallets),
+                        "size": len(cluster_wallets),
+                        "correlation_strength": cluster_correlation_strength
+                    })
+                    
+                    # Mark all these wallets as processed
+                    processed_wallets.update(cluster_wallets)
+            
+            # Sort clusters by size and correlation strength
+            clusters.sort(key=lambda x: (x["size"], x["correlation_strength"]), reverse=True)
+            
+            return clusters
+            
+        except Exception as e:
+            logger.error(f"Error identifying wallet clusters: {str(e)}")
+            return []
+    
+    # Export methods remain the same but with better error handling
     def export_wallet_analysis(self, analysis: Dict[str, Any], output_file: str) -> None:
         """
-        Export wallet analysis to CSV.
+        Export wallet analysis to CSV with improved error handling.
         
         Args:
             analysis (Dict[str, Any]): Wallet analysis data
             output_file (str): Output file path
         """
         if not analysis.get("success"):
-            logger.warning(f"No successful analysis to export for {analysis.get('wallet_address')}")
+            logger.warning(f"Cannot export failed analysis for {analysis.get('wallet_address')}: {analysis.get('error')}")
+            
+            # Create a summary file for failed analysis
+            try:
+                failed_file = output_file.replace(".csv", "_failed.txt")
+                with open(failed_file, 'w') as f:
+                    f.write(f"Wallet Analysis Failed\n")
+                    f.write(f"Wallet: {analysis.get('wallet_address', 'Unknown')}\n")
+                    f.write(f"Error: {analysis.get('error', 'Unknown error')}\n")
+                    f.write(f"Error Type: {analysis.get('error_type', 'UNKNOWN')}\n")
+                    f.write(f"Timestamp: {datetime.now().isoformat()}\n")
+                
+                logger.info(f"Failed analysis summary saved to {failed_file}")
+            except Exception as e:
+                logger.error(f"Could not save failed analysis summary: {str(e)}")
+            
             return
         
         try:
@@ -636,6 +999,10 @@ class WalletAnalyzer:
                     "metric": "wallet_type",
                     "value": analysis["wallet_type"]
                 })
+                writer.writerow({
+                    "metric": "api_source",
+                    "value": analysis.get("api_source", "Cielo Finance")
+                })
                 
                 # Write entry type for easy reference
                 if "strategy" in analysis and "entry_type" in analysis["strategy"]:
@@ -662,7 +1029,7 @@ class WalletAnalyzer:
                 
                 logger.info(f"Exported wallet metrics to {metrics_file}")
             
-            # Export strategy to CSV
+            # Export strategy to CSV (existing code continues...)
             strategy_file = output_file.replace(".csv", "_strategy.csv")
             with open(strategy_file, 'w', newline='') as f:
                 fieldnames = ["parameter", "value"]
@@ -725,120 +1092,40 @@ class WalletAnalyzer:
         
         except Exception as e:
             logger.error(f"Error exporting wallet analysis: {str(e)}")
-    
-    def batch_analyze_wallets(self, wallet_addresses: List[str], 
-                            days_back: int = 30,
-                            min_winrate: float = 45.0) -> Dict[str, Any]:
-        """
-        Batch analyze multiple wallets and categorize them.
-        
-        Args:
-            wallet_addresses (List[str]): List of wallet addresses
-            days_back (int): Number of days to analyze
-            min_winrate (float): Minimum win rate percentage
-            
-        Returns:
-            Dict[str, Any]: Categorized wallet analyses
-        """
-        logger.info(f"Batch analyzing {len(wallet_addresses)} wallets")
-        
-        # Analyze each wallet
-        wallet_analyses = []
-        for wallet_address in wallet_addresses:
-            try:
-                analysis = self.analyze_wallet(wallet_address, days_back)
-                if analysis.get("success"):
-                    wallet_analyses.append(analysis)
-            except Exception as e:
-                logger.error(f"Error analyzing wallet {wallet_address}: {str(e)}")
-        
-        # Filter by minimum win rate
-        filtered_analyses = [
-            analysis for analysis in wallet_analyses
-            if analysis["metrics"]["win_rate"] >= min_winrate or
-            analysis["metrics"]["profit_factor"] > 1.5  # Allow lower win rate if profit factor is good
-        ]
-        
-        # Categorize wallets
-        gem_finders = [a for a in filtered_analyses if a["wallet_type"] == "gem_finder"]
-        consistent = [a for a in filtered_analyses if a["wallet_type"] == "consistent"]
-        flippers = [a for a in filtered_analyses if a["wallet_type"] == "flipper"]
-        others = [a for a in filtered_analyses if a["wallet_type"] == "unknown"]
-        
-        # Sort each category by performance metrics
-        gem_finders.sort(key=lambda x: x["metrics"]["max_roi"], reverse=True)
-        consistent.sort(key=lambda x: x["metrics"]["median_roi"], reverse=True)
-        flippers.sort(key=lambda x: x["metrics"]["win_rate"], reverse=True)
-        
-        # Find wallet clusters (groups of wallets that tend to trade together)
-        wallet_clusters = self._identify_wallet_clusters(
-            {a["wallet_address"]: a.get("correlated_wallets", []) for a in wallet_analyses}
-        )
-        
-        return {
-            "total_wallets": len(wallet_addresses),
-            "analyzed_wallets": len(wallet_analyses),
-            "filtered_wallets": len(filtered_analyses),
-            "gem_finders": gem_finders,
-            "consistent": consistent,
-            "flippers": flippers,
-            "others": others,
-            "wallet_correlations": {a["wallet_address"]: a.get("correlated_wallets", []) for a in wallet_analyses},
-            "wallet_clusters": wallet_clusters
-        }
-    
-    def _identify_wallet_clusters(self, wallet_correlations: Dict[str, List[Dict[str, Any]]]) -> List[Dict[str, Any]]:
-        """
-        Identify clusters of wallets that appear to be trading together.
-        
-        Args:
-            wallet_correlations (Dict[str, List]): Dictionary of wallet addresses and their correlated wallets
-            
-        Returns:
-            List[Dict[str, Any]]: List of wallet clusters
-        """
-        clusters = []
-        processed_wallets = set()
-        
-        for wallet, correlations in wallet_correlations.items():
-            if wallet in processed_wallets:
-                continue
-            
-            # Start a new cluster with this wallet
-            cluster_wallets = {wallet}
-            cluster_correlation_strength = 0
-            
-            # Add all strongly correlated wallets
-            for correlation in correlations:
-                correlated_wallet = correlation["wallet_address"]
-                if correlated_wallet not in processed_wallets and correlation["common_tokens"] >= 2:
-                    cluster_wallets.add(correlated_wallet)
-                    cluster_correlation_strength += correlation["common_tokens"]
-            
-            # Only create clusters with multiple wallets
-            if len(cluster_wallets) > 1:
-                clusters.append({
-                    "wallets": list(cluster_wallets),
-                    "size": len(cluster_wallets),
-                    "correlation_strength": cluster_correlation_strength
-                })
-                
-                # Mark all these wallets as processed
-                processed_wallets.update(cluster_wallets)
-        
-        # Sort clusters by size and correlation strength
-        clusters.sort(key=lambda x: (x["size"], x["correlation_strength"]), reverse=True)
-        
-        return clusters
+            raise CieloFinanceAPIError(f"Failed to export analysis: {str(e)}")
     
     def export_batch_analysis(self, batch_analysis: Dict[str, Any], output_file: str) -> None:
         """
-        Export batch wallet analysis to CSV.
+        Export batch wallet analysis to CSV with improved error handling.
         
         Args:
             batch_analysis (Dict[str, Any]): Batch analysis data
             output_file (str): Output file path
         """
+        if not batch_analysis.get("success"):
+            logger.error(f"Cannot export failed batch analysis: {batch_analysis.get('error')}")
+            
+            # Create a summary file for failed batch analysis
+            try:
+                failed_file = output_file.replace(".csv", "_batch_failed.txt")
+                with open(failed_file, 'w') as f:
+                    f.write(f"Batch Wallet Analysis Failed\n")
+                    f.write(f"Error: {batch_analysis.get('error', 'Unknown error')}\n")
+                    f.write(f"Error Type: {batch_analysis.get('error_type', 'UNKNOWN')}\n")
+                    f.write(f"Timestamp: {datetime.now().isoformat()}\n")
+                    
+                    # Include failed analyses if available
+                    if "failed_analyses" in batch_analysis:
+                        f.write(f"\nFailed Individual Analyses:\n")
+                        for failed in batch_analysis["failed_analyses"]:
+                            f.write(f"- {failed['wallet_address']}: {failed['error']}\n")
+                
+                logger.info(f"Failed batch analysis summary saved to {failed_file}")
+            except Exception as e:
+                logger.error(f"Could not save failed batch analysis summary: {str(e)}")
+            
+            return
+        
         try:
             # Ensure output directories exist
             output_dir = os.path.dirname(output_file)
@@ -854,8 +1141,10 @@ class WalletAnalyzer:
                 writer.writeheader()
                 
                 # Write summary metrics
+                writer.writerow({"metric": "api_source", "value": batch_analysis.get("api_source", "Cielo Finance")})
                 writer.writerow({"metric": "total_wallets", "value": batch_analysis["total_wallets"]})
                 writer.writerow({"metric": "analyzed_wallets", "value": batch_analysis["analyzed_wallets"]})
+                writer.writerow({"metric": "failed_wallets", "value": batch_analysis.get("failed_wallets", 0)})
                 writer.writerow({"metric": "filtered_wallets", "value": batch_analysis["filtered_wallets"]})
                 writer.writerow({"metric": "gem_finder_count", "value": len(batch_analysis["gem_finders"])})
                 writer.writerow({"metric": "consistent_count", "value": len(batch_analysis["consistent"])})
@@ -864,7 +1153,20 @@ class WalletAnalyzer:
                 
                 logger.info(f"Exported batch analysis summary to {summary_file}")
             
-            # Export categorized wallets
+            # Export failed analyses summary if any
+            if batch_analysis.get("failed_analyses"):
+                failed_file = output_file.replace(".csv", "_failed_wallets.csv")
+                with open(failed_file, 'w', newline='') as f:
+                    fieldnames = ["wallet_address", "error", "error_type"]
+                    writer = csv.DictWriter(f, fieldnames=fieldnames)
+                    writer.writeheader()
+                    
+                    for failed in batch_analysis["failed_analyses"]:
+                        writer.writerow(failed)
+                    
+                    logger.info(f"Exported {len(batch_analysis['failed_analyses'])} failed analyses to {failed_file}")
+            
+            # Export categorized wallets (rest of the existing code remains the same...)
             categories = {
                 "gem_finder": batch_analysis["gem_finders"],
                 "consistent": batch_analysis["consistent"],
@@ -929,12 +1231,6 @@ class WalletAnalyzer:
                 
                 logger.info(f"Exported {len(wallets)} {category} wallets to {category_file}")
             
-            # Export detailed analysis for each wallet
-            for category, wallets in categories.items():
-                for wallet in wallets:
-                    wallet_file = output_file.replace(".csv", f"_detail_{wallet['wallet_address'][:8]}.csv")
-                    self.export_wallet_analysis(wallet, wallet_file)
-            
             # Export wallet clusters if available
             if "wallet_clusters" in batch_analysis and batch_analysis["wallet_clusters"]:
                 clusters_file = output_file.replace(".csv", "_wallet_clusters.csv")
@@ -957,3 +1253,4 @@ class WalletAnalyzer:
         
         except Exception as e:
             logger.error(f"Error exporting batch analysis: {str(e)}")
+            raise CieloFinanceAPIError(f"Failed to export batch analysis: {str(e)}")
