@@ -1559,3 +1559,775 @@ AttributeError: 'TelegramScraper' object has no attribute 'scrape_spydefi'
 2025-05-21 20:49:35,195 - phoenix.export - INFO - Creating consolidated Excel export: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
 2025-05-21 20:49:35,251 - phoenix.export - INFO - Successfully created Excel workbook: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
 2025-05-21 20:49:35,252 - phoenix - INFO - Excel export completed: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 20:51:34,808 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-21 20:51:34,809 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-21 20:51:35,164 - phoenix - INFO - Analyzing SpyDefi channel for the past 1 day(s).
+2025-05-21 20:51:35,164 - phoenix - INFO - Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.csv
+2025-05-21 20:51:35,165 - phoenix - INFO - SpyDefi channel detected. Analyzing KOLs from SpyDefi.
+2025-05-21 20:51:35,165 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-21 20:51:35,260 - telethon.network.mtprotosender - INFO - Connecting to 149.154.167.51:443/TcpFull...
+2025-05-21 20:51:36,422 - telethon.network.mtprotosender - INFO - Connection to 149.154.167.51:443/TcpFull complete!
+2025-05-21 20:51:45,591 - telethon.client.users - INFO - Phone migrated to 1
+2025-05-21 20:51:45,621 - telethon.client.telegrambaseclient - INFO - Reconnecting to new data center 1
+2025-05-21 20:51:45,656 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.167.51:443/TcpFull...
+2025-05-21 20:51:45,657 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.167.51:443/TcpFull complete!
+2025-05-21 20:51:45,657 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-21 20:51:47,188 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-21 20:51:53,983 - phoenix.telegram - INFO - Connected to Telegram successfully
+2025-05-21 20:51:53,984 - phoenix.telegram - INFO - Scanning SpyDefi channel (past 24h)...
+2025-05-21 20:51:53,984 - phoenix.telegram - INFO - Trying to get entity: SpyDefi
+2025-05-21 20:51:54,126 - phoenix.telegram - INFO - Successfully found entity: SpyDefi
+2025-05-21 20:51:54,126 - phoenix.telegram - INFO - Entity found: SpyDefi
+2025-05-21 20:51:54,127 - phoenix.telegram - INFO - Time limit: 2025-05-20 03:51:54.127379+00:00 (expanded range for testing)
+2025-05-21 20:51:54,127 - phoenix.telegram - INFO - Starting message iteration...
+2025-05-21 20:51:54,437 - phoenix.telegram - INFO - Reached time limit at message 1
+2025-05-21 20:51:54,438 - phoenix.telegram - INFO - Processed 1 total messages
+2025-05-21 20:51:54,440 - phoenix.telegram - INFO - Found 0 token calls from 0 KOLs
+2025-05-21 20:51:54,440 - phoenix.telegram - INFO - Analysis Complete!
+2025-05-21 20:51:54,441 - phoenix.telegram - INFO - Tokens mentioned: 0
+2025-05-21 20:51:54,441 - phoenix.telegram - INFO - Tokens that made x2: 0
+2025-05-21 20:51:54,442 - phoenix.telegram - INFO - Tokens that made x5: 0
+2025-05-21 20:51:54,442 - phoenix.telegram - INFO - Success rate (2x): 0.00%
+2025-05-21 20:51:54,442 - phoenix.telegram - INFO - Success rate (5x): 0.00%
+2025-05-21 20:51:54,443 - phoenix.telegram - WARNING - No analyzed calls to export
+2025-05-21 20:51:54,443 - phoenix.telegram - INFO - Disconnecting from Telegram...
+2025-05-21 20:51:54,444 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-21 20:51:54,444 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-21 20:51:54,459 - phoenix.telegram - INFO - Disconnected from Telegram
+2025-05-21 20:51:54,459 - phoenix - INFO - SpyDefi analysis completed.
+2025-05-21 20:51:54,460 - phoenix - INFO - Telegram analysis completed. Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.csv
+2025-05-21 20:51:54,759 - phoenix.export - INFO - Creating consolidated Excel export: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 20:51:54,812 - phoenix.export - INFO - Successfully created Excel workbook: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 20:51:54,812 - phoenix - INFO - Excel export completed: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 20:54:43,712 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-21 20:54:43,713 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-21 20:54:44,063 - phoenix - INFO - Analyzing SpyDefi channel for the past 1 day(s).
+2025-05-21 20:54:44,064 - phoenix - INFO - Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.csv
+2025-05-21 20:54:44,064 - phoenix - INFO - SpyDefi channel detected. Analyzing KOLs from SpyDefi.
+2025-05-21 20:54:44,065 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-21 20:54:44,066 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-21 20:54:44,196 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-21 20:54:45,056 - phoenix.telegram - INFO - Connected to Telegram successfully
+2025-05-21 20:54:45,056 - phoenix.telegram - INFO - Scanning SpyDefi channel (past 24h)...
+2025-05-21 20:54:45,057 - phoenix.telegram - INFO - Trying to get entity: @spydefi
+2025-05-21 20:54:45,197 - phoenix.telegram - INFO - Successfully found entity: @spydefi
+2025-05-21 20:54:45,197 - phoenix.telegram - INFO - Entity found: SpyDefi
+2025-05-21 20:54:45,198 - phoenix.telegram - INFO - Getting recent messages without time filter for testing...
+2025-05-21 20:54:45,198 - phoenix.telegram - INFO - Starting message iteration...
+2025-05-21 20:54:45,430 - phoenix.telegram - INFO - Message 1 (2025-05-22 03:52:42+00:00): Achievement Unlocked: Alpha caller! 🤫
+
+BERRY first posted by @lichknows has since been posted by 10+ callers in the network.
+
+👁View Call 📊View Stats
+
+...
+2025-05-21 20:54:45,430 - phoenix.telegram - INFO - Message 2 (2025-05-22 03:51:53+00:00): Achievement Unlocked: Alpha caller! 🤫
+
+Bitcoin 2.0 first posted by @CluelessCalls has since been posted by 10+ callers in the network.
+
+👁View Call 📊Vi...
+2025-05-21 20:54:45,432 - phoenix.telegram - INFO - Message 3 (2025-05-22 03:46:06+00:00): 🔹 Achievement Unlocked: x3! 🤟
+
+@CluelessCalls made a x3+ call on Bitcoin 2.0. 
+
+$155K -> $476K
+
+👁View Call 📊View Stats
+
+🔊Ad - Boochie
+The next pepe...
+2025-05-21 20:54:45,432 - phoenix.telegram - INFO - Message 4 (2025-05-22 03:44:10+00:00): 🔸 Achievement Unlocked: Back In Town 🤠
+
+@opdegen made a x2+ call on USD1CAT on bsc after a time away from the chain. 
+
+$19K -> $100K
+
+👁View Call 📊View...
+2025-05-21 20:54:45,432 - phoenix.telegram - INFO - Message 5 (2025-05-22 03:44:09+00:00): 🔸 Achievement Unlocked: x5! 👋
+
+@opdegen made a x5+ call on USD1CAT. 
+
+$19K -> $100K
+
+👁View Call 📊View Stats
+
+🔊Ad - Boochie by Matt Furie
+From Matt's b...
+2025-05-21 20:54:45,433 - phoenix.telegram - INFO - Processed 50 total messages
+2025-05-21 20:54:45,433 - phoenix.telegram - INFO - Found 0 token calls from 0 KOLs
+2025-05-21 20:54:45,433 - phoenix.telegram - INFO - Analysis Complete!
+2025-05-21 20:54:45,434 - phoenix.telegram - INFO - Tokens mentioned: 0
+2025-05-21 20:54:45,434 - phoenix.telegram - INFO - Tokens that made x2: 0
+2025-05-21 20:54:45,434 - phoenix.telegram - INFO - Tokens that made x5: 0
+2025-05-21 20:54:45,435 - phoenix.telegram - INFO - Success rate (2x): 0.00%
+2025-05-21 20:54:45,435 - phoenix.telegram - INFO - Success rate (5x): 0.00%
+2025-05-21 20:54:45,435 - phoenix.telegram - WARNING - No analyzed calls to export
+2025-05-21 20:54:45,436 - phoenix.telegram - INFO - Disconnecting from Telegram...
+2025-05-21 20:54:45,436 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-21 20:54:45,437 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-21 20:54:45,456 - phoenix.telegram - INFO - Disconnected from Telegram
+2025-05-21 20:54:45,456 - phoenix - INFO - SpyDefi analysis completed.
+2025-05-21 20:54:45,457 - phoenix - INFO - Telegram analysis completed. Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.csv
+2025-05-21 20:54:45,737 - phoenix.export - INFO - Creating consolidated Excel export: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 20:54:45,772 - phoenix.export - INFO - Successfully created Excel workbook: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 20:54:45,773 - phoenix - INFO - Excel export completed: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 20:58:10,273 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-21 20:58:10,274 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-21 20:58:10,688 - phoenix - INFO - Analyzing SpyDefi channel for the past 1 day(s).
+2025-05-21 20:58:10,688 - phoenix - INFO - Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.csv
+2025-05-21 20:58:10,688 - phoenix - INFO - SpyDefi channel detected. Analyzing KOLs from SpyDefi.
+2025-05-21 20:58:10,689 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-21 20:58:10,690 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-21 20:58:10,826 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-21 20:58:11,714 - phoenix.telegram - INFO - Connected to Telegram successfully
+2025-05-21 20:58:11,714 - phoenix.telegram - INFO - Scanning SpyDefi channel (past 24h)...
+2025-05-21 20:58:11,715 - phoenix.telegram - INFO - Trying to get entity: @spydefi
+2025-05-21 20:58:11,860 - phoenix.telegram - INFO - Successfully found entity: @spydefi
+2025-05-21 20:58:11,860 - phoenix.telegram - INFO - Entity found: SpyDefi
+2025-05-21 20:58:11,860 - phoenix.telegram - INFO - Getting recent messages without time filter for testing...
+2025-05-21 20:58:11,860 - phoenix.telegram - INFO - Starting message iteration...
+2025-05-21 20:58:12,108 - phoenix.telegram - INFO - Message 1 (2025-05-22 03:52:42+00:00): Achievement Unlocked: Alpha caller! 🤫
+
+BERRY first posted by @lichknows has since been posted by 10+ callers in the network.
+
+👁View Call 📊View Stats
+
+...
+2025-05-21 20:58:12,108 - phoenix.telegram - INFO - Message 2 (2025-05-22 03:51:53+00:00): Achievement Unlocked: Alpha caller! 🤫
+
+Bitcoin 2.0 first posted by @CluelessCalls has since been posted by 10+ callers in the network.
+
+👁View Call 📊Vi...
+2025-05-21 20:58:12,109 - phoenix.telegram - INFO - Message 3 (2025-05-22 03:46:06+00:00): 🔹 Achievement Unlocked: x3! 🤟
+
+@CluelessCalls made a x3+ call on Bitcoin 2.0. 
+
+$155K -> $476K
+
+👁View Call 📊View Stats
+
+🔊Ad - Boochie
+The next pepe...
+2025-05-21 20:58:12,109 - phoenix.telegram - INFO - Message 4 (2025-05-22 03:44:10+00:00): 🔸 Achievement Unlocked: Back In Town 🤠
+
+@opdegen made a x2+ call on USD1CAT on bsc after a time away from the chain. 
+
+$19K -> $100K
+
+👁View Call 📊View...
+2025-05-21 20:58:12,110 - phoenix.telegram - INFO - Message 5 (2025-05-22 03:44:09+00:00): 🔸 Achievement Unlocked: x5! 👋
+
+@opdegen made a x5+ call on USD1CAT. 
+
+$19K -> $100K
+
+👁View Call 📊View Stats
+
+🔊Ad - Boochie by Matt Furie
+From Matt's b...
+2025-05-21 20:58:12,110 - phoenix.telegram - INFO - Processed 50 total messages
+2025-05-21 20:58:12,110 - phoenix.telegram - INFO - Found 0 token calls from 0 KOLs
+2025-05-21 20:58:12,111 - phoenix.telegram - INFO - Analysis Complete!
+2025-05-21 20:58:12,111 - phoenix.telegram - INFO - Tokens mentioned: 0
+2025-05-21 20:58:12,111 - phoenix.telegram - INFO - Tokens that made x2: 0
+2025-05-21 20:58:12,112 - phoenix.telegram - INFO - Tokens that made x5: 0
+2025-05-21 20:58:12,112 - phoenix.telegram - INFO - Success rate (2x): 0.00%
+2025-05-21 20:58:12,112 - phoenix.telegram - INFO - Success rate (5x): 0.00%
+2025-05-21 20:58:12,113 - phoenix.telegram - WARNING - No analyzed calls to export
+2025-05-21 20:58:12,113 - phoenix.telegram - INFO - Disconnecting from Telegram...
+2025-05-21 20:58:12,113 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-21 20:58:12,114 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-21 20:58:12,122 - phoenix.telegram - INFO - Disconnected from Telegram
+2025-05-21 20:58:12,122 - phoenix - INFO - SpyDefi analysis completed.
+2025-05-21 20:58:12,122 - phoenix - INFO - Telegram analysis completed. Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.csv
+2025-05-21 20:58:12,410 - phoenix.export - INFO - Creating consolidated Excel export: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 20:58:12,447 - phoenix.export - INFO - Successfully created Excel workbook: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 20:58:12,447 - phoenix - INFO - Excel export completed: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 20:59:44,298 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-21 20:59:44,298 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-21 20:59:44,627 - phoenix - INFO - Analyzing SpyDefi channel for the past 1 day(s).
+2025-05-21 20:59:44,627 - phoenix - INFO - Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.csv
+2025-05-21 20:59:44,627 - phoenix - INFO - SpyDefi channel detected. Analyzing KOLs from SpyDefi.
+2025-05-21 20:59:44,628 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-21 20:59:44,629 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-21 20:59:44,766 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-21 20:59:45,648 - phoenix.telegram - INFO - Connected to Telegram successfully
+2025-05-21 20:59:45,648 - phoenix.telegram - INFO - Scanning SpyDefi channel (past 24h)...
+2025-05-21 20:59:45,648 - phoenix.telegram - INFO - Trying to get entity: @spydefi
+2025-05-21 20:59:45,793 - phoenix.telegram - INFO - Successfully found entity: @spydefi
+2025-05-21 20:59:45,793 - phoenix.telegram - INFO - Entity found: SpyDefi
+2025-05-21 20:59:45,793 - phoenix.telegram - INFO - Getting recent messages without time filter for testing...
+2025-05-21 20:59:45,793 - phoenix.telegram - INFO - Starting message iteration...
+2025-05-21 20:59:46,039 - phoenix.telegram - INFO - Message 1 (2025-05-22 03:59:32+00:00): 🔹 Achievement Unlocked: x2! ✌️
+
+@TopCallersChannel made a x2+ call on Blue Anteater G.... 
+
+$43K -> $89K
+
+👁View Call 📊View Stats
+
+🔥 TRENDING #2🪙
+LC SH...
+2025-05-21 20:59:46,041 - phoenix.telegram - INFO -   DEBUG - KOLs: ['topcallerschannel'], Tokens: ['Blue Anteater G'], Contracts: []
+2025-05-21 20:59:46,058 - phoenix.telegram - INFO - Message 2 (2025-05-22 03:59:32+00:00): 🔹 Achievement Unlocked: x2! ✌️
+
+@maniacapes made a x2+ call on Blue Anteater G.... 
+
+$43K -> $89K
+
+👁View Call 📊View Stats
+
+🔥 TRENDING #1🔸
+MERL - Build...
+2025-05-21 20:59:46,058 - phoenix.telegram - INFO -   DEBUG - KOLs: ['maniacapes'], Tokens: ['Blue Anteater G'], Contracts: []
+2025-05-21 20:59:46,059 - phoenix.telegram - INFO - Message 3 (2025-05-22 03:58:58+00:00): 🟣 Achievement Unlocked: Heavy Hitter! ⚾️
+
+fuckcoin called by @hellokook has gone x2+ on a larger marketcap. 
+
+$1.5M -> $3.2M
+
+👁View Call 📊View Stats
+
+...
+2025-05-21 20:59:46,059 - phoenix.telegram - INFO -   DEBUG - KOLs: ['hellokook'], Tokens: [], Contracts: []
+2025-05-21 20:59:46,059 - phoenix.telegram - INFO - Message 4 (2025-05-22 03:58:58+00:00): 🟣 Achievement Unlocked: Heavy Hitter! ⚾️
+
+fuckcoin called by @joesgems3 has gone x2+ on a larger marketcap. 
+
+$1.6M -> $3.2M
+
+👁View Call 📊View Stats
+
+...
+2025-05-21 20:59:46,060 - phoenix.telegram - INFO -   DEBUG - KOLs: ['joesgems3'], Tokens: [], Contracts: []
+2025-05-21 20:59:46,060 - phoenix.telegram - INFO - Message 5 (2025-05-22 03:52:42+00:00): Achievement Unlocked: Alpha caller! 🤫
+
+BERRY first posted by @lichknows has since been posted by 10+ callers in the network.
+
+👁View Call 📊View Stats
+
+...
+2025-05-21 20:59:46,060 - phoenix.telegram - INFO -   DEBUG - KOLs: ['lichknows'], Tokens: ['BERRY'], Contracts: []
+2025-05-21 20:59:46,061 - phoenix.telegram - INFO - Processed 50 total messages
+2025-05-21 20:59:46,061 - phoenix.telegram - INFO - Found 0 token calls from 0 KOLs
+2025-05-21 20:59:46,061 - phoenix.telegram - INFO - Analysis Complete!
+2025-05-21 20:59:46,062 - phoenix.telegram - INFO - Tokens mentioned: 0
+2025-05-21 20:59:46,062 - phoenix.telegram - INFO - Tokens that made x2: 0
+2025-05-21 20:59:46,062 - phoenix.telegram - INFO - Tokens that made x5: 0
+2025-05-21 20:59:46,063 - phoenix.telegram - INFO - Success rate (2x): 0.00%
+2025-05-21 20:59:46,063 - phoenix.telegram - INFO - Success rate (5x): 0.00%
+2025-05-21 20:59:46,063 - phoenix.telegram - WARNING - No analyzed calls to export
+2025-05-21 20:59:46,064 - phoenix.telegram - INFO - Disconnecting from Telegram...
+2025-05-21 20:59:46,064 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-21 20:59:46,064 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-21 20:59:46,076 - phoenix.telegram - INFO - Disconnected from Telegram
+2025-05-21 20:59:46,077 - phoenix - INFO - SpyDefi analysis completed.
+2025-05-21 20:59:46,077 - phoenix - INFO - Telegram analysis completed. Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.csv
+2025-05-21 20:59:46,408 - phoenix.export - INFO - Creating consolidated Excel export: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 20:59:46,470 - phoenix.export - INFO - Successfully created Excel workbook: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 20:59:46,470 - phoenix - INFO - Excel export completed: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 21:02:53,602 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-21 21:02:53,603 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-21 21:02:53,983 - phoenix - INFO - Analyzing SpyDefi channel for the past 1 day(s).
+2025-05-21 21:02:53,983 - phoenix - INFO - Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.csv
+2025-05-21 21:02:53,983 - phoenix - INFO - SpyDefi channel detected. Analyzing KOLs from SpyDefi.
+2025-05-21 21:02:53,984 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-21 21:02:53,985 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-21 21:02:54,119 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-21 21:02:55,138 - phoenix.telegram - INFO - Connected to Telegram successfully
+2025-05-21 21:02:55,138 - phoenix.telegram - INFO - Scanning SpyDefi channel (past 24h)...
+2025-05-21 21:02:55,138 - phoenix.telegram - INFO - Trying to get entity: @spydefi
+2025-05-21 21:02:55,281 - phoenix.telegram - INFO - Successfully found entity: @spydefi
+2025-05-21 21:02:55,281 - phoenix.telegram - INFO - Entity found: SpyDefi
+2025-05-21 21:02:55,282 - phoenix.telegram - INFO - Getting recent messages without time filter for testing...
+2025-05-21 21:02:55,282 - phoenix.telegram - INFO - Starting message iteration...
+2025-05-21 21:02:55,568 - phoenix.telegram - INFO - Message 1 (2025-05-22 04:02:43+00:00): 🟣 Achievement Unlocked: x6! 
+
+@MarksGems made a x6+ call on if i lived in b.... 
+
+$26K -> $164K
+
+👁View Call 📊View Stats
+
+🔥 TRENDING #1🔹
+Moses Pepe - P...
+2025-05-21 21:02:55,570 - phoenix.telegram - INFO -   DEBUG - KOLs: ['marksgems'], Tokens: ['if i lived in b'], Contracts: []
+2025-05-21 21:02:55,570 - phoenix.telegram - INFO - Message 2 (2025-05-22 04:02:43+00:00): 🟣 Achievement Unlocked: x2! ✌️
+
+@kariusgemscalls made a x2+ call on if i lived in b.... 
+
+$78K -> $164K
+
+👁View Call 📊View Stats
+
+🔊Ad - BabyDog
+The bon...
+2025-05-21 21:02:55,571 - phoenix.telegram - INFO -   DEBUG - KOLs: ['kariusgemscalls'], Tokens: ['if i lived in b'], Contracts: []
+2025-05-21 21:02:55,571 - phoenix.telegram - INFO - Message 3 (2025-05-22 04:00:02+00:00): RECENTLY CALLED PROJECTS
+
+🕗 LAST HOUR:
+
+👑 Bitcoin 2.0 | 10 
+2️⃣ Matt Furie New Pet | 4 
+3️⃣ I'm Yo | 3 
+4️⃣ Official Solana Test... | 3 
+5️⃣ Hair Tran...
+2025-05-21 21:02:55,572 - phoenix.telegram - INFO -   DEBUG - KOLs: [], Tokens: [], Contracts: []
+2025-05-21 21:02:55,572 - phoenix.telegram - INFO - Message 4 (2025-05-22 03:59:32+00:00): 🔹 Achievement Unlocked: x2! ✌️
+
+@TopCallersChannel made a x2+ call on Blue Anteater G.... 
+
+$43K -> $89K
+
+👁View Call 📊View Stats
+
+🔥 TRENDING #2🪙
+LC SH...
+2025-05-21 21:02:55,573 - phoenix.telegram - INFO -   DEBUG - KOLs: ['topcallerschannel'], Tokens: ['Blue Anteater G'], Contracts: []
+2025-05-21 21:02:55,573 - phoenix.telegram - INFO - Message 5 (2025-05-22 03:59:32+00:00): 🔹 Achievement Unlocked: x2! ✌️
+
+@maniacapes made a x2+ call on Blue Anteater G.... 
+
+$43K -> $89K
+
+👁View Call 📊View Stats
+
+🔥 TRENDING #1🔸
+MERL - Build...
+2025-05-21 21:02:55,574 - phoenix.telegram - INFO -   DEBUG - KOLs: ['maniacapes'], Tokens: ['Blue Anteater G'], Contracts: []
+2025-05-21 21:02:55,574 - phoenix.telegram - INFO - Processed 50 total messages
+2025-05-21 21:02:55,574 - phoenix.telegram - INFO - Found 0 token calls from 0 KOLs
+2025-05-21 21:02:55,575 - phoenix.telegram - INFO - Analysis Complete!
+2025-05-21 21:02:55,575 - phoenix.telegram - INFO - Tokens mentioned: 0
+2025-05-21 21:02:55,576 - phoenix.telegram - INFO - Tokens that made x2: 0
+2025-05-21 21:02:55,576 - phoenix.telegram - INFO - Tokens that made x5: 0
+2025-05-21 21:02:55,577 - phoenix.telegram - INFO - Success rate (2x): 0.00%
+2025-05-21 21:02:55,577 - phoenix.telegram - INFO - Success rate (5x): 0.00%
+2025-05-21 21:02:55,578 - phoenix.telegram - WARNING - No analyzed calls to export
+2025-05-21 21:02:55,578 - phoenix.telegram - INFO - Disconnecting from Telegram...
+2025-05-21 21:02:55,579 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-21 21:02:55,600 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-21 21:02:55,608 - phoenix.telegram - INFO - Disconnected from Telegram
+2025-05-21 21:02:55,609 - phoenix - INFO - SpyDefi analysis completed.
+2025-05-21 21:02:55,610 - phoenix - INFO - Telegram analysis completed. Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.csv
+2025-05-21 21:02:55,883 - phoenix.export - INFO - Creating consolidated Excel export: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 21:02:55,920 - phoenix.export - INFO - Successfully created Excel workbook: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 21:02:55,920 - phoenix - INFO - Excel export completed: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 21:04:41,719 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-21 21:04:41,720 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-21 21:04:42,072 - phoenix - INFO - Analyzing SpyDefi channel for the past 1 day(s).
+2025-05-21 21:04:42,072 - phoenix - INFO - Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.csv
+2025-05-21 21:04:42,073 - phoenix - INFO - SpyDefi channel detected. Analyzing KOLs from SpyDefi.
+2025-05-21 21:04:42,073 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-21 21:04:42,074 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-21 21:04:42,208 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-21 21:04:43,090 - phoenix.telegram - INFO - Connected to Telegram successfully
+2025-05-21 21:04:43,090 - phoenix.telegram - INFO - Scanning SpyDefi channel (past 24h)...
+2025-05-21 21:04:43,091 - phoenix.telegram - INFO - Trying to get entity: @spydefi
+2025-05-21 21:04:43,233 - phoenix.telegram - INFO - Successfully found entity: @spydefi
+2025-05-21 21:04:43,258 - phoenix.telegram - INFO - Entity found: SpyDefi
+2025-05-21 21:04:43,258 - phoenix.telegram - INFO - Getting recent messages without time filter for testing...
+2025-05-21 21:04:43,258 - phoenix.telegram - INFO - Starting message iteration...
+2025-05-21 21:04:43,501 - phoenix.telegram - INFO - Message 1 (2025-05-22 04:02:43+00:00): 🟣 Achievement Unlocked: x6! 
+
+@MarksGems made a x6+ call on if i lived in b.... 
+
+$26K -> $164K
+
+👁View Call 📊View Stats
+
+🔥 TRENDING #1🔹
+Moses Pepe - P...
+2025-05-21 21:04:43,503 - phoenix.telegram - INFO -   DEBUG - KOLs: ['marksgems'], Tokens: ['if i lived in b'], Contracts: []
+2025-05-21 21:04:43,503 - phoenix.telegram - INFO - Message 2 (2025-05-22 04:02:43+00:00): 🟣 Achievement Unlocked: x2! ✌️
+
+@kariusgemscalls made a x2+ call on if i lived in b.... 
+
+$78K -> $164K
+
+👁View Call 📊View Stats
+
+🔊Ad - BabyDog
+The bon...
+2025-05-21 21:04:43,503 - phoenix.telegram - INFO -   DEBUG - KOLs: ['kariusgemscalls'], Tokens: ['if i lived in b'], Contracts: []
+2025-05-21 21:04:43,503 - phoenix.telegram - INFO - Message 3 (2025-05-22 04:00:02+00:00): RECENTLY CALLED PROJECTS
+
+🕗 LAST HOUR:
+
+👑 Bitcoin 2.0 | 10 
+2️⃣ Matt Furie New Pet | 4 
+3️⃣ I'm Yo | 3 
+4️⃣ Official Solana Test... | 3 
+5️⃣ Hair Tran...
+2025-05-21 21:04:43,504 - phoenix.telegram - INFO -   DEBUG - KOLs: [], Tokens: [], Contracts: []
+2025-05-21 21:04:43,504 - phoenix.telegram - INFO - Message 4 (2025-05-22 03:59:32+00:00): 🔹 Achievement Unlocked: x2! ✌️
+
+@TopCallersChannel made a x2+ call on Blue Anteater G.... 
+
+$43K -> $89K
+
+👁View Call 📊View Stats
+
+🔥 TRENDING #2🪙
+LC SH...
+2025-05-21 21:04:43,505 - phoenix.telegram - INFO -   DEBUG - KOLs: ['topcallerschannel'], Tokens: ['Blue Anteater G'], Contracts: []
+2025-05-21 21:04:43,505 - phoenix.telegram - INFO - Message 5 (2025-05-22 03:59:32+00:00): 🔹 Achievement Unlocked: x2! ✌️
+
+@maniacapes made a x2+ call on Blue Anteater G.... 
+
+$43K -> $89K
+
+👁View Call 📊View Stats
+
+🔥 TRENDING #1🔸
+MERL - Build...
+2025-05-21 21:04:43,505 - phoenix.telegram - INFO -   DEBUG - KOLs: ['maniacapes'], Tokens: ['Blue Anteater G'], Contracts: []
+2025-05-21 21:04:43,506 - phoenix.telegram - INFO - Processed 50 total messages
+2025-05-21 21:04:43,506 - phoenix.telegram - INFO - Found 0 token calls from 0 KOLs
+2025-05-21 21:04:43,506 - phoenix.telegram - INFO - Analysis Complete!
+2025-05-21 21:04:43,506 - phoenix.telegram - INFO - Tokens mentioned: 0
+2025-05-21 21:04:43,507 - phoenix.telegram - INFO - Tokens that made x2: 0
+2025-05-21 21:04:43,507 - phoenix.telegram - INFO - Tokens that made x5: 0
+2025-05-21 21:04:43,507 - phoenix.telegram - INFO - Success rate (2x): 0.00%
+2025-05-21 21:04:43,508 - phoenix.telegram - INFO - Success rate (5x): 0.00%
+2025-05-21 21:04:43,508 - phoenix.telegram - WARNING - No analyzed calls to export
+2025-05-21 21:04:43,508 - phoenix.telegram - INFO - Disconnecting from Telegram...
+2025-05-21 21:04:43,509 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-21 21:04:43,509 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-21 21:04:43,529 - phoenix.telegram - INFO - Disconnected from Telegram
+2025-05-21 21:04:43,529 - phoenix - INFO - SpyDefi analysis completed.
+2025-05-21 21:04:43,530 - phoenix - INFO - Telegram analysis completed. Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.csv
+2025-05-21 21:04:43,799 - phoenix.export - INFO - Creating consolidated Excel export: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 21:04:43,835 - phoenix.export - INFO - Successfully created Excel workbook: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 21:04:43,836 - phoenix - INFO - Excel export completed: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 21:06:24,552 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-21 21:06:24,553 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-21 21:06:24,905 - phoenix - INFO - Analyzing SpyDefi channel for the past 1 day(s).
+2025-05-21 21:06:24,905 - phoenix - INFO - Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.csv
+2025-05-21 21:06:24,905 - phoenix - INFO - SpyDefi channel detected. Analyzing KOLs from SpyDefi.
+2025-05-21 21:06:24,906 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-21 21:06:24,907 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-21 21:06:25,043 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-21 21:06:25,935 - phoenix.telegram - INFO - Connected to Telegram successfully
+2025-05-21 21:06:25,935 - phoenix.telegram - INFO - Scanning SpyDefi channel (past 24h)...
+2025-05-21 21:06:25,935 - phoenix.telegram - INFO - Trying to get entity: @spydefi
+2025-05-21 21:06:26,083 - phoenix.telegram - INFO - Successfully found entity: @spydefi
+2025-05-21 21:06:26,083 - phoenix.telegram - INFO - Entity found: SpyDefi
+2025-05-21 21:06:26,083 - phoenix.telegram - INFO - Getting recent messages without time filter for testing...
+2025-05-21 21:06:26,083 - phoenix.telegram - INFO - Starting message iteration...
+2025-05-21 21:06:26,330 - phoenix.telegram - INFO - Message 1 (2025-05-22 04:02:43+00:00): 🟣 Achievement Unlocked: x6! 
+
+@MarksGems made a x6+ call on if i lived in b.... 
+
+$26K -> $164K
+
+👁View Call 📊View Stats
+
+🔥 TRENDING #1🔹
+Moses Pepe - P...
+2025-05-21 21:06:26,332 - phoenix.telegram - INFO -   DEBUG - KOLs: ['marksgems'], Tokens: ['if i lived in b'], Contracts: []
+2025-05-21 21:06:26,333 - phoenix.telegram - INFO - Message 2 (2025-05-22 04:02:43+00:00): 🟣 Achievement Unlocked: x2! ✌️
+
+@kariusgemscalls made a x2+ call on if i lived in b.... 
+
+$78K -> $164K
+
+👁View Call 📊View Stats
+
+🔊Ad - BabyDog
+The bon...
+2025-05-21 21:06:26,333 - phoenix.telegram - INFO -   DEBUG - KOLs: ['kariusgemscalls'], Tokens: ['if i lived in b'], Contracts: []
+2025-05-21 21:06:26,333 - phoenix.telegram - INFO - Message 3 (2025-05-22 04:00:02+00:00): RECENTLY CALLED PROJECTS
+
+🕗 LAST HOUR:
+
+👑 Bitcoin 2.0 | 10 
+2️⃣ Matt Furie New Pet | 4 
+3️⃣ I'm Yo | 3 
+4️⃣ Official Solana Test... | 3 
+5️⃣ Hair Tran...
+2025-05-21 21:06:26,334 - phoenix.telegram - INFO -   DEBUG - KOLs: [], Tokens: [], Contracts: []
+2025-05-21 21:06:26,334 - phoenix.telegram - INFO - Message 4 (2025-05-22 03:59:32+00:00): 🔹 Achievement Unlocked: x2! ✌️
+
+@TopCallersChannel made a x2+ call on Blue Anteater G.... 
+
+$43K -> $89K
+
+👁View Call 📊View Stats
+
+🔥 TRENDING #2🪙
+LC SH...
+2025-05-21 21:06:26,334 - phoenix.telegram - INFO -   DEBUG - KOLs: ['topcallerschannel'], Tokens: ['Blue Anteater G'], Contracts: []
+2025-05-21 21:06:26,335 - phoenix.telegram - INFO - Message 5 (2025-05-22 03:59:32+00:00): 🔹 Achievement Unlocked: x2! ✌️
+
+@maniacapes made a x2+ call on Blue Anteater G.... 
+
+$43K -> $89K
+
+👁View Call 📊View Stats
+
+🔥 TRENDING #1🔸
+MERL - Build...
+2025-05-21 21:06:26,335 - phoenix.telegram - INFO -   DEBUG - KOLs: ['maniacapes'], Tokens: ['Blue Anteater G'], Contracts: []
+2025-05-21 21:06:26,335 - phoenix.telegram - INFO - Processed 50 total messages
+2025-05-21 21:06:26,336 - phoenix.telegram - INFO - Found 0 token calls from 0 KOLs
+2025-05-21 21:06:26,336 - phoenix.telegram - INFO - Analysis Complete!
+2025-05-21 21:06:26,336 - phoenix.telegram - INFO - Tokens mentioned: 0
+2025-05-21 21:06:26,337 - phoenix.telegram - INFO - Tokens that made x2: 0
+2025-05-21 21:06:26,337 - phoenix.telegram - INFO - Tokens that made x5: 0
+2025-05-21 21:06:26,337 - phoenix.telegram - INFO - Success rate (2x): 0.00%
+2025-05-21 21:06:26,337 - phoenix.telegram - INFO - Success rate (5x): 0.00%
+2025-05-21 21:06:26,338 - phoenix.telegram - WARNING - No analyzed calls to export
+2025-05-21 21:06:26,338 - phoenix.telegram - INFO - Disconnecting from Telegram...
+2025-05-21 21:06:26,339 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-21 21:06:26,339 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-21 21:06:26,358 - phoenix.telegram - INFO - Disconnected from Telegram
+2025-05-21 21:06:26,358 - phoenix - INFO - SpyDefi analysis completed.
+2025-05-21 21:06:26,359 - phoenix - INFO - Telegram analysis completed. Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.csv
+2025-05-21 21:06:26,630 - phoenix.export - INFO - Creating consolidated Excel export: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 21:06:26,666 - phoenix.export - INFO - Successfully created Excel workbook: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 21:06:26,666 - phoenix - INFO - Excel export completed: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 21:08:06,596 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-21 21:08:06,597 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-21 21:08:06,948 - phoenix - INFO - Analyzing SpyDefi channel for the past 1 day(s).
+2025-05-21 21:08:06,948 - phoenix - INFO - Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.csv
+2025-05-21 21:08:06,948 - phoenix - INFO - SpyDefi channel detected. Analyzing KOLs from SpyDefi.
+2025-05-21 21:08:06,949 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-21 21:08:06,950 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-21 21:08:07,086 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-21 21:08:07,975 - phoenix.telegram - INFO - Connected to Telegram successfully
+2025-05-21 21:08:07,975 - phoenix.telegram - INFO - Scanning SpyDefi channel (past 24h)...
+2025-05-21 21:08:07,976 - phoenix.telegram - INFO - Trying to get entity: @spydefi
+2025-05-21 21:08:08,120 - phoenix.telegram - INFO - Successfully found entity: @spydefi
+2025-05-21 21:08:08,120 - phoenix.telegram - INFO - Entity found: SpyDefi
+2025-05-21 21:08:08,120 - phoenix.telegram - INFO - Getting recent messages without time filter for testing...
+2025-05-21 21:08:08,121 - phoenix.telegram - INFO - Starting message iteration...
+2025-05-21 21:08:08,364 - phoenix.telegram - INFO - Message 1 (2025-05-22 04:06:30+00:00): Achievement Unlocked: Consistency is key! 🔑
+
+@JusticeCalls has made 5 x2+calls in the past 7 days.
+
+👁View Call 1
+👁View Call 2
+👁View Call 3
+👁View Call ...
+2025-05-21 21:08:08,365 - phoenix.telegram - INFO -   DEBUG - KOLs: ['justicecalls'], Tokens: [], Contracts: []
+2025-05-21 21:08:08,366 - phoenix.telegram - INFO - Message 2 (2025-05-22 04:06:29+00:00): 🔹 Achievement Unlocked: x2! ✌️
+
+@JusticeCalls made a x2+ call on Blue Anteater G.... 
+
+$58K -> $117K
+
+👁View Call 📊View Stats
+
+🔥 TRENDING #1🔵
+DINO - On...
+2025-05-21 21:08:08,366 - phoenix.telegram - INFO -   DEBUG - KOLs: ['justicecalls'], Tokens: ['Blue Anteater G'], Contracts: []
+2025-05-21 21:08:08,366 - phoenix.telegram - INFO - Message 3 (2025-05-22 04:06:29+00:00): 🔹 Achievement Unlocked: Back with a bang! 💥
+
+After a few days of no calls, @JusticeCalls made a x2+ call on Blue Anteater G.... 
+
+$58K -> $117K
+
+👁View...
+2025-05-21 21:08:08,367 - phoenix.telegram - INFO -   DEBUG - KOLs: ['justicecalls'], Tokens: ['Blue Anteater G'], Contracts: []
+2025-05-21 21:08:08,367 - phoenix.telegram - INFO - Message 4 (2025-05-22 04:06:28+00:00): 🔹 Achievement Unlocked: Back In Town 🤠
+
+@JusticeCalls made a x2+ call on Blue Anteater G... on eth after a time away from the chain. 
+
+$58K -> $117K
+
+...
+2025-05-21 21:08:08,367 - phoenix.telegram - INFO -   DEBUG - KOLs: ['justicecalls'], Tokens: ['Blue Anteater G'], Contracts: []
+2025-05-21 21:08:08,368 - phoenix.telegram - INFO - Message 5 (2025-05-22 04:02:43+00:00): 🟣 Achievement Unlocked: x6! 
+
+@MarksGems made a x6+ call on if i lived in b.... 
+
+$26K -> $164K
+
+👁View Call 📊View Stats
+
+🔥 TRENDING #1🔹
+Moses Pepe - P...
+2025-05-21 21:08:08,368 - phoenix.telegram - INFO -   DEBUG - KOLs: ['marksgems'], Tokens: ['if i lived in b'], Contracts: []
+2025-05-21 21:08:08,369 - phoenix.telegram - INFO - Processed 50 total messages
+2025-05-21 21:08:08,369 - phoenix.telegram - INFO - Found 0 token calls from 0 KOLs
+2025-05-21 21:08:08,369 - phoenix.telegram - INFO - Analysis Complete!
+2025-05-21 21:08:08,370 - phoenix.telegram - INFO - Tokens mentioned: 0
+2025-05-21 21:08:08,370 - phoenix.telegram - INFO - Tokens that made x2: 0
+2025-05-21 21:08:08,370 - phoenix.telegram - INFO - Tokens that made x5: 0
+2025-05-21 21:08:08,370 - phoenix.telegram - INFO - Success rate (2x): 0.00%
+2025-05-21 21:08:08,371 - phoenix.telegram - INFO - Success rate (5x): 0.00%
+2025-05-21 21:08:08,371 - phoenix.telegram - WARNING - No analyzed calls to export
+2025-05-21 21:08:08,371 - phoenix.telegram - INFO - Disconnecting from Telegram...
+2025-05-21 21:08:08,372 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-21 21:08:08,372 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-21 21:08:08,392 - phoenix.telegram - INFO - Disconnected from Telegram
+2025-05-21 21:08:08,392 - phoenix - INFO - SpyDefi analysis completed.
+2025-05-21 21:08:08,393 - phoenix - INFO - Telegram analysis completed. Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.csv
+2025-05-21 21:08:08,661 - phoenix.export - INFO - Creating consolidated Excel export: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 21:08:08,698 - phoenix.export - INFO - Successfully created Excel workbook: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 21:08:08,699 - phoenix - INFO - Excel export completed: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 21:11:10,634 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-21 21:11:10,635 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-21 21:11:10,994 - phoenix - INFO - Analyzing SpyDefi channel for the past 1 day(s).
+2025-05-21 21:11:10,994 - phoenix - INFO - Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.csv
+2025-05-21 21:11:10,995 - phoenix - INFO - SpyDefi channel detected. Analyzing KOLs from SpyDefi.
+2025-05-21 21:11:10,995 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-21 21:11:10,997 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-21 21:11:11,130 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-21 21:11:11,997 - phoenix.telegram - INFO - Connected to Telegram successfully
+2025-05-21 21:11:11,997 - phoenix.telegram - INFO - Scanning SpyDefi channel (past 24h)...
+2025-05-21 21:11:11,997 - phoenix.telegram - INFO - Trying to get entity: @spydefi
+2025-05-21 21:11:12,139 - phoenix.telegram - INFO - Successfully found entity: @spydefi
+2025-05-21 21:11:12,139 - phoenix.telegram - INFO - Entity found: SpyDefi
+2025-05-21 21:11:12,140 - phoenix.telegram - INFO - Getting recent messages without time filter for testing...
+2025-05-21 21:11:12,140 - phoenix.telegram - INFO - Starting message iteration...
+2025-05-21 21:11:12,354 - phoenix.telegram - INFO - Message 1 (2025-05-22 04:11:06+00:00): 🔹 Achievement Unlocked: x2! ✌️
+
+@MichiiCalls made a x2+ call on Blue Anteater G.... 
+
+$60K -> $121K
+
+👁View Call 📊View Stats
+
+🔥 TRENDING #1🔸
+MERL - Bui...
+2025-05-21 21:11:12,356 - phoenix.telegram - INFO -   EXTRACTION - Contracts: [], KOLs: ['michiicalls'], Tokens: ['Blue Anteater G']
+2025-05-21 21:11:12,359 - phoenix.telegram - INFO -   Processing 1 tokens from message 1
+2025-05-21 21:11:12,359 - phoenix.telegram - INFO - Message 2 (2025-05-22 04:09:33+00:00): 🔹 Achievement Unlocked: Back In Town 🤠
+
+@joejournal made a x2+ call on woollyfi on eth after a time away from the chain. 
+
+$135K -> $276K
+
+👁View Call ...
+2025-05-21 21:11:12,360 - phoenix.telegram - INFO -   EXTRACTION - Contracts: [], KOLs: ['joejournal'], Tokens: ['woollyfi']
+2025-05-21 21:11:12,360 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 2
+2025-05-21 21:11:12,360 - phoenix.telegram - INFO - Message 3 (2025-05-22 04:09:32+00:00): 🔹 Achievement Unlocked: Back with a bang! 💥
+
+After a few days of no calls, @joejournal made a x2+ call on woollyfi. 
+
+$135K -> $276K
+
+👁View Call 📊View...
+2025-05-21 21:11:12,361 - phoenix.telegram - INFO -   EXTRACTION - Contracts: [], KOLs: ['joejournal'], Tokens: ['woollyfi']
+2025-05-21 21:11:12,361 - phoenix.telegram - INFO -   Processing 1 tokens from message 3
+2025-05-21 21:11:12,362 - phoenix.telegram - INFO - Message 4 (2025-05-22 04:09:32+00:00): 🔹 Achievement Unlocked: x2! ✌️
+
+@joejournal made a x2+ call on woollyfi. 
+
+$135K -> $276K
+
+👁View Call 📊View Stats
+
+🔥 TRENDING #1🪙
+BOTIFY - Botify - no...
+2025-05-21 21:11:12,362 - phoenix.telegram - INFO -   EXTRACTION - Contracts: [], KOLs: ['joejournal'], Tokens: ['woollyfi']
+2025-05-21 21:11:12,362 - phoenix.telegram - INFO -   Processing 1 tokens from message 4
+2025-05-21 21:11:12,363 - phoenix.telegram - INFO - Message 5 (2025-05-22 04:06:30+00:00): Achievement Unlocked: Consistency is key! 🔑
+
+@JusticeCalls has made 5 x2+calls in the past 7 days.
+
+👁View Call 1
+👁View Call 2
+👁View Call 3
+👁View Call ...
+2025-05-21 21:11:12,363 - phoenix.telegram - INFO -   EXTRACTION - Contracts: [], KOLs: ['justicecalls'], Tokens: []
+2025-05-21 21:11:12,364 - phoenix.telegram - INFO -   Processing 1 tokens from message 6
+2025-05-21 21:11:12,364 - phoenix.telegram - INFO -   Processing 1 tokens from message 7
+2025-05-21 21:11:12,364 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 8
+2025-05-21 21:11:12,365 - phoenix.telegram - INFO -   Processing 1 tokens from message 9
+2025-05-21 21:11:12,365 - phoenix.telegram - INFO -   Processing 1 tokens from message 10
+2025-05-21 21:11:12,366 - phoenix.telegram - INFO -   Processing 1 tokens from message 12
+2025-05-21 21:11:12,366 - phoenix.telegram - INFO -   Processing 1 tokens from message 13
+2025-05-21 21:11:12,366 - phoenix.telegram - INFO -   Processing 1 tokens from message 16
+2025-05-21 21:11:12,367 - phoenix.telegram - INFO -   Processing 1 tokens from message 17
+2025-05-21 21:11:12,370 - phoenix.telegram - INFO -   Processing 1 tokens from message 18
+2025-05-21 21:11:12,371 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 19
+2025-05-21 21:11:12,371 - phoenix.telegram - INFO -   Processing 1 tokens from message 20
+2025-05-21 21:11:12,372 - phoenix.telegram - INFO -   Processing 1 tokens from message 21
+2025-05-21 21:11:12,372 - phoenix.telegram - INFO -   Processing 1 tokens from message 22
+2025-05-21 21:11:12,372 - phoenix.telegram - INFO -   Processing 1 tokens from message 24
+2025-05-21 21:11:12,372 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 25
+2025-05-21 21:11:12,373 - phoenix.telegram - INFO -   Processing 1 tokens from message 28
+2025-05-21 21:11:12,373 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 29
+2025-05-21 21:11:12,373 - phoenix.telegram - INFO -   Processing 1 tokens from message 30
+2025-05-21 21:11:12,374 - phoenix.telegram - INFO -   Processing 1 tokens from message 31
+2025-05-21 21:11:12,374 - phoenix.telegram - INFO -   Processing 1 tokens from message 32
+2025-05-21 21:11:12,375 - phoenix.telegram - INFO -   Processing 1 tokens from message 33
+2025-05-21 21:11:12,375 - phoenix.telegram - INFO -   Processing 1 tokens from message 34
+2025-05-21 21:11:12,376 - phoenix.telegram - INFO -   Processing 1 tokens from message 36
+2025-05-21 21:11:12,376 - phoenix.telegram - INFO -   Processing 1 tokens from message 37
+2025-05-21 21:11:12,376 - phoenix.telegram - INFO -   Processing 1 tokens from message 38
+2025-05-21 21:11:12,377 - phoenix.telegram - INFO -   Processing 1 tokens from message 41
+2025-05-21 21:11:12,378 - phoenix.telegram - INFO -   Processing 1 tokens from message 42
+2025-05-21 21:11:12,378 - phoenix.telegram - INFO -   Processing 1 tokens from message 43
+2025-05-21 21:11:12,379 - phoenix.telegram - INFO -   Processing 1 tokens from message 44
+2025-05-21 21:11:12,381 - phoenix.telegram - INFO -   Processing 1 tokens from message 45
+2025-05-21 21:11:12,381 - phoenix.telegram - INFO -   Processing 1 tokens from message 46
+2025-05-21 21:11:12,382 - phoenix.telegram - INFO -   Processing 1 tokens from message 48
+2025-05-21 21:11:12,382 - phoenix.telegram - INFO -   Processing 1 tokens from message 49
+2025-05-21 21:11:12,383 - phoenix.telegram - INFO -   Processing 1 tokens from message 50
+2025-05-21 21:11:12,383 - phoenix.telegram - INFO - Processed 50 total messages
+2025-05-21 21:11:12,383 - phoenix.telegram - INFO - Found 34 token calls from 19 KOLs
+2025-05-21 21:11:12,384 - phoenix.telegram - INFO - Analyzing call 1/34: Blue Anteater G
+2025-05-21 21:11:12,384 - phoenix.telegram - INFO - Analyzing call 2/34: woollyfi
+2025-05-21 21:11:12,384 - phoenix.telegram - INFO - Analyzing call 3/34: woollyfi
+2025-05-21 21:11:12,385 - phoenix.telegram - INFO - Analyzing call 4/34: Blue Anteater G
+2025-05-21 21:11:12,385 - phoenix.telegram - INFO - Analyzing call 5/34: Blue Anteater G
+2025-05-21 21:11:12,385 - phoenix.telegram - INFO - Analyzing call 6/34: if i lived in b
+2025-05-21 21:11:12,386 - phoenix.telegram - INFO - Analyzing call 7/34: if i lived in b
+2025-05-21 21:11:12,386 - phoenix.telegram - INFO - Analyzing call 8/34: Blue Anteater G
+2025-05-21 21:11:12,387 - phoenix.telegram - INFO - Analyzing call 9/34: Blue Anteater G
+2025-05-21 21:11:12,387 - phoenix.telegram - INFO - Analyzing call 10/34: BERRY
+2025-05-21 21:11:12,387 - phoenix.telegram - WARNING - No ROI data found in message: Achievement Unlocked: Alpha caller! 🤫
+
+BERRY first posted by @lichknows has since been posted by 10+...
+2025-05-21 21:11:12,388 - phoenix.telegram - INFO - Analyzing call 11/34: Bitcoin 2.0
+2025-05-21 21:11:12,388 - phoenix.telegram - WARNING - No ROI data found in message: Achievement Unlocked: Alpha caller! 🤫
+
+Bitcoin 2.0 first posted by @CluelessCalls has since been pos...
+2025-05-21 21:11:12,388 - phoenix.telegram - INFO - Analyzing call 12/34: Bitcoin 2
+2025-05-21 21:11:12,389 - phoenix.telegram - INFO - Analyzing call 13/34: USD1CAT
+2025-05-21 21:11:12,389 - phoenix.telegram - INFO - Analyzing call 14/34: Blue Anteater G...
+2025-05-21 21:11:12,390 - phoenix.telegram - WARNING - No ROI data found in message: Achievement Unlocked: Alpha caller! 🤫
+
+Blue Anteater G... first posted by @MichiiCalls has since bee...
+2025-05-21 21:11:12,392 - phoenix.telegram - INFO - Analyzing call 15/34: Eagle
+2025-05-21 21:11:12,393 - phoenix.telegram - INFO - Analyzing call 16/34: USD1DOGE
+2025-05-21 21:11:12,393 - phoenix.telegram - INFO - Analyzing call 17/34: Fluxor
+2025-05-21 21:11:12,393 - phoenix.telegram - INFO - Analyzing call 18/34: Bitcoin 2
+2025-05-21 21:11:12,394 - phoenix.telegram - INFO - Analyzing call 19/34: Bitcoin 2
+2025-05-21 21:11:12,394 - phoenix.telegram - INFO - Analyzing call 20/34: Bitcoin 2
+2025-05-21 21:11:12,394 - phoenix.telegram - INFO - Analyzing call 21/34: Hair Transplant
+2025-05-21 21:11:12,395 - phoenix.telegram - INFO - Analyzing call 22/34: WLFIDOGE
+2025-05-21 21:11:12,395 - phoenix.telegram - INFO - Analyzing call 23/34: WLFIDOGE
+2025-05-21 21:11:12,395 - phoenix.telegram - INFO - Analyzing call 24/34: WLFIDOGE
+2025-05-21 21:11:12,396 - phoenix.telegram - INFO - Analyzing call 25/34: WLFIDOGE
+2025-05-21 21:11:12,396 - phoenix.telegram - INFO - Analyzing call 26/34: Bitcoin 2
+2025-05-21 21:11:12,397 - phoenix.telegram - INFO - Analyzing call 27/34: USD1DOGE
+2025-05-21 21:11:12,397 - phoenix.telegram - INFO - Analyzing call 28/34: USD1DOGE
+2025-05-21 21:11:12,397 - phoenix.telegram - INFO - Analyzing call 29/34: USD1DOGE
+2025-05-21 21:11:12,398 - phoenix.telegram - INFO - Analyzing call 30/34: USD1DOGE
+2025-05-21 21:11:12,398 - phoenix.telegram - INFO - Analyzing call 31/34: Bitcoin 2
+2025-05-21 21:11:12,399 - phoenix.telegram - INFO - Analyzing call 32/34: USD1DOGE
+2025-05-21 21:11:12,399 - phoenix.telegram - INFO - Analyzing call 33/34: USD1DOGE
+2025-05-21 21:11:12,399 - phoenix.telegram - INFO - Analyzing call 34/34: USD1DOGE
+2025-05-21 21:11:12,400 - phoenix.telegram - INFO - Analysis Complete!
+2025-05-21 21:11:12,400 - phoenix.telegram - INFO - Tokens mentioned: 31
+2025-05-21 21:11:12,401 - phoenix.telegram - INFO - Tokens that made x2: 29
+2025-05-21 21:11:12,404 - phoenix.telegram - INFO - Tokens that made x5: 10
+2025-05-21 21:11:12,404 - phoenix.telegram - INFO - Success rate (2x): 93.55%
+2025-05-21 21:11:12,404 - phoenix.telegram - INFO - Success rate (5x): 32.26%
+2025-05-21 21:11:12,406 - phoenix.telegram - INFO - Exported 31 calls to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.csv
+2025-05-21 21:11:12,407 - phoenix.telegram - INFO - Exported KOL performance to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_kol_performance.csv
+2025-05-21 21:11:12,407 - phoenix.telegram - INFO - Exported summary to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_summary.txt
+2025-05-21 21:11:12,407 - phoenix.telegram - INFO - Disconnecting from Telegram...
+2025-05-21 21:11:12,408 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-21 21:11:12,408 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-21 21:11:12,424 - phoenix.telegram - INFO - Disconnected from Telegram
+2025-05-21 21:11:12,425 - phoenix - INFO - SpyDefi analysis completed.
+2025-05-21 21:11:12,426 - phoenix - INFO - Telegram analysis completed. Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.csv
+2025-05-21 21:11:12,698 - phoenix.export - INFO - Creating consolidated Excel export: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 21:11:12,733 - phoenix.export - INFO - Successfully created Excel workbook: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 21:11:12,733 - phoenix - INFO - Excel export completed: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx

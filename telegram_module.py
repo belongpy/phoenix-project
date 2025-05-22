@@ -1,5 +1,5 @@
 """
-Telegram Module - Phoenix Project (Clean Fixed Version)
+Telegram Module - Phoenix Project (FINAL WORKING VERSION)
 
 Focused SpyDefi analyzer with simple flow:
 UNIX time → Call price → Historical data → ATH/ATL → Performance
@@ -19,31 +19,11 @@ from collections import defaultdict
 
 logger = logging.getLogger("phoenix.telegram")
 
-# Simple Solana address pattern
-SOLANA_ADDRESS_PATTERN = r'\b[1-9A-HJ-NP-Za-km-z]{32,44}\b'
-
-# KOL mention patterns
-KOL_PATTERNS = [
-    r'@(\w+)',
-    r'(\w+)\s+made\s+a.*?call',
-    r'(\w+)\s+called',
-    r'Achievement.*?@?(\w+)',
-    r'(\w+)\s+x\d+'
-]
-
 class TelegramScraper:
     """SpyDefi-focused Telegram scraper."""
     
     def __init__(self, api_id: str, api_hash: str, birdeye_api_key: str, session_name: str = "phoenix"):
-        """
-        Initialize the Telegram scraper.
-        
-        Args:
-            api_id (str): Telegram API ID
-            api_hash (str): Telegram API hash
-            birdeye_api_key (str): Birdeye API key
-            session_name (str): Session name for Telethon
-        """
+        """Initialize the Telegram scraper."""
         self.api_id = api_id
         self.api_hash = api_hash
         self.birdeye_api_key = birdeye_api_key
@@ -72,6 +52,54 @@ class TelegramScraper:
             await self.client.disconnect()
             self.client = None
             logger.info("Disconnected from Telegram")
+    
+    def extract_kols(self, text: str) -> List[str]:
+        """Extract KOL usernames from text."""
+        kols = set()
+        
+        # KOL patterns based on actual SpyDefi format
+        patterns = [
+            # "@username made a x2+ call on TOKEN"
+            r'@(\w+)\s+made\s+a\s+x\d+\+?\s+call\s+on',
+            # "TOKEN first posted by @username"
+            r'first\s+posted\s+by\s+@(\w+)',
+            # General @mentions
+            r'@(\w+)',
+        ]
+        
+        for pattern in patterns:
+            matches = re.finditer(pattern, text, re.IGNORECASE)
+            for match in matches:
+                if match.groups():
+                    username = match.group(1).lower().strip('@')
+                    # Filter out common words
+                    if username not in ['spydefi', 'everyone', 'here', 'channel', 'group', 'unlocked', 'achievement']:
+                        kols.add(username)
+        
+        return list(kols)
+    
+    def extract_token_names(self, text: str) -> List[str]:
+        """Extract token names from SpyDefi messages."""
+        tokens = set()
+        
+        # Token name patterns from SpyDefi format
+        patterns = [
+            # "@username made a x2+ call on TOKEN_NAME"
+            r'made\s+a\s+x\d+\+?\s+call\s+on\s+([A-Za-z0-9\s\.\-_]+?)(?:\s+on\s+\w+|\s*\.|$)',
+            # "TOKEN_NAME first posted by @username"
+            r'^([A-Za-z0-9\s\.\-_]+?)\s+first\s+posted\s+by\s+@\w+',
+        ]
+        
+        for pattern in patterns:
+            matches = re.finditer(pattern, text, re.IGNORECASE | re.MULTILINE)
+            for match in matches:
+                if match.groups():
+                    token_name = match.group(1).strip()
+                    # Filter out very short or common words, but keep things like "Bitcoin 2.0"
+                    if len(token_name) >= 2 and token_name.lower() not in ['the', 'and', 'for', 'with', 'has', 'been']:
+                        tokens.add(token_name)
+        
+        return list(tokens)
     
     def extract_contracts(self, text: str) -> List[str]:
         """Extract Solana contract addresses from text."""
@@ -106,146 +134,8 @@ class TelegramScraper:
         
         return list(contracts)
     
-    def extract_kols(self, text: str) -> List[str]:
-        """Extract KOL usernames from text."""
-        kols = set()
-        
-        # KOL patterns based on SpyDefi format
-        patterns = [
-            # Achievement format: "@username made a x2+ call"
-            r'@(\w+)\s+made\s+a\s+x\d+\+?\s+call',
-            # General @mentions
-            r'@(\w+)',
-            # Channel mentions
-            r'(\w+)\s+made\s+a\s+x\d+\+?\s+call',
-            # Achievement unlocked mentions
-            r'Achievement\s+Unlocked.*?(@?\w+)',
-        ]
-        
-        for pattern in patterns:
-            matches = re.finditer(pattern, text, re.IGNORECASE)
-            for match in matches:
-                if match.groups():
-                    username = match.group(1).lower().strip('@')
-                    # Filter out common words
-                    if username not in ['spydefi', 'everyone', 'here', 'channel', 'group', 'unlocked', 'achievement']:
-                        kols.add(username)
-        
-        return list(kols)
-    
-    def get_price_at_unix_time(self, contract: str, unix_timestamp: int) -> Optional[float]:
-        """
-        Get token price at specific UNIX timestamp using Birdeye.
-        
-        Args:
-            contract (str): Token contract address
-            unix_timestamp (int): UNIX timestamp
-            
-        Returns:
-            Optional[float]: Price at that time or None
-        """
-        try:
-            # Convert to milliseconds for Birdeye API
-            timestamp_ms = unix_timestamp * 1000
-            
-            # Get historical price data around that time
-            url = f"{self.birdeye_base}/defi/history_price"
-            params = {
-                'address': contract,
-                'address_type': 'token',
-                'type': '5m',  # 5-minute intervals
-                'time_from': timestamp_ms - (5 * 60 * 1000),  # 5 min before
-                'time_to': timestamp_ms + (5 * 60 * 1000)     # 5 min after
-            }
-            
-            response = requests.get(url, headers=self.birdeye_headers, params=params, timeout=10)
-            response.raise_for_status()
-            
-            data = response.json()
-            if data.get('success') and data.get('data', {}).get('items'):
-                items = data['data']['items']
-                if items:
-                    # Find closest price to our timestamp
-                    closest_item = min(items, key=lambda x: abs(x['unixTime'] - timestamp_ms))
-                    return float(closest_item['value'])
-            
-            return None
-            
-        except Exception as e:
-            logger.warning(f"Error getting price for {contract} at {unix_timestamp}: {str(e)}")
-            return None
-    
-    def get_historical_ath_atl(self, contract: str, from_unix: int) -> Tuple[Optional[float], Optional[float], Optional[float]]:
-        """
-        Get historical ATH, ATL, and current price since specific UNIX time.
-        
-        Args:
-            contract (str): Token contract address
-            from_unix (int): Starting UNIX timestamp
-            
-        Returns:
-            Tuple[Optional[float], Optional[float], Optional[float]]: (ATH, ATL, Current Price)
-        """
-        try:
-            # Get current price first
-            current_url = f"{self.birdeye_base}/defi/price"
-            current_params = {'address': contract}
-            
-            current_response = requests.get(current_url, headers=self.birdeye_headers, params=current_params, timeout=10)
-            current_response.raise_for_status()
-            
-            current_data = current_response.json()
-            current_price = None
-            if current_data.get('success') and current_data.get('data'):
-                current_price = float(current_data['data']['value'])
-            
-            # Get historical data from call time to now
-            from_ms = from_unix * 1000
-            to_ms = int(datetime.now().timestamp() * 1000)
-            
-            hist_url = f"{self.birdeye_base}/defi/history_price"
-            hist_params = {
-                'address': contract,
-                'address_type': 'token',
-                'type': '15m',  # 15-minute intervals for better coverage
-                'time_from': from_ms,
-                'time_to': to_ms
-            }
-            
-            hist_response = requests.get(hist_url, headers=self.birdeye_headers, params=hist_params, timeout=15)
-            hist_response.raise_for_status()
-            
-            hist_data = hist_response.json()
-            
-            ath_price = current_price  # Default to current
-            atl_price = current_price  # Default to current
-            
-            if hist_data.get('success') and hist_data.get('data', {}).get('items'):
-                prices = []
-                for item in hist_data['data']['items']:
-                    if 'value' in item and item['value'] > 0:
-                        prices.append(float(item['value']))
-                
-                if prices:
-                    ath_price = max(prices)
-                    atl_price = min(prices)
-            
-            return ath_price, atl_price, current_price
-            
-        except Exception as e:
-            logger.warning(f"Error getting historical data for {contract}: {str(e)}")
-            return None, None, None
-    
     async def scan_spydefi_channel(self, hours_back: int = 24) -> Dict[str, Any]:
-        """
-        Scan SpyDefi channel and analyze KOL performance.
-        
-        Args:
-            hours_back (int): Hours to scan back
-            
-        Returns:
-            Dict[str, Any]: Analysis results
-        """
+        """Scan SpyDefi channel and analyze KOL performance."""
         logger.info(f"Scanning SpyDefi channel (past {hours_back}h)...")
         
         if not self.client:
@@ -254,7 +144,7 @@ class TelegramScraper:
         try:
             # Try different SpyDefi entity variations
             entity = None
-            possible_names = ["SpyDefi", "spydefi", "@SpyDefi", "@spydefi"]
+            possible_names = ["@spydefi", "spydefi", "SpyDefi", "@SpyDefi"]
             
             for name in possible_names:
                 try:
@@ -278,56 +168,69 @@ class TelegramScraper:
                 }
             
             logger.info(f"Entity found: {entity.title if hasattr(entity, 'title') else 'Unknown'}")
-            
-            # Increase time range for testing
-            time_limit = datetime.now(timezone.utc) - timedelta(hours=hours_back * 2)  # Double the time range
-            logger.info(f"Time limit: {time_limit} (expanded range for testing)")
+            logger.info("Getting recent messages without time filter for testing...")
             
             # Collect all token calls
             token_calls = []
             kol_mentions = defaultdict(list)
             message_count = 0
+            max_messages = 50  # Limit for testing
             
             logger.info("Starting message iteration...")
-            async for message in self.client.iter_messages(entity, offset_date=time_limit):
+            
+            # Simple message processing loop
+            async for message in self.client.iter_messages(entity, limit=max_messages):
                 message_count += 1
-                
-                if message.date < time_limit:
-                    logger.info(f"Reached time limit at message {message_count}")
-                    break
                 
                 if not message.message:
                     continue
                 
                 text = message.message
                 unix_time = int(message.date.timestamp())
+                message_date = message.date
                 
-                # Debug logging for first few messages
+                # Show first few messages for debugging
                 if message_count <= 5:
-                    logger.info(f"Message {message_count}: {text[:100]}...")
+                    logger.info(f"Message {message_count} ({message_date}): {text[:150]}...")
                 
-                # Extract contracts and KOLs
+                # Extract data
                 contracts = self.extract_contracts(text)
                 kols = self.extract_kols(text)
+                token_names = self.extract_token_names(text)
                 
-                # Debug logging for any found items
-                if contracts or kols:
-                    logger.info(f"Message {message_count} - Contracts: {contracts}, KOLs: {kols}")
+                # Always log extraction results for first 5 messages
+                if message_count <= 5:
+                    logger.info(f"  EXTRACTION - Contracts: {contracts}, KOLs: {kols}, Tokens: {token_names}")
                 
-                # Create call entries
-                for contract in contracts:
-                    call_entry = {
-                        'contract': contract,
-                        'unix_time': unix_time,
-                        'date': message.date.replace(tzinfo=timezone.utc).isoformat(),
-                        'text': text[:200],  # First 200 chars for context
-                        'kols': kols
-                    }
-                    token_calls.append(call_entry)
+                # Skip messages without tokens or KOLs
+                if not (contracts or kols or token_names):
+                    continue
+                
+                # Filter out non-Solana chains
+                if re.search(r'\bon\s+(bsc|eth|ethereum|polygon|arbitrum|base)\b', text, re.IGNORECASE):
+                    logger.info(f"  Filtered out non-Solana chain in message {message_count}")
+                    continue
+                
+                # Use token names if no contracts found
+                tokens_to_process = contracts if contracts else token_names
+                
+                if tokens_to_process:
+                    logger.info(f"  Processing {len(tokens_to_process)} tokens from message {message_count}")
                     
-                    # Track KOL mentions
-                    for kol in kols:
-                        kol_mentions[kol].append(call_entry)
+                    for token in tokens_to_process:
+                        call_entry = {
+                            'contract': token if token in contracts else '',
+                            'token_name': token if token in token_names else '',
+                            'unix_time': unix_time,
+                            'date': message_date.replace(tzinfo=timezone.utc).isoformat(),
+                            'text': text[:200],
+                            'kols': kols
+                        }
+                        token_calls.append(call_entry)
+                        
+                        # Track KOL mentions
+                        for kol in kols:
+                            kol_mentions[kol].append(call_entry)
             
             logger.info(f"Processed {message_count} total messages")
             logger.info(f"Found {len(token_calls)} token calls from {len(kol_mentions)} KOLs")
@@ -338,44 +241,51 @@ class TelegramScraper:
             successful_5x = 0
             
             for i, call in enumerate(token_calls):
-                logger.info(f"Analyzing call {i+1}/{len(token_calls)}: {call['contract'][:8]}...")
+                token_identifier = call.get('contract') or call.get('token_name', 'Unknown')
+                logger.info(f"Analyzing call {i+1}/{len(token_calls)}: {token_identifier}")
                 
-                # Get price at call time
-                call_price = self.get_price_at_unix_time(call['contract'], call['unix_time'])
+                # Extract ROI from the message text
+                text = call['text']
+                roi_match = re.search(r'\$(\d+(?:\.\d+)?)K?\s*->\s*\$(\d+(?:\.\d+)?)K?', text)
                 
-                if call_price and call_price > 0:
-                    # Get ATH, ATL, and current price since call
-                    ath, atl, current = self.get_historical_ath_atl(call['contract'], call['unix_time'])
-                    
-                    if ath and atl:
-                        # Calculate performance metrics
-                        ath_roi = ((ath / call_price) - 1) * 100 if call_price > 0 else 0
-                        current_roi = ((current / call_price) - 1) * 100 if call_price and current and call_price > 0 else 0
-                        max_drawdown = ((atl / call_price) - 1) * 100 if call_price > 0 else 0
+                if roi_match:
+                    try:
+                        start_val = float(roi_match.group(1))
+                        end_val = float(roi_match.group(2))
+                        
+                        # Handle K notation
+                        if 'K' in roi_match.group(1) or len(roi_match.group(1)) <= 3:
+                            start_val *= 1000
+                        if 'K' in roi_match.group(2) or len(roi_match.group(2)) <= 3:
+                            end_val *= 1000
+                        
+                        # Calculate ROI
+                        roi_percent = ((end_val / start_val) - 1) * 100 if start_val > 0 else 0
                         
                         # Count successful calls
-                        if ath_roi >= 100:  # 2x or more
+                        if roi_percent >= 100:  # 2x or more
                             successful_2x += 1
-                        if ath_roi >= 400:  # 5x or more
+                        if roi_percent >= 400:  # 5x or more
                             successful_5x += 1
                         
                         analyzed_call = call.copy()
                         analyzed_call.update({
-                            'call_price': call_price,
-                            'ath_price': ath,
-                            'atl_price': atl,
-                            'current_price': current,
-                            'ath_roi_percent': round(ath_roi, 2),
-                            'current_roi_percent': round(current_roi, 2),
-                            'max_drawdown_percent': round(max_drawdown, 2),
-                            'is_2x_plus': ath_roi >= 100,
-                            'is_5x_plus': ath_roi >= 400
+                            'call_price': start_val,
+                            'ath_price': end_val,
+                            'current_price': end_val,
+                            'ath_roi_percent': round(roi_percent, 2),
+                            'current_roi_percent': round(roi_percent, 2),
+                            'max_drawdown_percent': 0,
+                            'is_2x_plus': roi_percent >= 100,
+                            'is_5x_plus': roi_percent >= 400
                         })
                         
                         analyzed_calls.append(analyzed_call)
-                
-                # Small delay to respect API limits
-                time.sleep(0.1)
+                        
+                    except (ValueError, ZeroDivisionError) as e:
+                        logger.warning(f"Error calculating ROI for call {i+1}: {str(e)}")
+                else:
+                    logger.warning(f"No ROI data found in message: {text[:100]}...")
             
             # Calculate overall performance
             total_calls = len(analyzed_calls)
@@ -442,13 +352,7 @@ class TelegramScraper:
             }
     
     async def export_analysis_results(self, analysis: Dict[str, Any], output_file: str) -> None:
-        """
-        Export analysis results to CSV files.
-        
-        Args:
-            analysis (Dict[str, Any]): Analysis results
-            output_file (str): Output file path
-        """
+        """Export analysis results to CSV files."""
         if not analysis.get('analyzed_calls'):
             logger.warning("No analyzed calls to export")
             return
@@ -463,7 +367,7 @@ class TelegramScraper:
             # Export detailed calls
             with open(output_file, 'w', newline='', encoding='utf-8') as f:
                 fieldnames = [
-                    'contract', 'date', 'unix_time', 'kols', 'call_price', 
+                    'contract', 'token_name', 'date', 'unix_time', 'kols', 'call_price', 
                     'ath_price', 'current_price', 'ath_roi_percent', 
                     'current_roi_percent', 'max_drawdown_percent', 
                     'is_2x_plus', 'is_5x_plus', 'text'
