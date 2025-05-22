@@ -13438,3 +13438,1775 @@ PikachuGTAVITru... first posted by @oliversafucalls has since...
 2025-05-21 22:26:46,058 - phoenix.export - ERROR - Error creating Excel export: 'str' object has no attribute 'get'
 2025-05-21 22:26:46,058 - phoenix - ERROR - Error exporting to Excel: 'str' object has no attribute 'get'
 2025-05-21 22:28:23,224 - phoenix - ERROR - Error in menu: 'PhoenixCLI' object has no attribute '_interactive_wallet_analysis'
+2025-05-21 22:37:52,661 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-21 22:37:52,662 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-21 22:37:53,211 - phoenix - INFO - Analyzing SpyDefi channel for the past 1 day(s).
+2025-05-21 22:37:53,212 - phoenix - INFO - Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.csv
+2025-05-21 22:37:53,212 - phoenix - INFO - SpyDefi channel detected. Analyzing KOLs from SpyDefi.
+2025-05-21 22:37:53,213 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-21 22:37:53,216 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-21 22:37:53,350 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-21 22:37:54,223 - phoenix.telegram - INFO - Connected to Telegram
+2025-05-21 22:37:54,224 - phoenix.telegram - INFO - Scraping SpyDefi channel spydefi for KOL mentions
+2025-05-21 22:37:54,224 - phoenix.telegram - INFO - Scanning SpyDefi channel (past 24h)...
+2025-05-21 22:37:54,224 - phoenix.telegram - INFO - Trying to get entity: @spydefi
+2025-05-21 22:37:54,372 - phoenix.telegram - INFO - Successfully found entity: @spydefi
+2025-05-21 22:37:54,372 - phoenix.telegram - INFO - Entity found: SpyDefi
+2025-05-21 22:37:54,373 - phoenix.telegram - INFO - Starting message iteration...
+2025-05-21 22:37:54,697 - phoenix.telegram - INFO - Message 1 (2025-05-22 05:37:23+00:00): 🟣 Achievement Unlocked: x20! 🤘
+
+@Vortex_Gamble made a x20+ call on unstable coin. 
+
+$193K -> $3.9M
+
+👁View Call 📊View Stats
+
+🔥 TRENDING #2🔸
+USD1DOGE - ...
+2025-05-21 22:37:54,701 - phoenix.telegram - INFO -   EXTRACTION - Contracts: [], KOLs: ['vortex_gamble'], Tokens: ['unstable coin']
+2025-05-21 22:37:54,702 - phoenix.telegram - INFO -   Processing 1 tokens from message 1
+2025-05-21 22:37:54,702 - phoenix.telegram - INFO - Message 2 (2025-05-22 05:37:13+00:00): 🟣 Achievement Unlocked: x4! 🖖
+
+@Milagrosdegencalls made a x4+ call on I am Him . 
+
+$75K -> $328K
+
+👁View Call 📊View Stats
+
+🔥 TRENDING #1🔸
+MERL - Green ...
+2025-05-21 22:37:54,702 - phoenix.telegram - INFO -   EXTRACTION - Contracts: [], KOLs: ['milagrosdegencalls'], Tokens: ['I am Him']
+2025-05-21 22:37:54,703 - phoenix.telegram - INFO -   Processing 1 tokens from message 2
+2025-05-21 22:37:54,703 - phoenix.telegram - INFO - Message 3 (2025-05-22 05:37:13+00:00): 🟣 Achievement Unlocked: x5! 👋
+
+@manifestingriches made a x5+ call on I am Him . 
+
+$65K -> $328K
+
+👁View Call 📊View Stats
+
+🔥 TRENDING #2🪙
+LC SHIB - SHIB...
+2025-05-21 22:37:54,703 - phoenix.telegram - INFO -   EXTRACTION - Contracts: [], KOLs: ['manifestingriches'], Tokens: ['I am Him']
+2025-05-21 22:37:54,704 - phoenix.telegram - INFO -   Processing 1 tokens from message 3
+2025-05-21 22:37:54,704 - phoenix.telegram - INFO - Message 4 (2025-05-22 05:37:13+00:00): 🟣 Achievement Unlocked: x7! 
+
+@SirWilliams_Call made a x7+ call on I am Him . 
+
+$46K -> $328K
+
+👁View Call 📊View Stats
+
+🔥 TRENDING #1🪙
+BOTIFY - Botify ...
+2025-05-21 22:37:54,704 - phoenix.telegram - INFO -   EXTRACTION - Contracts: [], KOLs: ['sirwilliams_call'], Tokens: ['I am Him']
+2025-05-21 22:37:54,705 - phoenix.telegram - INFO -   Processing 1 tokens from message 4
+2025-05-21 22:37:54,705 - phoenix.telegram - INFO - Message 5 (2025-05-22 05:37:13+00:00): 🟣 Achievement Unlocked: x5! 👋
+
+@jacob1_community made a x5+ call on I am Him . 
+
+$62K -> $328K
+
+👁View Call 📊View Stats
+
+🔥 TRENDING #2🔵
+Sui (Universa.....
+2025-05-21 22:37:54,705 - phoenix.telegram - INFO -   EXTRACTION - Contracts: [], KOLs: ['jacob1_community'], Tokens: ['I am Him']
+2025-05-21 22:37:54,706 - phoenix.telegram - INFO -   Processing 1 tokens from message 5
+2025-05-21 22:37:54,706 - phoenix.telegram - INFO -   Processing 1 tokens from message 6
+2025-05-21 22:37:54,706 - phoenix.telegram - INFO -   Processing 1 tokens from message 7
+2025-05-21 22:37:54,709 - phoenix.telegram - INFO -   Processing 1 tokens from message 8
+2025-05-21 22:37:54,709 - phoenix.telegram - INFO -   Processing 1 tokens from message 9
+2025-05-21 22:37:54,710 - phoenix.telegram - INFO -   Processing 1 tokens from message 11
+2025-05-21 22:37:54,710 - phoenix.telegram - INFO -   Processing 1 tokens from message 12
+2025-05-21 22:37:54,710 - phoenix.telegram - INFO -   Processing 1 tokens from message 13
+2025-05-21 22:37:54,711 - phoenix.telegram - INFO -   Processing 1 tokens from message 14
+2025-05-21 22:37:54,711 - phoenix.telegram - INFO -   Processing 1 tokens from message 15
+2025-05-21 22:37:54,711 - phoenix.telegram - INFO -   Processing 1 tokens from message 16
+2025-05-21 22:37:54,711 - phoenix.telegram - INFO -   Processing 1 tokens from message 17
+2025-05-21 22:37:54,712 - phoenix.telegram - INFO -   Processing 1 tokens from message 18
+2025-05-21 22:37:54,712 - phoenix.telegram - INFO -   Processing 1 tokens from message 19
+2025-05-21 22:37:54,712 - phoenix.telegram - INFO -   Processing 1 tokens from message 20
+2025-05-21 22:37:54,712 - phoenix.telegram - INFO -   Processing 1 tokens from message 22
+2025-05-21 22:37:54,713 - phoenix.telegram - INFO -   Processing 1 tokens from message 24
+2025-05-21 22:37:54,713 - phoenix.telegram - INFO -   Processing 1 tokens from message 25
+2025-05-21 22:37:54,713 - phoenix.telegram - INFO -   Processing 1 tokens from message 26
+2025-05-21 22:37:54,714 - phoenix.telegram - INFO -   Processing 1 tokens from message 29
+2025-05-21 22:37:54,714 - phoenix.telegram - INFO -   Processing 1 tokens from message 30
+2025-05-21 22:37:54,715 - phoenix.telegram - INFO -   Processing 1 tokens from message 31
+2025-05-21 22:37:54,715 - phoenix.telegram - INFO -   Processing 1 tokens from message 32
+2025-05-21 22:37:54,715 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 33
+2025-05-21 22:37:54,716 - phoenix.telegram - INFO -   Processing 1 tokens from message 36
+2025-05-21 22:37:54,716 - phoenix.telegram - INFO -   Processing 1 tokens from message 38
+2025-05-21 22:37:54,716 - phoenix.telegram - INFO -   Processing 1 tokens from message 39
+2025-05-21 22:37:54,717 - phoenix.telegram - INFO -   Processing 1 tokens from message 40
+2025-05-21 22:37:54,717 - phoenix.telegram - INFO -   Processing 1 tokens from message 41
+2025-05-21 22:37:54,718 - phoenix.telegram - INFO -   Processing 1 tokens from message 43
+2025-05-21 22:37:54,719 - phoenix.telegram - INFO -   Processing 1 tokens from message 44
+2025-05-21 22:37:54,720 - phoenix.telegram - INFO -   Processing 1 tokens from message 45
+2025-05-21 22:37:54,720 - phoenix.telegram - INFO -   Processing 1 tokens from message 49
+2025-05-21 22:37:54,721 - phoenix.telegram - INFO -   Processing 1 tokens from message 50
+2025-05-21 22:37:54,721 - phoenix.telegram - INFO -   Processing 1 tokens from message 51
+2025-05-21 22:37:54,721 - phoenix.telegram - INFO -   Processing 1 tokens from message 52
+2025-05-21 22:37:54,722 - phoenix.telegram - INFO -   Processing 1 tokens from message 53
+2025-05-21 22:37:54,722 - phoenix.telegram - INFO -   Processing 1 tokens from message 55
+2025-05-21 22:37:54,722 - phoenix.telegram - INFO -   Processing 1 tokens from message 56
+2025-05-21 22:37:54,723 - phoenix.telegram - INFO -   Processing 1 tokens from message 58
+2025-05-21 22:37:54,723 - phoenix.telegram - INFO -   Processing 1 tokens from message 59
+2025-05-21 22:37:54,723 - phoenix.telegram - INFO -   Processing 1 tokens from message 60
+2025-05-21 22:37:54,724 - phoenix.telegram - INFO -   Processing 1 tokens from message 61
+2025-05-21 22:37:54,724 - phoenix.telegram - INFO -   Processing 1 tokens from message 62
+2025-05-21 22:37:54,724 - phoenix.telegram - INFO -   Processing 1 tokens from message 63
+2025-05-21 22:37:54,725 - phoenix.telegram - INFO -   Processing 1 tokens from message 64
+2025-05-21 22:37:54,725 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 65
+2025-05-21 22:37:54,725 - phoenix.telegram - INFO -   Processing 1 tokens from message 66
+2025-05-21 22:37:54,726 - phoenix.telegram - INFO -   Processing 1 tokens from message 67
+2025-05-21 22:37:54,726 - phoenix.telegram - INFO -   Processing 1 tokens from message 68
+2025-05-21 22:37:54,727 - phoenix.telegram - INFO -   Processing 1 tokens from message 69
+2025-05-21 22:37:54,727 - phoenix.telegram - INFO -   Processing 1 tokens from message 70
+2025-05-21 22:37:54,727 - phoenix.telegram - INFO -   Processing 1 tokens from message 71
+2025-05-21 22:37:54,728 - phoenix.telegram - INFO -   Processing 1 tokens from message 72
+2025-05-21 22:37:54,729 - phoenix.telegram - INFO -   Processing 1 tokens from message 73
+2025-05-21 22:37:54,730 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 74
+2025-05-21 22:37:54,730 - phoenix.telegram - INFO -   Processing 1 tokens from message 75
+2025-05-21 22:37:54,730 - phoenix.telegram - INFO -   Processing 1 tokens from message 76
+2025-05-21 22:37:54,730 - phoenix.telegram - INFO -   Processing 1 tokens from message 77
+2025-05-21 22:37:54,731 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 80
+2025-05-21 22:37:54,731 - phoenix.telegram - INFO -   Processing 1 tokens from message 81
+2025-05-21 22:37:54,731 - phoenix.telegram - INFO -   Processing 1 tokens from message 82
+2025-05-21 22:37:54,732 - phoenix.telegram - INFO -   Processing 1 tokens from message 83
+2025-05-21 22:37:54,732 - phoenix.telegram - INFO -   Processing 1 tokens from message 84
+2025-05-21 22:37:54,732 - phoenix.telegram - INFO -   Processing 1 tokens from message 85
+2025-05-21 22:37:54,733 - phoenix.telegram - INFO -   Processing 1 tokens from message 87
+2025-05-21 22:37:54,733 - phoenix.telegram - INFO -   Processing 1 tokens from message 88
+2025-05-21 22:37:54,734 - phoenix.telegram - INFO -   Processing 1 tokens from message 89
+2025-05-21 22:37:54,734 - phoenix.telegram - INFO -   Processing 1 tokens from message 90
+2025-05-21 22:37:54,734 - phoenix.telegram - INFO -   Processing 1 tokens from message 91
+2025-05-21 22:37:54,735 - phoenix.telegram - INFO -   Processing 1 tokens from message 93
+2025-05-21 22:37:54,735 - phoenix.telegram - INFO -   Processing 1 tokens from message 94
+2025-05-21 22:37:54,735 - phoenix.telegram - INFO -   Processing 1 tokens from message 95
+2025-05-21 22:37:54,736 - phoenix.telegram - INFO -   Processing 1 tokens from message 97
+2025-05-21 22:37:54,736 - phoenix.telegram - INFO -   Processing 1 tokens from message 98
+2025-05-21 22:37:54,736 - phoenix.telegram - INFO -   Processing 1 tokens from message 99
+2025-05-21 22:37:54,737 - phoenix.telegram - INFO -   Processing 1 tokens from message 100
+2025-05-21 22:37:55,073 - phoenix.telegram - INFO -   Processing 1 tokens from message 101
+2025-05-21 22:37:55,073 - phoenix.telegram - INFO -   Processing 1 tokens from message 102
+2025-05-21 22:37:55,074 - phoenix.telegram - INFO -   Processing 1 tokens from message 103
+2025-05-21 22:37:55,074 - phoenix.telegram - INFO -   Processing 1 tokens from message 104
+2025-05-21 22:37:55,075 - phoenix.telegram - INFO -   Processing 1 tokens from message 105
+2025-05-21 22:37:55,075 - phoenix.telegram - INFO -   Processing 1 tokens from message 106
+2025-05-21 22:37:55,075 - phoenix.telegram - INFO -   Processing 1 tokens from message 107
+2025-05-21 22:37:55,075 - phoenix.telegram - INFO -   Processing 1 tokens from message 109
+2025-05-21 22:37:55,076 - phoenix.telegram - INFO -   Processing 1 tokens from message 111
+2025-05-21 22:37:55,076 - phoenix.telegram - INFO -   Processing 1 tokens from message 112
+2025-05-21 22:37:55,076 - phoenix.telegram - INFO -   Processing 1 tokens from message 113
+2025-05-21 22:37:55,077 - phoenix.telegram - INFO -   Processing 1 tokens from message 114
+2025-05-21 22:37:55,077 - phoenix.telegram - INFO -   Processing 1 tokens from message 116
+2025-05-21 22:37:55,077 - phoenix.telegram - INFO -   Processing 1 tokens from message 117
+2025-05-21 22:37:55,078 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 118
+2025-05-21 22:37:55,078 - phoenix.telegram - INFO -   Processing 1 tokens from message 119
+2025-05-21 22:37:55,079 - phoenix.telegram - INFO -   Processing 1 tokens from message 120
+2025-05-21 22:37:55,079 - phoenix.telegram - INFO -   Processing 1 tokens from message 122
+2025-05-21 22:37:55,079 - phoenix.telegram - INFO -   Processing 1 tokens from message 123
+2025-05-21 22:37:55,080 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 124
+2025-05-21 22:37:55,080 - phoenix.telegram - INFO -   Processing 1 tokens from message 125
+2025-05-21 22:37:55,080 - phoenix.telegram - INFO -   Processing 1 tokens from message 126
+2025-05-21 22:37:55,081 - phoenix.telegram - INFO -   Processing 1 tokens from message 128
+2025-05-21 22:37:55,081 - phoenix.telegram - INFO -   Processing 1 tokens from message 129
+2025-05-21 22:37:55,082 - phoenix.telegram - INFO -   Processing 1 tokens from message 132
+2025-05-21 22:37:55,082 - phoenix.telegram - INFO -   Processing 1 tokens from message 133
+2025-05-21 22:37:55,082 - phoenix.telegram - INFO -   Processing 1 tokens from message 134
+2025-05-21 22:37:55,083 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 135
+2025-05-21 22:37:55,084 - phoenix.telegram - INFO -   Processing 1 tokens from message 136
+2025-05-21 22:37:55,085 - phoenix.telegram - INFO -   Processing 1 tokens from message 137
+2025-05-21 22:37:55,085 - phoenix.telegram - INFO -   Processing 1 tokens from message 138
+2025-05-21 22:37:55,085 - phoenix.telegram - INFO -   Processing 1 tokens from message 140
+2025-05-21 22:37:55,085 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 141
+2025-05-21 22:37:55,086 - phoenix.telegram - INFO -   Processing 1 tokens from message 144
+2025-05-21 22:37:55,086 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 145
+2025-05-21 22:37:55,086 - phoenix.telegram - INFO -   Processing 1 tokens from message 146
+2025-05-21 22:37:55,086 - phoenix.telegram - INFO -   Processing 1 tokens from message 147
+2025-05-21 22:37:55,087 - phoenix.telegram - INFO -   Processing 1 tokens from message 148
+2025-05-21 22:37:55,087 - phoenix.telegram - INFO -   Processing 1 tokens from message 149
+2025-05-21 22:37:55,087 - phoenix.telegram - INFO -   Processing 1 tokens from message 150
+2025-05-21 22:37:55,088 - phoenix.telegram - INFO -   Processing 1 tokens from message 152
+2025-05-21 22:37:55,088 - phoenix.telegram - INFO -   Processing 1 tokens from message 153
+2025-05-21 22:37:55,088 - phoenix.telegram - INFO -   Processing 1 tokens from message 154
+2025-05-21 22:37:55,089 - phoenix.telegram - INFO -   Processing 1 tokens from message 157
+2025-05-21 22:37:55,089 - phoenix.telegram - INFO -   Processing 1 tokens from message 158
+2025-05-21 22:37:55,089 - phoenix.telegram - INFO -   Processing 1 tokens from message 159
+2025-05-21 22:37:55,090 - phoenix.telegram - INFO -   Processing 1 tokens from message 160
+2025-05-21 22:37:55,090 - phoenix.telegram - INFO -   Processing 1 tokens from message 161
+2025-05-21 22:37:55,090 - phoenix.telegram - INFO -   Processing 1 tokens from message 162
+2025-05-21 22:37:55,091 - phoenix.telegram - INFO -   Processing 1 tokens from message 164
+2025-05-21 22:37:55,091 - phoenix.telegram - INFO -   Processing 1 tokens from message 165
+2025-05-21 22:37:55,092 - phoenix.telegram - INFO -   Processing 1 tokens from message 166
+2025-05-21 22:37:55,092 - phoenix.telegram - INFO -   Processing 1 tokens from message 168
+2025-05-21 22:37:55,092 - phoenix.telegram - INFO -   Processing 1 tokens from message 171
+2025-05-21 22:37:55,094 - phoenix.telegram - INFO -   Processing 1 tokens from message 172
+2025-05-21 22:37:55,094 - phoenix.telegram - INFO -   Processing 1 tokens from message 173
+2025-05-21 22:37:55,095 - phoenix.telegram - INFO -   Processing 1 tokens from message 174
+2025-05-21 22:37:55,095 - phoenix.telegram - INFO -   Processing 1 tokens from message 175
+2025-05-21 22:37:55,095 - phoenix.telegram - INFO -   Processing 1 tokens from message 178
+2025-05-21 22:37:55,096 - phoenix.telegram - INFO -   Processing 1 tokens from message 179
+2025-05-21 22:37:55,096 - phoenix.telegram - INFO -   Processing 1 tokens from message 180
+2025-05-21 22:37:55,096 - phoenix.telegram - INFO -   Processing 1 tokens from message 181
+2025-05-21 22:37:55,097 - phoenix.telegram - INFO -   Processing 1 tokens from message 182
+2025-05-21 22:37:55,097 - phoenix.telegram - INFO -   Processing 1 tokens from message 183
+2025-05-21 22:37:55,097 - phoenix.telegram - INFO -   Processing 1 tokens from message 184
+2025-05-21 22:37:55,098 - phoenix.telegram - INFO -   Processing 1 tokens from message 185
+2025-05-21 22:37:55,098 - phoenix.telegram - INFO -   Processing 1 tokens from message 186
+2025-05-21 22:37:55,098 - phoenix.telegram - INFO -   Processing 1 tokens from message 187
+2025-05-21 22:37:55,099 - phoenix.telegram - INFO -   Processing 1 tokens from message 190
+2025-05-21 22:37:55,099 - phoenix.telegram - INFO -   Processing 1 tokens from message 191
+2025-05-21 22:37:55,099 - phoenix.telegram - INFO -   Processing 1 tokens from message 192
+2025-05-21 22:37:55,100 - phoenix.telegram - INFO -   Processing 1 tokens from message 197
+2025-05-21 22:37:55,100 - phoenix.telegram - INFO -   Processing 1 tokens from message 199
+2025-05-21 22:37:55,101 - phoenix.telegram - INFO -   Processing 1 tokens from message 200
+2025-05-21 22:37:55,421 - phoenix.telegram - INFO -   Processing 1 tokens from message 201
+2025-05-21 22:37:55,421 - phoenix.telegram - INFO -   Processing 1 tokens from message 202
+2025-05-21 22:37:55,422 - phoenix.telegram - INFO -   Processing 1 tokens from message 203
+2025-05-21 22:37:55,423 - phoenix.telegram - INFO -   Processing 1 tokens from message 205
+2025-05-21 22:37:55,423 - phoenix.telegram - INFO -   Processing 1 tokens from message 207
+2025-05-21 22:37:55,423 - phoenix.telegram - INFO -   Processing 1 tokens from message 208
+2025-05-21 22:37:55,424 - phoenix.telegram - INFO -   Processing 1 tokens from message 209
+2025-05-21 22:37:55,424 - phoenix.telegram - INFO -   Processing 1 tokens from message 210
+2025-05-21 22:37:55,424 - phoenix.telegram - INFO -   Processing 1 tokens from message 211
+2025-05-21 22:37:55,425 - phoenix.telegram - INFO -   Processing 1 tokens from message 212
+2025-05-21 22:37:55,425 - phoenix.telegram - INFO -   Processing 1 tokens from message 213
+2025-05-21 22:37:55,425 - phoenix.telegram - INFO -   Processing 1 tokens from message 214
+2025-05-21 22:37:55,426 - phoenix.telegram - INFO -   Processing 1 tokens from message 215
+2025-05-21 22:37:55,426 - phoenix.telegram - INFO -   Processing 1 tokens from message 216
+2025-05-21 22:37:55,426 - phoenix.telegram - INFO -   Processing 1 tokens from message 217
+2025-05-21 22:37:55,427 - phoenix.telegram - INFO -   Processing 1 tokens from message 218
+2025-05-21 22:37:55,427 - phoenix.telegram - INFO -   Processing 1 tokens from message 219
+2025-05-21 22:37:55,428 - phoenix.telegram - INFO -   Processing 1 tokens from message 220
+2025-05-21 22:37:55,428 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 223
+2025-05-21 22:37:55,428 - phoenix.telegram - INFO -   Processing 1 tokens from message 225
+2025-05-21 22:37:55,429 - phoenix.telegram - INFO -   Processing 1 tokens from message 226
+2025-05-21 22:37:55,429 - phoenix.telegram - INFO -   Processing 1 tokens from message 227
+2025-05-21 22:37:55,429 - phoenix.telegram - INFO -   Processing 1 tokens from message 228
+2025-05-21 22:37:55,430 - phoenix.telegram - INFO -   Processing 1 tokens from message 229
+2025-05-21 22:37:55,431 - phoenix.telegram - INFO -   Processing 1 tokens from message 230
+2025-05-21 22:37:55,431 - phoenix.telegram - INFO -   Processing 1 tokens from message 231
+2025-05-21 22:37:55,432 - phoenix.telegram - INFO -   Processing 1 tokens from message 234
+2025-05-21 22:37:55,432 - phoenix.telegram - INFO -   Processing 1 tokens from message 235
+2025-05-21 22:37:55,432 - phoenix.telegram - INFO -   Processing 1 tokens from message 236
+2025-05-21 22:37:55,433 - phoenix.telegram - INFO -   Processing 1 tokens from message 237
+2025-05-21 22:37:55,433 - phoenix.telegram - INFO -   Processing 1 tokens from message 238
+2025-05-21 22:37:55,433 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 239
+2025-05-21 22:37:55,434 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 240
+2025-05-21 22:37:55,434 - phoenix.telegram - INFO -   Processing 1 tokens from message 241
+2025-05-21 22:37:55,435 - phoenix.telegram - INFO -   Processing 1 tokens from message 243
+2025-05-21 22:37:55,435 - phoenix.telegram - INFO -   Processing 1 tokens from message 245
+2025-05-21 22:37:55,435 - phoenix.telegram - INFO -   Processing 1 tokens from message 246
+2025-05-21 22:37:55,436 - phoenix.telegram - INFO -   Processing 1 tokens from message 248
+2025-05-21 22:37:55,436 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 249
+2025-05-21 22:37:55,436 - phoenix.telegram - INFO -   Processing 1 tokens from message 251
+2025-05-21 22:37:55,437 - phoenix.telegram - INFO -   Processing 1 tokens from message 252
+2025-05-21 22:37:55,437 - phoenix.telegram - INFO -   Processing 1 tokens from message 253
+2025-05-21 22:37:55,437 - phoenix.telegram - INFO -   Processing 1 tokens from message 254
+2025-05-21 22:37:55,438 - phoenix.telegram - INFO -   Processing 1 tokens from message 255
+2025-05-21 22:37:55,438 - phoenix.telegram - INFO -   Processing 1 tokens from message 256
+2025-05-21 22:37:55,438 - phoenix.telegram - INFO -   Processing 1 tokens from message 258
+2025-05-21 22:37:55,439 - phoenix.telegram - INFO -   Processing 1 tokens from message 259
+2025-05-21 22:37:55,439 - phoenix.telegram - INFO -   Processing 1 tokens from message 260
+2025-05-21 22:37:55,439 - phoenix.telegram - INFO -   Processing 1 tokens from message 261
+2025-05-21 22:37:55,439 - phoenix.telegram - INFO -   Processing 1 tokens from message 262
+2025-05-21 22:37:55,441 - phoenix.telegram - INFO -   Processing 1 tokens from message 264
+2025-05-21 22:37:55,442 - phoenix.telegram - INFO -   Processing 1 tokens from message 265
+2025-05-21 22:37:55,442 - phoenix.telegram - INFO -   Processing 1 tokens from message 266
+2025-05-21 22:37:55,442 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 267
+2025-05-21 22:37:55,443 - phoenix.telegram - INFO -   Processing 1 tokens from message 268
+2025-05-21 22:37:55,443 - phoenix.telegram - INFO -   Processing 1 tokens from message 270
+2025-05-21 22:37:55,443 - phoenix.telegram - INFO -   Processing 1 tokens from message 271
+2025-05-21 22:37:55,444 - phoenix.telegram - INFO -   Processing 1 tokens from message 272
+2025-05-21 22:37:55,444 - phoenix.telegram - INFO -   Processing 1 tokens from message 273
+2025-05-21 22:37:55,444 - phoenix.telegram - INFO -   Processing 1 tokens from message 274
+2025-05-21 22:37:55,445 - phoenix.telegram - INFO -   Processing 1 tokens from message 275
+2025-05-21 22:37:55,445 - phoenix.telegram - INFO -   Processing 1 tokens from message 277
+2025-05-21 22:37:55,446 - phoenix.telegram - INFO -   Processing 1 tokens from message 280
+2025-05-21 22:37:55,446 - phoenix.telegram - INFO -   Processing 1 tokens from message 282
+2025-05-21 22:37:55,446 - phoenix.telegram - INFO -   Processing 1 tokens from message 283
+2025-05-21 22:37:55,447 - phoenix.telegram - INFO -   Processing 1 tokens from message 284
+2025-05-21 22:37:55,447 - phoenix.telegram - INFO -   Processing 1 tokens from message 285
+2025-05-21 22:37:55,447 - phoenix.telegram - INFO -   Processing 1 tokens from message 286
+2025-05-21 22:37:55,448 - phoenix.telegram - INFO -   Processing 1 tokens from message 290
+2025-05-21 22:37:55,448 - phoenix.telegram - INFO -   Processing 1 tokens from message 291
+2025-05-21 22:37:55,448 - phoenix.telegram - INFO -   Processing 1 tokens from message 292
+2025-05-21 22:37:55,449 - phoenix.telegram - INFO -   Processing 1 tokens from message 293
+2025-05-21 22:37:55,449 - phoenix.telegram - INFO -   Processing 1 tokens from message 294
+2025-05-21 22:37:55,449 - phoenix.telegram - INFO -   Processing 1 tokens from message 295
+2025-05-21 22:37:55,451 - phoenix.telegram - INFO -   Processing 1 tokens from message 296
+2025-05-21 22:37:55,451 - phoenix.telegram - INFO -   Processing 1 tokens from message 297
+2025-05-21 22:37:55,452 - phoenix.telegram - INFO -   Processing 1 tokens from message 298
+2025-05-21 22:37:55,452 - phoenix.telegram - INFO -   Processing 1 tokens from message 299
+2025-05-21 22:37:55,452 - phoenix.telegram - INFO -   Processing 1 tokens from message 300
+2025-05-21 22:37:55,755 - phoenix.telegram - INFO -   Processing 1 tokens from message 301
+2025-05-21 22:37:55,755 - phoenix.telegram - INFO -   Processing 1 tokens from message 302
+2025-05-21 22:37:55,756 - phoenix.telegram - INFO -   Processing 1 tokens from message 303
+2025-05-21 22:37:55,756 - phoenix.telegram - INFO -   Processing 1 tokens from message 304
+2025-05-21 22:37:55,757 - phoenix.telegram - INFO -   Processing 1 tokens from message 305
+2025-05-21 22:37:55,757 - phoenix.telegram - INFO -   Processing 1 tokens from message 306
+2025-05-21 22:37:55,757 - phoenix.telegram - INFO -   Processing 1 tokens from message 307
+2025-05-21 22:37:55,758 - phoenix.telegram - INFO -   Processing 1 tokens from message 308
+2025-05-21 22:37:55,758 - phoenix.telegram - INFO -   Processing 1 tokens from message 309
+2025-05-21 22:37:55,758 - phoenix.telegram - INFO -   Processing 1 tokens from message 310
+2025-05-21 22:37:55,758 - phoenix.telegram - INFO -   Processing 1 tokens from message 311
+2025-05-21 22:37:55,759 - phoenix.telegram - INFO -   Processing 1 tokens from message 312
+2025-05-21 22:37:55,759 - phoenix.telegram - INFO -   Processing 1 tokens from message 313
+2025-05-21 22:37:55,759 - phoenix.telegram - INFO -   Processing 1 tokens from message 314
+2025-05-21 22:37:55,759 - phoenix.telegram - INFO -   Processing 1 tokens from message 316
+2025-05-21 22:37:55,760 - phoenix.telegram - INFO -   Processing 1 tokens from message 317
+2025-05-21 22:37:55,760 - phoenix.telegram - INFO -   Processing 1 tokens from message 318
+2025-05-21 22:37:55,760 - phoenix.telegram - INFO -   Processing 1 tokens from message 319
+2025-05-21 22:37:55,761 - phoenix.telegram - INFO -   Processing 1 tokens from message 320
+2025-05-21 22:37:55,761 - phoenix.telegram - INFO -   Processing 1 tokens from message 321
+2025-05-21 22:37:55,762 - phoenix.telegram - INFO -   Processing 1 tokens from message 323
+2025-05-21 22:37:55,762 - phoenix.telegram - INFO -   Processing 1 tokens from message 324
+2025-05-21 22:37:55,762 - phoenix.telegram - INFO -   Processing 1 tokens from message 325
+2025-05-21 22:37:55,763 - phoenix.telegram - INFO -   Processing 1 tokens from message 327
+2025-05-21 22:37:55,763 - phoenix.telegram - INFO -   Processing 1 tokens from message 328
+2025-05-21 22:37:55,763 - phoenix.telegram - INFO -   Processing 1 tokens from message 329
+2025-05-21 22:37:55,764 - phoenix.telegram - INFO -   Processing 1 tokens from message 330
+2025-05-21 22:37:55,764 - phoenix.telegram - INFO -   Processing 1 tokens from message 331
+2025-05-21 22:37:55,764 - phoenix.telegram - INFO -   Processing 1 tokens from message 332
+2025-05-21 22:37:55,765 - phoenix.telegram - INFO -   Processing 1 tokens from message 333
+2025-05-21 22:37:55,766 - phoenix.telegram - INFO -   Processing 1 tokens from message 334
+2025-05-21 22:37:55,767 - phoenix.telegram - INFO -   Processing 1 tokens from message 335
+2025-05-21 22:37:55,767 - phoenix.telegram - INFO -   Processing 1 tokens from message 336
+2025-05-21 22:37:55,767 - phoenix.telegram - INFO -   Processing 1 tokens from message 337
+2025-05-21 22:37:55,767 - phoenix.telegram - INFO -   Processing 1 tokens from message 338
+2025-05-21 22:37:55,768 - phoenix.telegram - INFO -   Processing 1 tokens from message 339
+2025-05-21 22:37:55,768 - phoenix.telegram - INFO -   Processing 1 tokens from message 341
+2025-05-21 22:37:55,768 - phoenix.telegram - INFO -   Processing 1 tokens from message 342
+2025-05-21 22:37:55,769 - phoenix.telegram - INFO -   Processing 1 tokens from message 343
+2025-05-21 22:37:55,769 - phoenix.telegram - INFO -   Processing 1 tokens from message 344
+2025-05-21 22:37:55,769 - phoenix.telegram - INFO -   Processing 1 tokens from message 345
+2025-05-21 22:37:55,770 - phoenix.telegram - INFO -   Processing 1 tokens from message 346
+2025-05-21 22:37:55,770 - phoenix.telegram - INFO -   Processing 1 tokens from message 347
+2025-05-21 22:37:55,770 - phoenix.telegram - INFO -   Processing 1 tokens from message 348
+2025-05-21 22:37:55,771 - phoenix.telegram - INFO -   Processing 1 tokens from message 349
+2025-05-21 22:37:55,771 - phoenix.telegram - INFO -   Processing 1 tokens from message 350
+2025-05-21 22:37:55,772 - phoenix.telegram - INFO -   Processing 1 tokens from message 351
+2025-05-21 22:37:55,772 - phoenix.telegram - INFO -   Processing 1 tokens from message 352
+2025-05-21 22:37:55,772 - phoenix.telegram - INFO -   Processing 1 tokens from message 353
+2025-05-21 22:37:55,774 - phoenix.telegram - INFO -   Processing 1 tokens from message 354
+2025-05-21 22:37:55,774 - phoenix.telegram - INFO -   Processing 1 tokens from message 355
+2025-05-21 22:37:55,774 - phoenix.telegram - INFO -   Processing 1 tokens from message 356
+2025-05-21 22:37:55,774 - phoenix.telegram - INFO -   Processing 1 tokens from message 357
+2025-05-21 22:37:55,775 - phoenix.telegram - INFO -   Processing 1 tokens from message 359
+2025-05-21 22:37:55,775 - phoenix.telegram - INFO -   Processing 1 tokens from message 360
+2025-05-21 22:37:55,775 - phoenix.telegram - INFO -   Processing 1 tokens from message 361
+2025-05-21 22:37:55,776 - phoenix.telegram - INFO -   Processing 1 tokens from message 362
+2025-05-21 22:37:55,777 - phoenix.telegram - INFO -   Processing 1 tokens from message 363
+2025-05-21 22:37:55,778 - phoenix.telegram - INFO -   Processing 1 tokens from message 364
+2025-05-21 22:37:55,778 - phoenix.telegram - INFO -   Processing 1 tokens from message 365
+2025-05-21 22:37:55,778 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 366
+2025-05-21 22:37:55,778 - phoenix.telegram - INFO -   Processing 1 tokens from message 368
+2025-05-21 22:37:55,779 - phoenix.telegram - INFO -   Processing 1 tokens from message 369
+2025-05-21 22:37:55,779 - phoenix.telegram - INFO -   Processing 1 tokens from message 370
+2025-05-21 22:37:55,779 - phoenix.telegram - INFO -   Processing 1 tokens from message 371
+2025-05-21 22:37:55,780 - phoenix.telegram - INFO -   Processing 1 tokens from message 372
+2025-05-21 22:37:55,780 - phoenix.telegram - INFO -   Processing 1 tokens from message 373
+2025-05-21 22:37:55,780 - phoenix.telegram - INFO -   Processing 1 tokens from message 374
+2025-05-21 22:37:55,781 - phoenix.telegram - INFO -   Processing 1 tokens from message 375
+2025-05-21 22:37:55,781 - phoenix.telegram - INFO -   Processing 1 tokens from message 377
+2025-05-21 22:37:55,781 - phoenix.telegram - INFO -   Processing 1 tokens from message 378
+2025-05-21 22:37:55,782 - phoenix.telegram - INFO -   Processing 1 tokens from message 379
+2025-05-21 22:37:55,782 - phoenix.telegram - INFO -   Processing 1 tokens from message 380
+2025-05-21 22:37:55,782 - phoenix.telegram - INFO -   Processing 1 tokens from message 381
+2025-05-21 22:37:55,783 - phoenix.telegram - INFO -   Processing 1 tokens from message 382
+2025-05-21 22:37:55,783 - phoenix.telegram - INFO -   Processing 1 tokens from message 383
+2025-05-21 22:37:55,783 - phoenix.telegram - INFO -   Processing 1 tokens from message 384
+2025-05-21 22:37:55,784 - phoenix.telegram - INFO -   Processing 1 tokens from message 385
+2025-05-21 22:37:55,784 - phoenix.telegram - INFO -   Processing 1 tokens from message 386
+2025-05-21 22:37:55,784 - phoenix.telegram - INFO -   Processing 1 tokens from message 387
+2025-05-21 22:37:55,785 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 388
+2025-05-21 22:37:55,785 - phoenix.telegram - INFO -   Processing 1 tokens from message 391
+2025-05-21 22:37:55,786 - phoenix.telegram - INFO -   Processing 1 tokens from message 393
+2025-05-21 22:37:55,787 - phoenix.telegram - INFO -   Processing 1 tokens from message 394
+2025-05-21 22:37:55,788 - phoenix.telegram - INFO -   Processing 1 tokens from message 395
+2025-05-21 22:37:55,788 - phoenix.telegram - INFO -   Processing 1 tokens from message 396
+2025-05-21 22:37:55,788 - phoenix.telegram - INFO -   Processing 1 tokens from message 397
+2025-05-21 22:37:55,788 - phoenix.telegram - INFO -   Processing 1 tokens from message 398
+2025-05-21 22:37:55,789 - phoenix.telegram - INFO -   Processing 1 tokens from message 399
+2025-05-21 22:37:55,789 - phoenix.telegram - INFO -   Processing 1 tokens from message 400
+2025-05-21 22:37:56,127 - phoenix.telegram - INFO -   Processing 1 tokens from message 401
+2025-05-21 22:37:56,127 - phoenix.telegram - INFO -   Processing 1 tokens from message 402
+2025-05-21 22:37:56,128 - phoenix.telegram - INFO -   Processing 1 tokens from message 403
+2025-05-21 22:37:56,129 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 404
+2025-05-21 22:37:56,129 - phoenix.telegram - INFO -   Processing 1 tokens from message 406
+2025-05-21 22:37:56,129 - phoenix.telegram - INFO -   Processing 1 tokens from message 407
+2025-05-21 22:37:56,130 - phoenix.telegram - INFO -   Processing 1 tokens from message 408
+2025-05-21 22:37:56,130 - phoenix.telegram - INFO -   Processing 1 tokens from message 409
+2025-05-21 22:37:56,130 - phoenix.telegram - INFO -   Processing 1 tokens from message 410
+2025-05-21 22:37:56,131 - phoenix.telegram - INFO -   Processing 1 tokens from message 412
+2025-05-21 22:37:56,131 - phoenix.telegram - INFO -   Processing 1 tokens from message 413
+2025-05-21 22:37:56,131 - phoenix.telegram - INFO -   Processing 1 tokens from message 414
+2025-05-21 22:37:56,132 - phoenix.telegram - INFO -   Processing 1 tokens from message 415
+2025-05-21 22:37:56,132 - phoenix.telegram - INFO -   Processing 1 tokens from message 416
+2025-05-21 22:37:56,132 - phoenix.telegram - INFO -   Processing 1 tokens from message 417
+2025-05-21 22:37:56,133 - phoenix.telegram - INFO -   Processing 1 tokens from message 418
+2025-05-21 22:37:56,133 - phoenix.telegram - INFO -   Processing 1 tokens from message 419
+2025-05-21 22:37:56,133 - phoenix.telegram - INFO -   Processing 1 tokens from message 420
+2025-05-21 22:37:56,134 - phoenix.telegram - INFO -   Processing 1 tokens from message 421
+2025-05-21 22:37:56,134 - phoenix.telegram - INFO -   Processing 1 tokens from message 422
+2025-05-21 22:37:56,134 - phoenix.telegram - INFO -   Processing 1 tokens from message 423
+2025-05-21 22:37:56,135 - phoenix.telegram - INFO -   Processing 1 tokens from message 424
+2025-05-21 22:37:56,135 - phoenix.telegram - INFO -   Processing 1 tokens from message 425
+2025-05-21 22:37:56,136 - phoenix.telegram - INFO -   Processing 1 tokens from message 427
+2025-05-21 22:37:56,136 - phoenix.telegram - INFO -   Processing 1 tokens from message 428
+2025-05-21 22:37:56,136 - phoenix.telegram - INFO -   Processing 1 tokens from message 429
+2025-05-21 22:37:56,137 - phoenix.telegram - INFO -   Processing 1 tokens from message 430
+2025-05-21 22:37:56,138 - phoenix.telegram - INFO -   Processing 1 tokens from message 431
+2025-05-21 22:37:56,139 - phoenix.telegram - INFO -   Processing 1 tokens from message 432
+2025-05-21 22:37:56,139 - phoenix.telegram - INFO -   Processing 1 tokens from message 439
+2025-05-21 22:37:56,140 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 442
+2025-05-21 22:37:56,140 - phoenix.telegram - INFO -   Processing 1 tokens from message 443
+2025-05-21 22:37:56,140 - phoenix.telegram - INFO -   Processing 1 tokens from message 444
+2025-05-21 22:37:56,141 - phoenix.telegram - INFO -   Processing 1 tokens from message 450
+2025-05-21 22:37:56,141 - phoenix.telegram - INFO -   Processing 1 tokens from message 452
+2025-05-21 22:37:56,142 - phoenix.telegram - INFO -   Processing 1 tokens from message 453
+2025-05-21 22:37:56,142 - phoenix.telegram - INFO -   Processing 1 tokens from message 455
+2025-05-21 22:37:56,143 - phoenix.telegram - INFO -   Processing 1 tokens from message 458
+2025-05-21 22:37:56,143 - phoenix.telegram - INFO -   Processing 1 tokens from message 459
+2025-05-21 22:37:56,143 - phoenix.telegram - INFO -   Processing 1 tokens from message 460
+2025-05-21 22:37:56,143 - phoenix.telegram - INFO -   Processing 1 tokens from message 461
+2025-05-21 22:37:56,144 - phoenix.telegram - INFO -   Processing 1 tokens from message 462
+2025-05-21 22:37:56,144 - phoenix.telegram - INFO -   Processing 1 tokens from message 463
+2025-05-21 22:37:56,144 - phoenix.telegram - INFO -   Processing 1 tokens from message 464
+2025-05-21 22:37:56,145 - phoenix.telegram - INFO -   Processing 1 tokens from message 465
+2025-05-21 22:37:56,145 - phoenix.telegram - INFO -   Processing 1 tokens from message 466
+2025-05-21 22:37:56,146 - phoenix.telegram - INFO -   Processing 1 tokens from message 467
+2025-05-21 22:37:56,146 - phoenix.telegram - INFO -   Processing 1 tokens from message 468
+2025-05-21 22:37:56,146 - phoenix.telegram - INFO -   Processing 1 tokens from message 470
+2025-05-21 22:37:56,147 - phoenix.telegram - INFO -   Processing 1 tokens from message 471
+2025-05-21 22:37:56,148 - phoenix.telegram - INFO -   Processing 1 tokens from message 472
+2025-05-21 22:37:56,149 - phoenix.telegram - INFO -   Processing 1 tokens from message 474
+2025-05-21 22:37:56,149 - phoenix.telegram - INFO -   Processing 1 tokens from message 475
+2025-05-21 22:37:56,149 - phoenix.telegram - INFO -   Processing 1 tokens from message 476
+2025-05-21 22:37:56,150 - phoenix.telegram - INFO -   Processing 1 tokens from message 477
+2025-05-21 22:37:56,150 - phoenix.telegram - INFO -   Processing 1 tokens from message 479
+2025-05-21 22:37:56,150 - phoenix.telegram - INFO -   Processing 1 tokens from message 480
+2025-05-21 22:37:56,150 - phoenix.telegram - INFO -   Processing 1 tokens from message 481
+2025-05-21 22:37:56,151 - phoenix.telegram - INFO -   Processing 1 tokens from message 482
+2025-05-21 22:37:56,151 - phoenix.telegram - INFO -   Processing 1 tokens from message 483
+2025-05-21 22:37:56,151 - phoenix.telegram - INFO -   Processing 1 tokens from message 484
+2025-05-21 22:37:56,151 - phoenix.telegram - INFO -   Processing 1 tokens from message 485
+2025-05-21 22:37:56,152 - phoenix.telegram - INFO -   Processing 1 tokens from message 486
+2025-05-21 22:37:56,152 - phoenix.telegram - INFO -   Processing 1 tokens from message 487
+2025-05-21 22:37:56,152 - phoenix.telegram - INFO -   Processing 1 tokens from message 488
+2025-05-21 22:37:56,153 - phoenix.telegram - INFO -   Processing 1 tokens from message 490
+2025-05-21 22:37:56,153 - phoenix.telegram - INFO -   Processing 1 tokens from message 492
+2025-05-21 22:37:56,153 - phoenix.telegram - INFO -   Processing 1 tokens from message 493
+2025-05-21 22:37:56,154 - phoenix.telegram - INFO -   Processing 1 tokens from message 495
+2025-05-21 22:37:56,154 - phoenix.telegram - INFO -   Processing 1 tokens from message 496
+2025-05-21 22:37:56,154 - phoenix.telegram - INFO -   Processing 1 tokens from message 497
+2025-05-21 22:37:56,155 - phoenix.telegram - INFO -   Processing 1 tokens from message 498
+2025-05-21 22:37:56,155 - phoenix.telegram - INFO -   Processing 1 tokens from message 499
+2025-05-21 22:37:56,155 - phoenix.telegram - INFO -   Processing 1 tokens from message 500
+2025-05-21 22:37:56,156 - phoenix.telegram - INFO - Processed 500 total messages
+2025-05-21 22:37:56,156 - phoenix.telegram - INFO - Found 380 token calls from 152 KOLs
+2025-05-21 22:37:56,156 - phoenix.telegram - INFO - Analyzing call 1/380: unstable coin
+2025-05-21 22:37:56,157 - phoenix.telegram - INFO - Analyzing call 2/380: I am Him
+2025-05-21 22:37:56,158 - phoenix.telegram - INFO - Analyzing call 3/380: I am Him
+2025-05-21 22:37:56,159 - phoenix.telegram - INFO - Analyzing call 4/380: I am Him
+2025-05-21 22:37:56,159 - phoenix.telegram - INFO - Analyzing call 5/380: I am Him
+2025-05-21 22:37:56,159 - phoenix.telegram - INFO - Analyzing call 6/380: I am Him
+2025-05-21 22:37:56,159 - phoenix.telegram - INFO - Analyzing call 7/380: I am Him
+2025-05-21 22:37:56,160 - phoenix.telegram - INFO - Analyzing call 8/380: I am Him
+2025-05-21 22:37:56,160 - phoenix.telegram - INFO - Analyzing call 9/380: What do they re...
+2025-05-21 22:37:56,161 - phoenix.telegram - WARNING - No ROI data found in message: Achievement Unlocked: Alpha caller! 🤫
+
+What do they re... first posted by @StylishDegenDiaries has s...
+2025-05-21 22:37:56,161 - phoenix.telegram - INFO - Analyzing call 10/380: I am Him
+2025-05-21 22:37:56,161 - phoenix.telegram - INFO - Analyzing call 11/380: I am Him
+2025-05-21 22:37:56,161 - phoenix.telegram - INFO - Analyzing call 12/380: I am Him
+2025-05-21 22:37:56,162 - phoenix.telegram - INFO - Analyzing call 13/380: I am Him
+2025-05-21 22:37:56,162 - phoenix.telegram - INFO - Analyzing call 14/380: I am Him
+2025-05-21 22:37:56,162 - phoenix.telegram - INFO - Analyzing call 15/380: I am Him
+2025-05-21 22:37:56,163 - phoenix.telegram - INFO - Analyzing call 16/380: I am Him
+2025-05-21 22:37:56,163 - phoenix.telegram - INFO - Analyzing call 17/380: Elias Rodriguez
+2025-05-21 22:37:56,163 - phoenix.telegram - INFO - Analyzing call 18/380: Elias Rodriguez
+2025-05-21 22:37:56,164 - phoenix.telegram - INFO - Analyzing call 19/380: MUT8 Virus
+2025-05-21 22:37:56,164 - phoenix.telegram - INFO - Analyzing call 20/380: I am Him
+2025-05-21 22:37:56,164 - phoenix.telegram - INFO - Analyzing call 21/380: Elias Rodriguez
+2025-05-21 22:37:56,165 - phoenix.telegram - INFO - Analyzing call 22/380: Elias Rodriguez
+2025-05-21 22:37:56,165 - phoenix.telegram - INFO - Analyzing call 23/380: Moose
+2025-05-21 22:37:56,165 - phoenix.telegram - INFO - Analyzing call 24/380: I am Him
+2025-05-21 22:37:56,166 - phoenix.telegram - INFO - Analyzing call 25/380: Elias Rodriguez
+2025-05-21 22:37:56,166 - phoenix.telegram - INFO - Analyzing call 26/380: Elias Rodriguez
+2025-05-21 22:37:56,166 - phoenix.telegram - INFO - Analyzing call 27/380: Elias Rodriguez
+2025-05-21 22:37:56,167 - phoenix.telegram - INFO - Analyzing call 28/380: Eagle
+2025-05-21 22:37:56,169 - phoenix.telegram - INFO - Analyzing call 29/380: Eagle
+2025-05-21 22:37:56,169 - phoenix.telegram - INFO - Analyzing call 30/380: I am Him
+2025-05-21 22:37:56,169 - phoenix.telegram - INFO - Analyzing call 31/380: Elias Rodriguez
+2025-05-21 22:37:56,169 - phoenix.telegram - INFO - Analyzing call 32/380: USD1DOGE
+2025-05-21 22:37:56,170 - phoenix.telegram - INFO - Analyzing call 33/380: USD1DOGE
+2025-05-21 22:37:56,170 - phoenix.telegram - INFO - Analyzing call 34/380: USD1DOGE
+2025-05-21 22:37:56,170 - phoenix.telegram - INFO - Analyzing call 35/380: Eagle
+2025-05-21 22:37:56,170 - phoenix.telegram - INFO - Analyzing call 36/380: Island Frogette
+2025-05-21 22:37:56,171 - phoenix.telegram - INFO - Analyzing call 37/380: Island Frogette
+2025-05-21 22:37:56,171 - phoenix.telegram - INFO - Analyzing call 38/380: Island Frogette
+2025-05-21 22:37:56,171 - phoenix.telegram - INFO - Analyzing call 39/380: Island Frogette
+2025-05-21 22:37:56,171 - phoenix.telegram - INFO - Analyzing call 40/380: Island Frogette
+2025-05-21 22:37:56,172 - phoenix.telegram - INFO - Analyzing call 41/380: VALCOIN
+2025-05-21 22:37:56,172 - phoenix.telegram - INFO - Analyzing call 42/380: VALCOIN
+2025-05-21 22:37:56,172 - phoenix.telegram - INFO - Analyzing call 43/380: Island Frogette
+2025-05-21 22:37:56,172 - phoenix.telegram - INFO - Analyzing call 44/380: Tag
+2025-05-21 22:37:56,173 - phoenix.telegram - INFO - Analyzing call 45/380: USD1DOGE
+2025-05-21 22:37:56,173 - phoenix.telegram - INFO - Analyzing call 46/380: Alice
+2025-05-21 22:37:56,173 - phoenix.telegram - INFO - Analyzing call 47/380: Ryan
+2025-05-21 22:37:56,174 - phoenix.telegram - INFO - Analyzing call 48/380: Ryan
+2025-05-21 22:37:56,174 - phoenix.telegram - INFO - Analyzing call 49/380: Ryan
+2025-05-21 22:37:56,174 - phoenix.telegram - INFO - Analyzing call 50/380: Ryan
+2025-05-21 22:37:56,174 - phoenix.telegram - INFO - Analyzing call 51/380: Tag
+2025-05-21 22:37:56,175 - phoenix.telegram - INFO - Analyzing call 52/380: Tag
+2025-05-21 22:37:56,175 - phoenix.telegram - INFO - Analyzing call 53/380: Bitcoin Bob
+2025-05-21 22:37:56,175 - phoenix.telegram - INFO - Analyzing call 54/380: Bitcoin Bob
+2025-05-21 22:37:56,175 - phoenix.telegram - INFO - Analyzing call 55/380: Bitcoin Bob
+2025-05-21 22:37:56,176 - phoenix.telegram - INFO - Analyzing call 56/380: VALCOIN
+2025-05-21 22:37:56,176 - phoenix.telegram - INFO - Analyzing call 57/380: VALCOIN
+2025-05-21 22:37:56,176 - phoenix.telegram - INFO - Analyzing call 58/380: Blue Anteater G
+2025-05-21 22:37:56,176 - phoenix.telegram - INFO - Analyzing call 59/380: USD1DOGE
+2025-05-21 22:37:56,177 - phoenix.telegram - INFO - Analyzing call 60/380: USD1DOGE
+2025-05-21 22:37:56,177 - phoenix.telegram - INFO - Analyzing call 61/380: Blue Anteater G
+2025-05-21 22:37:56,177 - phoenix.telegram - INFO - Analyzing call 62/380: Blue Anteater G
+2025-05-21 22:37:56,177 - phoenix.telegram - INFO - Analyzing call 63/380: Blue Anteater G
+2025-05-21 22:37:56,178 - phoenix.telegram - INFO - Analyzing call 64/380: Blue Anteater G
+2025-05-21 22:37:56,181 - phoenix.telegram - INFO - Analyzing call 65/380: I am Him
+2025-05-21 22:37:56,181 - phoenix.telegram - INFO - Analyzing call 66/380: Tag
+2025-05-21 22:37:56,182 - phoenix.telegram - INFO - Analyzing call 67/380: Bitcoin Bob
+2025-05-21 22:37:56,182 - phoenix.telegram - INFO - Analyzing call 68/380: Bitcoin Bob
+2025-05-21 22:37:56,182 - phoenix.telegram - INFO - Analyzing call 69/380: BUBBLE
+2025-05-21 22:37:56,183 - phoenix.telegram - INFO - Analyzing call 70/380: Tag
+2025-05-21 22:37:56,183 - phoenix.telegram - INFO - Analyzing call 71/380: moonpig
+2025-05-21 22:37:56,183 - phoenix.telegram - INFO - Analyzing call 72/380: moonpig
+2025-05-21 22:37:56,183 - phoenix.telegram - INFO - Analyzing call 73/380: moonpig
+2025-05-21 22:37:56,184 - phoenix.telegram - INFO - Analyzing call 74/380: moonpig
+2025-05-21 22:37:56,184 - phoenix.telegram - INFO - Analyzing call 75/380: moonpig
+2025-05-21 22:37:56,184 - phoenix.telegram - INFO - Analyzing call 76/380: moonpig
+2025-05-21 22:37:56,185 - phoenix.telegram - INFO - Analyzing call 77/380: moonpig
+2025-05-21 22:37:56,185 - phoenix.telegram - INFO - Analyzing call 78/380: Bitcoin Bob
+2025-05-21 22:37:56,185 - phoenix.telegram - INFO - Analyzing call 79/380: Bitcoin Bob
+2025-05-21 22:37:56,186 - phoenix.telegram - INFO - Analyzing call 80/380: if i lived in b
+2025-05-21 22:37:56,186 - phoenix.telegram - INFO - Analyzing call 81/380: BUBBLE
+2025-05-21 22:37:56,186 - phoenix.telegram - INFO - Analyzing call 82/380: VALCOIN
+2025-05-21 22:37:56,187 - phoenix.telegram - INFO - Analyzing call 83/380: BUBBLE
+2025-05-21 22:37:56,187 - phoenix.telegram - INFO - Analyzing call 84/380: BUBBLE
+2025-05-21 22:37:56,187 - phoenix.telegram - INFO - Analyzing call 85/380: Trump Bitcoin P
+2025-05-21 22:37:56,187 - phoenix.telegram - INFO - Analyzing call 86/380: VALCOIN
+2025-05-21 22:37:56,188 - phoenix.telegram - INFO - Analyzing call 87/380: Blue Anteater G
+2025-05-21 22:37:56,188 - phoenix.telegram - INFO - Analyzing call 88/380: Blue Anteater G
+2025-05-21 22:37:56,188 - phoenix.telegram - INFO - Analyzing call 89/380: My Curves Are P
+2025-05-21 22:37:56,189 - phoenix.telegram - INFO - Analyzing call 90/380: TEST COIN
+2025-05-21 22:37:56,189 - phoenix.telegram - INFO - Analyzing call 91/380: Blue Anteater G
+2025-05-21 22:37:56,189 - phoenix.telegram - INFO - Analyzing call 92/380: woollyfi
+2025-05-21 22:37:56,190 - phoenix.telegram - INFO - Analyzing call 93/380: woollyfi
+2025-05-21 22:37:56,192 - phoenix.telegram - INFO - Analyzing call 94/380: Blue Anteater G
+2025-05-21 22:37:56,193 - phoenix.telegram - INFO - Analyzing call 95/380: Blue Anteater G
+2025-05-21 22:37:56,193 - phoenix.telegram - INFO - Analyzing call 96/380: if i lived in b
+2025-05-21 22:37:56,193 - phoenix.telegram - INFO - Analyzing call 97/380: if i lived in b
+2025-05-21 22:37:56,194 - phoenix.telegram - INFO - Analyzing call 98/380: Blue Anteater G
+2025-05-21 22:37:56,194 - phoenix.telegram - INFO - Analyzing call 99/380: Blue Anteater G
+2025-05-21 22:37:56,194 - phoenix.telegram - INFO - Analyzing call 100/380: BERRY
+2025-05-21 22:37:56,195 - phoenix.telegram - WARNING - No ROI data found in message: Achievement Unlocked: Alpha caller! 🤫
+
+BERRY first posted by @lichknows has since been posted by 10+...
+2025-05-21 22:37:56,195 - phoenix.telegram - INFO - Analyzing call 101/380: Bitcoin 2.0
+2025-05-21 22:37:56,195 - phoenix.telegram - WARNING - No ROI data found in message: Achievement Unlocked: Alpha caller! 🤫
+
+Bitcoin 2.0 first posted by @CluelessCalls has since been pos...
+2025-05-21 22:37:56,196 - phoenix.telegram - INFO - Analyzing call 102/380: Bitcoin 2
+2025-05-21 22:37:56,196 - phoenix.telegram - INFO - Analyzing call 103/380: USD1CAT
+2025-05-21 22:37:56,196 - phoenix.telegram - INFO - Analyzing call 104/380: Blue Anteater G...
+2025-05-21 22:37:56,197 - phoenix.telegram - WARNING - No ROI data found in message: Achievement Unlocked: Alpha caller! 🤫
+
+Blue Anteater G... first posted by @MichiiCalls has since bee...
+2025-05-21 22:37:56,197 - phoenix.telegram - INFO - Analyzing call 105/380: Eagle
+2025-05-21 22:37:56,197 - phoenix.telegram - INFO - Analyzing call 106/380: USD1DOGE
+2025-05-21 22:37:56,198 - phoenix.telegram - INFO - Analyzing call 107/380: Fluxor
+2025-05-21 22:37:56,198 - phoenix.telegram - INFO - Analyzing call 108/380: Bitcoin 2
+2025-05-21 22:37:56,198 - phoenix.telegram - INFO - Analyzing call 109/380: Bitcoin 2
+2025-05-21 22:37:56,198 - phoenix.telegram - INFO - Analyzing call 110/380: Bitcoin 2
+2025-05-21 22:37:56,199 - phoenix.telegram - INFO - Analyzing call 111/380: Hair Transplant
+2025-05-21 22:37:56,199 - phoenix.telegram - INFO - Analyzing call 112/380: WLFIDOGE
+2025-05-21 22:37:56,199 - phoenix.telegram - INFO - Analyzing call 113/380: WLFIDOGE
+2025-05-21 22:37:56,200 - phoenix.telegram - INFO - Analyzing call 114/380: WLFIDOGE
+2025-05-21 22:37:56,200 - phoenix.telegram - INFO - Analyzing call 115/380: WLFIDOGE
+2025-05-21 22:37:56,200 - phoenix.telegram - INFO - Analyzing call 116/380: Bitcoin 2
+2025-05-21 22:37:56,201 - phoenix.telegram - INFO - Analyzing call 117/380: USD1DOGE
+2025-05-21 22:37:56,203 - phoenix.telegram - INFO - Analyzing call 118/380: USD1DOGE
+2025-05-21 22:37:56,203 - phoenix.telegram - INFO - Analyzing call 119/380: USD1DOGE
+2025-05-21 22:37:56,203 - phoenix.telegram - INFO - Analyzing call 120/380: USD1DOGE
+2025-05-21 22:37:56,204 - phoenix.telegram - INFO - Analyzing call 121/380: Bitcoin 2
+2025-05-21 22:37:56,204 - phoenix.telegram - INFO - Analyzing call 122/380: USD1DOGE
+2025-05-21 22:37:56,204 - phoenix.telegram - INFO - Analyzing call 123/380: USD1DOGE
+2025-05-21 22:37:56,204 - phoenix.telegram - INFO - Analyzing call 124/380: USD1DOGE
+2025-05-21 22:37:56,205 - phoenix.telegram - INFO - Analyzing call 125/380: Bullish on Bitc...
+2025-05-21 22:37:56,205 - phoenix.telegram - WARNING - No ROI data found in message: Achievement Unlocked: Alpha caller! 🤫
+
+Bullish on Bitc... first posted by @MegaWhalesCalls has since...
+2025-05-21 22:37:56,205 - phoenix.telegram - INFO - Analyzing call 126/380: dndNGMI
+2025-05-21 22:37:56,205 - phoenix.telegram - INFO - Analyzing call 127/380: dndNGMI
+2025-05-21 22:37:56,206 - phoenix.telegram - INFO - Analyzing call 128/380: KLEDAI
+2025-05-21 22:37:56,206 - phoenix.telegram - INFO - Analyzing call 129/380: USD1DOGE
+2025-05-21 22:37:56,206 - phoenix.telegram - INFO - Analyzing call 130/380: USD1DOGE
+2025-05-21 22:37:56,206 - phoenix.telegram - INFO - Analyzing call 131/380: Grok X
+2025-05-21 22:37:56,207 - phoenix.telegram - WARNING - No ROI data found in message: Achievement Unlocked: Alpha caller! 🤫
+
+Grok X first posted by @bruiserscalls has since been posted b...
+2025-05-21 22:37:56,207 - phoenix.telegram - INFO - Analyzing call 132/380: moonpig
+2025-05-21 22:37:56,207 - phoenix.telegram - INFO - Analyzing call 133/380: moonpig
+2025-05-21 22:37:56,208 - phoenix.telegram - INFO - Analyzing call 134/380: moonpig
+2025-05-21 22:37:56,208 - phoenix.telegram - INFO - Analyzing call 135/380: moonpig
+2025-05-21 22:37:56,208 - phoenix.telegram - INFO - Analyzing call 136/380: moonpig
+2025-05-21 22:37:56,208 - phoenix.telegram - INFO - Analyzing call 137/380: moonpig
+2025-05-21 22:37:56,209 - phoenix.telegram - INFO - Analyzing call 138/380: Official Solana
+2025-05-21 22:37:56,209 - phoenix.telegram - INFO - Analyzing call 139/380: billy 2
+2025-05-21 22:37:56,209 - phoenix.telegram - INFO - Analyzing call 140/380: Official Solana
+2025-05-21 22:37:56,209 - phoenix.telegram - INFO - Analyzing call 141/380: Mintana
+2025-05-21 22:37:56,210 - phoenix.telegram - INFO - Analyzing call 142/380: Official Solana
+2025-05-21 22:37:56,210 - phoenix.telegram - INFO - Analyzing call 143/380: Official Solana
+2025-05-21 22:37:56,210 - phoenix.telegram - INFO - Analyzing call 144/380: PromptIDE
+2025-05-21 22:37:56,210 - phoenix.telegram - WARNING - No ROI data found in message: Achievement Unlocked: Alpha caller! 🤫
+
+PromptIDE first posted by @DroopyGems has since been posted b...
+2025-05-21 22:37:56,211 - phoenix.telegram - INFO - Analyzing call 145/380: Official Solana
+2025-05-21 22:37:56,213 - phoenix.telegram - INFO - Analyzing call 146/380: DAWA
+2025-05-21 22:37:56,214 - phoenix.telegram - INFO - Analyzing call 147/380: Beast Seller
+2025-05-21 22:37:56,214 - phoenix.telegram - WARNING - No ROI data found in message: Achievement Unlocked: Alpha caller! 🤫
+
+Beast Seller first posted by @froggang_calls has since been p...
+2025-05-21 22:37:56,214 - phoenix.telegram - INFO - Analyzing call 148/380: Official Solana
+2025-05-21 22:37:56,215 - phoenix.telegram - INFO - Analyzing call 149/380: Official Solana
+2025-05-21 22:37:56,215 - phoenix.telegram - INFO - Analyzing call 150/380: Zypher MCP
+2025-05-21 22:37:56,215 - phoenix.telegram - INFO - Analyzing call 151/380: Flipcoin
+2025-05-21 22:37:56,216 - phoenix.telegram - INFO - Analyzing call 152/380: Flipcoin
+2025-05-21 22:37:56,216 - phoenix.telegram - INFO - Analyzing call 153/380: Flipcoin
+2025-05-21 22:37:56,216 - phoenix.telegram - INFO - Analyzing call 154/380: OAKI WORLD
+2025-05-21 22:37:56,217 - phoenix.telegram - INFO - Analyzing call 155/380: Flipcoin
+2025-05-21 22:37:56,217 - phoenix.telegram - INFO - Analyzing call 156/380: Flipcoin
+2025-05-21 22:37:56,217 - phoenix.telegram - INFO - Analyzing call 157/380: Flipcoin
+2025-05-21 22:37:56,218 - phoenix.telegram - INFO - Analyzing call 158/380: Flipcoin
+2025-05-21 22:37:56,218 - phoenix.telegram - INFO - Analyzing call 159/380: NOTUS Memes
+2025-05-21 22:37:56,218 - phoenix.telegram - INFO - Analyzing call 160/380: NOTUS Memes
+2025-05-21 22:37:56,219 - phoenix.telegram - INFO - Analyzing call 161/380: Flipcoin
+2025-05-21 22:37:56,219 - phoenix.telegram - INFO - Analyzing call 162/380: Flipcoin
+2025-05-21 22:37:56,219 - phoenix.telegram - INFO - Analyzing call 163/380: Big Titties Cul
+2025-05-21 22:37:56,219 - phoenix.telegram - INFO - Analyzing call 164/380: Big Titties Cul
+2025-05-21 22:37:56,220 - phoenix.telegram - INFO - Analyzing call 165/380: Traceon AI
+2025-05-21 22:37:56,220 - phoenix.telegram - INFO - Analyzing call 166/380: Traceon AI
+2025-05-21 22:37:56,220 - phoenix.telegram - INFO - Analyzing call 167/380: Big Titties Cul
+2025-05-21 22:37:56,221 - phoenix.telegram - INFO - Analyzing call 168/380: Big Titties Cul
+2025-05-21 22:37:56,221 - phoenix.telegram - INFO - Analyzing call 169/380: Big Titties Cul
+2025-05-21 22:37:56,221 - phoenix.telegram - INFO - Analyzing call 170/380: Big Titties Cul
+2025-05-21 22:37:56,222 - phoenix.telegram - INFO - Analyzing call 171/380: Big Titties Cul
+2025-05-21 22:37:56,223 - phoenix.telegram - INFO - Analyzing call 172/380: Big Titties Cul
+2025-05-21 22:37:56,224 - phoenix.telegram - INFO - Analyzing call 173/380: Meda Chat by Me
+2025-05-21 22:37:56,224 - phoenix.telegram - INFO - Analyzing call 174/380: Meda Chat by Me
+2025-05-21 22:37:56,224 - phoenix.telegram - INFO - Analyzing call 175/380: DAWA
+2025-05-21 22:37:56,225 - phoenix.telegram - INFO - Analyzing call 176/380: DAWA
+2025-05-21 22:37:56,225 - phoenix.telegram - INFO - Analyzing call 177/380: Pepes Dog
+2025-05-21 22:37:56,225 - phoenix.telegram - INFO - Analyzing call 178/380: Pepes Dog
+2025-05-21 22:37:56,225 - phoenix.telegram - INFO - Analyzing call 179/380: Pepes Dog
+2025-05-21 22:37:56,226 - phoenix.telegram - INFO - Analyzing call 180/380: My Curves Are P
+2025-05-21 22:37:56,226 - phoenix.telegram - INFO - Analyzing call 181/380: Pepes Dog
+2025-05-21 22:37:56,226 - phoenix.telegram - INFO - Analyzing call 182/380: My Curves Are P
+2025-05-21 22:37:56,226 - phoenix.telegram - INFO - Analyzing call 183/380: My Curves Are P
+2025-05-21 22:37:56,227 - phoenix.telegram - INFO - Analyzing call 184/380: Disbelieve
+2025-05-21 22:37:56,227 - phoenix.telegram - INFO - Analyzing call 185/380: Disbelieve
+2025-05-21 22:37:56,227 - phoenix.telegram - INFO - Analyzing call 186/380: Disbelieve
+2025-05-21 22:37:56,227 - phoenix.telegram - INFO - Analyzing call 187/380: Disbelieve
+2025-05-21 22:37:56,228 - phoenix.telegram - INFO - Analyzing call 188/380: Disbelieve
+2025-05-21 22:37:56,228 - phoenix.telegram - INFO - Analyzing call 189/380: Forever Alone
+2025-05-21 22:37:56,228 - phoenix.telegram - WARNING - No ROI data found in message: Achievement Unlocked: Alpha caller! 🤫
+
+Forever Alone first posted by @DONALD_CALL has since been pos...
+2025-05-21 22:37:56,228 - phoenix.telegram - INFO - Analyzing call 190/380: Nitro
+2025-05-21 22:37:56,229 - phoenix.telegram - INFO - Analyzing call 191/380: Nitro
+2025-05-21 22:37:56,229 - phoenix.telegram - INFO - Analyzing call 192/380: My Curves Are P
+2025-05-21 22:37:56,229 - phoenix.telegram - INFO - Analyzing call 193/380: Disbelieve
+2025-05-21 22:37:56,229 - phoenix.telegram - INFO - Analyzing call 194/380: if i lived in b
+2025-05-21 22:37:56,230 - phoenix.telegram - INFO - Analyzing call 195/380: Nitro
+2025-05-21 22:37:56,230 - phoenix.telegram - INFO - Analyzing call 196/380: Pepes Dog
+2025-05-21 22:37:56,230 - phoenix.telegram - INFO - Analyzing call 197/380: Pepes Dog
+2025-05-21 22:37:56,230 - phoenix.telegram - INFO - Analyzing call 198/380: Pepes Dog
+2025-05-21 22:37:56,231 - phoenix.telegram - INFO - Analyzing call 199/380: Pepes Dog
+2025-05-21 22:37:56,231 - phoenix.telegram - INFO - Analyzing call 200/380: USD1DOGE
+2025-05-21 22:37:56,231 - phoenix.telegram - INFO - Analyzing call 201/380: USD1DOGE
+2025-05-21 22:37:56,231 - phoenix.telegram - INFO - Analyzing call 202/380: if i lived in b
+2025-05-21 22:37:56,233 - phoenix.telegram - INFO - Analyzing call 203/380: My Curves Are P
+2025-05-21 22:37:56,234 - phoenix.telegram - INFO - Analyzing call 204/380: Pepes Dog
+2025-05-21 22:37:56,234 - phoenix.telegram - INFO - Analyzing call 205/380: DAWA
+2025-05-21 22:37:56,234 - phoenix.telegram - INFO - Analyzing call 206/380: Nitro
+2025-05-21 22:37:56,235 - phoenix.telegram - INFO - Analyzing call 207/380: Moses Pepe
+2025-05-21 22:37:56,235 - phoenix.telegram - WARNING - No ROI data found in message: Achievement Unlocked: Alpha caller! 🤫
+
+Moses Pepe first posted by @Bane_calls has since been posted ...
+2025-05-21 22:37:56,235 - phoenix.telegram - INFO - Analyzing call 208/380: Bubblebros
+2025-05-21 22:37:56,236 - phoenix.telegram - INFO - Analyzing call 209/380: Bubblebros
+2025-05-21 22:37:56,236 - phoenix.telegram - INFO - Analyzing call 210/380: Boochie by Matt
+2025-05-21 22:37:56,236 - phoenix.telegram - INFO - Analyzing call 211/380: Boochie by Matt
+2025-05-21 22:37:56,237 - phoenix.telegram - INFO - Analyzing call 212/380: Boochie by Matt
+2025-05-21 22:37:56,237 - phoenix.telegram - INFO - Analyzing call 213/380: Boochie by Matt
+2025-05-21 22:37:56,237 - phoenix.telegram - INFO - Analyzing call 214/380: Boochie by Matt
+2025-05-21 22:37:56,238 - phoenix.telegram - INFO - Analyzing call 215/380: Boochie by Matt
+2025-05-21 22:37:56,238 - phoenix.telegram - INFO - Analyzing call 216/380: Boochie by Matt
+2025-05-21 22:37:56,238 - phoenix.telegram - INFO - Analyzing call 217/380: Boochie by Matt
+2025-05-21 22:37:56,239 - phoenix.telegram - INFO - Analyzing call 218/380: Boochie by Matt
+2025-05-21 22:37:56,239 - phoenix.telegram - INFO - Analyzing call 219/380: Boochie by Matt
+2025-05-21 22:37:56,239 - phoenix.telegram - INFO - Analyzing call 220/380: Boochie by Matt
+2025-05-21 22:37:56,240 - phoenix.telegram - INFO - Analyzing call 221/380: Boochie by Matt
+2025-05-21 22:37:56,240 - phoenix.telegram - INFO - Analyzing call 222/380: Boochie by Matt
+2025-05-21 22:37:56,240 - phoenix.telegram - INFO - Analyzing call 223/380: Boochie by Matt
+2025-05-21 22:37:56,241 - phoenix.telegram - INFO - Analyzing call 224/380: Boochie by Matt
+2025-05-21 22:37:56,241 - phoenix.telegram - INFO - Analyzing call 225/380: Boochie by Matt
+2025-05-21 22:37:56,241 - phoenix.telegram - INFO - Analyzing call 226/380: Boochie by Matt
+2025-05-21 22:37:56,243 - phoenix.telegram - INFO - Analyzing call 227/380: Boochie by Matt
+2025-05-21 22:37:56,244 - phoenix.telegram - INFO - Analyzing call 228/380: Boochie by Matt
+2025-05-21 22:37:56,244 - phoenix.telegram - INFO - Analyzing call 229/380: Boochie by Matt
+2025-05-21 22:37:56,245 - phoenix.telegram - INFO - Analyzing call 230/380: Boochie by Matt
+2025-05-21 22:37:56,245 - phoenix.telegram - INFO - Analyzing call 231/380: Boochie by Matt
+2025-05-21 22:37:56,245 - phoenix.telegram - INFO - Analyzing call 232/380: Boochie by Matt
+2025-05-21 22:37:56,246 - phoenix.telegram - INFO - Analyzing call 233/380: Boochie by Matt
+2025-05-21 22:37:56,246 - phoenix.telegram - INFO - Analyzing call 234/380: Boochie by Matt
+2025-05-21 22:37:56,246 - phoenix.telegram - INFO - Analyzing call 235/380: Boochie by Matt
+2025-05-21 22:37:56,247 - phoenix.telegram - INFO - Analyzing call 236/380: Boochie by Matt
+2025-05-21 22:37:56,247 - phoenix.telegram - INFO - Analyzing call 237/380: Boochie by Matt
+2025-05-21 22:37:56,247 - phoenix.telegram - INFO - Analyzing call 238/380: Boochie by Matt
+2025-05-21 22:37:56,248 - phoenix.telegram - INFO - Analyzing call 239/380: Boochie by Matt
+2025-05-21 22:37:56,248 - phoenix.telegram - INFO - Analyzing call 240/380: Boochie by Matt
+2025-05-21 22:37:56,248 - phoenix.telegram - INFO - Analyzing call 241/380: Boochie by Matt
+2025-05-21 22:37:56,248 - phoenix.telegram - INFO - Analyzing call 242/380: Boochie by Matt
+2025-05-21 22:37:56,249 - phoenix.telegram - INFO - Analyzing call 243/380: Boochie by Matt
+2025-05-21 22:37:56,249 - phoenix.telegram - INFO - Analyzing call 244/380: Boochie by Matt
+2025-05-21 22:37:56,249 - phoenix.telegram - INFO - Analyzing call 245/380: Boochie by Matt
+2025-05-21 22:37:56,250 - phoenix.telegram - INFO - Analyzing call 246/380: Boochie by Matt
+2025-05-21 22:37:56,250 - phoenix.telegram - INFO - Analyzing call 247/380: Boochie by Matt
+2025-05-21 22:37:56,250 - phoenix.telegram - INFO - Analyzing call 248/380: Boochie by Matt
+2025-05-21 22:37:56,251 - phoenix.telegram - INFO - Analyzing call 249/380: Boochie by Matt
+2025-05-21 22:37:56,251 - phoenix.telegram - INFO - Analyzing call 250/380: NOTUS Memes
+2025-05-21 22:37:56,251 - phoenix.telegram - INFO - Analyzing call 251/380: NOTUS Memes
+2025-05-21 22:37:56,252 - phoenix.telegram - INFO - Analyzing call 252/380: NOTUS Memes
+2025-05-21 22:37:56,252 - phoenix.telegram - INFO - Analyzing call 253/380: NOTUS Memes
+2025-05-21 22:37:56,252 - phoenix.telegram - INFO - Analyzing call 254/380: Pepes Dog
+2025-05-21 22:37:56,253 - phoenix.telegram - INFO - Analyzing call 255/380: Boochie by Matt
+2025-05-21 22:37:56,254 - phoenix.telegram - INFO - Analyzing call 256/380: Boochie by Matt
+2025-05-21 22:37:56,255 - phoenix.telegram - INFO - Analyzing call 257/380: Boochie by Matt
+2025-05-21 22:37:56,255 - phoenix.telegram - INFO - Analyzing call 258/380: Boochie by Matt
+2025-05-21 22:37:56,255 - phoenix.telegram - INFO - Analyzing call 259/380: Boochie by Matt
+2025-05-21 22:37:56,256 - phoenix.telegram - INFO - Analyzing call 260/380: Boochie by Matt
+2025-05-21 22:37:56,256 - phoenix.telegram - INFO - Analyzing call 261/380: Meda Chat by Me
+2025-05-21 22:37:56,256 - phoenix.telegram - INFO - Analyzing call 262/380: Boochie by Matt
+2025-05-21 22:37:56,256 - phoenix.telegram - INFO - Analyzing call 263/380: Boochie by Matt
+2025-05-21 22:37:56,257 - phoenix.telegram - INFO - Analyzing call 264/380: Boochie by Matt
+2025-05-21 22:37:56,257 - phoenix.telegram - INFO - Analyzing call 265/380: Boochie by Matt
+2025-05-21 22:37:56,257 - phoenix.telegram - INFO - Analyzing call 266/380: BITCORN
+2025-05-21 22:37:56,257 - phoenix.telegram - INFO - Analyzing call 267/380: BITCORN
+2025-05-21 22:37:56,258 - phoenix.telegram - INFO - Analyzing call 268/380: BITCORN
+2025-05-21 22:37:56,258 - phoenix.telegram - INFO - Analyzing call 269/380: BITCORN
+2025-05-21 22:37:56,258 - phoenix.telegram - INFO - Analyzing call 270/380: Boochie by Matt
+2025-05-21 22:37:56,258 - phoenix.telegram - INFO - Analyzing call 271/380: Boochie by Matt
+2025-05-21 22:37:56,259 - phoenix.telegram - INFO - Analyzing call 272/380: Boochie by Matt
+2025-05-21 22:37:56,259 - phoenix.telegram - INFO - Analyzing call 273/380: Flipcoin
+2025-05-21 22:37:56,259 - phoenix.telegram - INFO - Analyzing call 274/380: Boochie by Matt
+2025-05-21 22:37:56,259 - phoenix.telegram - INFO - Analyzing call 275/380: Boochie by Matt
+2025-05-21 22:37:56,260 - phoenix.telegram - INFO - Analyzing call 276/380: Boochie by Matt
+2025-05-21 22:37:56,260 - phoenix.telegram - INFO - Analyzing call 277/380: Boochie by Matt
+2025-05-21 22:37:56,260 - phoenix.telegram - INFO - Analyzing call 278/380: Flipcoin
+2025-05-21 22:37:56,260 - phoenix.telegram - INFO - Analyzing call 279/380: YEEZY TOKEN
+2025-05-21 22:37:56,261 - phoenix.telegram - INFO - Analyzing call 280/380: Flipcoin
+2025-05-21 22:37:56,261 - phoenix.telegram - INFO - Analyzing call 281/380: Boochie by Matt
+2025-05-21 22:37:56,261 - phoenix.telegram - INFO - Analyzing call 282/380: Boochie by Matt
+2025-05-21 22:37:56,261 - phoenix.telegram - INFO - Analyzing call 283/380: Boochie by Matt
+2025-05-21 22:37:56,262 - phoenix.telegram - INFO - Analyzing call 284/380: Boochie by Matt
+2025-05-21 22:37:56,262 - phoenix.telegram - INFO - Analyzing call 285/380: Boochie by Matt
+2025-05-21 22:37:56,262 - phoenix.telegram - INFO - Analyzing call 286/380: Boochie by Matt
+2025-05-21 22:37:56,263 - phoenix.telegram - INFO - Analyzing call 287/380: Flip
+2025-05-21 22:37:56,264 - phoenix.telegram - WARNING - No ROI data found in message: Achievement Unlocked: Alpha caller! 🤫
+
+Flip first posted by @GenesisChain_Calls has since been poste...
+2025-05-21 22:37:56,265 - phoenix.telegram - INFO - Analyzing call 288/380: Boochie by Matt
+2025-05-21 22:37:56,265 - phoenix.telegram - INFO - Analyzing call 289/380: Boochie by Matt
+2025-05-21 22:37:56,265 - phoenix.telegram - INFO - Analyzing call 290/380: Boochie by Matt
+2025-05-21 22:37:56,266 - phoenix.telegram - INFO - Analyzing call 291/380: Boochie by Matt
+2025-05-21 22:37:56,266 - phoenix.telegram - INFO - Analyzing call 292/380: Boochie by Matt
+2025-05-21 22:37:56,266 - phoenix.telegram - INFO - Analyzing call 293/380: Boochie by Matt
+2025-05-21 22:37:56,267 - phoenix.telegram - INFO - Analyzing call 294/380: Boochie by Matt
+2025-05-21 22:37:56,267 - phoenix.telegram - INFO - Analyzing call 295/380: Boochie by Matt
+2025-05-21 22:37:56,267 - phoenix.telegram - INFO - Analyzing call 296/380: Boochie by Matt
+2025-05-21 22:37:56,268 - phoenix.telegram - INFO - Analyzing call 297/380: Boochie by Matt
+2025-05-21 22:37:56,268 - phoenix.telegram - INFO - Analyzing call 298/380: Boochie by Matt
+2025-05-21 22:37:56,268 - phoenix.telegram - INFO - Analyzing call 299/380: Boochie by Matt
+2025-05-21 22:37:56,269 - phoenix.telegram - INFO - Analyzing call 300/380: My Curves Are P
+2025-05-21 22:37:56,269 - phoenix.telegram - INFO - Analyzing call 301/380: CrypstocksAI
+2025-05-21 22:37:56,269 - phoenix.telegram - INFO - Analyzing call 302/380: bitty
+2025-05-21 22:37:56,270 - phoenix.telegram - INFO - Analyzing call 303/380: bitty
+2025-05-21 22:37:56,270 - phoenix.telegram - INFO - Analyzing call 304/380: bitty
+2025-05-21 22:37:56,270 - phoenix.telegram - INFO - Analyzing call 305/380: Orange is the n...
+2025-05-21 22:37:56,271 - phoenix.telegram - WARNING - No ROI data found in message: Achievement Unlocked: Alpha caller! 🤫
+
+Orange is the n... first posted by @MarksGems has since been ...
+2025-05-21 22:37:56,271 - phoenix.telegram - INFO - Analyzing call 306/380: MUT8 Virus
+2025-05-21 22:37:56,271 - phoenix.telegram - INFO - Analyzing call 307/380: Imaginary Girlf
+2025-05-21 22:37:56,272 - phoenix.telegram - INFO - Analyzing call 308/380: Imaginary Girlf
+2025-05-21 22:37:56,272 - phoenix.telegram - INFO - Analyzing call 309/380: Imaginary Girlf
+2025-05-21 22:37:56,272 - phoenix.telegram - INFO - Analyzing call 310/380: USD1DOGE
+2025-05-21 22:37:56,275 - phoenix.telegram - INFO - Analyzing call 311/380: USD1DOGE
+2025-05-21 22:37:56,275 - phoenix.telegram - INFO - Analyzing call 312/380: NovaQ
+2025-05-21 22:37:56,276 - phoenix.telegram - INFO - Analyzing call 313/380: NovaQ
+2025-05-21 22:37:56,276 - phoenix.telegram - INFO - Analyzing call 314/380: NovaQ
+2025-05-21 22:37:56,276 - phoenix.telegram - INFO - Analyzing call 315/380: BITCORN
+2025-05-21 22:37:56,277 - phoenix.telegram - INFO - Analyzing call 316/380: Alpaca
+2025-05-21 22:37:56,277 - phoenix.telegram - INFO - Analyzing call 317/380: Imaginary Girlf
+2025-05-21 22:37:56,278 - phoenix.telegram - INFO - Analyzing call 318/380: Imaginary Girlf
+2025-05-21 22:37:56,278 - phoenix.telegram - INFO - Analyzing call 319/380: Imaginary Girlf
+2025-05-21 22:37:56,278 - phoenix.telegram - INFO - Analyzing call 320/380: My Curves Are P
+2025-05-21 22:37:56,279 - phoenix.telegram - INFO - Analyzing call 321/380: My Curves Are P
+2025-05-21 22:37:56,279 - phoenix.telegram - INFO - Analyzing call 322/380: Pepes Dog
+2025-05-21 22:37:56,279 - phoenix.telegram - INFO - Analyzing call 323/380: Lawyer of the U
+2025-05-21 22:37:56,280 - phoenix.telegram - INFO - Analyzing call 324/380: OAKI WORLD
+2025-05-21 22:37:56,280 - phoenix.telegram - INFO - Analyzing call 325/380: Imaginary Girlf
+2025-05-21 22:37:56,280 - phoenix.telegram - INFO - Analyzing call 326/380: Imaginary Girlf
+2025-05-21 22:37:56,281 - phoenix.telegram - INFO - Analyzing call 327/380: Orange is the n
+2025-05-21 22:37:56,281 - phoenix.telegram - INFO - Analyzing call 328/380: Orange is the n
+2025-05-21 22:37:56,281 - phoenix.telegram - INFO - Analyzing call 329/380: Orange is the n
+2025-05-21 22:37:56,282 - phoenix.telegram - INFO - Analyzing call 330/380: Orange is the n
+2025-05-21 22:37:56,282 - phoenix.telegram - INFO - Analyzing call 331/380: Orange is the n
+2025-05-21 22:37:56,282 - phoenix.telegram - INFO - Analyzing call 332/380: Orange is the n
+2025-05-21 22:37:56,283 - phoenix.telegram - INFO - Analyzing call 333/380: Orange is the n
+2025-05-21 22:37:56,283 - phoenix.telegram - INFO - Analyzing call 334/380: Orange is the n
+2025-05-21 22:37:56,283 - phoenix.telegram - INFO - Analyzing call 335/380: Orange is the n
+2025-05-21 22:37:56,283 - phoenix.telegram - INFO - Analyzing call 336/380: Orange is the n
+2025-05-21 22:37:56,284 - phoenix.telegram - INFO - Analyzing call 337/380: Orange is the n
+2025-05-21 22:37:56,285 - phoenix.telegram - INFO - Analyzing call 338/380: NovaQ
+2025-05-21 22:37:56,286 - phoenix.telegram - INFO - Analyzing call 339/380: NovaQ
+2025-05-21 22:37:56,286 - phoenix.telegram - INFO - Analyzing call 340/380: Trump Bitcoin P
+2025-05-21 22:37:56,286 - phoenix.telegram - INFO - Analyzing call 341/380: Melo
+2025-05-21 22:37:56,287 - phoenix.telegram - WARNING - No ROI data found in message: Achievement Unlocked: Alpha caller! 🤫
+
+Melo first posted by @bros_call has since been posted by 10+ ...
+2025-05-21 22:37:56,287 - phoenix.telegram - INFO - Analyzing call 342/380: Feed Broccoli
+2025-05-21 22:37:56,287 - phoenix.telegram - INFO - Analyzing call 343/380: ME GUSTA
+2025-05-21 22:37:56,288 - phoenix.telegram - WARNING - No ROI data found in message: Achievement Unlocked: Alpha caller! 🤫
+
+ME GUSTA first posted by @MarksGems has since been posted by ...
+2025-05-21 22:37:56,288 - phoenix.telegram - INFO - Analyzing call 344/380: Solana Transmit
+2025-05-21 22:37:56,288 - phoenix.telegram - INFO - Analyzing call 345/380: Solana Transmit
+2025-05-21 22:37:56,289 - phoenix.telegram - INFO - Analyzing call 346/380: Boochie by Matt
+2025-05-21 22:37:56,289 - phoenix.telegram - INFO - Analyzing call 347/380: Boochie by Matt
+2025-05-21 22:37:56,289 - phoenix.telegram - INFO - Analyzing call 348/380: Boochie by Matt
+2025-05-21 22:37:56,290 - phoenix.telegram - INFO - Analyzing call 349/380: Boochie by Matt
+2025-05-21 22:37:56,290 - phoenix.telegram - INFO - Analyzing call 350/380: Boochie by Matt
+2025-05-21 22:37:56,290 - phoenix.telegram - INFO - Analyzing call 351/380: Boochie by Matt
+2025-05-21 22:37:56,291 - phoenix.telegram - INFO - Analyzing call 352/380: Boochie by Matt
+2025-05-21 22:37:56,291 - phoenix.telegram - INFO - Analyzing call 353/380: Boochie by Matt
+2025-05-21 22:37:56,291 - phoenix.telegram - INFO - Analyzing call 354/380: Snark Health
+2025-05-21 22:37:56,292 - phoenix.telegram - INFO - Analyzing call 355/380: Boochie by Matt
+2025-05-21 22:37:56,292 - phoenix.telegram - INFO - Analyzing call 356/380: Boochie by Matt
+2025-05-21 22:37:56,292 - phoenix.telegram - INFO - Analyzing call 357/380: Boochie by Matt
+2025-05-21 22:37:56,293 - phoenix.telegram - INFO - Analyzing call 358/380: Can you turn th
+2025-05-21 22:37:56,293 - phoenix.telegram - INFO - Analyzing call 359/380: Snark Health
+2025-05-21 22:37:56,293 - phoenix.telegram - INFO - Analyzing call 360/380: Boochie by Matt
+2025-05-21 22:37:56,294 - phoenix.telegram - INFO - Analyzing call 361/380: Vagina Penis Ne
+2025-05-21 22:37:56,296 - phoenix.telegram - INFO - Analyzing call 362/380: Solana Transmit
+2025-05-21 22:37:56,296 - phoenix.telegram - INFO - Analyzing call 363/380: Solana Transmit
+2025-05-21 22:37:56,296 - phoenix.telegram - INFO - Analyzing call 364/380: Solana Transmit
+2025-05-21 22:37:56,296 - phoenix.telegram - INFO - Analyzing call 365/380: Solana Transmit
+2025-05-21 22:37:56,297 - phoenix.telegram - INFO - Analyzing call 366/380: Boochie by Matt
+2025-05-21 22:37:56,297 - phoenix.telegram - INFO - Analyzing call 367/380: Boochie by Matt
+2025-05-21 22:37:56,297 - phoenix.telegram - INFO - Analyzing call 368/380: Boochie by Matt
+2025-05-21 22:37:56,297 - phoenix.telegram - INFO - Analyzing call 369/380: Boochie by Matt
+2025-05-21 22:37:56,298 - phoenix.telegram - INFO - Analyzing call 370/380: Boochie by Matt
+2025-05-21 22:37:56,298 - phoenix.telegram - INFO - Analyzing call 371/380: Boochie by Matt
+2025-05-21 22:37:56,298 - phoenix.telegram - INFO - Analyzing call 372/380: Snark Health
+2025-05-21 22:37:56,298 - phoenix.telegram - INFO - Analyzing call 373/380: Cortex Vortex b
+2025-05-21 22:37:56,299 - phoenix.telegram - INFO - Analyzing call 374/380: Boochie by Matt
+2025-05-21 22:37:56,299 - phoenix.telegram - INFO - Analyzing call 375/380: Boochie by Matt
+2025-05-21 22:37:56,299 - phoenix.telegram - INFO - Analyzing call 376/380: Boochie by Matt
+2025-05-21 22:37:56,299 - phoenix.telegram - INFO - Analyzing call 377/380: Boochie by Matt
+2025-05-21 22:37:56,300 - phoenix.telegram - INFO - Analyzing call 378/380: Boochie by Matt
+2025-05-21 22:37:56,300 - phoenix.telegram - INFO - Analyzing call 379/380: Boochie by Matt
+2025-05-21 22:37:56,300 - phoenix.telegram - INFO - Analyzing call 380/380: Snark Health
+2025-05-21 22:37:56,305 - phoenix.telegram - INFO - Getting channel IDs for top KOLs (this may take a while due to rate limits)...
+2025-05-21 22:37:56,306 - phoenix.telegram - INFO - Getting channel ID for KOL 1/10: @jeetycall
+2025-05-21 22:37:56,449 - phoenix.telegram - INFO - Found channel for @jeetycall: 1712900374
+2025-05-21 22:37:58,449 - phoenix.telegram - INFO - Getting channel ID for KOL 2/10: @marksgems
+2025-05-21 22:37:58,590 - phoenix.telegram - INFO - Found channel for @marksgems: 1508785153
+2025-05-21 22:38:00,591 - phoenix.telegram - INFO - Getting channel ID for KOL 3/10: @hellsinggamble
+2025-05-21 22:38:00,731 - phoenix.telegram - INFO - Found channel for @hellsinggamble: 1715502498
+2025-05-21 22:38:02,733 - phoenix.telegram - INFO - Getting channel ID for KOL 4/10: @kariusgemscalls
+2025-05-21 22:38:02,873 - phoenix.telegram - INFO - Found channel for @kariusgemscalls: 2222968620
+2025-05-21 22:38:04,874 - phoenix.telegram - INFO - Getting channel ID for KOL 5/10: @chinapumpcommunity
+2025-05-21 22:38:05,014 - phoenix.telegram - INFO - Found channel for @chinapumpcommunity: 1502458504
+2025-05-21 22:38:07,015 - phoenix.telegram - INFO - Getting channel ID for KOL 6/10: @mrbigbagcalls
+2025-05-21 22:38:07,161 - phoenix.telegram - INFO - Found channel for @mrbigbagcalls: 2051055592
+2025-05-21 22:38:09,162 - phoenix.telegram - INFO - Getting channel ID for KOL 7/10: @topcallerschannel
+2025-05-21 22:38:09,306 - phoenix.telegram - INFO - Found channel for @topcallerschannel: 1915321527
+2025-05-21 22:38:11,296 - phoenix.telegram - INFO - Getting channel ID for KOL 8/10: @shitcoinneverland
+2025-05-21 22:38:11,437 - phoenix.telegram - INFO - Found channel for @shitcoinneverland: 1983450418
+2025-05-21 22:38:13,451 - phoenix.telegram - INFO - Getting channel ID for KOL 9/10: @crikeycallz
+2025-05-21 22:38:13,596 - phoenix.telegram - INFO - Found channel for @crikeycallz: 2276696688
+2025-05-21 22:38:15,596 - phoenix.telegram - INFO - Getting channel ID for KOL 10/10: @vortex_gamble
+2025-05-21 22:38:15,739 - phoenix.telegram - INFO - Found channel for @vortex_gamble: 2017983706
+2025-05-21 22:38:15,739 - phoenix.telegram - INFO - Analysis Complete!
+2025-05-21 22:38:15,740 - phoenix.telegram - INFO - Tokens mentioned: 366
+2025-05-21 22:38:15,740 - phoenix.telegram - INFO - Tokens that made x2: 364
+2025-05-21 22:38:15,741 - phoenix.telegram - INFO - Tokens that made x5: 186
+2025-05-21 22:38:15,741 - phoenix.telegram - INFO - Success rate (2x): 99.45%
+2025-05-21 22:38:15,741 - phoenix.telegram - INFO - Success rate (5x): 50.82%
+2025-05-21 22:38:15,747 - phoenix.telegram - INFO - Exported 366 calls to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.csv
+2025-05-21 22:38:15,748 - phoenix.telegram - INFO - Exported KOL performance to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_kol_performance.csv
+2025-05-21 22:38:15,749 - phoenix.telegram - INFO - Exported summary to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_summary.txt
+2025-05-21 22:38:15,750 - phoenix.telegram - INFO - Disconnecting from Telegram...
+2025-05-21 22:38:15,750 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-21 22:38:15,751 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-21 22:38:15,767 - phoenix.telegram - INFO - Disconnected from Telegram
+2025-05-21 22:38:15,768 - phoenix - INFO - SpyDefi analysis completed.
+2025-05-21 22:38:15,768 - phoenix - INFO - Telegram analysis completed. Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.csv
+2025-05-21 22:38:16,058 - phoenix.export - INFO - Creating consolidated Excel export: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 22:38:16,090 - phoenix.export - ERROR - Error creating Excel export: 'str' object has no attribute 'get'
+2025-05-21 22:38:16,090 - phoenix - ERROR - Error exporting to Excel: 'str' object has no attribute 'get'
+2025-05-22 06:45:51,170 - phoenix - INFO - Analyzing 104 wallets for the past 30 days.
+2025-05-22 06:45:51,171 - phoenix - INFO - Minimum win rate: 45.0%
+2025-05-22 06:45:51,171 - phoenix - INFO - Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\wallet_analysis.csv
+2025-05-22 06:45:51,171 - phoenix - INFO - Performing batch wallet analysis...
+2025-05-22 06:45:51,171 - phoenix.wallet - INFO - Batch analyzing 104 wallets using Cielo Finance API
+2025-05-22 06:45:51,171 - phoenix.wallet - INFO - Analyzing wallet 1/104: 2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd
+2025-05-22 06:45:51,171 - phoenix.wallet - INFO - Analyzing wallet 2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd for the past 30 days using Cielo Finance API
+2025-05-22 06:45:51,294 - phoenix.birdeye - WARNING - Token not found: {'wallet': '2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd', 'limit': 100}
+2025-05-22 06:45:51,294 - phoenix.birdeye - WARNING - No transaction data available for 2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd
+2025-05-22 06:45:51,295 - phoenix.wallet - WARNING - No transactions found for wallet 2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd
+2025-05-22 06:45:51,296 - phoenix.wallet - INFO - Analyzing wallet 2/104: 5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex
+2025-05-22 06:45:51,296 - phoenix.wallet - INFO - Analyzing wallet 5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex for the past 30 days using Cielo Finance API
+2025-05-22 06:45:51,445 - phoenix.birdeye - WARNING - Token not found: {'wallet': '5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex', 'limit': 100}
+2025-05-22 06:45:51,445 - phoenix.birdeye - WARNING - No transaction data available for 5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex
+2025-05-22 06:45:51,446 - phoenix.wallet - WARNING - No transactions found for wallet 5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex
+2025-05-22 06:45:51,446 - phoenix.wallet - INFO - Analyzing wallet 3/104: Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e
+2025-05-22 06:45:51,446 - phoenix.wallet - INFO - Analyzing wallet Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e for the past 30 days using Cielo Finance API
+2025-05-22 06:45:51,556 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e', 'limit': 100}
+2025-05-22 06:45:51,556 - phoenix.birdeye - WARNING - No transaction data available for Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e
+2025-05-22 06:45:51,557 - phoenix.wallet - WARNING - No transactions found for wallet Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e
+2025-05-22 06:45:51,557 - phoenix.wallet - INFO - Analyzing wallet 4/104: 8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i
+2025-05-22 06:45:51,557 - phoenix.wallet - INFO - Analyzing wallet 8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i for the past 30 days using Cielo Finance API
+2025-05-22 06:45:51,636 - phoenix.birdeye - WARNING - Token not found: {'wallet': '8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i', 'limit': 100}
+2025-05-22 06:45:51,636 - phoenix.birdeye - WARNING - No transaction data available for 8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i
+2025-05-22 06:45:51,637 - phoenix.wallet - WARNING - No transactions found for wallet 8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i
+2025-05-22 06:45:51,637 - phoenix.wallet - INFO - Analyzing wallet 5/104: A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o
+2025-05-22 06:45:51,638 - phoenix.wallet - INFO - Analyzing wallet A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o for the past 30 days using Cielo Finance API
+2025-05-22 06:45:51,707 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o', 'limit': 100}
+2025-05-22 06:45:51,707 - phoenix.birdeye - WARNING - No transaction data available for A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o
+2025-05-22 06:45:51,708 - phoenix.wallet - WARNING - No transactions found for wallet A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o
+2025-05-22 06:45:51,708 - phoenix.wallet - INFO - Analyzing wallet 6/104: 4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq
+2025-05-22 06:45:51,709 - phoenix.wallet - INFO - Analyzing wallet 4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq for the past 30 days using Cielo Finance API
+2025-05-22 06:45:51,835 - phoenix.birdeye - WARNING - Token not found: {'wallet': '4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq', 'limit': 100}
+2025-05-22 06:45:51,835 - phoenix.birdeye - WARNING - No transaction data available for 4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq
+2025-05-22 06:45:51,836 - phoenix.wallet - WARNING - No transactions found for wallet 4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq
+2025-05-22 06:45:51,837 - phoenix.wallet - INFO - Analyzing wallet 7/104: 9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn
+2025-05-22 06:45:51,837 - phoenix.wallet - INFO - Analyzing wallet 9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn for the past 30 days using Cielo Finance API
+2025-05-22 06:45:51,921 - phoenix.birdeye - WARNING - Token not found: {'wallet': '9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn', 'limit': 100}
+2025-05-22 06:45:51,921 - phoenix.birdeye - WARNING - No transaction data available for 9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn
+2025-05-22 06:45:51,922 - phoenix.wallet - WARNING - No transactions found for wallet 9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn
+2025-05-22 06:45:51,922 - phoenix.wallet - INFO - Analyzing wallet 8/104: 3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B
+2025-05-22 06:45:51,923 - phoenix.wallet - INFO - Analyzing wallet 3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B for the past 30 days using Cielo Finance API
+2025-05-22 06:45:52,104 - phoenix.birdeye - WARNING - Token not found: {'wallet': '3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B', 'limit': 100}
+2025-05-22 06:45:52,105 - phoenix.birdeye - WARNING - No transaction data available for 3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B
+2025-05-22 06:45:52,105 - phoenix.wallet - WARNING - No transactions found for wallet 3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B
+2025-05-22 06:45:52,106 - phoenix.wallet - INFO - Analyzing wallet 9/104: BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r
+2025-05-22 06:45:52,106 - phoenix.wallet - INFO - Analyzing wallet BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r for the past 30 days using Cielo Finance API
+2025-05-22 06:45:52,212 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r', 'limit': 100}
+2025-05-22 06:45:52,212 - phoenix.birdeye - WARNING - No transaction data available for BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r
+2025-05-22 06:45:52,213 - phoenix.wallet - WARNING - No transactions found for wallet BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r
+2025-05-22 06:45:52,213 - phoenix.wallet - INFO - Analyzing wallet 10/104: 96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu
+2025-05-22 06:45:52,213 - phoenix.wallet - INFO - Analyzing wallet 96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu for the past 30 days using Cielo Finance API
+2025-05-22 06:45:52,328 - phoenix.birdeye - WARNING - Token not found: {'wallet': '96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu', 'limit': 100}
+2025-05-22 06:45:52,328 - phoenix.birdeye - WARNING - No transaction data available for 96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu
+2025-05-22 06:45:52,329 - phoenix.wallet - WARNING - No transactions found for wallet 96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu
+2025-05-22 06:45:52,329 - phoenix.wallet - INFO - Analyzing wallet 11/104: 6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK
+2025-05-22 06:45:52,330 - phoenix.wallet - INFO - Analyzing wallet 6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK for the past 30 days using Cielo Finance API
+2025-05-22 06:45:52,385 - phoenix.birdeye - WARNING - Token not found: {'wallet': '6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK', 'limit': 100}
+2025-05-22 06:45:52,385 - phoenix.birdeye - WARNING - No transaction data available for 6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK
+2025-05-22 06:45:52,386 - phoenix.wallet - WARNING - No transactions found for wallet 6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK
+2025-05-22 06:45:52,386 - phoenix.wallet - INFO - Analyzing wallet 12/104: 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr
+2025-05-22 06:45:52,386 - phoenix.wallet - INFO - Analyzing wallet 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr for the past 30 days using Cielo Finance API
+2025-05-22 06:45:52,492 - phoenix.birdeye - WARNING - Token not found: {'wallet': '6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr', 'limit': 100}
+2025-05-22 06:45:52,492 - phoenix.birdeye - WARNING - No transaction data available for 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr
+2025-05-22 06:45:52,493 - phoenix.wallet - WARNING - No transactions found for wallet 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr
+2025-05-22 06:45:52,493 - phoenix.wallet - INFO - Analyzing wallet 13/104: FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL
+2025-05-22 06:45:52,494 - phoenix.wallet - INFO - Analyzing wallet FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL for the past 30 days using Cielo Finance API
+2025-05-22 06:45:52,616 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL', 'limit': 100}
+2025-05-22 06:45:52,617 - phoenix.birdeye - WARNING - No transaction data available for FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL
+2025-05-22 06:45:52,617 - phoenix.wallet - WARNING - No transactions found for wallet FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL
+2025-05-22 06:45:52,618 - phoenix.wallet - INFO - Analyzing wallet 14/104: 7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB
+2025-05-22 06:45:52,618 - phoenix.wallet - INFO - Analyzing wallet 7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB for the past 30 days using Cielo Finance API
+2025-05-22 06:45:52,731 - phoenix.birdeye - WARNING - Token not found: {'wallet': '7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB', 'limit': 100}
+2025-05-22 06:45:52,731 - phoenix.birdeye - WARNING - No transaction data available for 7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB
+2025-05-22 06:45:52,732 - phoenix.wallet - WARNING - No transactions found for wallet 7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB
+2025-05-22 06:45:52,732 - phoenix.wallet - INFO - Analyzing wallet 15/104: FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q
+2025-05-22 06:45:52,732 - phoenix.wallet - INFO - Analyzing wallet FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q for the past 30 days using Cielo Finance API
+2025-05-22 06:45:52,808 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q', 'limit': 100}
+2025-05-22 06:45:52,808 - phoenix.birdeye - WARNING - No transaction data available for FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q
+2025-05-22 06:45:52,808 - phoenix.wallet - WARNING - No transactions found for wallet FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q
+2025-05-22 06:45:52,809 - phoenix.wallet - INFO - Analyzing wallet 16/104: F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe
+2025-05-22 06:45:52,809 - phoenix.wallet - INFO - Analyzing wallet F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe for the past 30 days using Cielo Finance API
+2025-05-22 06:45:52,923 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe', 'limit': 100}
+2025-05-22 06:45:52,924 - phoenix.birdeye - WARNING - No transaction data available for F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe
+2025-05-22 06:45:52,924 - phoenix.wallet - WARNING - No transactions found for wallet F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe
+2025-05-22 06:45:52,925 - phoenix.wallet - INFO - Analyzing wallet 17/104: 5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn
+2025-05-22 06:45:52,925 - phoenix.wallet - INFO - Analyzing wallet 5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn for the past 30 days using Cielo Finance API
+2025-05-22 06:45:52,997 - phoenix.birdeye - WARNING - Token not found: {'wallet': '5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn', 'limit': 100}
+2025-05-22 06:45:52,998 - phoenix.birdeye - WARNING - No transaction data available for 5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn
+2025-05-22 06:45:52,998 - phoenix.wallet - WARNING - No transactions found for wallet 5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn
+2025-05-22 06:45:52,999 - phoenix.wallet - INFO - Analyzing wallet 18/104: 8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2
+2025-05-22 06:45:52,999 - phoenix.wallet - INFO - Analyzing wallet 8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2 for the past 30 days using Cielo Finance API
+2025-05-22 06:45:53,094 - phoenix.birdeye - WARNING - Token not found: {'wallet': '8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2', 'limit': 100}
+2025-05-22 06:45:53,095 - phoenix.birdeye - WARNING - No transaction data available for 8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2
+2025-05-22 06:45:53,095 - phoenix.wallet - WARNING - No transactions found for wallet 8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2
+2025-05-22 06:45:53,096 - phoenix.wallet - INFO - Analyzing wallet 19/104: D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz
+2025-05-22 06:45:53,096 - phoenix.wallet - INFO - Analyzing wallet D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz for the past 30 days using Cielo Finance API
+2025-05-22 06:45:53,138 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz', 'limit': 100}
+2025-05-22 06:45:53,138 - phoenix.birdeye - WARNING - No transaction data available for D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz
+2025-05-22 06:45:53,139 - phoenix.wallet - WARNING - No transactions found for wallet D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz
+2025-05-22 06:45:53,139 - phoenix.wallet - INFO - Analyzing wallet 20/104: CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ
+2025-05-22 06:45:53,140 - phoenix.wallet - INFO - Analyzing wallet CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ for the past 30 days using Cielo Finance API
+2025-05-22 06:45:53,210 - phoenix.birdeye - WARNING - Rate limit hit, waiting longer...
+2025-05-22 06:45:57,290 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ', 'limit': 100}
+2025-05-22 06:45:58,793 - phoenix.birdeye - WARNING - No transaction data available for CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ
+2025-05-22 06:45:58,797 - phoenix.wallet - WARNING - No transactions found for wallet CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ
+2025-05-22 06:45:58,798 - phoenix.wallet - INFO - Analyzing wallet 21/104: FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W
+2025-05-22 06:45:58,798 - phoenix.wallet - INFO - Analyzing wallet FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W for the past 30 days using Cielo Finance API
+2025-05-22 06:45:58,878 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W', 'limit': 100}
+2025-05-22 06:45:58,878 - phoenix.birdeye - WARNING - No transaction data available for FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W
+2025-05-22 06:45:58,879 - phoenix.wallet - WARNING - No transactions found for wallet FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W
+2025-05-22 06:45:58,879 - phoenix.wallet - INFO - Analyzing wallet 22/104: 9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj
+2025-05-22 06:45:58,880 - phoenix.wallet - INFO - Analyzing wallet 9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj for the past 30 days using Cielo Finance API
+2025-05-22 06:45:58,923 - phoenix.birdeye - WARNING - Token not found: {'wallet': '9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj', 'limit': 100}
+2025-05-22 06:45:58,924 - phoenix.birdeye - WARNING - No transaction data available for 9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj
+2025-05-22 06:45:58,925 - phoenix.wallet - WARNING - No transactions found for wallet 9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj
+2025-05-22 06:45:58,925 - phoenix.wallet - INFO - Analyzing wallet 23/104: 6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP
+2025-05-22 06:45:58,925 - phoenix.wallet - INFO - Analyzing wallet 6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP for the past 30 days using Cielo Finance API
+2025-05-22 06:45:58,980 - phoenix.birdeye - WARNING - Token not found: {'wallet': '6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP', 'limit': 100}
+2025-05-22 06:45:58,980 - phoenix.birdeye - WARNING - No transaction data available for 6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP
+2025-05-22 06:45:58,981 - phoenix.wallet - WARNING - No transactions found for wallet 6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP
+2025-05-22 06:45:58,981 - phoenix.wallet - INFO - Analyzing wallet 24/104: 8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q
+2025-05-22 06:45:58,981 - phoenix.wallet - INFO - Analyzing wallet 8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q for the past 30 days using Cielo Finance API
+2025-05-22 06:45:59,116 - phoenix.birdeye - WARNING - Token not found: {'wallet': '8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q', 'limit': 100}
+2025-05-22 06:45:59,116 - phoenix.birdeye - WARNING - No transaction data available for 8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q
+2025-05-22 06:45:59,117 - phoenix.wallet - WARNING - No transactions found for wallet 8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q
+2025-05-22 06:45:59,118 - phoenix.wallet - INFO - Analyzing wallet 25/104: HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg
+2025-05-22 06:45:59,118 - phoenix.wallet - INFO - Analyzing wallet HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg for the past 30 days using Cielo Finance API
+2025-05-22 06:45:59,193 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg', 'limit': 100}
+2025-05-22 06:45:59,193 - phoenix.birdeye - WARNING - No transaction data available for HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg
+2025-05-22 06:45:59,194 - phoenix.wallet - WARNING - No transactions found for wallet HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg
+2025-05-22 06:45:59,194 - phoenix.wallet - INFO - Analyzing wallet 26/104: CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS
+2025-05-22 06:45:59,195 - phoenix.wallet - INFO - Analyzing wallet CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS for the past 30 days using Cielo Finance API
+2025-05-22 06:45:59,257 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS', 'limit': 100}
+2025-05-22 06:45:59,257 - phoenix.birdeye - WARNING - No transaction data available for CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS
+2025-05-22 06:45:59,258 - phoenix.wallet - WARNING - No transactions found for wallet CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS
+2025-05-22 06:45:59,258 - phoenix.wallet - INFO - Analyzing wallet 27/104: BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor
+2025-05-22 06:45:59,258 - phoenix.wallet - INFO - Analyzing wallet BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor for the past 30 days using Cielo Finance API
+2025-05-22 06:45:59,356 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor', 'limit': 100}
+2025-05-22 06:45:59,356 - phoenix.birdeye - WARNING - No transaction data available for BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor
+2025-05-22 06:45:59,357 - phoenix.wallet - WARNING - No transactions found for wallet BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor
+2025-05-22 06:45:59,357 - phoenix.wallet - INFO - Analyzing wallet 28/104: FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb
+2025-05-22 06:45:59,358 - phoenix.wallet - INFO - Analyzing wallet FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb for the past 30 days using Cielo Finance API
+2025-05-22 06:45:59,456 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb', 'limit': 100}
+2025-05-22 06:45:59,457 - phoenix.birdeye - WARNING - No transaction data available for FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb
+2025-05-22 06:45:59,457 - phoenix.wallet - WARNING - No transactions found for wallet FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb
+2025-05-22 06:45:59,458 - phoenix.wallet - INFO - Analyzing wallet 29/104: 5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD
+2025-05-22 06:45:59,458 - phoenix.wallet - INFO - Analyzing wallet 5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD for the past 30 days using Cielo Finance API
+2025-05-22 06:45:59,501 - phoenix.birdeye - WARNING - Token not found: {'wallet': '5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD', 'limit': 100}
+2025-05-22 06:45:59,502 - phoenix.birdeye - WARNING - No transaction data available for 5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD
+2025-05-22 06:45:59,503 - phoenix.wallet - WARNING - No transactions found for wallet 5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD
+2025-05-22 06:45:59,503 - phoenix.wallet - INFO - Analyzing wallet 30/104: BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX
+2025-05-22 06:45:59,503 - phoenix.wallet - INFO - Analyzing wallet BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX for the past 30 days using Cielo Finance API
+2025-05-22 06:45:59,637 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX', 'limit': 100}
+2025-05-22 06:45:59,637 - phoenix.birdeye - WARNING - No transaction data available for BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX
+2025-05-22 06:45:59,638 - phoenix.wallet - WARNING - No transactions found for wallet BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX
+2025-05-22 06:45:59,638 - phoenix.wallet - INFO - Analyzing wallet 31/104: 6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG
+2025-05-22 06:45:59,639 - phoenix.wallet - INFO - Analyzing wallet 6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG for the past 30 days using Cielo Finance API
+2025-05-22 06:45:59,756 - phoenix.birdeye - WARNING - Rate limit hit, waiting longer...
+2025-05-22 06:54:30,189 - phoenix - INFO - Analyzing 104 wallets for the past 30 days.
+2025-05-22 06:54:30,189 - phoenix - INFO - Minimum win rate: 45.0%
+2025-05-22 06:54:30,189 - phoenix - INFO - Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\wallet_analysis.csv
+2025-05-22 06:54:30,189 - phoenix - INFO - Performing batch wallet analysis...
+2025-05-22 06:54:30,189 - phoenix.wallet - INFO - Batch analyzing 104 wallets using Cielo Finance API
+2025-05-22 06:54:30,189 - phoenix.wallet - INFO - Analyzing wallet 1/104: 2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd
+2025-05-22 06:54:30,189 - phoenix.wallet - INFO - Analyzing wallet 2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd for the past 30 days using Cielo Finance API
+2025-05-22 06:54:30,272 - phoenix.birdeye - WARNING - Token not found: {'wallet': '2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd', 'limit': 100}
+2025-05-22 06:54:30,272 - phoenix.birdeye - WARNING - No transaction data available for 2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd
+2025-05-22 06:54:30,273 - phoenix.wallet - WARNING - No transactions found for wallet 2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd
+2025-05-22 06:54:30,274 - phoenix.wallet - INFO - Analyzing wallet 2/104: 5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex
+2025-05-22 06:54:30,274 - phoenix.wallet - INFO - Analyzing wallet 5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex for the past 30 days using Cielo Finance API
+2025-05-22 06:54:30,352 - phoenix.birdeye - WARNING - Token not found: {'wallet': '5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex', 'limit': 100}
+2025-05-22 06:54:30,352 - phoenix.birdeye - WARNING - No transaction data available for 5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex
+2025-05-22 06:54:30,353 - phoenix.wallet - WARNING - No transactions found for wallet 5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex
+2025-05-22 06:54:30,353 - phoenix.wallet - INFO - Analyzing wallet 3/104: Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e
+2025-05-22 06:54:30,353 - phoenix.wallet - INFO - Analyzing wallet Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e for the past 30 days using Cielo Finance API
+2025-05-22 06:54:30,410 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e', 'limit': 100}
+2025-05-22 06:54:30,410 - phoenix.birdeye - WARNING - No transaction data available for Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e
+2025-05-22 06:54:30,411 - phoenix.wallet - WARNING - No transactions found for wallet Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e
+2025-05-22 06:54:30,411 - phoenix.wallet - INFO - Analyzing wallet 4/104: 8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i
+2025-05-22 06:54:30,411 - phoenix.wallet - INFO - Analyzing wallet 8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i for the past 30 days using Cielo Finance API
+2025-05-22 06:54:30,509 - phoenix.birdeye - WARNING - Token not found: {'wallet': '8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i', 'limit': 100}
+2025-05-22 06:54:30,510 - phoenix.birdeye - WARNING - No transaction data available for 8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i
+2025-05-22 06:54:30,510 - phoenix.wallet - WARNING - No transactions found for wallet 8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i
+2025-05-22 06:54:30,511 - phoenix.wallet - INFO - Analyzing wallet 5/104: A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o
+2025-05-22 06:54:30,511 - phoenix.wallet - INFO - Analyzing wallet A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o for the past 30 days using Cielo Finance API
+2025-05-22 06:54:30,623 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o', 'limit': 100}
+2025-05-22 06:54:30,624 - phoenix.birdeye - WARNING - No transaction data available for A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o
+2025-05-22 06:54:30,624 - phoenix.wallet - WARNING - No transactions found for wallet A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o
+2025-05-22 06:54:30,625 - phoenix.wallet - INFO - Analyzing wallet 6/104: 4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq
+2025-05-22 06:54:30,625 - phoenix.wallet - INFO - Analyzing wallet 4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq for the past 30 days using Cielo Finance API
+2025-05-22 06:54:30,697 - phoenix.birdeye - WARNING - Token not found: {'wallet': '4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq', 'limit': 100}
+2025-05-22 06:54:30,697 - phoenix.birdeye - WARNING - No transaction data available for 4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq
+2025-05-22 06:54:30,698 - phoenix.wallet - WARNING - No transactions found for wallet 4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq
+2025-05-22 06:54:30,698 - phoenix.wallet - INFO - Analyzing wallet 7/104: 9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn
+2025-05-22 06:54:30,698 - phoenix.wallet - INFO - Analyzing wallet 9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn for the past 30 days using Cielo Finance API
+2025-05-22 06:54:30,765 - phoenix.birdeye - WARNING - Token not found: {'wallet': '9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn', 'limit': 100}
+2025-05-22 06:54:30,766 - phoenix.birdeye - WARNING - No transaction data available for 9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn
+2025-05-22 06:54:30,766 - phoenix.wallet - WARNING - No transactions found for wallet 9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn
+2025-05-22 06:54:30,767 - phoenix.wallet - INFO - Analyzing wallet 8/104: 3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B
+2025-05-22 06:54:30,767 - phoenix.wallet - INFO - Analyzing wallet 3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B for the past 30 days using Cielo Finance API
+2025-05-22 06:54:30,867 - phoenix.birdeye - WARNING - Token not found: {'wallet': '3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B', 'limit': 100}
+2025-05-22 06:54:30,867 - phoenix.birdeye - WARNING - No transaction data available for 3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B
+2025-05-22 06:54:30,868 - phoenix.wallet - WARNING - No transactions found for wallet 3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B
+2025-05-22 06:54:30,869 - phoenix.wallet - INFO - Analyzing wallet 9/104: BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r
+2025-05-22 06:54:30,869 - phoenix.wallet - INFO - Analyzing wallet BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r for the past 30 days using Cielo Finance API
+2025-05-22 06:54:31,007 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r', 'limit': 100}
+2025-05-22 06:54:31,007 - phoenix.birdeye - WARNING - No transaction data available for BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r
+2025-05-22 06:54:31,008 - phoenix.wallet - WARNING - No transactions found for wallet BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r
+2025-05-22 06:54:31,008 - phoenix.wallet - INFO - Analyzing wallet 10/104: 96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu
+2025-05-22 06:54:31,008 - phoenix.wallet - INFO - Analyzing wallet 96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu for the past 30 days using Cielo Finance API
+2025-05-22 06:54:31,072 - phoenix.birdeye - WARNING - Token not found: {'wallet': '96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu', 'limit': 100}
+2025-05-22 06:54:31,073 - phoenix.birdeye - WARNING - No transaction data available for 96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu
+2025-05-22 06:54:31,073 - phoenix.wallet - WARNING - No transactions found for wallet 96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu
+2025-05-22 06:54:31,074 - phoenix.wallet - INFO - Analyzing wallet 11/104: 6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK
+2025-05-22 06:54:31,074 - phoenix.wallet - INFO - Analyzing wallet 6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK for the past 30 days using Cielo Finance API
+2025-05-22 06:54:31,115 - phoenix.birdeye - WARNING - Rate limit hit, waiting longer...
+2025-05-22 06:54:35,184 - phoenix.birdeye - WARNING - Token not found: {'wallet': '6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK', 'limit': 100}
+2025-05-22 06:54:35,184 - phoenix.birdeye - WARNING - No transaction data available for 6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK
+2025-05-22 06:54:35,184 - phoenix.wallet - WARNING - No transactions found for wallet 6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK
+2025-05-22 06:54:35,184 - phoenix.wallet - INFO - Analyzing wallet 12/104: 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr
+2025-05-22 06:54:35,185 - phoenix.wallet - INFO - Analyzing wallet 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr for the past 30 days using Cielo Finance API
+2025-05-22 06:54:35,264 - phoenix.birdeye - WARNING - Token not found: {'wallet': '6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr', 'limit': 100}
+2025-05-22 06:54:35,264 - phoenix.birdeye - WARNING - No transaction data available for 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr
+2025-05-22 06:54:35,264 - phoenix.wallet - WARNING - No transactions found for wallet 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr
+2025-05-22 06:54:35,264 - phoenix.wallet - INFO - Analyzing wallet 13/104: FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL
+2025-05-22 06:54:35,264 - phoenix.wallet - INFO - Analyzing wallet FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL for the past 30 days using Cielo Finance API
+2025-05-22 06:54:35,372 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL', 'limit': 100}
+2025-05-22 06:54:35,372 - phoenix.birdeye - WARNING - No transaction data available for FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL
+2025-05-22 06:54:35,372 - phoenix.wallet - WARNING - No transactions found for wallet FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL
+2025-05-22 06:54:35,372 - phoenix.wallet - INFO - Analyzing wallet 14/104: 7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB
+2025-05-22 06:54:35,372 - phoenix.wallet - INFO - Analyzing wallet 7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB for the past 30 days using Cielo Finance API
+2025-05-22 06:54:35,419 - phoenix.birdeye - WARNING - Token not found: {'wallet': '7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB', 'limit': 100}
+2025-05-22 06:54:35,419 - phoenix.birdeye - WARNING - No transaction data available for 7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB
+2025-05-22 06:54:35,420 - phoenix.wallet - WARNING - No transactions found for wallet 7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB
+2025-05-22 06:54:35,420 - phoenix.wallet - INFO - Analyzing wallet 15/104: FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q
+2025-05-22 06:54:35,421 - phoenix.wallet - INFO - Analyzing wallet FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q for the past 30 days using Cielo Finance API
+2025-05-22 06:54:35,528 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q', 'limit': 100}
+2025-05-22 06:54:35,528 - phoenix.birdeye - WARNING - No transaction data available for FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q
+2025-05-22 06:54:35,529 - phoenix.wallet - WARNING - No transactions found for wallet FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q
+2025-05-22 06:54:35,530 - phoenix.wallet - INFO - Analyzing wallet 16/104: F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe
+2025-05-22 06:54:35,530 - phoenix.wallet - INFO - Analyzing wallet F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe for the past 30 days using Cielo Finance API
+2025-05-22 06:54:35,576 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe', 'limit': 100}
+2025-05-22 06:54:35,576 - phoenix.birdeye - WARNING - No transaction data available for F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe
+2025-05-22 06:54:35,578 - phoenix.wallet - WARNING - No transactions found for wallet F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe
+2025-05-22 06:54:35,578 - phoenix.wallet - INFO - Analyzing wallet 17/104: 5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn
+2025-05-22 06:54:35,578 - phoenix.wallet - INFO - Analyzing wallet 5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn for the past 30 days using Cielo Finance API
+2025-05-22 06:54:35,658 - phoenix.birdeye - WARNING - Token not found: {'wallet': '5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn', 'limit': 100}
+2025-05-22 06:54:40,524 - phoenix.birdeye - WARNING - No transaction data available for 5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn
+2025-05-22 06:54:40,533 - phoenix.wallet - WARNING - No transactions found for wallet 5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn
+2025-05-22 06:54:40,534 - phoenix.wallet - INFO - Analyzing wallet 18/104: 8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2
+2025-05-22 06:54:40,535 - phoenix.wallet - INFO - Analyzing wallet 8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2 for the past 30 days using Cielo Finance API
+2025-05-22 06:54:40,598 - phoenix.birdeye - WARNING - Token not found: {'wallet': '8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2', 'limit': 100}
+2025-05-22 06:54:40,599 - phoenix.birdeye - WARNING - No transaction data available for 8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2
+2025-05-22 06:54:40,600 - phoenix.wallet - WARNING - No transactions found for wallet 8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2
+2025-05-22 06:54:40,600 - phoenix.wallet - INFO - Analyzing wallet 19/104: D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz
+2025-05-22 06:54:40,601 - phoenix.wallet - INFO - Analyzing wallet D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz for the past 30 days using Cielo Finance API
+2025-05-22 06:54:40,698 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz', 'limit': 100}
+2025-05-22 06:54:40,698 - phoenix.birdeye - WARNING - No transaction data available for D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz
+2025-05-22 06:54:40,699 - phoenix.wallet - WARNING - No transactions found for wallet D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz
+2025-05-22 06:54:40,700 - phoenix.wallet - INFO - Analyzing wallet 20/104: CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ
+2025-05-22 06:54:40,700 - phoenix.wallet - INFO - Analyzing wallet CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ for the past 30 days using Cielo Finance API
+2025-05-22 06:54:40,798 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ', 'limit': 100}
+2025-05-22 06:54:40,798 - phoenix.birdeye - WARNING - No transaction data available for CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ
+2025-05-22 06:54:40,799 - phoenix.wallet - WARNING - No transactions found for wallet CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ
+2025-05-22 06:54:40,800 - phoenix.wallet - INFO - Analyzing wallet 21/104: FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W
+2025-05-22 06:54:40,800 - phoenix.wallet - INFO - Analyzing wallet FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W for the past 30 days using Cielo Finance API
+2025-05-22 06:54:40,880 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W', 'limit': 100}
+2025-05-22 06:54:40,880 - phoenix.birdeye - WARNING - No transaction data available for FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W
+2025-05-22 06:54:40,882 - phoenix.wallet - WARNING - No transactions found for wallet FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W
+2025-05-22 06:54:40,882 - phoenix.wallet - INFO - Analyzing wallet 22/104: 9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj
+2025-05-22 06:54:40,882 - phoenix.wallet - INFO - Analyzing wallet 9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj for the past 30 days using Cielo Finance API
+2025-05-22 06:54:40,994 - phoenix.birdeye - WARNING - Token not found: {'wallet': '9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj', 'limit': 100}
+2025-05-22 06:54:40,995 - phoenix.birdeye - WARNING - No transaction data available for 9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj
+2025-05-22 06:54:40,996 - phoenix.wallet - WARNING - No transactions found for wallet 9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj
+2025-05-22 06:54:40,996 - phoenix.wallet - INFO - Analyzing wallet 23/104: 6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP
+2025-05-22 06:54:40,996 - phoenix.wallet - INFO - Analyzing wallet 6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP for the past 30 days using Cielo Finance API
+2025-05-22 06:54:41,035 - phoenix.birdeye - WARNING - Token not found: {'wallet': '6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP', 'limit': 100}
+2025-05-22 06:54:41,036 - phoenix.birdeye - WARNING - No transaction data available for 6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP
+2025-05-22 06:54:41,037 - phoenix.wallet - WARNING - No transactions found for wallet 6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP
+2025-05-22 06:54:41,037 - phoenix.wallet - INFO - Analyzing wallet 24/104: 8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q
+2025-05-22 06:54:41,038 - phoenix.wallet - INFO - Analyzing wallet 8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q for the past 30 days using Cielo Finance API
+2025-05-22 06:54:41,081 - phoenix.birdeye - WARNING - Token not found: {'wallet': '8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q', 'limit': 100}
+2025-05-22 06:54:41,081 - phoenix.birdeye - WARNING - No transaction data available for 8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q
+2025-05-22 06:54:41,082 - phoenix.wallet - WARNING - No transactions found for wallet 8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q
+2025-05-22 06:54:41,083 - phoenix.wallet - INFO - Analyzing wallet 25/104: HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg
+2025-05-22 06:54:41,083 - phoenix.wallet - INFO - Analyzing wallet HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg for the past 30 days using Cielo Finance API
+2025-05-22 06:54:41,233 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg', 'limit': 100}
+2025-05-22 06:54:41,233 - phoenix.birdeye - WARNING - No transaction data available for HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg
+2025-05-22 06:54:41,234 - phoenix.wallet - WARNING - No transactions found for wallet HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg
+2025-05-22 06:54:41,235 - phoenix.wallet - INFO - Analyzing wallet 26/104: CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS
+2025-05-22 06:54:41,235 - phoenix.wallet - INFO - Analyzing wallet CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS for the past 30 days using Cielo Finance API
+2025-05-22 06:54:41,337 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS', 'limit': 100}
+2025-05-22 06:54:41,337 - phoenix.birdeye - WARNING - No transaction data available for CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS
+2025-05-22 06:54:41,338 - phoenix.wallet - WARNING - No transactions found for wallet CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS
+2025-05-22 06:54:41,339 - phoenix.wallet - INFO - Analyzing wallet 27/104: BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor
+2025-05-22 06:54:41,339 - phoenix.wallet - INFO - Analyzing wallet BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor for the past 30 days using Cielo Finance API
+2025-05-22 06:54:41,454 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor', 'limit': 100}
+2025-05-22 06:54:41,454 - phoenix.birdeye - WARNING - No transaction data available for BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor
+2025-05-22 06:54:41,456 - phoenix.wallet - WARNING - No transactions found for wallet BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor
+2025-05-22 06:54:41,456 - phoenix.wallet - INFO - Analyzing wallet 28/104: FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb
+2025-05-22 06:54:41,456 - phoenix.wallet - INFO - Analyzing wallet FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb for the past 30 days using Cielo Finance API
+2025-05-22 06:54:41,558 - phoenix.birdeye - WARNING - Rate limit hit, waiting longer...
+2025-05-22 07:42:45,376 - phoenix - INFO - Loaded 104 wallet addresses from wallets.txt
+2025-05-22 07:43:45,063 - phoenix - INFO - Loaded 104 wallet addresses from wallets.txt
+2025-05-22 07:43:45,433 - phoenix - ERROR - Enhanced wallet analysis error: No module named 'base58'
+2025-05-22 08:03:09,464 - phoenix - INFO - Loaded 104 wallet addresses from wallets.txt
+2025-05-22 08:03:09,468 - phoenix - INFO - Cielo Finance API key found, but API client not implemented yet.
+2025-05-22 08:03:09,468 - phoenix - INFO - Will use Birdeye API for now.
+2025-05-22 08:03:09,840 - phoenix.wallet - WARNING - Cielo Finance API not provided. Will use Birdeye API if available.
+2025-05-22 08:03:09,840 - phoenix - INFO - Using RPC: https://api.mainnet-beta.solana.com
+2025-05-22 08:03:09,841 - phoenix.wallet - INFO - Batch analyzing 104 wallets (contested: True)
+2025-05-22 08:03:09,842 - phoenix.wallet - INFO - Analyzing wallet 1/104: 2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd
+2025-05-22 08:03:09,842 - phoenix.wallet - INFO - Analyzing wallet 2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd for the past 30 days
+2025-05-22 08:03:09,950 - phoenix.birdeye - WARNING - Token not found: {'wallet': '2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd', 'limit': 100}
+2025-05-22 08:03:09,951 - phoenix.birdeye - WARNING - No transaction data available for 2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd
+2025-05-22 08:03:09,951 - phoenix.wallet - WARNING - No transactions found for wallet 2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd
+2025-05-22 08:03:09,952 - phoenix.wallet - INFO - Analyzing wallet 2/104: 5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex
+2025-05-22 08:03:09,952 - phoenix.wallet - INFO - Analyzing wallet 5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex for the past 30 days
+2025-05-22 08:03:10,065 - phoenix.birdeye - WARNING - Token not found: {'wallet': '5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex', 'limit': 100}
+2025-05-22 08:03:10,065 - phoenix.birdeye - WARNING - No transaction data available for 5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex
+2025-05-22 08:03:10,066 - phoenix.wallet - WARNING - No transactions found for wallet 5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex
+2025-05-22 08:03:10,066 - phoenix.wallet - INFO - Analyzing wallet 3/104: Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e
+2025-05-22 08:03:10,067 - phoenix.wallet - INFO - Analyzing wallet Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e for the past 30 days
+2025-05-22 08:03:10,123 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e', 'limit': 100}
+2025-05-22 08:03:10,123 - phoenix.birdeye - WARNING - No transaction data available for Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e
+2025-05-22 08:03:10,124 - phoenix.wallet - WARNING - No transactions found for wallet Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e
+2025-05-22 08:03:10,124 - phoenix.wallet - INFO - Analyzing wallet 4/104: 8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i
+2025-05-22 08:03:10,125 - phoenix.wallet - INFO - Analyzing wallet 8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i for the past 30 days
+2025-05-22 08:03:10,237 - phoenix.birdeye - WARNING - Token not found: {'wallet': '8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i', 'limit': 100}
+2025-05-22 08:03:10,238 - phoenix.birdeye - WARNING - No transaction data available for 8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i
+2025-05-22 08:03:10,238 - phoenix.wallet - WARNING - No transactions found for wallet 8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i
+2025-05-22 08:03:10,239 - phoenix.wallet - INFO - Analyzing wallet 5/104: A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o
+2025-05-22 08:03:10,239 - phoenix.wallet - INFO - Analyzing wallet A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o for the past 30 days
+2025-05-22 08:03:10,372 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o', 'limit': 100}
+2025-05-22 08:03:10,373 - phoenix.birdeye - WARNING - No transaction data available for A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o
+2025-05-22 08:03:10,374 - phoenix.wallet - WARNING - No transactions found for wallet A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o
+2025-05-22 08:03:10,374 - phoenix.wallet - INFO - Analyzing wallet 6/104: 4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq
+2025-05-22 08:03:10,374 - phoenix.wallet - INFO - Analyzing wallet 4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq for the past 30 days
+2025-05-22 08:03:10,518 - phoenix.birdeye - WARNING - Token not found: {'wallet': '4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq', 'limit': 100}
+2025-05-22 08:03:10,518 - phoenix.birdeye - WARNING - No transaction data available for 4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq
+2025-05-22 08:03:10,519 - phoenix.wallet - WARNING - No transactions found for wallet 4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq
+2025-05-22 08:03:10,520 - phoenix.wallet - INFO - Analyzing wallet 7/104: 9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn
+2025-05-22 08:03:10,520 - phoenix.wallet - INFO - Analyzing wallet 9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn for the past 30 days
+2025-05-22 08:03:10,649 - phoenix.birdeye - WARNING - Token not found: {'wallet': '9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn', 'limit': 100}
+2025-05-22 08:03:10,650 - phoenix.birdeye - WARNING - No transaction data available for 9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn
+2025-05-22 08:03:10,651 - phoenix.wallet - WARNING - No transactions found for wallet 9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn
+2025-05-22 08:03:10,651 - phoenix.wallet - INFO - Analyzing wallet 8/104: 3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B
+2025-05-22 08:03:10,651 - phoenix.wallet - INFO - Analyzing wallet 3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B for the past 30 days
+2025-05-22 08:03:10,703 - phoenix.birdeye - WARNING - Token not found: {'wallet': '3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B', 'limit': 100}
+2025-05-22 08:03:10,704 - phoenix.birdeye - WARNING - No transaction data available for 3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B
+2025-05-22 08:03:10,704 - phoenix.wallet - WARNING - No transactions found for wallet 3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B
+2025-05-22 08:03:10,705 - phoenix.wallet - INFO - Analyzing wallet 9/104: BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r
+2025-05-22 08:03:10,705 - phoenix.wallet - INFO - Analyzing wallet BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r for the past 30 days
+2025-05-22 08:03:10,747 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r', 'limit': 100}
+2025-05-22 08:03:10,747 - phoenix.birdeye - WARNING - No transaction data available for BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r
+2025-05-22 08:03:10,748 - phoenix.wallet - WARNING - No transactions found for wallet BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r
+2025-05-22 08:03:10,748 - phoenix.wallet - INFO - Analyzing wallet 10/104: 96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu
+2025-05-22 08:03:10,748 - phoenix.wallet - INFO - Analyzing wallet 96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu for the past 30 days
+2025-05-22 08:03:10,871 - phoenix.birdeye - WARNING - Token not found: {'wallet': '96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu', 'limit': 100}
+2025-05-22 08:03:10,871 - phoenix.birdeye - WARNING - No transaction data available for 96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu
+2025-05-22 08:03:10,872 - phoenix.wallet - WARNING - No transactions found for wallet 96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu
+2025-05-22 08:03:10,873 - phoenix.wallet - INFO - Analyzing wallet 11/104: 6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK
+2025-05-22 08:03:10,873 - phoenix.wallet - INFO - Analyzing wallet 6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK for the past 30 days
+2025-05-22 08:03:10,914 - phoenix.birdeye - WARNING - Rate limit hit, waiting longer...
+2025-05-22 08:03:15,033 - phoenix.birdeye - WARNING - Token not found: {'wallet': '6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK', 'limit': 100}
+2025-05-22 08:03:15,033 - phoenix.birdeye - WARNING - No transaction data available for 6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK
+2025-05-22 08:03:15,034 - phoenix.wallet - WARNING - No transactions found for wallet 6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK
+2025-05-22 08:03:15,034 - phoenix.wallet - INFO - Analyzing wallet 12/104: 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr
+2025-05-22 08:03:15,034 - phoenix.wallet - INFO - Analyzing wallet 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr for the past 30 days
+2025-05-22 08:03:15,105 - phoenix.birdeye - WARNING - Token not found: {'wallet': '6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr', 'limit': 100}
+2025-05-22 08:03:15,105 - phoenix.birdeye - WARNING - No transaction data available for 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr
+2025-05-22 08:03:15,105 - phoenix.wallet - WARNING - No transactions found for wallet 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr
+2025-05-22 08:03:15,106 - phoenix.wallet - INFO - Analyzing wallet 13/104: FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL
+2025-05-22 08:03:15,106 - phoenix.wallet - INFO - Analyzing wallet FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL for the past 30 days
+2025-05-22 08:03:15,227 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL', 'limit': 100}
+2025-05-22 08:03:15,227 - phoenix.birdeye - WARNING - No transaction data available for FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL
+2025-05-22 08:03:15,229 - phoenix.wallet - WARNING - No transactions found for wallet FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL
+2025-05-22 08:03:15,229 - phoenix.wallet - INFO - Analyzing wallet 14/104: 7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB
+2025-05-22 08:03:15,230 - phoenix.wallet - INFO - Analyzing wallet 7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB for the past 30 days
+2025-05-22 08:03:15,340 - phoenix.birdeye - WARNING - Token not found: {'wallet': '7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB', 'limit': 100}
+2025-05-22 08:03:15,340 - phoenix.birdeye - WARNING - No transaction data available for 7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB
+2025-05-22 08:03:15,342 - phoenix.wallet - WARNING - No transactions found for wallet 7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB
+2025-05-22 08:03:15,342 - phoenix.wallet - INFO - Analyzing wallet 15/104: FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q
+2025-05-22 08:03:15,342 - phoenix.wallet - INFO - Analyzing wallet FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q for the past 30 days
+2025-05-22 08:03:15,407 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q', 'limit': 100}
+2025-05-22 08:03:15,407 - phoenix.birdeye - WARNING - No transaction data available for FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q
+2025-05-22 08:03:15,408 - phoenix.wallet - WARNING - No transactions found for wallet FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q
+2025-05-22 08:03:15,408 - phoenix.wallet - INFO - Analyzing wallet 16/104: F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe
+2025-05-22 08:03:15,409 - phoenix.wallet - INFO - Analyzing wallet F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe for the past 30 days
+2025-05-22 08:03:15,506 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe', 'limit': 100}
+2025-05-22 08:03:15,506 - phoenix.birdeye - WARNING - No transaction data available for F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe
+2025-05-22 08:03:15,507 - phoenix.wallet - WARNING - No transactions found for wallet F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe
+2025-05-22 08:03:15,507 - phoenix.wallet - INFO - Analyzing wallet 17/104: 5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn
+2025-05-22 08:03:15,508 - phoenix.wallet - INFO - Analyzing wallet 5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn for the past 30 days
+2025-05-22 08:03:15,558 - phoenix.birdeye - WARNING - Token not found: {'wallet': '5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn', 'limit': 100}
+2025-05-22 08:03:15,559 - phoenix.birdeye - WARNING - No transaction data available for 5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn
+2025-05-22 08:03:15,560 - phoenix.wallet - WARNING - No transactions found for wallet 5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn
+2025-05-22 08:03:15,560 - phoenix.wallet - INFO - Analyzing wallet 18/104: 8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2
+2025-05-22 08:03:15,561 - phoenix.wallet - INFO - Analyzing wallet 8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2 for the past 30 days
+2025-05-22 08:03:15,622 - phoenix.birdeye - WARNING - Token not found: {'wallet': '8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2', 'limit': 100}
+2025-05-22 08:03:15,622 - phoenix.birdeye - WARNING - No transaction data available for 8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2
+2025-05-22 08:03:15,623 - phoenix.wallet - WARNING - No transactions found for wallet 8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2
+2025-05-22 08:03:15,623 - phoenix.wallet - INFO - Analyzing wallet 19/104: D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz
+2025-05-22 08:03:15,624 - phoenix.wallet - INFO - Analyzing wallet D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz for the past 30 days
+2025-05-22 08:03:15,697 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz', 'limit': 100}
+2025-05-22 08:03:15,698 - phoenix.birdeye - WARNING - No transaction data available for D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz
+2025-05-22 08:03:15,699 - phoenix.wallet - WARNING - No transactions found for wallet D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz
+2025-05-22 08:03:15,699 - phoenix.wallet - INFO - Analyzing wallet 20/104: CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ
+2025-05-22 08:03:15,700 - phoenix.wallet - INFO - Analyzing wallet CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ for the past 30 days
+2025-05-22 08:03:15,757 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ', 'limit': 100}
+2025-05-22 08:03:15,758 - phoenix.birdeye - WARNING - No transaction data available for CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ
+2025-05-22 08:03:15,759 - phoenix.wallet - WARNING - No transactions found for wallet CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ
+2025-05-22 08:03:15,759 - phoenix.wallet - INFO - Analyzing wallet 21/104: FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W
+2025-05-22 08:03:15,759 - phoenix.wallet - INFO - Analyzing wallet FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W for the past 30 days
+2025-05-22 08:03:15,795 - phoenix.birdeye - WARNING - Rate limit hit, waiting longer...
+2025-05-22 08:03:19,903 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W', 'limit': 100}
+2025-05-22 08:03:19,903 - phoenix.birdeye - WARNING - No transaction data available for FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W
+2025-05-22 08:03:19,905 - phoenix.wallet - WARNING - No transactions found for wallet FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W
+2025-05-22 08:03:19,905 - phoenix.wallet - INFO - Analyzing wallet 22/104: 9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj
+2025-05-22 08:03:19,906 - phoenix.wallet - INFO - Analyzing wallet 9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj for the past 30 days
+2025-05-22 08:03:20,003 - phoenix.birdeye - WARNING - Token not found: {'wallet': '9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj', 'limit': 100}
+2025-05-22 08:03:20,003 - phoenix.birdeye - WARNING - No transaction data available for 9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj
+2025-05-22 08:03:20,005 - phoenix.wallet - WARNING - No transactions found for wallet 9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj
+2025-05-22 08:03:20,005 - phoenix.wallet - INFO - Analyzing wallet 23/104: 6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP
+2025-05-22 08:03:20,005 - phoenix.wallet - INFO - Analyzing wallet 6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP for the past 30 days
+2025-05-22 08:03:20,079 - phoenix.birdeye - WARNING - Token not found: {'wallet': '6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP', 'limit': 100}
+2025-05-22 08:03:20,080 - phoenix.birdeye - WARNING - No transaction data available for 6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP
+2025-05-22 08:03:20,081 - phoenix.wallet - WARNING - No transactions found for wallet 6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP
+2025-05-22 08:03:20,081 - phoenix.wallet - INFO - Analyzing wallet 24/104: 8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q
+2025-05-22 08:03:20,081 - phoenix.wallet - INFO - Analyzing wallet 8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q for the past 30 days
+2025-05-22 08:03:20,164 - phoenix.birdeye - WARNING - Token not found: {'wallet': '8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q', 'limit': 100}
+2025-05-22 08:03:20,164 - phoenix.birdeye - WARNING - No transaction data available for 8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q
+2025-05-22 08:03:20,165 - phoenix.wallet - WARNING - No transactions found for wallet 8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q
+2025-05-22 08:03:20,166 - phoenix.wallet - INFO - Analyzing wallet 25/104: HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg
+2025-05-22 08:03:20,166 - phoenix.wallet - INFO - Analyzing wallet HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg for the past 30 days
+2025-05-22 08:03:20,277 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg', 'limit': 100}
+2025-05-22 08:03:20,277 - phoenix.birdeye - WARNING - No transaction data available for HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg
+2025-05-22 08:03:20,279 - phoenix.wallet - WARNING - No transactions found for wallet HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg
+2025-05-22 08:03:20,279 - phoenix.wallet - INFO - Analyzing wallet 26/104: CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS
+2025-05-22 08:03:20,280 - phoenix.wallet - INFO - Analyzing wallet CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS for the past 30 days
+2025-05-22 08:03:20,402 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS', 'limit': 100}
+2025-05-22 08:03:20,402 - phoenix.birdeye - WARNING - No transaction data available for CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS
+2025-05-22 08:03:20,404 - phoenix.wallet - WARNING - No transactions found for wallet CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS
+2025-05-22 08:03:20,404 - phoenix.wallet - INFO - Analyzing wallet 27/104: BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor
+2025-05-22 08:03:20,404 - phoenix.wallet - INFO - Analyzing wallet BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor for the past 30 days
+2025-05-22 08:03:20,533 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor', 'limit': 100}
+2025-05-22 08:03:20,533 - phoenix.birdeye - WARNING - No transaction data available for BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor
+2025-05-22 08:03:20,534 - phoenix.wallet - WARNING - No transactions found for wallet BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor
+2025-05-22 08:03:20,535 - phoenix.wallet - INFO - Analyzing wallet 28/104: FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb
+2025-05-22 08:03:20,535 - phoenix.wallet - INFO - Analyzing wallet FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb for the past 30 days
+2025-05-22 08:03:20,579 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb', 'limit': 100}
+2025-05-22 08:03:20,580 - phoenix.birdeye - WARNING - No transaction data available for FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb
+2025-05-22 08:03:20,581 - phoenix.wallet - WARNING - No transactions found for wallet FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb
+2025-05-22 08:03:20,581 - phoenix.wallet - INFO - Analyzing wallet 29/104: 5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD
+2025-05-22 08:03:20,582 - phoenix.wallet - INFO - Analyzing wallet 5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD for the past 30 days
+2025-05-22 08:03:20,713 - phoenix.birdeye - WARNING - Token not found: {'wallet': '5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD', 'limit': 100}
+2025-05-22 08:03:20,713 - phoenix.birdeye - WARNING - No transaction data available for 5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD
+2025-05-22 08:03:20,715 - phoenix.wallet - WARNING - No transactions found for wallet 5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD
+2025-05-22 08:03:20,715 - phoenix.wallet - INFO - Analyzing wallet 30/104: BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX
+2025-05-22 08:03:20,715 - phoenix.wallet - INFO - Analyzing wallet BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX for the past 30 days
+2025-05-22 08:03:20,838 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX', 'limit': 100}
+2025-05-22 08:03:20,839 - phoenix.birdeye - WARNING - No transaction data available for BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX
+2025-05-22 08:03:20,840 - phoenix.wallet - WARNING - No transactions found for wallet BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX
+2025-05-22 08:03:20,840 - phoenix.wallet - INFO - Analyzing wallet 31/104: 6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG
+2025-05-22 08:03:20,840 - phoenix.wallet - INFO - Analyzing wallet 6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG for the past 30 days
+2025-05-22 08:03:20,910 - phoenix.birdeye - WARNING - Token not found: {'wallet': '6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG', 'limit': 100}
+2025-05-22 08:03:20,910 - phoenix.birdeye - WARNING - No transaction data available for 6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG
+2025-05-22 08:03:20,911 - phoenix.wallet - WARNING - No transactions found for wallet 6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG
+2025-05-22 08:03:20,912 - phoenix.wallet - INFO - Analyzing wallet 32/104: 8CmDY4dBQEVD74T7UcZofUmnLdJyTprFW6cL3b77XYjv
+2025-05-22 08:03:20,912 - phoenix.wallet - INFO - Analyzing wallet 8CmDY4dBQEVD74T7UcZofUmnLdJyTprFW6cL3b77XYjv for the past 30 days
+2025-05-22 08:03:20,961 - phoenix.birdeye - WARNING - Token not found: {'wallet': '8CmDY4dBQEVD74T7UcZofUmnLdJyTprFW6cL3b77XYjv', 'limit': 100}
+2025-05-22 08:03:20,961 - phoenix.birdeye - WARNING - No transaction data available for 8CmDY4dBQEVD74T7UcZofUmnLdJyTprFW6cL3b77XYjv
+2025-05-22 08:03:20,962 - phoenix.wallet - WARNING - No transactions found for wallet 8CmDY4dBQEVD74T7UcZofUmnLdJyTprFW6cL3b77XYjv
+2025-05-22 08:03:20,963 - phoenix.wallet - INFO - Analyzing wallet 33/104: ESuJogU3kzLjZdfG93k6c4pYq8jJAu63wuv9NDvfesCi
+2025-05-22 08:03:20,963 - phoenix.wallet - INFO - Analyzing wallet ESuJogU3kzLjZdfG93k6c4pYq8jJAu63wuv9NDvfesCi for the past 30 days
+2025-05-22 08:03:21,028 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'ESuJogU3kzLjZdfG93k6c4pYq8jJAu63wuv9NDvfesCi', 'limit': 100}
+2025-05-22 08:03:21,028 - phoenix.birdeye - WARNING - No transaction data available for ESuJogU3kzLjZdfG93k6c4pYq8jJAu63wuv9NDvfesCi
+2025-05-22 08:03:21,030 - phoenix.wallet - WARNING - No transactions found for wallet ESuJogU3kzLjZdfG93k6c4pYq8jJAu63wuv9NDvfesCi
+2025-05-22 08:03:21,030 - phoenix.wallet - INFO - Analyzing wallet 34/104: 933GChDAL2sfL7iubWqPdCEN9yiZia2Ti6RYGXMAJMEu
+2025-05-22 08:03:21,030 - phoenix.wallet - INFO - Analyzing wallet 933GChDAL2sfL7iubWqPdCEN9yiZia2Ti6RYGXMAJMEu for the past 30 days
+2025-05-22 08:03:21,154 - phoenix.birdeye - WARNING - Token not found: {'wallet': '933GChDAL2sfL7iubWqPdCEN9yiZia2Ti6RYGXMAJMEu', 'limit': 100}
+2025-05-22 08:03:21,155 - phoenix.birdeye - WARNING - No transaction data available for 933GChDAL2sfL7iubWqPdCEN9yiZia2Ti6RYGXMAJMEu
+2025-05-22 08:03:21,156 - phoenix.wallet - WARNING - No transactions found for wallet 933GChDAL2sfL7iubWqPdCEN9yiZia2Ti6RYGXMAJMEu
+2025-05-22 08:03:21,157 - phoenix.wallet - INFO - Analyzing wallet 35/104: 4mn4awCvhti4ybEMNe8q8D28KaoJ2LJiUViSqFgn6NZF
+2025-05-22 08:03:21,157 - phoenix.wallet - INFO - Analyzing wallet 4mn4awCvhti4ybEMNe8q8D28KaoJ2LJiUViSqFgn6NZF for the past 30 days
+2025-05-22 08:03:21,256 - phoenix.birdeye - WARNING - Token not found: {'wallet': '4mn4awCvhti4ybEMNe8q8D28KaoJ2LJiUViSqFgn6NZF', 'limit': 100}
+2025-05-22 08:03:21,256 - phoenix.birdeye - WARNING - No transaction data available for 4mn4awCvhti4ybEMNe8q8D28KaoJ2LJiUViSqFgn6NZF
+2025-05-22 08:03:21,259 - phoenix.wallet - WARNING - No transactions found for wallet 4mn4awCvhti4ybEMNe8q8D28KaoJ2LJiUViSqFgn6NZF
+2025-05-22 08:03:21,259 - phoenix.wallet - INFO - Analyzing wallet 36/104: 7Hy2bJvqPRXGVybQ18zLW2sc8E2DnorXqPrCxARAxWQC
+2025-05-22 08:03:21,259 - phoenix.wallet - INFO - Analyzing wallet 7Hy2bJvqPRXGVybQ18zLW2sc8E2DnorXqPrCxARAxWQC for the past 30 days
+2025-05-22 08:03:21,331 - phoenix.birdeye - WARNING - Token not found: {'wallet': '7Hy2bJvqPRXGVybQ18zLW2sc8E2DnorXqPrCxARAxWQC', 'limit': 100}
+2025-05-22 08:03:21,332 - phoenix.birdeye - WARNING - No transaction data available for 7Hy2bJvqPRXGVybQ18zLW2sc8E2DnorXqPrCxARAxWQC
+2025-05-22 08:03:21,333 - phoenix.wallet - WARNING - No transactions found for wallet 7Hy2bJvqPRXGVybQ18zLW2sc8E2DnorXqPrCxARAxWQC
+2025-05-22 08:03:21,333 - phoenix.wallet - INFO - Analyzing wallet 37/104: EwcHQK2dTxnwMsEu7d3Mj5uRLzyJEsxFCCi3CowspoRv
+2025-05-22 08:03:21,334 - phoenix.wallet - INFO - Analyzing wallet EwcHQK2dTxnwMsEu7d3Mj5uRLzyJEsxFCCi3CowspoRv for the past 30 days
+2025-05-22 08:03:21,384 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'EwcHQK2dTxnwMsEu7d3Mj5uRLzyJEsxFCCi3CowspoRv', 'limit': 100}
+2025-05-22 08:03:21,384 - phoenix.birdeye - WARNING - No transaction data available for EwcHQK2dTxnwMsEu7d3Mj5uRLzyJEsxFCCi3CowspoRv
+2025-05-22 08:03:21,386 - phoenix.wallet - WARNING - No transactions found for wallet EwcHQK2dTxnwMsEu7d3Mj5uRLzyJEsxFCCi3CowspoRv
+2025-05-22 08:03:21,386 - phoenix.wallet - INFO - Analyzing wallet 38/104: Gw71goDdGz2F9RhoEoSVcdts57bQRf8A5AWaSVNYSJNH
+2025-05-22 08:03:21,386 - phoenix.wallet - INFO - Analyzing wallet Gw71goDdGz2F9RhoEoSVcdts57bQRf8A5AWaSVNYSJNH for the past 30 days
+2025-05-22 08:03:21,502 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'Gw71goDdGz2F9RhoEoSVcdts57bQRf8A5AWaSVNYSJNH', 'limit': 100}
+2025-05-22 08:03:21,502 - phoenix.birdeye - WARNING - No transaction data available for Gw71goDdGz2F9RhoEoSVcdts57bQRf8A5AWaSVNYSJNH
+2025-05-22 08:03:21,503 - phoenix.wallet - WARNING - No transactions found for wallet Gw71goDdGz2F9RhoEoSVcdts57bQRf8A5AWaSVNYSJNH
+2025-05-22 08:03:21,504 - phoenix.wallet - INFO - Analyzing wallet 39/104: GCGrJifLEs8zF4iPc7Vht4pxtVJZ4xqatauhq72VLDzH
+2025-05-22 08:03:21,504 - phoenix.wallet - INFO - Analyzing wallet GCGrJifLEs8zF4iPc7Vht4pxtVJZ4xqatauhq72VLDzH for the past 30 days
+2025-05-22 08:03:21,605 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'GCGrJifLEs8zF4iPc7Vht4pxtVJZ4xqatauhq72VLDzH', 'limit': 100}
+2025-05-22 08:03:21,605 - phoenix.birdeye - WARNING - No transaction data available for GCGrJifLEs8zF4iPc7Vht4pxtVJZ4xqatauhq72VLDzH
+2025-05-22 08:03:21,606 - phoenix.wallet - WARNING - No transactions found for wallet GCGrJifLEs8zF4iPc7Vht4pxtVJZ4xqatauhq72VLDzH
+2025-05-22 08:03:21,607 - phoenix.wallet - INFO - Analyzing wallet 40/104: E22jDFD1SwMKjxcFzZ7p4m1rmbAgaw7r5NoKjVZwgCbM
+2025-05-22 08:03:21,607 - phoenix.wallet - INFO - Analyzing wallet E22jDFD1SwMKjxcFzZ7p4m1rmbAgaw7r5NoKjVZwgCbM for the past 30 days
+2025-05-22 08:03:21,647 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'E22jDFD1SwMKjxcFzZ7p4m1rmbAgaw7r5NoKjVZwgCbM', 'limit': 100}
+2025-05-22 08:03:21,648 - phoenix.birdeye - WARNING - No transaction data available for E22jDFD1SwMKjxcFzZ7p4m1rmbAgaw7r5NoKjVZwgCbM
+2025-05-22 08:03:21,649 - phoenix.wallet - WARNING - No transactions found for wallet E22jDFD1SwMKjxcFzZ7p4m1rmbAgaw7r5NoKjVZwgCbM
+2025-05-22 08:03:21,649 - phoenix.wallet - INFO - Analyzing wallet 41/104: 51TQpGzNzQDbXP3f6NE2RUMBXQC5Am13wS982m4gs36x
+2025-05-22 08:03:21,649 - phoenix.wallet - INFO - Analyzing wallet 51TQpGzNzQDbXP3f6NE2RUMBXQC5Am13wS982m4gs36x for the past 30 days
+2025-05-22 08:03:21,719 - phoenix.birdeye - WARNING - Rate limit hit, waiting longer...
+2025-05-22 08:03:25,846 - phoenix.birdeye - WARNING - Token not found: {'wallet': '51TQpGzNzQDbXP3f6NE2RUMBXQC5Am13wS982m4gs36x', 'limit': 100}
+2025-05-22 08:03:28,391 - phoenix.birdeye - WARNING - No transaction data available for 51TQpGzNzQDbXP3f6NE2RUMBXQC5Am13wS982m4gs36x
+2025-05-22 08:03:28,399 - phoenix.wallet - WARNING - No transactions found for wallet 51TQpGzNzQDbXP3f6NE2RUMBXQC5Am13wS982m4gs36x
+2025-05-22 08:03:28,401 - phoenix.wallet - INFO - Analyzing wallet 42/104: FoijuyaeB29bqiFnAffemX21bbtw8ZEitesmVLxLDVzN
+2025-05-22 08:03:28,402 - phoenix.wallet - INFO - Analyzing wallet FoijuyaeB29bqiFnAffemX21bbtw8ZEitesmVLxLDVzN for the past 30 days
+2025-05-22 08:03:28,500 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'FoijuyaeB29bqiFnAffemX21bbtw8ZEitesmVLxLDVzN', 'limit': 100}
+2025-05-22 08:03:28,501 - phoenix.birdeye - WARNING - No transaction data available for FoijuyaeB29bqiFnAffemX21bbtw8ZEitesmVLxLDVzN
+2025-05-22 08:03:28,502 - phoenix.wallet - WARNING - No transactions found for wallet FoijuyaeB29bqiFnAffemX21bbtw8ZEitesmVLxLDVzN
+2025-05-22 08:03:28,502 - phoenix.wallet - INFO - Analyzing wallet 43/104: AxGu78Gp4fUvx1TgLb7zqTJJ4o2niJ9e8ZnT3cpywHZT
+2025-05-22 08:03:28,503 - phoenix.wallet - INFO - Analyzing wallet AxGu78Gp4fUvx1TgLb7zqTJJ4o2niJ9e8ZnT3cpywHZT for the past 30 days
+2025-05-22 08:03:28,551 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'AxGu78Gp4fUvx1TgLb7zqTJJ4o2niJ9e8ZnT3cpywHZT', 'limit': 100}
+2025-05-22 08:03:28,552 - phoenix.birdeye - WARNING - No transaction data available for AxGu78Gp4fUvx1TgLb7zqTJJ4o2niJ9e8ZnT3cpywHZT
+2025-05-22 08:03:28,553 - phoenix.wallet - WARNING - No transactions found for wallet AxGu78Gp4fUvx1TgLb7zqTJJ4o2niJ9e8ZnT3cpywHZT
+2025-05-22 08:03:28,554 - phoenix.wallet - INFO - Analyzing wallet 44/104: G31FfCPWEWYsje5wEHtpEufQFVLrC9Z2LfHiUJLFcMQo
+2025-05-22 08:03:28,554 - phoenix.wallet - INFO - Analyzing wallet G31FfCPWEWYsje5wEHtpEufQFVLrC9Z2LfHiUJLFcMQo for the past 30 days
+2025-05-22 08:03:28,594 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'G31FfCPWEWYsje5wEHtpEufQFVLrC9Z2LfHiUJLFcMQo', 'limit': 100}
+2025-05-22 08:03:28,594 - phoenix.birdeye - WARNING - No transaction data available for G31FfCPWEWYsje5wEHtpEufQFVLrC9Z2LfHiUJLFcMQo
+2025-05-22 08:03:28,595 - phoenix.wallet - WARNING - No transactions found for wallet G31FfCPWEWYsje5wEHtpEufQFVLrC9Z2LfHiUJLFcMQo
+2025-05-22 08:03:28,596 - phoenix.wallet - INFO - Analyzing wallet 45/104: BsQj6ApLH31zSF3gF8C5vXiU6n1cAoNR3ENRhqUp7t1f
+2025-05-22 08:03:28,596 - phoenix.wallet - INFO - Analyzing wallet BsQj6ApLH31zSF3gF8C5vXiU6n1cAoNR3ENRhqUp7t1f for the past 30 days
+2025-05-22 08:03:28,717 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'BsQj6ApLH31zSF3gF8C5vXiU6n1cAoNR3ENRhqUp7t1f', 'limit': 100}
+2025-05-22 08:03:28,717 - phoenix.birdeye - WARNING - No transaction data available for BsQj6ApLH31zSF3gF8C5vXiU6n1cAoNR3ENRhqUp7t1f
+2025-05-22 08:03:28,718 - phoenix.wallet - WARNING - No transactions found for wallet BsQj6ApLH31zSF3gF8C5vXiU6n1cAoNR3ENRhqUp7t1f
+2025-05-22 08:03:28,719 - phoenix.wallet - INFO - Analyzing wallet 46/104: 8aBXqjo2qjfCjZY2aDjpLJRmtnHnJ3UkApUfpYJf84MK
+2025-05-22 08:03:28,719 - phoenix.wallet - INFO - Analyzing wallet 8aBXqjo2qjfCjZY2aDjpLJRmtnHnJ3UkApUfpYJf84MK for the past 30 days
+2025-05-22 08:03:28,828 - phoenix.birdeye - WARNING - Token not found: {'wallet': '8aBXqjo2qjfCjZY2aDjpLJRmtnHnJ3UkApUfpYJf84MK', 'limit': 100}
+2025-05-22 08:03:28,829 - phoenix.birdeye - WARNING - No transaction data available for 8aBXqjo2qjfCjZY2aDjpLJRmtnHnJ3UkApUfpYJf84MK
+2025-05-22 08:03:28,830 - phoenix.wallet - WARNING - No transactions found for wallet 8aBXqjo2qjfCjZY2aDjpLJRmtnHnJ3UkApUfpYJf84MK
+2025-05-22 08:03:28,830 - phoenix.wallet - INFO - Analyzing wallet 47/104: 7LBSXkWHqn33FJ82u4DG4gjZR7ENyfcTnsPUdrLD9BGf
+2025-05-22 08:03:28,830 - phoenix.wallet - INFO - Analyzing wallet 7LBSXkWHqn33FJ82u4DG4gjZR7ENyfcTnsPUdrLD9BGf for the past 30 days
+2025-05-22 08:03:28,900 - phoenix.birdeye - WARNING - Token not found: {'wallet': '7LBSXkWHqn33FJ82u4DG4gjZR7ENyfcTnsPUdrLD9BGf', 'limit': 100}
+2025-05-22 08:03:28,900 - phoenix.birdeye - WARNING - No transaction data available for 7LBSXkWHqn33FJ82u4DG4gjZR7ENyfcTnsPUdrLD9BGf
+2025-05-22 08:03:28,901 - phoenix.wallet - WARNING - No transactions found for wallet 7LBSXkWHqn33FJ82u4DG4gjZR7ENyfcTnsPUdrLD9BGf
+2025-05-22 08:03:28,902 - phoenix.wallet - INFO - Analyzing wallet 48/104: 26CSPXoJWTWeybxzUzHFqWdHgTu1mMb7pifVp57LtWDH
+2025-05-22 08:03:28,902 - phoenix.wallet - INFO - Analyzing wallet 26CSPXoJWTWeybxzUzHFqWdHgTu1mMb7pifVp57LtWDH for the past 30 days
+2025-05-22 08:03:28,971 - phoenix.birdeye - WARNING - Token not found: {'wallet': '26CSPXoJWTWeybxzUzHFqWdHgTu1mMb7pifVp57LtWDH', 'limit': 100}
+2025-05-22 08:03:28,971 - phoenix.birdeye - WARNING - No transaction data available for 26CSPXoJWTWeybxzUzHFqWdHgTu1mMb7pifVp57LtWDH
+2025-05-22 08:03:28,972 - phoenix.wallet - WARNING - No transactions found for wallet 26CSPXoJWTWeybxzUzHFqWdHgTu1mMb7pifVp57LtWDH
+2025-05-22 08:03:28,973 - phoenix.wallet - INFO - Analyzing wallet 49/104: Q9wxmeYRBhHHfBF2sHMnY6JmkB57nYPj39Komw3eMnE
+2025-05-22 08:03:28,973 - phoenix.wallet - INFO - Analyzing wallet Q9wxmeYRBhHHfBF2sHMnY6JmkB57nYPj39Komw3eMnE for the past 30 days
+2025-05-22 08:03:29,018 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'Q9wxmeYRBhHHfBF2sHMnY6JmkB57nYPj39Komw3eMnE', 'limit': 100}
+2025-05-22 08:03:29,019 - phoenix.birdeye - WARNING - No transaction data available for Q9wxmeYRBhHHfBF2sHMnY6JmkB57nYPj39Komw3eMnE
+2025-05-22 08:03:29,020 - phoenix.wallet - WARNING - No transactions found for wallet Q9wxmeYRBhHHfBF2sHMnY6JmkB57nYPj39Komw3eMnE
+2025-05-22 08:03:29,020 - phoenix.wallet - INFO - Analyzing wallet 50/104: Bzbt2UYkk6Kycp2ZR3dFpnypCLMckreXPHnw65NNd1eN
+2025-05-22 08:03:29,020 - phoenix.wallet - INFO - Analyzing wallet Bzbt2UYkk6Kycp2ZR3dFpnypCLMckreXPHnw65NNd1eN for the past 30 days
+2025-05-22 08:03:29,098 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'Bzbt2UYkk6Kycp2ZR3dFpnypCLMckreXPHnw65NNd1eN', 'limit': 100}
+2025-05-22 08:03:29,099 - phoenix.birdeye - WARNING - No transaction data available for Bzbt2UYkk6Kycp2ZR3dFpnypCLMckreXPHnw65NNd1eN
+2025-05-22 08:03:29,100 - phoenix.wallet - WARNING - No transactions found for wallet Bzbt2UYkk6Kycp2ZR3dFpnypCLMckreXPHnw65NNd1eN
+2025-05-22 08:03:29,100 - phoenix.wallet - INFO - Analyzing wallet 51/104: 1qaaUAyAQQ7EhCBivX91iVNpoAxNcdLW4PspaifC5hA
+2025-05-22 08:03:29,100 - phoenix.wallet - INFO - Analyzing wallet 1qaaUAyAQQ7EhCBivX91iVNpoAxNcdLW4PspaifC5hA for the past 30 days
+2025-05-22 08:03:29,143 - phoenix.birdeye - WARNING - Token not found: {'wallet': '1qaaUAyAQQ7EhCBivX91iVNpoAxNcdLW4PspaifC5hA', 'limit': 100}
+2025-05-22 08:03:29,143 - phoenix.birdeye - WARNING - No transaction data available for 1qaaUAyAQQ7EhCBivX91iVNpoAxNcdLW4PspaifC5hA
+2025-05-22 08:03:29,144 - phoenix.wallet - WARNING - No transactions found for wallet 1qaaUAyAQQ7EhCBivX91iVNpoAxNcdLW4PspaifC5hA
+2025-05-22 08:03:29,144 - phoenix.wallet - INFO - Analyzing wallet 52/104: E9AraWahsb1nDdsjcKNWXs9X7QXkyqALyZQexxKVMcsG
+2025-05-22 08:03:29,145 - phoenix.wallet - INFO - Analyzing wallet E9AraWahsb1nDdsjcKNWXs9X7QXkyqALyZQexxKVMcsG for the past 30 days
+2025-05-22 08:03:29,227 - phoenix.birdeye - WARNING - Rate limit hit, waiting longer...
+2025-05-22 08:03:33,297 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'E9AraWahsb1nDdsjcKNWXs9X7QXkyqALyZQexxKVMcsG', 'limit': 100}
+2025-05-22 08:03:33,297 - phoenix.birdeye - WARNING - No transaction data available for E9AraWahsb1nDdsjcKNWXs9X7QXkyqALyZQexxKVMcsG
+2025-05-22 08:03:33,299 - phoenix.wallet - WARNING - No transactions found for wallet E9AraWahsb1nDdsjcKNWXs9X7QXkyqALyZQexxKVMcsG
+2025-05-22 08:03:33,299 - phoenix.wallet - INFO - Analyzing wallet 53/104: GftxZNiHcH4mjcJPpzwueoRdvJx9qaDyN69VvM64ipna
+2025-05-22 08:03:33,299 - phoenix.wallet - INFO - Analyzing wallet GftxZNiHcH4mjcJPpzwueoRdvJx9qaDyN69VvM64ipna for the past 30 days
+2025-05-22 08:03:33,420 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'GftxZNiHcH4mjcJPpzwueoRdvJx9qaDyN69VvM64ipna', 'limit': 100}
+2025-05-22 08:03:33,420 - phoenix.birdeye - WARNING - No transaction data available for GftxZNiHcH4mjcJPpzwueoRdvJx9qaDyN69VvM64ipna
+2025-05-22 08:03:33,421 - phoenix.wallet - WARNING - No transactions found for wallet GftxZNiHcH4mjcJPpzwueoRdvJx9qaDyN69VvM64ipna
+2025-05-22 08:03:33,421 - phoenix.wallet - INFO - Analyzing wallet 54/104: 6omagkxud2k8ddamrEZ9unbBQ7WpctZjBAUJzRAdwFL1
+2025-05-22 08:03:33,422 - phoenix.wallet - INFO - Analyzing wallet 6omagkxud2k8ddamrEZ9unbBQ7WpctZjBAUJzRAdwFL1 for the past 30 days
+2025-05-22 08:03:33,480 - phoenix.birdeye - WARNING - Token not found: {'wallet': '6omagkxud2k8ddamrEZ9unbBQ7WpctZjBAUJzRAdwFL1', 'limit': 100}
+2025-05-22 08:03:33,480 - phoenix.birdeye - WARNING - No transaction data available for 6omagkxud2k8ddamrEZ9unbBQ7WpctZjBAUJzRAdwFL1
+2025-05-22 08:03:33,481 - phoenix.wallet - WARNING - No transactions found for wallet 6omagkxud2k8ddamrEZ9unbBQ7WpctZjBAUJzRAdwFL1
+2025-05-22 08:03:33,481 - phoenix.wallet - INFO - Analyzing wallet 55/104: BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r
+2025-05-22 08:03:33,482 - phoenix.wallet - INFO - Analyzing wallet BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r for the past 30 days
+2025-05-22 08:03:33,617 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r', 'limit': 100}
+2025-05-22 08:03:33,618 - phoenix.birdeye - WARNING - No transaction data available for BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r
+2025-05-22 08:03:33,619 - phoenix.wallet - WARNING - No transactions found for wallet BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r
+2025-05-22 08:03:33,619 - phoenix.wallet - INFO - Analyzing wallet 56/104: GFsQ7v3pZeqgbf2pMgKRSzZ7SKqY2MaWVhZpz9U3pgCc
+2025-05-22 08:03:33,619 - phoenix.wallet - INFO - Analyzing wallet GFsQ7v3pZeqgbf2pMgKRSzZ7SKqY2MaWVhZpz9U3pgCc for the past 30 days
+2025-05-22 08:03:33,677 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'GFsQ7v3pZeqgbf2pMgKRSzZ7SKqY2MaWVhZpz9U3pgCc', 'limit': 100}
+2025-05-22 08:03:33,677 - phoenix.birdeye - WARNING - No transaction data available for GFsQ7v3pZeqgbf2pMgKRSzZ7SKqY2MaWVhZpz9U3pgCc
+2025-05-22 08:03:33,678 - phoenix.wallet - WARNING - No transactions found for wallet GFsQ7v3pZeqgbf2pMgKRSzZ7SKqY2MaWVhZpz9U3pgCc
+2025-05-22 08:03:33,679 - phoenix.wallet - INFO - Analyzing wallet 57/104: 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr
+2025-05-22 08:03:33,679 - phoenix.wallet - INFO - Analyzing wallet 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr for the past 30 days
+2025-05-22 08:03:33,757 - phoenix.birdeye - WARNING - Token not found: {'wallet': '6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr', 'limit': 100}
+2025-05-22 08:03:33,757 - phoenix.birdeye - WARNING - No transaction data available for 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr
+2025-05-22 08:03:33,759 - phoenix.wallet - WARNING - No transactions found for wallet 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr
+2025-05-22 08:03:33,759 - phoenix.wallet - INFO - Analyzing wallet 58/104: 4RLMzkyMqizx7CBXXZKRSrcu82CF96YzeoVxokSnLs7D
+2025-05-22 08:03:33,760 - phoenix.wallet - INFO - Analyzing wallet 4RLMzkyMqizx7CBXXZKRSrcu82CF96YzeoVxokSnLs7D for the past 30 days
+2025-05-22 08:03:33,808 - phoenix.birdeye - WARNING - Token not found: {'wallet': '4RLMzkyMqizx7CBXXZKRSrcu82CF96YzeoVxokSnLs7D', 'limit': 100}
+2025-05-22 08:03:33,809 - phoenix.birdeye - WARNING - No transaction data available for 4RLMzkyMqizx7CBXXZKRSrcu82CF96YzeoVxokSnLs7D
+2025-05-22 08:03:33,810 - phoenix.wallet - WARNING - No transactions found for wallet 4RLMzkyMqizx7CBXXZKRSrcu82CF96YzeoVxokSnLs7D
+2025-05-22 08:03:33,810 - phoenix.wallet - INFO - Analyzing wallet 59/104: BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX
+2025-05-22 08:03:33,811 - phoenix.wallet - INFO - Analyzing wallet BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX for the past 30 days
+2025-05-22 08:03:33,859 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX', 'limit': 100}
+2025-05-22 08:03:33,860 - phoenix.birdeye - WARNING - No transaction data available for BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX
+2025-05-22 08:03:33,861 - phoenix.wallet - WARNING - No transactions found for wallet BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX
+2025-05-22 08:03:33,861 - phoenix.wallet - INFO - Analyzing wallet 60/104: 53AkAhY9WsUnXEvMCXL2VxJdw6T74XLWPSuaLJz82rPS
+2025-05-22 08:03:33,861 - phoenix.wallet - INFO - Analyzing wallet 53AkAhY9WsUnXEvMCXL2VxJdw6T74XLWPSuaLJz82rPS for the past 30 days
+2025-05-22 08:03:33,983 - phoenix.birdeye - WARNING - Token not found: {'wallet': '53AkAhY9WsUnXEvMCXL2VxJdw6T74XLWPSuaLJz82rPS', 'limit': 100}
+2025-05-22 08:03:33,983 - phoenix.birdeye - WARNING - No transaction data available for 53AkAhY9WsUnXEvMCXL2VxJdw6T74XLWPSuaLJz82rPS
+2025-05-22 08:03:33,985 - phoenix.wallet - WARNING - No transactions found for wallet 53AkAhY9WsUnXEvMCXL2VxJdw6T74XLWPSuaLJz82rPS
+2025-05-22 08:03:33,985 - phoenix.wallet - INFO - Analyzing wallet 61/104: HHAfkPydWkSVnGTxQfBKaM7kmBk26AaLypSaE8nJYhmc
+2025-05-22 08:03:33,985 - phoenix.wallet - INFO - Analyzing wallet HHAfkPydWkSVnGTxQfBKaM7kmBk26AaLypSaE8nJYhmc for the past 30 days
+2025-05-22 08:03:34,102 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'HHAfkPydWkSVnGTxQfBKaM7kmBk26AaLypSaE8nJYhmc', 'limit': 100}
+2025-05-22 08:03:34,103 - phoenix.birdeye - WARNING - No transaction data available for HHAfkPydWkSVnGTxQfBKaM7kmBk26AaLypSaE8nJYhmc
+2025-05-22 08:03:34,104 - phoenix.wallet - WARNING - No transactions found for wallet HHAfkPydWkSVnGTxQfBKaM7kmBk26AaLypSaE8nJYhmc
+2025-05-22 08:03:34,104 - phoenix.wallet - INFO - Analyzing wallet 62/104: CXZT2abrKxmzgJJ2JJcTGbXBxWypQyg8oxdXMi9r448W
+2025-05-22 08:03:34,105 - phoenix.wallet - INFO - Analyzing wallet CXZT2abrKxmzgJJ2JJcTGbXBxWypQyg8oxdXMi9r448W for the past 30 days
+2025-05-22 08:03:34,194 - phoenix.birdeye - WARNING - Rate limit hit, waiting longer...
+2025-05-22 08:03:38,314 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'CXZT2abrKxmzgJJ2JJcTGbXBxWypQyg8oxdXMi9r448W', 'limit': 100}
+2025-05-22 08:03:38,315 - phoenix.birdeye - WARNING - No transaction data available for CXZT2abrKxmzgJJ2JJcTGbXBxWypQyg8oxdXMi9r448W
+2025-05-22 08:03:38,316 - phoenix.wallet - WARNING - No transactions found for wallet CXZT2abrKxmzgJJ2JJcTGbXBxWypQyg8oxdXMi9r448W
+2025-05-22 08:03:38,316 - phoenix.wallet - INFO - Analyzing wallet 63/104: 5LdhxZJRicTyoVp6sXjDrmy17vADtK5GHE6DMm1FrB38
+2025-05-22 08:03:38,316 - phoenix.wallet - INFO - Analyzing wallet 5LdhxZJRicTyoVp6sXjDrmy17vADtK5GHE6DMm1FrB38 for the past 30 days
+2025-05-22 08:03:38,360 - phoenix.birdeye - WARNING - Token not found: {'wallet': '5LdhxZJRicTyoVp6sXjDrmy17vADtK5GHE6DMm1FrB38', 'limit': 100}
+2025-05-22 08:03:38,360 - phoenix.birdeye - WARNING - No transaction data available for 5LdhxZJRicTyoVp6sXjDrmy17vADtK5GHE6DMm1FrB38
+2025-05-22 08:03:38,361 - phoenix.wallet - WARNING - No transactions found for wallet 5LdhxZJRicTyoVp6sXjDrmy17vADtK5GHE6DMm1FrB38
+2025-05-22 08:03:38,361 - phoenix.wallet - INFO - Analyzing wallet 64/104: EPHFZP6GRDUcsQpysd81E4yJkGkMkq1HzxyTUs6SJ1nb
+2025-05-22 08:03:38,362 - phoenix.wallet - INFO - Analyzing wallet EPHFZP6GRDUcsQpysd81E4yJkGkMkq1HzxyTUs6SJ1nb for the past 30 days
+2025-05-22 08:03:38,445 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'EPHFZP6GRDUcsQpysd81E4yJkGkMkq1HzxyTUs6SJ1nb', 'limit': 100}
+2025-05-22 08:03:38,445 - phoenix.birdeye - WARNING - No transaction data available for EPHFZP6GRDUcsQpysd81E4yJkGkMkq1HzxyTUs6SJ1nb
+2025-05-22 08:03:38,446 - phoenix.wallet - WARNING - No transactions found for wallet EPHFZP6GRDUcsQpysd81E4yJkGkMkq1HzxyTUs6SJ1nb
+2025-05-22 08:03:38,447 - phoenix.wallet - INFO - Analyzing wallet 65/104: 3o6CDPiwmE9AkzU2XMn8pZ2DRHWJ56mepy23AKhW825A
+2025-05-22 08:03:38,447 - phoenix.wallet - INFO - Analyzing wallet 3o6CDPiwmE9AkzU2XMn8pZ2DRHWJ56mepy23AKhW825A for the past 30 days
+2025-05-22 08:03:38,540 - phoenix.birdeye - WARNING - Token not found: {'wallet': '3o6CDPiwmE9AkzU2XMn8pZ2DRHWJ56mepy23AKhW825A', 'limit': 100}
+2025-05-22 08:03:38,540 - phoenix.birdeye - WARNING - No transaction data available for 3o6CDPiwmE9AkzU2XMn8pZ2DRHWJ56mepy23AKhW825A
+2025-05-22 08:03:38,541 - phoenix.wallet - WARNING - No transactions found for wallet 3o6CDPiwmE9AkzU2XMn8pZ2DRHWJ56mepy23AKhW825A
+2025-05-22 08:03:38,542 - phoenix.wallet - INFO - Analyzing wallet 66/104: 26PDT7vombhce87EyeVJCzs7cKhArUJ1PLaNrAA1zFxi
+2025-05-22 08:03:38,542 - phoenix.wallet - INFO - Analyzing wallet 26PDT7vombhce87EyeVJCzs7cKhArUJ1PLaNrAA1zFxi for the past 30 days
+2025-05-22 08:03:38,659 - phoenix.birdeye - WARNING - Token not found: {'wallet': '26PDT7vombhce87EyeVJCzs7cKhArUJ1PLaNrAA1zFxi', 'limit': 100}
+2025-05-22 08:03:38,660 - phoenix.birdeye - WARNING - No transaction data available for 26PDT7vombhce87EyeVJCzs7cKhArUJ1PLaNrAA1zFxi
+2025-05-22 08:03:38,661 - phoenix.wallet - WARNING - No transactions found for wallet 26PDT7vombhce87EyeVJCzs7cKhArUJ1PLaNrAA1zFxi
+2025-05-22 08:03:38,661 - phoenix.wallet - INFO - Analyzing wallet 67/104: Bvsgz14JxAgTRi1pGYaYoqj7EiHPeTzQdQcohisfbxjd
+2025-05-22 08:03:38,662 - phoenix.wallet - INFO - Analyzing wallet Bvsgz14JxAgTRi1pGYaYoqj7EiHPeTzQdQcohisfbxjd for the past 30 days
+2025-05-22 08:03:38,734 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'Bvsgz14JxAgTRi1pGYaYoqj7EiHPeTzQdQcohisfbxjd', 'limit': 100}
+2025-05-22 08:03:38,735 - phoenix.birdeye - WARNING - No transaction data available for Bvsgz14JxAgTRi1pGYaYoqj7EiHPeTzQdQcohisfbxjd
+2025-05-22 08:03:38,736 - phoenix.wallet - WARNING - No transactions found for wallet Bvsgz14JxAgTRi1pGYaYoqj7EiHPeTzQdQcohisfbxjd
+2025-05-22 08:03:38,736 - phoenix.wallet - INFO - Analyzing wallet 68/104: 91fe9yPUWoxTJLLJHRWnpefGcobv3sRb17BGXhKuWSnA
+2025-05-22 08:03:38,736 - phoenix.wallet - INFO - Analyzing wallet 91fe9yPUWoxTJLLJHRWnpefGcobv3sRb17BGXhKuWSnA for the past 30 days
+2025-05-22 08:03:38,867 - phoenix.birdeye - WARNING - Token not found: {'wallet': '91fe9yPUWoxTJLLJHRWnpefGcobv3sRb17BGXhKuWSnA', 'limit': 100}
+2025-05-22 08:03:38,868 - phoenix.birdeye - WARNING - No transaction data available for 91fe9yPUWoxTJLLJHRWnpefGcobv3sRb17BGXhKuWSnA
+2025-05-22 08:03:38,869 - phoenix.wallet - WARNING - No transactions found for wallet 91fe9yPUWoxTJLLJHRWnpefGcobv3sRb17BGXhKuWSnA
+2025-05-22 08:03:38,869 - phoenix.wallet - INFO - Analyzing wallet 69/104: HnEh1QfTa89ZBThWbu8gis3YRqUaPC1Yfe4nmPuGgRo3
+2025-05-22 08:03:38,869 - phoenix.wallet - INFO - Analyzing wallet HnEh1QfTa89ZBThWbu8gis3YRqUaPC1Yfe4nmPuGgRo3 for the past 30 days
+2025-05-22 08:03:39,008 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'HnEh1QfTa89ZBThWbu8gis3YRqUaPC1Yfe4nmPuGgRo3', 'limit': 100}
+2025-05-22 08:03:39,008 - phoenix.birdeye - WARNING - No transaction data available for HnEh1QfTa89ZBThWbu8gis3YRqUaPC1Yfe4nmPuGgRo3
+2025-05-22 08:03:39,009 - phoenix.wallet - WARNING - No transactions found for wallet HnEh1QfTa89ZBThWbu8gis3YRqUaPC1Yfe4nmPuGgRo3
+2025-05-22 08:03:39,010 - phoenix.wallet - INFO - Analyzing wallet 70/104: Cw5Y4WZQ45b6HN92kRurLW3woywcMr6UHcRwsaf7zpfN
+2025-05-22 08:03:39,010 - phoenix.wallet - INFO - Analyzing wallet Cw5Y4WZQ45b6HN92kRurLW3woywcMr6UHcRwsaf7zpfN for the past 30 days
+2025-05-22 08:03:39,109 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'Cw5Y4WZQ45b6HN92kRurLW3woywcMr6UHcRwsaf7zpfN', 'limit': 100}
+2025-05-22 08:03:39,109 - phoenix.birdeye - WARNING - No transaction data available for Cw5Y4WZQ45b6HN92kRurLW3woywcMr6UHcRwsaf7zpfN
+2025-05-22 08:03:39,110 - phoenix.wallet - WARNING - No transactions found for wallet Cw5Y4WZQ45b6HN92kRurLW3woywcMr6UHcRwsaf7zpfN
+2025-05-22 08:03:39,111 - phoenix.wallet - INFO - Analyzing wallet 71/104: 2RW1Rpziviysmj6aBGH4cMxhrahihBMc7oGyC25NgM1V
+2025-05-22 08:03:39,111 - phoenix.wallet - INFO - Analyzing wallet 2RW1Rpziviysmj6aBGH4cMxhrahihBMc7oGyC25NgM1V for the past 30 days
+2025-05-22 08:03:39,155 - phoenix.birdeye - WARNING - Token not found: {'wallet': '2RW1Rpziviysmj6aBGH4cMxhrahihBMc7oGyC25NgM1V', 'limit': 100}
+2025-05-22 08:03:39,156 - phoenix.birdeye - WARNING - No transaction data available for 2RW1Rpziviysmj6aBGH4cMxhrahihBMc7oGyC25NgM1V
+2025-05-22 08:03:39,157 - phoenix.wallet - WARNING - No transactions found for wallet 2RW1Rpziviysmj6aBGH4cMxhrahihBMc7oGyC25NgM1V
+2025-05-22 08:03:39,157 - phoenix.wallet - INFO - Analyzing wallet 72/104: 4RSkAB6A2maMD7844VnXRfqhVuupu1XKVu3Qo5znTUDT
+2025-05-22 08:03:39,157 - phoenix.wallet - INFO - Analyzing wallet 4RSkAB6A2maMD7844VnXRfqhVuupu1XKVu3Qo5znTUDT for the past 30 days
+2025-05-22 08:03:39,246 - phoenix.birdeye - WARNING - Rate limit hit, waiting longer...
+2025-05-22 08:03:43,316 - phoenix.birdeye - WARNING - Token not found: {'wallet': '4RSkAB6A2maMD7844VnXRfqhVuupu1XKVu3Qo5znTUDT', 'limit': 100}
+2025-05-22 08:03:43,317 - phoenix.birdeye - WARNING - No transaction data available for 4RSkAB6A2maMD7844VnXRfqhVuupu1XKVu3Qo5znTUDT
+2025-05-22 08:03:43,318 - phoenix.wallet - WARNING - No transactions found for wallet 4RSkAB6A2maMD7844VnXRfqhVuupu1XKVu3Qo5znTUDT
+2025-05-22 08:03:43,318 - phoenix.wallet - INFO - Analyzing wallet 73/104: Ghzb589bTzHSTRtySWAk9QY6Eg1SMU66BCzyX94ndvXF
+2025-05-22 08:03:43,318 - phoenix.wallet - INFO - Analyzing wallet Ghzb589bTzHSTRtySWAk9QY6Eg1SMU66BCzyX94ndvXF for the past 30 days
+2025-05-22 08:03:43,393 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'Ghzb589bTzHSTRtySWAk9QY6Eg1SMU66BCzyX94ndvXF', 'limit': 100}
+2025-05-22 08:03:43,394 - phoenix.birdeye - WARNING - No transaction data available for Ghzb589bTzHSTRtySWAk9QY6Eg1SMU66BCzyX94ndvXF
+2025-05-22 08:03:43,395 - phoenix.wallet - WARNING - No transactions found for wallet Ghzb589bTzHSTRtySWAk9QY6Eg1SMU66BCzyX94ndvXF
+2025-05-22 08:03:43,395 - phoenix.wallet - INFO - Analyzing wallet 74/104: 9LFLNWnpJZsBtQpWwkXD8r9HjbcXgExxgpNDenJiECAr
+2025-05-22 08:03:43,395 - phoenix.wallet - INFO - Analyzing wallet 9LFLNWnpJZsBtQpWwkXD8r9HjbcXgExxgpNDenJiECAr for the past 30 days
+2025-05-22 08:03:43,449 - phoenix.birdeye - WARNING - Token not found: {'wallet': '9LFLNWnpJZsBtQpWwkXD8r9HjbcXgExxgpNDenJiECAr', 'limit': 100}
+2025-05-22 08:03:43,449 - phoenix.birdeye - WARNING - No transaction data available for 9LFLNWnpJZsBtQpWwkXD8r9HjbcXgExxgpNDenJiECAr
+2025-05-22 08:03:43,451 - phoenix.wallet - WARNING - No transactions found for wallet 9LFLNWnpJZsBtQpWwkXD8r9HjbcXgExxgpNDenJiECAr
+2025-05-22 08:03:43,451 - phoenix.wallet - INFO - Analyzing wallet 75/104: EzNwNef7TTPTsCpLQrpk6g2N8pA6pvzEdGM17Yh2HYoz
+2025-05-22 08:03:43,451 - phoenix.wallet - INFO - Analyzing wallet EzNwNef7TTPTsCpLQrpk6g2N8pA6pvzEdGM17Yh2HYoz for the past 30 days
+2025-05-22 08:03:43,532 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'EzNwNef7TTPTsCpLQrpk6g2N8pA6pvzEdGM17Yh2HYoz', 'limit': 100}
+2025-05-22 08:03:43,533 - phoenix.birdeye - WARNING - No transaction data available for EzNwNef7TTPTsCpLQrpk6g2N8pA6pvzEdGM17Yh2HYoz
+2025-05-22 08:03:43,534 - phoenix.wallet - WARNING - No transactions found for wallet EzNwNef7TTPTsCpLQrpk6g2N8pA6pvzEdGM17Yh2HYoz
+2025-05-22 08:03:43,534 - phoenix.wallet - INFO - Analyzing wallet 76/104: EMxBthFG7KkD8ST1zeP16VJ965Yh5ToQiasrLKn6bbtv
+2025-05-22 08:03:43,534 - phoenix.wallet - INFO - Analyzing wallet EMxBthFG7KkD8ST1zeP16VJ965Yh5ToQiasrLKn6bbtv for the past 30 days
+2025-05-22 08:03:43,581 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'EMxBthFG7KkD8ST1zeP16VJ965Yh5ToQiasrLKn6bbtv', 'limit': 100}
+2025-05-22 08:03:43,581 - phoenix.birdeye - WARNING - No transaction data available for EMxBthFG7KkD8ST1zeP16VJ965Yh5ToQiasrLKn6bbtv
+2025-05-22 08:03:43,582 - phoenix.wallet - WARNING - No transactions found for wallet EMxBthFG7KkD8ST1zeP16VJ965Yh5ToQiasrLKn6bbtv
+2025-05-22 08:03:43,582 - phoenix.wallet - INFO - Analyzing wallet 77/104: 52qgon7dMTu36Xr1wD7A47CtTEeo4NZmHhAezpLFjTZd
+2025-05-22 08:03:43,583 - phoenix.wallet - INFO - Analyzing wallet 52qgon7dMTu36Xr1wD7A47CtTEeo4NZmHhAezpLFjTZd for the past 30 days
+2025-05-22 08:03:43,688 - phoenix.birdeye - WARNING - Token not found: {'wallet': '52qgon7dMTu36Xr1wD7A47CtTEeo4NZmHhAezpLFjTZd', 'limit': 100}
+2025-05-22 08:03:43,688 - phoenix.birdeye - WARNING - No transaction data available for 52qgon7dMTu36Xr1wD7A47CtTEeo4NZmHhAezpLFjTZd
+2025-05-22 08:03:43,689 - phoenix.wallet - WARNING - No transactions found for wallet 52qgon7dMTu36Xr1wD7A47CtTEeo4NZmHhAezpLFjTZd
+2025-05-22 08:03:43,689 - phoenix.wallet - INFO - Analyzing wallet 78/104: 2b5C6Spji42ShwpRo5N7tcSNENGMxHQP6q3swfd5NoAQ
+2025-05-22 08:03:43,690 - phoenix.wallet - INFO - Analyzing wallet 2b5C6Spji42ShwpRo5N7tcSNENGMxHQP6q3swfd5NoAQ for the past 30 days
+2025-05-22 08:03:43,735 - phoenix.birdeye - WARNING - Token not found: {'wallet': '2b5C6Spji42ShwpRo5N7tcSNENGMxHQP6q3swfd5NoAQ', 'limit': 100}
+2025-05-22 08:03:43,735 - phoenix.birdeye - WARNING - No transaction data available for 2b5C6Spji42ShwpRo5N7tcSNENGMxHQP6q3swfd5NoAQ
+2025-05-22 08:03:43,737 - phoenix.wallet - WARNING - No transactions found for wallet 2b5C6Spji42ShwpRo5N7tcSNENGMxHQP6q3swfd5NoAQ
+2025-05-22 08:03:43,737 - phoenix.wallet - INFO - Analyzing wallet 79/104: HmvPdsZnKv1KjEdiLmxdosiJPQ3eU1S2YKYUfyv3kvk3
+2025-05-22 08:03:43,738 - phoenix.wallet - INFO - Analyzing wallet HmvPdsZnKv1KjEdiLmxdosiJPQ3eU1S2YKYUfyv3kvk3 for the past 30 days
+2025-05-22 08:03:43,832 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'HmvPdsZnKv1KjEdiLmxdosiJPQ3eU1S2YKYUfyv3kvk3', 'limit': 100}
+2025-05-22 08:03:43,832 - phoenix.birdeye - WARNING - No transaction data available for HmvPdsZnKv1KjEdiLmxdosiJPQ3eU1S2YKYUfyv3kvk3
+2025-05-22 08:03:43,833 - phoenix.wallet - WARNING - No transactions found for wallet HmvPdsZnKv1KjEdiLmxdosiJPQ3eU1S2YKYUfyv3kvk3
+2025-05-22 08:03:43,834 - phoenix.wallet - INFO - Analyzing wallet 80/104: CmBWTit8Dm84eZgucz7pFfpnuMjEvE4SNZc5M6XWrnyy
+2025-05-22 08:03:43,834 - phoenix.wallet - INFO - Analyzing wallet CmBWTit8Dm84eZgucz7pFfpnuMjEvE4SNZc5M6XWrnyy for the past 30 days
+2025-05-22 08:03:43,939 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'CmBWTit8Dm84eZgucz7pFfpnuMjEvE4SNZc5M6XWrnyy', 'limit': 100}
+2025-05-22 08:03:43,939 - phoenix.birdeye - WARNING - No transaction data available for CmBWTit8Dm84eZgucz7pFfpnuMjEvE4SNZc5M6XWrnyy
+2025-05-22 08:03:43,941 - phoenix.wallet - WARNING - No transactions found for wallet CmBWTit8Dm84eZgucz7pFfpnuMjEvE4SNZc5M6XWrnyy
+2025-05-22 08:03:43,941 - phoenix.wallet - INFO - Analyzing wallet 81/104: 9ukpk2h3r47SNJmWFxwmrKiPKg3CH76uThDFky6i1NUd
+2025-05-22 08:03:43,941 - phoenix.wallet - INFO - Analyzing wallet 9ukpk2h3r47SNJmWFxwmrKiPKg3CH76uThDFky6i1NUd for the past 30 days
+2025-05-22 08:03:44,083 - phoenix.birdeye - WARNING - Token not found: {'wallet': '9ukpk2h3r47SNJmWFxwmrKiPKg3CH76uThDFky6i1NUd', 'limit': 100}
+2025-05-22 08:03:44,084 - phoenix.birdeye - WARNING - No transaction data available for 9ukpk2h3r47SNJmWFxwmrKiPKg3CH76uThDFky6i1NUd
+2025-05-22 08:03:44,085 - phoenix.wallet - WARNING - No transactions found for wallet 9ukpk2h3r47SNJmWFxwmrKiPKg3CH76uThDFky6i1NUd
+2025-05-22 08:03:44,085 - phoenix.wallet - INFO - Analyzing wallet 82/104: 5Mr3ootk5xLAmcLKe1uPvkA6jqp1kC5YBfeGATxL1gZh
+2025-05-22 08:03:44,086 - phoenix.wallet - INFO - Analyzing wallet 5Mr3ootk5xLAmcLKe1uPvkA6jqp1kC5YBfeGATxL1gZh for the past 30 days
+2025-05-22 08:03:44,174 - phoenix.birdeye - WARNING - Rate limit hit, waiting longer...
+2025-05-22 08:03:48,277 - phoenix.birdeye - WARNING - Token not found: {'wallet': '5Mr3ootk5xLAmcLKe1uPvkA6jqp1kC5YBfeGATxL1gZh', 'limit': 100}
+2025-05-22 08:03:48,277 - phoenix.birdeye - WARNING - No transaction data available for 5Mr3ootk5xLAmcLKe1uPvkA6jqp1kC5YBfeGATxL1gZh
+2025-05-22 08:03:48,279 - phoenix.wallet - WARNING - No transactions found for wallet 5Mr3ootk5xLAmcLKe1uPvkA6jqp1kC5YBfeGATxL1gZh
+2025-05-22 08:03:48,279 - phoenix.wallet - INFO - Analyzing wallet 83/104: 4dbenXF1Cx9WSQDvpZz66agWiC81aSo9MsKBG2Qaxmeu
+2025-05-22 08:03:48,279 - phoenix.wallet - INFO - Analyzing wallet 4dbenXF1Cx9WSQDvpZz66agWiC81aSo9MsKBG2Qaxmeu for the past 30 days
+2025-05-22 08:03:48,395 - phoenix.birdeye - WARNING - Token not found: {'wallet': '4dbenXF1Cx9WSQDvpZz66agWiC81aSo9MsKBG2Qaxmeu', 'limit': 100}
+2025-05-22 08:03:48,395 - phoenix.birdeye - WARNING - No transaction data available for 4dbenXF1Cx9WSQDvpZz66agWiC81aSo9MsKBG2Qaxmeu
+2025-05-22 08:03:48,397 - phoenix.wallet - WARNING - No transactions found for wallet 4dbenXF1Cx9WSQDvpZz66agWiC81aSo9MsKBG2Qaxmeu
+2025-05-22 08:03:48,397 - phoenix.wallet - INFO - Analyzing wallet 84/104: 9EN8KrRMdRmLDBcYm8oKoCVaLdeM3resDQhL37ZzWVrH
+2025-05-22 08:03:48,397 - phoenix.wallet - INFO - Analyzing wallet 9EN8KrRMdRmLDBcYm8oKoCVaLdeM3resDQhL37ZzWVrH for the past 30 days
+2025-05-22 08:03:48,512 - phoenix.birdeye - WARNING - Token not found: {'wallet': '9EN8KrRMdRmLDBcYm8oKoCVaLdeM3resDQhL37ZzWVrH', 'limit': 100}
+2025-05-22 08:03:48,513 - phoenix.birdeye - WARNING - No transaction data available for 9EN8KrRMdRmLDBcYm8oKoCVaLdeM3resDQhL37ZzWVrH
+2025-05-22 08:03:48,514 - phoenix.wallet - WARNING - No transactions found for wallet 9EN8KrRMdRmLDBcYm8oKoCVaLdeM3resDQhL37ZzWVrH
+2025-05-22 08:03:48,515 - phoenix.wallet - INFO - Analyzing wallet 85/104: 21qqB97qZzzWCeSmxv9qoLoaK74stUobmaxzw3mttMyt
+2025-05-22 08:03:48,515 - phoenix.wallet - INFO - Analyzing wallet 21qqB97qZzzWCeSmxv9qoLoaK74stUobmaxzw3mttMyt for the past 30 days
+2025-05-22 08:03:48,629 - phoenix.birdeye - WARNING - Token not found: {'wallet': '21qqB97qZzzWCeSmxv9qoLoaK74stUobmaxzw3mttMyt', 'limit': 100}
+2025-05-22 08:03:48,629 - phoenix.birdeye - WARNING - No transaction data available for 21qqB97qZzzWCeSmxv9qoLoaK74stUobmaxzw3mttMyt
+2025-05-22 08:03:48,630 - phoenix.wallet - WARNING - No transactions found for wallet 21qqB97qZzzWCeSmxv9qoLoaK74stUobmaxzw3mttMyt
+2025-05-22 08:03:48,631 - phoenix.wallet - INFO - Analyzing wallet 86/104: DPn9USJxbkH6WTNeX9yo83fnvc3oLYJd9j6NTaXmhCHj
+2025-05-22 08:03:48,631 - phoenix.wallet - INFO - Analyzing wallet DPn9USJxbkH6WTNeX9yo83fnvc3oLYJd9j6NTaXmhCHj for the past 30 days
+2025-05-22 08:03:48,704 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'DPn9USJxbkH6WTNeX9yo83fnvc3oLYJd9j6NTaXmhCHj', 'limit': 100}
+2025-05-22 08:03:48,704 - phoenix.birdeye - WARNING - No transaction data available for DPn9USJxbkH6WTNeX9yo83fnvc3oLYJd9j6NTaXmhCHj
+2025-05-22 08:03:48,705 - phoenix.wallet - WARNING - No transactions found for wallet DPn9USJxbkH6WTNeX9yo83fnvc3oLYJd9j6NTaXmhCHj
+2025-05-22 08:03:48,706 - phoenix.wallet - INFO - Analyzing wallet 87/104: Htjt16ZQ46oxQ5scACsYzYeUbFmgopF3fKf1SuhqJPd
+2025-05-22 08:03:48,706 - phoenix.wallet - INFO - Analyzing wallet Htjt16ZQ46oxQ5scACsYzYeUbFmgopF3fKf1SuhqJPd for the past 30 days
+2025-05-22 08:03:48,788 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'Htjt16ZQ46oxQ5scACsYzYeUbFmgopF3fKf1SuhqJPd', 'limit': 100}
+2025-05-22 08:03:48,788 - phoenix.birdeye - WARNING - No transaction data available for Htjt16ZQ46oxQ5scACsYzYeUbFmgopF3fKf1SuhqJPd
+2025-05-22 08:03:48,789 - phoenix.wallet - WARNING - No transactions found for wallet Htjt16ZQ46oxQ5scACsYzYeUbFmgopF3fKf1SuhqJPd
+2025-05-22 08:03:48,789 - phoenix.wallet - INFO - Analyzing wallet 88/104: A3U1TTMd6NXRTqg59q9vNUw1tgbkHu5myQMtUq1cEuqc
+2025-05-22 08:03:48,790 - phoenix.wallet - INFO - Analyzing wallet A3U1TTMd6NXRTqg59q9vNUw1tgbkHu5myQMtUq1cEuqc for the past 30 days
+2025-05-22 08:03:48,885 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'A3U1TTMd6NXRTqg59q9vNUw1tgbkHu5myQMtUq1cEuqc', 'limit': 100}
+2025-05-22 08:03:48,885 - phoenix.birdeye - WARNING - No transaction data available for A3U1TTMd6NXRTqg59q9vNUw1tgbkHu5myQMtUq1cEuqc
+2025-05-22 08:03:48,886 - phoenix.wallet - WARNING - No transactions found for wallet A3U1TTMd6NXRTqg59q9vNUw1tgbkHu5myQMtUq1cEuqc
+2025-05-22 08:03:48,886 - phoenix.wallet - INFO - Analyzing wallet 89/104: 4Q1s1UFYhsT2JAn8siF4XcXJUexFGMMJfivoKQQViHHr
+2025-05-22 08:03:48,886 - phoenix.wallet - INFO - Analyzing wallet 4Q1s1UFYhsT2JAn8siF4XcXJUexFGMMJfivoKQQViHHr for the past 30 days
+2025-05-22 08:03:49,006 - phoenix.birdeye - WARNING - Token not found: {'wallet': '4Q1s1UFYhsT2JAn8siF4XcXJUexFGMMJfivoKQQViHHr', 'limit': 100}
+2025-05-22 08:03:49,006 - phoenix.birdeye - WARNING - No transaction data available for 4Q1s1UFYhsT2JAn8siF4XcXJUexFGMMJfivoKQQViHHr
+2025-05-22 08:03:49,007 - phoenix.wallet - WARNING - No transactions found for wallet 4Q1s1UFYhsT2JAn8siF4XcXJUexFGMMJfivoKQQViHHr
+2025-05-22 08:03:49,008 - phoenix.wallet - INFO - Analyzing wallet 90/104: 8888VvNkbLw6nkcP4VezM3P2nLbFsYf5UzEZqbfiGtQn
+2025-05-22 08:03:49,008 - phoenix.wallet - INFO - Analyzing wallet 8888VvNkbLw6nkcP4VezM3P2nLbFsYf5UzEZqbfiGtQn for the past 30 days
+2025-05-22 08:03:49,104 - phoenix.birdeye - WARNING - Token not found: {'wallet': '8888VvNkbLw6nkcP4VezM3P2nLbFsYf5UzEZqbfiGtQn', 'limit': 100}
+2025-05-22 08:03:49,105 - phoenix.birdeye - WARNING - No transaction data available for 8888VvNkbLw6nkcP4VezM3P2nLbFsYf5UzEZqbfiGtQn
+2025-05-22 08:03:49,106 - phoenix.wallet - WARNING - No transactions found for wallet 8888VvNkbLw6nkcP4VezM3P2nLbFsYf5UzEZqbfiGtQn
+2025-05-22 08:03:49,106 - phoenix.wallet - INFO - Analyzing wallet 91/104: CnxC3sqWqX546i3vrwBYJgbR8DvsfjHLXVHVesz6Lu5c
+2025-05-22 08:03:49,107 - phoenix.wallet - INFO - Analyzing wallet CnxC3sqWqX546i3vrwBYJgbR8DvsfjHLXVHVesz6Lu5c for the past 30 days
+2025-05-22 08:03:49,238 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'CnxC3sqWqX546i3vrwBYJgbR8DvsfjHLXVHVesz6Lu5c', 'limit': 100}
+2025-05-22 08:03:49,238 - phoenix.birdeye - WARNING - No transaction data available for CnxC3sqWqX546i3vrwBYJgbR8DvsfjHLXVHVesz6Lu5c
+2025-05-22 08:03:49,239 - phoenix.wallet - WARNING - No transactions found for wallet CnxC3sqWqX546i3vrwBYJgbR8DvsfjHLXVHVesz6Lu5c
+2025-05-22 08:03:49,240 - phoenix.wallet - INFO - Analyzing wallet 92/104: 3pzff3GGbeb5Tf2QTHXBeiYVyXwskUcCEKfAwzSwCMta
+2025-05-22 08:03:49,240 - phoenix.wallet - INFO - Analyzing wallet 3pzff3GGbeb5Tf2QTHXBeiYVyXwskUcCEKfAwzSwCMta for the past 30 days
+2025-05-22 08:03:49,342 - phoenix.birdeye - WARNING - Token not found: {'wallet': '3pzff3GGbeb5Tf2QTHXBeiYVyXwskUcCEKfAwzSwCMta', 'limit': 100}
+2025-05-22 08:03:49,342 - phoenix.birdeye - WARNING - No transaction data available for 3pzff3GGbeb5Tf2QTHXBeiYVyXwskUcCEKfAwzSwCMta
+2025-05-22 08:03:49,343 - phoenix.wallet - WARNING - No transactions found for wallet 3pzff3GGbeb5Tf2QTHXBeiYVyXwskUcCEKfAwzSwCMta
+2025-05-22 08:03:49,343 - phoenix.wallet - INFO - Analyzing wallet 93/104: Hpw4fwggfatmmExPVVSrk9FBbXWDgRkxm35JgA68BFfd
+2025-05-22 08:03:49,344 - phoenix.wallet - INFO - Analyzing wallet Hpw4fwggfatmmExPVVSrk9FBbXWDgRkxm35JgA68BFfd for the past 30 days
+2025-05-22 08:03:49,461 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'Hpw4fwggfatmmExPVVSrk9FBbXWDgRkxm35JgA68BFfd', 'limit': 100}
+2025-05-22 08:03:49,461 - phoenix.birdeye - WARNING - No transaction data available for Hpw4fwggfatmmExPVVSrk9FBbXWDgRkxm35JgA68BFfd
+2025-05-22 08:03:49,462 - phoenix.wallet - WARNING - No transactions found for wallet Hpw4fwggfatmmExPVVSrk9FBbXWDgRkxm35JgA68BFfd
+2025-05-22 08:03:49,463 - phoenix.wallet - INFO - Analyzing wallet 94/104: CGTC825yLj4wbbjfwX1UL4Wp3VrxkVwGcfKzp12vWUVY
+2025-05-22 08:03:49,463 - phoenix.wallet - INFO - Analyzing wallet CGTC825yLj4wbbjfwX1UL4Wp3VrxkVwGcfKzp12vWUVY for the past 30 days
+2025-05-22 08:03:49,515 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'CGTC825yLj4wbbjfwX1UL4Wp3VrxkVwGcfKzp12vWUVY', 'limit': 100}
+2025-05-22 08:03:49,515 - phoenix.birdeye - WARNING - No transaction data available for CGTC825yLj4wbbjfwX1UL4Wp3VrxkVwGcfKzp12vWUVY
+2025-05-22 08:03:49,517 - phoenix.wallet - WARNING - No transactions found for wallet CGTC825yLj4wbbjfwX1UL4Wp3VrxkVwGcfKzp12vWUVY
+2025-05-22 08:03:49,517 - phoenix.wallet - INFO - Analyzing wallet 95/104: 3jSyb337qfRhNCRTyVXqcoSeQLWm4Pobu8Axadizo8F7
+2025-05-22 08:03:49,517 - phoenix.wallet - INFO - Analyzing wallet 3jSyb337qfRhNCRTyVXqcoSeQLWm4Pobu8Axadizo8F7 for the past 30 days
+2025-05-22 08:03:49,578 - phoenix.birdeye - WARNING - Token not found: {'wallet': '3jSyb337qfRhNCRTyVXqcoSeQLWm4Pobu8Axadizo8F7', 'limit': 100}
+2025-05-22 08:03:49,578 - phoenix.birdeye - WARNING - No transaction data available for 3jSyb337qfRhNCRTyVXqcoSeQLWm4Pobu8Axadizo8F7
+2025-05-22 08:03:49,580 - phoenix.wallet - WARNING - No transactions found for wallet 3jSyb337qfRhNCRTyVXqcoSeQLWm4Pobu8Axadizo8F7
+2025-05-22 08:03:49,580 - phoenix.wallet - INFO - Analyzing wallet 96/104: AhxNr1GtSSyBcLb7GoYxJi9P5NGFHCznHeqscsnQ4pSe
+2025-05-22 08:03:49,580 - phoenix.wallet - INFO - Analyzing wallet AhxNr1GtSSyBcLb7GoYxJi9P5NGFHCznHeqscsnQ4pSe for the past 30 days
+2025-05-22 08:03:49,713 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'AhxNr1GtSSyBcLb7GoYxJi9P5NGFHCznHeqscsnQ4pSe', 'limit': 100}
+2025-05-22 08:03:49,714 - phoenix.birdeye - WARNING - No transaction data available for AhxNr1GtSSyBcLb7GoYxJi9P5NGFHCznHeqscsnQ4pSe
+2025-05-22 08:03:49,715 - phoenix.wallet - WARNING - No transactions found for wallet AhxNr1GtSSyBcLb7GoYxJi9P5NGFHCznHeqscsnQ4pSe
+2025-05-22 08:03:49,715 - phoenix.wallet - INFO - Analyzing wallet 97/104: J6Wk8mEwekiow5EgtH7hQZvNN72v6YQUW4WCNS6Sf9WZ
+2025-05-22 08:03:49,716 - phoenix.wallet - INFO - Analyzing wallet J6Wk8mEwekiow5EgtH7hQZvNN72v6YQUW4WCNS6Sf9WZ for the past 30 days
+2025-05-22 08:03:49,779 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'J6Wk8mEwekiow5EgtH7hQZvNN72v6YQUW4WCNS6Sf9WZ', 'limit': 100}
+2025-05-22 08:03:49,780 - phoenix.birdeye - WARNING - No transaction data available for J6Wk8mEwekiow5EgtH7hQZvNN72v6YQUW4WCNS6Sf9WZ
+2025-05-22 08:03:49,781 - phoenix.wallet - WARNING - No transactions found for wallet J6Wk8mEwekiow5EgtH7hQZvNN72v6YQUW4WCNS6Sf9WZ
+2025-05-22 08:03:49,781 - phoenix.wallet - INFO - Analyzing wallet 98/104: AvUm5BEYtyQnsTaYfiGJ29TYUkNC86bKXSE8ajrcQWkA
+2025-05-22 08:03:49,782 - phoenix.wallet - INFO - Analyzing wallet AvUm5BEYtyQnsTaYfiGJ29TYUkNC86bKXSE8ajrcQWkA for the past 30 days
+2025-05-22 08:03:49,857 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'AvUm5BEYtyQnsTaYfiGJ29TYUkNC86bKXSE8ajrcQWkA', 'limit': 100}
+2025-05-22 08:03:49,857 - phoenix.birdeye - WARNING - No transaction data available for AvUm5BEYtyQnsTaYfiGJ29TYUkNC86bKXSE8ajrcQWkA
+2025-05-22 08:03:49,858 - phoenix.wallet - WARNING - No transactions found for wallet AvUm5BEYtyQnsTaYfiGJ29TYUkNC86bKXSE8ajrcQWkA
+2025-05-22 08:03:49,858 - phoenix.wallet - INFO - Analyzing wallet 99/104: GPhQZcHicRvEaSmiSKkEjJbXsPECJPBdPCtC1NQ6bv5D
+2025-05-22 08:03:49,859 - phoenix.wallet - INFO - Analyzing wallet GPhQZcHicRvEaSmiSKkEjJbXsPECJPBdPCtC1NQ6bv5D for the past 30 days
+2025-05-22 08:03:49,906 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'GPhQZcHicRvEaSmiSKkEjJbXsPECJPBdPCtC1NQ6bv5D', 'limit': 100}
+2025-05-22 08:03:49,906 - phoenix.birdeye - WARNING - No transaction data available for GPhQZcHicRvEaSmiSKkEjJbXsPECJPBdPCtC1NQ6bv5D
+2025-05-22 08:03:49,907 - phoenix.wallet - WARNING - No transactions found for wallet GPhQZcHicRvEaSmiSKkEjJbXsPECJPBdPCtC1NQ6bv5D
+2025-05-22 08:03:49,908 - phoenix.wallet - INFO - Analyzing wallet 100/104: EE6k3xGwxwraE1SRPmJTPHW2aBkUagVB1eDauqXAYcBT
+2025-05-22 08:03:49,908 - phoenix.wallet - INFO - Analyzing wallet EE6k3xGwxwraE1SRPmJTPHW2aBkUagVB1eDauqXAYcBT for the past 30 days
+2025-05-22 08:03:49,957 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'EE6k3xGwxwraE1SRPmJTPHW2aBkUagVB1eDauqXAYcBT', 'limit': 100}
+2025-05-22 08:03:49,957 - phoenix.birdeye - WARNING - No transaction data available for EE6k3xGwxwraE1SRPmJTPHW2aBkUagVB1eDauqXAYcBT
+2025-05-22 08:03:49,958 - phoenix.wallet - WARNING - No transactions found for wallet EE6k3xGwxwraE1SRPmJTPHW2aBkUagVB1eDauqXAYcBT
+2025-05-22 08:03:49,959 - phoenix.wallet - INFO - Analyzing wallet 101/104: AHNRZKE42SxPWUFTAnrkeR9x69teWgBWMgtKip8wgsjM
+2025-05-22 08:03:49,959 - phoenix.wallet - INFO - Analyzing wallet AHNRZKE42SxPWUFTAnrkeR9x69teWgBWMgtKip8wgsjM for the past 30 days
+2025-05-22 08:03:50,095 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'AHNRZKE42SxPWUFTAnrkeR9x69teWgBWMgtKip8wgsjM', 'limit': 100}
+2025-05-22 08:03:50,095 - phoenix.birdeye - WARNING - No transaction data available for AHNRZKE42SxPWUFTAnrkeR9x69teWgBWMgtKip8wgsjM
+2025-05-22 08:03:50,097 - phoenix.wallet - WARNING - No transactions found for wallet AHNRZKE42SxPWUFTAnrkeR9x69teWgBWMgtKip8wgsjM
+2025-05-22 08:03:50,097 - phoenix.wallet - INFO - Analyzing wallet 102/104: B7KFXWo249cgbT1Lb9sCf8NZJwgDvRtWxkDJ1ndF6Tvk
+2025-05-22 08:03:50,097 - phoenix.wallet - INFO - Analyzing wallet B7KFXWo249cgbT1Lb9sCf8NZJwgDvRtWxkDJ1ndF6Tvk for the past 30 days
+2025-05-22 08:03:50,192 - phoenix.birdeye - WARNING - Rate limit hit, waiting longer...
+2025-05-22 08:03:54,301 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'B7KFXWo249cgbT1Lb9sCf8NZJwgDvRtWxkDJ1ndF6Tvk', 'limit': 100}
+2025-05-22 08:03:54,301 - phoenix.birdeye - WARNING - No transaction data available for B7KFXWo249cgbT1Lb9sCf8NZJwgDvRtWxkDJ1ndF6Tvk
+2025-05-22 08:03:54,304 - phoenix.wallet - WARNING - No transactions found for wallet B7KFXWo249cgbT1Lb9sCf8NZJwgDvRtWxkDJ1ndF6Tvk
+2025-05-22 08:03:54,304 - phoenix.wallet - INFO - Analyzing wallet 103/104: AVXfDGxRA9iE9zfqE4BTcop3AtHwh7soRCz7Ekna6sQZ
+2025-05-22 08:03:54,304 - phoenix.wallet - INFO - Analyzing wallet AVXfDGxRA9iE9zfqE4BTcop3AtHwh7soRCz7Ekna6sQZ for the past 30 days
+2025-05-22 08:03:54,418 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'AVXfDGxRA9iE9zfqE4BTcop3AtHwh7soRCz7Ekna6sQZ', 'limit': 100}
+2025-05-22 08:03:54,419 - phoenix.birdeye - WARNING - No transaction data available for AVXfDGxRA9iE9zfqE4BTcop3AtHwh7soRCz7Ekna6sQZ
+2025-05-22 08:03:54,420 - phoenix.wallet - WARNING - No transactions found for wallet AVXfDGxRA9iE9zfqE4BTcop3AtHwh7soRCz7Ekna6sQZ
+2025-05-22 08:03:54,420 - phoenix.wallet - INFO - Analyzing wallet 104/104: DkX9gYhxb4W8rsZq5zFWCRhUYjGbM3u4vXDiUtUmc9V1
+2025-05-22 08:03:54,421 - phoenix.wallet - INFO - Analyzing wallet DkX9gYhxb4W8rsZq5zFWCRhUYjGbM3u4vXDiUtUmc9V1 for the past 30 days
+2025-05-22 08:03:54,537 - phoenix.birdeye - WARNING - Token not found: {'wallet': 'DkX9gYhxb4W8rsZq5zFWCRhUYjGbM3u4vXDiUtUmc9V1', 'limit': 100}
+2025-05-22 08:03:54,539 - phoenix.birdeye - WARNING - No transaction data available for DkX9gYhxb4W8rsZq5zFWCRhUYjGbM3u4vXDiUtUmc9V1
+2025-05-22 08:03:54,540 - phoenix.wallet - WARNING - No transactions found for wallet DkX9gYhxb4W8rsZq5zFWCRhUYjGbM3u4vXDiUtUmc9V1
+2025-05-22 08:03:54,541 - phoenix - ERROR - Enhanced wallet analysis error: Batch analysis failed: No wallets could be successfully analyzed

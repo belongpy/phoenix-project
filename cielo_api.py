@@ -1,291 +1,187 @@
 """
 Cielo Finance API Module - Phoenix Project
 
-This module handles all interactions with Cielo Finance Solana API.
+This module handles all interactions with Cielo Finance API for wallet analysis.
 """
 
 import requests
-import time
 import logging
 from typing import Dict, List, Any, Optional
-from datetime import datetime, timedelta
+from datetime import datetime
 
 logger = logging.getLogger("phoenix.cielo")
 
-class CieloFinanceAPIError(Exception):
-    """Custom exception for Cielo Finance API errors."""
-    pass
-
 class CieloFinanceAPI:
-    """Client for interacting with Cielo Finance Solana API."""
+    """Client for interacting with Cielo Finance API."""
     
-    BASE_URL = "https://api.cielo.finance"  # Update with actual Cielo Finance API URL
-    
-    def __init__(self, api_key: str):
+    def __init__(self, api_key: str, base_url: str = "https://api.cielo.finance"):
         """
         Initialize the Cielo Finance API client.
         
         Args:
             api_key (str): The Cielo Finance API key
+            base_url (str): Base URL for the API
         """
-        if not api_key:
-            raise CieloFinanceAPIError("API key is required")
-        
         self.api_key = api_key
+        self.base_url = base_url.rstrip('/')
         self.headers = {
             "Authorization": f"Bearer {api_key}",
             "Content-Type": "application/json",
             "User-Agent": "Phoenix-Project/1.0"
         }
-        
-        # Rate limiting
-        self.last_request_time = 0
-        self.min_request_interval = 0.1  # 100ms between requests
-    
-    def _rate_limit(self) -> None:
-        """Apply rate limiting between API requests."""
-        current_time = time.time()
-        time_since_last_request = current_time - self.last_request_time
-        
-        if time_since_last_request < self.min_request_interval:
-            sleep_time = self.min_request_interval - time_since_last_request
-            time.sleep(sleep_time)
-        
-        self.last_request_time = time.time()
+        self.session = requests.Session()
+        self.session.headers.update(self.headers)
     
     def _make_request(self, endpoint: str, params: Optional[Dict[str, Any]] = None, 
-                     retry_count: int = 3, retry_delay: int = 2) -> Dict[str, Any]:
+                     method: str = "GET", timeout: int = 30) -> Dict[str, Any]:
         """
-        Make a request to the Cielo Finance API with retry logic.
+        Make a request to the Cielo Finance API.
         
         Args:
-            endpoint (str): API endpoint to call
+            endpoint (str): API endpoint
             params (Dict[str, Any], optional): Query parameters
-            retry_count (int): Number of retries on failure
-            retry_delay (int): Delay between retries in seconds
+            method (str): HTTP method
+            timeout (int): Request timeout in seconds
             
         Returns:
-            Dict[str, Any]: Response data as JSON
-            
-        Raises:
-            CieloFinanceAPIError: If the API request fails
+            Dict[str, Any]: Response data
         """
-        url = f"{self.BASE_URL}{endpoint}"
+        url = f"{self.base_url}/{endpoint.lstrip('/')}"
         
-        for attempt in range(retry_count):
-            try:
-                # Apply rate limiting
-                self._rate_limit()
-                
-                response = requests.get(url, headers=self.headers, params=params, timeout=30)
-                
-                # Handle different HTTP status codes
-                if response.status_code == 200:
-                    return response.json()
-                elif response.status_code == 401:
-                    raise CieloFinanceAPIError("Authentication failed. Please check your API key.")
-                elif response.status_code == 403:
-                    raise CieloFinanceAPIError("Access forbidden. Your API key may not have sufficient permissions.")
-                elif response.status_code == 404:
-                    raise CieloFinanceAPIError(f"Endpoint not found: {endpoint}")
-                elif response.status_code == 429:
-                    # Rate limit exceeded
-                    logger.warning(f"Rate limit exceeded (attempt {attempt+1}/{retry_count})")
-                    if attempt < retry_count - 1:
-                        time.sleep(retry_delay * 2)  # Longer delay for rate limiting
-                        continue
-                    else:
-                        raise CieloFinanceAPIError("Rate limit exceeded. Please try again later.")
-                elif response.status_code >= 500:
-                    # Server error
-                    logger.warning(f"Server error {response.status_code} (attempt {attempt+1}/{retry_count})")
-                    if attempt < retry_count - 1:
-                        time.sleep(retry_delay)
-                        retry_delay *= 2  # Exponential backoff
-                        continue
-                    else:
-                        raise CieloFinanceAPIError(f"Server error: {response.status_code}")
-                else:
-                    raise CieloFinanceAPIError(f"Unexpected status code: {response.status_code}")
+        try:
+            if method.upper() == "GET":
+                response = self.session.get(url, params=params, timeout=timeout)
+            elif method.upper() == "POST":
+                response = self.session.post(url, json=params, timeout=timeout)
+            else:
+                raise ValueError(f"Unsupported HTTP method: {method}")
             
-            except requests.RequestException as e:
-                logger.warning(f"Request failed (attempt {attempt+1}/{retry_count}): {str(e)}")
+            response.raise_for_status()
+            
+            # Try to return JSON, fallback to text if JSON parsing fails
+            try:
+                return response.json()
+            except ValueError:
+                return {"success": False, "error": "Invalid JSON response", "raw_response": response.text}
                 
-                if attempt < retry_count - 1:
-                    logger.info(f"Retrying in {retry_delay} seconds...")
-                    time.sleep(retry_delay)
-                    retry_delay *= 2  # Exponential backoff
-                else:
-                    logger.error(f"Request failed after {retry_count} attempts")
-                    raise CieloFinanceAPIError(f"Network error: {str(e)}")
+        except requests.RequestException as e:
+            logger.error(f"Cielo Finance API request failed for {endpoint}: {str(e)}")
+            return {
+                "success": False,
+                "error": str(e),
+                "endpoint": endpoint,
+                "status_code": getattr(e.response, 'status_code', None) if hasattr(e, 'response') else None
+            }
+        except Exception as e:
+            logger.error(f"Unexpected error in Cielo Finance API request: {str(e)}")
+            return {"success": False, "error": f"Unexpected error: {str(e)}"}
     
-    def health_check(self) -> Dict[str, Any]:
+    def health_check(self) -> bool:
         """
         Check if the Cielo Finance API is accessible.
         
         Returns:
-            Dict[str, Any]: Health check response
+            bool: True if API is accessible, False otherwise
         """
         try:
-            # For testing purposes, return a mock successful response
-            # In real implementation, this would make an actual API call to /health
-            return {
-                "success": True,
-                "status": "API connection test successful (mock)",
-                "message": "Cielo Finance API client initialized successfully"
-            }
+            # Try a simple endpoint or use a dedicated health check if available
+            response = self._make_request("/health", timeout=10)
+            
+            # If there's no dedicated health endpoint, try getting a simple response
+            if not response.get("success", True):
+                # Try an alternative endpoint that should work
+                test_response = self._make_request("/api/v1/status", timeout=10)
+                return test_response.get("success", True)
+            
+            return True
+            
         except Exception as e:
-            logger.error(f"Health check failed: {str(e)}")
-            return {"success": False, "error": str(e)}
+            logger.warning(f"Cielo Finance API health check failed: {str(e)}")
+            return False
     
-    def get_api_usage(self) -> Dict[str, Any]:
+    def get_wallet_pnl_by_tokens(self, wallet_address: str) -> Dict[str, Any]:
         """
-        Get API usage statistics.
+        Get wallet P&L broken down by individual tokens.
         
-        Returns:
-            Dict[str, Any]: API usage data
-        """
-        try:
-            # For testing purposes, return mock usage data
-            # In real implementation, this would make an actual API call
-            return {
-                "success": True,
-                "data": {
-                    "requests_made": 0,
-                    "requests_limit": 1000,
-                    "reset_time": "2024-01-01T00:00:00Z"
-                }
-            }
-        except Exception as e:
-            return {
-                "success": False,
-                "error": str(e)
-            }
-    
-    def get_token_info(self, token_address: str) -> Dict[str, Any]:
-        """
-        Get information about a token.
+        This endpoint retrieves PnL values for a specified wallet by different tokens.
         
         Args:
-            token_address (str): The token contract address
+            wallet_address (str): The wallet address to analyze
             
         Returns:
-            Dict[str, Any]: Token information
+            Dict[str, Any]: Wallet P&L data by tokens
         """
-        if not token_address:
-            raise CieloFinanceAPIError("Token address is required")
+        logger.info(f"Fetching token P&L data for wallet {wallet_address}")
         
-        endpoint = f"/v1/token/{token_address}"  # Update with actual endpoint structure
+        response = self._make_request(
+            "/gettokenspnl",
+            params={"wallet": wallet_address}
+        )
         
-        logger.debug(f"Fetching token info for {token_address}")
+        if response.get("success", True):
+            logger.info(f"Successfully retrieved token P&L data for {wallet_address}")
+        else:
+            logger.warning(f"Failed to retrieve token P&L data: {response.get('error', 'Unknown error')}")
         
-        try:
-            response = self._make_request(endpoint)
-            
-            # Standardize response format
-            if response.get("data"):
-                return {
-                    "success": True,
-                    "data": response["data"]
-                }
-            else:
-                return {
-                    "success": False,
-                    "error": response.get("error", "No data returned")
-                }
-        except CieloFinanceAPIError as e:
-            return {
-                "success": False,
-                "error": str(e)
-            }
+        return response
     
-    def get_token_price(self, token_address: str) -> Dict[str, Any]:
+    def get_wallet_total_stats(self, wallet_address: str) -> Dict[str, Any]:
         """
-        Get the current price of a token.
+        Get aggregated P&L stats for a specified wallet.
+        
+        This endpoint retrieves aggregated PnL stats for a specified wallet.
         
         Args:
-            token_address (str): The token contract address
+            wallet_address (str): The wallet address to analyze
             
         Returns:
-            Dict[str, Any]: Token price information
+            Dict[str, Any]: Aggregated wallet statistics
         """
-        if not token_address:
-            raise CieloFinanceAPIError("Token address is required")
+        logger.info(f"Fetching total stats for wallet {wallet_address}")
         
-        endpoint = f"/v1/token/{token_address}/price"  # Update with actual endpoint
+        response = self._make_request(
+            "/gettotalstats",
+            params={"wallet": wallet_address}
+        )
         
-        logger.debug(f"Fetching token price for {token_address}")
+        if response.get("success", True):
+            logger.info(f"Successfully retrieved total stats for {wallet_address}")
+        else:
+            logger.warning(f"Failed to retrieve total stats: {response.get('error', 'Unknown error')}")
         
-        try:
-            response = self._make_request(endpoint)
-            
-            if response.get("data"):
-                return {
-                    "success": True,
-                    "data": response["data"]
-                }
-            else:
-                return {
-                    "success": False,
-                    "error": response.get("error", "No price data returned")
-                }
-        except CieloFinanceAPIError as e:
-            return {
-                "success": False,
-                "error": str(e)
-            }
+        return response
     
-    def get_token_price_history(self, token_address: str, 
-                              start_time: int, end_time: int, 
-                              resolution: str = "5m") -> Dict[str, Any]:
+    def get_wallet_tags(self, wallet_address: str) -> Dict[str, Any]:
         """
-        Get historical price data for a token.
+        Get tags associated with a specific wallet address.
+        
+        Tags provide insights into wallet activity and behavior patterns.
         
         Args:
-            token_address (str): The token contract address
-            start_time (int): Start timestamp in milliseconds
-            end_time (int): End timestamp in milliseconds
-            resolution (str): Time resolution (1m, 5m, 15m, 1h, 4h, 1d)
+            wallet_address (str): The wallet address to analyze
             
         Returns:
-            Dict[str, Any]: Historical price data
+            Dict[str, Any]: Wallet tags and activity insights
         """
-        if not token_address:
-            raise CieloFinanceAPIError("Token address is required")
+        logger.info(f"Fetching wallet tags for {wallet_address}")
         
-        endpoint = f"/v1/token/{token_address}/chart"  # Update with actual endpoint
-        params = {
-            "startTime": start_time,
-            "endTime": end_time,
-            "resolution": resolution
-        }
+        response = self._make_request(
+            "/getwalletstags",
+            params={"wallet": wallet_address}
+        )
         
-        logger.debug(f"Fetching price history for {token_address} from {start_time} to {end_time}")
+        if response.get("success", True):
+            logger.info(f"Successfully retrieved wallet tags for {wallet_address}")
+        else:
+            logger.warning(f"Failed to retrieve wallet tags: {response.get('error', 'Unknown error')}")
         
-        try:
-            response = self._make_request(endpoint, params)
-            
-            if response.get("data"):
-                return {
-                    "success": True,
-                    "data": response["data"]
-                }
-            else:
-                return {
-                    "success": False,
-                    "error": response.get("error", "No price history data returned")
-                }
-        except CieloFinanceAPIError as e:
-            return {
-                "success": False,
-                "error": str(e)
-            }
+        return response
     
     def get_wallet_transactions(self, wallet_address: str, 
                               limit: int = 100,
                               offset: int = 0) -> Dict[str, Any]:
         """
-        Get transactions for a wallet.
+        Get transaction history for a wallet (if supported by Cielo Finance).
         
         Args:
             wallet_address (str): The wallet address
@@ -293,325 +189,184 @@ class CieloFinanceAPI:
             offset (int): Number of transactions to skip
             
         Returns:
-            Dict[str, Any]: Wallet transactions
+            Dict[str, Any]: Wallet transaction history
         """
-        if not wallet_address:
-            raise CieloFinanceAPIError("Wallet address is required")
+        logger.info(f"Fetching transaction history for wallet {wallet_address}")
         
-        endpoint = f"/v1/wallet/{wallet_address}/transactions"  # Update with actual endpoint
-        params = {
-            "limit": min(limit, 1000),  # Cap at 1000 to prevent overload
-            "offset": offset
-        }
-        
-        logger.debug(f"Fetching transactions for wallet {wallet_address}")
-        
-        try:
-            response = self._make_request(endpoint, params)
-            
-            if response.get("data"):
-                return {
-                    "success": True,
-                    "data": response["data"]
-                }
-            else:
-                return {
-                    "success": False,
-                    "error": response.get("error", "No transaction data returned")
-                }
-        except CieloFinanceAPIError as e:
-            return {
-                "success": False,
-                "error": str(e)
+        response = self._make_request(
+            "/gettransactions",  # Adjust endpoint name based on actual Cielo Finance API
+            params={
+                "wallet": wallet_address,
+                "limit": limit,
+                "offset": offset
             }
+        )
+        
+        if response.get("success", True):
+            logger.info(f"Successfully retrieved {len(response.get('data', []))} transactions for {wallet_address}")
+        else:
+            logger.warning(f"Failed to retrieve transactions: {response.get('error', 'Unknown error')}")
+        
+        return response
     
-    def get_wallet_tokens(self, wallet_address: str) -> Dict[str, Any]:
+    def get_wallet_performance_summary(self, wallet_address: str, 
+                                     time_period: str = "30d") -> Dict[str, Any]:
         """
-        Get token holdings for a wallet.
+        Get a performance summary for a wallet over a specific time period.
         
         Args:
             wallet_address (str): The wallet address
+            time_period (str): Time period (e.g., "7d", "30d", "90d")
             
         Returns:
-            Dict[str, Any]: Wallet token holdings
+            Dict[str, Any]: Wallet performance summary
         """
-        if not wallet_address:
-            raise CieloFinanceAPIError("Wallet address is required")
+        logger.info(f"Fetching performance summary for wallet {wallet_address} ({time_period})")
         
-        endpoint = f"/v1/wallet/{wallet_address}/tokens"  # Update with actual endpoint
-        
-        logger.debug(f"Fetching token holdings for wallet {wallet_address}")
-        
-        try:
-            response = self._make_request(endpoint)
-            
-            if response.get("data"):
-                return {
-                    "success": True,
-                    "data": response["data"]
-                }
-            else:
-                return {
-                    "success": False,
-                    "error": response.get("error", "No token holdings data returned")
-                }
-        except CieloFinanceAPIError as e:
-            return {
-                "success": False,
-                "error": str(e)
+        response = self._make_request(
+            "/getperformance",  # Adjust endpoint name based on actual Cielo Finance API
+            params={
+                "wallet": wallet_address,
+                "period": time_period
             }
+        )
+        
+        if response.get("success", True):
+            logger.info(f"Successfully retrieved performance summary for {wallet_address}")
+        else:
+            logger.warning(f"Failed to retrieve performance summary: {response.get('error', 'Unknown error')}")
+        
+        return response
     
-    def get_wallet_performance(self, wallet_address: str, 
-                             days_back: int = 30) -> Dict[str, Any]:
+    def batch_get_wallet_stats(self, wallet_addresses: List[str]) -> Dict[str, Any]:
         """
-        Get wallet performance metrics.
+        Get stats for multiple wallets in a single request (if supported).
         
         Args:
-            wallet_address (str): The wallet address
-            days_back (int): Number of days to analyze
+            wallet_addresses (List[str]): List of wallet addresses
             
         Returns:
-            Dict[str, Any]: Wallet performance metrics
+            Dict[str, Any]: Batch wallet statistics
         """
-        if not wallet_address:
-            raise CieloFinanceAPIError("Wallet address is required")
+        logger.info(f"Fetching batch stats for {len(wallet_addresses)} wallets")
         
-        endpoint = f"/v1/wallet/{wallet_address}/performance"  # Update with actual endpoint
-        params = {
-            "days": days_back
-        }
+        response = self._make_request(
+            "/getbatchstats",  # Adjust endpoint name based on actual Cielo Finance API
+            params={"wallets": wallet_addresses},
+            method="POST"
+        )
         
-        logger.debug(f"Fetching performance for wallet {wallet_address}")
+        if response.get("success", True):
+            logger.info(f"Successfully retrieved batch stats for {len(wallet_addresses)} wallets")
+        else:
+            logger.warning(f"Failed to retrieve batch stats: {response.get('error', 'Unknown error')}")
         
-        try:
-            response = self._make_request(endpoint, params)
-            
-            if response.get("data"):
-                return {
-                    "success": True,
-                    "data": response["data"]
-                }
-            else:
-                return {
-                    "success": False,
-                    "error": response.get("error", "No performance data returned")
-                }
-        except CieloFinanceAPIError as e:
-            return {
-                "success": False,
-                "error": str(e)
-            }
+        return response
     
-    def get_dex_trades(self, token_address: str, 
-                     limit: int = 100) -> Dict[str, Any]:
+    def get_token_info(self, token_address: str) -> Dict[str, Any]:
         """
-        Get recent DEX trades for a token.
+        Get information about a specific token (if supported).
         
         Args:
-            token_address (str): The token contract address
-            limit (int): Maximum number of trades to return
+            token_address (str): Token contract address
             
         Returns:
-            Dict[str, Any]: DEX trades for the token
+            Dict[str, Any]: Token information
         """
-        if not token_address:
-            raise CieloFinanceAPIError("Token address is required")
+        logger.debug(f"Fetching token info for {token_address}")
         
-        endpoint = f"/v1/token/{token_address}/trades"  # Update with actual endpoint
-        params = {
-            "limit": min(limit, 1000)
-        }
+        response = self._make_request(
+            "/gettokeninfo",  # Adjust endpoint name based on actual Cielo Finance API
+            params={"token": token_address}
+        )
         
-        logger.debug(f"Fetching DEX trades for token {token_address}")
-        
-        try:
-            response = self._make_request(endpoint, params)
-            
-            if response.get("data"):
-                return {
-                    "success": True,
-                    "data": response["data"]
-                }
-            else:
-                return {
-                    "success": False,
-                    "error": response.get("error", "No trade data returned")
-                }
-        except CieloFinanceAPIError as e:
-            return {
-                "success": False,
-                "error": str(e)
-            }
+        return response
     
-    def calculate_token_performance(self, token_address: str, 
-                                  start_time: datetime) -> Dict[str, Any]:
+    def search_wallets_by_criteria(self, criteria: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Calculate performance metrics for a token since a specific time.
+        Search for wallets based on specific criteria (if supported).
         
         Args:
-            token_address (str): The token contract address
-            start_time (datetime): The starting time for performance calculation
+            criteria (Dict[str, Any]): Search criteria (e.g., min_pnl, min_trades, etc.)
             
         Returns:
-            Dict[str, Any]: Token performance metrics
+            Dict[str, Any]: Matching wallets
         """
-        if not token_address:
-            raise CieloFinanceAPIError("Token address is required")
+        logger.info(f"Searching wallets with criteria: {criteria}")
         
-        try:
-            # Convert datetime to millisecond timestamps
-            start_timestamp = int(start_time.timestamp() * 1000)
-            end_timestamp = int(datetime.now().timestamp() * 1000)
-            
-            # Get historical price data
-            price_history = self.get_token_price_history(
-                token_address, 
-                start_timestamp, 
-                end_timestamp
-            )
-            
-            # Get current price
-            current_price_data = self.get_token_price(token_address)
-            
-            # Get market cap
-            token_info = self.get_token_info(token_address)
-            market_cap_usd = 0
-            if token_info.get("success") and "data" in token_info:
-                market_cap_usd = token_info["data"].get("marketCap", 0)
-            
-            # Process and calculate metrics
-            if not price_history.get("success") or not price_history.get("data"):
-                logger.warning(f"No price history available for {token_address}")
-                return {
-                    "success": False,
-                    "error": "No price history available"
-                }
-            
-            prices = price_history.get("data", [])
-            
-            # Calculate metrics
-            initial_price = prices[0]["value"] if prices else None
-            current_price = current_price_data.get("data", {}).get("value") if current_price_data.get("success") else None
-            
-            if not initial_price or not current_price:
-                return {
-                    "success": False,
-                    "error": "Missing price data"
-                }
-            
-            price_values = [p["value"] for p in prices if "value" in p]
-            max_price = max(price_values) if price_values else initial_price
-            min_price = min(price_values) if price_values else initial_price
-            
-            roi = ((current_price / initial_price) - 1) * 100
-            max_roi = ((max_price / initial_price) - 1) * 100
-            max_drawdown = ((min_price / initial_price) - 1) * 100
-            
-            # Extract SOL price ratio if available
-            sol_price = 0
-            sol_value = 0
-            if "solPrice" in current_price_data.get("data", {}):
-                sol_price = current_price_data["data"]["solPrice"]
-                if sol_price > 0:
-                    sol_value = current_price / sol_price
-            
-            return {
-                "success": True,
-                "token_address": token_address,
-                "initial_price": initial_price,
-                "current_price": current_price,
-                "max_price": max_price,
-                "min_price": min_price,
-                "roi_percent": roi,
-                "max_roi_percent": max_roi,
-                "max_drawdown_percent": max_drawdown,
-                "start_time": start_time.isoformat(),
-                "end_time": datetime.now().isoformat(),
-                "market_cap_usd": market_cap_usd,
-                "sol_price": sol_price,
-                "sol_value": sol_value
-            }
-            
-        except Exception as e:
-            logger.error(f"Error calculating token performance: {str(e)}")
-            return {
-                "success": False,
-                "error": str(e)
-            }
+        response = self._make_request(
+            "/searchwallets",  # Adjust endpoint name based on actual Cielo Finance API
+            params=criteria,
+            method="POST"
+        )
+        
+        if response.get("success", True):
+            logger.info(f"Found {len(response.get('data', []))} wallets matching criteria")
+        else:
+            logger.warning(f"Wallet search failed: {response.get('error', 'Unknown error')}")
+        
+        return response
     
-    def get_trending_tokens(self, limit: int = 50) -> Dict[str, Any]:
+    def get_api_usage_stats(self) -> Dict[str, Any]:
         """
-        Get trending tokens on Solana.
+        Get API usage statistics for the current API key.
+        
+        Returns:
+            Dict[str, Any]: API usage statistics
+        """
+        logger.debug("Fetching API usage statistics")
+        
+        response = self._make_request("/getusage")  # Adjust endpoint name
+        
+        return response
+    
+    def validate_wallet_address(self, wallet_address: str) -> bool:
+        """
+        Validate if a wallet address is properly formatted for Solana.
         
         Args:
-            limit (int): Maximum number of tokens to return
+            wallet_address (str): Wallet address to validate
             
         Returns:
-            Dict[str, Any]: Trending tokens data
+            bool: True if valid, False otherwise
         """
-        endpoint = "/v1/trending"  # Update with actual endpoint
-        params = {
-            "limit": min(limit, 100)
-        }
-        
-        logger.debug("Fetching trending tokens")
-        
         try:
-            response = self._make_request(endpoint, params)
+            # Basic Solana address validation
+            if not wallet_address or len(wallet_address) < 32 or len(wallet_address) > 44:
+                return False
             
-            if response.get("data"):
-                return {
-                    "success": True,
-                    "data": response["data"]
-                }
-            else:
-                return {
-                    "success": False,
-                    "error": response.get("error", "No trending data returned")
-                }
-        except CieloFinanceAPIError as e:
-            return {
-                "success": False,
-                "error": str(e)
-            }
+            # Check if it's a valid base58 string
+            import base58
+            base58.b58decode(wallet_address)
+            return True
+            
+        except Exception:
+            return False
     
-    def search_tokens(self, query: str, limit: int = 20) -> Dict[str, Any]:
+    def get_supported_endpoints(self) -> List[str]:
         """
-        Search for tokens by name or symbol.
+        Get list of supported API endpoints.
         
-        Args:
-            query (str): Search query
-            limit (int): Maximum number of results
-            
         Returns:
-            Dict[str, Any]: Search results
+            List[str]: List of available endpoints
         """
-        if not query:
-            raise CieloFinanceAPIError("Search query is required")
-        
-        endpoint = "/v1/search"  # Update with actual endpoint
-        params = {
-            "q": query,
-            "limit": min(limit, 50)
-        }
-        
-        logger.debug(f"Searching for tokens: {query}")
-        
-        try:
-            response = self._make_request(endpoint, params)
-            
-            if response.get("data"):
-                return {
-                    "success": True,
-                    "data": response["data"]
-                }
-            else:
-                return {
-                    "success": False,
-                    "error": response.get("error", "No search results returned")
-                }
-        except CieloFinanceAPIError as e:
-            return {
-                "success": False,
-                "error": str(e)
-            }
+        return [
+            "/gettokenspnl",      # Get wallet P&L by tokens
+            "/gettotalstats",     # Get aggregated wallet stats
+            "/getwalletstags",    # Get wallet tags and insights
+            "/gettransactions",   # Get wallet transaction history
+            "/getperformance",    # Get wallet performance summary
+            "/getbatchstats",     # Get batch wallet statistics
+            "/gettokeninfo",      # Get token information
+            "/searchwallets",     # Search wallets by criteria
+            "/getusage",          # Get API usage statistics
+            "/health"             # API health check
+        ]
+    
+    def __str__(self) -> str:
+        """String representation of the API client."""
+        return f"CieloFinanceAPI(base_url='{self.base_url}', authenticated={'✓' if self.api_key else '✗'})"
+    
+    def __repr__(self) -> str:
+        """Detailed representation of the API client."""
+        return f"CieloFinanceAPI(api_key='***', base_url='{self.base_url}')"
