@@ -16907,3 +16907,822 @@ SUIcide first posted by @kariusgemscalls has since been poste...
 2025-05-22 12:16:42,431 - phoenix.wallet - INFO - Analyzing wallet 58/104: 4RLMzkyMqizx7CBXXZKRSrcu82CF96YzeoVxokSnLs7D
 2025-05-22 12:16:42,431 - phoenix.wallet - INFO - Analyzing wallet 4RLMzkyMqizx7CBXXZKRSrcu82CF96YzeoVxokSnLs7D using Cielo Finance API
 2025-05-22 12:16:42,431 - phoenix.cielo - INFO - Fetching trading stats for wallet 4RLMzkyMqizx7CBXXZKRSrcu82CF96YzeoVxokSnLs7D
+2025-05-22 13:44:37,422 - phoenix - INFO - Loaded 104 wallet addresses from wallets.txt
+2025-05-22 13:44:37,718 - phoenix - INFO - ✅ Cielo Finance API initialized
+2025-05-22 13:44:37,719 - phoenix - INFO - ✅ Birdeye API initialized (for token metadata)
+2025-05-22 13:44:38,025 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/11111111111111111111111111111111/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/11111111111111111111111111111111/trading-stats
+2025-05-22 13:44:38,025 - phoenix.cielo - INFO - ✅ Cielo Finance API is accessible
+2025-05-22 13:44:38,027 - phoenix.wallet - INFO - ✅ Cielo Finance API connection verified
+2025-05-22 13:44:38,027 - phoenix - INFO - Using RPC: https://api.mainnet-beta.solana.com
+2025-05-22 13:44:38,027 - phoenix.wallet - INFO - Batch analyzing 104 wallets using Cielo Finance API (contested: True)
+2025-05-22 13:44:38,028 - phoenix.wallet - INFO - Analyzing wallet 1/104: 2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd
+2025-05-22 13:44:38,028 - phoenix.wallet - INFO - Analyzing wallet 2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd using Cielo Finance API
+2025-05-22 13:44:38,029 - phoenix.cielo - INFO - Fetching trading stats for wallet 2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd
+2025-05-22 13:44:38,131 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd/trading-stats
+2025-05-22 13:44:38,132 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd/trading-stats
+2025-05-22 13:44:38,133 - phoenix.wallet - WARNING - No token P&L data available for wallet 2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd
+2025-05-22 13:44:38,133 - phoenix.wallet - INFO - Analyzing wallet 2/104: 5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex
+2025-05-22 13:44:38,133 - phoenix.wallet - INFO - Analyzing wallet 5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex using Cielo Finance API
+2025-05-22 13:44:38,134 - phoenix.cielo - INFO - Fetching trading stats for wallet 5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex
+2025-05-22 13:44:38,238 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex/trading-stats
+2025-05-22 13:44:38,238 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex/trading-stats
+2025-05-22 13:44:38,239 - phoenix.wallet - WARNING - No token P&L data available for wallet 5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex
+2025-05-22 13:44:38,239 - phoenix.wallet - INFO - Analyzing wallet 3/104: Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e
+2025-05-22 13:44:38,240 - phoenix.wallet - INFO - Analyzing wallet Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e using Cielo Finance API
+2025-05-22 13:44:38,240 - phoenix.cielo - INFO - Fetching trading stats for wallet Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e
+2025-05-22 13:44:38,350 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e/trading-stats
+2025-05-22 13:44:38,350 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e/trading-stats
+2025-05-22 13:44:38,351 - phoenix.wallet - WARNING - No token P&L data available for wallet Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e
+2025-05-22 13:44:38,352 - phoenix.wallet - INFO - Analyzing wallet 4/104: 8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i
+2025-05-22 13:44:38,352 - phoenix.wallet - INFO - Analyzing wallet 8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i using Cielo Finance API
+2025-05-22 13:44:38,352 - phoenix.cielo - INFO - Fetching trading stats for wallet 8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i
+2025-05-22 13:44:38,455 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i/trading-stats
+2025-05-22 13:44:38,455 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i/trading-stats
+2025-05-22 13:44:38,456 - phoenix.wallet - WARNING - No token P&L data available for wallet 8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i
+2025-05-22 13:44:38,456 - phoenix.wallet - INFO - Analyzing wallet 5/104: A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o
+2025-05-22 13:44:38,457 - phoenix.wallet - INFO - Analyzing wallet A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o using Cielo Finance API
+2025-05-22 13:44:38,457 - phoenix.cielo - INFO - Fetching trading stats for wallet A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o
+2025-05-22 13:44:38,558 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o/trading-stats
+2025-05-22 13:44:38,559 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o/trading-stats
+2025-05-22 13:44:38,560 - phoenix.wallet - WARNING - No token P&L data available for wallet A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o
+2025-05-22 13:44:38,560 - phoenix.wallet - INFO - Analyzing wallet 6/104: 4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq
+2025-05-22 13:44:38,560 - phoenix.wallet - INFO - Analyzing wallet 4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq using Cielo Finance API
+2025-05-22 13:44:38,561 - phoenix.cielo - INFO - Fetching trading stats for wallet 4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq
+2025-05-22 13:44:38,663 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq/trading-stats
+2025-05-22 13:44:38,663 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq/trading-stats
+2025-05-22 13:44:38,664 - phoenix.wallet - WARNING - No token P&L data available for wallet 4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq
+2025-05-22 13:44:38,665 - phoenix.wallet - INFO - Analyzing wallet 7/104: 9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn
+2025-05-22 13:44:38,665 - phoenix.wallet - INFO - Analyzing wallet 9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn using Cielo Finance API
+2025-05-22 13:44:38,665 - phoenix.cielo - INFO - Fetching trading stats for wallet 9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn
+2025-05-22 13:44:38,768 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn/trading-stats
+2025-05-22 13:44:38,768 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn/trading-stats
+2025-05-22 13:44:38,769 - phoenix.wallet - WARNING - No token P&L data available for wallet 9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn
+2025-05-22 13:44:38,769 - phoenix.wallet - INFO - Analyzing wallet 8/104: 3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B
+2025-05-22 13:44:38,769 - phoenix.wallet - INFO - Analyzing wallet 3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B using Cielo Finance API
+2025-05-22 13:44:38,770 - phoenix.cielo - INFO - Fetching trading stats for wallet 3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B
+2025-05-22 13:44:38,872 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B/trading-stats
+2025-05-22 13:44:38,872 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B/trading-stats
+2025-05-22 13:44:38,873 - phoenix.wallet - WARNING - No token P&L data available for wallet 3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B
+2025-05-22 13:44:38,874 - phoenix.wallet - INFO - Analyzing wallet 9/104: BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r
+2025-05-22 13:44:38,874 - phoenix.wallet - INFO - Analyzing wallet BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r using Cielo Finance API
+2025-05-22 13:44:38,874 - phoenix.cielo - INFO - Fetching trading stats for wallet BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r
+2025-05-22 13:44:38,978 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r/trading-stats
+2025-05-22 13:44:38,978 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r/trading-stats
+2025-05-22 13:44:38,979 - phoenix.wallet - WARNING - No token P&L data available for wallet BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r
+2025-05-22 13:44:38,979 - phoenix.wallet - INFO - Analyzing wallet 10/104: 96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu
+2025-05-22 13:44:38,980 - phoenix.wallet - INFO - Analyzing wallet 96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu using Cielo Finance API
+2025-05-22 13:44:38,980 - phoenix.cielo - INFO - Fetching trading stats for wallet 96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu
+2025-05-22 13:44:39,089 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu/trading-stats
+2025-05-22 13:44:39,089 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu/trading-stats
+2025-05-22 13:44:39,090 - phoenix.wallet - WARNING - No token P&L data available for wallet 96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu
+2025-05-22 13:44:39,090 - phoenix.wallet - INFO - Analyzing wallet 11/104: 6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK
+2025-05-22 13:44:39,091 - phoenix.wallet - INFO - Analyzing wallet 6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK using Cielo Finance API
+2025-05-22 13:44:39,091 - phoenix.cielo - INFO - Fetching trading stats for wallet 6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK
+2025-05-22 13:44:39,193 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK/trading-stats
+2025-05-22 13:44:39,193 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK/trading-stats
+2025-05-22 13:44:39,194 - phoenix.wallet - WARNING - No token P&L data available for wallet 6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK
+2025-05-22 13:44:39,194 - phoenix.wallet - INFO - Analyzing wallet 12/104: 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr
+2025-05-22 13:44:39,195 - phoenix.wallet - INFO - Analyzing wallet 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr using Cielo Finance API
+2025-05-22 13:44:39,195 - phoenix.cielo - INFO - Fetching trading stats for wallet 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr
+2025-05-22 13:44:39,297 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr/trading-stats
+2025-05-22 13:44:39,297 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr/trading-stats
+2025-05-22 13:44:39,298 - phoenix.wallet - WARNING - No token P&L data available for wallet 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr
+2025-05-22 13:44:39,298 - phoenix.wallet - INFO - Analyzing wallet 13/104: FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL
+2025-05-22 13:44:39,298 - phoenix.wallet - INFO - Analyzing wallet FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL using Cielo Finance API
+2025-05-22 13:44:39,298 - phoenix.cielo - INFO - Fetching trading stats for wallet FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL
+2025-05-22 13:44:39,402 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL/trading-stats
+2025-05-22 13:44:39,403 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL/trading-stats
+2025-05-22 13:44:39,439 - phoenix.wallet - WARNING - No token P&L data available for wallet FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL
+2025-05-22 13:44:39,439 - phoenix.wallet - INFO - Analyzing wallet 14/104: 7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB
+2025-05-22 13:44:39,439 - phoenix.wallet - INFO - Analyzing wallet 7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB using Cielo Finance API
+2025-05-22 13:44:39,439 - phoenix.cielo - INFO - Fetching trading stats for wallet 7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB
+2025-05-22 13:44:39,553 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB/trading-stats
+2025-05-22 13:44:39,553 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB/trading-stats
+2025-05-22 13:44:39,554 - phoenix.wallet - WARNING - No token P&L data available for wallet 7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB
+2025-05-22 13:44:39,554 - phoenix.wallet - INFO - Analyzing wallet 15/104: FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q
+2025-05-22 13:44:39,554 - phoenix.wallet - INFO - Analyzing wallet FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q using Cielo Finance API
+2025-05-22 13:44:39,554 - phoenix.cielo - INFO - Fetching trading stats for wallet FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q
+2025-05-22 13:44:39,656 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q/trading-stats
+2025-05-22 13:44:39,656 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q/trading-stats
+2025-05-22 13:44:39,656 - phoenix.wallet - WARNING - No token P&L data available for wallet FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q
+2025-05-22 13:44:39,656 - phoenix.wallet - INFO - Analyzing wallet 16/104: F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe
+2025-05-22 13:44:39,657 - phoenix.wallet - INFO - Analyzing wallet F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe using Cielo Finance API
+2025-05-22 13:44:39,657 - phoenix.cielo - INFO - Fetching trading stats for wallet F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe
+2025-05-22 13:44:39,759 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe/trading-stats
+2025-05-22 13:44:39,759 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe/trading-stats
+2025-05-22 13:44:39,761 - phoenix.wallet - WARNING - No token P&L data available for wallet F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe
+2025-05-22 13:44:39,761 - phoenix.wallet - INFO - Analyzing wallet 17/104: 5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn
+2025-05-22 13:44:39,761 - phoenix.wallet - INFO - Analyzing wallet 5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn using Cielo Finance API
+2025-05-22 13:44:39,762 - phoenix.cielo - INFO - Fetching trading stats for wallet 5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn
+2025-05-22 13:44:39,863 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn/trading-stats
+2025-05-22 13:44:39,865 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn/trading-stats
+2025-05-22 13:44:39,866 - phoenix.wallet - WARNING - No token P&L data available for wallet 5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn
+2025-05-22 13:44:39,866 - phoenix.wallet - INFO - Analyzing wallet 18/104: 8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2
+2025-05-22 13:44:39,867 - phoenix.wallet - INFO - Analyzing wallet 8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2 using Cielo Finance API
+2025-05-22 13:44:39,867 - phoenix.cielo - INFO - Fetching trading stats for wallet 8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2
+2025-05-22 13:44:39,970 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2/trading-stats
+2025-05-22 13:44:39,970 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2/trading-stats
+2025-05-22 13:44:39,972 - phoenix.wallet - WARNING - No token P&L data available for wallet 8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2
+2025-05-22 13:44:39,972 - phoenix.wallet - INFO - Analyzing wallet 19/104: D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz
+2025-05-22 13:44:39,972 - phoenix.wallet - INFO - Analyzing wallet D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz using Cielo Finance API
+2025-05-22 13:44:39,973 - phoenix.cielo - INFO - Fetching trading stats for wallet D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz
+2025-05-22 13:44:40,073 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz/trading-stats
+2025-05-22 13:44:40,073 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz/trading-stats
+2025-05-22 13:44:40,075 - phoenix.wallet - WARNING - No token P&L data available for wallet D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz
+2025-05-22 13:44:40,075 - phoenix.wallet - INFO - Analyzing wallet 20/104: CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ
+2025-05-22 13:44:40,075 - phoenix.wallet - INFO - Analyzing wallet CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ using Cielo Finance API
+2025-05-22 13:44:40,076 - phoenix.cielo - INFO - Fetching trading stats for wallet CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ
+2025-05-22 13:44:40,177 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ/trading-stats
+2025-05-22 13:44:40,177 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ/trading-stats
+2025-05-22 13:44:40,179 - phoenix.wallet - WARNING - No token P&L data available for wallet CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ
+2025-05-22 13:44:40,180 - phoenix.wallet - INFO - Analyzing wallet 21/104: FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W
+2025-05-22 13:44:40,180 - phoenix.wallet - INFO - Analyzing wallet FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W using Cielo Finance API
+2025-05-22 13:44:40,180 - phoenix.cielo - INFO - Fetching trading stats for wallet FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W
+2025-05-22 13:44:40,282 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W/trading-stats
+2025-05-22 13:44:40,282 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W/trading-stats
+2025-05-22 13:44:40,284 - phoenix.wallet - WARNING - No token P&L data available for wallet FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W
+2025-05-22 13:44:40,284 - phoenix.wallet - INFO - Analyzing wallet 22/104: 9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj
+2025-05-22 13:44:40,284 - phoenix.wallet - INFO - Analyzing wallet 9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj using Cielo Finance API
+2025-05-22 13:44:40,284 - phoenix.cielo - INFO - Fetching trading stats for wallet 9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj
+2025-05-22 13:44:40,386 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj/trading-stats
+2025-05-22 13:44:40,386 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj/trading-stats
+2025-05-22 13:44:40,388 - phoenix.wallet - WARNING - No token P&L data available for wallet 9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj
+2025-05-22 13:44:40,388 - phoenix.wallet - INFO - Analyzing wallet 23/104: 6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP
+2025-05-22 13:44:40,389 - phoenix.wallet - INFO - Analyzing wallet 6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP using Cielo Finance API
+2025-05-22 13:44:40,389 - phoenix.cielo - INFO - Fetching trading stats for wallet 6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP
+2025-05-22 13:44:40,492 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP/trading-stats
+2025-05-22 13:44:40,492 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP/trading-stats
+2025-05-22 13:44:40,494 - phoenix.wallet - WARNING - No token P&L data available for wallet 6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP
+2025-05-22 13:44:40,494 - phoenix.wallet - INFO - Analyzing wallet 24/104: 8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q
+2025-05-22 13:44:40,494 - phoenix.wallet - INFO - Analyzing wallet 8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q using Cielo Finance API
+2025-05-22 13:44:40,495 - phoenix.cielo - INFO - Fetching trading stats for wallet 8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q
+2025-05-22 13:44:40,598 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q/trading-stats
+2025-05-22 13:44:40,598 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q/trading-stats
+2025-05-22 13:44:40,600 - phoenix.wallet - WARNING - No token P&L data available for wallet 8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q
+2025-05-22 13:44:40,600 - phoenix.wallet - INFO - Analyzing wallet 25/104: HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg
+2025-05-22 13:44:40,600 - phoenix.wallet - INFO - Analyzing wallet HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg using Cielo Finance API
+2025-05-22 13:44:40,601 - phoenix.cielo - INFO - Fetching trading stats for wallet HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg
+2025-05-22 13:44:40,703 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg/trading-stats
+2025-05-22 13:44:40,703 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg/trading-stats
+2025-05-22 13:44:40,705 - phoenix.wallet - WARNING - No token P&L data available for wallet HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg
+2025-05-22 13:44:40,705 - phoenix.wallet - INFO - Analyzing wallet 26/104: CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS
+2025-05-22 13:44:40,706 - phoenix.wallet - INFO - Analyzing wallet CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS using Cielo Finance API
+2025-05-22 13:44:40,706 - phoenix.cielo - INFO - Fetching trading stats for wallet CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS
+2025-05-22 13:44:40,809 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS/trading-stats
+2025-05-22 13:44:40,809 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS/trading-stats
+2025-05-22 13:44:40,811 - phoenix.wallet - WARNING - No token P&L data available for wallet CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS
+2025-05-22 13:44:40,811 - phoenix.wallet - INFO - Analyzing wallet 27/104: BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor
+2025-05-22 13:44:40,811 - phoenix.wallet - INFO - Analyzing wallet BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor using Cielo Finance API
+2025-05-22 13:44:40,812 - phoenix.cielo - INFO - Fetching trading stats for wallet BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor
+2025-05-22 13:44:40,914 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor/trading-stats
+2025-05-22 13:44:40,914 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor/trading-stats
+2025-05-22 13:44:40,916 - phoenix.wallet - WARNING - No token P&L data available for wallet BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor
+2025-05-22 13:44:40,916 - phoenix.wallet - INFO - Analyzing wallet 28/104: FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb
+2025-05-22 13:44:40,916 - phoenix.wallet - INFO - Analyzing wallet FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb using Cielo Finance API
+2025-05-22 13:44:40,917 - phoenix.cielo - INFO - Fetching trading stats for wallet FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb
+2025-05-22 13:44:41,019 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb/trading-stats
+2025-05-22 13:44:41,019 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb/trading-stats
+2025-05-22 13:44:41,021 - phoenix.wallet - WARNING - No token P&L data available for wallet FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb
+2025-05-22 13:44:41,021 - phoenix.wallet - INFO - Analyzing wallet 29/104: 5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD
+2025-05-22 13:44:41,022 - phoenix.wallet - INFO - Analyzing wallet 5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD using Cielo Finance API
+2025-05-22 13:44:41,022 - phoenix.cielo - INFO - Fetching trading stats for wallet 5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD
+2025-05-22 13:44:41,126 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD/trading-stats
+2025-05-22 13:44:41,126 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD/trading-stats
+2025-05-22 13:44:41,128 - phoenix.wallet - WARNING - No token P&L data available for wallet 5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD
+2025-05-22 13:44:41,128 - phoenix.wallet - INFO - Analyzing wallet 30/104: BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX
+2025-05-22 13:44:41,129 - phoenix.wallet - INFO - Analyzing wallet BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX using Cielo Finance API
+2025-05-22 13:44:41,129 - phoenix.cielo - INFO - Fetching trading stats for wallet BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX
+2025-05-22 13:44:41,230 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX/trading-stats
+2025-05-22 13:44:41,231 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX/trading-stats
+2025-05-22 13:44:41,232 - phoenix.wallet - WARNING - No token P&L data available for wallet BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX
+2025-05-22 13:44:41,232 - phoenix.wallet - INFO - Analyzing wallet 31/104: 6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG
+2025-05-22 13:44:41,233 - phoenix.wallet - INFO - Analyzing wallet 6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG using Cielo Finance API
+2025-05-22 13:44:41,233 - phoenix.cielo - INFO - Fetching trading stats for wallet 6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG
+2025-05-22 13:44:41,336 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG/trading-stats
+2025-05-22 13:44:41,336 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG/trading-stats
+2025-05-22 13:44:41,338 - phoenix.wallet - WARNING - No token P&L data available for wallet 6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG
+2025-05-22 13:44:41,338 - phoenix.wallet - INFO - Analyzing wallet 32/104: 8CmDY4dBQEVD74T7UcZofUmnLdJyTprFW6cL3b77XYjv
+2025-05-22 13:44:41,338 - phoenix.wallet - INFO - Analyzing wallet 8CmDY4dBQEVD74T7UcZofUmnLdJyTprFW6cL3b77XYjv using Cielo Finance API
+2025-05-22 13:44:41,339 - phoenix.cielo - INFO - Fetching trading stats for wallet 8CmDY4dBQEVD74T7UcZofUmnLdJyTprFW6cL3b77XYjv
+2025-05-22 13:44:41,442 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/8CmDY4dBQEVD74T7UcZofUmnLdJyTprFW6cL3b77XYjv/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/8CmDY4dBQEVD74T7UcZofUmnLdJyTprFW6cL3b77XYjv/trading-stats
+2025-05-22 13:44:41,442 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/8CmDY4dBQEVD74T7UcZofUmnLdJyTprFW6cL3b77XYjv/trading-stats
+2025-05-22 13:44:41,443 - phoenix.wallet - WARNING - No token P&L data available for wallet 8CmDY4dBQEVD74T7UcZofUmnLdJyTprFW6cL3b77XYjv
+2025-05-22 13:44:41,444 - phoenix.wallet - INFO - Analyzing wallet 33/104: ESuJogU3kzLjZdfG93k6c4pYq8jJAu63wuv9NDvfesCi
+2025-05-22 13:44:41,444 - phoenix.wallet - INFO - Analyzing wallet ESuJogU3kzLjZdfG93k6c4pYq8jJAu63wuv9NDvfesCi using Cielo Finance API
+2025-05-22 13:44:41,444 - phoenix.cielo - INFO - Fetching trading stats for wallet ESuJogU3kzLjZdfG93k6c4pYq8jJAu63wuv9NDvfesCi
+2025-05-22 13:44:41,546 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/ESuJogU3kzLjZdfG93k6c4pYq8jJAu63wuv9NDvfesCi/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/ESuJogU3kzLjZdfG93k6c4pYq8jJAu63wuv9NDvfesCi/trading-stats
+2025-05-22 13:44:41,546 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/ESuJogU3kzLjZdfG93k6c4pYq8jJAu63wuv9NDvfesCi/trading-stats
+2025-05-22 13:44:41,547 - phoenix.wallet - WARNING - No token P&L data available for wallet ESuJogU3kzLjZdfG93k6c4pYq8jJAu63wuv9NDvfesCi
+2025-05-22 13:44:41,548 - phoenix.wallet - INFO - Analyzing wallet 34/104: 933GChDAL2sfL7iubWqPdCEN9yiZia2Ti6RYGXMAJMEu
+2025-05-22 13:44:41,548 - phoenix.wallet - INFO - Analyzing wallet 933GChDAL2sfL7iubWqPdCEN9yiZia2Ti6RYGXMAJMEu using Cielo Finance API
+2025-05-22 13:44:41,549 - phoenix.cielo - INFO - Fetching trading stats for wallet 933GChDAL2sfL7iubWqPdCEN9yiZia2Ti6RYGXMAJMEu
+2025-05-22 13:44:41,650 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/933GChDAL2sfL7iubWqPdCEN9yiZia2Ti6RYGXMAJMEu/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/933GChDAL2sfL7iubWqPdCEN9yiZia2Ti6RYGXMAJMEu/trading-stats
+2025-05-22 13:44:41,650 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/933GChDAL2sfL7iubWqPdCEN9yiZia2Ti6RYGXMAJMEu/trading-stats
+2025-05-22 13:44:41,652 - phoenix.wallet - WARNING - No token P&L data available for wallet 933GChDAL2sfL7iubWqPdCEN9yiZia2Ti6RYGXMAJMEu
+2025-05-22 13:44:41,652 - phoenix.wallet - INFO - Analyzing wallet 35/104: 4mn4awCvhti4ybEMNe8q8D28KaoJ2LJiUViSqFgn6NZF
+2025-05-22 13:44:41,653 - phoenix.wallet - INFO - Analyzing wallet 4mn4awCvhti4ybEMNe8q8D28KaoJ2LJiUViSqFgn6NZF using Cielo Finance API
+2025-05-22 13:44:41,653 - phoenix.cielo - INFO - Fetching trading stats for wallet 4mn4awCvhti4ybEMNe8q8D28KaoJ2LJiUViSqFgn6NZF
+2025-05-22 13:44:41,758 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/4mn4awCvhti4ybEMNe8q8D28KaoJ2LJiUViSqFgn6NZF/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/4mn4awCvhti4ybEMNe8q8D28KaoJ2LJiUViSqFgn6NZF/trading-stats
+2025-05-22 13:44:41,758 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/4mn4awCvhti4ybEMNe8q8D28KaoJ2LJiUViSqFgn6NZF/trading-stats
+2025-05-22 13:44:41,759 - phoenix.wallet - WARNING - No token P&L data available for wallet 4mn4awCvhti4ybEMNe8q8D28KaoJ2LJiUViSqFgn6NZF
+2025-05-22 13:44:41,760 - phoenix.wallet - INFO - Analyzing wallet 36/104: 7Hy2bJvqPRXGVybQ18zLW2sc8E2DnorXqPrCxARAxWQC
+2025-05-22 13:44:41,760 - phoenix.wallet - INFO - Analyzing wallet 7Hy2bJvqPRXGVybQ18zLW2sc8E2DnorXqPrCxARAxWQC using Cielo Finance API
+2025-05-22 13:44:41,760 - phoenix.cielo - INFO - Fetching trading stats for wallet 7Hy2bJvqPRXGVybQ18zLW2sc8E2DnorXqPrCxARAxWQC
+2025-05-22 13:44:41,863 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/7Hy2bJvqPRXGVybQ18zLW2sc8E2DnorXqPrCxARAxWQC/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/7Hy2bJvqPRXGVybQ18zLW2sc8E2DnorXqPrCxARAxWQC/trading-stats
+2025-05-22 13:44:41,863 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/7Hy2bJvqPRXGVybQ18zLW2sc8E2DnorXqPrCxARAxWQC/trading-stats
+2025-05-22 13:44:41,865 - phoenix.wallet - WARNING - No token P&L data available for wallet 7Hy2bJvqPRXGVybQ18zLW2sc8E2DnorXqPrCxARAxWQC
+2025-05-22 13:44:41,866 - phoenix.wallet - INFO - Analyzing wallet 37/104: EwcHQK2dTxnwMsEu7d3Mj5uRLzyJEsxFCCi3CowspoRv
+2025-05-22 13:44:41,866 - phoenix.wallet - INFO - Analyzing wallet EwcHQK2dTxnwMsEu7d3Mj5uRLzyJEsxFCCi3CowspoRv using Cielo Finance API
+2025-05-22 13:44:41,866 - phoenix.cielo - INFO - Fetching trading stats for wallet EwcHQK2dTxnwMsEu7d3Mj5uRLzyJEsxFCCi3CowspoRv
+2025-05-22 13:44:41,968 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/EwcHQK2dTxnwMsEu7d3Mj5uRLzyJEsxFCCi3CowspoRv/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/EwcHQK2dTxnwMsEu7d3Mj5uRLzyJEsxFCCi3CowspoRv/trading-stats
+2025-05-22 13:44:41,968 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/EwcHQK2dTxnwMsEu7d3Mj5uRLzyJEsxFCCi3CowspoRv/trading-stats
+2025-05-22 13:44:41,970 - phoenix.wallet - WARNING - No token P&L data available for wallet EwcHQK2dTxnwMsEu7d3Mj5uRLzyJEsxFCCi3CowspoRv
+2025-05-22 13:44:41,970 - phoenix.wallet - INFO - Analyzing wallet 38/104: Gw71goDdGz2F9RhoEoSVcdts57bQRf8A5AWaSVNYSJNH
+2025-05-22 13:44:41,971 - phoenix.wallet - INFO - Analyzing wallet Gw71goDdGz2F9RhoEoSVcdts57bQRf8A5AWaSVNYSJNH using Cielo Finance API
+2025-05-22 13:44:41,971 - phoenix.cielo - INFO - Fetching trading stats for wallet Gw71goDdGz2F9RhoEoSVcdts57bQRf8A5AWaSVNYSJNH
+2025-05-22 13:44:42,072 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/Gw71goDdGz2F9RhoEoSVcdts57bQRf8A5AWaSVNYSJNH/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/Gw71goDdGz2F9RhoEoSVcdts57bQRf8A5AWaSVNYSJNH/trading-stats
+2025-05-22 13:44:42,072 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/Gw71goDdGz2F9RhoEoSVcdts57bQRf8A5AWaSVNYSJNH/trading-stats
+2025-05-22 13:44:42,074 - phoenix.wallet - WARNING - No token P&L data available for wallet Gw71goDdGz2F9RhoEoSVcdts57bQRf8A5AWaSVNYSJNH
+2025-05-22 13:44:42,074 - phoenix.wallet - INFO - Analyzing wallet 39/104: GCGrJifLEs8zF4iPc7Vht4pxtVJZ4xqatauhq72VLDzH
+2025-05-22 13:44:42,075 - phoenix.wallet - INFO - Analyzing wallet GCGrJifLEs8zF4iPc7Vht4pxtVJZ4xqatauhq72VLDzH using Cielo Finance API
+2025-05-22 13:44:42,075 - phoenix.cielo - INFO - Fetching trading stats for wallet GCGrJifLEs8zF4iPc7Vht4pxtVJZ4xqatauhq72VLDzH
+2025-05-22 13:44:42,184 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/GCGrJifLEs8zF4iPc7Vht4pxtVJZ4xqatauhq72VLDzH/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/GCGrJifLEs8zF4iPc7Vht4pxtVJZ4xqatauhq72VLDzH/trading-stats
+2025-05-22 13:44:42,185 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/GCGrJifLEs8zF4iPc7Vht4pxtVJZ4xqatauhq72VLDzH/trading-stats
+2025-05-22 13:44:42,186 - phoenix.wallet - WARNING - No token P&L data available for wallet GCGrJifLEs8zF4iPc7Vht4pxtVJZ4xqatauhq72VLDzH
+2025-05-22 13:44:42,187 - phoenix.wallet - INFO - Analyzing wallet 40/104: E22jDFD1SwMKjxcFzZ7p4m1rmbAgaw7r5NoKjVZwgCbM
+2025-05-22 13:44:42,187 - phoenix.wallet - INFO - Analyzing wallet E22jDFD1SwMKjxcFzZ7p4m1rmbAgaw7r5NoKjVZwgCbM using Cielo Finance API
+2025-05-22 13:44:42,187 - phoenix.cielo - INFO - Fetching trading stats for wallet E22jDFD1SwMKjxcFzZ7p4m1rmbAgaw7r5NoKjVZwgCbM
+2025-05-22 13:44:42,291 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/E22jDFD1SwMKjxcFzZ7p4m1rmbAgaw7r5NoKjVZwgCbM/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/E22jDFD1SwMKjxcFzZ7p4m1rmbAgaw7r5NoKjVZwgCbM/trading-stats
+2025-05-22 13:44:42,291 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/E22jDFD1SwMKjxcFzZ7p4m1rmbAgaw7r5NoKjVZwgCbM/trading-stats
+2025-05-22 13:44:42,293 - phoenix.wallet - WARNING - No token P&L data available for wallet E22jDFD1SwMKjxcFzZ7p4m1rmbAgaw7r5NoKjVZwgCbM
+2025-05-22 13:44:42,293 - phoenix.wallet - INFO - Analyzing wallet 41/104: 51TQpGzNzQDbXP3f6NE2RUMBXQC5Am13wS982m4gs36x
+2025-05-22 13:44:42,294 - phoenix.wallet - INFO - Analyzing wallet 51TQpGzNzQDbXP3f6NE2RUMBXQC5Am13wS982m4gs36x using Cielo Finance API
+2025-05-22 13:44:42,294 - phoenix.cielo - INFO - Fetching trading stats for wallet 51TQpGzNzQDbXP3f6NE2RUMBXQC5Am13wS982m4gs36x
+2025-05-22 13:44:42,396 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/51TQpGzNzQDbXP3f6NE2RUMBXQC5Am13wS982m4gs36x/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/51TQpGzNzQDbXP3f6NE2RUMBXQC5Am13wS982m4gs36x/trading-stats
+2025-05-22 13:44:42,396 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/51TQpGzNzQDbXP3f6NE2RUMBXQC5Am13wS982m4gs36x/trading-stats
+2025-05-22 13:44:42,398 - phoenix.wallet - WARNING - No token P&L data available for wallet 51TQpGzNzQDbXP3f6NE2RUMBXQC5Am13wS982m4gs36x
+2025-05-22 13:44:42,398 - phoenix.wallet - INFO - Analyzing wallet 42/104: FoijuyaeB29bqiFnAffemX21bbtw8ZEitesmVLxLDVzN
+2025-05-22 13:44:42,398 - phoenix.wallet - INFO - Analyzing wallet FoijuyaeB29bqiFnAffemX21bbtw8ZEitesmVLxLDVzN using Cielo Finance API
+2025-05-22 13:44:42,399 - phoenix.cielo - INFO - Fetching trading stats for wallet FoijuyaeB29bqiFnAffemX21bbtw8ZEitesmVLxLDVzN
+2025-05-22 13:44:42,503 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/FoijuyaeB29bqiFnAffemX21bbtw8ZEitesmVLxLDVzN/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/FoijuyaeB29bqiFnAffemX21bbtw8ZEitesmVLxLDVzN/trading-stats
+2025-05-22 13:44:42,503 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/FoijuyaeB29bqiFnAffemX21bbtw8ZEitesmVLxLDVzN/trading-stats
+2025-05-22 13:44:42,505 - phoenix.wallet - WARNING - No token P&L data available for wallet FoijuyaeB29bqiFnAffemX21bbtw8ZEitesmVLxLDVzN
+2025-05-22 13:44:42,505 - phoenix.wallet - INFO - Analyzing wallet 43/104: AxGu78Gp4fUvx1TgLb7zqTJJ4o2niJ9e8ZnT3cpywHZT
+2025-05-22 13:44:42,506 - phoenix.wallet - INFO - Analyzing wallet AxGu78Gp4fUvx1TgLb7zqTJJ4o2niJ9e8ZnT3cpywHZT using Cielo Finance API
+2025-05-22 13:44:42,506 - phoenix.cielo - INFO - Fetching trading stats for wallet AxGu78Gp4fUvx1TgLb7zqTJJ4o2niJ9e8ZnT3cpywHZT
+2025-05-22 13:44:42,613 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/AxGu78Gp4fUvx1TgLb7zqTJJ4o2niJ9e8ZnT3cpywHZT/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/AxGu78Gp4fUvx1TgLb7zqTJJ4o2niJ9e8ZnT3cpywHZT/trading-stats
+2025-05-22 13:44:42,613 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/AxGu78Gp4fUvx1TgLb7zqTJJ4o2niJ9e8ZnT3cpywHZT/trading-stats
+2025-05-22 13:44:42,615 - phoenix.wallet - WARNING - No token P&L data available for wallet AxGu78Gp4fUvx1TgLb7zqTJJ4o2niJ9e8ZnT3cpywHZT
+2025-05-22 13:44:42,616 - phoenix.wallet - INFO - Analyzing wallet 44/104: G31FfCPWEWYsje5wEHtpEufQFVLrC9Z2LfHiUJLFcMQo
+2025-05-22 13:44:42,616 - phoenix.wallet - INFO - Analyzing wallet G31FfCPWEWYsje5wEHtpEufQFVLrC9Z2LfHiUJLFcMQo using Cielo Finance API
+2025-05-22 13:44:42,617 - phoenix.cielo - INFO - Fetching trading stats for wallet G31FfCPWEWYsje5wEHtpEufQFVLrC9Z2LfHiUJLFcMQo
+2025-05-22 13:44:42,728 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/G31FfCPWEWYsje5wEHtpEufQFVLrC9Z2LfHiUJLFcMQo/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/G31FfCPWEWYsje5wEHtpEufQFVLrC9Z2LfHiUJLFcMQo/trading-stats
+2025-05-22 13:44:42,728 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/G31FfCPWEWYsje5wEHtpEufQFVLrC9Z2LfHiUJLFcMQo/trading-stats
+2025-05-22 13:44:42,730 - phoenix.wallet - WARNING - No token P&L data available for wallet G31FfCPWEWYsje5wEHtpEufQFVLrC9Z2LfHiUJLFcMQo
+2025-05-22 13:44:42,730 - phoenix.wallet - INFO - Analyzing wallet 45/104: BsQj6ApLH31zSF3gF8C5vXiU6n1cAoNR3ENRhqUp7t1f
+2025-05-22 13:44:42,730 - phoenix.wallet - INFO - Analyzing wallet BsQj6ApLH31zSF3gF8C5vXiU6n1cAoNR3ENRhqUp7t1f using Cielo Finance API
+2025-05-22 13:44:42,731 - phoenix.cielo - INFO - Fetching trading stats for wallet BsQj6ApLH31zSF3gF8C5vXiU6n1cAoNR3ENRhqUp7t1f
+2025-05-22 13:44:42,833 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/BsQj6ApLH31zSF3gF8C5vXiU6n1cAoNR3ENRhqUp7t1f/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/BsQj6ApLH31zSF3gF8C5vXiU6n1cAoNR3ENRhqUp7t1f/trading-stats
+2025-05-22 13:44:42,833 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/BsQj6ApLH31zSF3gF8C5vXiU6n1cAoNR3ENRhqUp7t1f/trading-stats
+2025-05-22 13:44:42,834 - phoenix.wallet - WARNING - No token P&L data available for wallet BsQj6ApLH31zSF3gF8C5vXiU6n1cAoNR3ENRhqUp7t1f
+2025-05-22 13:44:42,834 - phoenix.wallet - INFO - Analyzing wallet 46/104: 8aBXqjo2qjfCjZY2aDjpLJRmtnHnJ3UkApUfpYJf84MK
+2025-05-22 13:44:42,835 - phoenix.wallet - INFO - Analyzing wallet 8aBXqjo2qjfCjZY2aDjpLJRmtnHnJ3UkApUfpYJf84MK using Cielo Finance API
+2025-05-22 13:44:42,835 - phoenix.cielo - INFO - Fetching trading stats for wallet 8aBXqjo2qjfCjZY2aDjpLJRmtnHnJ3UkApUfpYJf84MK
+2025-05-22 13:44:42,937 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/8aBXqjo2qjfCjZY2aDjpLJRmtnHnJ3UkApUfpYJf84MK/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/8aBXqjo2qjfCjZY2aDjpLJRmtnHnJ3UkApUfpYJf84MK/trading-stats
+2025-05-22 13:44:42,937 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/8aBXqjo2qjfCjZY2aDjpLJRmtnHnJ3UkApUfpYJf84MK/trading-stats
+2025-05-22 13:44:42,939 - phoenix.wallet - WARNING - No token P&L data available for wallet 8aBXqjo2qjfCjZY2aDjpLJRmtnHnJ3UkApUfpYJf84MK
+2025-05-22 13:44:42,939 - phoenix.wallet - INFO - Analyzing wallet 47/104: 7LBSXkWHqn33FJ82u4DG4gjZR7ENyfcTnsPUdrLD9BGf
+2025-05-22 13:44:42,939 - phoenix.wallet - INFO - Analyzing wallet 7LBSXkWHqn33FJ82u4DG4gjZR7ENyfcTnsPUdrLD9BGf using Cielo Finance API
+2025-05-22 13:44:42,940 - phoenix.cielo - INFO - Fetching trading stats for wallet 7LBSXkWHqn33FJ82u4DG4gjZR7ENyfcTnsPUdrLD9BGf
+2025-05-22 13:44:43,042 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/7LBSXkWHqn33FJ82u4DG4gjZR7ENyfcTnsPUdrLD9BGf/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/7LBSXkWHqn33FJ82u4DG4gjZR7ENyfcTnsPUdrLD9BGf/trading-stats
+2025-05-22 13:44:43,042 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/7LBSXkWHqn33FJ82u4DG4gjZR7ENyfcTnsPUdrLD9BGf/trading-stats
+2025-05-22 13:44:43,044 - phoenix.wallet - WARNING - No token P&L data available for wallet 7LBSXkWHqn33FJ82u4DG4gjZR7ENyfcTnsPUdrLD9BGf
+2025-05-22 13:44:43,044 - phoenix.wallet - INFO - Analyzing wallet 48/104: 26CSPXoJWTWeybxzUzHFqWdHgTu1mMb7pifVp57LtWDH
+2025-05-22 13:44:43,044 - phoenix.wallet - INFO - Analyzing wallet 26CSPXoJWTWeybxzUzHFqWdHgTu1mMb7pifVp57LtWDH using Cielo Finance API
+2025-05-22 13:44:43,045 - phoenix.cielo - INFO - Fetching trading stats for wallet 26CSPXoJWTWeybxzUzHFqWdHgTu1mMb7pifVp57LtWDH
+2025-05-22 13:44:43,148 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/26CSPXoJWTWeybxzUzHFqWdHgTu1mMb7pifVp57LtWDH/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/26CSPXoJWTWeybxzUzHFqWdHgTu1mMb7pifVp57LtWDH/trading-stats
+2025-05-22 13:44:43,149 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/26CSPXoJWTWeybxzUzHFqWdHgTu1mMb7pifVp57LtWDH/trading-stats
+2025-05-22 13:44:43,150 - phoenix.wallet - WARNING - No token P&L data available for wallet 26CSPXoJWTWeybxzUzHFqWdHgTu1mMb7pifVp57LtWDH
+2025-05-22 13:44:43,150 - phoenix.wallet - INFO - Analyzing wallet 49/104: Q9wxmeYRBhHHfBF2sHMnY6JmkB57nYPj39Komw3eMnE
+2025-05-22 13:44:43,150 - phoenix.wallet - INFO - Analyzing wallet Q9wxmeYRBhHHfBF2sHMnY6JmkB57nYPj39Komw3eMnE using Cielo Finance API
+2025-05-22 13:44:43,150 - phoenix.cielo - INFO - Fetching trading stats for wallet Q9wxmeYRBhHHfBF2sHMnY6JmkB57nYPj39Komw3eMnE
+2025-05-22 13:44:54,307 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-22 13:44:54,308 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-22 13:44:54,954 - phoenix - INFO - 🎯 Running ENHANCED SpyDefi analysis for the past 24 hours
+2025-05-22 13:44:54,954 - phoenix - INFO - ✨ Enhanced metrics include:
+2025-05-22 13:44:54,955 - phoenix - INFO -    • Max Average Pullback % (for stop loss calculation)
+2025-05-22 13:44:54,956 - phoenix - INFO -    • Average Time to Reach 2x (for holding strategy)
+2025-05-22 13:44:54,956 - phoenix - INFO - Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv
+2025-05-22 13:44:54,956 - phoenix - INFO - SpyDefi channel detected. Running ENHANCED analysis with detailed metrics.
+2025-05-22 13:44:54,957 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-22 13:44:54,959 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-22 13:44:55,075 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-22 13:44:56,015 - phoenix.telegram - INFO - Connected to Telegram
+2025-05-22 13:44:56,015 - phoenix.telegram - INFO - 🎯 Starting ENHANCED SpyDefi scanning (past 24h) with detailed metrics...
+2025-05-22 13:44:56,016 - phoenix.telegram - INFO - Trying to get entity: @spydefi
+2025-05-22 13:44:56,142 - phoenix.telegram - INFO - Successfully found entity: @spydefi
+2025-05-22 13:44:56,142 - phoenix.telegram - INFO - Entity found: SpyDefi
+2025-05-22 13:44:56,143 - phoenix.telegram - INFO - Starting enhanced message iteration...
+2025-05-22 13:44:56,464 - phoenix.telegram - INFO - Message 1 (2025-05-22 20:43:05+00:00): 🟣 Achievement Unlocked: x8! 
+
+@ThanosGems made a x8+ call on hood rat. 
+
+$796K -> $6.4M
+
+👁View Call 📊View Stats
+
+🔥 TRENDING #1🔵
+PRE-PHIL by P... - Cha...
+2025-05-22 13:44:56,469 - phoenix.telegram - INFO -   EXTRACTION - Contracts: [], KOLs: ['thanosgems'], Tokens: ['hood rat']
+2025-05-22 13:44:56,469 - phoenix.telegram - INFO -   Processing 1 tokens from message 1
+2025-05-22 13:44:56,469 - phoenix.telegram - INFO - Message 2 (2025-05-22 20:43:05+00:00): 🟣 Achievement Unlocked: x80! 
+
+@NIKOLA_CALLS made a x80+ call on hood rat. 
+
+$79K -> $6.4M
+
+👁View Call 📊View Stats
+
+🔥 TRENDING #1🔹
+Gorth - Strong grow...
+2025-05-22 13:44:56,469 - phoenix.telegram - INFO -   EXTRACTION - Contracts: [], KOLs: ['nikola_calls'], Tokens: ['hood rat']
+2025-05-22 13:44:56,470 - phoenix.telegram - INFO -   Processing 1 tokens from message 2
+2025-05-22 13:44:56,470 - phoenix.telegram - INFO - Message 3 (2025-05-22 20:43:03+00:00): 🟣 Achievement Unlocked: Jackpot! 🎰
+
+@MarksGems made a x100+ call on hood rat. 
+
+$63K -> $6.4M
+
+👁View Call 📊View Stats
+
+🔥 TRENDING #2🔹
+Komugi Kun - Str...
+2025-05-22 13:44:56,470 - phoenix.telegram - INFO -   EXTRACTION - Contracts: [], KOLs: ['marksgems'], Tokens: ['hood rat']
+2025-05-22 13:44:56,470 - phoenix.telegram - INFO -   Processing 1 tokens from message 3
+2025-05-22 13:44:56,470 - phoenix.telegram - INFO - Message 4 (2025-05-22 20:42:58+00:00): 🟣 Achievement Unlocked: x50! 🤞
+
+@ChapoInsider made a x50+ call on hood rat. 
+
+$125K -> $6.3M
+
+👁View Call 📊View Stats
+
+🔊Ad - Boochie by Matt Furie
+From...
+2025-05-22 13:44:56,470 - phoenix.telegram - INFO -   EXTRACTION - Contracts: [], KOLs: ['chapoinsider'], Tokens: ['hood rat']
+2025-05-22 13:44:56,470 - phoenix.telegram - INFO -   Processing 1 tokens from message 4
+2025-05-22 13:44:56,470 - phoenix.telegram - INFO - Message 5 (2025-05-22 20:42:53+00:00): Achievement Unlocked: Consistency is key! 🔑
+
+@Teslacallsofficial has made 5 x2+calls in the past 7 days.
+
+👁View Call 1
+👁View Call 2
+👁View Call 3
+👁View...
+2025-05-22 13:44:56,471 - phoenix.telegram - INFO -   EXTRACTION - Contracts: [], KOLs: ['teslacallsofficial'], Tokens: []
+2025-05-22 13:44:56,471 - phoenix.telegram - INFO -   Processing 1 tokens from message 6
+2025-05-22 13:44:56,471 - phoenix.telegram - INFO -   Processing 1 tokens from message 7
+2025-05-22 13:44:56,471 - phoenix.telegram - INFO -   Processing 1 tokens from message 8
+2025-05-22 13:44:56,472 - phoenix.telegram - INFO -   Processing 1 tokens from message 9
+2025-05-22 13:44:56,472 - phoenix.telegram - INFO -   Processing 1 tokens from message 10
+2025-05-22 13:44:56,472 - phoenix.telegram - INFO -   Processing 1 tokens from message 11
+2025-05-22 13:44:56,472 - phoenix.telegram - INFO -   Processing 1 tokens from message 12
+2025-05-22 13:44:56,472 - phoenix.telegram - INFO -   Processing 1 tokens from message 13
+2025-05-22 13:44:56,473 - phoenix.telegram - INFO -   Processing 1 tokens from message 14
+2025-05-22 13:44:56,473 - phoenix.telegram - INFO -   Processing 1 tokens from message 15
+2025-05-22 13:44:56,473 - phoenix.telegram - INFO -   Processing 1 tokens from message 16
+2025-05-22 13:44:56,473 - phoenix.telegram - INFO -   Processing 1 tokens from message 17
+2025-05-22 13:44:56,473 - phoenix.telegram - INFO -   Processing 1 tokens from message 18
+2025-05-22 13:44:56,473 - phoenix.telegram - INFO -   Processing 1 tokens from message 19
+2025-05-22 13:44:56,474 - phoenix.telegram - INFO -   Processing 1 tokens from message 20
+2025-05-22 13:44:56,476 - phoenix.telegram - INFO -   Processing 1 tokens from message 21
+2025-05-22 13:44:56,476 - phoenix.telegram - INFO -   Processing 1 tokens from message 22
+2025-05-22 13:44:56,476 - phoenix.telegram - INFO -   Processing 1 tokens from message 23
+2025-05-22 13:44:56,477 - phoenix.telegram - INFO -   Processing 1 tokens from message 24
+2025-05-22 13:44:56,477 - phoenix.telegram - INFO -   Processing 1 tokens from message 25
+2025-05-22 13:44:56,477 - phoenix.telegram - INFO -   Processing 1 tokens from message 26
+2025-05-22 13:44:56,477 - phoenix.telegram - INFO -   Processing 1 tokens from message 27
+2025-05-22 13:44:56,477 - phoenix.telegram - INFO -   Processing 1 tokens from message 29
+2025-05-22 13:44:56,478 - phoenix.telegram - INFO -   Processing 1 tokens from message 30
+2025-05-22 13:44:56,478 - phoenix.telegram - INFO -   Processing 1 tokens from message 32
+2025-05-22 13:44:56,478 - phoenix.telegram - INFO -   Processing 1 tokens from message 33
+2025-05-22 13:44:56,478 - phoenix.telegram - INFO -   Processing 1 tokens from message 34
+2025-05-22 13:44:56,479 - phoenix.telegram - INFO -   Processing 1 tokens from message 36
+2025-05-22 13:44:56,479 - phoenix.telegram - INFO -   Processing 1 tokens from message 37
+2025-05-22 13:44:56,479 - phoenix.telegram - INFO -   Processing 1 tokens from message 38
+2025-05-22 13:44:56,479 - phoenix.telegram - INFO -   Processing 1 tokens from message 39
+2025-05-22 13:44:56,479 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 40
+2025-05-22 13:44:56,480 - phoenix.telegram - INFO -   Processing 1 tokens from message 41
+2025-05-22 13:44:56,480 - phoenix.telegram - INFO -   Processing 1 tokens from message 42
+2025-05-22 13:44:56,480 - phoenix.telegram - INFO -   Processing 1 tokens from message 43
+2025-05-22 13:44:56,480 - phoenix.telegram - INFO -   Processing 1 tokens from message 44
+2025-05-22 13:44:56,480 - phoenix.telegram - INFO -   Processing 1 tokens from message 45
+2025-05-22 13:44:56,481 - phoenix.telegram - INFO -   Processing 1 tokens from message 46
+2025-05-22 13:44:56,481 - phoenix.telegram - INFO -   Processing 1 tokens from message 47
+2025-05-22 13:44:56,481 - phoenix.telegram - INFO -   Processing 1 tokens from message 48
+2025-05-22 13:44:56,481 - phoenix.telegram - INFO -   Processing 1 tokens from message 49
+2025-05-22 13:44:56,482 - phoenix.telegram - INFO -   Processing 1 tokens from message 50
+2025-05-22 13:44:56,482 - phoenix.telegram - INFO -   Processing 1 tokens from message 51
+2025-05-22 13:44:56,482 - phoenix.telegram - INFO -   Processing 1 tokens from message 52
+2025-05-22 13:44:56,482 - phoenix.telegram - INFO -   Processing 1 tokens from message 53
+2025-05-22 13:44:56,482 - phoenix.telegram - INFO -   Processing 1 tokens from message 54
+2025-05-22 13:44:56,483 - phoenix.telegram - INFO -   Processing 1 tokens from message 55
+2025-05-22 13:44:56,483 - phoenix.telegram - INFO -   Processing 1 tokens from message 57
+2025-05-22 13:44:56,483 - phoenix.telegram - INFO -   Processing 1 tokens from message 60
+2025-05-22 13:44:56,483 - phoenix.telegram - INFO -   Processing 1 tokens from message 61
+2025-05-22 13:44:56,484 - phoenix.telegram - INFO -   Processing 1 tokens from message 62
+2025-05-22 13:44:56,484 - phoenix.telegram - INFO -   Processing 1 tokens from message 63
+2025-05-22 13:44:56,484 - phoenix.telegram - INFO -   Processing 1 tokens from message 64
+2025-05-22 13:44:56,484 - phoenix.telegram - INFO -   Processing 1 tokens from message 65
+2025-05-22 13:44:56,485 - phoenix.telegram - INFO -   Processing 1 tokens from message 68
+2025-05-22 13:44:56,487 - phoenix.telegram - INFO -   Processing 1 tokens from message 69
+2025-05-22 13:44:56,487 - phoenix.telegram - INFO -   Processing 1 tokens from message 70
+2025-05-22 13:44:56,487 - phoenix.telegram - INFO -   Processing 1 tokens from message 71
+2025-05-22 13:44:56,487 - phoenix.telegram - INFO -   Processing 1 tokens from message 72
+2025-05-22 13:44:56,488 - phoenix.telegram - INFO -   Processing 1 tokens from message 73
+2025-05-22 13:44:56,488 - phoenix.telegram - INFO -   Processing 1 tokens from message 74
+2025-05-22 13:44:56,488 - phoenix.telegram - INFO -   Processing 1 tokens from message 75
+2025-05-22 13:44:56,488 - phoenix.telegram - INFO -   Processing 1 tokens from message 76
+2025-05-22 13:44:56,488 - phoenix.telegram - INFO -   Processing 1 tokens from message 77
+2025-05-22 13:44:56,489 - phoenix.telegram - INFO -   Processing 1 tokens from message 78
+2025-05-22 13:44:56,489 - phoenix.telegram - INFO -   Processing 1 tokens from message 79
+2025-05-22 13:44:56,489 - phoenix.telegram - INFO -   Processing 1 tokens from message 80
+2025-05-22 13:44:56,489 - phoenix.telegram - INFO -   Processing 1 tokens from message 81
+2025-05-22 13:44:56,489 - phoenix.telegram - INFO -   Processing 1 tokens from message 82
+2025-05-22 13:44:56,490 - phoenix.telegram - INFO -   Processing 1 tokens from message 83
+2025-05-22 13:44:56,490 - phoenix.telegram - INFO -   Processing 1 tokens from message 84
+2025-05-22 13:44:56,490 - phoenix.telegram - INFO -   Processing 1 tokens from message 85
+2025-05-22 13:44:56,491 - phoenix.telegram - INFO -   Processing 1 tokens from message 86
+2025-05-22 13:44:56,491 - phoenix.telegram - INFO -   Processing 1 tokens from message 87
+2025-05-22 13:44:56,492 - phoenix.telegram - INFO -   Processing 1 tokens from message 88
+2025-05-22 13:44:56,492 - phoenix.telegram - INFO -   Processing 1 tokens from message 89
+2025-05-22 13:44:56,492 - phoenix.telegram - INFO -   Processing 1 tokens from message 90
+2025-05-22 13:44:56,492 - phoenix.telegram - INFO -   Processing 1 tokens from message 91
+2025-05-22 13:44:56,493 - phoenix.telegram - INFO -   Processing 1 tokens from message 92
+2025-05-22 13:44:56,493 - phoenix.telegram - INFO -   Processing 1 tokens from message 93
+2025-05-22 13:44:56,493 - phoenix.telegram - INFO -   Processing 1 tokens from message 94
+2025-05-22 13:44:56,493 - phoenix.telegram - INFO -   Processing 1 tokens from message 95
+2025-05-22 13:44:56,493 - phoenix.telegram - INFO -   Processing 1 tokens from message 96
+2025-05-22 13:44:56,494 - phoenix.telegram - INFO -   Processing 1 tokens from message 97
+2025-05-22 13:44:56,494 - phoenix.telegram - INFO -   Processing 1 tokens from message 98
+2025-05-22 13:44:56,494 - phoenix.telegram - INFO -   Processing 1 tokens from message 99
+2025-05-22 13:44:56,494 - phoenix.telegram - INFO -   Processing 1 tokens from message 100
+2025-05-22 13:44:56,796 - phoenix.telegram - INFO -   Processing 1 tokens from message 101
+2025-05-22 13:44:56,796 - phoenix.telegram - INFO -   Processing 1 tokens from message 102
+2025-05-22 13:44:56,797 - phoenix.telegram - INFO -   Processing 1 tokens from message 103
+2025-05-22 13:44:56,797 - phoenix.telegram - INFO -   Processing 1 tokens from message 104
+2025-05-22 13:44:56,797 - phoenix.telegram - INFO -   Processing 1 tokens from message 105
+2025-05-22 13:44:56,797 - phoenix.telegram - INFO -   Processing 1 tokens from message 106
+2025-05-22 13:44:56,797 - phoenix.telegram - INFO -   Processing 1 tokens from message 107
+2025-05-22 13:44:56,798 - phoenix.telegram - INFO -   Processing 1 tokens from message 108
+2025-05-22 13:44:56,798 - phoenix.telegram - INFO -   Processing 1 tokens from message 109
+2025-05-22 13:44:56,798 - phoenix.telegram - INFO -   Processing 1 tokens from message 111
+2025-05-22 13:44:56,798 - phoenix.telegram - INFO -   Processing 1 tokens from message 112
+2025-05-22 13:44:56,798 - phoenix.telegram - INFO -   Processing 1 tokens from message 113
+2025-05-22 13:44:56,799 - phoenix.telegram - INFO -   Processing 1 tokens from message 114
+2025-05-22 13:44:56,799 - phoenix.telegram - INFO -   Processing 1 tokens from message 115
+2025-05-22 13:44:56,799 - phoenix.telegram - INFO -   Processing 1 tokens from message 116
+2025-05-22 13:44:56,800 - phoenix.telegram - INFO -   Processing 1 tokens from message 117
+2025-05-22 13:44:56,800 - phoenix.telegram - INFO -   Processing 1 tokens from message 118
+2025-05-22 13:44:56,800 - phoenix.telegram - INFO -   Processing 1 tokens from message 119
+2025-05-22 13:44:56,801 - phoenix.telegram - INFO -   Processing 1 tokens from message 121
+2025-05-22 13:44:56,801 - phoenix.telegram - INFO -   Processing 1 tokens from message 122
+2025-05-22 13:44:56,802 - phoenix.telegram - INFO -   Processing 1 tokens from message 123
+2025-05-22 13:44:56,802 - phoenix.telegram - INFO -   Processing 1 tokens from message 124
+2025-05-22 13:44:56,803 - phoenix.telegram - INFO -   Processing 1 tokens from message 125
+2025-05-22 13:44:56,810 - phoenix.telegram - INFO -   Processing 1 tokens from message 126
+2025-05-22 13:44:56,813 - phoenix.telegram - INFO -   Processing 1 tokens from message 127
+2025-05-22 13:44:56,813 - phoenix.telegram - INFO -   Processing 1 tokens from message 128
+2025-05-22 13:44:56,814 - phoenix.telegram - INFO -   Processing 1 tokens from message 129
+2025-05-22 13:44:56,814 - phoenix.telegram - INFO -   Processing 1 tokens from message 130
+2025-05-22 13:44:56,814 - phoenix.telegram - INFO -   Processing 1 tokens from message 131
+2025-05-22 13:44:56,815 - phoenix.telegram - INFO -   Processing 1 tokens from message 132
+2025-05-22 13:44:56,815 - phoenix.telegram - INFO -   Processing 1 tokens from message 134
+2025-05-22 13:44:56,816 - phoenix.telegram - INFO -   Processing 1 tokens from message 136
+2025-05-22 13:44:56,817 - phoenix.telegram - INFO -   Processing 1 tokens from message 137
+2025-05-22 13:44:56,818 - phoenix.telegram - INFO -   Processing 1 tokens from message 138
+2025-05-22 13:44:56,818 - phoenix.telegram - INFO -   Processing 1 tokens from message 141
+2025-05-22 13:44:56,819 - phoenix.telegram - INFO -   Processing 1 tokens from message 142
+2025-05-22 13:44:56,819 - phoenix.telegram - INFO -   Processing 1 tokens from message 143
+2025-05-22 13:44:56,819 - phoenix.telegram - INFO -   Processing 1 tokens from message 144
+2025-05-22 13:44:56,820 - phoenix.telegram - INFO -   Processing 1 tokens from message 145
+2025-05-22 13:44:56,820 - phoenix.telegram - INFO -   Processing 1 tokens from message 146
+2025-05-22 13:44:56,820 - phoenix.telegram - INFO -   Processing 1 tokens from message 147
+2025-05-22 13:44:56,821 - phoenix.telegram - INFO -   Processing 1 tokens from message 148
+2025-05-22 13:44:56,821 - phoenix.telegram - INFO -   Processing 1 tokens from message 149
+2025-05-22 13:44:56,822 - phoenix.telegram - INFO -   Processing 1 tokens from message 150
+2025-05-22 13:44:56,822 - phoenix.telegram - INFO -   Processing 1 tokens from message 151
+2025-05-22 13:44:56,822 - phoenix.telegram - INFO -   Processing 1 tokens from message 152
+2025-05-22 13:44:56,823 - phoenix.telegram - INFO -   Processing 1 tokens from message 153
+2025-05-22 13:44:56,823 - phoenix.telegram - INFO -   Processing 1 tokens from message 157
+2025-05-22 13:44:56,824 - phoenix.telegram - INFO -   Processing 1 tokens from message 158
+2025-05-22 13:44:56,824 - phoenix.telegram - INFO -   Processing 1 tokens from message 159
+2025-05-22 13:44:56,824 - phoenix.telegram - INFO -   Processing 1 tokens from message 160
+2025-05-22 13:44:56,825 - phoenix.telegram - INFO -   Processing 1 tokens from message 161
+2025-05-22 13:44:56,825 - phoenix.telegram - INFO -   Processing 1 tokens from message 162
+2025-05-22 13:44:56,826 - phoenix.telegram - INFO -   Processing 1 tokens from message 163
+2025-05-22 13:44:56,828 - phoenix.telegram - INFO -   Processing 1 tokens from message 164
+2025-05-22 13:44:56,828 - phoenix.telegram - INFO -   Processing 1 tokens from message 165
+2025-05-22 13:44:56,829 - phoenix.telegram - INFO -   Processing 1 tokens from message 166
+2025-05-22 13:44:56,829 - phoenix.telegram - INFO -   Processing 1 tokens from message 167
+2025-05-22 13:44:56,829 - phoenix.telegram - INFO -   Processing 1 tokens from message 168
+2025-05-22 13:44:56,829 - phoenix.telegram - INFO -   Processing 1 tokens from message 169
+2025-05-22 13:44:56,830 - phoenix.telegram - INFO -   Processing 1 tokens from message 170
+2025-05-22 13:44:56,830 - phoenix.telegram - INFO -   Processing 1 tokens from message 171
+2025-05-22 13:44:56,830 - phoenix.telegram - INFO -   Processing 1 tokens from message 172
+2025-05-22 13:44:56,831 - phoenix.telegram - INFO -   Processing 1 tokens from message 173
+2025-05-22 13:44:56,831 - phoenix.telegram - INFO -   Processing 1 tokens from message 175
+2025-05-22 13:44:56,832 - phoenix.telegram - INFO -   Processing 1 tokens from message 176
+2025-05-22 13:44:56,832 - phoenix.telegram - INFO -   Processing 1 tokens from message 177
+2025-05-22 13:44:56,832 - phoenix.telegram - INFO -   Processing 1 tokens from message 178
+2025-05-22 13:44:56,833 - phoenix.telegram - INFO -   Processing 1 tokens from message 179
+2025-05-22 13:44:56,834 - phoenix.telegram - INFO -   Processing 1 tokens from message 180
+2025-05-22 13:44:56,834 - phoenix.telegram - INFO -   Processing 1 tokens from message 181
+2025-05-22 13:44:56,835 - phoenix.telegram - INFO -   Processing 1 tokens from message 182
+2025-05-22 13:44:56,836 - phoenix.telegram - INFO -   Processing 1 tokens from message 183
+2025-05-22 13:44:56,838 - phoenix.telegram - INFO -   Processing 1 tokens from message 184
+2025-05-22 13:44:56,838 - phoenix.telegram - INFO -   Processing 1 tokens from message 185
+2025-05-22 13:44:56,839 - phoenix.telegram - INFO -   Processing 1 tokens from message 186
+2025-05-22 13:44:56,839 - phoenix.telegram - INFO -   Processing 1 tokens from message 187
+2025-05-22 13:44:56,839 - phoenix.telegram - INFO -   Processing 1 tokens from message 188
+2025-05-22 13:44:56,840 - phoenix.telegram - INFO -   Processing 1 tokens from message 189
+2025-05-22 13:44:56,840 - phoenix.telegram - INFO -   Processing 1 tokens from message 190
+2025-05-22 13:44:56,841 - phoenix.telegram - INFO -   Processing 1 tokens from message 191
+2025-05-22 13:44:56,841 - phoenix.telegram - INFO -   Processing 1 tokens from message 192
+2025-05-22 13:44:56,841 - phoenix.telegram - INFO -   Processing 1 tokens from message 193
+2025-05-22 13:44:56,842 - phoenix.telegram - INFO -   Processing 1 tokens from message 194
+2025-05-22 13:44:56,842 - phoenix.telegram - INFO -   Processing 1 tokens from message 195
+2025-05-22 13:44:56,843 - phoenix.telegram - INFO -   Processing 1 tokens from message 196
+2025-05-22 13:44:56,843 - phoenix.telegram - INFO -   Processing 1 tokens from message 197
+2025-05-22 13:44:56,843 - phoenix.telegram - INFO -   Processing 1 tokens from message 198
+2025-05-22 13:44:56,844 - phoenix.telegram - INFO -   Processing 1 tokens from message 199
+2025-05-22 13:44:56,844 - phoenix.telegram - INFO -   Processing 1 tokens from message 200
+2025-05-22 13:44:57,138 - phoenix.telegram - INFO -   Processing 1 tokens from message 201
+2025-05-22 13:44:57,139 - phoenix.telegram - INFO -   Processing 1 tokens from message 203
+2025-05-22 13:44:57,140 - phoenix.telegram - INFO -   Processing 1 tokens from message 204
+2025-05-22 13:44:57,140 - phoenix.telegram - INFO -   Processing 1 tokens from message 205
+2025-05-22 13:44:57,141 - phoenix.telegram - INFO -   Processing 1 tokens from message 206
+2025-05-22 13:44:57,141 - phoenix.telegram - INFO -   Processing 1 tokens from message 207
+2025-05-22 13:44:57,141 - phoenix.telegram - INFO -   Processing 1 tokens from message 208
+2025-05-22 13:44:57,142 - phoenix.telegram - INFO -   Processing 1 tokens from message 209
+2025-05-22 13:44:57,142 - phoenix.telegram - INFO -   Processing 1 tokens from message 210
+2025-05-22 13:44:57,142 - phoenix.telegram - INFO -   Processing 1 tokens from message 211
+2025-05-22 13:44:57,143 - phoenix.telegram - INFO -   Processing 1 tokens from message 212
+2025-05-22 13:44:57,143 - phoenix.telegram - INFO -   Processing 1 tokens from message 213
+2025-05-22 13:44:57,143 - phoenix.telegram - INFO -   Processing 1 tokens from message 214
+2025-05-22 13:44:57,143 - phoenix.telegram - INFO -   Processing 1 tokens from message 215
+2025-05-22 13:44:57,144 - phoenix.telegram - INFO -   Processing 1 tokens from message 216
+2025-05-22 13:44:57,144 - phoenix.telegram - INFO -   Processing 1 tokens from message 217
+2025-05-22 13:44:57,145 - phoenix.telegram - INFO -   Processing 1 tokens from message 219
+2025-05-22 13:44:57,145 - phoenix.telegram - INFO -   Processing 1 tokens from message 221
+2025-05-22 13:44:57,145 - phoenix.telegram - INFO -   Processing 1 tokens from message 222
+2025-05-22 13:44:57,146 - phoenix.telegram - INFO -   Processing 1 tokens from message 223
+2025-05-22 13:44:57,146 - phoenix.telegram - INFO -   Processing 1 tokens from message 224
+2025-05-22 13:44:57,147 - phoenix.telegram - INFO -   Processing 1 tokens from message 226
+2025-05-22 13:44:57,148 - phoenix.telegram - INFO -   Processing 1 tokens from message 227
+2025-05-22 13:44:57,150 - phoenix.telegram - INFO -   Processing 1 tokens from message 228
+2025-05-22 13:44:57,150 - phoenix.telegram - INFO -   Processing 1 tokens from message 229
+2025-05-22 13:44:57,151 - phoenix.telegram - INFO -   Processing 1 tokens from message 230
+2025-05-22 13:44:57,151 - phoenix.telegram - INFO -   Processing 1 tokens from message 231
+2025-05-22 13:44:57,152 - phoenix.telegram - INFO -   Processing 1 tokens from message 232
+2025-05-22 13:44:57,152 - phoenix.telegram - INFO -   Processing 1 tokens from message 233
+2025-05-22 13:44:57,152 - phoenix.telegram - INFO -   Processing 1 tokens from message 234
+2025-05-22 13:44:57,153 - phoenix.telegram - INFO -   Processing 1 tokens from message 235
+2025-05-22 13:44:57,153 - phoenix.telegram - INFO -   Processing 1 tokens from message 236
+2025-05-22 13:44:57,154 - phoenix.telegram - INFO -   Processing 1 tokens from message 238
+2025-05-22 13:44:57,154 - phoenix.telegram - INFO -   Processing 1 tokens from message 239
+2025-05-22 13:44:57,155 - phoenix.telegram - INFO -   Processing 1 tokens from message 241
+2025-05-22 13:44:57,155 - phoenix.telegram - INFO -   Processing 1 tokens from message 242
+2025-05-22 13:44:57,155 - phoenix.telegram - INFO -   Processing 1 tokens from message 243
+2025-05-22 13:44:57,156 - phoenix.telegram - INFO -   Processing 1 tokens from message 244
+2025-05-22 13:44:57,156 - phoenix.telegram - INFO -   Processing 1 tokens from message 245
+2025-05-22 13:44:57,157 - phoenix.telegram - INFO -   Processing 1 tokens from message 246
+2025-05-22 13:44:57,157 - phoenix.telegram - INFO -   Processing 1 tokens from message 247
+2025-05-22 13:44:57,157 - phoenix.telegram - INFO -   Processing 1 tokens from message 248
+2025-05-22 13:44:57,158 - phoenix.telegram - INFO -   Processing 1 tokens from message 249
+2025-05-22 13:44:57,158 - phoenix.telegram - INFO -   Processing 1 tokens from message 250
+2025-05-22 13:44:57,159 - phoenix.telegram - INFO -   Processing 1 tokens from message 253
+2025-05-22 13:44:57,161 - phoenix.telegram - INFO -   Processing 1 tokens from message 255
+2025-05-22 13:44:57,161 - phoenix.telegram - INFO -   Processing 1 tokens from message 256
+2025-05-22 13:44:57,162 - phoenix.telegram - INFO -   Processing 1 tokens from message 257
+2025-05-22 13:44:57,162 - phoenix.telegram - INFO -   Processing 1 tokens from message 258
+2025-05-22 13:44:57,163 - phoenix.telegram - INFO -   Processing 1 tokens from message 259
+2025-05-22 13:44:57,163 - phoenix.telegram - INFO -   Processing 1 tokens from message 260
+2025-05-22 13:44:57,163 - phoenix.telegram - INFO -   Processing 1 tokens from message 261
+2025-05-22 13:44:57,164 - phoenix.telegram - INFO -   Processing 1 tokens from message 262
+2025-05-22 13:44:57,164 - phoenix.telegram - INFO -   Processing 1 tokens from message 263
+2025-05-22 13:44:57,165 - phoenix.telegram - INFO -   Processing 1 tokens from message 264
+2025-05-22 13:44:57,165 - phoenix.telegram - INFO -   Processing 1 tokens from message 265
+2025-05-22 13:44:57,165 - phoenix.telegram - INFO -   Processing 1 tokens from message 266
+2025-05-22 13:44:57,166 - phoenix.telegram - INFO -   Processing 1 tokens from message 268
+2025-05-22 13:44:57,166 - phoenix.telegram - INFO -   Processing 1 tokens from message 269
+2025-05-22 13:44:57,167 - phoenix.telegram - INFO -   Processing 1 tokens from message 270
+2025-05-22 13:44:57,167 - phoenix.telegram - INFO -   Processing 1 tokens from message 271
+2025-05-22 13:44:57,168 - phoenix.telegram - INFO -   Processing 1 tokens from message 273
+2025-05-22 13:44:57,168 - phoenix.telegram - INFO -   Processing 1 tokens from message 276
+2025-05-22 13:44:57,168 - phoenix.telegram - INFO -   Processing 1 tokens from message 277
+2025-05-22 13:44:57,169 - phoenix.telegram - INFO -   Processing 1 tokens from message 279
+2025-05-22 13:44:57,169 - phoenix.telegram - INFO -   Processing 1 tokens from message 280
+2025-05-22 13:44:57,170 - phoenix.telegram - INFO -   Processing 1 tokens from message 281
+2025-05-22 13:44:57,172 - phoenix.telegram - INFO -   Processing 1 tokens from message 283
+2025-05-22 13:44:57,173 - phoenix.telegram - INFO -   Processing 1 tokens from message 285
+2025-05-22 13:44:57,173 - phoenix.telegram - INFO -   Processing 1 tokens from message 286
+2025-05-22 13:44:57,173 - phoenix.telegram - INFO -   Processing 1 tokens from message 287
+2025-05-22 13:44:57,174 - phoenix.telegram - INFO -   Processing 1 tokens from message 288
+2025-05-22 13:44:57,174 - phoenix.telegram - INFO -   Processing 1 tokens from message 290
+2025-05-22 13:44:57,175 - phoenix.telegram - INFO -   Processing 1 tokens from message 291
+2025-05-22 13:44:57,175 - phoenix.telegram - INFO -   Processing 1 tokens from message 293
+2025-05-22 13:44:57,175 - phoenix.telegram - INFO -   Processing 1 tokens from message 294
+2025-05-22 13:44:57,176 - phoenix.telegram - INFO -   Processing 1 tokens from message 295
+2025-05-22 13:44:57,176 - phoenix.telegram - INFO -   Processing 1 tokens from message 296
+2025-05-22 13:44:57,177 - phoenix.telegram - INFO -   Processing 1 tokens from message 297
+2025-05-22 13:44:57,178 - phoenix.telegram - INFO -   Processing 1 tokens from message 298
+2025-05-22 13:44:57,179 - phoenix.telegram - INFO -   Processing 1 tokens from message 300
+2025-05-22 13:44:57,594 - phoenix.telegram - INFO -   Processing 1 tokens from message 301
+2025-05-22 13:44:57,594 - phoenix.telegram - INFO -   Processing 1 tokens from message 303
+2025-05-22 13:44:57,596 - phoenix.telegram - INFO -   Processing 1 tokens from message 305
+2025-05-22 13:44:57,596 - phoenix.telegram - INFO -   Processing 1 tokens from message 306
+2025-05-22 13:44:57,597 - phoenix.telegram - INFO -   Processing 1 tokens from message 307
+2025-05-22 13:44:57,597 - phoenix.telegram - INFO -   Processing 1 tokens from message 308
+2025-05-22 13:44:57,597 - phoenix.telegram - INFO -   Processing 1 tokens from message 309
+2025-05-22 13:44:57,598 - phoenix.telegram - INFO -   Processing 1 tokens from message 310
+2025-05-22 13:44:57,598 - phoenix.telegram - INFO -   Processing 1 tokens from message 311
+2025-05-22 13:44:57,598 - phoenix.telegram - INFO -   Processing 1 tokens from message 312
+2025-05-22 13:44:57,599 - phoenix.telegram - INFO -   Processing 1 tokens from message 313
+2025-05-22 13:44:57,599 - phoenix.telegram - INFO -   Processing 1 tokens from message 314
+2025-05-22 13:44:57,599 - phoenix.telegram - INFO -   Processing 1 tokens from message 315
+2025-05-22 13:44:57,600 - phoenix.telegram - INFO -   Processing 1 tokens from message 316
+2025-05-22 13:44:57,600 - phoenix.telegram - INFO -   Processing 1 tokens from message 318
+2025-05-22 13:44:57,601 - phoenix.telegram - INFO -   Processing 1 tokens from message 320
+2025-05-22 13:44:57,601 - phoenix.telegram - INFO -   Processing 1 tokens from message 321
+2025-05-22 13:44:57,602 - phoenix.telegram - INFO -   Processing 1 tokens from message 325
+2025-05-22 13:44:57,602 - phoenix.telegram - INFO -   Processing 1 tokens from message 326
+2025-05-22 13:44:57,603 - phoenix.telegram - INFO -   Processing 1 tokens from message 327
+2025-05-22 13:44:57,603 - phoenix.telegram - INFO -   Processing 1 tokens from message 329
+2025-05-22 13:44:57,603 - phoenix.telegram - INFO -   Processing 1 tokens from message 330
+2025-05-22 13:44:57,604 - phoenix.telegram - INFO -   Processing 1 tokens from message 332
+2025-05-22 13:44:57,606 - phoenix.telegram - INFO -   Processing 1 tokens from message 333
+2025-05-22 13:44:57,607 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 334
+2025-05-22 13:44:57,607 - phoenix.telegram - INFO -   Processing 1 tokens from message 335
+2025-05-22 13:44:57,607 - phoenix.telegram - INFO -   Processing 1 tokens from message 338
+2025-05-22 13:44:57,608 - phoenix.telegram - INFO -   Processing 1 tokens from message 340
+2025-05-22 13:44:57,608 - phoenix.telegram - INFO -   Processing 1 tokens from message 341
+2025-05-22 13:44:57,609 - phoenix.telegram - INFO -   Processing 1 tokens from message 347
+2025-05-22 13:44:57,609 - phoenix.telegram - INFO -   Processing 1 tokens from message 348
+2025-05-22 13:44:57,610 - phoenix.telegram - INFO -   Processing 1 tokens from message 349
+2025-05-22 13:44:57,610 - phoenix.telegram - INFO -   Processing 1 tokens from message 350
+2025-05-22 13:44:57,611 - phoenix.telegram - INFO -   Processing 1 tokens from message 351
+2025-05-22 13:44:57,611 - phoenix.telegram - INFO -   Processing 1 tokens from message 354
+2025-05-22 13:44:57,612 - phoenix.telegram - INFO -   Processing 1 tokens from message 357
+2025-05-22 13:44:57,612 - phoenix.telegram - INFO -   Processing 1 tokens from message 358
+2025-05-22 13:44:57,613 - phoenix.telegram - INFO -   Processing 1 tokens from message 359
+2025-05-22 13:44:57,613 - phoenix.telegram - INFO -   Processing 1 tokens from message 360
+2025-05-22 13:44:57,613 - phoenix.telegram - INFO -   Processing 1 tokens from message 361
+2025-05-22 13:44:57,614 - phoenix.telegram - INFO -   Processing 1 tokens from message 362
+2025-05-22 13:44:57,616 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 368
+2025-05-22 13:44:57,617 - phoenix.telegram - INFO -   Processing 1 tokens from message 369
+2025-05-22 13:44:57,618 - phoenix.telegram - INFO -   Processing 1 tokens from message 370
+2025-05-22 13:44:57,619 - phoenix.telegram - INFO -   Processing 1 tokens from message 373
+2025-05-22 13:44:57,619 - phoenix.telegram - INFO -   Processing 1 tokens from message 375
+2025-05-22 13:44:57,620 - phoenix.telegram - INFO -   Processing 1 tokens from message 384
+2025-05-22 13:44:57,621 - phoenix.telegram - INFO -   Processing 1 tokens from message 390
+2025-05-22 13:44:57,621 - phoenix.telegram - INFO -   Processing 1 tokens from message 391
+2025-05-22 13:44:57,622 - phoenix.telegram - INFO -   Processing 1 tokens from message 400
+2025-05-22 13:44:58,024 - phoenix.telegram - INFO -   Processing 1 tokens from message 401
+2025-05-22 13:44:58,024 - phoenix.telegram - INFO -   Processing 1 tokens from message 402
+2025-05-22 13:44:58,026 - phoenix.telegram - INFO -   Processing 1 tokens from message 403
+2025-05-22 13:44:58,026 - phoenix.telegram - INFO -   Processing 1 tokens from message 404
+2025-05-22 13:44:58,026 - phoenix.telegram - INFO -   Processing 1 tokens from message 405
+2025-05-22 13:44:58,027 - phoenix.telegram - INFO -   Processing 1 tokens from message 409
+2025-05-22 13:44:58,027 - phoenix.telegram - INFO -   Processing 1 tokens from message 410
+2025-05-22 13:44:58,028 - phoenix.telegram - INFO -   Processing 1 tokens from message 412
+2025-05-22 13:44:58,028 - phoenix.telegram - INFO -   Processing 1 tokens from message 413
+2025-05-22 13:44:58,029 - phoenix.telegram - INFO -   Processing 1 tokens from message 414
+2025-05-22 13:44:58,029 - phoenix.telegram - INFO -   Processing 1 tokens from message 415
+2025-05-22 13:44:58,030 - phoenix.telegram - INFO -   Processing 1 tokens from message 416
+2025-05-22 13:44:58,030 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 420
+2025-05-22 13:44:58,031 - phoenix.telegram - INFO -   Processing 1 tokens from message 424
+2025-05-22 13:44:58,031 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 425
+2025-05-22 13:44:58,032 - phoenix.telegram - INFO -   Processing 1 tokens from message 429
+2025-05-22 13:44:58,032 - phoenix.telegram - INFO -   Processing 1 tokens from message 430
+2025-05-22 13:44:58,033 - phoenix.telegram - INFO -   Processing 1 tokens from message 432
+2025-05-22 13:44:58,033 - phoenix.telegram - INFO -   Processing 1 tokens from message 433
+2025-05-22 13:44:58,034 - phoenix.telegram - INFO -   Processing 1 tokens from message 436
+2025-05-22 13:44:58,036 - phoenix.telegram - INFO -   Processing 1 tokens from message 438
+2025-05-22 13:44:58,036 - phoenix.telegram - INFO -   Processing 1 tokens from message 440
+2025-05-22 13:44:58,037 - phoenix.telegram - INFO -   Processing 1 tokens from message 442
+2025-05-22 13:44:58,037 - phoenix.telegram - INFO -   Processing 1 tokens from message 443
+2025-05-22 13:44:58,038 - phoenix.telegram - INFO -   Processing 1 tokens from message 444
+2025-05-22 13:44:58,038 - phoenix.telegram - INFO -   Processing 1 tokens from message 445
+2025-05-22 13:44:58,038 - phoenix.telegram - INFO -   Processing 1 tokens from message 446
+2025-05-22 13:44:58,039 - phoenix.telegram - INFO -   Processing 1 tokens from message 447
+2025-05-22 13:44:58,039 - phoenix.telegram - INFO -   Processing 1 tokens from message 448
+2025-05-22 13:44:58,040 - phoenix.telegram - INFO -   Processing 1 tokens from message 449
+2025-05-22 13:44:58,040 - phoenix.telegram - INFO -   Processing 1 tokens from message 450
+2025-05-22 13:44:58,040 - phoenix.telegram - INFO -   Processing 1 tokens from message 451
+2025-05-22 13:44:58,041 - phoenix.telegram - INFO -   Processing 1 tokens from message 452
+2025-05-22 13:44:58,041 - phoenix.telegram - INFO -   Processing 1 tokens from message 453
+2025-05-22 13:44:58,042 - phoenix.telegram - INFO -   Processing 1 tokens from message 454
+2025-05-22 13:44:58,042 - phoenix.telegram - INFO -   Processing 1 tokens from message 455
+2025-05-22 13:44:58,043 - phoenix.telegram - INFO -   Processing 1 tokens from message 457
+2025-05-22 13:44:58,043 - phoenix.telegram - INFO -   Processing 1 tokens from message 458
+2025-05-22 13:44:58,043 - phoenix.telegram - INFO -   Processing 1 tokens from message 459
+2025-05-22 13:44:58,044 - phoenix.telegram - INFO -   Processing 1 tokens from message 460
+2025-05-22 13:44:58,044 - phoenix.telegram - INFO -   Processing 1 tokens from message 461
+2025-05-22 13:44:58,044 - phoenix.telegram - INFO -   Processing 1 tokens from message 462
+2025-05-22 13:44:58,047 - phoenix.telegram - INFO -   Processing 1 tokens from message 463
+2025-05-22 13:44:58,047 - phoenix.telegram - INFO -   Processing 1 tokens from message 464
+2025-05-22 13:44:58,047 - phoenix.telegram - INFO -   Processing 1 tokens from message 465
+2025-05-22 13:44:58,048 - phoenix.telegram - INFO -   Processing 1 tokens from message 467
+2025-05-22 13:44:58,048 - phoenix.telegram - INFO -   Processing 1 tokens from message 470
+2025-05-22 13:44:58,049 - phoenix.telegram - INFO -   Processing 1 tokens from message 471
+2025-05-22 13:44:58,049 - phoenix.telegram - INFO -   Processing 1 tokens from message 472
+2025-05-22 13:44:58,050 - phoenix.telegram - INFO -   Processing 1 tokens from message 473
+2025-05-22 13:44:58,050 - phoenix.telegram - INFO -   Processing 1 tokens from message 474
+2025-05-22 13:44:58,050 - phoenix.telegram - INFO -   Processing 1 tokens from message 475
+2025-05-22 13:44:58,051 - phoenix.telegram - INFO -   Processing 1 tokens from message 476
+2025-05-22 13:44:58,051 - phoenix.telegram - INFO -   Processing 1 tokens from message 477
+2025-05-22 13:44:58,052 - phoenix.telegram - INFO -   Processing 1 tokens from message 478
+2025-05-22 13:44:58,053 - phoenix.telegram - INFO -   Processing 1 tokens from message 479
+2025-05-22 13:44:58,053 - phoenix.telegram - INFO -   Processing 1 tokens from message 480
+2025-05-22 13:44:58,054 - phoenix.telegram - INFO -   Processing 1 tokens from message 481
+2025-05-22 13:44:58,054 - phoenix.telegram - INFO -   Processing 1 tokens from message 483
+2025-05-22 13:44:58,054 - phoenix.telegram - INFO -   Processing 1 tokens from message 484
+2025-05-22 13:44:58,055 - phoenix.telegram - INFO -   Processing 1 tokens from message 485
+2025-05-22 13:44:58,055 - phoenix.telegram - INFO -   Processing 1 tokens from message 486
+2025-05-22 13:44:58,056 - phoenix.telegram - INFO -   Processing 1 tokens from message 487
+2025-05-22 13:44:58,058 - phoenix.telegram - INFO -   Processing 1 tokens from message 488
+2025-05-22 13:44:58,058 - phoenix.telegram - INFO -   Filtered out non-Solana chain in message 490
+2025-05-22 13:44:58,059 - phoenix.telegram - INFO -   Processing 1 tokens from message 491
+2025-05-22 13:44:58,059 - phoenix.telegram - INFO -   Processing 1 tokens from message 492
+2025-05-22 13:44:58,060 - phoenix.telegram - INFO -   Processing 1 tokens from message 493
+2025-05-22 13:44:58,060 - phoenix.telegram - INFO -   Processing 1 tokens from message 494
+2025-05-22 13:44:58,060 - phoenix.telegram - INFO -   Processing 1 tokens from message 495
+2025-05-22 13:44:58,061 - phoenix.telegram - INFO -   Processing 1 tokens from message 496
+2025-05-22 13:44:58,061 - phoenix.telegram - INFO -   Processing 1 tokens from message 497
+2025-05-22 13:44:58,062 - phoenix.telegram - INFO -   Processing 1 tokens from message 498
+2025-05-22 13:44:58,062 - phoenix.telegram - INFO -   Processing 1 tokens from message 500
+2025-05-22 13:44:58,062 - phoenix.telegram - INFO - Processed 500 total messages
+2025-05-22 13:44:58,063 - phoenix.telegram - INFO - Found 380 token calls from 149 KOLs
+2025-05-22 13:44:58,063 - phoenix.telegram - INFO - 🎯 Enhanced analysis completed for 0 tokens
+2025-05-22 13:44:58,065 - phoenix.telegram - INFO - Getting channel IDs for top KOLs...
+2025-05-22 13:44:58,065 - phoenix.telegram - INFO - Getting channel ID for KOL 1/10: @zen_call
+2025-05-22 13:44:58,194 - phoenix.telegram - INFO - Found channel for @zen_call: 2177594166
+2025-05-22 13:45:00,195 - phoenix.telegram - INFO - Getting channel ID for KOL 2/10: @nikola_calls
+2025-05-22 13:45:00,321 - phoenix.telegram - INFO - Found channel for @nikola_calls: 2000078706
+2025-05-22 13:45:02,321 - phoenix.telegram - INFO - Getting channel ID for KOL 3/10: @kariusgemscalls
+2025-05-22 13:45:02,448 - phoenix.telegram - INFO - Found channel for @kariusgemscalls: 2222968620
+2025-05-22 13:45:04,449 - phoenix.telegram - INFO - Getting channel ID for KOL 4/10: @satoshidegen
+2025-05-22 13:45:04,576 - phoenix.telegram - INFO - Found channel for @satoshidegen: 1067047613
+2025-05-22 13:45:06,576 - phoenix.telegram - INFO - Getting channel ID for KOL 5/10: @roseswishingwell
+2025-05-22 13:45:06,704 - phoenix.telegram - INFO - Found channel for @roseswishingwell: 1633191054
+2025-05-22 13:45:08,705 - phoenix.telegram - INFO - Getting channel ID for KOL 6/10: @faycalldegen
+2025-05-22 13:45:08,831 - phoenix.telegram - INFO - Found channel for @faycalldegen: 1695806010
+2025-05-22 13:45:10,832 - phoenix.telegram - INFO - Getting channel ID for KOL 7/10: @hulkgemscalls_real
+2025-05-22 13:45:10,977 - phoenix.telegram - INFO - Found channel for @hulkgemscalls_real: 2353208529
+2025-05-22 13:45:12,977 - phoenix.telegram - INFO - Getting channel ID for KOL 8/10: @marksgems
+2025-05-22 13:45:13,102 - phoenix.telegram - INFO - Found channel for @marksgems: 1508785153
+2025-05-22 13:45:15,103 - phoenix.telegram - INFO - Getting channel ID for KOL 9/10: @hercules_degen_calls
+2025-05-22 13:45:15,240 - phoenix.telegram - INFO - Found channel for @hercules_degen_calls: 2142078275
+2025-05-22 13:45:17,241 - phoenix.telegram - INFO - Getting channel ID for KOL 10/10: @wagmiplays
+2025-05-22 13:45:17,376 - phoenix.telegram - INFO - Found channel for @wagmiplays: 2230988466
+2025-05-22 13:45:17,376 - phoenix.telegram - INFO - 🎯 Enhanced Analysis Complete!
+2025-05-22 13:45:17,377 - phoenix.telegram - INFO - Tokens mentioned: 380
+2025-05-22 13:45:17,377 - phoenix.telegram - INFO - Tokens that made x2: 373
+2025-05-22 13:45:17,378 - phoenix.telegram - INFO - Tokens that made x5: 155
+2025-05-22 13:45:17,378 - phoenix.telegram - INFO - Success rate (2x): 98.16%
+2025-05-22 13:45:17,378 - phoenix.telegram - INFO - Success rate (5x): 40.79%
+2025-05-22 13:45:17,379 - phoenix.telegram - INFO - Enhanced analysis coverage: 0/380 tokens
+2025-05-22 13:45:17,384 - phoenix.telegram - INFO - ✅ Exported 380 enhanced calls to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv
+2025-05-22 13:45:17,385 - phoenix.telegram - INFO - ✅ Exported ENHANCED KOL performance to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced_kol_performance_enhanced.csv
+2025-05-22 13:45:17,386 - phoenix.telegram - INFO - ✅ Exported enhanced summary to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced_enhanced_summary.txt
+2025-05-22 13:45:17,387 - phoenix.telegram - INFO - Disconnecting from Telegram...
+2025-05-22 13:45:17,388 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-22 13:45:17,388 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-22 13:45:17,397 - phoenix.telegram - INFO - Disconnected from Telegram
+2025-05-22 13:45:17,397 - phoenix - INFO - ✅ ENHANCED SpyDefi analysis completed successfully!
+2025-05-22 13:45:17,397 - phoenix - INFO - 📊 Generated files include:
+2025-05-22 13:45:17,397 - phoenix - INFO -    • C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv - Detailed call analysis
+2025-05-22 13:45:17,398 - phoenix - INFO -    • C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced_kol_performance_enhanced.csv - Enhanced KOL metrics
+2025-05-22 13:45:17,398 - phoenix - INFO -    • C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced_enhanced_summary.txt - Analysis summary
+2025-05-22 13:45:17,398 - phoenix - INFO - 
+🎯 TOP 3 KOLs - ENHANCED METRICS:
+2025-05-22 13:45:17,399 - phoenix - INFO -    1. @zen_call
+2025-05-22 13:45:17,399 - phoenix - INFO -       • Success Rate: 100.0%
+2025-05-22 13:45:17,400 - phoenix - INFO -       • Avg Pullback: 0% (use for SL)
+2025-05-22 13:45:17,400 - phoenix - INFO -       • Avg Time to 2x: N/A
+2025-05-22 13:45:17,400 - phoenix - INFO -       • Channel ID: 2177594166
+2025-05-22 13:45:17,401 - phoenix - INFO -    2. @nikola_calls
+2025-05-22 13:45:17,401 - phoenix - INFO -       • Success Rate: 100.0%
+2025-05-22 13:45:17,401 - phoenix - INFO -       • Avg Pullback: 0% (use for SL)
+2025-05-22 13:45:17,402 - phoenix - INFO -       • Avg Time to 2x: N/A
+2025-05-22 13:45:17,402 - phoenix - INFO -       • Channel ID: 2000078706
+2025-05-22 13:45:17,402 - phoenix - INFO -    3. @kariusgemscalls
+2025-05-22 13:45:17,403 - phoenix - INFO -       • Success Rate: 100.0%
+2025-05-22 13:45:17,403 - phoenix - INFO -       • Avg Pullback: 0% (use for SL)
+2025-05-22 13:45:17,403 - phoenix - INFO -       • Avg Time to 2x: N/A
+2025-05-22 13:45:17,404 - phoenix - INFO -       • Channel ID: 2222968620
+2025-05-22 13:45:17,404 - phoenix - INFO - Enhanced Telegram analysis completed. Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv
+2025-05-22 13:45:17,707 - phoenix.export - INFO - Creating consolidated Excel export: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced_enhanced.xlsx
+2025-05-22 13:45:17,749 - phoenix.export - ERROR - Error creating Excel export: 'str' object has no attribute 'get'
+2025-05-22 13:45:17,749 - phoenix - ERROR - Error exporting to Excel: 'str' object has no attribute 'get'
