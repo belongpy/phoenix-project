@@ -1,8 +1,8 @@
 """
-Wallet Analysis Module - Phoenix Project (FIXED)
+Wallet Analysis Module - Phoenix Project (UPDATED)
 
-This module handles wallet analysis using Cielo Finance API (PRIMARY) and direct RPC calls
-for contested wallet analysis. Birdeye API used only for token metadata when needed.
+Updated to work with correct Cielo Finance API endpoints and response format.
+Handles trading-stats endpoint data structure properly.
 """
 
 import csv
@@ -24,7 +24,7 @@ class CieloFinanceAPIError(Exception):
 class WalletAnalyzer:
     """Class for analyzing wallets for copy trading using Cielo Finance API + RPC."""
     
-    def __init__(self, cielo_api: Any, birdeye_api: Any = None, rpc_url: str = "http://cce3ed699d4aeb004e634221f36e87a3.p9nodes.io"):
+    def __init__(self, cielo_api: Any, birdeye_api: Any = None, rpc_url: str = "https://api.mainnet-beta.solana.com"):
         """
         Initialize the wallet analyzer.
         
@@ -347,140 +347,177 @@ class WalletAnalyzer:
         
         return list(wallets)
     
-    def _extract_trades_from_cielo(self, wallet_pnl_data: Dict[str, Any], wallet_address: str) -> List[Dict[str, Any]]:
+    def _extract_trades_from_cielo_trading_stats(self, trading_stats_data: Dict[str, Any], wallet_address: str) -> List[Dict[str, Any]]:
         """
-        Extract and categorize trades from Cielo Finance P&L data.
+        Extract and categorize trades from Cielo Finance token P&L data.
+        Updated to handle the correct /pnl/tokens endpoint response format.
         
         Args:
-            wallet_pnl_data (Dict[str, Any]): Cielo Finance wallet P&L data
+            trading_stats_data (Dict[str, Any]): Cielo Finance /pnl/tokens response
             wallet_address (str): The wallet address being analyzed
             
         Returns:
             List[Dict[str, Any]]: Categorized trades
         """
-        if not wallet_pnl_data or not wallet_pnl_data.get("success", True):
-            logger.warning(f"No valid P&L data for wallet {wallet_address}")
+        if not trading_stats_data or not trading_stats_data.get("success", True):
+            logger.warning(f"No valid token P&L data for wallet {wallet_address}")
             return []
         
         trades = []
         
         try:
-            # Extract data from Cielo Finance format
-            pnl_data = wallet_pnl_data.get("data", [])
-            if not isinstance(pnl_data, list):
-                logger.warning(f"Unexpected P&L data format for wallet {wallet_address}")
+            # Extract data from Cielo Finance /pnl/tokens format
+            stats_data = trading_stats_data.get("data", {})
+            if not isinstance(stats_data, dict):
+                logger.warning(f"Unexpected token P&L data format for wallet {wallet_address}")
                 return []
             
-            for token_pnl in pnl_data:
-                if not isinstance(token_pnl, dict):
-                    continue
-                
-                # Extract trade information from Cielo Finance P&L structure
-                token_address = token_pnl.get("mint", "")
-                symbol = token_pnl.get("symbol", "UNKNOWN")
-                
-                # Get buy and sell data
-                buy_amount = float(token_pnl.get("buy_amount", 0))
-                sell_amount = float(token_pnl.get("sell_amount", 0))
-                buy_value_usd = float(token_pnl.get("buy_value_usd", 0))
-                sell_value_usd = float(token_pnl.get("sell_value_usd", 0))
-                buy_value_sol = float(token_pnl.get("buy_value_sol", 0))
-                sell_value_sol = float(token_pnl.get("sell_value_sol", 0))
-                
-                # Get timestamps
-                first_buy_time = token_pnl.get("first_buy_time", 0)
-                last_sell_time = token_pnl.get("last_sell_time", 0)
-                
-                # Calculate metrics
-                if buy_value_usd > 0 and sell_value_usd > 0:
-                    roi_percent = ((sell_value_usd / buy_value_usd) - 1) * 100
-                    holding_time_hours = (last_sell_time - first_buy_time) / 3600 if last_sell_time > first_buy_time else 0
-                    
-                    # Get market cap at buy time (if available)
-                    market_cap_at_buy = token_pnl.get("market_cap_at_buy", 0)
-                    
-                    # Get platform information
-                    platform = self._identify_platform_from_cielo(token_pnl)
-                    
-                    # Create paired trade entry
-                    trade = {
-                        "token_address": token_address,
-                        "token_symbol": symbol,
-                        "buy_timestamp": first_buy_time,
-                        "buy_date": datetime.fromtimestamp(first_buy_time).isoformat() if first_buy_time else "",
-                        "buy_value_usd": buy_value_usd,
-                        "buy_value_sol": buy_value_sol,
-                        "buy_amount": buy_amount,
-                        "sell_timestamp": last_sell_time,
-                        "sell_date": datetime.fromtimestamp(last_sell_time).isoformat() if last_sell_time else "",
-                        "sell_value_usd": sell_value_usd,
-                        "sell_value_sol": sell_value_sol,
-                        "sell_amount": sell_amount,
-                        "market_cap_at_buy": market_cap_at_buy,
-                        "platform": platform,
-                        "holding_time_hours": holding_time_hours,
-                        "roi_percent": roi_percent,
-                        "is_win": roi_percent > 0,
-                        "pnl_usd": sell_value_usd - buy_value_usd,
-                        "unrealized_pnl": token_pnl.get("unrealized_pnl", 0)
-                    }
-                    
-                    trades.append(trade)
-                    
-                    # Store token entry for correlation analysis
-                    if token_address:
-                        if token_address not in self.token_entries:
-                            self.token_entries[token_address] = {}
-                        self.token_entries[token_address][wallet_address] = first_buy_time
+            # The /pnl/tokens endpoint returns token-level P&L data
+            # Check for different possible data structures from Cielo Finance
             
-            logger.info(f"Extracted {len(trades)} trades from Cielo Finance data for wallet {wallet_address}")
+            if "tokens" in stats_data:
+                # Process tokens with P&L data
+                for token_data in stats_data["tokens"]:
+                    processed_trade = self._process_cielo_token_pnl(token_data, wallet_address)
+                    if processed_trade:
+                        trades.append(processed_trade)
+            
+            elif isinstance(stats_data, list):
+                # Data might be returned as a direct list of tokens
+                for token_data in stats_data:
+                    processed_trade = self._process_cielo_token_pnl(token_data, wallet_address)
+                    if processed_trade:
+                        trades.append(processed_trade)
+            
+            elif "pnl" in stats_data or "totalPnl" in stats_data:
+                # Process aggregated P&L data
+                processed_trade = self._process_cielo_aggregated_pnl(stats_data, wallet_address)
+                if processed_trade:
+                    trades.append(processed_trade)
+            
+            else:
+                # Try to extract from root level data
+                logger.info(f"Attempting to extract from root level P&L data for wallet {wallet_address}")
+                processed_trade = self._process_cielo_root_pnl_data(stats_data, wallet_address)
+                if processed_trade:
+                    trades.append(processed_trade)
+            
+            logger.info(f"Extracted {len(trades)} trades from Cielo Finance P&L data for wallet {wallet_address}")
             return trades
             
         except Exception as e:
-            logger.error(f"Error extracting trades from Cielo Finance data for wallet {wallet_address}: {str(e)}")
+            logger.error(f"Error extracting trades from Cielo Finance P&L data for wallet {wallet_address}: {str(e)}")
             return []
     
-    def _identify_platform_from_cielo(self, token_pnl: Dict[str, Any]) -> str:
-        """Identify platform from Cielo Finance token P&L data."""
+    def _process_cielo_token_pnl(self, token_data: Dict[str, Any], wallet_address: str) -> Optional[Dict[str, Any]]:
+        """Process token P&L data from Cielo Finance /pnl/tokens endpoint."""
         try:
-            # Check if Cielo Finance provides platform information
-            platform = token_pnl.get("platform", "")
-            if platform:
-                return platform.lower()
-            
-            # Check token symbol and name for platform indicators
-            symbol = token_pnl.get("symbol", "").lower()
-            name = token_pnl.get("name", "").lower()
-            
-            platform_identifiers = {
-                "pumpfun": ["pump", "pf", "pump.fun"],
-                "raydium": ["ray", "raydium"],
-                "orca": ["orca"],
-                "jupiter": ["jup", "jupiter"],
-                "meteora": ["met", "meteora"],
-                "lifinity": ["lfnty"],
-                "saber": ["sbr", "saber"]
+            # Create a trade record from Cielo Finance token P&L data
+            return {
+                "token_address": token_data.get("mint", token_data.get("address", token_data.get("contract", ""))),
+                "token_symbol": token_data.get("symbol", token_data.get("name", "")),
+                "buy_timestamp": token_data.get("first_tx_timestamp", token_data.get("first_buy_time", 0)),
+                "buy_date": datetime.fromtimestamp(token_data.get("first_tx_timestamp", token_data.get("first_buy_time", 0))).isoformat() if token_data.get("first_tx_timestamp", token_data.get("first_buy_time", 0)) else "",
+                "buy_price": token_data.get("avg_buy_price", token_data.get("buy_price", 0)),
+                "buy_value_usd": token_data.get("total_buy_usd", token_data.get("buy_value_usd", 0)),
+                "buy_value_sol": token_data.get("total_buy_sol", token_data.get("buy_value_sol", 0)),
+                "sell_timestamp": token_data.get("last_tx_timestamp", token_data.get("last_sell_time", 0)),
+                "sell_date": datetime.fromtimestamp(token_data.get("last_tx_timestamp", token_data.get("last_sell_time", 0))).isoformat() if token_data.get("last_tx_timestamp", token_data.get("last_sell_time", 0)) else "",
+                "sell_price": token_data.get("avg_sell_price", token_data.get("sell_price", 0)),
+                "sell_value_usd": token_data.get("total_sell_usd", token_data.get("sell_value_usd", 0)),
+                "sell_value_sol": token_data.get("total_sell_sol", token_data.get("sell_value_sol", 0)),
+                "holding_time_hours": token_data.get("holding_time_hours", token_data.get("hold_time", 0)),
+                "roi_percent": token_data.get("pnl_percent", token_data.get("roi_percent", token_data.get("pnl", 0))),
+                "is_win": token_data.get("pnl_percent", token_data.get("roi_percent", token_data.get("pnl", 0))) > 0,
+                "market_cap_at_buy": token_data.get("market_cap", token_data.get("mcap", 0)),
+                "platform": token_data.get("platform", token_data.get("dex", "")),
+                "total_trades": token_data.get("tx_count", token_data.get("trades", 1)),
+                "realized_pnl_usd": token_data.get("realized_pnl_usd", token_data.get("realized_pnl", 0)),
+                "unrealized_pnl_usd": token_data.get("unrealized_pnl_usd", token_data.get("unrealized_pnl", 0))
             }
-            
-            for platform, identifiers in platform_identifiers.items():
-                for identifier in identifiers:
-                    if identifier in symbol or identifier in name:
-                        return platform
-            
-            # If we have Birdeye API available, try to get more metadata
-            if self.birdeye_api and token_pnl.get("mint"):
-                try:
-                    token_info = self.birdeye_api.get_token_info(token_pnl["mint"])
-                    if token_info.get("success"):
-                        return self.birdeye_api.identify_platform(token_pnl["mint"], token_info.get("data"))
-                except Exception as e:
-                    logger.debug(f"Error getting platform from Birdeye: {str(e)}")
-            
-            return "unknown"
-            
         except Exception as e:
-            logger.error(f"Error identifying platform: {str(e)}")
-            return "unknown"
+            logger.warning(f"Error processing Cielo token P&L data: {str(e)}")
+            return None
+    
+    def _process_cielo_aggregated_pnl(self, pnl_data: Dict[str, Any], wallet_address: str) -> Optional[Dict[str, Any]]:
+        """Process aggregated P&L data from Cielo Finance."""
+        try:
+            # Create an aggregate trade record from P&L data
+            return {
+                "token_address": "",
+                "token_symbol": "AGGREGATE",
+                "buy_timestamp": pnl_data.get("first_tx_time", 0),
+                "buy_date": datetime.fromtimestamp(pnl_data.get("first_tx_time", 0)).isoformat() if pnl_data.get("first_tx_time") else "",
+                "buy_price": 0,
+                "buy_value_usd": pnl_data.get("total_invested_usd", pnl_data.get("total_buy_usd", 0)),
+                "buy_value_sol": pnl_data.get("total_invested_sol", pnl_data.get("total_buy_sol", 0)),
+                "sell_timestamp": pnl_data.get("last_tx_time", 0),
+                "sell_date": datetime.fromtimestamp(pnl_data.get("last_tx_time", 0)).isoformat() if pnl_data.get("last_tx_time") else "",
+                "sell_price": 0,
+                "sell_value_usd": pnl_data.get("total_realized_usd", pnl_data.get("total_sell_usd", 0)),
+                "sell_value_sol": pnl_data.get("total_realized_sol", pnl_data.get("total_sell_sol", 0)),
+                "holding_time_hours": pnl_data.get("avg_holding_time", 0),
+                "roi_percent": pnl_data.get("total_pnl_percent", pnl_data.get("pnl_percent", 0)),
+                "is_win": pnl_data.get("total_pnl_percent", pnl_data.get("pnl_percent", 0)) > 0,
+                "market_cap_at_buy": 0,
+                "platform": "MULTIPLE",
+                "total_trades": pnl_data.get("total_trades", pnl_data.get("tx_count", 0)),
+                "realized_pnl_usd": pnl_data.get("realized_pnl_usd", 0),
+                "unrealized_pnl_usd": pnl_data.get("unrealized_pnl_usd", 0)
+            }
+        except Exception as e:
+            logger.warning(f"Error processing Cielo aggregated P&L data: {str(e)}")
+            return None
+    
+    def _process_cielo_root_pnl_data(self, stats_data: Dict[str, Any], wallet_address: str) -> Optional[Dict[str, Any]]:
+        """Process root level Cielo Finance P&L data."""
+        try:
+            # Create a summary trade from overall P&L stats
+            return {
+                "token_address": "",
+                "token_symbol": "WALLET_SUMMARY",
+                "buy_timestamp": stats_data.get("first_trade_time", stats_data.get("start_time", 0)),
+                "buy_date": datetime.fromtimestamp(stats_data.get("first_trade_time", stats_data.get("start_time", 0))).isoformat() if stats_data.get("first_trade_time", stats_data.get("start_time")) else "",
+                "buy_price": 0,
+                "buy_value_usd": stats_data.get("total_invested", stats_data.get("total_buy", 0)),
+                "buy_value_sol": stats_data.get("total_invested_sol", 0),
+                "sell_timestamp": stats_data.get("last_trade_time", stats_data.get("end_time", 0)),
+                "sell_date": datetime.fromtimestamp(stats_data.get("last_trade_time", stats_data.get("end_time", 0))).isoformat() if stats_data.get("last_trade_time", stats_data.get("end_time")) else "",
+                "sell_price": 0,
+                "sell_value_usd": stats_data.get("total_realized", stats_data.get("total_sell", 0)),
+                "sell_value_sol": stats_data.get("total_realized_sol", 0),
+                "holding_time_hours": stats_data.get("avg_hold_time", 0),
+                "roi_percent": stats_data.get("pnl_percentage", stats_data.get("total_pnl_percent", 0)),
+                "is_win": stats_data.get("pnl_percentage", stats_data.get("total_pnl_percent", 0)) > 0,
+                "market_cap_at_buy": 0,
+                "platform": "MULTIPLE",
+                "total_trades": stats_data.get("transaction_count", stats_data.get("total_transactions", 0)),
+                "realized_pnl_usd": stats_data.get("realized_pnl", 0),
+                "unrealized_pnl_usd": stats_data.get("unrealized_pnl", 0)
+            }
+        except Exception as e:
+            logger.warning(f"Error processing Cielo root P&L data: {str(e)}")
+            return None
+    
+    def _pair_trades(self, trades: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """Pair buy and sell trades to calculate ROI - for Cielo data, trades are already paired."""
+        if not trades:
+            logger.warning("No trades to pair")
+            return []
+        
+        # Cielo Finance API should already provide paired trades with P&L calculated
+        # So we just validate and clean the data
+        paired_trades = []
+        
+        for trade in trades:
+            # Ensure required fields exist
+            if (trade.get("buy_value_usd", 0) > 0 and 
+                trade.get("sell_value_usd", 0) > 0 and
+                "roi_percent" in trade):
+                paired_trades.append(trade)
+        
+        logger.info(f"Validated {len(paired_trades)} paired trades from {len(trades)} trades")
+        return paired_trades
     
     def _calculate_metrics(self, paired_trades: List[Dict[str, Any]]) -> Dict[str, Any]:
         """Calculate performance metrics from paired trades."""
@@ -506,22 +543,22 @@ class WalletAnalyzer:
             winning_trades = [t for t in paired_trades if t["is_win"]]
             losing_trades = [t for t in paired_trades if not t["is_win"]]
             
-            total_profit_usd = sum(t["pnl_usd"] for t in winning_trades if t["pnl_usd"] > 0)
-            total_loss_usd = abs(sum(t["pnl_usd"] for t in losing_trades if t["pnl_usd"] < 0))
+            total_profit_usd = sum(t["sell_value_usd"] - t["buy_value_usd"] for t in winning_trades)
+            total_loss_usd = abs(sum(t["sell_value_usd"] - t["buy_value_usd"] for t in losing_trades))
             net_profit_usd = total_profit_usd - total_loss_usd
             profit_factor = total_profit_usd / total_loss_usd if total_loss_usd > 0 else float('inf')
             
             # Holding time
-            holding_times = [trade["holding_time_hours"] for trade in paired_trades if trade["holding_time_hours"] > 0]
+            holding_times = [trade["holding_time_hours"] for trade in paired_trades if "holding_time_hours" in trade]
             avg_hold_time_hours = np.mean(holding_times) if holding_times else 0
             
             # Bet size
-            bet_sizes = [trade["buy_value_usd"] for trade in paired_trades if trade["buy_value_usd"] > 0]
+            bet_sizes = [trade["buy_value_usd"] for trade in paired_trades]
             total_bet_size_usd = sum(bet_sizes)
             avg_bet_size_usd = np.mean(bet_sizes) if bet_sizes else 0
             
             # Unique tokens
-            unique_tokens = len(set(trade["token_address"] for trade in paired_trades))
+            unique_tokens = len(set(trade["token_address"] for trade in paired_trades if trade.get("token_address")))
             
             # ROI distribution buckets
             roi_buckets = {
@@ -585,13 +622,13 @@ class WalletAnalyzer:
     
     def _determine_wallet_type(self, metrics: Dict[str, Any]) -> str:
         """Determine the wallet type based on metrics."""
-        if metrics["total_trades"] < 3:  # Lower threshold since Cielo gives complete P&L data
+        if metrics["total_trades"] < 5:
             return "unknown"
         
         try:
             win_rate = metrics["win_rate"]
             median_roi = metrics["median_roi"]
-            max_roi = metrics["max_roi"]
+            std_dev_roi = metrics["std_dev_roi"]
             avg_hold_time_hours = metrics["avg_hold_time_hours"]
             roi_distribution = metrics["roi_distribution"]
             
@@ -599,16 +636,16 @@ class WalletAnalyzer:
             big_win_count = roi_distribution.get("10x_plus", 0) + roi_distribution.get("5x_to_10x", 0) + roi_distribution.get("2x_to_5x", 0)
             big_win_ratio = big_win_count / metrics["total_trades"] if metrics["total_trades"] > 0 else 0
             
-            # Gem finder: High ROI potential (adjusted for Cielo data)
-            if big_win_ratio >= 0.10 and max_roi >= 200:  # 10% of trades are 2x+ and at least one 3x
+            # Gem finder: High ROI potential
+            if big_win_ratio >= 0.15 and metrics["max_roi"] >= 300:
                 return "gem_finder"
             
-            # Flipper: Quick trades, decent win rate
-            if avg_hold_time_hours < 24 and win_rate >= 40:  # Less than 1 day hold time
+            # Flipper: Quick trades, lower hold time
+            if avg_hold_time_hours < 12 and win_rate > 50:
                 return "flipper"
             
             # Consistent: Good win rate, stable returns
-            if win_rate >= 40 and median_roi > 0 and metrics["profit_factor"] > 1.2:
+            if win_rate >= 45 and median_roi > 0 and std_dev_roi < 100:
                 return "consistent"
             
             return "unknown"
@@ -631,7 +668,7 @@ class WalletAnalyzer:
                         "take_profit_2": 200,
                         "take_profit_3": 500,
                         "stop_loss": -30,
-                        "notes": "Gem finder with moonshot potential. Take 30% at TP1, hold rest for major gains."
+                        "notes": "Massive moonshot finder. Take 30% at TP1, hold rest for major gains."
                     }
                 else:
                     strategy = {
@@ -642,11 +679,11 @@ class WalletAnalyzer:
                         "take_profit_2": 100,
                         "take_profit_3": 300,
                         "stop_loss": -30,
-                        "notes": "Gem finder with solid potential. Take partial profits and trail the rest."
+                        "notes": "Potential moonshot finder. Take partial profits and trail the rest."
                     }
             
             elif wallet_type == "consistent":
-                if metrics["win_rate"] > 60 and metrics["profit_factor"] > 2.0:
+                if metrics["win_rate"] > 65 and metrics["median_roi"] > 50:
                     strategy = {
                         "recommendation": "SCALP_AND_HOLD",
                         "entry_type": "IMMEDIATE",
@@ -738,11 +775,11 @@ class WalletAnalyzer:
     
     def analyze_wallet(self, wallet_address: str, days_back: int = 30, include_contested: bool = True) -> Dict[str, Any]:
         """
-        Analyze a wallet using Cielo Finance API with optional contested analysis.
+        Analyze a wallet for copy trading with Cielo Finance API and optional contested analysis.
         
         Args:
             wallet_address (str): Wallet address
-            days_back (int): Number of days to analyze (used for filtering if needed)
+            days_back (int): Number of days to analyze (not used for Cielo Finance API)
             include_contested (bool): Whether to include contested wallet analysis
             
         Returns:
@@ -751,46 +788,32 @@ class WalletAnalyzer:
         logger.info(f"Analyzing wallet {wallet_address} using Cielo Finance API")
         
         try:
-            # Get wallet P&L data from Cielo Finance
-            wallet_pnl_response = self.cielo_api.get_wallet_pnl_by_tokens(wallet_address)
+            # Get wallet token P&L data from Cielo Finance API
+            token_pnl_data = self.cielo_api.get_wallet_trading_stats(wallet_address)
             
-            if not wallet_pnl_response or not wallet_pnl_response.get("success", True):
-                error_msg = wallet_pnl_response.get("error", "No P&L data available") if wallet_pnl_response else "API call failed"
-                logger.warning(f"No P&L data found for wallet {wallet_address}: {error_msg}")
+            if not token_pnl_data or not token_pnl_data.get("success", True):
+                logger.warning(f"No token P&L data available for wallet {wallet_address}")
                 return {
                     "success": False,
-                    "error": f"No P&L data available: {error_msg}",
+                    "error": f"No token P&L data available: {token_pnl_data.get('error', 'Unknown error')}",
                     "wallet_address": wallet_address,
                     "error_type": "NO_DATA"
                 }
             
-            # Extract trades from Cielo Finance P&L data
-            trades = self._extract_trades_from_cielo(wallet_pnl_response, wallet_address)
+            # Extract trades from Cielo Finance token P&L data
+            trades = self._extract_trades_from_cielo_trading_stats(token_pnl_data, wallet_address)
+            paired_trades = self._pair_trades(trades)
             
-            if not trades:
+            if not paired_trades:
                 return {
                     "success": False,
-                    "error": "No valid trades found in P&L data",
+                    "error": "No complete trades found in Cielo Finance data",
                     "wallet_address": wallet_address,
-                    "error_type": "NO_TRADES"
+                    "error_type": "NO_PAIRED_TRADES"
                 }
             
-            # Filter trades by date if needed (Cielo should already provide recent data)
-            if days_back < 365:  # Only filter if not requesting full history
-                date_limit = datetime.now() - timedelta(days=days_back)
-                date_limit_timestamp = date_limit.timestamp()
-                
-                filtered_trades = [
-                    trade for trade in trades
-                    if trade.get("buy_timestamp", 0) >= date_limit_timestamp
-                ]
-                
-                if filtered_trades:
-                    trades = filtered_trades
-                    logger.info(f"Filtered to {len(trades)} trades in the last {days_back} days")
-            
             # Calculate metrics
-            metrics = self._calculate_metrics(trades)
+            metrics = self._calculate_metrics(paired_trades)
             
             # Determine wallet type
             wallet_type = self._determine_wallet_type(metrics)
@@ -811,14 +834,14 @@ class WalletAnalyzer:
             return {
                 "success": True,
                 "wallet_address": wallet_address,
-                "analysis_period_days": days_back,
+                "analysis_period_days": "ALL_TIME",  # Cielo Finance provides all-time data
                 "wallet_type": wallet_type,
                 "metrics": metrics,
                 "strategy": strategy,
-                "trades": trades,
+                "trades": paired_trades,
                 "correlated_wallets": correlated_wallets,
                 "contested_analysis": contested_analysis,
-                "api_source": "Cielo Finance + P9 RPC"
+                "api_source": "Cielo Finance + RPC"
             }
             
         except Exception as e:
@@ -874,14 +897,14 @@ class WalletAnalyzer:
     
     def batch_analyze_wallets(self, wallet_addresses: List[str], 
                             days_back: int = 30,
-                            min_winrate: float = 40.0,  # Lowered for Cielo Finance data
+                            min_winrate: float = 45.0,
                             include_contested: bool = True) -> Dict[str, Any]:
         """
-        Batch analyze multiple wallets using Cielo Finance API.
+        Batch analyze multiple wallets with Cielo Finance API and contested analysis.
         
         Args:
             wallet_addresses (List[str]): List of wallet addresses
-            days_back (int): Number of days to analyze
+            days_back (int): Number of days to analyze (not used for Cielo Finance)
             min_winrate (float): Minimum win rate percentage
             include_contested (bool): Whether to include contested analysis
             
@@ -952,7 +975,7 @@ class WalletAnalyzer:
             
             # Sort each category by performance metrics
             gem_finders.sort(key=lambda x: x["metrics"]["max_roi"], reverse=True)
-            consistent.sort(key=lambda x: x["metrics"]["profit_factor"], reverse=True)
+            consistent.sort(key=lambda x: x["metrics"]["median_roi"], reverse=True)
             flippers.sort(key=lambda x: x["metrics"]["win_rate"], reverse=True)
             
             # Find wallet clusters
@@ -973,7 +996,7 @@ class WalletAnalyzer:
                 "wallet_correlations": {a["wallet_address"]: a.get("correlated_wallets", []) for a in wallet_analyses},
                 "wallet_clusters": wallet_clusters,
                 "failed_analyses": failed_analyses,
-                "api_source": "Cielo Finance + P9 RPC",
+                "api_source": "Cielo Finance + RPC",
                 "contested_analysis_included": include_contested
             }
             
@@ -1020,6 +1043,7 @@ class WalletAnalyzer:
             logger.error(f"Error identifying wallet clusters: {str(e)}")
             return []
     
+    # Keep all existing export methods
     def export_wallet_analysis(self, analysis: Dict[str, Any], output_file: str) -> None:
         """Export wallet analysis to CSV with contested analysis included."""
         if not analysis.get("success"):

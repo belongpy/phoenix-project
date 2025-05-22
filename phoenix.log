@@ -16164,3 +16164,746 @@ SUIcide first posted by @kariusgemscalls has since been poste...
 2025-05-22 08:49:24,073 - phoenix.cielo - ERROR - Cielo Finance API request failed for /api/v1/status: HTTPSConnectionPool(host='api.cielo.finance', port=443): Max retries exceeded with url: /api/v1/status (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002387EA6C980>: Failed to resolve 'api.cielo.finance' ([Errno 11001] getaddrinfo failed)"))
 2025-05-22 08:49:24,073 - phoenix.wallet - ERROR - ❌ Cielo Finance API health check failed
 2025-05-22 08:49:24,074 - phoenix - ERROR - Enhanced wallet analysis error: Cannot connect to Cielo Finance API
+2025-05-22 11:51:37,937 - phoenix - INFO - Loaded 104 wallet addresses from wallets.txt
+2025-05-22 11:51:47,885 - phoenix - INFO - Loaded 104 wallet addresses from wallets.txt
+2025-05-22 11:51:48,181 - phoenix - INFO - ✅ Cielo Finance API initialized
+2025-05-22 11:51:48,182 - phoenix - INFO - ✅ Birdeye API initialized (for token metadata)
+2025-05-22 11:51:48,477 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/11111111111111111111111111111111/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/11111111111111111111111111111111/trading-stats
+2025-05-22 11:51:48,478 - phoenix.cielo - INFO - ✅ Cielo Finance API is accessible
+2025-05-22 11:51:48,479 - phoenix.wallet - INFO - ✅ Cielo Finance API connection verified
+2025-05-22 11:51:48,479 - phoenix - INFO - Using RPC: https://api.mainnet-beta.solana.com
+2025-05-22 11:51:48,480 - phoenix.wallet - INFO - Batch analyzing 104 wallets using Cielo Finance API (contested: True)
+2025-05-22 11:51:48,480 - phoenix.wallet - INFO - Analyzing wallet 1/104: 2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd
+2025-05-22 11:51:48,480 - phoenix.wallet - INFO - Analyzing wallet 2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd using Cielo Finance API
+2025-05-22 11:51:48,481 - phoenix.cielo - INFO - Fetching trading stats for wallet 2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd
+2025-05-22 11:51:48,590 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd/trading-stats
+2025-05-22 11:51:48,590 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd/trading-stats
+2025-05-22 11:51:48,591 - phoenix.wallet - WARNING - No trading stats available for wallet 2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd
+2025-05-22 11:51:48,592 - phoenix.wallet - INFO - Analyzing wallet 2/104: 5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex
+2025-05-22 11:51:48,592 - phoenix.wallet - INFO - Analyzing wallet 5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex using Cielo Finance API
+2025-05-22 11:51:48,593 - phoenix.cielo - INFO - Fetching trading stats for wallet 5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex
+2025-05-22 11:51:48,690 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex/trading-stats
+2025-05-22 11:51:48,690 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex/trading-stats
+2025-05-22 11:51:48,691 - phoenix.wallet - WARNING - No trading stats available for wallet 5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex
+2025-05-22 11:51:48,691 - phoenix.wallet - INFO - Analyzing wallet 3/104: Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e
+2025-05-22 11:51:48,691 - phoenix.wallet - INFO - Analyzing wallet Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e using Cielo Finance API
+2025-05-22 11:51:48,692 - phoenix.cielo - INFO - Fetching trading stats for wallet Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e
+2025-05-22 11:51:48,790 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e/trading-stats
+2025-05-22 11:51:48,791 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e/trading-stats
+2025-05-22 11:51:48,792 - phoenix.wallet - WARNING - No trading stats available for wallet Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e
+2025-05-22 11:51:48,792 - phoenix.wallet - INFO - Analyzing wallet 4/104: 8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i
+2025-05-22 11:51:48,792 - phoenix.wallet - INFO - Analyzing wallet 8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i using Cielo Finance API
+2025-05-22 11:51:48,792 - phoenix.cielo - INFO - Fetching trading stats for wallet 8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i
+2025-05-22 11:51:48,891 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i/trading-stats
+2025-05-22 11:51:48,891 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i/trading-stats
+2025-05-22 11:51:48,892 - phoenix.wallet - WARNING - No trading stats available for wallet 8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i
+2025-05-22 11:51:48,892 - phoenix.wallet - INFO - Analyzing wallet 5/104: A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o
+2025-05-22 11:51:48,893 - phoenix.wallet - INFO - Analyzing wallet A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o using Cielo Finance API
+2025-05-22 11:51:48,893 - phoenix.cielo - INFO - Fetching trading stats for wallet A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o
+2025-05-22 11:51:48,991 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o/trading-stats
+2025-05-22 11:51:48,991 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o/trading-stats
+2025-05-22 11:51:48,992 - phoenix.wallet - WARNING - No trading stats available for wallet A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o
+2025-05-22 11:51:48,993 - phoenix.wallet - INFO - Analyzing wallet 6/104: 4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq
+2025-05-22 11:51:48,993 - phoenix.wallet - INFO - Analyzing wallet 4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq using Cielo Finance API
+2025-05-22 11:51:48,993 - phoenix.cielo - INFO - Fetching trading stats for wallet 4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq
+2025-05-22 11:51:49,096 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq/trading-stats
+2025-05-22 11:51:49,096 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq/trading-stats
+2025-05-22 11:51:49,097 - phoenix.wallet - WARNING - No trading stats available for wallet 4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq
+2025-05-22 11:51:49,097 - phoenix.wallet - INFO - Analyzing wallet 7/104: 9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn
+2025-05-22 11:51:49,098 - phoenix.wallet - INFO - Analyzing wallet 9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn using Cielo Finance API
+2025-05-22 11:51:49,098 - phoenix.cielo - INFO - Fetching trading stats for wallet 9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn
+2025-05-22 11:51:49,205 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn/trading-stats
+2025-05-22 11:51:49,205 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn/trading-stats
+2025-05-22 11:51:49,205 - phoenix.wallet - WARNING - No trading stats available for wallet 9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn
+2025-05-22 11:51:49,206 - phoenix.wallet - INFO - Analyzing wallet 8/104: 3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B
+2025-05-22 11:51:49,206 - phoenix.wallet - INFO - Analyzing wallet 3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B using Cielo Finance API
+2025-05-22 11:51:49,206 - phoenix.cielo - INFO - Fetching trading stats for wallet 3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B
+2025-05-22 11:51:49,306 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B/trading-stats
+2025-05-22 11:51:49,349 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B/trading-stats
+2025-05-22 11:51:49,349 - phoenix.wallet - WARNING - No trading stats available for wallet 3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B
+2025-05-22 11:51:49,349 - phoenix.wallet - INFO - Analyzing wallet 9/104: BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r
+2025-05-22 11:51:49,350 - phoenix.wallet - INFO - Analyzing wallet BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r using Cielo Finance API
+2025-05-22 11:51:49,350 - phoenix.cielo - INFO - Fetching trading stats for wallet BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r
+2025-05-22 11:51:49,448 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r/trading-stats
+2025-05-22 11:51:49,449 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r/trading-stats
+2025-05-22 11:51:49,449 - phoenix.wallet - WARNING - No trading stats available for wallet BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r
+2025-05-22 11:51:49,449 - phoenix.wallet - INFO - Analyzing wallet 10/104: 96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu
+2025-05-22 11:51:49,449 - phoenix.wallet - INFO - Analyzing wallet 96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu using Cielo Finance API
+2025-05-22 11:51:49,450 - phoenix.cielo - INFO - Fetching trading stats for wallet 96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu
+2025-05-22 11:51:49,547 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu/trading-stats
+2025-05-22 11:51:49,548 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu/trading-stats
+2025-05-22 11:51:49,549 - phoenix.wallet - WARNING - No trading stats available for wallet 96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu
+2025-05-22 11:51:49,550 - phoenix.wallet - INFO - Analyzing wallet 11/104: 6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK
+2025-05-22 11:51:49,550 - phoenix.wallet - INFO - Analyzing wallet 6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK using Cielo Finance API
+2025-05-22 11:51:49,550 - phoenix.cielo - INFO - Fetching trading stats for wallet 6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK
+2025-05-22 11:51:49,650 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK/trading-stats
+2025-05-22 11:51:49,650 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK/trading-stats
+2025-05-22 11:51:49,652 - phoenix.wallet - WARNING - No trading stats available for wallet 6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK
+2025-05-22 11:51:49,652 - phoenix.wallet - INFO - Analyzing wallet 12/104: 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr
+2025-05-22 11:51:49,652 - phoenix.wallet - INFO - Analyzing wallet 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr using Cielo Finance API
+2025-05-22 11:51:49,653 - phoenix.cielo - INFO - Fetching trading stats for wallet 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr
+2025-05-22 11:51:49,750 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr/trading-stats
+2025-05-22 11:51:49,750 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr/trading-stats
+2025-05-22 11:51:49,751 - phoenix.wallet - WARNING - No trading stats available for wallet 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr
+2025-05-22 11:51:49,752 - phoenix.wallet - INFO - Analyzing wallet 13/104: FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL
+2025-05-22 11:51:49,752 - phoenix.wallet - INFO - Analyzing wallet FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL using Cielo Finance API
+2025-05-22 11:51:49,753 - phoenix.cielo - INFO - Fetching trading stats for wallet FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL
+2025-05-22 11:51:49,851 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL/trading-stats
+2025-05-22 11:51:49,852 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL/trading-stats
+2025-05-22 11:51:49,853 - phoenix.wallet - WARNING - No trading stats available for wallet FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL
+2025-05-22 11:51:49,854 - phoenix.wallet - INFO - Analyzing wallet 14/104: 7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB
+2025-05-22 11:51:49,854 - phoenix.wallet - INFO - Analyzing wallet 7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB using Cielo Finance API
+2025-05-22 11:51:49,854 - phoenix.cielo - INFO - Fetching trading stats for wallet 7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB
+2025-05-22 11:51:49,952 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB/trading-stats
+2025-05-22 11:51:49,953 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB/trading-stats
+2025-05-22 11:51:49,954 - phoenix.wallet - WARNING - No trading stats available for wallet 7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB
+2025-05-22 11:51:49,955 - phoenix.wallet - INFO - Analyzing wallet 15/104: FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q
+2025-05-22 11:51:49,955 - phoenix.wallet - INFO - Analyzing wallet FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q using Cielo Finance API
+2025-05-22 11:51:49,955 - phoenix.cielo - INFO - Fetching trading stats for wallet FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q
+2025-05-22 11:51:50,061 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q/trading-stats
+2025-05-22 11:51:50,061 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q/trading-stats
+2025-05-22 11:51:50,062 - phoenix.wallet - WARNING - No trading stats available for wallet FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q
+2025-05-22 11:51:50,063 - phoenix.wallet - INFO - Analyzing wallet 16/104: F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe
+2025-05-22 11:51:50,063 - phoenix.wallet - INFO - Analyzing wallet F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe using Cielo Finance API
+2025-05-22 11:51:50,063 - phoenix.cielo - INFO - Fetching trading stats for wallet F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe
+2025-05-22 11:51:50,160 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe/trading-stats
+2025-05-22 11:51:50,160 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe/trading-stats
+2025-05-22 11:51:50,162 - phoenix.wallet - WARNING - No trading stats available for wallet F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe
+2025-05-22 11:51:50,162 - phoenix.wallet - INFO - Analyzing wallet 17/104: 5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn
+2025-05-22 11:51:50,163 - phoenix.wallet - INFO - Analyzing wallet 5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn using Cielo Finance API
+2025-05-22 11:51:50,163 - phoenix.cielo - INFO - Fetching trading stats for wallet 5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn
+2025-05-22 11:51:50,263 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn/trading-stats
+2025-05-22 11:51:50,264 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn/trading-stats
+2025-05-22 11:51:50,265 - phoenix.wallet - WARNING - No trading stats available for wallet 5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn
+2025-05-22 11:51:50,266 - phoenix.wallet - INFO - Analyzing wallet 18/104: 8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2
+2025-05-22 11:51:50,266 - phoenix.wallet - INFO - Analyzing wallet 8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2 using Cielo Finance API
+2025-05-22 11:51:50,266 - phoenix.cielo - INFO - Fetching trading stats for wallet 8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2
+2025-05-22 11:51:50,363 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2/trading-stats
+2025-05-22 11:51:50,363 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2/trading-stats
+2025-05-22 11:51:50,365 - phoenix.wallet - WARNING - No trading stats available for wallet 8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2
+2025-05-22 11:51:50,365 - phoenix.wallet - INFO - Analyzing wallet 19/104: D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz
+2025-05-22 11:51:50,365 - phoenix.wallet - INFO - Analyzing wallet D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz using Cielo Finance API
+2025-05-22 11:51:50,366 - phoenix.cielo - INFO - Fetching trading stats for wallet D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz
+2025-05-22 11:51:50,464 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz/trading-stats
+2025-05-22 11:51:50,465 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz/trading-stats
+2025-05-22 11:51:50,466 - phoenix.wallet - WARNING - No trading stats available for wallet D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz
+2025-05-22 11:51:50,466 - phoenix.wallet - INFO - Analyzing wallet 20/104: CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ
+2025-05-22 11:51:50,467 - phoenix.wallet - INFO - Analyzing wallet CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ using Cielo Finance API
+2025-05-22 11:51:50,467 - phoenix.cielo - INFO - Fetching trading stats for wallet CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ
+2025-05-22 11:51:50,569 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ/trading-stats
+2025-05-22 11:51:50,570 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ/trading-stats
+2025-05-22 11:51:50,571 - phoenix.wallet - WARNING - No trading stats available for wallet CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ
+2025-05-22 11:51:50,572 - phoenix.wallet - INFO - Analyzing wallet 21/104: FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W
+2025-05-22 11:51:50,572 - phoenix.wallet - INFO - Analyzing wallet FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W using Cielo Finance API
+2025-05-22 11:51:50,572 - phoenix.cielo - INFO - Fetching trading stats for wallet FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W
+2025-05-22 11:51:50,670 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W/trading-stats
+2025-05-22 11:51:50,670 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W/trading-stats
+2025-05-22 11:51:50,672 - phoenix.wallet - WARNING - No trading stats available for wallet FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W
+2025-05-22 11:51:50,672 - phoenix.wallet - INFO - Analyzing wallet 22/104: 9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj
+2025-05-22 11:51:50,673 - phoenix.wallet - INFO - Analyzing wallet 9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj using Cielo Finance API
+2025-05-22 11:51:50,673 - phoenix.cielo - INFO - Fetching trading stats for wallet 9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj
+2025-05-22 11:51:50,774 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj/trading-stats
+2025-05-22 11:51:50,774 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj/trading-stats
+2025-05-22 11:51:50,776 - phoenix.wallet - WARNING - No trading stats available for wallet 9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj
+2025-05-22 11:51:50,776 - phoenix.wallet - INFO - Analyzing wallet 23/104: 6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP
+2025-05-22 11:51:50,777 - phoenix.wallet - INFO - Analyzing wallet 6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP using Cielo Finance API
+2025-05-22 11:51:50,777 - phoenix.cielo - INFO - Fetching trading stats for wallet 6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP
+2025-05-22 11:51:50,876 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP/trading-stats
+2025-05-22 11:51:50,876 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP/trading-stats
+2025-05-22 11:51:50,877 - phoenix.wallet - WARNING - No trading stats available for wallet 6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP
+2025-05-22 11:51:50,878 - phoenix.wallet - INFO - Analyzing wallet 24/104: 8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q
+2025-05-22 11:51:50,878 - phoenix.wallet - INFO - Analyzing wallet 8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q using Cielo Finance API
+2025-05-22 11:51:50,879 - phoenix.cielo - INFO - Fetching trading stats for wallet 8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q
+2025-05-22 11:51:50,978 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q/trading-stats
+2025-05-22 11:51:50,978 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q/trading-stats
+2025-05-22 11:51:50,980 - phoenix.wallet - WARNING - No trading stats available for wallet 8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q
+2025-05-22 11:51:50,980 - phoenix.wallet - INFO - Analyzing wallet 25/104: HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg
+2025-05-22 11:51:50,980 - phoenix.wallet - INFO - Analyzing wallet HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg using Cielo Finance API
+2025-05-22 11:51:50,981 - phoenix.cielo - INFO - Fetching trading stats for wallet HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg
+2025-05-22 11:51:51,080 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg/trading-stats
+2025-05-22 11:51:51,080 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg/trading-stats
+2025-05-22 11:51:51,082 - phoenix.wallet - WARNING - No trading stats available for wallet HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg
+2025-05-22 11:51:51,082 - phoenix.wallet - INFO - Analyzing wallet 26/104: CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS
+2025-05-22 11:51:51,083 - phoenix.wallet - INFO - Analyzing wallet CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS using Cielo Finance API
+2025-05-22 11:51:51,083 - phoenix.cielo - INFO - Fetching trading stats for wallet CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS
+2025-05-22 11:51:51,181 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS/trading-stats
+2025-05-22 11:51:51,181 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS/trading-stats
+2025-05-22 11:51:51,183 - phoenix.wallet - WARNING - No trading stats available for wallet CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS
+2025-05-22 11:51:51,183 - phoenix.wallet - INFO - Analyzing wallet 27/104: BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor
+2025-05-22 11:51:51,184 - phoenix.wallet - INFO - Analyzing wallet BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor using Cielo Finance API
+2025-05-22 11:51:51,184 - phoenix.cielo - INFO - Fetching trading stats for wallet BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor
+2025-05-22 11:51:51,283 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor/trading-stats
+2025-05-22 11:51:51,283 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor/trading-stats
+2025-05-22 11:51:51,286 - phoenix.wallet - WARNING - No trading stats available for wallet BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor
+2025-05-22 11:51:51,286 - phoenix.wallet - INFO - Analyzing wallet 28/104: FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb
+2025-05-22 11:51:51,286 - phoenix.wallet - INFO - Analyzing wallet FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb using Cielo Finance API
+2025-05-22 11:51:51,287 - phoenix.cielo - INFO - Fetching trading stats for wallet FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb
+2025-05-22 11:51:51,387 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb/trading-stats
+2025-05-22 11:51:51,387 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb/trading-stats
+2025-05-22 11:51:51,388 - phoenix.wallet - WARNING - No trading stats available for wallet FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb
+2025-05-22 11:51:51,389 - phoenix.wallet - INFO - Analyzing wallet 29/104: 5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD
+2025-05-22 11:51:51,389 - phoenix.wallet - INFO - Analyzing wallet 5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD using Cielo Finance API
+2025-05-22 11:51:51,389 - phoenix.cielo - INFO - Fetching trading stats for wallet 5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD
+2025-05-22 11:51:51,488 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD/trading-stats
+2025-05-22 11:51:51,488 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD/trading-stats
+2025-05-22 11:51:51,490 - phoenix.wallet - WARNING - No trading stats available for wallet 5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD
+2025-05-22 11:51:51,490 - phoenix.wallet - INFO - Analyzing wallet 30/104: BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX
+2025-05-22 11:51:51,491 - phoenix.wallet - INFO - Analyzing wallet BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX using Cielo Finance API
+2025-05-22 11:51:51,491 - phoenix.cielo - INFO - Fetching trading stats for wallet BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX
+2025-05-22 11:51:51,590 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX/trading-stats
+2025-05-22 11:51:51,590 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX/trading-stats
+2025-05-22 11:51:51,591 - phoenix.wallet - WARNING - No trading stats available for wallet BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX
+2025-05-22 11:51:51,592 - phoenix.wallet - INFO - Analyzing wallet 31/104: 6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG
+2025-05-22 11:51:51,592 - phoenix.wallet - INFO - Analyzing wallet 6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG using Cielo Finance API
+2025-05-22 11:51:51,593 - phoenix.cielo - INFO - Fetching trading stats for wallet 6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG
+2025-05-22 11:51:51,690 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG/trading-stats
+2025-05-22 11:51:51,691 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG/trading-stats
+2025-05-22 11:51:51,692 - phoenix.wallet - WARNING - No trading stats available for wallet 6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG
+2025-05-22 11:51:51,692 - phoenix.wallet - INFO - Analyzing wallet 32/104: 8CmDY4dBQEVD74T7UcZofUmnLdJyTprFW6cL3b77XYjv
+2025-05-22 11:51:51,693 - phoenix.wallet - INFO - Analyzing wallet 8CmDY4dBQEVD74T7UcZofUmnLdJyTprFW6cL3b77XYjv using Cielo Finance API
+2025-05-22 11:51:51,693 - phoenix.cielo - INFO - Fetching trading stats for wallet 8CmDY4dBQEVD74T7UcZofUmnLdJyTprFW6cL3b77XYjv
+2025-05-22 11:51:51,792 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/8CmDY4dBQEVD74T7UcZofUmnLdJyTprFW6cL3b77XYjv/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/8CmDY4dBQEVD74T7UcZofUmnLdJyTprFW6cL3b77XYjv/trading-stats
+2025-05-22 11:51:51,812 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/8CmDY4dBQEVD74T7UcZofUmnLdJyTprFW6cL3b77XYjv/trading-stats
+2025-05-22 11:51:51,812 - phoenix.wallet - WARNING - No trading stats available for wallet 8CmDY4dBQEVD74T7UcZofUmnLdJyTprFW6cL3b77XYjv
+2025-05-22 11:51:51,813 - phoenix.wallet - INFO - Analyzing wallet 33/104: ESuJogU3kzLjZdfG93k6c4pYq8jJAu63wuv9NDvfesCi
+2025-05-22 11:51:51,814 - phoenix.wallet - INFO - Analyzing wallet ESuJogU3kzLjZdfG93k6c4pYq8jJAu63wuv9NDvfesCi using Cielo Finance API
+2025-05-22 11:51:51,814 - phoenix.cielo - INFO - Fetching trading stats for wallet ESuJogU3kzLjZdfG93k6c4pYq8jJAu63wuv9NDvfesCi
+2025-05-22 11:51:51,915 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/ESuJogU3kzLjZdfG93k6c4pYq8jJAu63wuv9NDvfesCi/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/ESuJogU3kzLjZdfG93k6c4pYq8jJAu63wuv9NDvfesCi/trading-stats
+2025-05-22 11:51:51,915 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/ESuJogU3kzLjZdfG93k6c4pYq8jJAu63wuv9NDvfesCi/trading-stats
+2025-05-22 11:51:51,917 - phoenix.wallet - WARNING - No trading stats available for wallet ESuJogU3kzLjZdfG93k6c4pYq8jJAu63wuv9NDvfesCi
+2025-05-22 11:51:51,917 - phoenix.wallet - INFO - Analyzing wallet 34/104: 933GChDAL2sfL7iubWqPdCEN9yiZia2Ti6RYGXMAJMEu
+2025-05-22 11:51:51,917 - phoenix.wallet - INFO - Analyzing wallet 933GChDAL2sfL7iubWqPdCEN9yiZia2Ti6RYGXMAJMEu using Cielo Finance API
+2025-05-22 11:51:51,918 - phoenix.cielo - INFO - Fetching trading stats for wallet 933GChDAL2sfL7iubWqPdCEN9yiZia2Ti6RYGXMAJMEu
+2025-05-22 11:51:52,025 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/933GChDAL2sfL7iubWqPdCEN9yiZia2Ti6RYGXMAJMEu/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/933GChDAL2sfL7iubWqPdCEN9yiZia2Ti6RYGXMAJMEu/trading-stats
+2025-05-22 11:51:52,025 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/933GChDAL2sfL7iubWqPdCEN9yiZia2Ti6RYGXMAJMEu/trading-stats
+2025-05-22 11:51:52,027 - phoenix.wallet - WARNING - No trading stats available for wallet 933GChDAL2sfL7iubWqPdCEN9yiZia2Ti6RYGXMAJMEu
+2025-05-22 11:51:52,027 - phoenix.wallet - INFO - Analyzing wallet 35/104: 4mn4awCvhti4ybEMNe8q8D28KaoJ2LJiUViSqFgn6NZF
+2025-05-22 11:51:52,028 - phoenix.wallet - INFO - Analyzing wallet 4mn4awCvhti4ybEMNe8q8D28KaoJ2LJiUViSqFgn6NZF using Cielo Finance API
+2025-05-22 11:51:52,028 - phoenix.cielo - INFO - Fetching trading stats for wallet 4mn4awCvhti4ybEMNe8q8D28KaoJ2LJiUViSqFgn6NZF
+2025-05-22 11:51:52,131 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/4mn4awCvhti4ybEMNe8q8D28KaoJ2LJiUViSqFgn6NZF/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/4mn4awCvhti4ybEMNe8q8D28KaoJ2LJiUViSqFgn6NZF/trading-stats
+2025-05-22 11:51:52,131 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/4mn4awCvhti4ybEMNe8q8D28KaoJ2LJiUViSqFgn6NZF/trading-stats
+2025-05-22 11:51:52,133 - phoenix.wallet - WARNING - No trading stats available for wallet 4mn4awCvhti4ybEMNe8q8D28KaoJ2LJiUViSqFgn6NZF
+2025-05-22 11:51:52,133 - phoenix.wallet - INFO - Analyzing wallet 36/104: 7Hy2bJvqPRXGVybQ18zLW2sc8E2DnorXqPrCxARAxWQC
+2025-05-22 11:51:52,134 - phoenix.wallet - INFO - Analyzing wallet 7Hy2bJvqPRXGVybQ18zLW2sc8E2DnorXqPrCxARAxWQC using Cielo Finance API
+2025-05-22 11:51:52,134 - phoenix.cielo - INFO - Fetching trading stats for wallet 7Hy2bJvqPRXGVybQ18zLW2sc8E2DnorXqPrCxARAxWQC
+2025-05-22 11:51:52,234 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/7Hy2bJvqPRXGVybQ18zLW2sc8E2DnorXqPrCxARAxWQC/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/7Hy2bJvqPRXGVybQ18zLW2sc8E2DnorXqPrCxARAxWQC/trading-stats
+2025-05-22 11:51:52,234 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/7Hy2bJvqPRXGVybQ18zLW2sc8E2DnorXqPrCxARAxWQC/trading-stats
+2025-05-22 11:51:52,235 - phoenix.wallet - WARNING - No trading stats available for wallet 7Hy2bJvqPRXGVybQ18zLW2sc8E2DnorXqPrCxARAxWQC
+2025-05-22 11:51:52,236 - phoenix.wallet - INFO - Analyzing wallet 37/104: EwcHQK2dTxnwMsEu7d3Mj5uRLzyJEsxFCCi3CowspoRv
+2025-05-22 11:51:52,236 - phoenix.wallet - INFO - Analyzing wallet EwcHQK2dTxnwMsEu7d3Mj5uRLzyJEsxFCCi3CowspoRv using Cielo Finance API
+2025-05-22 11:51:52,236 - phoenix.cielo - INFO - Fetching trading stats for wallet EwcHQK2dTxnwMsEu7d3Mj5uRLzyJEsxFCCi3CowspoRv
+2025-05-22 11:51:52,335 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/EwcHQK2dTxnwMsEu7d3Mj5uRLzyJEsxFCCi3CowspoRv/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/EwcHQK2dTxnwMsEu7d3Mj5uRLzyJEsxFCCi3CowspoRv/trading-stats
+2025-05-22 11:51:52,335 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/EwcHQK2dTxnwMsEu7d3Mj5uRLzyJEsxFCCi3CowspoRv/trading-stats
+2025-05-22 11:51:52,336 - phoenix.wallet - WARNING - No trading stats available for wallet EwcHQK2dTxnwMsEu7d3Mj5uRLzyJEsxFCCi3CowspoRv
+2025-05-22 11:51:52,337 - phoenix.wallet - INFO - Analyzing wallet 38/104: Gw71goDdGz2F9RhoEoSVcdts57bQRf8A5AWaSVNYSJNH
+2025-05-22 11:51:52,337 - phoenix.wallet - INFO - Analyzing wallet Gw71goDdGz2F9RhoEoSVcdts57bQRf8A5AWaSVNYSJNH using Cielo Finance API
+2025-05-22 11:51:52,337 - phoenix.cielo - INFO - Fetching trading stats for wallet Gw71goDdGz2F9RhoEoSVcdts57bQRf8A5AWaSVNYSJNH
+2025-05-22 11:51:52,441 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/Gw71goDdGz2F9RhoEoSVcdts57bQRf8A5AWaSVNYSJNH/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/Gw71goDdGz2F9RhoEoSVcdts57bQRf8A5AWaSVNYSJNH/trading-stats
+2025-05-22 11:51:52,442 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/Gw71goDdGz2F9RhoEoSVcdts57bQRf8A5AWaSVNYSJNH/trading-stats
+2025-05-22 11:51:52,443 - phoenix.wallet - WARNING - No trading stats available for wallet Gw71goDdGz2F9RhoEoSVcdts57bQRf8A5AWaSVNYSJNH
+2025-05-22 11:51:52,443 - phoenix.wallet - INFO - Analyzing wallet 39/104: GCGrJifLEs8zF4iPc7Vht4pxtVJZ4xqatauhq72VLDzH
+2025-05-22 11:51:52,444 - phoenix.wallet - INFO - Analyzing wallet GCGrJifLEs8zF4iPc7Vht4pxtVJZ4xqatauhq72VLDzH using Cielo Finance API
+2025-05-22 11:51:52,444 - phoenix.cielo - INFO - Fetching trading stats for wallet GCGrJifLEs8zF4iPc7Vht4pxtVJZ4xqatauhq72VLDzH
+2025-05-22 11:51:52,543 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/GCGrJifLEs8zF4iPc7Vht4pxtVJZ4xqatauhq72VLDzH/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/GCGrJifLEs8zF4iPc7Vht4pxtVJZ4xqatauhq72VLDzH/trading-stats
+2025-05-22 11:51:52,543 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/GCGrJifLEs8zF4iPc7Vht4pxtVJZ4xqatauhq72VLDzH/trading-stats
+2025-05-22 11:51:52,544 - phoenix.wallet - WARNING - No trading stats available for wallet GCGrJifLEs8zF4iPc7Vht4pxtVJZ4xqatauhq72VLDzH
+2025-05-22 11:51:52,545 - phoenix.wallet - INFO - Analyzing wallet 40/104: E22jDFD1SwMKjxcFzZ7p4m1rmbAgaw7r5NoKjVZwgCbM
+2025-05-22 11:51:52,545 - phoenix.wallet - INFO - Analyzing wallet E22jDFD1SwMKjxcFzZ7p4m1rmbAgaw7r5NoKjVZwgCbM using Cielo Finance API
+2025-05-22 11:51:52,545 - phoenix.cielo - INFO - Fetching trading stats for wallet E22jDFD1SwMKjxcFzZ7p4m1rmbAgaw7r5NoKjVZwgCbM
+2025-05-22 11:51:52,642 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/E22jDFD1SwMKjxcFzZ7p4m1rmbAgaw7r5NoKjVZwgCbM/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/E22jDFD1SwMKjxcFzZ7p4m1rmbAgaw7r5NoKjVZwgCbM/trading-stats
+2025-05-22 11:51:52,643 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/E22jDFD1SwMKjxcFzZ7p4m1rmbAgaw7r5NoKjVZwgCbM/trading-stats
+2025-05-22 11:51:52,644 - phoenix.wallet - WARNING - No trading stats available for wallet E22jDFD1SwMKjxcFzZ7p4m1rmbAgaw7r5NoKjVZwgCbM
+2025-05-22 11:51:52,645 - phoenix.wallet - INFO - Analyzing wallet 41/104: 51TQpGzNzQDbXP3f6NE2RUMBXQC5Am13wS982m4gs36x
+2025-05-22 11:51:52,646 - phoenix.wallet - INFO - Analyzing wallet 51TQpGzNzQDbXP3f6NE2RUMBXQC5Am13wS982m4gs36x using Cielo Finance API
+2025-05-22 11:51:52,646 - phoenix.cielo - INFO - Fetching trading stats for wallet 51TQpGzNzQDbXP3f6NE2RUMBXQC5Am13wS982m4gs36x
+2025-05-22 11:51:52,743 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/51TQpGzNzQDbXP3f6NE2RUMBXQC5Am13wS982m4gs36x/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/51TQpGzNzQDbXP3f6NE2RUMBXQC5Am13wS982m4gs36x/trading-stats
+2025-05-22 11:51:52,743 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/51TQpGzNzQDbXP3f6NE2RUMBXQC5Am13wS982m4gs36x/trading-stats
+2025-05-22 11:51:52,745 - phoenix.wallet - WARNING - No trading stats available for wallet 51TQpGzNzQDbXP3f6NE2RUMBXQC5Am13wS982m4gs36x
+2025-05-22 11:51:52,745 - phoenix.wallet - INFO - Analyzing wallet 42/104: FoijuyaeB29bqiFnAffemX21bbtw8ZEitesmVLxLDVzN
+2025-05-22 11:51:52,746 - phoenix.wallet - INFO - Analyzing wallet FoijuyaeB29bqiFnAffemX21bbtw8ZEitesmVLxLDVzN using Cielo Finance API
+2025-05-22 11:51:52,746 - phoenix.cielo - INFO - Fetching trading stats for wallet FoijuyaeB29bqiFnAffemX21bbtw8ZEitesmVLxLDVzN
+2025-05-22 11:51:52,843 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/FoijuyaeB29bqiFnAffemX21bbtw8ZEitesmVLxLDVzN/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/FoijuyaeB29bqiFnAffemX21bbtw8ZEitesmVLxLDVzN/trading-stats
+2025-05-22 11:51:52,843 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/FoijuyaeB29bqiFnAffemX21bbtw8ZEitesmVLxLDVzN/trading-stats
+2025-05-22 11:51:52,845 - phoenix.wallet - WARNING - No trading stats available for wallet FoijuyaeB29bqiFnAffemX21bbtw8ZEitesmVLxLDVzN
+2025-05-22 11:51:52,845 - phoenix.wallet - INFO - Analyzing wallet 43/104: AxGu78Gp4fUvx1TgLb7zqTJJ4o2niJ9e8ZnT3cpywHZT
+2025-05-22 11:51:52,846 - phoenix.wallet - INFO - Analyzing wallet AxGu78Gp4fUvx1TgLb7zqTJJ4o2niJ9e8ZnT3cpywHZT using Cielo Finance API
+2025-05-22 11:51:52,846 - phoenix.cielo - INFO - Fetching trading stats for wallet AxGu78Gp4fUvx1TgLb7zqTJJ4o2niJ9e8ZnT3cpywHZT
+2025-05-22 11:51:52,943 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/AxGu78Gp4fUvx1TgLb7zqTJJ4o2niJ9e8ZnT3cpywHZT/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/AxGu78Gp4fUvx1TgLb7zqTJJ4o2niJ9e8ZnT3cpywHZT/trading-stats
+2025-05-22 11:51:52,943 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/AxGu78Gp4fUvx1TgLb7zqTJJ4o2niJ9e8ZnT3cpywHZT/trading-stats
+2025-05-22 11:51:52,945 - phoenix.wallet - WARNING - No trading stats available for wallet AxGu78Gp4fUvx1TgLb7zqTJJ4o2niJ9e8ZnT3cpywHZT
+2025-05-22 11:51:52,945 - phoenix.wallet - INFO - Analyzing wallet 44/104: G31FfCPWEWYsje5wEHtpEufQFVLrC9Z2LfHiUJLFcMQo
+2025-05-22 11:51:52,946 - phoenix.wallet - INFO - Analyzing wallet G31FfCPWEWYsje5wEHtpEufQFVLrC9Z2LfHiUJLFcMQo using Cielo Finance API
+2025-05-22 11:51:52,946 - phoenix.cielo - INFO - Fetching trading stats for wallet G31FfCPWEWYsje5wEHtpEufQFVLrC9Z2LfHiUJLFcMQo
+2025-05-22 11:51:53,043 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/G31FfCPWEWYsje5wEHtpEufQFVLrC9Z2LfHiUJLFcMQo/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/G31FfCPWEWYsje5wEHtpEufQFVLrC9Z2LfHiUJLFcMQo/trading-stats
+2025-05-22 11:51:53,044 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/G31FfCPWEWYsje5wEHtpEufQFVLrC9Z2LfHiUJLFcMQo/trading-stats
+2025-05-22 11:51:53,045 - phoenix.wallet - WARNING - No trading stats available for wallet G31FfCPWEWYsje5wEHtpEufQFVLrC9Z2LfHiUJLFcMQo
+2025-05-22 11:51:53,046 - phoenix.wallet - INFO - Analyzing wallet 45/104: BsQj6ApLH31zSF3gF8C5vXiU6n1cAoNR3ENRhqUp7t1f
+2025-05-22 11:51:53,046 - phoenix.wallet - INFO - Analyzing wallet BsQj6ApLH31zSF3gF8C5vXiU6n1cAoNR3ENRhqUp7t1f using Cielo Finance API
+2025-05-22 11:51:53,046 - phoenix.cielo - INFO - Fetching trading stats for wallet BsQj6ApLH31zSF3gF8C5vXiU6n1cAoNR3ENRhqUp7t1f
+2025-05-22 11:51:53,147 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/BsQj6ApLH31zSF3gF8C5vXiU6n1cAoNR3ENRhqUp7t1f/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/BsQj6ApLH31zSF3gF8C5vXiU6n1cAoNR3ENRhqUp7t1f/trading-stats
+2025-05-22 11:51:53,147 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/BsQj6ApLH31zSF3gF8C5vXiU6n1cAoNR3ENRhqUp7t1f/trading-stats
+2025-05-22 11:51:53,148 - phoenix.wallet - WARNING - No trading stats available for wallet BsQj6ApLH31zSF3gF8C5vXiU6n1cAoNR3ENRhqUp7t1f
+2025-05-22 11:51:53,149 - phoenix.wallet - INFO - Analyzing wallet 46/104: 8aBXqjo2qjfCjZY2aDjpLJRmtnHnJ3UkApUfpYJf84MK
+2025-05-22 11:51:53,149 - phoenix.wallet - INFO - Analyzing wallet 8aBXqjo2qjfCjZY2aDjpLJRmtnHnJ3UkApUfpYJf84MK using Cielo Finance API
+2025-05-22 11:51:53,150 - phoenix.cielo - INFO - Fetching trading stats for wallet 8aBXqjo2qjfCjZY2aDjpLJRmtnHnJ3UkApUfpYJf84MK
+2025-05-22 11:51:53,246 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/8aBXqjo2qjfCjZY2aDjpLJRmtnHnJ3UkApUfpYJf84MK/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/8aBXqjo2qjfCjZY2aDjpLJRmtnHnJ3UkApUfpYJf84MK/trading-stats
+2025-05-22 11:51:53,246 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/8aBXqjo2qjfCjZY2aDjpLJRmtnHnJ3UkApUfpYJf84MK/trading-stats
+2025-05-22 11:51:53,248 - phoenix.wallet - WARNING - No trading stats available for wallet 8aBXqjo2qjfCjZY2aDjpLJRmtnHnJ3UkApUfpYJf84MK
+2025-05-22 11:51:53,248 - phoenix.wallet - INFO - Analyzing wallet 47/104: 7LBSXkWHqn33FJ82u4DG4gjZR7ENyfcTnsPUdrLD9BGf
+2025-05-22 11:51:53,249 - phoenix.wallet - INFO - Analyzing wallet 7LBSXkWHqn33FJ82u4DG4gjZR7ENyfcTnsPUdrLD9BGf using Cielo Finance API
+2025-05-22 11:51:53,249 - phoenix.cielo - INFO - Fetching trading stats for wallet 7LBSXkWHqn33FJ82u4DG4gjZR7ENyfcTnsPUdrLD9BGf
+2025-05-22 11:51:53,345 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/7LBSXkWHqn33FJ82u4DG4gjZR7ENyfcTnsPUdrLD9BGf/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/7LBSXkWHqn33FJ82u4DG4gjZR7ENyfcTnsPUdrLD9BGf/trading-stats
+2025-05-22 11:51:56,167 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/7LBSXkWHqn33FJ82u4DG4gjZR7ENyfcTnsPUdrLD9BGf/trading-stats
+2025-05-22 11:51:56,175 - phoenix.wallet - WARNING - No trading stats available for wallet 7LBSXkWHqn33FJ82u4DG4gjZR7ENyfcTnsPUdrLD9BGf
+2025-05-22 11:51:56,178 - phoenix.wallet - INFO - Analyzing wallet 48/104: 26CSPXoJWTWeybxzUzHFqWdHgTu1mMb7pifVp57LtWDH
+2025-05-22 11:51:56,178 - phoenix.wallet - INFO - Analyzing wallet 26CSPXoJWTWeybxzUzHFqWdHgTu1mMb7pifVp57LtWDH using Cielo Finance API
+2025-05-22 11:51:56,179 - phoenix.cielo - INFO - Fetching trading stats for wallet 26CSPXoJWTWeybxzUzHFqWdHgTu1mMb7pifVp57LtWDH
+2025-05-22 11:51:56,285 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/26CSPXoJWTWeybxzUzHFqWdHgTu1mMb7pifVp57LtWDH/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/26CSPXoJWTWeybxzUzHFqWdHgTu1mMb7pifVp57LtWDH/trading-stats
+2025-05-22 11:51:56,286 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/26CSPXoJWTWeybxzUzHFqWdHgTu1mMb7pifVp57LtWDH/trading-stats
+2025-05-22 11:51:56,287 - phoenix.wallet - WARNING - No trading stats available for wallet 26CSPXoJWTWeybxzUzHFqWdHgTu1mMb7pifVp57LtWDH
+2025-05-22 11:51:56,288 - phoenix.wallet - INFO - Analyzing wallet 49/104: Q9wxmeYRBhHHfBF2sHMnY6JmkB57nYPj39Komw3eMnE
+2025-05-22 11:51:56,288 - phoenix.wallet - INFO - Analyzing wallet Q9wxmeYRBhHHfBF2sHMnY6JmkB57nYPj39Komw3eMnE using Cielo Finance API
+2025-05-22 11:51:56,288 - phoenix.cielo - INFO - Fetching trading stats for wallet Q9wxmeYRBhHHfBF2sHMnY6JmkB57nYPj39Komw3eMnE
+2025-05-22 11:51:56,389 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/Q9wxmeYRBhHHfBF2sHMnY6JmkB57nYPj39Komw3eMnE/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/Q9wxmeYRBhHHfBF2sHMnY6JmkB57nYPj39Komw3eMnE/trading-stats
+2025-05-22 11:51:56,389 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/Q9wxmeYRBhHHfBF2sHMnY6JmkB57nYPj39Komw3eMnE/trading-stats
+2025-05-22 11:51:56,391 - phoenix.wallet - WARNING - No trading stats available for wallet Q9wxmeYRBhHHfBF2sHMnY6JmkB57nYPj39Komw3eMnE
+2025-05-22 11:51:56,391 - phoenix.wallet - INFO - Analyzing wallet 50/104: Bzbt2UYkk6Kycp2ZR3dFpnypCLMckreXPHnw65NNd1eN
+2025-05-22 11:51:56,392 - phoenix.wallet - INFO - Analyzing wallet Bzbt2UYkk6Kycp2ZR3dFpnypCLMckreXPHnw65NNd1eN using Cielo Finance API
+2025-05-22 11:51:56,392 - phoenix.cielo - INFO - Fetching trading stats for wallet Bzbt2UYkk6Kycp2ZR3dFpnypCLMckreXPHnw65NNd1eN
+2025-05-22 11:51:56,498 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/Bzbt2UYkk6Kycp2ZR3dFpnypCLMckreXPHnw65NNd1eN/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/Bzbt2UYkk6Kycp2ZR3dFpnypCLMckreXPHnw65NNd1eN/trading-stats
+2025-05-22 11:51:56,499 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/Bzbt2UYkk6Kycp2ZR3dFpnypCLMckreXPHnw65NNd1eN/trading-stats
+2025-05-22 11:51:56,500 - phoenix.wallet - WARNING - No trading stats available for wallet Bzbt2UYkk6Kycp2ZR3dFpnypCLMckreXPHnw65NNd1eN
+2025-05-22 11:51:56,500 - phoenix.wallet - INFO - Analyzing wallet 51/104: 1qaaUAyAQQ7EhCBivX91iVNpoAxNcdLW4PspaifC5hA
+2025-05-22 11:51:56,501 - phoenix.wallet - INFO - Analyzing wallet 1qaaUAyAQQ7EhCBivX91iVNpoAxNcdLW4PspaifC5hA using Cielo Finance API
+2025-05-22 11:51:56,501 - phoenix.cielo - INFO - Fetching trading stats for wallet 1qaaUAyAQQ7EhCBivX91iVNpoAxNcdLW4PspaifC5hA
+2025-05-22 11:51:56,598 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/1qaaUAyAQQ7EhCBivX91iVNpoAxNcdLW4PspaifC5hA/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/1qaaUAyAQQ7EhCBivX91iVNpoAxNcdLW4PspaifC5hA/trading-stats
+2025-05-22 11:51:56,598 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/1qaaUAyAQQ7EhCBivX91iVNpoAxNcdLW4PspaifC5hA/trading-stats
+2025-05-22 11:51:56,600 - phoenix.wallet - WARNING - No trading stats available for wallet 1qaaUAyAQQ7EhCBivX91iVNpoAxNcdLW4PspaifC5hA
+2025-05-22 11:51:56,600 - phoenix.wallet - INFO - Analyzing wallet 52/104: E9AraWahsb1nDdsjcKNWXs9X7QXkyqALyZQexxKVMcsG
+2025-05-22 11:51:56,601 - phoenix.wallet - INFO - Analyzing wallet E9AraWahsb1nDdsjcKNWXs9X7QXkyqALyZQexxKVMcsG using Cielo Finance API
+2025-05-22 11:51:56,601 - phoenix.cielo - INFO - Fetching trading stats for wallet E9AraWahsb1nDdsjcKNWXs9X7QXkyqALyZQexxKVMcsG
+2025-05-22 11:51:56,699 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/E9AraWahsb1nDdsjcKNWXs9X7QXkyqALyZQexxKVMcsG/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/E9AraWahsb1nDdsjcKNWXs9X7QXkyqALyZQexxKVMcsG/trading-stats
+2025-05-22 11:51:56,700 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/E9AraWahsb1nDdsjcKNWXs9X7QXkyqALyZQexxKVMcsG/trading-stats
+2025-05-22 11:51:56,701 - phoenix.wallet - WARNING - No trading stats available for wallet E9AraWahsb1nDdsjcKNWXs9X7QXkyqALyZQexxKVMcsG
+2025-05-22 11:51:56,702 - phoenix.wallet - INFO - Analyzing wallet 53/104: GftxZNiHcH4mjcJPpzwueoRdvJx9qaDyN69VvM64ipna
+2025-05-22 11:51:56,702 - phoenix.wallet - INFO - Analyzing wallet GftxZNiHcH4mjcJPpzwueoRdvJx9qaDyN69VvM64ipna using Cielo Finance API
+2025-05-22 11:51:56,702 - phoenix.cielo - INFO - Fetching trading stats for wallet GftxZNiHcH4mjcJPpzwueoRdvJx9qaDyN69VvM64ipna
+2025-05-22 11:51:56,799 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/GftxZNiHcH4mjcJPpzwueoRdvJx9qaDyN69VvM64ipna/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/GftxZNiHcH4mjcJPpzwueoRdvJx9qaDyN69VvM64ipna/trading-stats
+2025-05-22 11:51:56,800 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/GftxZNiHcH4mjcJPpzwueoRdvJx9qaDyN69VvM64ipna/trading-stats
+2025-05-22 11:51:56,801 - phoenix.wallet - WARNING - No trading stats available for wallet GftxZNiHcH4mjcJPpzwueoRdvJx9qaDyN69VvM64ipna
+2025-05-22 11:51:56,802 - phoenix.wallet - INFO - Analyzing wallet 54/104: 6omagkxud2k8ddamrEZ9unbBQ7WpctZjBAUJzRAdwFL1
+2025-05-22 11:51:56,802 - phoenix.wallet - INFO - Analyzing wallet 6omagkxud2k8ddamrEZ9unbBQ7WpctZjBAUJzRAdwFL1 using Cielo Finance API
+2025-05-22 11:51:56,802 - phoenix.cielo - INFO - Fetching trading stats for wallet 6omagkxud2k8ddamrEZ9unbBQ7WpctZjBAUJzRAdwFL1
+2025-05-22 11:51:56,900 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/6omagkxud2k8ddamrEZ9unbBQ7WpctZjBAUJzRAdwFL1/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6omagkxud2k8ddamrEZ9unbBQ7WpctZjBAUJzRAdwFL1/trading-stats
+2025-05-22 11:51:56,900 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6omagkxud2k8ddamrEZ9unbBQ7WpctZjBAUJzRAdwFL1/trading-stats
+2025-05-22 11:51:56,902 - phoenix.wallet - WARNING - No trading stats available for wallet 6omagkxud2k8ddamrEZ9unbBQ7WpctZjBAUJzRAdwFL1
+2025-05-22 11:51:56,902 - phoenix.wallet - INFO - Analyzing wallet 55/104: BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r
+2025-05-22 11:51:56,903 - phoenix.wallet - INFO - Analyzing wallet BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r using Cielo Finance API
+2025-05-22 11:51:56,903 - phoenix.cielo - INFO - Fetching trading stats for wallet BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r
+2025-05-22 11:51:57,003 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r/trading-stats
+2025-05-22 11:51:57,003 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r/trading-stats
+2025-05-22 11:51:57,005 - phoenix.wallet - WARNING - No trading stats available for wallet BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r
+2025-05-22 11:51:57,005 - phoenix.wallet - INFO - Analyzing wallet 56/104: GFsQ7v3pZeqgbf2pMgKRSzZ7SKqY2MaWVhZpz9U3pgCc
+2025-05-22 11:51:57,005 - phoenix.wallet - INFO - Analyzing wallet GFsQ7v3pZeqgbf2pMgKRSzZ7SKqY2MaWVhZpz9U3pgCc using Cielo Finance API
+2025-05-22 11:51:57,006 - phoenix.cielo - INFO - Fetching trading stats for wallet GFsQ7v3pZeqgbf2pMgKRSzZ7SKqY2MaWVhZpz9U3pgCc
+2025-05-22 11:51:57,104 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/GFsQ7v3pZeqgbf2pMgKRSzZ7SKqY2MaWVhZpz9U3pgCc/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/GFsQ7v3pZeqgbf2pMgKRSzZ7SKqY2MaWVhZpz9U3pgCc/trading-stats
+2025-05-22 11:51:57,105 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/GFsQ7v3pZeqgbf2pMgKRSzZ7SKqY2MaWVhZpz9U3pgCc/trading-stats
+2025-05-22 11:51:57,106 - phoenix.wallet - WARNING - No trading stats available for wallet GFsQ7v3pZeqgbf2pMgKRSzZ7SKqY2MaWVhZpz9U3pgCc
+2025-05-22 11:51:57,106 - phoenix.wallet - INFO - Analyzing wallet 57/104: 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr
+2025-05-22 11:51:57,107 - phoenix.wallet - INFO - Analyzing wallet 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr using Cielo Finance API
+2025-05-22 11:51:57,107 - phoenix.cielo - INFO - Fetching trading stats for wallet 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr
+2025-05-22 11:51:57,205 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr/trading-stats
+2025-05-22 11:51:57,205 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr/trading-stats
+2025-05-22 11:51:57,206 - phoenix.wallet - WARNING - No trading stats available for wallet 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr
+2025-05-22 11:51:57,208 - phoenix.wallet - INFO - Analyzing wallet 58/104: 4RLMzkyMqizx7CBXXZKRSrcu82CF96YzeoVxokSnLs7D
+2025-05-22 11:51:57,208 - phoenix.wallet - INFO - Analyzing wallet 4RLMzkyMqizx7CBXXZKRSrcu82CF96YzeoVxokSnLs7D using Cielo Finance API
+2025-05-22 11:51:57,208 - phoenix.cielo - INFO - Fetching trading stats for wallet 4RLMzkyMqizx7CBXXZKRSrcu82CF96YzeoVxokSnLs7D
+2025-05-22 11:51:57,309 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/4RLMzkyMqizx7CBXXZKRSrcu82CF96YzeoVxokSnLs7D/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/4RLMzkyMqizx7CBXXZKRSrcu82CF96YzeoVxokSnLs7D/trading-stats
+2025-05-22 11:51:57,309 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/4RLMzkyMqizx7CBXXZKRSrcu82CF96YzeoVxokSnLs7D/trading-stats
+2025-05-22 11:51:57,310 - phoenix.wallet - WARNING - No trading stats available for wallet 4RLMzkyMqizx7CBXXZKRSrcu82CF96YzeoVxokSnLs7D
+2025-05-22 11:51:57,311 - phoenix.wallet - INFO - Analyzing wallet 59/104: BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX
+2025-05-22 11:51:57,311 - phoenix.wallet - INFO - Analyzing wallet BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX using Cielo Finance API
+2025-05-22 11:51:57,312 - phoenix.cielo - INFO - Fetching trading stats for wallet BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX
+2025-05-22 11:51:57,410 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX/trading-stats
+2025-05-22 11:51:57,410 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX/trading-stats
+2025-05-22 11:51:57,411 - phoenix.wallet - WARNING - No trading stats available for wallet BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX
+2025-05-22 11:51:57,411 - phoenix.wallet - INFO - Analyzing wallet 60/104: 53AkAhY9WsUnXEvMCXL2VxJdw6T74XLWPSuaLJz82rPS
+2025-05-22 11:51:57,412 - phoenix.wallet - INFO - Analyzing wallet 53AkAhY9WsUnXEvMCXL2VxJdw6T74XLWPSuaLJz82rPS using Cielo Finance API
+2025-05-22 11:51:57,412 - phoenix.cielo - INFO - Fetching trading stats for wallet 53AkAhY9WsUnXEvMCXL2VxJdw6T74XLWPSuaLJz82rPS
+2025-05-22 11:51:57,513 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/53AkAhY9WsUnXEvMCXL2VxJdw6T74XLWPSuaLJz82rPS/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/53AkAhY9WsUnXEvMCXL2VxJdw6T74XLWPSuaLJz82rPS/trading-stats
+2025-05-22 11:51:57,513 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/53AkAhY9WsUnXEvMCXL2VxJdw6T74XLWPSuaLJz82rPS/trading-stats
+2025-05-22 11:51:57,514 - phoenix.wallet - WARNING - No trading stats available for wallet 53AkAhY9WsUnXEvMCXL2VxJdw6T74XLWPSuaLJz82rPS
+2025-05-22 11:51:57,515 - phoenix.wallet - INFO - Analyzing wallet 61/104: HHAfkPydWkSVnGTxQfBKaM7kmBk26AaLypSaE8nJYhmc
+2025-05-22 11:51:57,515 - phoenix.wallet - INFO - Analyzing wallet HHAfkPydWkSVnGTxQfBKaM7kmBk26AaLypSaE8nJYhmc using Cielo Finance API
+2025-05-22 11:51:57,515 - phoenix.cielo - INFO - Fetching trading stats for wallet HHAfkPydWkSVnGTxQfBKaM7kmBk26AaLypSaE8nJYhmc
+2025-05-22 11:51:57,612 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/HHAfkPydWkSVnGTxQfBKaM7kmBk26AaLypSaE8nJYhmc/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/HHAfkPydWkSVnGTxQfBKaM7kmBk26AaLypSaE8nJYhmc/trading-stats
+2025-05-22 11:51:57,612 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/HHAfkPydWkSVnGTxQfBKaM7kmBk26AaLypSaE8nJYhmc/trading-stats
+2025-05-22 11:51:57,614 - phoenix.wallet - WARNING - No trading stats available for wallet HHAfkPydWkSVnGTxQfBKaM7kmBk26AaLypSaE8nJYhmc
+2025-05-22 11:51:57,614 - phoenix.wallet - INFO - Analyzing wallet 62/104: CXZT2abrKxmzgJJ2JJcTGbXBxWypQyg8oxdXMi9r448W
+2025-05-22 11:51:57,615 - phoenix.wallet - INFO - Analyzing wallet CXZT2abrKxmzgJJ2JJcTGbXBxWypQyg8oxdXMi9r448W using Cielo Finance API
+2025-05-22 11:51:57,616 - phoenix.cielo - INFO - Fetching trading stats for wallet CXZT2abrKxmzgJJ2JJcTGbXBxWypQyg8oxdXMi9r448W
+2025-05-22 11:51:57,713 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/CXZT2abrKxmzgJJ2JJcTGbXBxWypQyg8oxdXMi9r448W/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/CXZT2abrKxmzgJJ2JJcTGbXBxWypQyg8oxdXMi9r448W/trading-stats
+2025-05-22 11:51:57,714 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/CXZT2abrKxmzgJJ2JJcTGbXBxWypQyg8oxdXMi9r448W/trading-stats
+2025-05-22 11:51:57,715 - phoenix.wallet - WARNING - No trading stats available for wallet CXZT2abrKxmzgJJ2JJcTGbXBxWypQyg8oxdXMi9r448W
+2025-05-22 11:51:57,716 - phoenix.wallet - INFO - Analyzing wallet 63/104: 5LdhxZJRicTyoVp6sXjDrmy17vADtK5GHE6DMm1FrB38
+2025-05-22 11:51:57,716 - phoenix.wallet - INFO - Analyzing wallet 5LdhxZJRicTyoVp6sXjDrmy17vADtK5GHE6DMm1FrB38 using Cielo Finance API
+2025-05-22 11:51:57,716 - phoenix.cielo - INFO - Fetching trading stats for wallet 5LdhxZJRicTyoVp6sXjDrmy17vADtK5GHE6DMm1FrB38
+2025-05-22 11:51:57,816 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/5LdhxZJRicTyoVp6sXjDrmy17vADtK5GHE6DMm1FrB38/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/5LdhxZJRicTyoVp6sXjDrmy17vADtK5GHE6DMm1FrB38/trading-stats
+2025-05-22 11:51:57,816 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/5LdhxZJRicTyoVp6sXjDrmy17vADtK5GHE6DMm1FrB38/trading-stats
+2025-05-22 11:51:57,817 - phoenix.wallet - WARNING - No trading stats available for wallet 5LdhxZJRicTyoVp6sXjDrmy17vADtK5GHE6DMm1FrB38
+2025-05-22 11:51:57,817 - phoenix.wallet - INFO - Analyzing wallet 64/104: EPHFZP6GRDUcsQpysd81E4yJkGkMkq1HzxyTUs6SJ1nb
+2025-05-22 11:51:57,817 - phoenix.wallet - INFO - Analyzing wallet EPHFZP6GRDUcsQpysd81E4yJkGkMkq1HzxyTUs6SJ1nb using Cielo Finance API
+2025-05-22 11:51:57,818 - phoenix.cielo - INFO - Fetching trading stats for wallet EPHFZP6GRDUcsQpysd81E4yJkGkMkq1HzxyTUs6SJ1nb
+2025-05-22 12:16:33,733 - phoenix - INFO - Loaded 104 wallet addresses from wallets.txt
+2025-05-22 12:16:34,026 - phoenix - INFO - ✅ Cielo Finance API initialized
+2025-05-22 12:16:34,027 - phoenix - INFO - ✅ Birdeye API initialized (for token metadata)
+2025-05-22 12:16:34,334 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/11111111111111111111111111111111/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/11111111111111111111111111111111/trading-stats
+2025-05-22 12:16:34,334 - phoenix.cielo - INFO - ✅ Cielo Finance API is accessible
+2025-05-22 12:16:34,336 - phoenix.wallet - INFO - ✅ Cielo Finance API connection verified
+2025-05-22 12:16:34,336 - phoenix - INFO - Using RPC: https://api.mainnet-beta.solana.com
+2025-05-22 12:16:34,336 - phoenix.wallet - INFO - Batch analyzing 104 wallets using Cielo Finance API (contested: True)
+2025-05-22 12:16:34,337 - phoenix.wallet - INFO - Analyzing wallet 1/104: 2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd
+2025-05-22 12:16:34,337 - phoenix.wallet - INFO - Analyzing wallet 2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd using Cielo Finance API
+2025-05-22 12:16:34,337 - phoenix.cielo - INFO - Fetching trading stats for wallet 2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd
+2025-05-22 12:16:34,439 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd/trading-stats
+2025-05-22 12:16:34,439 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd/trading-stats
+2025-05-22 12:16:34,441 - phoenix.wallet - WARNING - No token P&L data available for wallet 2PnqznAKcwK6xu7mBjc2XAiwugMYzMx97vZSZsgLgVVd
+2025-05-22 12:16:34,441 - phoenix.wallet - INFO - Analyzing wallet 2/104: 5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex
+2025-05-22 12:16:34,441 - phoenix.wallet - INFO - Analyzing wallet 5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex using Cielo Finance API
+2025-05-22 12:16:34,442 - phoenix.cielo - INFO - Fetching trading stats for wallet 5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex
+2025-05-22 12:16:34,546 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex/trading-stats
+2025-05-22 12:16:34,546 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex/trading-stats
+2025-05-22 12:16:34,548 - phoenix.wallet - WARNING - No token P&L data available for wallet 5f5jNxQuHnAqmRv4fGsvUT91Ac24eJN6N1rWmB6hX5Ex
+2025-05-22 12:16:34,548 - phoenix.wallet - INFO - Analyzing wallet 3/104: Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e
+2025-05-22 12:16:34,548 - phoenix.wallet - INFO - Analyzing wallet Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e using Cielo Finance API
+2025-05-22 12:16:34,549 - phoenix.cielo - INFO - Fetching trading stats for wallet Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e
+2025-05-22 12:16:34,648 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e/trading-stats
+2025-05-22 12:16:34,648 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e/trading-stats
+2025-05-22 12:16:34,650 - phoenix.wallet - WARNING - No token P&L data available for wallet Df3fakWvzYpn5BcyrwxyLKXgA2TjmL9WmqGocUhSK74e
+2025-05-22 12:16:34,650 - phoenix.wallet - INFO - Analyzing wallet 4/104: 8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i
+2025-05-22 12:16:34,651 - phoenix.wallet - INFO - Analyzing wallet 8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i using Cielo Finance API
+2025-05-22 12:16:34,651 - phoenix.cielo - INFO - Fetching trading stats for wallet 8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i
+2025-05-22 12:16:34,749 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i/trading-stats
+2025-05-22 12:16:34,750 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i/trading-stats
+2025-05-22 12:16:34,751 - phoenix.wallet - WARNING - No token P&L data available for wallet 8FzQmhFUdh58HyaQjaHRZHuhWnNLRkcoFu1T3NBU3t6i
+2025-05-22 12:16:34,752 - phoenix.wallet - INFO - Analyzing wallet 5/104: A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o
+2025-05-22 12:16:34,752 - phoenix.wallet - INFO - Analyzing wallet A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o using Cielo Finance API
+2025-05-22 12:16:34,752 - phoenix.cielo - INFO - Fetching trading stats for wallet A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o
+2025-05-22 12:16:34,851 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o/trading-stats
+2025-05-22 12:16:34,851 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o/trading-stats
+2025-05-22 12:16:34,852 - phoenix.wallet - WARNING - No token P&L data available for wallet A1KqC4uo8Aeyd99XrB9d32vkHms4MMgkvCzUBf9whr3o
+2025-05-22 12:16:34,852 - phoenix.wallet - INFO - Analyzing wallet 6/104: 4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq
+2025-05-22 12:16:34,853 - phoenix.wallet - INFO - Analyzing wallet 4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq using Cielo Finance API
+2025-05-22 12:16:34,853 - phoenix.cielo - INFO - Fetching trading stats for wallet 4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq
+2025-05-22 12:16:34,952 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq/trading-stats
+2025-05-22 12:16:34,952 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq/trading-stats
+2025-05-22 12:16:34,954 - phoenix.wallet - WARNING - No token P&L data available for wallet 4nGK4wtHrp48FcEQJ73qxJaBcLcvCN7ke4mYhmW6NSvq
+2025-05-22 12:16:34,954 - phoenix.wallet - INFO - Analyzing wallet 7/104: 9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn
+2025-05-22 12:16:34,955 - phoenix.wallet - INFO - Analyzing wallet 9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn using Cielo Finance API
+2025-05-22 12:16:34,955 - phoenix.cielo - INFO - Fetching trading stats for wallet 9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn
+2025-05-22 12:16:35,056 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn/trading-stats
+2025-05-22 12:16:35,056 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn/trading-stats
+2025-05-22 12:16:35,059 - phoenix.wallet - WARNING - No token P&L data available for wallet 9KfyKUqPzthvnuonNaTv4tpiMiLXN45iuJfmEP9jVGEn
+2025-05-22 12:16:35,059 - phoenix.wallet - INFO - Analyzing wallet 8/104: 3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B
+2025-05-22 12:16:35,060 - phoenix.wallet - INFO - Analyzing wallet 3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B using Cielo Finance API
+2025-05-22 12:16:35,060 - phoenix.cielo - INFO - Fetching trading stats for wallet 3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B
+2025-05-22 12:16:35,160 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B/trading-stats
+2025-05-22 12:16:35,160 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B/trading-stats
+2025-05-22 12:16:35,162 - phoenix.wallet - WARNING - No token P&L data available for wallet 3d3VXCD4dPTFzh2hnen88zdjvefbr8LPvjsqDeekPN9B
+2025-05-22 12:16:35,162 - phoenix.wallet - INFO - Analyzing wallet 9/104: BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r
+2025-05-22 12:16:35,162 - phoenix.wallet - INFO - Analyzing wallet BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r using Cielo Finance API
+2025-05-22 12:16:35,163 - phoenix.cielo - INFO - Fetching trading stats for wallet BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r
+2025-05-22 12:16:35,259 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r/trading-stats
+2025-05-22 12:16:35,259 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r/trading-stats
+2025-05-22 12:16:35,261 - phoenix.wallet - WARNING - No token P&L data available for wallet BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r
+2025-05-22 12:16:35,261 - phoenix.wallet - INFO - Analyzing wallet 10/104: 96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu
+2025-05-22 12:16:35,262 - phoenix.wallet - INFO - Analyzing wallet 96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu using Cielo Finance API
+2025-05-22 12:16:35,262 - phoenix.cielo - INFO - Fetching trading stats for wallet 96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu
+2025-05-22 12:16:35,360 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu/trading-stats
+2025-05-22 12:16:35,360 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu/trading-stats
+2025-05-22 12:16:35,361 - phoenix.wallet - WARNING - No token P&L data available for wallet 96yk5XfVxoL4S1JGm9pNwqdmURRXh4Lr99qBxKRunibu
+2025-05-22 12:16:35,362 - phoenix.wallet - INFO - Analyzing wallet 11/104: 6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK
+2025-05-22 12:16:35,362 - phoenix.wallet - INFO - Analyzing wallet 6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK using Cielo Finance API
+2025-05-22 12:16:35,363 - phoenix.cielo - INFO - Fetching trading stats for wallet 6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK
+2025-05-22 12:16:35,463 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK/trading-stats
+2025-05-22 12:16:35,463 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK/trading-stats
+2025-05-22 12:16:35,465 - phoenix.wallet - WARNING - No token P&L data available for wallet 6SioaaKDVmGC73GHJogqNeN7mrSY1iuo7z4fba78DGRK
+2025-05-22 12:16:35,465 - phoenix.wallet - INFO - Analyzing wallet 12/104: 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr
+2025-05-22 12:16:35,466 - phoenix.wallet - INFO - Analyzing wallet 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr using Cielo Finance API
+2025-05-22 12:16:35,466 - phoenix.cielo - INFO - Fetching trading stats for wallet 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr
+2025-05-22 12:16:35,566 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr/trading-stats
+2025-05-22 12:16:35,566 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr/trading-stats
+2025-05-22 12:16:35,568 - phoenix.wallet - WARNING - No token P&L data available for wallet 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr
+2025-05-22 12:16:35,569 - phoenix.wallet - INFO - Analyzing wallet 13/104: FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL
+2025-05-22 12:16:35,569 - phoenix.wallet - INFO - Analyzing wallet FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL using Cielo Finance API
+2025-05-22 12:16:35,570 - phoenix.cielo - INFO - Fetching trading stats for wallet FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL
+2025-05-22 12:16:35,668 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL/trading-stats
+2025-05-22 12:16:35,676 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL/trading-stats
+2025-05-22 12:16:35,677 - phoenix.wallet - WARNING - No token P&L data available for wallet FDjVSvTgdxnYXpgtBJyJcjH9Z76dVsxmtfBVfiM8rnpL
+2025-05-22 12:16:35,678 - phoenix.wallet - INFO - Analyzing wallet 14/104: 7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB
+2025-05-22 12:16:35,678 - phoenix.wallet - INFO - Analyzing wallet 7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB using Cielo Finance API
+2025-05-22 12:16:35,679 - phoenix.cielo - INFO - Fetching trading stats for wallet 7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB
+2025-05-22 12:16:35,781 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB/trading-stats
+2025-05-22 12:16:35,782 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB/trading-stats
+2025-05-22 12:16:35,783 - phoenix.wallet - WARNING - No token P&L data available for wallet 7MiQD4jcvK4YD2xnKCua5PzoZUoocgMmzEdySQVwEzNB
+2025-05-22 12:16:35,784 - phoenix.wallet - INFO - Analyzing wallet 15/104: FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q
+2025-05-22 12:16:35,784 - phoenix.wallet - INFO - Analyzing wallet FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q using Cielo Finance API
+2025-05-22 12:16:35,784 - phoenix.cielo - INFO - Fetching trading stats for wallet FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q
+2025-05-22 12:16:35,881 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q/trading-stats
+2025-05-22 12:16:35,881 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q/trading-stats
+2025-05-22 12:16:35,883 - phoenix.wallet - WARNING - No token P&L data available for wallet FS4zXhaTaeFp2scujCUQLM1HWmMHBZX1uu98WbceXu1q
+2025-05-22 12:16:35,883 - phoenix.wallet - INFO - Analyzing wallet 16/104: F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe
+2025-05-22 12:16:35,884 - phoenix.wallet - INFO - Analyzing wallet F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe using Cielo Finance API
+2025-05-22 12:16:35,884 - phoenix.cielo - INFO - Fetching trading stats for wallet F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe
+2025-05-22 12:16:35,982 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe/trading-stats
+2025-05-22 12:16:35,982 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe/trading-stats
+2025-05-22 12:16:35,984 - phoenix.wallet - WARNING - No token P&L data available for wallet F2wJFdoGzgjBuhqAUSSCDn81WbjMK81nnY1M4Tm9rcoe
+2025-05-22 12:16:35,984 - phoenix.wallet - INFO - Analyzing wallet 17/104: 5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn
+2025-05-22 12:16:35,985 - phoenix.wallet - INFO - Analyzing wallet 5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn using Cielo Finance API
+2025-05-22 12:16:35,985 - phoenix.cielo - INFO - Fetching trading stats for wallet 5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn
+2025-05-22 12:16:36,085 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn/trading-stats
+2025-05-22 12:16:36,085 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn/trading-stats
+2025-05-22 12:16:36,087 - phoenix.wallet - WARNING - No token P&L data available for wallet 5BvQVDPp3FJwLpe1yut4hZyjAmXpXLnZKmUwqx6fw8Qn
+2025-05-22 12:16:36,087 - phoenix.wallet - INFO - Analyzing wallet 18/104: 8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2
+2025-05-22 12:16:36,088 - phoenix.wallet - INFO - Analyzing wallet 8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2 using Cielo Finance API
+2025-05-22 12:16:36,089 - phoenix.cielo - INFO - Fetching trading stats for wallet 8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2
+2025-05-22 12:16:36,187 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2/trading-stats
+2025-05-22 12:16:36,188 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2/trading-stats
+2025-05-22 12:16:36,189 - phoenix.wallet - WARNING - No token P&L data available for wallet 8DYYQoLycDxrAK5ThvbDEhRkzDTbziBjWG8LkeE6yzW2
+2025-05-22 12:16:36,190 - phoenix.wallet - INFO - Analyzing wallet 19/104: D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz
+2025-05-22 12:16:36,190 - phoenix.wallet - INFO - Analyzing wallet D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz using Cielo Finance API
+2025-05-22 12:16:36,191 - phoenix.cielo - INFO - Fetching trading stats for wallet D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz
+2025-05-22 12:16:36,288 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz/trading-stats
+2025-05-22 12:16:36,288 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz/trading-stats
+2025-05-22 12:16:36,290 - phoenix.wallet - WARNING - No token P&L data available for wallet D8MS6DrZLagfVPKhavbLWfdP9TZHRaMKaFkskkwaUGmz
+2025-05-22 12:16:36,290 - phoenix.wallet - INFO - Analyzing wallet 20/104: CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ
+2025-05-22 12:16:36,291 - phoenix.wallet - INFO - Analyzing wallet CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ using Cielo Finance API
+2025-05-22 12:16:36,291 - phoenix.cielo - INFO - Fetching trading stats for wallet CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ
+2025-05-22 12:16:36,389 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ/trading-stats
+2025-05-22 12:16:36,389 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ/trading-stats
+2025-05-22 12:16:36,391 - phoenix.wallet - WARNING - No token P&L data available for wallet CGE3KMhcwxcd3nujQmuU6DM7aTnC5qp3oGyvhJokZyTJ
+2025-05-22 12:16:36,391 - phoenix.wallet - INFO - Analyzing wallet 21/104: FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W
+2025-05-22 12:16:36,392 - phoenix.wallet - INFO - Analyzing wallet FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W using Cielo Finance API
+2025-05-22 12:16:36,392 - phoenix.cielo - INFO - Fetching trading stats for wallet FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W
+2025-05-22 12:16:36,495 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W/trading-stats
+2025-05-22 12:16:36,495 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W/trading-stats
+2025-05-22 12:16:36,497 - phoenix.wallet - WARNING - No token P&L data available for wallet FkmH85GUUZoMKtCWqXEvfvXgoCGNv7diCAtGq1vEFY3W
+2025-05-22 12:16:36,497 - phoenix.wallet - INFO - Analyzing wallet 22/104: 9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj
+2025-05-22 12:16:36,498 - phoenix.wallet - INFO - Analyzing wallet 9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj using Cielo Finance API
+2025-05-22 12:16:36,498 - phoenix.cielo - INFO - Fetching trading stats for wallet 9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj
+2025-05-22 12:16:36,597 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj/trading-stats
+2025-05-22 12:16:36,598 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj/trading-stats
+2025-05-22 12:16:36,599 - phoenix.wallet - WARNING - No token P&L data available for wallet 9vxd5L6FiULADbc8tCj66vsRjcGMc3GLHHYDfxi5uAuj
+2025-05-22 12:16:36,599 - phoenix.wallet - INFO - Analyzing wallet 23/104: 6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP
+2025-05-22 12:16:36,600 - phoenix.wallet - INFO - Analyzing wallet 6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP using Cielo Finance API
+2025-05-22 12:16:36,600 - phoenix.cielo - INFO - Fetching trading stats for wallet 6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP
+2025-05-22 12:16:36,713 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP/trading-stats
+2025-05-22 12:16:36,713 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP/trading-stats
+2025-05-22 12:16:36,714 - phoenix.wallet - WARNING - No token P&L data available for wallet 6t1xvnbjGBpw8387v6ShRxxQcvUXWhY6pdYcmMwwamVP
+2025-05-22 12:16:36,715 - phoenix.wallet - INFO - Analyzing wallet 24/104: 8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q
+2025-05-22 12:16:36,715 - phoenix.wallet - INFO - Analyzing wallet 8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q using Cielo Finance API
+2025-05-22 12:16:36,715 - phoenix.cielo - INFO - Fetching trading stats for wallet 8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q
+2025-05-22 12:16:36,819 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q/trading-stats
+2025-05-22 12:16:36,819 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q/trading-stats
+2025-05-22 12:16:36,821 - phoenix.wallet - WARNING - No token P&L data available for wallet 8LWd38w8e1kNpRWtWhiudqPztSv7jSi6rGTntqA7LR5Q
+2025-05-22 12:16:36,821 - phoenix.wallet - INFO - Analyzing wallet 25/104: HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg
+2025-05-22 12:16:36,821 - phoenix.wallet - INFO - Analyzing wallet HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg using Cielo Finance API
+2025-05-22 12:16:36,821 - phoenix.cielo - INFO - Fetching trading stats for wallet HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg
+2025-05-22 12:16:36,922 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg/trading-stats
+2025-05-22 12:16:36,922 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg/trading-stats
+2025-05-22 12:16:36,924 - phoenix.wallet - WARNING - No token P&L data available for wallet HUEWhdTabuqtQFGeoo8hBUAVaoNgTNftjLG8wYWdzPGg
+2025-05-22 12:16:36,924 - phoenix.wallet - INFO - Analyzing wallet 26/104: CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS
+2025-05-22 12:16:36,924 - phoenix.wallet - INFO - Analyzing wallet CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS using Cielo Finance API
+2025-05-22 12:16:36,925 - phoenix.cielo - INFO - Fetching trading stats for wallet CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS
+2025-05-22 12:16:37,023 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS/trading-stats
+2025-05-22 12:16:37,023 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS/trading-stats
+2025-05-22 12:16:37,024 - phoenix.wallet - WARNING - No token P&L data available for wallet CVY7Wd8M9hw3Z5BWesBu2WxAgFJCFxQoSQeLrTR1A2AS
+2025-05-22 12:16:37,026 - phoenix.wallet - INFO - Analyzing wallet 27/104: BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor
+2025-05-22 12:16:37,026 - phoenix.wallet - INFO - Analyzing wallet BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor using Cielo Finance API
+2025-05-22 12:16:37,026 - phoenix.cielo - INFO - Fetching trading stats for wallet BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor
+2025-05-22 12:16:37,125 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor/trading-stats
+2025-05-22 12:16:37,125 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor/trading-stats
+2025-05-22 12:16:37,127 - phoenix.wallet - WARNING - No token P&L data available for wallet BdgTofzEd6oRydugZWhygwKZQr1emzXP8wDN7myoKFor
+2025-05-22 12:16:37,127 - phoenix.wallet - INFO - Analyzing wallet 28/104: FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb
+2025-05-22 12:16:37,127 - phoenix.wallet - INFO - Analyzing wallet FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb using Cielo Finance API
+2025-05-22 12:16:37,128 - phoenix.cielo - INFO - Fetching trading stats for wallet FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb
+2025-05-22 12:16:37,225 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb/trading-stats
+2025-05-22 12:16:37,225 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb/trading-stats
+2025-05-22 12:16:37,227 - phoenix.wallet - WARNING - No token P&L data available for wallet FuaY9MhxiTU3tXqZXpztigyxTgPZ4aj5iCVG2a4dGvGb
+2025-05-22 12:16:37,227 - phoenix.wallet - INFO - Analyzing wallet 29/104: 5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD
+2025-05-22 12:16:37,227 - phoenix.wallet - INFO - Analyzing wallet 5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD using Cielo Finance API
+2025-05-22 12:16:37,228 - phoenix.cielo - INFO - Fetching trading stats for wallet 5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD
+2025-05-22 12:16:37,326 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD/trading-stats
+2025-05-22 12:16:37,326 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD/trading-stats
+2025-05-22 12:16:37,328 - phoenix.wallet - WARNING - No token P&L data available for wallet 5SA7voq51yDDRTsoDtH5jFj9QLhYi9mvqAvvogTgdsrD
+2025-05-22 12:16:37,328 - phoenix.wallet - INFO - Analyzing wallet 30/104: BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX
+2025-05-22 12:16:37,328 - phoenix.wallet - INFO - Analyzing wallet BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX using Cielo Finance API
+2025-05-22 12:16:37,329 - phoenix.cielo - INFO - Fetching trading stats for wallet BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX
+2025-05-22 12:16:37,428 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX/trading-stats
+2025-05-22 12:16:37,428 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX/trading-stats
+2025-05-22 12:16:37,429 - phoenix.wallet - WARNING - No token P&L data available for wallet BKZwMsK1z7tDL7jA8nbYhb6Qc4jnLyaDfP51VxPyA7bX
+2025-05-22 12:16:37,430 - phoenix.wallet - INFO - Analyzing wallet 31/104: 6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG
+2025-05-22 12:16:37,430 - phoenix.wallet - INFO - Analyzing wallet 6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG using Cielo Finance API
+2025-05-22 12:16:37,431 - phoenix.cielo - INFO - Fetching trading stats for wallet 6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG
+2025-05-22 12:16:37,529 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG/trading-stats
+2025-05-22 12:16:37,529 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG/trading-stats
+2025-05-22 12:16:37,531 - phoenix.wallet - WARNING - No token P&L data available for wallet 6835kzCy1A7ZjJwqMuhiQcJd84rndvwqy7tW82xASimG
+2025-05-22 12:16:37,531 - phoenix.wallet - INFO - Analyzing wallet 32/104: 8CmDY4dBQEVD74T7UcZofUmnLdJyTprFW6cL3b77XYjv
+2025-05-22 12:16:37,531 - phoenix.wallet - INFO - Analyzing wallet 8CmDY4dBQEVD74T7UcZofUmnLdJyTprFW6cL3b77XYjv using Cielo Finance API
+2025-05-22 12:16:37,532 - phoenix.cielo - INFO - Fetching trading stats for wallet 8CmDY4dBQEVD74T7UcZofUmnLdJyTprFW6cL3b77XYjv
+2025-05-22 12:16:37,630 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/8CmDY4dBQEVD74T7UcZofUmnLdJyTprFW6cL3b77XYjv/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/8CmDY4dBQEVD74T7UcZofUmnLdJyTprFW6cL3b77XYjv/trading-stats
+2025-05-22 12:16:37,630 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/8CmDY4dBQEVD74T7UcZofUmnLdJyTprFW6cL3b77XYjv/trading-stats
+2025-05-22 12:16:37,632 - phoenix.wallet - WARNING - No token P&L data available for wallet 8CmDY4dBQEVD74T7UcZofUmnLdJyTprFW6cL3b77XYjv
+2025-05-22 12:16:37,632 - phoenix.wallet - INFO - Analyzing wallet 33/104: ESuJogU3kzLjZdfG93k6c4pYq8jJAu63wuv9NDvfesCi
+2025-05-22 12:16:37,632 - phoenix.wallet - INFO - Analyzing wallet ESuJogU3kzLjZdfG93k6c4pYq8jJAu63wuv9NDvfesCi using Cielo Finance API
+2025-05-22 12:16:37,633 - phoenix.cielo - INFO - Fetching trading stats for wallet ESuJogU3kzLjZdfG93k6c4pYq8jJAu63wuv9NDvfesCi
+2025-05-22 12:16:37,730 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/ESuJogU3kzLjZdfG93k6c4pYq8jJAu63wuv9NDvfesCi/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/ESuJogU3kzLjZdfG93k6c4pYq8jJAu63wuv9NDvfesCi/trading-stats
+2025-05-22 12:16:37,730 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/ESuJogU3kzLjZdfG93k6c4pYq8jJAu63wuv9NDvfesCi/trading-stats
+2025-05-22 12:16:37,731 - phoenix.wallet - WARNING - No token P&L data available for wallet ESuJogU3kzLjZdfG93k6c4pYq8jJAu63wuv9NDvfesCi
+2025-05-22 12:16:37,732 - phoenix.wallet - INFO - Analyzing wallet 34/104: 933GChDAL2sfL7iubWqPdCEN9yiZia2Ti6RYGXMAJMEu
+2025-05-22 12:16:37,732 - phoenix.wallet - INFO - Analyzing wallet 933GChDAL2sfL7iubWqPdCEN9yiZia2Ti6RYGXMAJMEu using Cielo Finance API
+2025-05-22 12:16:37,732 - phoenix.cielo - INFO - Fetching trading stats for wallet 933GChDAL2sfL7iubWqPdCEN9yiZia2Ti6RYGXMAJMEu
+2025-05-22 12:16:37,832 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/933GChDAL2sfL7iubWqPdCEN9yiZia2Ti6RYGXMAJMEu/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/933GChDAL2sfL7iubWqPdCEN9yiZia2Ti6RYGXMAJMEu/trading-stats
+2025-05-22 12:16:37,832 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/933GChDAL2sfL7iubWqPdCEN9yiZia2Ti6RYGXMAJMEu/trading-stats
+2025-05-22 12:16:37,833 - phoenix.wallet - WARNING - No token P&L data available for wallet 933GChDAL2sfL7iubWqPdCEN9yiZia2Ti6RYGXMAJMEu
+2025-05-22 12:16:37,834 - phoenix.wallet - INFO - Analyzing wallet 35/104: 4mn4awCvhti4ybEMNe8q8D28KaoJ2LJiUViSqFgn6NZF
+2025-05-22 12:16:37,834 - phoenix.wallet - INFO - Analyzing wallet 4mn4awCvhti4ybEMNe8q8D28KaoJ2LJiUViSqFgn6NZF using Cielo Finance API
+2025-05-22 12:16:37,835 - phoenix.cielo - INFO - Fetching trading stats for wallet 4mn4awCvhti4ybEMNe8q8D28KaoJ2LJiUViSqFgn6NZF
+2025-05-22 12:16:37,932 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/4mn4awCvhti4ybEMNe8q8D28KaoJ2LJiUViSqFgn6NZF/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/4mn4awCvhti4ybEMNe8q8D28KaoJ2LJiUViSqFgn6NZF/trading-stats
+2025-05-22 12:16:37,932 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/4mn4awCvhti4ybEMNe8q8D28KaoJ2LJiUViSqFgn6NZF/trading-stats
+2025-05-22 12:16:37,934 - phoenix.wallet - WARNING - No token P&L data available for wallet 4mn4awCvhti4ybEMNe8q8D28KaoJ2LJiUViSqFgn6NZF
+2025-05-22 12:16:37,934 - phoenix.wallet - INFO - Analyzing wallet 36/104: 7Hy2bJvqPRXGVybQ18zLW2sc8E2DnorXqPrCxARAxWQC
+2025-05-22 12:16:37,935 - phoenix.wallet - INFO - Analyzing wallet 7Hy2bJvqPRXGVybQ18zLW2sc8E2DnorXqPrCxARAxWQC using Cielo Finance API
+2025-05-22 12:16:37,935 - phoenix.cielo - INFO - Fetching trading stats for wallet 7Hy2bJvqPRXGVybQ18zLW2sc8E2DnorXqPrCxARAxWQC
+2025-05-22 12:16:38,033 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/7Hy2bJvqPRXGVybQ18zLW2sc8E2DnorXqPrCxARAxWQC/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/7Hy2bJvqPRXGVybQ18zLW2sc8E2DnorXqPrCxARAxWQC/trading-stats
+2025-05-22 12:16:38,033 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/7Hy2bJvqPRXGVybQ18zLW2sc8E2DnorXqPrCxARAxWQC/trading-stats
+2025-05-22 12:16:38,035 - phoenix.wallet - WARNING - No token P&L data available for wallet 7Hy2bJvqPRXGVybQ18zLW2sc8E2DnorXqPrCxARAxWQC
+2025-05-22 12:16:38,036 - phoenix.wallet - INFO - Analyzing wallet 37/104: EwcHQK2dTxnwMsEu7d3Mj5uRLzyJEsxFCCi3CowspoRv
+2025-05-22 12:16:38,036 - phoenix.wallet - INFO - Analyzing wallet EwcHQK2dTxnwMsEu7d3Mj5uRLzyJEsxFCCi3CowspoRv using Cielo Finance API
+2025-05-22 12:16:38,036 - phoenix.cielo - INFO - Fetching trading stats for wallet EwcHQK2dTxnwMsEu7d3Mj5uRLzyJEsxFCCi3CowspoRv
+2025-05-22 12:16:38,133 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/EwcHQK2dTxnwMsEu7d3Mj5uRLzyJEsxFCCi3CowspoRv/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/EwcHQK2dTxnwMsEu7d3Mj5uRLzyJEsxFCCi3CowspoRv/trading-stats
+2025-05-22 12:16:38,133 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/EwcHQK2dTxnwMsEu7d3Mj5uRLzyJEsxFCCi3CowspoRv/trading-stats
+2025-05-22 12:16:38,135 - phoenix.wallet - WARNING - No token P&L data available for wallet EwcHQK2dTxnwMsEu7d3Mj5uRLzyJEsxFCCi3CowspoRv
+2025-05-22 12:16:38,135 - phoenix.wallet - INFO - Analyzing wallet 38/104: Gw71goDdGz2F9RhoEoSVcdts57bQRf8A5AWaSVNYSJNH
+2025-05-22 12:16:38,136 - phoenix.wallet - INFO - Analyzing wallet Gw71goDdGz2F9RhoEoSVcdts57bQRf8A5AWaSVNYSJNH using Cielo Finance API
+2025-05-22 12:16:38,136 - phoenix.cielo - INFO - Fetching trading stats for wallet Gw71goDdGz2F9RhoEoSVcdts57bQRf8A5AWaSVNYSJNH
+2025-05-22 12:16:38,235 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/Gw71goDdGz2F9RhoEoSVcdts57bQRf8A5AWaSVNYSJNH/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/Gw71goDdGz2F9RhoEoSVcdts57bQRf8A5AWaSVNYSJNH/trading-stats
+2025-05-22 12:16:38,235 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/Gw71goDdGz2F9RhoEoSVcdts57bQRf8A5AWaSVNYSJNH/trading-stats
+2025-05-22 12:16:38,237 - phoenix.wallet - WARNING - No token P&L data available for wallet Gw71goDdGz2F9RhoEoSVcdts57bQRf8A5AWaSVNYSJNH
+2025-05-22 12:16:38,237 - phoenix.wallet - INFO - Analyzing wallet 39/104: GCGrJifLEs8zF4iPc7Vht4pxtVJZ4xqatauhq72VLDzH
+2025-05-22 12:16:38,237 - phoenix.wallet - INFO - Analyzing wallet GCGrJifLEs8zF4iPc7Vht4pxtVJZ4xqatauhq72VLDzH using Cielo Finance API
+2025-05-22 12:16:38,238 - phoenix.cielo - INFO - Fetching trading stats for wallet GCGrJifLEs8zF4iPc7Vht4pxtVJZ4xqatauhq72VLDzH
+2025-05-22 12:16:38,336 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/GCGrJifLEs8zF4iPc7Vht4pxtVJZ4xqatauhq72VLDzH/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/GCGrJifLEs8zF4iPc7Vht4pxtVJZ4xqatauhq72VLDzH/trading-stats
+2025-05-22 12:16:38,336 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/GCGrJifLEs8zF4iPc7Vht4pxtVJZ4xqatauhq72VLDzH/trading-stats
+2025-05-22 12:16:38,339 - phoenix.wallet - WARNING - No token P&L data available for wallet GCGrJifLEs8zF4iPc7Vht4pxtVJZ4xqatauhq72VLDzH
+2025-05-22 12:16:38,339 - phoenix.wallet - INFO - Analyzing wallet 40/104: E22jDFD1SwMKjxcFzZ7p4m1rmbAgaw7r5NoKjVZwgCbM
+2025-05-22 12:16:38,340 - phoenix.wallet - INFO - Analyzing wallet E22jDFD1SwMKjxcFzZ7p4m1rmbAgaw7r5NoKjVZwgCbM using Cielo Finance API
+2025-05-22 12:16:38,340 - phoenix.cielo - INFO - Fetching trading stats for wallet E22jDFD1SwMKjxcFzZ7p4m1rmbAgaw7r5NoKjVZwgCbM
+2025-05-22 12:16:38,439 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/E22jDFD1SwMKjxcFzZ7p4m1rmbAgaw7r5NoKjVZwgCbM/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/E22jDFD1SwMKjxcFzZ7p4m1rmbAgaw7r5NoKjVZwgCbM/trading-stats
+2025-05-22 12:16:38,439 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/E22jDFD1SwMKjxcFzZ7p4m1rmbAgaw7r5NoKjVZwgCbM/trading-stats
+2025-05-22 12:16:38,441 - phoenix.wallet - WARNING - No token P&L data available for wallet E22jDFD1SwMKjxcFzZ7p4m1rmbAgaw7r5NoKjVZwgCbM
+2025-05-22 12:16:38,441 - phoenix.wallet - INFO - Analyzing wallet 41/104: 51TQpGzNzQDbXP3f6NE2RUMBXQC5Am13wS982m4gs36x
+2025-05-22 12:16:38,441 - phoenix.wallet - INFO - Analyzing wallet 51TQpGzNzQDbXP3f6NE2RUMBXQC5Am13wS982m4gs36x using Cielo Finance API
+2025-05-22 12:16:38,442 - phoenix.cielo - INFO - Fetching trading stats for wallet 51TQpGzNzQDbXP3f6NE2RUMBXQC5Am13wS982m4gs36x
+2025-05-22 12:16:38,538 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/51TQpGzNzQDbXP3f6NE2RUMBXQC5Am13wS982m4gs36x/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/51TQpGzNzQDbXP3f6NE2RUMBXQC5Am13wS982m4gs36x/trading-stats
+2025-05-22 12:16:38,538 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/51TQpGzNzQDbXP3f6NE2RUMBXQC5Am13wS982m4gs36x/trading-stats
+2025-05-22 12:16:38,540 - phoenix.wallet - WARNING - No token P&L data available for wallet 51TQpGzNzQDbXP3f6NE2RUMBXQC5Am13wS982m4gs36x
+2025-05-22 12:16:38,540 - phoenix.wallet - INFO - Analyzing wallet 42/104: FoijuyaeB29bqiFnAffemX21bbtw8ZEitesmVLxLDVzN
+2025-05-22 12:16:38,540 - phoenix.wallet - INFO - Analyzing wallet FoijuyaeB29bqiFnAffemX21bbtw8ZEitesmVLxLDVzN using Cielo Finance API
+2025-05-22 12:16:38,541 - phoenix.cielo - INFO - Fetching trading stats for wallet FoijuyaeB29bqiFnAffemX21bbtw8ZEitesmVLxLDVzN
+2025-05-22 12:16:38,641 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/FoijuyaeB29bqiFnAffemX21bbtw8ZEitesmVLxLDVzN/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/FoijuyaeB29bqiFnAffemX21bbtw8ZEitesmVLxLDVzN/trading-stats
+2025-05-22 12:16:38,641 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/FoijuyaeB29bqiFnAffemX21bbtw8ZEitesmVLxLDVzN/trading-stats
+2025-05-22 12:16:38,643 - phoenix.wallet - WARNING - No token P&L data available for wallet FoijuyaeB29bqiFnAffemX21bbtw8ZEitesmVLxLDVzN
+2025-05-22 12:16:38,643 - phoenix.wallet - INFO - Analyzing wallet 43/104: AxGu78Gp4fUvx1TgLb7zqTJJ4o2niJ9e8ZnT3cpywHZT
+2025-05-22 12:16:38,643 - phoenix.wallet - INFO - Analyzing wallet AxGu78Gp4fUvx1TgLb7zqTJJ4o2niJ9e8ZnT3cpywHZT using Cielo Finance API
+2025-05-22 12:16:38,644 - phoenix.cielo - INFO - Fetching trading stats for wallet AxGu78Gp4fUvx1TgLb7zqTJJ4o2niJ9e8ZnT3cpywHZT
+2025-05-22 12:16:38,741 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/AxGu78Gp4fUvx1TgLb7zqTJJ4o2niJ9e8ZnT3cpywHZT/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/AxGu78Gp4fUvx1TgLb7zqTJJ4o2niJ9e8ZnT3cpywHZT/trading-stats
+2025-05-22 12:16:40,983 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/AxGu78Gp4fUvx1TgLb7zqTJJ4o2niJ9e8ZnT3cpywHZT/trading-stats
+2025-05-22 12:16:40,992 - phoenix.wallet - WARNING - No token P&L data available for wallet AxGu78Gp4fUvx1TgLb7zqTJJ4o2niJ9e8ZnT3cpywHZT
+2025-05-22 12:16:40,994 - phoenix.wallet - INFO - Analyzing wallet 44/104: G31FfCPWEWYsje5wEHtpEufQFVLrC9Z2LfHiUJLFcMQo
+2025-05-22 12:16:40,996 - phoenix.wallet - INFO - Analyzing wallet G31FfCPWEWYsje5wEHtpEufQFVLrC9Z2LfHiUJLFcMQo using Cielo Finance API
+2025-05-22 12:16:40,997 - phoenix.cielo - INFO - Fetching trading stats for wallet G31FfCPWEWYsje5wEHtpEufQFVLrC9Z2LfHiUJLFcMQo
+2025-05-22 12:16:41,096 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/G31FfCPWEWYsje5wEHtpEufQFVLrC9Z2LfHiUJLFcMQo/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/G31FfCPWEWYsje5wEHtpEufQFVLrC9Z2LfHiUJLFcMQo/trading-stats
+2025-05-22 12:16:41,096 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/G31FfCPWEWYsje5wEHtpEufQFVLrC9Z2LfHiUJLFcMQo/trading-stats
+2025-05-22 12:16:41,098 - phoenix.wallet - WARNING - No token P&L data available for wallet G31FfCPWEWYsje5wEHtpEufQFVLrC9Z2LfHiUJLFcMQo
+2025-05-22 12:16:41,098 - phoenix.wallet - INFO - Analyzing wallet 45/104: BsQj6ApLH31zSF3gF8C5vXiU6n1cAoNR3ENRhqUp7t1f
+2025-05-22 12:16:41,099 - phoenix.wallet - INFO - Analyzing wallet BsQj6ApLH31zSF3gF8C5vXiU6n1cAoNR3ENRhqUp7t1f using Cielo Finance API
+2025-05-22 12:16:41,099 - phoenix.cielo - INFO - Fetching trading stats for wallet BsQj6ApLH31zSF3gF8C5vXiU6n1cAoNR3ENRhqUp7t1f
+2025-05-22 12:16:41,198 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/BsQj6ApLH31zSF3gF8C5vXiU6n1cAoNR3ENRhqUp7t1f/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/BsQj6ApLH31zSF3gF8C5vXiU6n1cAoNR3ENRhqUp7t1f/trading-stats
+2025-05-22 12:16:41,198 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/BsQj6ApLH31zSF3gF8C5vXiU6n1cAoNR3ENRhqUp7t1f/trading-stats
+2025-05-22 12:16:41,200 - phoenix.wallet - WARNING - No token P&L data available for wallet BsQj6ApLH31zSF3gF8C5vXiU6n1cAoNR3ENRhqUp7t1f
+2025-05-22 12:16:41,200 - phoenix.wallet - INFO - Analyzing wallet 46/104: 8aBXqjo2qjfCjZY2aDjpLJRmtnHnJ3UkApUfpYJf84MK
+2025-05-22 12:16:41,200 - phoenix.wallet - INFO - Analyzing wallet 8aBXqjo2qjfCjZY2aDjpLJRmtnHnJ3UkApUfpYJf84MK using Cielo Finance API
+2025-05-22 12:16:41,200 - phoenix.cielo - INFO - Fetching trading stats for wallet 8aBXqjo2qjfCjZY2aDjpLJRmtnHnJ3UkApUfpYJf84MK
+2025-05-22 12:16:41,299 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/8aBXqjo2qjfCjZY2aDjpLJRmtnHnJ3UkApUfpYJf84MK/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/8aBXqjo2qjfCjZY2aDjpLJRmtnHnJ3UkApUfpYJf84MK/trading-stats
+2025-05-22 12:16:41,299 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/8aBXqjo2qjfCjZY2aDjpLJRmtnHnJ3UkApUfpYJf84MK/trading-stats
+2025-05-22 12:16:41,301 - phoenix.wallet - WARNING - No token P&L data available for wallet 8aBXqjo2qjfCjZY2aDjpLJRmtnHnJ3UkApUfpYJf84MK
+2025-05-22 12:16:41,301 - phoenix.wallet - INFO - Analyzing wallet 47/104: 7LBSXkWHqn33FJ82u4DG4gjZR7ENyfcTnsPUdrLD9BGf
+2025-05-22 12:16:41,301 - phoenix.wallet - INFO - Analyzing wallet 7LBSXkWHqn33FJ82u4DG4gjZR7ENyfcTnsPUdrLD9BGf using Cielo Finance API
+2025-05-22 12:16:41,302 - phoenix.cielo - INFO - Fetching trading stats for wallet 7LBSXkWHqn33FJ82u4DG4gjZR7ENyfcTnsPUdrLD9BGf
+2025-05-22 12:16:41,400 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/7LBSXkWHqn33FJ82u4DG4gjZR7ENyfcTnsPUdrLD9BGf/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/7LBSXkWHqn33FJ82u4DG4gjZR7ENyfcTnsPUdrLD9BGf/trading-stats
+2025-05-22 12:16:41,400 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/7LBSXkWHqn33FJ82u4DG4gjZR7ENyfcTnsPUdrLD9BGf/trading-stats
+2025-05-22 12:16:41,401 - phoenix.wallet - WARNING - No token P&L data available for wallet 7LBSXkWHqn33FJ82u4DG4gjZR7ENyfcTnsPUdrLD9BGf
+2025-05-22 12:16:41,402 - phoenix.wallet - INFO - Analyzing wallet 48/104: 26CSPXoJWTWeybxzUzHFqWdHgTu1mMb7pifVp57LtWDH
+2025-05-22 12:16:41,402 - phoenix.wallet - INFO - Analyzing wallet 26CSPXoJWTWeybxzUzHFqWdHgTu1mMb7pifVp57LtWDH using Cielo Finance API
+2025-05-22 12:16:41,402 - phoenix.cielo - INFO - Fetching trading stats for wallet 26CSPXoJWTWeybxzUzHFqWdHgTu1mMb7pifVp57LtWDH
+2025-05-22 12:16:41,502 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/26CSPXoJWTWeybxzUzHFqWdHgTu1mMb7pifVp57LtWDH/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/26CSPXoJWTWeybxzUzHFqWdHgTu1mMb7pifVp57LtWDH/trading-stats
+2025-05-22 12:16:41,502 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/26CSPXoJWTWeybxzUzHFqWdHgTu1mMb7pifVp57LtWDH/trading-stats
+2025-05-22 12:16:41,504 - phoenix.wallet - WARNING - No token P&L data available for wallet 26CSPXoJWTWeybxzUzHFqWdHgTu1mMb7pifVp57LtWDH
+2025-05-22 12:16:41,504 - phoenix.wallet - INFO - Analyzing wallet 49/104: Q9wxmeYRBhHHfBF2sHMnY6JmkB57nYPj39Komw3eMnE
+2025-05-22 12:16:41,505 - phoenix.wallet - INFO - Analyzing wallet Q9wxmeYRBhHHfBF2sHMnY6JmkB57nYPj39Komw3eMnE using Cielo Finance API
+2025-05-22 12:16:41,505 - phoenix.cielo - INFO - Fetching trading stats for wallet Q9wxmeYRBhHHfBF2sHMnY6JmkB57nYPj39Komw3eMnE
+2025-05-22 12:16:41,603 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/Q9wxmeYRBhHHfBF2sHMnY6JmkB57nYPj39Komw3eMnE/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/Q9wxmeYRBhHHfBF2sHMnY6JmkB57nYPj39Komw3eMnE/trading-stats
+2025-05-22 12:16:41,603 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/Q9wxmeYRBhHHfBF2sHMnY6JmkB57nYPj39Komw3eMnE/trading-stats
+2025-05-22 12:16:41,605 - phoenix.wallet - WARNING - No token P&L data available for wallet Q9wxmeYRBhHHfBF2sHMnY6JmkB57nYPj39Komw3eMnE
+2025-05-22 12:16:41,605 - phoenix.wallet - INFO - Analyzing wallet 50/104: Bzbt2UYkk6Kycp2ZR3dFpnypCLMckreXPHnw65NNd1eN
+2025-05-22 12:16:41,605 - phoenix.wallet - INFO - Analyzing wallet Bzbt2UYkk6Kycp2ZR3dFpnypCLMckreXPHnw65NNd1eN using Cielo Finance API
+2025-05-22 12:16:41,606 - phoenix.cielo - INFO - Fetching trading stats for wallet Bzbt2UYkk6Kycp2ZR3dFpnypCLMckreXPHnw65NNd1eN
+2025-05-22 12:16:41,714 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/Bzbt2UYkk6Kycp2ZR3dFpnypCLMckreXPHnw65NNd1eN/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/Bzbt2UYkk6Kycp2ZR3dFpnypCLMckreXPHnw65NNd1eN/trading-stats
+2025-05-22 12:16:41,715 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/Bzbt2UYkk6Kycp2ZR3dFpnypCLMckreXPHnw65NNd1eN/trading-stats
+2025-05-22 12:16:41,716 - phoenix.wallet - WARNING - No token P&L data available for wallet Bzbt2UYkk6Kycp2ZR3dFpnypCLMckreXPHnw65NNd1eN
+2025-05-22 12:16:41,717 - phoenix.wallet - INFO - Analyzing wallet 51/104: 1qaaUAyAQQ7EhCBivX91iVNpoAxNcdLW4PspaifC5hA
+2025-05-22 12:16:41,717 - phoenix.wallet - INFO - Analyzing wallet 1qaaUAyAQQ7EhCBivX91iVNpoAxNcdLW4PspaifC5hA using Cielo Finance API
+2025-05-22 12:16:41,717 - phoenix.cielo - INFO - Fetching trading stats for wallet 1qaaUAyAQQ7EhCBivX91iVNpoAxNcdLW4PspaifC5hA
+2025-05-22 12:16:41,817 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/1qaaUAyAQQ7EhCBivX91iVNpoAxNcdLW4PspaifC5hA/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/1qaaUAyAQQ7EhCBivX91iVNpoAxNcdLW4PspaifC5hA/trading-stats
+2025-05-22 12:16:41,818 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/1qaaUAyAQQ7EhCBivX91iVNpoAxNcdLW4PspaifC5hA/trading-stats
+2025-05-22 12:16:41,819 - phoenix.wallet - WARNING - No token P&L data available for wallet 1qaaUAyAQQ7EhCBivX91iVNpoAxNcdLW4PspaifC5hA
+2025-05-22 12:16:41,820 - phoenix.wallet - INFO - Analyzing wallet 52/104: E9AraWahsb1nDdsjcKNWXs9X7QXkyqALyZQexxKVMcsG
+2025-05-22 12:16:41,820 - phoenix.wallet - INFO - Analyzing wallet E9AraWahsb1nDdsjcKNWXs9X7QXkyqALyZQexxKVMcsG using Cielo Finance API
+2025-05-22 12:16:41,820 - phoenix.cielo - INFO - Fetching trading stats for wallet E9AraWahsb1nDdsjcKNWXs9X7QXkyqALyZQexxKVMcsG
+2025-05-22 12:16:41,919 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/E9AraWahsb1nDdsjcKNWXs9X7QXkyqALyZQexxKVMcsG/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/E9AraWahsb1nDdsjcKNWXs9X7QXkyqALyZQexxKVMcsG/trading-stats
+2025-05-22 12:16:41,919 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/E9AraWahsb1nDdsjcKNWXs9X7QXkyqALyZQexxKVMcsG/trading-stats
+2025-05-22 12:16:41,920 - phoenix.wallet - WARNING - No token P&L data available for wallet E9AraWahsb1nDdsjcKNWXs9X7QXkyqALyZQexxKVMcsG
+2025-05-22 12:16:41,921 - phoenix.wallet - INFO - Analyzing wallet 53/104: GftxZNiHcH4mjcJPpzwueoRdvJx9qaDyN69VvM64ipna
+2025-05-22 12:16:41,921 - phoenix.wallet - INFO - Analyzing wallet GftxZNiHcH4mjcJPpzwueoRdvJx9qaDyN69VvM64ipna using Cielo Finance API
+2025-05-22 12:16:41,922 - phoenix.cielo - INFO - Fetching trading stats for wallet GftxZNiHcH4mjcJPpzwueoRdvJx9qaDyN69VvM64ipna
+2025-05-22 12:16:42,021 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/GftxZNiHcH4mjcJPpzwueoRdvJx9qaDyN69VvM64ipna/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/GftxZNiHcH4mjcJPpzwueoRdvJx9qaDyN69VvM64ipna/trading-stats
+2025-05-22 12:16:42,021 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/GftxZNiHcH4mjcJPpzwueoRdvJx9qaDyN69VvM64ipna/trading-stats
+2025-05-22 12:16:42,022 - phoenix.wallet - WARNING - No token P&L data available for wallet GftxZNiHcH4mjcJPpzwueoRdvJx9qaDyN69VvM64ipna
+2025-05-22 12:16:42,023 - phoenix.wallet - INFO - Analyzing wallet 54/104: 6omagkxud2k8ddamrEZ9unbBQ7WpctZjBAUJzRAdwFL1
+2025-05-22 12:16:42,023 - phoenix.wallet - INFO - Analyzing wallet 6omagkxud2k8ddamrEZ9unbBQ7WpctZjBAUJzRAdwFL1 using Cielo Finance API
+2025-05-22 12:16:42,023 - phoenix.cielo - INFO - Fetching trading stats for wallet 6omagkxud2k8ddamrEZ9unbBQ7WpctZjBAUJzRAdwFL1
+2025-05-22 12:16:42,122 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/6omagkxud2k8ddamrEZ9unbBQ7WpctZjBAUJzRAdwFL1/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6omagkxud2k8ddamrEZ9unbBQ7WpctZjBAUJzRAdwFL1/trading-stats
+2025-05-22 12:16:42,123 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6omagkxud2k8ddamrEZ9unbBQ7WpctZjBAUJzRAdwFL1/trading-stats
+2025-05-22 12:16:42,124 - phoenix.wallet - WARNING - No token P&L data available for wallet 6omagkxud2k8ddamrEZ9unbBQ7WpctZjBAUJzRAdwFL1
+2025-05-22 12:16:42,125 - phoenix.wallet - INFO - Analyzing wallet 55/104: BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r
+2025-05-22 12:16:42,125 - phoenix.wallet - INFO - Analyzing wallet BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r using Cielo Finance API
+2025-05-22 12:16:42,126 - phoenix.cielo - INFO - Fetching trading stats for wallet BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r
+2025-05-22 12:16:42,224 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r/trading-stats
+2025-05-22 12:16:42,224 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r/trading-stats
+2025-05-22 12:16:42,226 - phoenix.wallet - WARNING - No token P&L data available for wallet BPQn8Y4QsW1qyCcdjSrzqFQXNqbAsaspD5ZZ4xMWUV1r
+2025-05-22 12:16:42,226 - phoenix.wallet - INFO - Analyzing wallet 56/104: GFsQ7v3pZeqgbf2pMgKRSzZ7SKqY2MaWVhZpz9U3pgCc
+2025-05-22 12:16:42,227 - phoenix.wallet - INFO - Analyzing wallet GFsQ7v3pZeqgbf2pMgKRSzZ7SKqY2MaWVhZpz9U3pgCc using Cielo Finance API
+2025-05-22 12:16:42,227 - phoenix.cielo - INFO - Fetching trading stats for wallet GFsQ7v3pZeqgbf2pMgKRSzZ7SKqY2MaWVhZpz9U3pgCc
+2025-05-22 12:16:42,326 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/GFsQ7v3pZeqgbf2pMgKRSzZ7SKqY2MaWVhZpz9U3pgCc/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/GFsQ7v3pZeqgbf2pMgKRSzZ7SKqY2MaWVhZpz9U3pgCc/trading-stats
+2025-05-22 12:16:42,326 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/GFsQ7v3pZeqgbf2pMgKRSzZ7SKqY2MaWVhZpz9U3pgCc/trading-stats
+2025-05-22 12:16:42,328 - phoenix.wallet - WARNING - No token P&L data available for wallet GFsQ7v3pZeqgbf2pMgKRSzZ7SKqY2MaWVhZpz9U3pgCc
+2025-05-22 12:16:42,328 - phoenix.wallet - INFO - Analyzing wallet 57/104: 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr
+2025-05-22 12:16:42,328 - phoenix.wallet - INFO - Analyzing wallet 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr using Cielo Finance API
+2025-05-22 12:16:42,329 - phoenix.cielo - INFO - Fetching trading stats for wallet 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr
+2025-05-22 12:16:42,429 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr/trading-stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr/trading-stats
+2025-05-22 12:16:42,429 - phoenix.cielo - WARNING - Failed to retrieve trading stats: 403 Client Error: Forbidden for url: https://feed-api.cielo.finance/api/v1/6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr/trading-stats
+2025-05-22 12:16:42,430 - phoenix.wallet - WARNING - No token P&L data available for wallet 6ACRvtjdDZGdno7xbuXN3uViinhanaqcRkHzv1X1TQPr
+2025-05-22 12:16:42,431 - phoenix.wallet - INFO - Analyzing wallet 58/104: 4RLMzkyMqizx7CBXXZKRSrcu82CF96YzeoVxokSnLs7D
+2025-05-22 12:16:42,431 - phoenix.wallet - INFO - Analyzing wallet 4RLMzkyMqizx7CBXXZKRSrcu82CF96YzeoVxokSnLs7D using Cielo Finance API
+2025-05-22 12:16:42,431 - phoenix.cielo - INFO - Fetching trading stats for wallet 4RLMzkyMqizx7CBXXZKRSrcu82CF96YzeoVxokSnLs7D
