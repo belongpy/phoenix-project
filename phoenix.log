@@ -1532,3 +1532,30 @@ AttributeError: 'TelegramScraper' object has no attribute 'scrape_spydefi'
 2025-05-21 20:41:20,784 - phoenix.export - INFO - Creating consolidated Excel export: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
 2025-05-21 20:41:20,832 - phoenix.export - INFO - Successfully created Excel workbook: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
 2025-05-21 20:41:20,832 - phoenix - INFO - Excel export completed: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 20:49:32,603 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-21 20:49:32,604 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-21 20:49:33,054 - phoenix - INFO - Analyzing SpyDefi channel for the past 1 day(s).
+2025-05-21 20:49:33,055 - phoenix - INFO - Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.csv
+2025-05-21 20:49:33,055 - phoenix - INFO - SpyDefi channel detected. Analyzing KOLs from SpyDefi.
+2025-05-21 20:49:33,056 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-21 20:49:33,057 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-21 20:49:33,195 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-21 20:49:34,089 - phoenix.telegram - INFO - Connected to Telegram successfully
+2025-05-21 20:49:34,089 - phoenix.telegram - INFO - Scanning SpyDefi channel (past 24h)...
+2025-05-21 20:49:34,786 - phoenix.telegram - INFO - Found 0 token calls from 0 KOLs
+2025-05-21 20:49:34,786 - phoenix.telegram - INFO - Analysis Complete!
+2025-05-21 20:49:34,786 - phoenix.telegram - INFO - Tokens mentioned: 0
+2025-05-21 20:49:34,786 - phoenix.telegram - INFO - Tokens that made x2: 0
+2025-05-21 20:49:34,786 - phoenix.telegram - INFO - Tokens that made x5: 0
+2025-05-21 20:49:34,787 - phoenix.telegram - INFO - Success rate (2x): 0.00%
+2025-05-21 20:49:34,787 - phoenix.telegram - INFO - Success rate (5x): 0.00%
+2025-05-21 20:49:34,787 - phoenix.telegram - WARNING - No analyzed calls to export
+2025-05-21 20:49:34,787 - phoenix.telegram - INFO - Disconnecting from Telegram...
+2025-05-21 20:49:34,787 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-21 20:49:34,788 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-21 20:49:34,797 - phoenix.telegram - INFO - Disconnected from Telegram
+2025-05-21 20:49:34,797 - phoenix - INFO - SpyDefi analysis completed.
+2025-05-21 20:49:34,797 - phoenix - INFO - Telegram analysis completed. Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.csv
+2025-05-21 20:49:35,195 - phoenix.export - INFO - Creating consolidated Excel export: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 20:49:35,251 - phoenix.export - INFO - Successfully created Excel workbook: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx
+2025-05-21 20:49:35,252 - phoenix - INFO - Excel export completed: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis.xlsx

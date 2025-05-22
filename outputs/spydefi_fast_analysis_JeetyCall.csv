@@ -1,4 +1,0 @@
-channel_id,message_id,date,contract_address,token_name,token_symbol,initial_price,current_price,max_price,roi_percent,max_roi_percent,max_drawdown_percent,market_cap_usd,platform
-JeetyCall,11289,2025-05-22T01:19:16+00:00,BWKqYfgC9SiiSJ8Rrynu7P5xrswwsqNxWmS87rFRpump,Disbelieve,Disbelieve,0,1.428341978046608e-05,,0,0,,14283.397103388896,pumpfun
-JeetyCall,11283,2025-05-21T23:50:50+00:00,AKDtofiNfKx9ArYdqPL877757Wmy8PJDBTT9JHTKpump,#dropgold,#dropgold,0,0.00010018547871208155,,0,0,,100184.86672758746,pumpfun
-JeetyCall,11276,2025-05-21T13:38:21+00:00,73mhFXKkUXMRGisAp4zBQ66RURHdboFGm6cuiJpopump,"BUY NOW, PAY NEVER",KLARNA,0,2.647909498444011e-05,,0,0,,26474.670642801535,pumpfun

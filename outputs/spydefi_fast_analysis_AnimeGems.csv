@@ -1,4 +1,0 @@
-channel_id,message_id,date,contract_address,token_name,token_symbol,initial_price,current_price,max_price,roi_percent,max_roi_percent,max_drawdown_percent,market_cap_usd,platform
-AnimeGems,17644,2025-05-22T02:15:50+00:00,6Y1MEf2XrvyZo7hi9ZHBhuke9iTewBSPaUr6SQsDMhqS,,,0,0,,0,0,,0,solana
-AnimeGems,17643,2025-05-22T01:51:14+00:00,HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T,,,0,0,,0,0,,0,solana
-AnimeGems,17632,2025-05-21T23:23:02+00:00,HT5gGeKWXqeU5HGSMuKA43855ANGstt4EAp4R8ArHH5T,,,0,0,,0,0,,0,solana
