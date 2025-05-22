@@ -1,0 +1,70 @@
+=== SPYDEFI PERFORMANCE ANALYSIS ===
+
+Analysis period: 1 days
+Tokens mentioned: 369
+Tokens that made x2: 367
+Tokens that made x5: 186
+Success rate (2x): 99.46%
+Success rate (5x): 50.41%
+
+=== TOP KOLs ===
+1. @jeetycall
+   Channel ID: 1712900374
+   Tokens mentioned: 14
+   Tokens that made x2: 14
+   Success rate: 100.0%
+
+2. @marksgems
+   Channel ID: 1508785153
+   Tokens mentioned: 28
+   Tokens that made x2: 28
+   Success rate: 100.0%
+
+3. @hellsinggamble
+   Channel ID: 1715502498
+   Tokens mentioned: 8
+   Tokens that made x2: 8
+   Success rate: 100.0%
+
+4. @chinapumpcommunity
+   Channel ID: 1502458504
+   Tokens mentioned: 9
+   Tokens that made x2: 9
+   Success rate: 100.0%
+
+5. @kariusgemscalls
+   Channel ID: 2222968620
+   Tokens mentioned: 16
+   Tokens that made x2: 16
+   Success rate: 100.0%
+
+6. @mrbigbagcalls
+   Channel ID: 2051055592
+   Tokens mentioned: 6
+   Tokens that made x2: 6
+   Success rate: 100.0%
+
+7. @topcallerschannel
+   Channel ID: 1915321527
+   Tokens mentioned: 12
+   Tokens that made x2: 12
+   Success rate: 100.0%
+
+8. @casgems
+   Channel ID: 2362654714
+   Tokens mentioned: 5
+   Tokens that made x2: 5
+   Success rate: 100.0%
+
+9. @crikeycallz
+   Channel ID: 2276696688
+   Tokens mentioned: 6
+   Tokens that made x2: 6
+   Success rate: 100.0%
+
+10. @levisaipha
+   Channel ID: 2210187437
+   Tokens mentioned: 4
+   Tokens that made x2: 4
+   Success rate: 100.0%
+
