@@ -1,14 +1,13 @@
 """
-Wallet Analysis Module - Phoenix Project (COMPLETE FIXED VERSION)
+Wallet Analysis Module - Phoenix Project (COMPLETE WITH HELIUS INTEGRATION)
 
-FIXES:
-- Updated to match actual Cielo Finance API response format
-- Fixed field mappings (pnl, winrate, swaps_count, etc.)
-- Added ROI distribution conversion
-- Profit factor capped at 999.99 instead of inf
-- Hold time converted to minutes for display
-- Better handling of pump.fun tokens without price history
-- Improved entry/exit analysis for missing data
+UPDATES:
+- Integrated Helius API for pump.fun token analysis
+- Fallback analysis tiers (Birdeye -> Helius -> Basic)
+- Weighted composite scoring based on data quality
+- Fixed profit factor capping at 999.99
+- Hold time in minutes
+- Improved entry/exit analysis
 """
 
 import csv
@@ -50,22 +49,25 @@ class RateLimiter:
             self.last_call = time.time()
 
 class WalletAnalyzer:
-    """Class for analyzing wallets for copy trading using Cielo Finance API + RPC."""
+    """Class for analyzing wallets for copy trading using Cielo Finance API + RPC + Helius."""
     
-    def __init__(self, cielo_api: Any, birdeye_api: Any = None, rpc_url: str = "https://api.mainnet-beta.solana.com"):
+    def __init__(self, cielo_api: Any, birdeye_api: Any = None, helius_api: Any = None, 
+                 rpc_url: str = "https://api.mainnet-beta.solana.com"):
         """
         Initialize the wallet analyzer.
         
         Args:
             cielo_api: Cielo Finance API client (REQUIRED)
-            birdeye_api: Birdeye API client (optional, for token metadata only)
+            birdeye_api: Birdeye API client (optional, for token metadata)
+            helius_api: Helius API client (optional, for pump.fun tokens)
             rpc_url: Solana RPC endpoint URL (P9 or other provider)
         """
         if not cielo_api:
             raise ValueError("Cielo Finance API is REQUIRED for wallet analysis")
         
         self.cielo_api = cielo_api
-        self.birdeye_api = birdeye_api  # Optional, for token metadata only
+        self.birdeye_api = birdeye_api
+        self.helius_api = helius_api
         self.rpc_url = rpc_url
         
         # Verify Cielo Finance API connectivity
@@ -73,34 +75,35 @@ class WalletAnalyzer:
             raise CieloFinanceAPIError("Cannot connect to Cielo Finance API")
         
         # Track entry times for tokens to detect correlated wallets
-        self.token_entries = {}  # token_address -> {wallet_address -> timestamp}
+        self.token_entries = {}
         
         # RPC cache for avoiding duplicate calls
         self._rpc_cache = {}
         self._cache_lock = threading.Lock()
         self._cache_ttl = 300  # 5 minutes TTL
         
-        # Rate limiter for RPC calls (reduced to 5 calls per second)
+        # Rate limiter for RPC calls
         self._rate_limiter = RateLimiter(calls_per_second=5.0)
         
-        # Thread pool for parallel processing (reduced workers)
-        self.executor = ThreadPoolExecutor(max_workers=3)  # Reduced from 10 to 3
+        # Thread pool for parallel processing
+        self.executor = ThreadPoolExecutor(max_workers=3)
         
         # Track RPC errors
         self._rpc_error_count = 0
         self._last_rpc_error_time = 0
+        
+        # Track data quality for composite scoring
+        self.data_quality_weights = {
+            "full_analysis": 1.0,      # Birdeye data available
+            "helius_analysis": 0.85,   # Helius/pump.fun data
+            "basic_analysis": 0.5      # Only P&L data
+        }
     
     def _verify_cielo_api_connection(self) -> bool:
-        """
-        Verify that the Cielo Finance API is accessible.
-        
-        Returns:
-            bool: True if API is accessible, False otherwise
-        """
+        """Verify that the Cielo Finance API is accessible."""
         try:
             if not self.cielo_api:
                 return False
-            # Try a simple API call to verify connectivity
             health_check = self.cielo_api.health_check()
             if health_check:
                 logger.info("✅ Cielo Finance API connection verified")
@@ -124,7 +127,6 @@ class WalletAnalyzer:
                 if time.time() - timestamp < self._cache_ttl:
                     return cached_data
                 else:
-                    # Remove expired entry
                     del self._rpc_cache[cache_key]
         return None
     
@@ -134,25 +136,13 @@ class WalletAnalyzer:
             self._rpc_cache[cache_key] = (data, time.time())
     
     def _make_rpc_call(self, method: str, params: List[Any], retry_count: int = 3) -> Dict[str, Any]:
-        """
-        Make direct RPC call to Solana node with caching and rate limiting.
-        
-        Args:
-            method (str): RPC method name
-            params (List[Any]): Method parameters
-            retry_count (int): Number of retries on failure
-            
-        Returns:
-            Dict[str, Any]: RPC response
-        """
-        # Check cache first
+        """Make direct RPC call to Solana node with caching and rate limiting."""
         cache_key = self._get_cache_key(method, params)
         cached_result = self._get_from_cache(cache_key)
         if cached_result is not None:
             logger.debug(f"Cache hit for {method}")
             return cached_result
         
-        # Apply rate limiting
         self._rate_limiter.wait()
         
         payload = {
@@ -162,7 +152,6 @@ class WalletAnalyzer:
             "params": params
         }
         
-        # Exponential backoff for retries
         backoff_base = 2
         for attempt in range(retry_count):
             try:
@@ -173,20 +162,17 @@ class WalletAnalyzer:
                     timeout=30
                 )
                 
-                # Handle rate limiting specifically
                 if response.status_code == 429:
                     self._rpc_error_count += 1
                     self._last_rpc_error_time = time.time()
                     
-                    # Calculate backoff time
                     backoff_time = backoff_base ** attempt
-                    max_backoff = 60  # Max 60 seconds
+                    max_backoff = 60
                     wait_time = min(backoff_time, max_backoff)
                     
                     logger.warning(f"RPC rate limit hit (429). Waiting {wait_time}s before retry {attempt + 1}/{retry_count}")
                     time.sleep(wait_time)
                     
-                    # If we're getting too many errors, slow down globally
                     if self._rpc_error_count > 10:
                         logger.warning("Too many RPC errors. Slowing down request rate.")
                         self._rate_limiter.calls_per_second = max(1.0, self._rate_limiter.calls_per_second * 0.5)
@@ -197,15 +183,12 @@ class WalletAnalyzer:
                 response.raise_for_status()
                 result = response.json()
                 
-                # Cache successful responses
                 if "result" in result:
                     self._set_cache(cache_key, result)
-                    # Reset error count on success
                     if self._rpc_error_count > 0:
                         self._rpc_error_count = max(0, self._rpc_error_count - 1)
                     return result
                 else:
-                    # RPC error response
                     return {"error": result.get("error", "Unknown RPC error")}
                     
             except requests.exceptions.Timeout:
@@ -251,21 +234,16 @@ class WalletAnalyzer:
         if "result" in response:
             return response["result"]
         else:
-            # Don't log every single transaction error to reduce noise
             return {}
     
     def _batch_get_transactions(self, signatures: List[str]) -> List[Dict[str, Any]]:
-        """
-        Get multiple transactions in a more efficient way.
-        Still makes individual calls but with better rate limiting.
-        """
+        """Get multiple transactions in a more efficient way."""
         transactions = []
         
         for i, signature in enumerate(signatures):
-            # Add extra delay every 10 transactions
             if i > 0 and i % 10 == 0:
                 logger.debug(f"Processed {i}/{len(signatures)} transactions, pausing...")
-                time.sleep(2)  # 2 second pause every 10 transactions
+                time.sleep(2)
             
             tx = self._get_transaction(signature)
             if tx:
@@ -276,7 +254,7 @@ class WalletAnalyzer:
     def analyze_wallet_hybrid(self, wallet_address: str, days_back: int = 30) -> Dict[str, Any]:
         """
         UPDATED hybrid wallet analysis using Cielo Finance for aggregated stats and RPC for recent transactions.
-        Now with better rate limiting and error handling.
+        Now with Helius integration for pump.fun tokens.
         
         Args:
             wallet_address (str): Wallet address
@@ -285,99 +263,99 @@ class WalletAnalyzer:
         Returns:
             Dict[str, Any]: Wallet analysis results
         """
-        logger.info(f"🔍 Analyzing wallet {wallet_address} (hybrid approach)")
+        logger.info(f"🔍 Analyzing wallet {wallet_address} (hybrid approach with Helius)")
         
         try:
             # Step 1: Get aggregated stats from Cielo Finance
             logger.info(f"📊 Fetching Cielo Finance aggregated stats...")
             cielo_stats = self.cielo_api.get_wallet_trading_stats(wallet_address)
             
-            # Log the raw response structure
             if cielo_stats and cielo_stats.get("success", True) and "data" in cielo_stats:
                 data = cielo_stats.get("data", {})
                 if isinstance(data, dict):
                     logger.debug(f"Cielo response data keys: {list(data.keys())[:20]}")
-                    # Log a sample of the data
-                    for key in list(data.keys())[:5]:
-                        value = data[key]
-                        if isinstance(value, (int, float, str, bool)):
-                            logger.debug(f"  {key}: {value}")
-                else:
-                    logger.debug(f"Cielo response data type: {type(data)}")
             
             if not cielo_stats or not cielo_stats.get("success", True):
                 logger.warning(f"❌ No Cielo Finance data available for {wallet_address}")
                 logger.info("Attempting RPC-only analysis as fallback...")
                 aggregated_metrics = self._get_empty_cielo_metrics()
             else:
-                # Extract aggregated metrics from Cielo
                 stats_data = cielo_stats.get("data", {})
                 aggregated_metrics = self._extract_aggregated_metrics_from_cielo(stats_data)
             
-            # Step 2: Get recent token trades via RPC for detailed analysis (with rate limiting)
+            # Step 2: Get recent token trades via RPC for detailed analysis
             logger.info(f"🪙 Analyzing last 5 tokens...")
             recent_swaps = self._get_recent_token_swaps_rpc(wallet_address, limit=5)
             
-            # Step 3: Analyze token performance for recent trades (if Birdeye available)
+            # Step 3: Analyze token performance with tiered approach
             analyzed_trades = []
-            if self.birdeye_api and recent_swaps:
-                for i, swap in enumerate(recent_swaps[:5]):  # Analyze up to 5 most recent
-                    # Add delay between Birdeye API calls
+            data_quality_scores = []
+            
+            if recent_swaps:
+                for i, swap in enumerate(recent_swaps[:5]):
                     if i > 0:
                         time.sleep(0.5)
-                        
-                    token_analysis = self._analyze_token_performance(
+                    
+                    # Try analysis in order: Birdeye -> Helius -> Basic
+                    token_analysis, data_quality = self._analyze_token_with_fallback(
                         swap['token_mint'],
                         swap['buy_timestamp'],
                         swap.get('sell_timestamp')
                     )
+                    
                     if token_analysis['success']:
                         analyzed_trades.append({
                             **swap,
-                            **token_analysis
+                            **token_analysis,
+                            'data_quality': data_quality
                         })
+                        data_quality_scores.append(self.data_quality_weights[data_quality])
             
-            # Step 4: Combine Cielo aggregated data with recent trade analysis
+            # Step 4: Combine metrics
             combined_metrics = self._combine_metrics(aggregated_metrics, analyzed_trades)
-            combined_metrics["wallet_address"] = wallet_address  # Add for score variation
-            
-            # Convert hold time from hours to minutes for display
+            combined_metrics["wallet_address"] = wallet_address
             combined_metrics["avg_hold_time_minutes"] = round(combined_metrics.get("avg_hold_time_hours", 0) * 60, 2)
             
-            # Step 5: Calculate composite score for ALL wallets
-            composite_score = self._calculate_composite_score(combined_metrics)
-            combined_metrics["composite_score"] = composite_score
+            # Step 5: Calculate weighted composite score
+            avg_data_quality = np.mean(data_quality_scores) if data_quality_scores else 0.5
+            base_composite_score = self._calculate_composite_score(combined_metrics)
+            weighted_composite_score = round(base_composite_score * (0.7 + 0.3 * avg_data_quality), 1)
+            combined_metrics["composite_score"] = weighted_composite_score
+            combined_metrics["base_composite_score"] = base_composite_score
+            combined_metrics["data_quality_factor"] = round(avg_data_quality, 2)
             
-            # Step 6: Determine wallet type with looser thresholds
+            # Step 6: Determine wallet type
             wallet_type = self._determine_wallet_type(combined_metrics)
             
             # Step 7: Generate strategy
             strategy = self._generate_strategy(wallet_type, combined_metrics)
             
-            # Analyze entry/exit behavior from recent trades
+            # Analyze entry/exit behavior
             entry_exit_analysis = self._analyze_entry_exit_behavior(analyzed_trades)
             
-            logger.debug(f"Final analysis structure for {wallet_address}:")
+            logger.debug(f"Final analysis for {wallet_address}:")
             logger.debug(f"  - wallet_type: {wallet_type}")
-            logger.debug(f"  - composite_score: {composite_score}")
-            logger.debug(f"  - metrics keys: {list(combined_metrics.keys())}")
-            logger.debug(f"  - total_trades: {combined_metrics.get('total_trades', 'MISSING')}")
-            logger.debug(f"  - win_rate: {combined_metrics.get('win_rate', 'MISSING')}")
-            logger.debug(f"  - net_profit_usd: {combined_metrics.get('net_profit_usd', 'MISSING')}")
+            logger.debug(f"  - weighted_composite_score: {weighted_composite_score}")
+            logger.debug(f"  - data_quality_factor: {avg_data_quality}")
             
             return {
                 "success": True,
                 "wallet_address": wallet_address,
                 "analysis_period_days": "ALL_TIME (Cielo) + Recent (RPC)",
                 "wallet_type": wallet_type,
-                "composite_score": composite_score,
+                "composite_score": weighted_composite_score,
                 "metrics": combined_metrics,
                 "strategy": strategy,
                 "trades": analyzed_trades,
                 "entry_exit_analysis": entry_exit_analysis,
-                "api_source": "Cielo Finance + RPC + Birdeye",
+                "api_source": "Cielo Finance + RPC + Birdeye/Helius",
                 "cielo_data": aggregated_metrics,
-                "recent_trades_analyzed": len(analyzed_trades)
+                "recent_trades_analyzed": len(analyzed_trades),
+                "data_quality_breakdown": {
+                    "full_analysis": sum(1 for t in analyzed_trades if t.get('data_quality') == 'full_analysis'),
+                    "helius_analysis": sum(1 for t in analyzed_trades if t.get('data_quality') == 'helius_analysis'),
+                    "basic_analysis": sum(1 for t in analyzed_trades if t.get('data_quality') == 'basic_analysis')
+                }
             }
             
         except Exception as e:
@@ -385,7 +363,6 @@ class WalletAnalyzer:
             import traceback
             logger.error(f"Full traceback: {traceback.format_exc()}")
             
-            # Return a valid structure even on error
             empty_metrics = self._get_empty_metrics()
             return {
                 "success": False,
@@ -408,18 +385,134 @@ class WalletAnalyzer:
                 }
             }
     
-    def _extract_aggregated_metrics_from_cielo(self, stats_data: Dict[str, Any]) -> Dict[str, Any]:
-        """Extract aggregated metrics from Cielo Finance response - FIXED for actual API format."""
+    def _analyze_token_with_fallback(self, token_mint: str, buy_timestamp: Optional[int], 
+                                   sell_timestamp: Optional[int] = None) -> Tuple[Dict[str, Any], str]:
+        """
+        Analyze token performance with fallback approach:
+        1. Try Birdeye API first
+        2. If pump.fun token or Birdeye fails, try Helius
+        3. If both fail, return basic P&L analysis
+        
+        Returns:
+            Tuple[Dict[str, Any], str]: (analysis_result, data_quality_tier)
+        """
+        # Tier 1: Try Birdeye first (best data quality)
+        if self.birdeye_api and not token_mint.endswith("pump"):
+            birdeye_result = self._analyze_token_performance(
+                token_mint, buy_timestamp, sell_timestamp
+            )
+            if birdeye_result.get("success") and not birdeye_result.get("is_pump_token"):
+                return birdeye_result, "full_analysis"
+        
+        # Tier 2: Try Helius for pump.fun tokens or if Birdeye failed
+        if self.helius_api:
+            logger.info(f"Using Helius API for token {token_mint}")
+            helius_result = self._analyze_token_with_helius(
+                token_mint, buy_timestamp, sell_timestamp
+            )
+            if helius_result.get("success"):
+                return helius_result, "helius_analysis"
+        
+        # Tier 3: Basic P&L analysis (fallback)
+        logger.info(f"Using basic P&L analysis for token {token_mint}")
+        basic_result = self._basic_token_analysis(
+            token_mint, buy_timestamp, sell_timestamp
+        )
+        return basic_result, "basic_analysis"
+    
+    def _analyze_token_with_helius(self, token_mint: str, buy_timestamp: Optional[int],
+                                 sell_timestamp: Optional[int] = None) -> Dict[str, Any]:
+        """Analyze token using Helius API (especially for pump.fun tokens)."""
         try:
-            # Check if stats_data has the expected structure
+            if not self.helius_api:
+                return {"success": False, "error": "Helius API not available"}
+            
+            # Get price at buy time
+            buy_price_data = self.helius_api.get_pump_fun_token_price(
+                token_mint, buy_timestamp
+            )
+            
+            if not buy_price_data.get("success"):
+                return {
+                    "success": False,
+                    "error": "Could not get buy price from Helius",
+                    "is_pump_token": True
+                }
+            
+            buy_price = buy_price_data.get("data", {}).get("price", 0)
+            
+            # Get current or sell price
+            if sell_timestamp:
+                sell_price_data = self.helius_api.get_pump_fun_token_price(
+                    token_mint, sell_timestamp
+                )
+                current_price = sell_price_data.get("data", {}).get("price", buy_price)
+            else:
+                current_price_data = self.helius_api.get_pump_fun_token_price(token_mint)
+                current_price = current_price_data.get("data", {}).get("price", buy_price)
+            
+            # Calculate performance metrics
+            roi_percent = ((current_price / buy_price) - 1) * 100 if buy_price > 0 else 0
+            
+            # Get token metadata
+            metadata = self.helius_api.get_token_metadata([token_mint])
+            token_info = {}
+            if metadata.get("success") and metadata.get("data"):
+                token_info = metadata["data"][0] if metadata["data"] else {}
+            
+            # Analyze entry/exit timing
+            entry_timing = "GOOD" if roi_percent > 50 else "POOR" if roi_percent < -20 else "AVERAGE"
+            exit_timing = "HOLDING" if not sell_timestamp else (
+                "GOOD" if roi_percent > 30 else "EARLY" if roi_percent > 0 else "LOSS_EXIT"
+            )
+            
+            return {
+                "success": True,
+                "token_address": token_mint,
+                "initial_price": buy_price,
+                "current_price": current_price,
+                "roi_percent": roi_percent,
+                "current_roi_percent": roi_percent,
+                "max_roi_percent": max(roi_percent, 0),  # Conservative estimate
+                "entry_timing": entry_timing,
+                "exit_timing": exit_timing,
+                "data_source": "helius",
+                "is_pump_token": True,
+                "token_metadata": token_info
+            }
+            
+        except Exception as e:
+            logger.error(f"Error in Helius token analysis: {str(e)}")
+            return {
+                "success": False,
+                "error": str(e),
+                "is_pump_token": True
+            }
+    
+    def _basic_token_analysis(self, token_mint: str, buy_timestamp: Optional[int],
+                            sell_timestamp: Optional[int] = None) -> Dict[str, Any]:
+        """Basic token analysis using only available transaction data."""
+        return {
+            "success": True,
+            "token_address": token_mint,
+            "roi_percent": 0,
+            "current_roi_percent": 0,
+            "max_roi_percent": 0,
+            "entry_timing": "UNKNOWN",
+            "exit_timing": "UNKNOWN",
+            "data_source": "basic",
+            "note": "Limited analysis - price history unavailable"
+        }
+    
+    def _extract_aggregated_metrics_from_cielo(self, stats_data: Dict[str, Any]) -> Dict[str, Any]:
+        """Extract aggregated metrics from Cielo Finance response."""
+        try:
             if not isinstance(stats_data, dict):
                 logger.warning(f"Unexpected Cielo data format: {type(stats_data)}")
                 return self._get_empty_cielo_metrics()
             
-            # Log the actual structure we receive
             logger.debug(f"Cielo Finance response structure: {list(stats_data.keys())[:10]}")
             
-            # Extract metrics using the ACTUAL field names from Cielo Finance API
             metrics = {
                 "total_trades": stats_data.get("swaps_count", 0),
                 "win_rate": stats_data.get("winrate", 0),
@@ -427,14 +520,12 @@ class WalletAnalyzer:
                 "avg_trade_size": stats_data.get("average_buy_amount_usd", 0),
                 "total_volume": (stats_data.get("total_buy_amount_usd", 0) + 
                                stats_data.get("total_sell_amount_usd", 0)),
-                "best_trade": 0,  # Will calculate from ROI distribution
-                "worst_trade": 0,  # Will calculate from ROI distribution
-                "avg_hold_time": stats_data.get("average_holding_time_sec", 0) / 3600 if stats_data.get("average_holding_time_sec", 0) else 0,  # Convert seconds to hours
-                "tokens_traded": stats_data.get("buy_count", 0),  # Or use unique token count if available
+                "best_trade": 0,
+                "worst_trade": 0,
+                "avg_hold_time": stats_data.get("average_holding_time_sec", 0) / 3600 if stats_data.get("average_holding_time_sec", 0) else 0,
+                "tokens_traded": stats_data.get("buy_count", 0),
                 "total_invested": stats_data.get("total_buy_amount_usd", 0),
                 "total_realized": stats_data.get("total_sell_amount_usd", 0),
-                
-                # Additional fields from API
                 "buy_count": stats_data.get("buy_count", 0),
                 "sell_count": stats_data.get("sell_count", 0),
                 "consecutive_trading_days": stats_data.get("consecutive_trading_days", 0),
@@ -442,10 +533,9 @@ class WalletAnalyzer:
                 "holding_distribution": stats_data.get("holding_distribution", {})
             }
             
-            # Calculate best/worst trades from ROI distribution if possible
             roi_dist = stats_data.get("roi_distribution", {})
             if roi_dist.get("roi_above_500", 0) > 0:
-                metrics["best_trade"] = 500  # Conservative estimate
+                metrics["best_trade"] = 500
             elif roi_dist.get("roi_200_to_500", 0) > 0:
                 metrics["best_trade"] = 200
             elif roi_dist.get("roi_0_to_200", 0) > 0:
@@ -460,7 +550,6 @@ class WalletAnalyzer:
             else:
                 metrics["worst_trade"] = 0
             
-            # Log what we extracted
             logger.debug(f"Extracted Cielo metrics: trades={metrics['total_trades']}, "
                         f"win_rate={metrics['win_rate']}, pnl={metrics['total_pnl_usd']}")
             
@@ -469,20 +558,6 @@ class WalletAnalyzer:
         except Exception as e:
             logger.error(f"Error extracting Cielo metrics: {str(e)}")
             return self._get_empty_cielo_metrics()
-    
-    def _safe_get_numeric(self, data: Dict[str, Any], keys: List[str], default: float = 0) -> float:
-        """Safely get a numeric value from dict trying multiple keys."""
-        for key in keys:
-            if key in data:
-                value = data[key]
-                try:
-                    # Handle percentage values that might be strings like "45.2%"
-                    if isinstance(value, str) and value.endswith('%'):
-                        return float(value.rstrip('%'))
-                    return float(value) if value is not None else default
-                except (ValueError, TypeError):
-                    continue
-        return default
     
     def _get_empty_cielo_metrics(self) -> Dict[str, Any]:
         """Return empty Cielo metrics structure."""
@@ -507,8 +582,7 @@ class WalletAnalyzer:
         try:
             logger.info(f"Fetching last {limit} token swaps for {wallet_address}")
             
-            # Get recent signatures (with rate limiting applied)
-            signatures = self._get_signatures_for_address(wallet_address, limit=50)  # Reduced from 100
+            signatures = self._get_signatures_for_address(wallet_address, limit=50)
             
             if not signatures:
                 logger.warning(f"No transactions found for {wallet_address}")
@@ -517,7 +591,6 @@ class WalletAnalyzer:
             swaps = []
             sig_infos = []
             
-            # Collect signatures first
             for sig_info in signatures:
                 if len(swaps) >= limit:
                     break
@@ -526,25 +599,21 @@ class WalletAnalyzer:
                 if signature:
                     sig_infos.append(sig_info)
             
-            # Get transactions in smaller batches
             batch_size = 10
             for i in range(0, len(sig_infos), batch_size):
                 batch = sig_infos[i:i + batch_size]
                 batch_signatures = [s.get("signature") for s in batch if s.get("signature")]
                 
-                # Process batch with delay
                 for signature in batch_signatures:
                     if len(swaps) >= limit:
                         break
                         
                     tx_details = self._get_transaction(signature)
                     if tx_details:
-                        # Extract swap info
                         swap_info = self._extract_token_swaps_from_transaction(tx_details, wallet_address)
                         if swap_info:
                             swaps.extend(swap_info)
                 
-                # Add delay between batches
                 if i + batch_size < len(sig_infos):
                     time.sleep(1)
             
@@ -566,21 +635,16 @@ class WalletAnalyzer:
             
             meta = tx_details["meta"]
             
-            # Get block time with proper fallback
             block_time = tx_details.get("blockTime")
             if not block_time or block_time == 0:
-                # Use current time minus 1 day as fallback
                 block_time = int((datetime.now() - timedelta(days=1)).timestamp())
                 logger.debug(f"Using fallback timestamp: {block_time}")
             
-            # Get token balances
             pre_balances = meta.get("preTokenBalances", [])
             post_balances = meta.get("postTokenBalances", [])
             
-            # Track token changes
             token_changes = {}
             
-            # Process pre-balances
             for balance in pre_balances:
                 owner = balance.get("owner")
                 if owner == wallet_address:
@@ -589,7 +653,6 @@ class WalletAnalyzer:
                     if mint:
                         token_changes[mint] = {"pre": amount, "post": 0}
             
-            # Process post-balances
             for balance in post_balances:
                 owner = balance.get("owner")
                 if owner == wallet_address:
@@ -601,11 +664,9 @@ class WalletAnalyzer:
                         else:
                             token_changes[mint] = {"pre": 0, "post": amount}
             
-            # Identify swaps (one token decreases, another increases)
             for mint, changes in token_changes.items():
                 diff = changes["post"] - changes["pre"]
                 
-                # Token was bought (balance increased)
                 if diff > 0:
                     swaps.append({
                         "token_mint": mint,
@@ -615,7 +676,6 @@ class WalletAnalyzer:
                         "sell_timestamp": None,
                         "signature": tx_details.get("transaction", {}).get("signatures", [""])[0]
                     })
-                # Token was sold (balance decreased)
                 elif diff < 0:
                     swaps.append({
                         "token_mint": mint,
@@ -638,7 +698,6 @@ class WalletAnalyzer:
             return {"success": False, "error": "Birdeye API not available"}
         
         try:
-            # Handle pump.fun tokens specially
             if token_mint.endswith("pump"):
                 logger.info(f"Token {token_mint} is a pump.fun token, limited analysis available")
                 return {
@@ -649,45 +708,36 @@ class WalletAnalyzer:
                     "exit_timing": "UNKNOWN"
                 }
             
-            # Ensure we have valid timestamps
             current_time = int(datetime.now().timestamp())
             
-            # Handle missing or invalid buy timestamp
             if not buy_timestamp or buy_timestamp == 0:
-                # Default to 7 days ago if no timestamp
                 buy_timestamp = current_time - (7 * 24 * 60 * 60)
                 logger.debug(f"Using default buy timestamp (7 days ago): {buy_timestamp}")
             
-            # Ensure buy_timestamp is not in the future
             if buy_timestamp > current_time:
-                buy_timestamp = current_time - (24 * 60 * 60)  # 1 day ago
+                buy_timestamp = current_time - (24 * 60 * 60)
                 logger.debug(f"Adjusted future timestamp to 1 day ago: {buy_timestamp}")
             
-            # Use sell timestamp or current time
             end_time = sell_timestamp if sell_timestamp and sell_timestamp > 0 else current_time
             
-            # Get token info
             token_info = self.birdeye_api.get_token_info(token_mint)
             
-            # Use proper resolution format
-            resolution = "1H"  # Default
+            resolution = "1H"
             
-            # Calculate time difference to choose appropriate resolution
             time_diff = end_time - buy_timestamp
-            if time_diff < 3600:  # Less than 1 hour
+            if time_diff < 3600:
                 resolution = "5m"
-            elif time_diff < 86400:  # Less than 1 day
+            elif time_diff < 86400:
                 resolution = "15m"
-            elif time_diff < 259200:  # Less than 3 days
+            elif time_diff < 259200:
                 resolution = "1H"
-            elif time_diff < 604800:  # Less than 1 week
+            elif time_diff < 604800:
                 resolution = "4H"
             else:
                 resolution = "1D"
             
             logger.debug(f"Analyzing token {token_mint} from {buy_timestamp} to {end_time} with resolution {resolution}")
             
-            # Get price history
             history_response = self.birdeye_api.get_token_price_history(
                 token_mint,
                 buy_timestamp,
@@ -704,13 +754,11 @@ class WalletAnalyzer:
                     "exit_timing": "UNKNOWN"
                 }
             
-            # Calculate performance metrics
             performance = self.birdeye_api.calculate_token_performance(
                 token_mint,
                 datetime.fromtimestamp(buy_timestamp)
             )
             
-            # Add entry/exit timing analysis
             if performance.get("success"):
                 performance["entry_timing"] = self._analyze_entry_timing(performance)
                 performance["exit_timing"] = self._analyze_exit_timing(performance, sell_timestamp is not None)
@@ -733,13 +781,13 @@ class WalletAnalyzer:
             roi_to_max_time = performance.get("time_to_max_roi_hours", 0)
             
             if max_roi < 20:
-                return "POOR"  # Token didn't perform well
+                return "POOR"
             elif roi_to_max_time < 1:
-                return "EXCELLENT"  # Caught the pump early
+                return "EXCELLENT"
             elif roi_to_max_time < 6:
-                return "GOOD"  # Good entry timing
+                return "GOOD"
             else:
-                return "LATE"  # Late entry
+                return "LATE"
         except:
             return "UNKNOWN"
     
@@ -755,17 +803,16 @@ class WalletAnalyzer:
             if current_roi <= 0:
                 return "LOSS_EXIT"
             
-            # Check if sold too early or too late
             roi_capture_ratio = current_roi / max_roi if max_roi > 0 else 0
             
             if roi_capture_ratio >= 0.8:
-                return "EXCELLENT"  # Captured most of the gains
+                return "EXCELLENT"
             elif roi_capture_ratio >= 0.5:
-                return "GOOD"  # Captured decent portion
+                return "GOOD"
             elif roi_capture_ratio >= 0.2:
-                return "EARLY"  # Sold too early, missed gains
+                return "EARLY"
             else:
-                return "VERY_EARLY"  # Sold way too early
+                return "VERY_EARLY"
                 
         except:
             return "UNKNOWN"
@@ -782,29 +829,30 @@ class WalletAnalyzer:
                 "recommendations": "Need more trade data for analysis"
             }
         
-        # Filter out trades without proper analysis
         valid_trades = [t for t in analyzed_trades if t.get("success", False)]
         
         if not valid_trades:
-            # Check if all trades are pump.fun tokens
             pump_token_count = sum(1 for t in analyzed_trades if t.get("is_pump_token", False))
-            if pump_token_count > 0:
+            helius_count = sum(1 for t in analyzed_trades if t.get("data_source") == "helius")
+            basic_count = sum(1 for t in analyzed_trades if t.get("data_source") == "basic")
+            
+            if pump_token_count > 0 and helius_count == 0:
                 return {
                     "pattern": "PUMP_TOKEN_TRADER",
                     "entry_quality": "UNKNOWN",
                     "exit_quality": "UNKNOWN",
                     "missed_gains_percent": 0,
                     "early_exit_rate": 0,
-                    "recommendations": f"Price history unavailable for {pump_token_count} pump.fun tokens"
+                    "recommendations": f"Trades pump.fun tokens - enable Helius for better analysis"
                 }
-            else:
+            elif basic_count > 0:
                 return {
                     "pattern": "LIMITED_DATA",
                     "entry_quality": "UNKNOWN",
                     "exit_quality": "UNKNOWN",
                     "missed_gains_percent": 0,
                     "early_exit_rate": 0,
-                    "recommendations": "Price history unavailable for recent trades"
+                    "recommendations": "Limited price data available"
                 }
         
         entry_timings = []
@@ -817,20 +865,17 @@ class WalletAnalyzer:
             if "exit_timing" in trade and trade["exit_timing"] != "UNKNOWN":
                 exit_timings.append(trade["exit_timing"])
             
-            # Calculate missed gains
             if trade.get("current_roi_percent", 0) > 0 and trade.get("max_roi_percent", 0) > 0:
                 missed = trade["max_roi_percent"] - trade["current_roi_percent"]
                 if missed > 0:
                     missed_gains.append(missed)
         
-        # Analyze patterns
         good_entries = sum(1 for e in entry_timings if e in ["EXCELLENT", "GOOD"])
         good_exits = sum(1 for e in exit_timings if e in ["EXCELLENT", "GOOD"])
         early_exits = sum(1 for e in exit_timings if e in ["EARLY", "VERY_EARLY"])
         
         avg_missed_gains = np.mean(missed_gains) if missed_gains else 0
         
-        # Determine patterns
         entry_quality = "GOOD" if len(entry_timings) > 0 and good_entries / len(entry_timings) >= 0.5 else "POOR"
         exit_quality = "GOOD" if len(exit_timings) > 0 and good_exits / len(exit_timings) >= 0.5 else "POOR"
         
@@ -852,21 +897,23 @@ class WalletAnalyzer:
             "early_exit_rate": round(early_exits / len(exit_timings) * 100, 2) if exit_timings else 0,
             "recommendations": recommendations,
             "trades_analyzed": len(valid_trades),
-            "pump_tokens_skipped": sum(1 for t in analyzed_trades if t.get("is_pump_token", False))
+            "pump_tokens_skipped": sum(1 for t in analyzed_trades if t.get("is_pump_token", False)),
+            "data_sources": {
+                "birdeye": sum(1 for t in analyzed_trades if t.get("data_source") == "birdeye"),
+                "helius": sum(1 for t in analyzed_trades if t.get("data_source") == "helius"),
+                "basic": sum(1 for t in analyzed_trades if t.get("data_source") == "basic")
+            }
         }
     
     def _combine_metrics(self, cielo_metrics: Dict[str, Any], 
                         analyzed_trades: List[Dict[str, Any]]) -> Dict[str, Any]:
-        """Combine Cielo aggregated metrics with recent trade analysis - FIXED."""
+        """Combine Cielo aggregated metrics with recent trade analysis."""
         try:
-            # Start with Cielo metrics or empty metrics
             combined = cielo_metrics.copy() if cielo_metrics else self._get_empty_cielo_metrics()
             
-            # Log what we received
             logger.debug(f"Combining metrics - Cielo data: total_trades={combined.get('total_trades', 0)}, "
                         f"win_rate={combined.get('win_rate', 0)}, pnl={combined.get('total_pnl_usd', 0)}")
             
-            # Calculate derived metrics from Cielo data
             total_trades = combined.get("total_trades", 0)
             win_rate = combined.get("win_rate", 0)
             total_pnl = combined.get("total_pnl_usd", 0)
@@ -876,7 +923,6 @@ class WalletAnalyzer:
             total_invested = combined.get("total_invested", 0)
             total_realized = combined.get("total_realized", 0)
             
-            # Calculate win/loss counts
             if total_trades > 0 and win_rate > 0:
                 win_count = int(total_trades * (win_rate / 100))
                 loss_count = total_trades - win_count
@@ -884,7 +930,6 @@ class WalletAnalyzer:
                 win_count = 0
                 loss_count = total_trades
             
-            # Calculate profit/loss breakdown
             if total_pnl > 0:
                 total_profit_usd = total_pnl
                 total_loss_usd = 0
@@ -892,21 +937,19 @@ class WalletAnalyzer:
                 total_profit_usd = 0
                 total_loss_usd = abs(total_pnl)
             
-            # Calculate profit factor (FIXED - capped at 999.99)
+            # Calculate profit factor (capped at 999.99)
             if total_loss_usd > 0:
                 profit_factor = round(total_profit_usd / total_loss_usd, 2)
             elif total_profit_usd > 0:
-                profit_factor = 999.99  # Cap at 999.99 instead of inf
+                profit_factor = 999.99
             else:
                 profit_factor = 0.0
             
-            # Calculate average ROI
             if total_invested > 0:
                 avg_roi = (total_pnl / total_invested) * 100
             else:
                 avg_roi = 0
             
-            # Add metrics from analyzed trades if available
             if analyzed_trades:
                 recent_rois = [t.get("roi_percent", 0) for t in analyzed_trades if "roi_percent" in t]
                 if recent_rois:
@@ -920,43 +963,31 @@ class WalletAnalyzer:
                     min_roi = 0
                     std_dev_roi = 0
             else:
-                # Use estimates based on Cielo data
-                median_roi = avg_roi * 0.8  # Conservative estimate
-                max_roi = best_trade  # Use best trade as max ROI
-                min_roi = worst_trade  # Use worst trade as min ROI
-                std_dev_roi = abs(max_roi - min_roi) / 4  # Rough estimate
+                median_roi = avg_roi * 0.8
+                max_roi = best_trade
+                min_roi = worst_trade
+                std_dev_roi = abs(max_roi - min_roi) / 4
             
-            # Convert Cielo ROI distribution to our format
             roi_distribution = self._convert_roi_distribution(combined.get("roi_distribution", {}))
             
-            # Build complete metrics dictionary
             complete_metrics = {
-                # Basic counts
                 "total_trades": total_trades,
                 "win_count": win_count,
                 "loss_count": loss_count,
                 "win_rate": win_rate,
-                
-                # Profit/Loss metrics
                 "total_profit_usd": total_profit_usd,
                 "total_loss_usd": total_loss_usd,
-                "net_profit_usd": total_pnl,  # This is the key field
+                "net_profit_usd": total_pnl,
                 "profit_factor": profit_factor,
-                
-                # ROI metrics
                 "avg_roi": avg_roi,
                 "median_roi": median_roi,
                 "std_dev_roi": std_dev_roi,
                 "max_roi": max_roi,
                 "min_roi": min_roi,
-                
-                # Other metrics
                 "avg_hold_time_hours": combined.get("avg_hold_time", 0),
                 "total_bet_size_usd": total_invested,
                 "avg_bet_size_usd": combined.get("avg_trade_size", 0),
                 "total_tokens_traded": combined.get("tokens_traded", 0),
-                
-                # ROI distribution
                 "roi_distribution": roi_distribution
             }
             
@@ -964,29 +995,24 @@ class WalletAnalyzer:
             
         except Exception as e:
             logger.error(f"Error combining metrics: {str(e)}")
-            # Return safe default metrics with all required fields
             return self._get_empty_metrics()
     
     def _convert_roi_distribution(self, cielo_roi_dist: Dict[str, Any]) -> Dict[str, int]:
         """Convert Cielo Finance ROI distribution format to our expected format."""
         return {
-            "10x_plus": cielo_roi_dist.get("roi_above_500", 0),  # 500% = 5x, so above 500% = close to 10x
-            "5x_to_10x": cielo_roi_dist.get("roi_above_500", 0),  # Same as above for now
-            "2x_to_5x": cielo_roi_dist.get("roi_200_to_500", 0),  # 200-500% = 2x-5x
-            "1x_to_2x": int(cielo_roi_dist.get("roi_0_to_200", 0) / 2),  # Estimate half are 100-200%
-            "50_to_100": int(cielo_roi_dist.get("roi_0_to_200", 0) / 2),  # Estimate half are 50-100%
-            "0_to_50": int(cielo_roi_dist.get("roi_0_to_200", 0) / 2),  # Conservative estimate
+            "10x_plus": cielo_roi_dist.get("roi_above_500", 0),
+            "5x_to_10x": cielo_roi_dist.get("roi_above_500", 0),
+            "2x_to_5x": cielo_roi_dist.get("roi_200_to_500", 0),
+            "1x_to_2x": int(cielo_roi_dist.get("roi_0_to_200", 0) / 2),
+            "50_to_100": int(cielo_roi_dist.get("roi_0_to_200", 0) / 2),
+            "0_to_50": int(cielo_roi_dist.get("roi_0_to_200", 0) / 2),
             "minus50_to_0": cielo_roi_dist.get("roi_neg50_to_0", 0),
             "below_minus50": cielo_roi_dist.get("roi_below_neg50", 0)
         }
     
     def _calculate_composite_score(self, metrics: Dict[str, Any]) -> float:
-        """
-        Calculate composite score (0-100) for ALL wallets.
-        Adjusted for Solana memecoins with looser criteria.
-        """
+        """Calculate composite score (0-100) for ALL wallets."""
         try:
-            # Get metrics with safe defaults
             total_trades = metrics.get("total_trades", 0)
             win_rate = metrics.get("win_rate", 0)
             profit_factor = metrics.get("profit_factor", 0)
@@ -995,9 +1021,7 @@ class WalletAnalyzer:
             median_roi = metrics.get("median_roi", 0)
             net_profit = metrics.get("net_profit_usd", 0)
             
-            # Base score components (adjusted for memecoins)
-            
-            # 1. Activity score (max 20 points)
+            # Activity score (max 20 points)
             if total_trades >= 50:
                 activity_score = 20
             elif total_trades >= 20:
@@ -1011,12 +1035,12 @@ class WalletAnalyzer:
             else:
                 activity_score = 0
             
-            # 2. Win rate score (max 20 points) - LOOSENED
+            # Win rate score (max 20 points)
             if win_rate >= 60:
                 winrate_score = 20
             elif win_rate >= 45:
                 winrate_score = 15
-            elif win_rate >= 30:  # Lowered threshold
+            elif win_rate >= 30:
                 winrate_score = 10
             elif win_rate >= 20:
                 winrate_score = 5
@@ -1025,12 +1049,12 @@ class WalletAnalyzer:
             else:
                 winrate_score = 0
             
-            # 3. Profit factor score (max 20 points) - LOOSENED
+            # Profit factor score (max 20 points)
             if profit_factor >= 2.0:
                 pf_score = 20
             elif profit_factor >= 1.5:
                 pf_score = 15
-            elif profit_factor >= 1.0:  # Lowered threshold
+            elif profit_factor >= 1.0:
                 pf_score = 10
             elif profit_factor >= 0.8:
                 pf_score = 5
@@ -1039,12 +1063,12 @@ class WalletAnalyzer:
             else:
                 pf_score = 0
             
-            # 4. ROI score (max 20 points) - Focus on max potential
-            if max_roi >= 500:  # 5x or more
+            # ROI score (max 20 points)
+            if max_roi >= 500:
                 roi_score = 20
-            elif max_roi >= 200:  # 2x or more
+            elif max_roi >= 200:
                 roi_score = 15
-            elif max_roi >= 100:  # 1x or more
+            elif max_roi >= 100:
                 roi_score = 10
             elif max_roi >= 50:
                 roi_score = 5
@@ -1053,32 +1077,29 @@ class WalletAnalyzer:
             else:
                 roi_score = 0
             
-            # 5. Consistency score (max 20 points) - Based on median ROI and profit
+            # Consistency score (max 20 points)
             consistency_points = 0
             
-            # Median ROI component
             if median_roi >= 50:
                 consistency_points += 10
             elif median_roi >= 20:
                 consistency_points += 7
-            elif median_roi >= 0:  # Break even or better
+            elif median_roi >= 0:
                 consistency_points += 5
-            elif median_roi >= -10:  # Small losses acceptable
+            elif median_roi >= -10:
                 consistency_points += 3
             else:
                 consistency_points += 0
             
-            # Net profit component
             if net_profit > 0:
                 consistency_points += 10
-            elif net_profit >= -100:  # Small loss acceptable
+            elif net_profit >= -100:
                 consistency_points += 5
             else:
                 consistency_points += 0
             
             consistency_score = min(20, consistency_points)
             
-            # Calculate total score
             total_score = (
                 activity_score +
                 winrate_score +
@@ -1087,38 +1108,29 @@ class WalletAnalyzer:
                 consistency_score
             )
             
-            # Apply bonus multipliers for exceptional performance
-            if max_roi >= 1000:  # 10x achieved
+            if max_roi >= 1000:
                 total_score *= 1.2
-            elif max_roi >= 500:  # 5x achieved
+            elif max_roi >= 500:
                 total_score *= 1.1
             
-            # Additional bonus for profitable traders
             if net_profit > 1000:
                 total_score *= 1.1
             elif net_profit > 100:
                 total_score *= 1.05
             
-            # Cap at 100
             total_score = min(100, total_score)
             
-            # Ensure minimum score for active wallets
             if total_trades > 0:
                 total_score = max(2, total_score)
             
-            # Give base score of 18 for wallets with some data but poor performance
             if total_trades > 0 and total_score < 18:
                 total_score = 18
             
-            # Add small random variation to avoid identical scores
-            # This helps differentiate wallets with similar metrics
             if total_trades == 0:
-                # For wallets with no trades, add small variation based on available data
                 import hashlib
-                # Use any available unique identifier
                 unique_str = str(metrics.get("wallet_address", "")) + str(metrics.get("total_volume", "")) + str(metrics.get("tokens_traded", ""))
                 hash_val = int(hashlib.md5(unique_str.encode()).hexdigest()[:4], 16)
-                variation = (hash_val % 10) / 10.0  # 0.0 to 0.9
+                variation = (hash_val % 10) / 10.0
                 total_score += variation
             
             return round(total_score, 1)
@@ -1128,18 +1140,16 @@ class WalletAnalyzer:
             return 0
     
     def _calculate_metrics(self, paired_trades: List[Dict[str, Any]]) -> Dict[str, Any]:
-        """Calculate performance metrics from paired trades - FIXED."""
+        """Calculate performance metrics from paired trades."""
         if not paired_trades:
             logger.warning("No paired trades for metrics calculation")
             return self._get_empty_metrics()
         
         try:
-            # Basic counts
             total_trades = len(paired_trades)
             win_count = sum(1 for trade in paired_trades if trade.get("is_win", False))
             loss_count = total_trades - win_count
             
-            # ROI statistics
             roi_values = [trade.get("roi_percent", 0) for trade in paired_trades]
             avg_roi = np.mean(roi_values) if roi_values else 0
             median_roi = np.median(roi_values) if roi_values else 0
@@ -1147,7 +1157,6 @@ class WalletAnalyzer:
             max_roi = max(roi_values) if roi_values else 0
             min_roi = min(roi_values) if roi_values else 0
             
-            # Profit/loss calculations
             total_profit_usd = 0
             total_loss_usd = 0
             
@@ -1163,27 +1172,23 @@ class WalletAnalyzer:
             
             net_profit_usd = total_profit_usd - total_loss_usd
             
-            # FIXED profit factor calculation - capped at 999.99
+            # Profit factor calculation (capped at 999.99)
             if total_loss_usd > 0:
                 profit_factor = round(total_profit_usd / total_loss_usd, 2)
             elif total_profit_usd > 0:
-                profit_factor = 999.99  # Cap at 999.99 instead of inf
+                profit_factor = 999.99
             else:
                 profit_factor = 0.0
             
-            # Holding time
             holding_times = [trade.get("holding_time_hours", 0) for trade in paired_trades if "holding_time_hours" in trade and trade.get("holding_time_hours", 0) > 0]
             avg_hold_time_hours = np.mean(holding_times) if holding_times else 0
             
-            # Bet size
             bet_sizes = [trade.get("buy_value_usd", 0) for trade in paired_trades]
             total_bet_size_usd = sum(bet_sizes)
             avg_bet_size_usd = np.mean(bet_sizes) if bet_sizes else 0
             
-            # Unique tokens
             unique_tokens = len(set(trade.get("token_address", "") for trade in paired_trades if trade.get("token_address")))
             
-            # ROI distribution buckets
             roi_buckets = {
                 "10x_plus": len([t for t in paired_trades if t.get("roi_percent", 0) >= 1000]),
                 "5x_to_10x": len([t for t in paired_trades if 500 <= t.get("roi_percent", 0) < 1000]),
@@ -1229,7 +1234,7 @@ class WalletAnalyzer:
             "win_rate": 0,
             "total_profit_usd": 0,
             "total_loss_usd": 0,
-            "net_profit_usd": 0,  # CRITICAL: This field was missing!
+            "net_profit_usd": 0,
             "profit_factor": 0,
             "avg_roi": 0,
             "median_roi": 0,
@@ -1253,16 +1258,12 @@ class WalletAnalyzer:
         }
     
     def _determine_wallet_type(self, metrics: Dict[str, Any]) -> str:
-        """
-        Determine the wallet type based on metrics.
-        LOOSENED thresholds for Solana memecoins.
-        """
-        # Ensure metrics exist
+        """Determine the wallet type based on metrics."""
         if not metrics:
             return "unknown"
             
         total_trades = metrics.get("total_trades", 0)
-        if total_trades < 1:  # Changed from 3
+        if total_trades < 1:
             return "unknown"
         
         try:
@@ -1275,34 +1276,26 @@ class WalletAnalyzer:
             profit_factor = metrics.get("profit_factor", 0)
             net_profit = metrics.get("net_profit_usd", 0)
             
-            # Calculate key indicators
             big_win_count = (roi_distribution.get("10x_plus", 0) + 
                            roi_distribution.get("5x_to_10x", 0) + 
                            roi_distribution.get("2x_to_5x", 0))
             big_win_ratio = big_win_count / total_trades if total_trades > 0 else 0
             
-            # LOOSENED THRESHOLDS
-            # Gem finder: Lower requirements
-            if big_win_ratio >= 0.10 and max_roi >= 200:  # Was 0.15 and 300
+            if big_win_ratio >= 0.10 and max_roi >= 200:
                 return "gem_finder"
             
-            # Flipper: More lenient on hold time and win rate
-            if avg_hold_time_hours < 24 and win_rate > 40:  # Was < 12 and > 50
+            if avg_hold_time_hours < 24 and win_rate > 40:
                 return "flipper"
             
-            # Consistent: Lower bar for consistency
-            if win_rate >= 35 and median_roi > -10:  # Was >= 45 and > 0
+            if win_rate >= 35 and median_roi > -10:
                 return "consistent"
             
-            # Mixed: If has some positive traits
             if win_rate >= 30 or max_roi >= 100 or profit_factor >= 1.0 or net_profit > 0:
                 return "mixed"
             
-            # Underperformer: Active but poor results
             if total_trades >= 5:
                 return "underperformer"
             
-            # Unknown: Low activity
             return "unknown"
             
         except Exception as e:
@@ -1310,21 +1303,16 @@ class WalletAnalyzer:
             return "unknown"
     
     def _generate_strategy(self, wallet_type: str, metrics: Dict[str, Any]) -> Dict[str, Any]:
-        """
-        Generate a trading strategy based on wallet type and metrics.
-        """
+        """Generate a trading strategy based on wallet type and metrics."""
         try:
-            # Ensure metrics exist
             if not metrics:
                 metrics = {}
             
-            # Get composite score
             composite_score = metrics.get("composite_score", 0)
             
-            # Base strategies by wallet type
             if wallet_type == "gem_finder":
                 max_roi = metrics.get("max_roi", 0)
-                if max_roi >= 500:  # 5x+ potential
+                if max_roi >= 500:
                     strategy = {
                         "recommendation": "HOLD_MOON",
                         "entry_type": "IMMEDIATE",
@@ -1409,7 +1397,7 @@ class WalletAnalyzer:
                     "notes": f"Underperformer (Score: {composite_score}/100). High risk."
                 }
             
-            else:  # unknown
+            else:
                 strategy = {
                     "recommendation": "CAUTIOUS",
                     "entry_type": "WAIT_FOR_CONFIRMATION",
@@ -1421,7 +1409,6 @@ class WalletAnalyzer:
                     "notes": f"Low activity (Score: {composite_score}/100). Insufficient data."
                 }
             
-            # Adjust based on composite score
             if composite_score >= 80:
                 strategy["confidence"] = "VERY_HIGH"
                 strategy["position_size"] = "LARGE"
@@ -1452,29 +1439,18 @@ class WalletAnalyzer:
             }
     
     def analyze_wallet(self, wallet_address: str, days_back: int = 30) -> Dict[str, Any]:
-        """
-        Analyze a wallet for copy trading with Cielo Finance API.
-        
-        Args:
-            wallet_address (str): Wallet address
-            days_back (int): Number of days to analyze (not used for Cielo Finance API)
-            
-        Returns:
-            Dict[str, Any]: Wallet analysis results
-        """
+        """Analyze a wallet for copy trading with Cielo Finance API."""
         logger.info(f"Analyzing wallet {wallet_address} using Cielo Finance API")
         
         try:
-            # Get wallet token P&L data from Cielo Finance API
             token_pnl_data = self.cielo_api.get_wallet_trading_stats(wallet_address)
             
             if not token_pnl_data or not token_pnl_data.get("success", True):
                 logger.warning(f"No token P&L data available for wallet {wallet_address}")
                 
-                # Return valid structure with empty metrics instead of error
                 empty_metrics = self._get_empty_metrics()
                 return {
-                    "success": True,  # Mark as success but with empty data
+                    "success": True,
                     "wallet_address": wallet_address,
                     "analysis_period_days": "ALL_TIME",
                     "wallet_type": "unknown",
@@ -1487,12 +1463,10 @@ class WalletAnalyzer:
                     "note": "No trading data available"
                 }
             
-            # Extract trades from Cielo Finance token P&L data
             trades = self._extract_trades_from_cielo_trading_stats(token_pnl_data, wallet_address)
             paired_trades = self._pair_trades(trades)
             
             if not paired_trades:
-                # Return with empty metrics rather than error
                 empty_metrics = self._get_empty_metrics()
                 return {
                     "success": True,
@@ -1507,30 +1481,24 @@ class WalletAnalyzer:
                     "note": "No complete trades found"
                 }
             
-            # Calculate metrics
             metrics = self._calculate_metrics(paired_trades)
             
-            # Add hold time in minutes
             metrics["avg_hold_time_minutes"] = round(metrics.get("avg_hold_time_hours", 0) * 60, 2)
             
-            # Calculate composite score
             composite_score = self._calculate_composite_score(metrics)
             metrics["composite_score"] = composite_score
             
-            # Determine wallet type
             wallet_type = self._determine_wallet_type(metrics)
             logger.info(f"Wallet type: {wallet_type}, Score: {composite_score}/100")
             
-            # Generate strategy
             strategy = self._generate_strategy(wallet_type, metrics)
             
-            # Find correlated wallets
             correlated_wallets = self._find_correlated_wallets(wallet_address)
             
             return {
                 "success": True,
                 "wallet_address": wallet_address,
-                "analysis_period_days": "ALL_TIME",  # Cielo Finance provides all-time data
+                "analysis_period_days": "ALL_TIME",
                 "wallet_type": wallet_type,
                 "composite_score": composite_score,
                 "metrics": metrics,
@@ -1545,7 +1513,6 @@ class WalletAnalyzer:
             import traceback
             logger.error(f"Full traceback: {traceback.format_exc()}")
             
-            # Return a valid structure even on error
             empty_metrics = self._get_empty_metrics()
             return {
                 "success": False,
@@ -1570,9 +1537,7 @@ class WalletAnalyzer:
     
     def _extract_trades_from_cielo_trading_stats(self, trading_stats_data: Dict[str, Any], 
                                                  wallet_address: str) -> List[Dict[str, Any]]:
-        """
-        Extract and categorize trades from Cielo Finance token P&L data - FIXED.
-        """
+        """Extract and categorize trades from Cielo Finance token P&L data."""
         if not trading_stats_data or not trading_stats_data.get("success", True):
             logger.warning(f"No valid token P&L data for wallet {wallet_address}")
             return []
@@ -1580,30 +1545,24 @@ class WalletAnalyzer:
         trades = []
         
         try:
-            # Extract data from Cielo Finance response
             stats_data = trading_stats_data.get("data", {})
             if not isinstance(stats_data, dict):
                 logger.warning(f"Unexpected token P&L data format for wallet {wallet_address}")
                 return []
             
-            # Try different possible structures
-            # 1. Check for token list directly in data
             if "tokens" in stats_data:
                 for token_data in stats_data["tokens"]:
                     processed_trade = self._process_cielo_token_pnl(token_data, wallet_address)
                     if processed_trade:
                         trades.append(processed_trade)
             
-            # 2. Check for token array at root
             elif isinstance(stats_data, list):
                 for token_data in stats_data:
                     processed_trade = self._process_cielo_token_pnl(token_data, wallet_address)
                     if processed_trade:
                         trades.append(processed_trade)
             
-            # 3. Create a single aggregated trade from overall stats
             else:
-                # Try to create a summary trade from wallet-level stats
                 summary_trade = self._create_summary_trade_from_stats(stats_data, wallet_address)
                 if summary_trade:
                     trades.append(summary_trade)
@@ -1618,7 +1577,6 @@ class WalletAnalyzer:
     def _process_cielo_token_pnl(self, token_data: Dict[str, Any], wallet_address: str) -> Optional[Dict[str, Any]]:
         """Process token P&L data from Cielo Finance."""
         try:
-            # Create a trade record from Cielo Finance token P&L data
             return {
                 "token_address": token_data.get("mint", token_data.get("address", token_data.get("contract", ""))),
                 "token_symbol": token_data.get("symbol", token_data.get("name", "")),
@@ -1648,12 +1606,10 @@ class WalletAnalyzer:
     def _create_summary_trade_from_stats(self, stats_data: Dict[str, Any], wallet_address: str) -> Optional[Dict[str, Any]]:
         """Create a summary trade from wallet-level statistics."""
         try:
-            # Only create summary if we have meaningful data
             if not any(stats_data.get(key, 0) != 0 
                       for key in ["swaps_count", "pnl", "winrate", "total_buy_amount_usd"]):
                 return None
             
-            # Extract key metrics using actual field names
             total_trades = stats_data.get("swaps_count", 0)
             win_rate = stats_data.get("winrate", 0)
             total_pnl = stats_data.get("pnl", 0)
@@ -1661,14 +1617,12 @@ class WalletAnalyzer:
             total_realized = stats_data.get("total_sell_amount_usd", 0)
             avg_hold_time_sec = stats_data.get("average_holding_time_sec", 0)
             
-            # Calculate ROI
             roi_percent = 0
             if total_invested > 0:
                 roi_percent = ((total_realized - total_invested) / total_invested) * 100
             elif total_pnl != 0 and total_invested > 0:
                 roi_percent = (total_pnl / total_invested) * 100
             
-            # Create summary trade
             return {
                 "token_address": "",
                 "token_symbol": f"WALLET_SUMMARY_{total_trades}_TRADES",
@@ -1702,19 +1656,15 @@ class WalletAnalyzer:
             logger.warning("No trades to pair")
             return []
         
-        # Cielo Finance API should already provide paired trades with P&L calculated
-        # So we just validate and clean the data
         paired_trades = []
         
         for trade in trades:
-            # Ensure required fields exist with safe defaults
             trade_copy = trade.copy()
             trade_copy.setdefault("buy_value_usd", 0)
             trade_copy.setdefault("sell_value_usd", 0)
             trade_copy.setdefault("roi_percent", 0)
             trade_copy.setdefault("is_win", trade_copy.get("roi_percent", 0) > 0)
             
-            # Only include trades with actual buy value
             if trade_copy.get("buy_value_usd", 0) > 0:
                 paired_trades.append(trade_copy)
         
@@ -1767,20 +1717,7 @@ class WalletAnalyzer:
                             days_back: int = 30,
                             min_winrate: float = 30.0,
                             use_hybrid: bool = True) -> Dict[str, Any]:
-        """
-        Batch analyze multiple wallets with Cielo Finance API.
-        Added parallel processing with better rate limiting.
-        Lowered thresholds.
-        
-        Args:
-            wallet_addresses (List[str]): List of wallet addresses
-            days_back (int): Number of days to analyze (not used for Cielo Finance)
-            min_winrate (float): Minimum win rate percentage (lowered to 30%)
-            use_hybrid (bool): Whether to use hybrid analysis (Cielo + RPC + Birdeye)
-            
-        Returns:
-            Dict[str, Any]: Categorized wallet analyses
-        """
+        """Batch analyze multiple wallets with Cielo Finance API."""
         logger.info(f"Batch analyzing {len(wallet_addresses)} wallets using {'hybrid' if use_hybrid else 'Cielo-only'} approach")
         
         if not wallet_addresses:
@@ -1794,7 +1731,6 @@ class WalletAnalyzer:
             wallet_analyses = []
             failed_analyses = []
             
-            # Process wallets sequentially to avoid overwhelming RPC
             for i, wallet_address in enumerate(wallet_addresses, 1):
                 logger.info(f"Analyzing wallet {i}/{len(wallet_addresses)}: {wallet_address}")
                 
@@ -1804,7 +1740,6 @@ class WalletAnalyzer:
                     else:
                         analysis = self.analyze_wallet(wallet_address, days_back)
                     
-                    # Always add to analyses if we have metrics
                     if "metrics" in analysis:
                         wallet_analyses.append(analysis)
                         score = analysis.get("composite_score", analysis.get("metrics", {}).get("composite_score", 0))
@@ -1816,9 +1751,8 @@ class WalletAnalyzer:
                             "error_type": analysis.get("error_type", "NO_METRICS")
                         })
                     
-                    # Add delay between wallets to respect rate limits
                     if i < len(wallet_addresses):
-                        time.sleep(2)  # 2 second delay between wallets
+                        time.sleep(2)
                         
                 except Exception as e:
                     logger.error(f"Error analyzing wallet {wallet_address}: {str(e)}")
@@ -1836,10 +1770,6 @@ class WalletAnalyzer:
                     "error_type": "ALL_FAILED"
                 }
             
-            # NO FILTERING - Show all wallets regardless of win rate or profit factor
-            # Just categorize them
-            
-            # Categorize wallets
             gem_finders = [a for a in wallet_analyses if a.get("wallet_type") == "gem_finder"]
             consistent = [a for a in wallet_analyses if a.get("wallet_type") == "consistent"]
             flippers = [a for a in wallet_analyses if a.get("wallet_type") == "flipper"]
@@ -1847,11 +1777,9 @@ class WalletAnalyzer:
             underperformers = [a for a in wallet_analyses if a.get("wallet_type") == "underperformer"]
             unknown = [a for a in wallet_analyses if a.get("wallet_type") == "unknown"]
             
-            # Sort each category by composite score
             for category in [gem_finders, consistent, flippers, mixed, underperformers, unknown]:
                 category.sort(key=lambda x: x.get("composite_score", x.get("metrics", {}).get("composite_score", 0)), reverse=True)
             
-            # Find wallet clusters
             wallet_clusters = self._identify_wallet_clusters(
                 {a["wallet_address"]: a.get("correlated_wallets", []) for a in wallet_analyses}
             )
@@ -1861,7 +1789,7 @@ class WalletAnalyzer:
                 "total_wallets": len(wallet_addresses),
                 "analyzed_wallets": len(wallet_analyses),
                 "failed_wallets": len(failed_analyses),
-                "filtered_wallets": len(wallet_analyses),  # No filtering, so same as analyzed
+                "filtered_wallets": len(wallet_analyses),
                 "gem_finders": gem_finders,
                 "consistent": consistent,
                 "flippers": flippers,
@@ -1871,7 +1799,7 @@ class WalletAnalyzer:
                 "wallet_correlations": {a["wallet_address"]: a.get("correlated_wallets", []) for a in wallet_analyses},
                 "wallet_clusters": wallet_clusters,
                 "failed_analyses": failed_analyses,
-                "api_source": "Hybrid (Cielo + RPC + Birdeye)" if use_hybrid else "Cielo Finance + RPC"
+                "api_source": "Hybrid (Cielo + RPC + Birdeye/Helius)" if use_hybrid else "Cielo Finance + RPC"
             }
             
         except Exception as e:
@@ -1919,7 +1847,6 @@ class WalletAnalyzer:
             logger.error(f"Error identifying wallet clusters: {str(e)}")
             return []
     
-    # Keep all existing export methods
     def export_wallet_analysis(self, analysis: Dict[str, Any], output_file: str) -> None:
         """Export wallet analysis to CSV."""
         if not analysis.get("success"):
@@ -1931,38 +1858,32 @@ class WalletAnalyzer:
             if output_dir and not os.path.exists(output_dir):
                 os.makedirs(output_dir)
             
-            # Export main metrics
             metrics_file = output_file.replace(".csv", "_metrics.csv")
             with open(metrics_file, 'w', newline='', encoding='utf-8') as f:
                 fieldnames = ["metric", "value"]
                 writer = csv.DictWriter(f, fieldnames=fieldnames)
                 writer.writeheader()
                 
-                # Basic info
                 writer.writerow({"metric": "wallet_address", "value": analysis["wallet_address"]})
                 writer.writerow({"metric": "wallet_type", "value": analysis["wallet_type"]})
                 writer.writerow({"metric": "composite_score", "value": analysis.get("composite_score", 0)})
                 writer.writerow({"metric": "api_source", "value": analysis.get("api_source", "Unknown")})
                 
-                # Strategy info
                 strategy = analysis.get("strategy", {})
                 writer.writerow({"metric": "recommendation", "value": strategy.get("recommendation", "CAUTIOUS")})
                 writer.writerow({"metric": "entry_type", "value": strategy.get("entry_type", "WAIT_FOR_CONFIRMATION")})
                 writer.writerow({"metric": "confidence", "value": strategy.get("confidence", "LOW")})
                 
-                # Performance metrics
                 metrics = analysis.get("metrics", {})
                 for key, value in metrics.items():
                     if key != "roi_distribution":
                         writer.writerow({"metric": key, "value": value})
                 
-                # ROI distribution
                 roi_dist = metrics.get("roi_distribution", {})
                 if isinstance(roi_dist, dict):
                     for key, value in roi_dist.items():
                         writer.writerow({"metric": f"roi_{key}", "value": value})
                 
-                # Entry/exit analysis
                 if "entry_exit_analysis" in analysis:
                     ee_analysis = analysis["entry_exit_analysis"]
                     writer.writerow({"metric": "entry_exit_pattern", "value": ee_analysis.get("pattern", "UNKNOWN")})
@@ -1987,7 +1908,6 @@ class WalletAnalyzer:
             if output_dir and not os.path.exists(output_dir):
                 os.makedirs(output_dir)
             
-            # Summary file
             summary_file = output_file.replace(".csv", "_summary.csv")
             with open(summary_file, 'w', newline='', encoding='utf-8') as f:
                 fieldnames = ["metric", "value"]
