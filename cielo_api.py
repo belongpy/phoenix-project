@@ -7,7 +7,7 @@ Updated with correct API endpoints and authentication.
 FIXED:
 - Correct base URL: https://feed-api.cielo.finance 
 - Correct endpoint: /api/v1/{wallet}/trading-stats
-- Proper error handling and response format
+- Proper authentication header: X-API-KEY instead of Bearer
 - Cost: 30 credits per request
 """
 
@@ -32,7 +32,7 @@ class CieloFinanceAPI:
         self.api_key = api_key
         self.base_url = base_url.rstrip('/')
         self.headers = {
-            "Authorization": f"Bearer {api_key}",
+            "X-API-KEY": api_key,  # FIXED: Using X-API-KEY instead of Bearer token
             "Content-Type": "application/json",
             "User-Agent": "Phoenix-Project/1.0"
         }
@@ -71,7 +71,11 @@ class CieloFinanceAPI:
                 # Ensure consistent response format
                 if isinstance(result, dict):
                     if "success" not in result:
-                        result["success"] = True
+                        # Cielo Finance returns {"status": "ok", "data": {...}}
+                        if result.get("status") == "ok":
+                            result["success"] = True
+                        else:
+                            result["success"] = False
                     return result
                 else:
                     return {
@@ -121,6 +125,11 @@ class CieloFinanceAPI:
             
             # If we get a successful response, API is definitely working
             if response.get("success"):
+                logger.info("✅ Cielo Finance API is accessible")
+                return True
+            
+            # Check for Cielo's response format
+            if response.get("status") == "ok":
                 logger.info("✅ Cielo Finance API is accessible")
                 return True
             
@@ -438,3 +447,6 @@ class CieloFinanceAPI:
     def __repr__(self) -> str:
         """Detailed representation of the API client."""
         return f"CieloFinanceAPI(api_key='***', base_url='{self.base_url}')"
+
+# Alias for backward compatibility
+CieloAPI = CieloFinanceAPI

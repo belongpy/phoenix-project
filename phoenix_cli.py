@@ -8,7 +8,7 @@ Phoenix Project - FIXED Enhanced CLI Tool
 - Enhanced contract address detection
 - Proper CSV export with all enhanced metrics
 - Better error handling and logging
-- Removed single wallet analysis option
+- Added complete wallet analysis with composite scoring
 """
 
 import os
@@ -95,7 +95,7 @@ def load_wallets_from_file(file_path: str = "wallets.txt") -> List[str]:
         return []
 
 class PhoenixCLI:
-    """FIXED Phoenix CLI with enhanced telegram analysis."""
+    """FIXED Phoenix CLI with enhanced telegram analysis and wallet analysis."""
     
     def __init__(self):
         self.config = load_config()
@@ -184,6 +184,405 @@ class PhoenixCLI:
         except Exception as e:
             logger.error(f"Error in menu: {str(e)}")
             input("Press Enter to continue...")
+    
+    def _auto_wallet_analysis(self):
+        """Run comprehensive wallet analysis with composite scoring."""
+        print("\n" + "="*80)
+        print("    💰 COMPREHENSIVE WALLET ANALYSIS")
+        print("    📊 Composite Scoring System (0-100)")
+        print("="*80)
+        
+        # Check API configuration
+        if not self.config.get("cielo_api_key"):
+            print("\n❌ CRITICAL: Cielo Finance API key required for wallet analysis!")
+            print("Please configure your Cielo Finance API key first (Option 1).")
+            input("Press Enter to continue...")
+            return
+        
+        # Load wallets
+        wallets = load_wallets_from_file("wallets.txt")
+        if not wallets:
+            print("\n❌ No wallets found in wallets.txt")
+            print("Please add wallet addresses to wallets.txt (one per line)")
+            input("Press Enter to continue...")
+            return
+        
+        print(f"\n📁 Found {len(wallets)} wallets in wallets.txt")
+        
+        # Get analysis parameters
+        print("\n🔧 ANALYSIS PARAMETERS:")
+        
+        # Days to analyze
+        days_input = input("Days to analyze (default: 30): ").strip()
+        days_to_analyze = int(days_input) if days_input.isdigit() else 30
+        
+        # Minimum win rate
+        winrate_input = input("Minimum win rate % (default: 45): ").strip()
+        min_winrate = float(winrate_input) if winrate_input.replace('.', '').isdigit() else 45.0
+        
+        # Contested analysis
+        contested_input = input("Include contested analysis? [Y/n]: ").strip().lower()
+        include_contested = contested_input != 'n'
+        
+        # Output format
+        excel_input = input("Export to Excel? [Y/n]: ").strip().lower()
+        export_excel = excel_input != 'n'
+        
+        print(f"\n🚀 Starting wallet analysis...")
+        print(f"📊 Parameters:")
+        print(f"   • Wallets: {len(wallets)}")
+        print(f"   • Analysis period: {days_to_analyze} days")
+        print(f"   • Min win rate: {min_winrate}%")
+        print(f"   • Contested analysis: {'Yes' if include_contested else 'No'}")
+        print(f"   • Export format: {'Excel + CSV' if export_excel else 'CSV only'}")
+        print("\nProcessing...")
+        
+        try:
+            # Initialize APIs
+            from dual_api_manager import DualAPIManager
+            from wallet_module import WalletAnalyzer
+            
+            api_manager = DualAPIManager(
+                self.config.get("birdeye_api_key", ""),
+                self.config.get("cielo_api_key")
+            )
+            
+            # Create wallet analyzer
+            wallet_analyzer = WalletAnalyzer(
+                cielo_api=api_manager.cielo_api,
+                birdeye_api=api_manager.birdeye_api,
+                rpc_url=self.config.get("solana_rpc_url", "https://api.mainnet-beta.solana.com")
+            )
+            
+            # Run batch analysis
+            results = wallet_analyzer.batch_analyze_wallets(
+                wallets,
+                days_back=days_to_analyze,
+                min_winrate=min_winrate,
+                include_contested=include_contested
+            )
+            
+            if results.get("success"):
+                self._display_wallet_analysis_results(results)
+                
+                # Export results
+                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                output_base = f"wallet_analysis_{timestamp}"
+                
+                if export_excel:
+                    excel_file = ensure_output_dir(f"{output_base}.xlsx")
+                    self._export_wallet_analysis_excel(results, excel_file)
+                    print(f"\n📊 Exported to Excel: {excel_file}")
+                
+                csv_file = ensure_output_dir(f"{output_base}.csv")
+                self._export_wallet_analysis_csv(results, csv_file)
+                print(f"📄 Exported to CSV: {csv_file}")
+                
+                print("\n✅ Wallet analysis completed successfully!")
+            else:
+                print(f"\n❌ Analysis failed: {results.get('error', 'Unknown error')}")
+                
+        except Exception as e:
+            print(f"\n❌ Error during wallet analysis: {str(e)}")
+            logger.error(f"Wallet analysis error: {str(e)}")
+        
+        input("\nPress Enter to continue...")
+    
+    def _display_wallet_analysis_results(self, results: Dict[str, Any]) -> None:
+        """Display wallet analysis results with composite scores."""
+        print("\n" + "="*80)
+        print("    📊 WALLET ANALYSIS RESULTS")
+        print("="*80)
+        
+        # Summary statistics
+        print(f"\n📈 SUMMARY:")
+        print(f"   Total wallets: {results['total_wallets']}")
+        print(f"   Successfully analyzed: {results['analyzed_wallets']}")
+        print(f"   Failed: {results['failed_wallets']}")
+        print(f"   Passed filters: {results['filtered_wallets']}")
+        
+        # Helper function to format composite score with emoji
+        def format_score(score: float) -> str:
+            if score >= 81:
+                return f"{score:.1f}/100 🟣 EXCELLENT"
+            elif score >= 61:
+                return f"{score:.1f}/100 🟢 GOOD"
+            elif score >= 41:
+                return f"{score:.1f}/100 🟡 AVERAGE"
+            elif score >= 21:
+                return f"{score:.1f}/100 🟠 POOR"
+            else:
+                return f"{score:.1f}/100 🔴 VERY POOR"
+        
+        # Display top performers by composite score
+        all_wallets = []
+        for category in ['gem_finders', 'consistent', 'flippers', 'others']:
+            all_wallets.extend(results.get(category, []))
+        
+        # Sort by composite score
+        all_wallets.sort(key=lambda x: x['metrics'].get('composite_score', 0), reverse=True)
+        
+        if all_wallets:
+            print(f"\n🏆 TOP PERFORMERS BY COMPOSITE SCORE:")
+            for i, analysis in enumerate(all_wallets[:10], 1):
+                wallet = analysis['wallet_address']
+                metrics = analysis['metrics']
+                composite_score = metrics.get('composite_score', 0)
+                
+                print(f"\n{i}. Wallet: {wallet[:8]}...{wallet[-4:]}")
+                print(f"   Score: {format_score(composite_score)}")
+                print(f"   Type: {analysis['wallet_type']} | Win Rate: {metrics['win_rate']:.1f}%")
+                print(f"   Profit Factor: {metrics['profit_factor']:.2f}x | Total Trades: {metrics['total_trades']}")
+                print(f"   Net Profit: ${metrics['net_profit_usd']:.2f} | Avg ROI: {metrics['avg_roi']:.1f}%")
+                
+                # Contested info if available
+                if 'contested_analysis' in analysis and analysis['contested_analysis'].get('success'):
+                    contested = analysis['contested_analysis']
+                    print(f"   Competition: {contested['classification']} ({contested['contested_level']}%)")
+        
+        # Category breakdown
+        print(f"\n📂 WALLET CATEGORIES:")
+        print(f"   🎯 Gem Finders: {len(results.get('gem_finders', []))}")
+        print(f"   📊 Consistent Traders: {len(results.get('consistent', []))}")
+        print(f"   ⚡ Quick Flippers: {len(results.get('flippers', []))}")
+        print(f"   ❓ Others: {len(results.get('others', []))}")
+        
+        # Top in each category
+        for category_name, category_key in [
+            ("GEM FINDERS", "gem_finders"),
+            ("CONSISTENT TRADERS", "consistent"),
+            ("QUICK FLIPPERS", "flippers")
+        ]:
+            category_wallets = results.get(category_key, [])
+            if category_wallets:
+                print(f"\n🏅 TOP {category_name}:")
+                for wallet in category_wallets[:3]:
+                    score = wallet['metrics'].get('composite_score', 0)
+                    print(f"   {wallet['wallet_address'][:8]}... | {format_score(score)}")
+    
+    def _export_wallet_analysis_csv(self, results: Dict[str, Any], output_file: str) -> None:
+        """Export wallet analysis results to CSV."""
+        try:
+            all_wallets = []
+            for category in ['gem_finders', 'consistent', 'flippers', 'others']:
+                all_wallets.extend(results.get(category, []))
+            
+            # Sort by composite score
+            all_wallets.sort(key=lambda x: x['metrics'].get('composite_score', 0), reverse=True)
+            
+            with open(output_file, 'w', newline='', encoding='utf-8') as f:
+                fieldnames = [
+                    'rank', 'wallet_address', 'composite_score', 'score_rating',
+                    'wallet_type', 'total_trades', 'win_rate', 'profit_factor',
+                    'net_profit_usd', 'avg_roi', 'median_roi', 'max_roi',
+                    'avg_hold_time_hours', 'total_tokens_traded',
+                    'contested_level', 'contested_classification',
+                    'strategy_recommendation'
+                ]
+                
+                writer = csv.DictWriter(f, fieldnames=fieldnames)
+                writer.writeheader()
+                
+                for rank, analysis in enumerate(all_wallets, 1):
+                    metrics = analysis['metrics']
+                    score = metrics.get('composite_score', 0)
+                    
+                    # Determine score rating
+                    if score >= 81:
+                        rating = "EXCELLENT"
+                    elif score >= 61:
+                        rating = "GOOD"
+                    elif score >= 41:
+                        rating = "AVERAGE"
+                    elif score >= 21:
+                        rating = "POOR"
+                    else:
+                        rating = "VERY POOR"
+                    
+                    row = {
+                        'rank': rank,
+                        'wallet_address': analysis['wallet_address'],
+                        'composite_score': round(score, 1),
+                        'score_rating': rating,
+                        'wallet_type': analysis['wallet_type'],
+                        'total_trades': metrics['total_trades'],
+                        'win_rate': round(metrics['win_rate'], 2),
+                        'profit_factor': round(metrics['profit_factor'], 2),
+                        'net_profit_usd': round(metrics['net_profit_usd'], 2),
+                        'avg_roi': round(metrics['avg_roi'], 2),
+                        'median_roi': round(metrics['median_roi'], 2),
+                        'max_roi': round(metrics['max_roi'], 2),
+                        'avg_hold_time_hours': round(metrics['avg_hold_time_hours'], 2),
+                        'total_tokens_traded': metrics['total_tokens_traded'],
+                        'contested_level': '',
+                        'contested_classification': '',
+                        'strategy_recommendation': analysis['strategy']['recommendation']
+                    }
+                    
+                    # Add contested info if available
+                    if 'contested_analysis' in analysis and analysis['contested_analysis'].get('success'):
+                        contested = analysis['contested_analysis']
+                        row['contested_level'] = contested.get('contested_level', 0)
+                        row['contested_classification'] = contested.get('classification', '')
+                    
+                    writer.writerow(row)
+            
+            logger.info(f"Exported wallet analysis to {output_file}")
+            
+        except Exception as e:
+            logger.error(f"Error exporting CSV: {str(e)}")
+    
+    def _export_wallet_analysis_excel(self, results: Dict[str, Any], output_file: str) -> None:
+        """Export wallet analysis results to Excel."""
+        try:
+            import pandas as pd
+            import xlsxwriter
+            
+            # Prepare data
+            all_wallets = []
+            for category in ['gem_finders', 'consistent', 'flippers', 'others']:
+                all_wallets.extend(results.get(category, []))
+            
+            # Sort by composite score
+            all_wallets.sort(key=lambda x: x['metrics'].get('composite_score', 0), reverse=True)
+            
+            # Create DataFrame
+            data = []
+            for rank, analysis in enumerate(all_wallets, 1):
+                metrics = analysis['metrics']
+                score = metrics.get('composite_score', 0)
+                
+                # Determine score rating
+                if score >= 81:
+                    rating = "EXCELLENT"
+                elif score >= 61:
+                    rating = "GOOD"
+                elif score >= 41:
+                    rating = "AVERAGE"
+                elif score >= 21:
+                    rating = "POOR"
+                else:
+                    rating = "VERY POOR"
+                
+                row = {
+                    'Rank': rank,
+                    'Wallet Address': analysis['wallet_address'],
+                    'Composite Score': score,
+                    'Rating': rating,
+                    'Type': analysis['wallet_type'],
+                    'Total Trades': metrics['total_trades'],
+                    'Win Rate %': metrics['win_rate'],
+                    'Profit Factor': metrics['profit_factor'],
+                    'Net Profit USD': metrics['net_profit_usd'],
+                    'Avg ROI %': metrics['avg_roi'],
+                    'Max ROI %': metrics['max_roi'],
+                    'Strategy': analysis['strategy']['recommendation']
+                }
+                
+                # Add contested info if available
+                if 'contested_analysis' in analysis and analysis['contested_analysis'].get('success'):
+                    contested = analysis['contested_analysis']
+                    row['Contested Level'] = contested.get('contested_level', 0)
+                    row['Competition'] = contested.get('classification', '')
+                else:
+                    row['Contested Level'] = ''
+                    row['Competition'] = ''
+                
+                data.append(row)
+            
+            # Create Excel writer
+            with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:
+                # Summary sheet
+                summary_data = {
+                    'Metric': ['Total Wallets', 'Analyzed', 'Failed', 'Passed Filters',
+                              'Gem Finders', 'Consistent', 'Flippers', 'Others'],
+                    'Value': [
+                        results['total_wallets'],
+                        results['analyzed_wallets'],
+                        results['failed_wallets'],
+                        results['filtered_wallets'],
+                        len(results.get('gem_finders', [])),
+                        len(results.get('consistent', [])),
+                        len(results.get('flippers', [])),
+                        len(results.get('others', []))
+                    ]
+                }
+                summary_df = pd.DataFrame(summary_data)
+                summary_df.to_excel(writer, sheet_name='Summary', index=False)
+                
+                # Main results sheet
+                df = pd.DataFrame(data)
+                df.to_excel(writer, sheet_name='Wallet Rankings', index=False)
+                
+                # Format worksheets
+                workbook = writer.book
+                
+                # Define formats
+                header_format = workbook.add_format({
+                    'bold': True,
+                    'bg_color': '#1a1a2e',
+                    'font_color': 'white',
+                    'border': 1
+                })
+                
+                excellent_format = workbook.add_format({
+                    'bg_color': '#e6e6fa',  # Light purple
+                    'border': 1
+                })
+                
+                good_format = workbook.add_format({
+                    'bg_color': '#90ee90',  # Light green
+                    'border': 1
+                })
+                
+                average_format = workbook.add_format({
+                    'bg_color': '#ffffe0',  # Light yellow
+                    'border': 1
+                })
+                
+                poor_format = workbook.add_format({
+                    'bg_color': '#ffdab9',  # Light orange
+                    'border': 1
+                })
+                
+                very_poor_format = workbook.add_format({
+                    'bg_color': '#ffcccb',  # Light red
+                    'border': 1
+                })
+                
+                # Format main sheet
+                worksheet = writer.sheets['Wallet Rankings']
+                
+                # Apply conditional formatting based on rating
+                for row_num, row_data in enumerate(data, 1):
+                    rating = row_data['Rating']
+                    if rating == 'EXCELLENT':
+                        worksheet.set_row(row_num, None, excellent_format)
+                    elif rating == 'GOOD':
+                        worksheet.set_row(row_num, None, good_format)
+                    elif rating == 'AVERAGE':
+                        worksheet.set_row(row_num, None, average_format)
+                    elif rating == 'POOR':
+                        worksheet.set_row(row_num, None, poor_format)
+                    elif rating == 'VERY POOR':
+                        worksheet.set_row(row_num, None, very_poor_format)
+                
+                # Set column widths
+                worksheet.set_column('A:A', 8)   # Rank
+                worksheet.set_column('B:B', 50)  # Wallet Address
+                worksheet.set_column('C:C', 15)  # Composite Score
+                worksheet.set_column('D:D', 12)  # Rating
+                worksheet.set_column('E:E', 15)  # Type
+                worksheet.set_column('F:L', 15)  # Metrics
+                worksheet.set_column('M:N', 20)  # Contested info
+            
+            logger.info(f"Exported wallet analysis to Excel: {output_file}")
+            
+        except ImportError:
+            logger.error("pandas and xlsxwriter required for Excel export. Install with: pip install pandas xlsxwriter")
+            print("\n⚠️ Excel export requires pandas and xlsxwriter. Using CSV fallback.")
+        except Exception as e:
+            logger.error(f"Error exporting Excel: {str(e)}")
     
     def _fixed_enhanced_telegram_analysis(self):
         """Run FIXED enhanced Telegram analysis with proper pullback % and time-to-2x metrics."""
@@ -463,6 +862,26 @@ class PhoenixCLI:
             print("❌ Birdeye API: Not configured")
             print("   ⚠️ CRITICAL: Enhanced analysis requires Birdeye API key")
         
+        # Test Cielo Finance API
+        if self.config.get("cielo_api_key"):
+            print("\n💰 Testing Cielo Finance API...")
+            try:
+                from cielo_api import CieloFinanceAPI
+                cielo_api = CieloFinanceAPI(self.config["cielo_api_key"])
+                if cielo_api.health_check():
+                    print("✅ Cielo Finance API: Connected successfully")
+                    print("   💰 Wallet analysis: Available")
+                    print("   📊 Trading statistics: Ready")
+                else:
+                    print("❌ Cielo Finance API: Connection failed")
+                    print("   ⚠️ Wallet analysis will not work")
+            except Exception as e:
+                print(f"❌ Cielo Finance API: Error - {str(e)}")
+                print("   ⚠️ Wallet analysis will not work")
+        else:
+            print("❌ Cielo Finance API: Not configured")
+            print("   ⚠️ CRITICAL: Wallet analysis requires Cielo Finance API key")
+        
         # Test Telegram API
         if self.config.get("telegram_api_id") and self.config.get("telegram_api_hash"):
             print("\n📱 Testing Telegram API...")
@@ -494,20 +913,22 @@ class PhoenixCLI:
             print(f"❌ Solana RPC: Error - {str(e)}")
         
         # Summary
-        print(f"\n📊 FIXED FEATURE AVAILABILITY SUMMARY:")
+        print(f"\n📊 FEATURE AVAILABILITY SUMMARY:")
         birdeye_ok = bool(self.config.get("birdeye_api_key"))
         telegram_ok = bool(self.config.get("telegram_api_id") and self.config.get("telegram_api_hash"))
+        cielo_ok = bool(self.config.get("cielo_api_key"))
         
-        print(f"   🎯 FIXED Enhanced Telegram Analysis: {'✅ Ready' if (birdeye_ok and telegram_ok) else '❌ Missing APIs'}")
+        print(f"   🎯 Enhanced Telegram Analysis: {'✅ Ready' if (birdeye_ok and telegram_ok) else '❌ Missing APIs'}")
+        print(f"   💰 Wallet Analysis: {'✅ Ready' if cielo_ok else '❌ Need Cielo Finance API'}")
         print(f"   📉 Pullback % Calculation: {'✅ Ready' if birdeye_ok else '❌ Need Birdeye API'}")
         print(f"   ⏱️ Time-to-2x Analysis: {'✅ Ready' if birdeye_ok else '❌ Need Birdeye API'}")
         print(f"   🔍 Enhanced Contract Detection: {'✅ Ready' if telegram_ok else '❌ Need Telegram API'}")
-        print(f"   📊 Expanded Token Lookup: ✅ Ready (200+ tokens)")
+        print(f"   📊 Composite Scoring: {'✅ Ready' if cielo_ok else '❌ Need Cielo Finance API'}")
         
-        if birdeye_ok and telegram_ok:
-            print(f"\n🎉 ALL SYSTEMS GO! Enhanced analysis is ready to run.")
+        if birdeye_ok and telegram_ok and cielo_ok:
+            print(f"\n🎉 ALL SYSTEMS GO! Full functionality is available.")
         else:
-            print(f"\n⚠️ Configure missing APIs to enable enhanced features.")
+            print(f"\n⚠️ Configure missing APIs to enable all features.")
         
         input("\nPress Enter to continue...")
     
@@ -538,6 +959,28 @@ class PhoenixCLI:
                 print("   🎯 Enhanced telegram analysis: Now available")
             else:
                 print("⚠️ CRITICAL: Enhanced analysis will NOT work without Birdeye API key")
+        
+        # Cielo Finance API Key (CRITICAL for wallet analysis)
+        current_cielo = self.config.get("cielo_api_key", "")
+        if current_cielo:
+            print(f"\n💰 Current Cielo Finance API Key: {current_cielo[:8]}...")
+            change_cielo = input("Change Cielo Finance API key? (y/N): ").lower().strip()
+            if change_cielo == 'y':
+                new_key = input("Enter new Cielo Finance API key: ").strip()
+                if new_key:
+                    self.config["cielo_api_key"] = new_key
+                    print("✅ Cielo Finance API key updated")
+        else:
+            print("\n💰 Cielo Finance API Key (CRITICAL for wallet analysis)")
+            print("   📊 Required for wallet trading statistics")
+            print("   🔑 Get your key from: https://cielo.finance")
+            new_key = input("Enter Cielo Finance API key: ").strip()
+            if new_key:
+                self.config["cielo_api_key"] = new_key
+                print("✅ Cielo Finance API key configured")
+                print("   💰 Wallet analysis: Now available")
+            else:
+                print("⚠️ CRITICAL: Wallet analysis will NOT work without Cielo Finance API key")
         
         # Telegram API credentials (CRITICAL for telegram analysis)
         current_tg_id = self.config.get("telegram_api_id", "")
@@ -572,16 +1015,18 @@ class PhoenixCLI:
         # Show feature availability
         birdeye_ok = bool(self.config.get("birdeye_api_key"))
         telegram_ok = bool(self.config.get("telegram_api_id") and self.config.get("telegram_api_hash"))
+        cielo_ok = bool(self.config.get("cielo_api_key"))
         
-        print(f"\n🎯 FIXED ENHANCED FEATURES STATUS:")
+        print(f"\n🎯 ENHANCED FEATURES STATUS:")
         print(f"   Enhanced Telegram Analysis: {'✅ Ready' if (birdeye_ok and telegram_ok) else '❌ Missing APIs'}")
+        print(f"   Wallet Analysis: {'✅ Ready' if cielo_ok else '❌ Need Cielo Finance API'}")
         print(f"   Pullback % Calculation: {'✅ Ready' if birdeye_ok else '❌ Need Birdeye API'}")
         print(f"   Time-to-2x Analysis: {'✅ Ready' if birdeye_ok else '❌ Need Birdeye API'}")
         print(f"   Enhanced Contract Detection: {'✅ Ready' if telegram_ok else '❌ Need Telegram API'}")
-        print(f"   Expanded Token Lookup: ✅ Ready (200+ popular tokens)")
+        print(f"   Composite Scoring: {'✅ Ready' if cielo_ok else '❌ Need Cielo Finance API'}")
         
-        if birdeye_ok and telegram_ok:
-            print(f"\n🎉 ALL SYSTEMS READY! You can now run enhanced analysis.")
+        if birdeye_ok and telegram_ok and cielo_ok:
+            print(f"\n🎉 ALL SYSTEMS READY! You can now use all features.")
         else:
             print(f"\n⚠️ Configure the missing APIs above to enable all features.")
         
@@ -595,6 +1040,7 @@ class PhoenixCLI:
         
         print(f"\n🔑 API KEYS:")
         print(f"   Birdeye API Key: {'✅ Configured' if self.config.get('birdeye_api_key') else '❌ Not configured'}")
+        print(f"   Cielo Finance API Key: {'✅ Configured' if self.config.get('cielo_api_key') else '❌ Not configured'}")
         print(f"   Telegram API ID: {'✅ Configured' if self.config.get('telegram_api_id') else '❌ Not configured'}")
         print(f"   Telegram API Hash: {'✅ Configured' if self.config.get('telegram_api_hash') else '❌ Not configured'}")
         
@@ -615,13 +1061,15 @@ class PhoenixCLI:
         # Enhanced features availability
         birdeye_ok = bool(self.config.get("birdeye_api_key"))
         telegram_ok = bool(self.config.get("telegram_api_id") and self.config.get("telegram_api_hash"))
+        cielo_ok = bool(self.config.get("cielo_api_key"))
         
-        print(f"\n🎯 FIXED ENHANCED FEATURES AVAILABILITY:")
+        print(f"\n🎯 ENHANCED FEATURES AVAILABILITY:")
         print(f"   Enhanced Telegram Analysis: {'✅ Available' if (birdeye_ok and telegram_ok) else '❌ Not Available'}")
+        print(f"   Wallet Analysis: {'✅ Available' if cielo_ok else '❌ Not Available'}")
         print(f"   Pullback % Calculation: {'✅ Available' if birdeye_ok else '❌ Need Birdeye API'}")
         print(f"   Time-to-2x Analysis: {'✅ Available' if birdeye_ok else '❌ Need Birdeye API'}")
         print(f"   Enhanced Contract Detection: {'✅ Available' if telegram_ok else '❌ Need Telegram API'}")
-        print(f"   Expanded Token Lookup: ✅ Available (200+ tokens)")
+        print(f"   Composite Scoring: {'✅ Available' if cielo_ok else '❌ Need Cielo Finance API'}")
         
         input("\nPress Enter to continue...")
     
@@ -633,36 +1081,41 @@ class PhoenixCLI:
         
         print("\n🚀 GETTING STARTED:")
         print("1. Configure API keys (Option 1)")
-        print("   - Birdeye API: https://birdeye.so (CRITICAL for enhanced features)")
-        print("   - Telegram API: https://my.telegram.org (CRITICAL for SpyDefi)")
+        print("   - Birdeye API: https://birdeye.so (for enhanced features)")
+        print("   - Cielo Finance API: https://cielo.finance (for wallet analysis)")
+        print("   - Telegram API: https://my.telegram.org (for SpyDefi)")
         print()
-        print("2. Run enhanced analysis (Option 4 - SPYDEFI)")
-        print("   - FIXED Enhanced SpyDefi analysis with pullback & time-to-2x")
-        print("   - Proper CSV export with all enhanced metrics")
-        print("   - Expanded contract address detection")
+        print("2. Run enhanced analysis")
+        print("   - SpyDefi analysis with pullback & time-to-2x (Option 4)")
+        print("   - Wallet analysis with composite scoring (Option 5)")
         
-        print("\n🎯 FIXED ENHANCED FEATURES:")
-        print("• 📉 Max Pullback % Analysis - WORKING: Calculate average maximum drawdown")
-        print("• ⏱️ Time-to-2x Analysis - WORKING: Average time to reach 100% ROI")
-        print("• 🔍 Enhanced Contract Detection - IMPROVED: Better Solana address extraction")
-        print("• 🔗 Expanded Token Lookup - NEW: 200+ popular Solana tokens mapped")
-        print("• 📊 Detailed Price Analysis - FIXED: Multi-resolution price data")
-        print("• 📝 Proper CSV Export - FIXED: All enhanced metrics included")
-        print("• 🎯 Strategy Optimization - NEW: Use pullback data for stop loss")
+        print("\n🎯 ENHANCED FEATURES:")
+        print("• 📉 Max Pullback % Analysis - Calculate average maximum drawdown")
+        print("• ⏱️ Time-to-2x Analysis - Average time to reach 100% ROI")
+        print("• 🔍 Enhanced Contract Detection - Better Solana address extraction")
+        print("• 💰 Wallet Composite Score (0-100) - Bad to Great scale")
+        print("• 🏆 Strategy Optimization - Use pullback data for stop loss")
+        print("• 📊 Contested Wallet Analysis - Detect copy traders")
         
-        print("\n📊 FIXED OUTPUT FILES:")
-        print("When you run enhanced telegram analysis, you'll get:")
+        print("\n💯 COMPOSITE SCORE BREAKDOWN:")
+        print("• 0-20: 🔴 VERY POOR - Avoid copying")
+        print("• 21-40: 🟠 POOR - High risk, proceed with caution")
+        print("• 41-60: 🟡 AVERAGE - Mixed results, selective copying")
+        print("• 61-80: 🟢 GOOD - Solid performer, recommended")
+        print("• 81-100: 🟣 EXCELLENT - Top tier trader, priority follow")
+        
+        print("\n📊 OUTPUT FILES:")
+        print("SpyDefi Analysis:")
         print("• spydefi_analysis_enhanced.csv - Individual token call data")
         print("• spydefi_analysis_enhanced_kol_performance_enhanced.csv - KOL metrics")
-        print("   ├─ avg_max_pullback_percent - WORKING: Use + buffer for stop loss")
-        print("   ├─ avg_time_to_2x_formatted - WORKING: Human readable (e.g., '2h 15m 30s')")
-        print("   ├─ detailed_analysis_count - WORKING: Number of tokens with enhanced data")
-        print("   ├─ pullback_data_available - WORKING: TRUE/FALSE indicator")
-        print("   └─ time_to_2x_data_available - WORKING: TRUE/FALSE indicator")
         print("• spydefi_analysis_enhanced_enhanced_summary.txt - Analysis summary")
         print("• spydefi_analysis_enhanced_enhanced.xlsx - Excel workbook")
+        print()
+        print("Wallet Analysis:")
+        print("• wallet_analysis_[timestamp].csv - Ranked wallets with scores")
+        print("• wallet_analysis_[timestamp].xlsx - Excel with formatting")
         
-        print("\n💡 TRADING STRATEGY USAGE (FIXED):")
+        print("\n💡 TRADING STRATEGY USAGE:")
         print("📉 Stop Loss Calculation:")
         print("   Recommended SL = avg_max_pullback_percent + 5-10% buffer")
         print("   Example: If KOL has 35% avg pullback, set SL at -40% to -45%")
@@ -671,56 +1124,50 @@ class PhoenixCLI:
         print("   Minimum Hold Time = avg_time_to_2x_formatted")
         print("   Example: If avg time to 2x is '3h 20m', hold for at least 3.5 hours")
         print()
-        print("🎯 Coverage Expectations:")
-        print("   Enhanced analysis coverage: 20-50% of tokens")
-        print("   Depends on contract address availability and price data")
-        print("   200+ popular tokens have contract mappings")
+        print("💯 Composite Score Usage:")
+        print("   80+ Score: Copy all trades immediately")
+        print("   60-80 Score: Copy selectively, use tight stops")
+        print("   40-60 Score: Only copy high-confidence setups")
+        print("   Below 40: Avoid or paper trade only")
         
         print("\n🔧 COMMAND LINE USAGE:")
-        print("# FIXED Enhanced telegram analysis")
+        print("# Enhanced telegram analysis")
         print("python phoenix.py telegram --hours 24 --output enhanced_analysis.csv --excel")
         print()
+        print("# Wallet analysis")
+        print("python phoenix.py wallet --days 30 --min-winrate 45 --no-contested")
+        print()
         print("# Configure APIs")
-        print("python phoenix.py configure --birdeye-api-key YOUR_BIRDEYE_KEY")
-        
-        print("\n✅ FIXED ISSUES:")
-        print("• Enhanced analysis now properly calculates pullback percentages")
-        print("• Time-to-2x calculations are working correctly")
-        print("• CSV export includes all enhanced metrics")
-        print("• Expanded token name to contract address lookup")
-        print("• Better error handling and logging")
-        print("• Proper Birdeye API integration")
-        print("• Fixed export method name issue")
+        print("python phoenix.py configure --birdeye-api-key YOUR_KEY --cielo-api-key YOUR_KEY")
         
         input("\nPress Enter to continue...")
-    
-    # Include other existing methods for wallet analysis, etc.
-    def _auto_wallet_analysis(self):
-        """Placeholder for wallet analysis."""
-        print("\n📝 Wallet analysis functionality available in full version.")
-        input("Press Enter to continue...")
     
     def _view_current_sources(self):
         """View current data sources."""
         print("\n" + "="*70)
-        print("    📊 CURRENT DATA SOURCES")
+        print("    📂 CURRENT DATA SOURCES")
         print("="*70)
         
-        print(f"\n📱 TELEGRAM CHANNELS:")
+        # Telegram channels
         channels = self.config.get('sources', {}).get('telegram_groups', [])
+        print(f"\n📱 TELEGRAM CHANNELS ({len(channels)}):")
         if channels:
-            for channel in channels:
-                print(f"   • {channel}")
+            for i, channel in enumerate(channels, 1):
+                print(f"   {i}. {channel}")
         else:
-            print("   No telegram channels configured")
+            print("   No channels configured")
         
-        print(f"\n💰 WALLETS:")
-        wallets_from_file = load_wallets_from_file("wallets.txt")
-        print(f"   Wallets in wallets.txt: {len(wallets_from_file)}")
-        for wallet in wallets_from_file[:10]:
-            print(f"   • {wallet}")
-        if len(wallets_from_file) > 10:
-            print(f"   ... and {len(wallets_from_file) - 10} more")
+        # Wallets file
+        wallets = load_wallets_from_file("wallets.txt")
+        print(f"\n💰 WALLETS FROM FILE ({len(wallets)}):")
+        if wallets:
+            # Show first 10 wallets
+            for i, wallet in enumerate(wallets[:10], 1):
+                print(f"   {i}. {wallet[:8]}...{wallet[-4:]}")
+            if len(wallets) > 10:
+                print(f"   ... and {len(wallets) - 10} more wallets")
+        else:
+            print("   No wallets found in wallets.txt")
         
         input("\nPress Enter to continue...")
     
@@ -739,13 +1186,17 @@ class PhoenixCLI:
             elif args.command == "telegram":
                 self._handle_fixed_enhanced_telegram_analysis(args)
             elif args.command == "wallet":
-                print("Wallet analysis available in full version.")
+                self._handle_wallet_analysis(args)
     
     def _handle_configure(self, args: argparse.Namespace) -> None:
         """Handle the configure command."""
         if args.birdeye_api_key:
             self.config["birdeye_api_key"] = args.birdeye_api_key
             logger.info("Birdeye API key configured.")
+        
+        if args.cielo_api_key:
+            self.config["cielo_api_key"] = args.cielo_api_key
+            logger.info("Cielo Finance API key configured.")
         
         if args.telegram_api_id:
             self.config["telegram_api_id"] = args.telegram_api_id
@@ -757,6 +1208,56 @@ class PhoenixCLI:
         
         save_config(self.config)
         logger.info(f"Configuration saved to {CONFIG_FILE}")
+    
+    def _handle_wallet_analysis(self, args: argparse.Namespace) -> None:
+        """Handle the wallet analysis command."""
+        # Load wallets
+        wallets = load_wallets_from_file(args.wallets_file)
+        if not wallets:
+            logger.error(f"No wallets found in {args.wallets_file}")
+            return
+        
+        logger.info(f"Loaded {len(wallets)} wallets from {args.wallets_file}")
+        
+        # Initialize APIs
+        try:
+            from dual_api_manager import DualAPIManager
+            from wallet_module import WalletAnalyzer
+            
+            api_manager = DualAPIManager(
+                self.config.get("birdeye_api_key", ""),
+                self.config.get("cielo_api_key")
+            )
+            
+            wallet_analyzer = WalletAnalyzer(
+                cielo_api=api_manager.cielo_api,
+                birdeye_api=api_manager.birdeye_api,
+                rpc_url=self.config.get("solana_rpc_url")
+            )
+            
+            # Run batch analysis
+            include_contested = not args.no_contested
+            results = wallet_analyzer.batch_analyze_wallets(
+                wallets,
+                days_back=args.days,
+                min_winrate=args.min_winrate,
+                include_contested=include_contested
+            )
+            
+            if results.get("success"):
+                # Export results
+                output_file = ensure_output_dir(args.output)
+                if args.output.endswith('.xlsx'):
+                    self._export_wallet_analysis_excel(results, output_file)
+                else:
+                    self._export_wallet_analysis_csv(results, output_file)
+                
+                logger.info(f"Analysis complete. Results saved to {output_file}")
+            else:
+                logger.error(f"Analysis failed: {results.get('error')}")
+                
+        except Exception as e:
+            logger.error(f"Error during wallet analysis: {str(e)}")
 
 def main():
     """Main entry point for the Phoenix CLI."""
