@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
 """
-Phoenix Project - FIXED Enhanced CLI Tool
+Phoenix Project - UPDATED Enhanced CLI Tool
 
-🎯 FIXED ISSUES:
-- Proper Birdeye API integration with enhanced telegram analysis
-- Fixed method name for export (export_spydefi_analysis)
-- Enhanced contract address detection
-- Proper CSV export with all enhanced metrics
-- Better error handling and logging
-- Added complete wallet analysis with composite scoring
+🎯 UPDATED CHANGES:
+- Removed contested wallet analysis options
+- Removed min win rate input (hardcoded to 30%)
+- Always export to Excel (no need to ask)
+- Simplified wallet analysis flow
+- Updated help text to reflect new thresholds
 """
 
 import os
@@ -95,7 +94,7 @@ def load_wallets_from_file(file_path: str = "wallets.txt") -> List[str]:
         return []
 
 class PhoenixCLI:
-    """FIXED Phoenix CLI with enhanced telegram analysis and wallet analysis."""
+    """UPDATED Phoenix CLI with simplified wallet analysis."""
     
     def __init__(self):
         self.config = load_config()
@@ -104,7 +103,7 @@ class PhoenixCLI:
     def _create_parser(self) -> argparse.ArgumentParser:
         """Create and configure the argument parser."""
         parser = argparse.ArgumentParser(
-            description="Phoenix Project - FIXED Enhanced Solana Chain Analysis CLI Tool",
+            description="Phoenix Project - UPDATED Enhanced Solana Chain Analysis CLI Tool",
             formatter_class=argparse.RawDescriptionHelpFormatter
         )
         
@@ -128,16 +127,14 @@ class PhoenixCLI:
         wallet_parser = subparsers.add_parser("wallet", help="Analyze wallets for copy trading")
         wallet_parser.add_argument("--wallets-file", default="wallets.txt", help="File containing wallet addresses")
         wallet_parser.add_argument("--days", type=int, default=30, help="Number of days to analyze")
-        wallet_parser.add_argument("--min-winrate", type=float, default=45.0, help="Minimum win rate percentage")
         wallet_parser.add_argument("--output", default="wallet_analysis.xlsx", help="Output file")
-        wallet_parser.add_argument("--no-contested", action="store_true", help="Skip contested wallet analysis")
         
         return parser
     
     def _handle_numbered_menu(self):
         """Handle the numbered menu interface."""
         print("\n" + "="*80)
-        print("Phoenix Project - FIXED Enhanced Solana Chain Analysis Tool")
+        print("Phoenix Project - UPDATED Enhanced Solana Chain Analysis Tool")
         print("🎯 FIXED: Pullback % & Time-to-2x Analysis + Enhanced Contract Detection")
         print("="*80)
         print("\nSelect an option:")
@@ -216,25 +213,13 @@ class PhoenixCLI:
         days_input = input("Days to analyze (default: 30): ").strip()
         days_to_analyze = int(days_input) if days_input.isdigit() else 30
         
-        # Minimum win rate
-        winrate_input = input("Minimum win rate % (default: 45): ").strip()
-        min_winrate = float(winrate_input) if winrate_input.replace('.', '').isdigit() else 45.0
-        
-        # Contested analysis
-        contested_input = input("Include contested analysis? [Y/n]: ").strip().lower()
-        include_contested = contested_input != 'n'
-        
-        # Output format
-        excel_input = input("Export to Excel? [Y/n]: ").strip().lower()
-        export_excel = excel_input != 'n'
-        
         print(f"\n🚀 Starting wallet analysis...")
         print(f"📊 Parameters:")
         print(f"   • Wallets: {len(wallets)}")
         print(f"   • Analysis period: {days_to_analyze} days")
-        print(f"   • Min win rate: {min_winrate}%")
-        print(f"   • Contested analysis: {'Yes' if include_contested else 'No'}")
-        print(f"   • Export format: {'Excel + CSV' if export_excel else 'CSV only'}")
+        print(f"   • Min win rate: 30% (optimized for memecoins)")
+        print(f"   • Entry/Exit Analysis: Last 5 trades")
+        print(f"   • Export format: Excel + CSV")
         print("\nProcessing...")
         
         try:
@@ -254,26 +239,26 @@ class PhoenixCLI:
                 rpc_url=self.config.get("solana_rpc_url", "https://api.mainnet-beta.solana.com")
             )
             
-            # Run batch analysis
+            # Run batch analysis (removed min_winrate and include_contested parameters)
             results = wallet_analyzer.batch_analyze_wallets(
                 wallets,
                 days_back=days_to_analyze,
-                min_winrate=min_winrate,
-                include_contested=include_contested
+                use_hybrid=True  # Always use hybrid approach
             )
             
             if results.get("success"):
                 self._display_wallet_analysis_results(results)
                 
-                # Export results
+                # Always export to both Excel and CSV
                 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
                 output_base = f"wallet_analysis_{timestamp}"
                 
-                if export_excel:
-                    excel_file = ensure_output_dir(f"{output_base}.xlsx")
-                    self._export_wallet_analysis_excel(results, excel_file)
-                    print(f"\n📊 Exported to Excel: {excel_file}")
+                # Excel export
+                excel_file = ensure_output_dir(f"{output_base}.xlsx")
+                self._export_wallet_analysis_excel(results, excel_file)
+                print(f"\n📊 Exported to Excel: {excel_file}")
                 
+                # CSV export
                 csv_file = ensure_output_dir(f"{output_base}.csv")
                 self._export_wallet_analysis_csv(results, csv_file)
                 print(f"📄 Exported to CSV: {csv_file}")
@@ -299,7 +284,7 @@ class PhoenixCLI:
         print(f"   Total wallets: {results['total_wallets']}")
         print(f"   Successfully analyzed: {results['analyzed_wallets']}")
         print(f"   Failed: {results['failed_wallets']}")
-        print(f"   Passed filters: {results['filtered_wallets']}")
+        print(f"   Total shown: {results['filtered_wallets']} (all wallets displayed)")
         
         # Helper function to format composite score with emoji
         def format_score(score: float) -> str:
@@ -316,18 +301,18 @@ class PhoenixCLI:
         
         # Display top performers by composite score
         all_wallets = []
-        for category in ['gem_finders', 'consistent', 'flippers', 'others']:
+        for category in ['gem_finders', 'consistent', 'flippers', 'mixed', 'underperformers', 'unknown']:
             all_wallets.extend(results.get(category, []))
         
         # Sort by composite score
-        all_wallets.sort(key=lambda x: x['metrics'].get('composite_score', 0), reverse=True)
+        all_wallets.sort(key=lambda x: x.get('composite_score', x['metrics'].get('composite_score', 0)), reverse=True)
         
         if all_wallets:
             print(f"\n🏆 TOP PERFORMERS BY COMPOSITE SCORE:")
             for i, analysis in enumerate(all_wallets[:10], 1):
                 wallet = analysis['wallet_address']
                 metrics = analysis['metrics']
-                composite_score = metrics.get('composite_score', 0)
+                composite_score = analysis.get('composite_score', metrics.get('composite_score', 0))
                 
                 print(f"\n{i}. Wallet: {wallet[:8]}...{wallet[-4:]}")
                 print(f"   Score: {format_score(composite_score)}")
@@ -335,40 +320,43 @@ class PhoenixCLI:
                 print(f"   Profit Factor: {metrics['profit_factor']:.2f}x | Total Trades: {metrics['total_trades']}")
                 print(f"   Net Profit: ${metrics['net_profit_usd']:.2f} | Avg ROI: {metrics['avg_roi']:.1f}%")
                 
-                # Contested info if available
-                if 'contested_analysis' in analysis and analysis['contested_analysis'].get('success'):
-                    contested = analysis['contested_analysis']
-                    print(f"   Competition: {contested['classification']} ({contested['contested_level']}%)")
+                # Entry/Exit Analysis
+                if 'entry_exit_analysis' in analysis:
+                    ee_analysis = analysis['entry_exit_analysis']
+                    print(f"   Entry/Exit: {ee_analysis['pattern']} | Missed Gains: {ee_analysis['missed_gains_percent']:.1f}%")
         
         # Category breakdown
         print(f"\n📂 WALLET CATEGORIES:")
         print(f"   🎯 Gem Finders: {len(results.get('gem_finders', []))}")
         print(f"   📊 Consistent Traders: {len(results.get('consistent', []))}")
         print(f"   ⚡ Quick Flippers: {len(results.get('flippers', []))}")
-        print(f"   ❓ Others: {len(results.get('others', []))}")
+        print(f"   🔀 Mixed Results: {len(results.get('mixed', []))}")
+        print(f"   📉 Underperformers: {len(results.get('underperformers', []))}")
+        print(f"   ❓ Unknown/Low Activity: {len(results.get('unknown', []))}")
         
         # Top in each category
         for category_name, category_key in [
             ("GEM FINDERS", "gem_finders"),
             ("CONSISTENT TRADERS", "consistent"),
-            ("QUICK FLIPPERS", "flippers")
+            ("QUICK FLIPPERS", "flippers"),
+            ("MIXED RESULTS", "mixed")
         ]:
             category_wallets = results.get(category_key, [])
             if category_wallets:
                 print(f"\n🏅 TOP {category_name}:")
                 for wallet in category_wallets[:3]:
-                    score = wallet['metrics'].get('composite_score', 0)
+                    score = wallet.get('composite_score', wallet['metrics'].get('composite_score', 0))
                     print(f"   {wallet['wallet_address'][:8]}... | {format_score(score)}")
     
     def _export_wallet_analysis_csv(self, results: Dict[str, Any], output_file: str) -> None:
         """Export wallet analysis results to CSV."""
         try:
             all_wallets = []
-            for category in ['gem_finders', 'consistent', 'flippers', 'others']:
+            for category in ['gem_finders', 'consistent', 'flippers', 'mixed', 'underperformers', 'unknown']:
                 all_wallets.extend(results.get(category, []))
             
             # Sort by composite score
-            all_wallets.sort(key=lambda x: x['metrics'].get('composite_score', 0), reverse=True)
+            all_wallets.sort(key=lambda x: x.get('composite_score', x['metrics'].get('composite_score', 0)), reverse=True)
             
             with open(output_file, 'w', newline='', encoding='utf-8') as f:
                 fieldnames = [
@@ -376,8 +364,9 @@ class PhoenixCLI:
                     'wallet_type', 'total_trades', 'win_rate', 'profit_factor',
                     'net_profit_usd', 'avg_roi', 'median_roi', 'max_roi',
                     'avg_hold_time_hours', 'total_tokens_traded',
-                    'contested_level', 'contested_classification',
-                    'strategy_recommendation'
+                    'entry_exit_pattern', 'entry_quality', 'exit_quality',
+                    'missed_gains_percent', 'early_exit_rate',
+                    'strategy_recommendation', 'confidence'
                 ]
                 
                 writer = csv.DictWriter(f, fieldnames=fieldnames)
@@ -385,7 +374,7 @@ class PhoenixCLI:
                 
                 for rank, analysis in enumerate(all_wallets, 1):
                     metrics = analysis['metrics']
-                    score = metrics.get('composite_score', 0)
+                    score = analysis.get('composite_score', metrics.get('composite_score', 0))
                     
                     # Determine score rating
                     if score >= 81:
@@ -414,16 +403,24 @@ class PhoenixCLI:
                         'max_roi': round(metrics['max_roi'], 2),
                         'avg_hold_time_hours': round(metrics['avg_hold_time_hours'], 2),
                         'total_tokens_traded': metrics['total_tokens_traded'],
-                        'contested_level': '',
-                        'contested_classification': '',
-                        'strategy_recommendation': analysis['strategy']['recommendation']
+                        'strategy_recommendation': analysis['strategy']['recommendation'],
+                        'confidence': analysis['strategy'].get('confidence', 'LOW')
                     }
                     
-                    # Add contested info if available
-                    if 'contested_analysis' in analysis and analysis['contested_analysis'].get('success'):
-                        contested = analysis['contested_analysis']
-                        row['contested_level'] = contested.get('contested_level', 0)
-                        row['contested_classification'] = contested.get('classification', '')
+                    # Add entry/exit analysis if available
+                    if 'entry_exit_analysis' in analysis:
+                        ee_analysis = analysis['entry_exit_analysis']
+                        row['entry_exit_pattern'] = ee_analysis.get('pattern', '')
+                        row['entry_quality'] = ee_analysis.get('entry_quality', '')
+                        row['exit_quality'] = ee_analysis.get('exit_quality', '')
+                        row['missed_gains_percent'] = ee_analysis.get('missed_gains_percent', 0)
+                        row['early_exit_rate'] = ee_analysis.get('early_exit_rate', 0)
+                    else:
+                        row['entry_exit_pattern'] = ''
+                        row['entry_quality'] = ''
+                        row['exit_quality'] = ''
+                        row['missed_gains_percent'] = 0
+                        row['early_exit_rate'] = 0
                     
                     writer.writerow(row)
             
@@ -440,17 +437,17 @@ class PhoenixCLI:
             
             # Prepare data
             all_wallets = []
-            for category in ['gem_finders', 'consistent', 'flippers', 'others']:
+            for category in ['gem_finders', 'consistent', 'flippers', 'mixed', 'underperformers', 'unknown']:
                 all_wallets.extend(results.get(category, []))
             
             # Sort by composite score
-            all_wallets.sort(key=lambda x: x['metrics'].get('composite_score', 0), reverse=True)
+            all_wallets.sort(key=lambda x: x.get('composite_score', x['metrics'].get('composite_score', 0)), reverse=True)
             
             # Create DataFrame
             data = []
             for rank, analysis in enumerate(all_wallets, 1):
                 metrics = analysis['metrics']
-                score = metrics.get('composite_score', 0)
+                score = analysis.get('composite_score', metrics.get('composite_score', 0))
                 
                 # Determine score rating
                 if score >= 81:
@@ -476,17 +473,22 @@ class PhoenixCLI:
                     'Net Profit USD': metrics['net_profit_usd'],
                     'Avg ROI %': metrics['avg_roi'],
                     'Max ROI %': metrics['max_roi'],
-                    'Strategy': analysis['strategy']['recommendation']
+                    'Strategy': analysis['strategy']['recommendation'],
+                    'Confidence': analysis['strategy'].get('confidence', 'LOW')
                 }
                 
-                # Add contested info if available
-                if 'contested_analysis' in analysis and analysis['contested_analysis'].get('success'):
-                    contested = analysis['contested_analysis']
-                    row['Contested Level'] = contested.get('contested_level', 0)
-                    row['Competition'] = contested.get('classification', '')
+                # Add entry/exit analysis if available
+                if 'entry_exit_analysis' in analysis:
+                    ee_analysis = analysis['entry_exit_analysis']
+                    row['Entry/Exit Pattern'] = ee_analysis.get('pattern', '')
+                    row['Entry Quality'] = ee_analysis.get('entry_quality', '')
+                    row['Exit Quality'] = ee_analysis.get('exit_quality', '')
+                    row['Missed Gains %'] = ee_analysis.get('missed_gains_percent', 0)
                 else:
-                    row['Contested Level'] = ''
-                    row['Competition'] = ''
+                    row['Entry/Exit Pattern'] = ''
+                    row['Entry Quality'] = ''
+                    row['Exit Quality'] = ''
+                    row['Missed Gains %'] = 0
                 
                 data.append(row)
             
@@ -494,17 +496,18 @@ class PhoenixCLI:
             with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:
                 # Summary sheet
                 summary_data = {
-                    'Metric': ['Total Wallets', 'Analyzed', 'Failed', 'Passed Filters',
-                              'Gem Finders', 'Consistent', 'Flippers', 'Others'],
+                    'Metric': ['Total Wallets', 'Analyzed', 'Failed', 'Gem Finders', 
+                              'Consistent', 'Flippers', 'Mixed', 'Underperformers', 'Unknown'],
                     'Value': [
                         results['total_wallets'],
                         results['analyzed_wallets'],
                         results['failed_wallets'],
-                        results['filtered_wallets'],
                         len(results.get('gem_finders', [])),
                         len(results.get('consistent', [])),
                         len(results.get('flippers', [])),
-                        len(results.get('others', []))
+                        len(results.get('mixed', [])),
+                        len(results.get('underperformers', [])),
+                        len(results.get('unknown', []))
                     ]
                 }
                 summary_df = pd.DataFrame(summary_data)
@@ -574,7 +577,9 @@ class PhoenixCLI:
                 worksheet.set_column('D:D', 12)  # Rating
                 worksheet.set_column('E:E', 15)  # Type
                 worksheet.set_column('F:L', 15)  # Metrics
-                worksheet.set_column('M:N', 20)  # Contested info
+                worksheet.set_column('M:M', 20)  # Strategy
+                worksheet.set_column('N:N', 12)  # Confidence
+                worksheet.set_column('O:R', 15)  # Entry/Exit analysis
             
             logger.info(f"Exported wallet analysis to Excel: {output_file}")
             
@@ -1095,7 +1100,9 @@ class PhoenixCLI:
         print("• 🔍 Enhanced Contract Detection - Better Solana address extraction")
         print("• 💰 Wallet Composite Score (0-100) - Bad to Great scale")
         print("• 🏆 Strategy Optimization - Use pullback data for stop loss")
-        print("• 📊 Contested Wallet Analysis - Detect copy traders")
+        print("• 📊 Entry/Exit Behavior Analysis - Detect if selling too early")
+        print("• ⚡ Parallel Processing - Faster wallet analysis")
+        print("• 💾 RPC Caching - Avoid duplicate calls")
         
         print("\n💯 COMPOSITE SCORE BREAKDOWN:")
         print("• 0-20: 🔴 VERY POOR - Avoid copying")
@@ -1103,6 +1110,14 @@ class PhoenixCLI:
         print("• 41-60: 🟡 AVERAGE - Mixed results, selective copying")
         print("• 61-80: 🟢 GOOD - Solid performer, recommended")
         print("• 81-100: 🟣 EXCELLENT - Top tier trader, priority follow")
+        
+        print("\n📂 WALLET CATEGORIES (Optimized for Solana Memecoins):")
+        print("• 🎯 GEM FINDER: 10%+ big wins AND 200%+ max ROI")
+        print("• 📊 CONSISTENT: 35%+ win rate AND -10%+ median ROI")
+        print("• ⚡ FLIPPER: <24h hold time AND 40%+ win rate")
+        print("• 🔀 MIXED: Some positive traits but inconsistent")
+        print("• 📉 UNDERPERFORMER: Below thresholds but active")
+        print("• ❓ UNKNOWN: Low activity (<3 trades)")
         
         print("\n📊 OUTPUT FILES:")
         print("SpyDefi Analysis:")
@@ -1125,17 +1140,23 @@ class PhoenixCLI:
         print("   Example: If avg time to 2x is '3h 20m', hold for at least 3.5 hours")
         print()
         print("💯 Composite Score Usage:")
-        print("   80+ Score: Copy all trades immediately")
-        print("   60-80 Score: Copy selectively, use tight stops")
-        print("   40-60 Score: Only copy high-confidence setups")
-        print("   Below 40: Avoid or paper trade only")
+        print("   80+ Score: Copy all trades immediately (EXCELLENT)")
+        print("   60-80 Score: Copy selectively, use tight stops (GOOD)")
+        print("   40-60 Score: Only copy high-confidence setups (AVERAGE)")
+        print("   20-40 Score: Paper trade or very small positions (POOR)")
+        print("   Below 20: Avoid copying (VERY POOR)")
+        print()
+        print("📊 Entry/Exit Analysis:")
+        print("   EARLY_SELLER: Consider holding positions longer")
+        print("   MISSING_RUNNERS: Use trailing stops to capture gains")
+        print("   BALANCED: Good risk/reward balance")
         
         print("\n🔧 COMMAND LINE USAGE:")
         print("# Enhanced telegram analysis")
         print("python phoenix.py telegram --hours 24 --output enhanced_analysis.csv --excel")
         print()
-        print("# Wallet analysis")
-        print("python phoenix.py wallet --days 30 --min-winrate 45 --no-contested")
+        print("# Wallet analysis (simplified)")
+        print("python phoenix.py wallet --days 30")
         print()
         print("# Configure APIs")
         print("python phoenix.py configure --birdeye-api-key YOUR_KEY --cielo-api-key YOUR_KEY")
@@ -1235,24 +1256,33 @@ class PhoenixCLI:
                 rpc_url=self.config.get("solana_rpc_url")
             )
             
-            # Run batch analysis
-            include_contested = not args.no_contested
+            # Run batch analysis (removed min_winrate and include_contested)
             results = wallet_analyzer.batch_analyze_wallets(
                 wallets,
                 days_back=args.days,
-                min_winrate=args.min_winrate,
-                include_contested=include_contested
+                use_hybrid=True  # Always use hybrid approach
             )
             
             if results.get("success"):
-                # Export results
+                # Always export to both Excel and CSV
                 output_file = ensure_output_dir(args.output)
+                
+                # Excel export
                 if args.output.endswith('.xlsx'):
                     self._export_wallet_analysis_excel(results, output_file)
                 else:
-                    self._export_wallet_analysis_csv(results, output_file)
+                    # If output doesn't end with .xlsx, add it
+                    excel_file = output_file.replace('.csv', '.xlsx')
+                    if not excel_file.endswith('.xlsx'):
+                        excel_file += '.xlsx'
+                    self._export_wallet_analysis_excel(results, excel_file)
+                    output_file = excel_file
                 
-                logger.info(f"Analysis complete. Results saved to {output_file}")
+                # Also export CSV
+                csv_file = output_file.replace('.xlsx', '.csv')
+                self._export_wallet_analysis_csv(results, csv_file)
+                
+                logger.info(f"Analysis complete. Results saved to {output_file} and {csv_file}")
             else:
                 logger.error(f"Analysis failed: {results.get('error')}")
                 
