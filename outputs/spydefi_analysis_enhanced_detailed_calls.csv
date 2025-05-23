@@ -1,0 +1,108 @@
+kol,contract_address,call_date,reached_2x,reached_5x,max_roi_percent,current_roi_percent,max_pullback_percent,time_to_2x_formatted,time_to_5x_formatted,analysis_success
+kariusgemscalls,HPDJvNg87k8Z5vH2G76EkTTyDm3NnJFiY1h8aWVVpump,2025-05-23T03:59:52+00:00,False,False,0,0.0,0,N/A,N/A,True
+kariusgemscalls,6sXDVuKX1QGQwoz4p97ngtSKttdC7rwMpnJa97YCpump,2025-05-23T03:34:23+00:00,False,False,0,-12.59,12.59,N/A,N/A,True
+kariusgemscalls,fNYmXzgGMrmnaFGAsvp2chr48tpPiHUmgQc9vcCpump,2025-05-23T01:41:24+00:00,True,True,438.89,290.12,30.0,33m 36s,1h 48m 36s,True
+kariusgemscalls,9ZX5qzMKmd2oAP7L4ddMHrU4s8Jz3oRK5ThFUBfdpump,2025-05-23T01:28:11+00:00,False,False,21.2,-25.09,46.03,N/A,N/A,True
+kariusgemscalls,CCZkNZFU1WdLRsdP98W1WDTe4LLuxCNp8kLgPyKZpump,2025-05-23T01:24:42+00:00,True,False,173.64,14.11,66.08,20m 18s,N/A,True
+kariusgemscalls,FFd2H7xBG75MdJenwTBD3fg64dSz2a4nxSMdVf1Fpump,2025-05-23T01:18:41+00:00,False,False,78.22,-59.53,86.68,N/A,N/A,True
+kariusgemscalls,FHR7jgEhcsyBr65FnuzqYWYzfnN2cSJe2JNWiKubpump,2025-05-23T01:09:06+00:00,False,False,0,-93.1,94.38,N/A,N/A,True
+kariusgemscalls,6uF7zYerSJ9zHzvFFWWN1pcDW6v5VyqBGmz8rQR5Tra5,2025-05-23T00:29:26+00:00,False,False,86.81,0.81,57.13,N/A,N/A,True
+kariusgemscalls,DLuL2JifaipZPbc52H5eADTX2BDVZmRHJ5fRWSxgpump,2025-05-22T22:45:01+00:00,False,False,1.34,1.34,2.77,N/A,N/A,True
+kariusgemscalls,8duQTK1731JsWBPEtnAuXYBok7MczZdPppy4HEFcpump,2025-05-22T22:34:58+00:00,False,False,32.01,7.12,23.69,N/A,N/A,True
+kariusgemscalls,CxvuSvXgdqP5QjtGqpqjdcRbAZWqeNTtSsqvDaSEpump,2025-05-22T17:39:45+00:00,True,True,424.62,-99.42,99.9,1h 5m 15s,3h 20m 15s,True
+kariusgemscalls,825JDnb1VXryCM8AGZVKodgzUfowpAUw1xFDMLypump,2025-05-22T17:30:15+00:00,True,True,510.14,177.28,65.22,1h 59m 45s,4h 14m 45s,True
+kariusgemscalls,2kmgscz3mCNgBxWX1Ck4pBmRcXpf5iV8umK417wRpump,2025-05-22T16:08:52+00:00,True,False,103.9,-91.95,96.17,51m 8s,N/A,True
+kariusgemscalls,9afHmENv2mpiXnm7ujbwCJHh9Xr6TjetkpNiowFopump,2025-05-22T16:00:58+00:00,True,False,130.33,-98.8,99.5,59m 2s,N/A,True
+kariusgemscalls,Fhz5jk5JYkTxBFYd2XUqCH8hxrMGWAHGbyxB77C9pump,2025-05-22T15:55:23+00:00,False,False,24.42,-94.4,95.97,N/A,N/A,True
+kariusgemscalls,EkRSYEncX5jChP2Hgy1v3ZiDDrKc9MS6sBZygLU9pump,2025-05-22T15:43:36+00:00,False,False,0,-84.47,91.87,N/A,N/A,True
+kariusgemscalls,EAVNTgTxdhfn8UwSPnJEBGw3N4HSGLHhneCYaJNpump,2025-05-22T15:36:19+00:00,False,False,0.52,-66.97,69.5,N/A,N/A,True
+kariusgemscalls,ET4DMbyJPJppMW9D8nUomQqcH7BkoKXu28mmGRvi3Ewo,2025-05-22T14:32:13+00:00,False,False,0,-86.89,86.89,N/A,N/A,True
+kariusgemscalls,GnQZgs8CSUpuNHrfRCmd6Rnqk5GZQ3g5HDLTaZEHpump,2025-05-22T13:50:16+00:00,False,False,2.0,2.0,2.23,N/A,N/A,True
+kariusgemscalls,DmR4282rKUMP2k3PRsysRaiKTDHAKRr8yVT2esYWpump,2025-05-22T13:16:07+00:00,False,False,0,-88.93,91.42,N/A,N/A,True
+kariusgemscalls,edQTS8jGXCZAxJLtzvkVBnF2wU9gVeFQzQSL5sFpump,2025-05-22T13:08:31+00:00,True,True,660.57,-44.75,93.92,21m 29s,21m 29s,True
+kariusgemscalls,4taZpo68tozmPHYWK1xan5BtK7xtnyVg31twYBzLpump,2025-05-22T12:03:21+00:00,False,False,0,-94.37,94.37,N/A,N/A,True
+kariusgemscalls,CshaV2Wcv7pbCyKS6BqwHHPLgE2oEFwsoAxp7ZEDpump,2025-05-22T11:54:16+00:00,False,False,22.51,-70.68,84.1,N/A,N/A,True
+kariusgemscalls,6JBRJa9nkzTGgC8nryTDavooUGBPLPeZXSfeAZMPpump,2025-05-22T11:06:14+00:00,True,False,215.1,-65.15,89.58,2h 53m 46s,N/A,True
+kariusgemscalls,GWx9fo8XELNPdYAMzLqgVkyGTSfdRVZMtpzMDdakpump,2025-05-22T08:44:12+00:00,True,True,643.84,-63.95,95.7,30m 48s,3h 45m 48s,True
+kariusgemscalls,5Dz6Vmpmrw1ZMs42yYocpsfuR8gMdZDMDmzYfbq8pump,2025-05-22T05:27:05+00:00,True,False,276.61,-80.51,94.89,17m 55s,N/A,True
+kariusgemscalls,5AyUKwNasgks2q8xakkC1dCLBvXpm5cu5MLuUKTvpump,2025-05-22T05:08:31+00:00,True,False,162.01,-79.22,92.6,36m 29s,N/A,True
+kariusgemscalls,HaVhg3AVGr4kkeUsXff1JQqTTWSLTGevj9f7jXMbhy4g,2025-05-22T04:57:02+00:00,True,False,340.41,-52.66,89.25,1h 2m 58s,N/A,True
+hulkgemscalls_real,5TcZAghg4STkkUyNZmV7fM2RTXAB4P97iUbVMyfWpump,2025-05-22T21:45:38+00:00,False,False,28.64,-81.61,86.41,N/A,N/A,True
+hulkgemscalls_real,GQES2mRcYXemGnpaZ6augr9ArWcHt4EmCnnfg9Ydpump,2025-05-22T21:38:44+00:00,True,True,1102.82,145.11,79.92,21m 16s,36m 16s,True
+hulkgemscalls_real,D18WDykgHKXaDzogUnrweGGT2c3uuvJ4jrcR6Wi1pump,2025-05-22T21:10:24+00:00,False,False,0,-86.18,89.22,N/A,N/A,True
+hulkgemscalls_real,7DiinvdAf7CX6KatNgkRmTS5zeXn5pc7gS83qqutpump,2025-05-22T20:27:53+00:00,False,False,61.35,-97.68,98.68,N/A,N/A,True
+hulkgemscalls_real,6Nd4WfphGg3d14vVkrgpBnPbmB4yyv2dRh3P8wNNpump,2025-05-22T19:22:32+00:00,False,False,71.24,-74.89,85.34,N/A,N/A,True
+hulkgemscalls_real,A6pHEmc5HyTgso851CfueQAqsFuuBTu9dJczTLLfpump,2025-05-22T19:06:41+00:00,True,True,511.69,190.99,59.78,1h 53m 19s,6h 53m 19s,True
+hulkgemscalls_real,9TKaqzmvhUL27n9frAGbEwJo3tjmUxFWSyDgYXG1pump,2025-05-22T17:51:13+00:00,False,False,0,-74.18,74.36,N/A,N/A,True
+hulkgemscalls_real,98KWyyah12Mksu8hoN6scZ6TK25vzUajjbbvjm2bpump,2025-05-22T17:38:55+00:00,True,False,217.93,-57.65,90.34,36m 5s,N/A,True
+hulkgemscalls_real,4UtUNNsYPnpAaV8EQ88vDX9SyrboBYsYPbPvHbkNpump,2025-05-22T16:59:35+00:00,True,False,130.23,-82.46,97.42,1h 45m 25s,N/A,True
+hulkgemscalls_real,4L231ySTgxKtWepxqi1hd5zHXxqSP2b2H7u5yFgjpump,2025-05-22T16:48:01+00:00,False,False,0,-47.47,87.73,N/A,N/A,True
+hulkgemscalls_real,EkRSYEncX5jChP2Hgy1v3ZiDDrKc9MS6sBZygLU9pump,2025-05-22T15:46:24+00:00,False,False,27.17,-74.2,89.37,N/A,N/A,True
+hulkgemscalls_real,DCkTdzvsS714u6fPzjqJ6u5MT2eKzfrj7xvJ7QgApump,2025-05-22T07:39:17+00:00,False,False,53.15,-93.78,96.15,N/A,N/A,True
+hulkgemscalls_real,3Xq51qQTUiNGCFw6d4DYotyqgdxHYZEgbUpoFUAkpump,2025-05-22T07:35:46+00:00,True,True,927.2,-93.35,99.35,54m 14s,2h 24m 14s,True
+zen_call,BNnRGJ6PfeAWwpTjzStSBvJSNsEbZvgWsZWkW2E8pump,2025-05-23T02:25:57+00:00,False,False,0,-70.16,75.61,N/A,N/A,True
+zen_call,BgX4HY2Pu82JL1vHkD463BEBhcmpQKEKZHK1uyLWpump,2025-05-23T01:44:03+00:00,False,False,0,-82.4,82.4,N/A,N/A,True
+zen_call,CCZkNZFU1WdLRsdP98W1WDTe4LLuxCNp8kLgPyKZpump,2025-05-23T01:24:22+00:00,True,False,173.64,15.71,66.08,20m 38s,N/A,True
+zen_call,9TKaqzmvhUL27n9frAGbEwJo3tjmUxFWSyDgYXG1pump,2025-05-22T17:51:37+00:00,False,False,0,-74.18,74.36,N/A,N/A,True
+zen_call,2cdg9JSqNcseBDRjY5bAESbbn8AAUAP1usFdNahVpump,2025-05-22T17:42:53+00:00,True,True,770.48,77.9,81.05,32m 7s,4h 17m 7s,True
+zen_call,825JDnb1VXryCM8AGZVKodgzUfowpAUw1xFDMLypump,2025-05-22T17:30:19+00:00,True,True,510.14,181.93,65.22,1h 59m 41s,4h 14m 41s,True
+zen_call,4L231ySTgxKtWepxqi1hd5zHXxqSP2b2H7u5yFgjpump,2025-05-22T16:48:09+00:00,False,False,0,-47.17,87.73,N/A,N/A,True
+zen_call,718JqAsiWVPvc8M1B9eViRuQEkD6UydgX58SzV7bpump,2025-05-22T16:19:44+00:00,False,False,0,-66.18,81.96,N/A,N/A,True
+zen_call,AWdpR6CZxNgyxmQmuo2ZA7dSkDokwhhfBaCyx2Akpump,2025-05-22T14:56:54+00:00,True,False,109.31,-69.42,86.87,18m 6s,N/A,True
+zen_call,MtCJMNfa98DNNk2zvsH8t34Xq6VVdpoDY94qY3spump,2025-05-22T14:09:48+00:00,True,False,296.63,0.47,79.25,35m 12s,N/A,True
+zen_call,GkKtuQSZunaDcKes3Hs1pyX5vXi826fMiZbmrBobpump,2025-05-22T14:02:11+00:00,False,False,0,-28.96,44.21,N/A,N/A,True
+zen_call,4vfiiw4xUzR72bxqwXmQiai4FU8CgbwCqhUToX8MN9hF,2025-05-22T12:34:56+00:00,False,False,0,-89.41,90.27,N/A,N/A,True
+zen_call,GWx9fo8XELNPdYAMzLqgVkyGTSfdRVZMtpzMDdakpump,2025-05-22T08:43:25+00:00,True,True,643.84,-63.95,95.7,31m 35s,3h 46m 35s,True
+nikola_calls,3pNdjzHzJZi5jsDm8z6sJE5AXUG8KigKF66GqFHmpump,2025-05-22T18:12:50+00:00,False,False,79.64,-55.17,76.19,N/A,N/A,True
+nikola_calls,2cdg9JSqNcseBDRjY5bAESbbn8AAUAP1usFdNahVpump,2025-05-22T17:43:56+00:00,True,True,770.48,76.15,81.05,31m 4s,4h 16m 4s,True
+nikola_calls,6Q6PWyVY8igTkKmWugy3sJsQirJ13woHA6UCAgYqpump,2025-05-22T17:36:23+00:00,False,False,58.23,34.02,67.54,N/A,N/A,True
+nikola_calls,7g8E9LNymoF5yiZKQctWgXCnkd14njDqCY75c5ahpump,2025-05-22T17:25:22+00:00,False,False,14.86,-97.05,97.7,N/A,N/A,True
+nikola_calls,ByLhHAq8zrsupJkKDf2cfxNHNYiKqkNHASde4c3npump,2025-05-22T16:02:45+00:00,True,True,440.81,220.58,76.35,2h 27m 15s,3h 12m 15s,True
+nikola_calls,edQTS8jGXCZAxJLtzvkVBnF2wU9gVeFQzQSL5sFpump,2025-05-22T13:10:04+00:00,True,True,660.57,-44.75,93.92,19m 56s,19m 56s,True
+pepe_calls28,7DiinvdAf7CX6KatNgkRmTS5zeXn5pc7gS83qqutpump,2025-05-22T20:34:45+00:00,False,False,0,-98.56,98.68,N/A,N/A,True
+pepe_calls28,5KLMKUaCXes7fSKqYqtYXsL46BbgtK24tkP9NLKspump,2025-05-22T20:19:18+00:00,False,False,0,-51.41,55.87,N/A,N/A,True
+pepe_calls28,scSdK1NCmLCLQrqGWTBXE7m7cPKe42nSsd2RzUGpump,2025-05-22T19:49:47+00:00,False,False,0,-90.29,96.06,N/A,N/A,True
+pepe_calls28,BDmd5acf2CyydhnH6vjrCrCEY1ixHzRRK9HToPiKPdcS,2025-05-22T18:14:24+00:00,True,True,1580.38,1580.38,83.9,15m 36s,9h 15m 36s,True
+pepe_calls28,3pNdjzHzJZi5jsDm8z6sJE5AXUG8KigKF66GqFHmpump,2025-05-22T18:12:44+00:00,False,False,79.64,-55.17,76.19,N/A,N/A,True
+pepe_calls28,EkRSYEncX5jChP2Hgy1v3ZiDDrKc9MS6sBZygLU9pump,2025-05-22T15:42:59+00:00,False,False,0,-84.47,91.87,N/A,N/A,True
+pepe_calls28,EAVNTgTxdhfn8UwSPnJEBGw3N4HSGLHhneCYaJNpump,2025-05-22T15:34:51+00:00,False,False,0.52,-67.47,69.5,N/A,N/A,True
+pepe_calls28,7ULtUZE51vBn3W4FoWq7y7WuGB67iM6m4XNJbzc1pump,2025-05-22T15:32:55+00:00,False,False,79.45,-71.81,88.72,N/A,N/A,True
+pepe_calls28,GWx9fo8XELNPdYAMzLqgVkyGTSfdRVZMtpzMDdakpump,2025-05-22T08:43:32+00:00,True,True,643.84,-64.03,95.7,31m 28s,3h 46m 28s,True
+poseidon_degen_calls,BNnRGJ6PfeAWwpTjzStSBvJSNsEbZvgWsZWkW2E8pump,2025-05-23T02:25:40+00:00,False,False,0,-72.24,75.61,N/A,N/A,True
+poseidon_degen_calls,45zyjKJ7Aqu8iofWEm5GuSAkY7eJ3sLMAbPeY96Apump,2025-05-23T01:41:40+00:00,False,False,8.66,5.39,4.51,N/A,N/A,True
+poseidon_degen_calls,4L231ySTgxKtWepxqi1hd5zHXxqSP2b2H7u5yFgjpump,2025-05-22T16:48:00+00:00,False,False,0,-47.47,87.73,N/A,N/A,True
+poseidon_degen_calls,edQTS8jGXCZAxJLtzvkVBnF2wU9gVeFQzQSL5sFpump,2025-05-22T13:09:01+00:00,True,True,660.57,-44.75,93.92,20m 59s,20m 59s,True
+poseidon_degen_calls,4vfiiw4xUzR72bxqwXmQiai4FU8CgbwCqhUToX8MN9hF,2025-05-22T12:34:49+00:00,False,False,0,-89.41,90.27,N/A,N/A,True
+poseidon_degen_calls,DrbRwsL8L6LkRwexWRAWnWzVWPghuYpB6ppduZXxpump,2025-05-22T12:11:10+00:00,False,False,17.29,-57.09,79.55,N/A,N/A,True
+poseidon_degen_calls,4taZpo68tozmPHYWK1xan5BtK7xtnyVg31twYBzLpump,2025-05-22T12:03:29+00:00,False,False,0,-94.41,94.41,N/A,N/A,True
+marksgems,Bkc8rJsYqA8nzqzZCuDPxie2TDZsa4YY9S5vCct6pump,2025-05-23T00:45:49+00:00,True,False,107.05,6.39,55.12,1h 44m 11s,N/A,True
+marksgems,2i9hJDM7vr4RF2QcLeQrSPLfEDnej9fKy9Pj8LmNpump,2025-05-23T00:41:27+00:00,True,False,182.31,6.0,62.45,33m 33s,N/A,True
+marksgems,8jPNoeDrwoh6LVdrzViFcdc2NeNxgpkeYVWy5BJi8Y8h,2025-05-23T00:16:41+00:00,False,False,72.25,-42.59,70.49,N/A,N/A,True
+marksgems,6aQwggTbRiMLwKdWrj1vEVAh7JpgEwFxUp6uoqLqpump,2025-05-22T23:30:35+00:00,False,False,0,-7.44,8.33,N/A,N/A,True
+marksgems,CbUQ418NeYx4ja6UeNggARBQXv5WZZoNzqKGymGmpump,2025-05-22T13:54:39+00:00,False,False,0,-83.13,83.69,N/A,N/A,True
+marksgems,edQTS8jGXCZAxJLtzvkVBnF2wU9gVeFQzQSL5sFpump,2025-05-22T13:30:43+00:00,False,False,0,-90.93,92.41,N/A,N/A,True
+marksgems,7r1MTYnPT4B9AVrnPfEFFCPydr3vmCzEHG9CiwkGpump,2025-05-22T13:25:22+00:00,False,False,0,-51.31,52.74,N/A,N/A,True
+marksgems,AcnnSeUFybStPw3r8L7qiZMdfYyLdEt3gmrXeBKypump,2025-05-22T12:58:39+00:00,False,False,20.67,-41.19,65.83,N/A,N/A,True
+marksgems,88k1B9io1WutEvYENRjBgWTLY1botU1UJWtQ5sRd42Pt,2025-05-22T11:50:54+00:00,False,False,9.24,-84.52,86.3,N/A,N/A,True
+mrbigbagcalls,BgX4HY2Pu82JL1vHkD463BEBhcmpQKEKZHK1uyLWpump,2025-05-23T01:44:25+00:00,False,False,0,-82.43,82.43,N/A,N/A,True
+mrbigbagcalls,2JeRBAA4bivwfx4zGagqqU171TqqSn8eCugQ5nnPpump,2025-05-22T22:48:43+00:00,True,False,157.0,-22.81,75.0,56m 17s,N/A,True
+mrbigbagcalls,2cdg9JSqNcseBDRjY5bAESbbn8AAUAP1usFdNahVpump,2025-05-22T18:37:40+00:00,True,False,279.46,-23.11,81.05,2h 37m 20s,N/A,True
+mrbigbagcalls,4UtUNNsYPnpAaV8EQ88vDX9SyrboBYsYPbPvHbkNpump,2025-05-22T17:24:48+00:00,True,False,163.08,-80.95,97.42,20m 12s,N/A,True
+mrbigbagcalls,7ZvHpxaV5dhMb3qGe8NkkgijDMb5VoJD85YpAgFX1KqX,2025-05-22T14:57:53+00:00,True,False,148.82,29.36,72.31,7h 32m 7s,N/A,True
+michacalls,8HV9BVVvRDW2BgtqjTdX9URTD1mdSXMgVCUFYVkubonk,2025-05-22T22:17:52+00:00,False,False,55.28,-4.84,60.04,N/A,N/A,True
+michacalls,edQTS8jGXCZAxJLtzvkVBnF2wU9gVeFQzQSL5sFpump,2025-05-22T13:10:26+00:00,True,True,660.57,-44.75,93.92,19m 34s,19m 34s,True
+michacalls,FKh8qKFcsz7bPq369K3EYam6mAbsvCHD4ZtCZNaRpump,2025-05-22T11:13:02+00:00,False,False,38.68,-69.87,78.5,N/A,N/A,True
+michacalls,FKh8qKFcsz7bPq369K3EYam6mAbsvCHD4ZtCZNaRpump,2025-05-22T11:11:19+00:00,False,False,38.68,-69.87,78.5,N/A,N/A,True
+thanosgambles,8HV9BVVvRDW2BgtqjTdX9URTD1mdSXMgVCUFYVkubonk,2025-05-22T22:07:45+00:00,True,False,127.59,41.4,60.04,4h 7m 15s,N/A,True
+michiosuzukiofsatoshicalls,5i4p9no2m8HpCTGaXyA4gbAoNUsJtYGuPrmH7h9opump,2025-05-23T03:37:38+00:00,False,False,0,-45.08,45.08,N/A,N/A,True
+michiosuzukiofsatoshicalls,6sXDVuKX1QGQwoz4p97ngtSKttdC7rwMpnJa97YCpump,2025-05-23T03:37:38+00:00,False,False,0,-23.88,23.88,N/A,N/A,True
+michiosuzukiofsatoshicalls,EBfV1MD1UcsHLMVMfmQNEZZfT1uGuX6FBAtTDPc4pump,2025-05-23T02:52:22+00:00,False,False,0.89,-0.96,2.92,N/A,N/A,True
+michiosuzukiofsatoshicalls,BNnRGJ6PfeAWwpTjzStSBvJSNsEbZvgWsZWkW2E8pump,2025-05-23T02:36:47+00:00,False,False,0,-53.31,60.06,N/A,N/A,True
+michiosuzukiofsatoshicalls,2t83idtpbG8ybYHJSC1zCfbsrXh5qodrP555QM4Ypump,2025-05-23T00:27:30+00:00,False,False,0,-44.5,44.58,N/A,N/A,True
+michiosuzukiofsatoshicalls,CPPQmryHZKMSKdxERPtYHkFbHUHAx9yQVknQM2FwbZ9J,2025-05-22T20:53:31+00:00,False,False,7.91,-36.04,41.44,N/A,N/A,True
+marshmellow100xcalls,2Fxr71Aar5sZ6KgukZeF6jSbBiAx4hoZf9nkHimHpump,2025-05-22T14:20:30+00:00,False,False,0,-89.94,90.26,N/A,N/A,True
+marshmellow100xcalls,2kgams8kaAsBUr4ntgR2E8vrtxXsDtNcK9FYjvjCbonk,2025-05-22T14:14:15+00:00,False,False,12.11,-47.78,79.64,N/A,N/A,True
+marshmellow100xcalls,DmR4282rKUMP2k3PRsysRaiKTDHAKRr8yVT2esYWpump,2025-05-22T13:36:06+00:00,False,False,0,-86.25,89.34,N/A,N/A,True
+marshmellow100xcalls,KKG373b7Cr32JydXMGbqZkuFjVfcJf2FVvsBwobpump,2025-05-22T13:30:20+00:00,False,False,6.77,-59.14,71.79,N/A,N/A,True
+topcallerschannel,FgGykoPuNBE24GNj7JaMTZmiBzgb25sQUvhcnRPLpump,2025-05-22T22:45:02+00:00,False,False,0.5,0.5,50.25,N/A,N/A,True
+shutupandprint,2AtFgHT5LDuZ2AUqGUNBGQh2XiKJQTEyiG2w2BqLpump,2025-05-23T03:11:45+00:00,False,False,0,-60.84,60.84,N/A,N/A,True
