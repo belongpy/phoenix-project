@@ -30637,3 +30637,1194 @@ AttributeError: 'TelegramScraper' object has no attribute 'export_enhanced_spyde
 2025-05-22 21:28:41,645 - phoenix.telegram - INFO - 📊 Analyzing KOL 14/50: @genesischain_calls (6 mentions)
 2025-05-22 21:28:41,645 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @genesischain_calls
 2025-05-22 21:28:41,781 - phoenix.telegram - INFO - Scraping 1 days of messages from 2086003521
+2025-05-22 21:38:49,057 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-22 21:38:49,057 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-22 21:38:49,650 - phoenix - INFO - ✅ Imported FIXED telegram module
+2025-05-22 21:38:49,650 - phoenix - INFO - 🚀 Starting FIXED enhanced SpyDefi analysis for the past 24 hours.
+2025-05-22 21:38:49,654 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv
+2025-05-22 21:38:49,654 - phoenix - INFO - 🎯 Enhanced features: FIXED Pullback % + Time-to-2x analysis
+2025-05-22 21:38:49,654 - phoenix - INFO - ✅ Birdeye API initialized successfully
+2025-05-22 21:38:49,654 - phoenix - INFO - ✅ Telegram scraper initialized successfully
+2025-05-22 21:38:49,654 - phoenix - INFO - 🎯 SpyDefi channel detected. Running FIXED enhanced analysis...
+2025-05-22 21:38:49,654 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-22 21:38:49,654 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-22 21:38:49,775 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-22 21:38:50,545 - phoenix.telegram - INFO - Connected to Telegram
+2025-05-22 21:38:50,545 - phoenix - INFO - 📞 Connected to Telegram
+2025-05-22 21:38:50,545 - phoenix.telegram - INFO - 🚀 STARTING FIXED SPYDEFI ANALYSIS
+2025-05-22 21:38:50,545 - phoenix.telegram - INFO - 🎯 Phase 1: Discovering active KOLs from SpyDefi...
+2025-05-22 21:38:50,688 - phoenix.telegram - INFO - 📨 Scanning SpyDefi for active KOLs...
+2025-05-22 21:38:52,385 - phoenix.telegram - INFO - 📊 Processed 500 SpyDefi messages
+2025-05-22 21:38:52,385 - phoenix.telegram - INFO - 🔍 Found 182 unique KOLs
+2025-05-22 21:38:52,385 - phoenix.telegram - INFO - ✅ Found 182 active KOLs from SpyDefi
+2025-05-22 21:38:52,385 - phoenix.telegram - INFO - 🎯 Phase 2: Analyzing individual KOL channels (24 hours each)...
+2025-05-22 21:38:52,385 - phoenix.telegram - INFO - 📊 Found 182 total KOLs, filtering to 50 (top 50 with 2+ mentions)
+2025-05-22 21:38:52,385 - phoenix.telegram - INFO - 📊 Analyzing KOL 1/50: @kariusgemscalls (29 mentions)
+2025-05-22 21:38:52,385 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @kariusgemscalls
+2025-05-22 21:38:52,510 - phoenix.telegram - INFO - Scraping 1 days of messages from 2222968620
+2025-05-22 21:38:53,015 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 2222968620. Found 77 relevant messages.
+2025-05-22 21:38:53,015 - phoenix.telegram - INFO - 📨 Found 77 messages in @kariusgemscalls's channel
+2025-05-22 21:38:53,015 - phoenix.telegram - INFO - 🎯 Found 63 token calls for @kariusgemscalls
+2025-05-22 21:38:53,015 - phoenix.telegram - INFO - 📊 Analyzing call 2/63 for @kariusgemscalls
+2025-05-22 21:38:54,244 - phoenix.telegram - INFO - 📊 Analyzing call 3/63 for @kariusgemscalls
+2025-05-22 21:38:55,407 - phoenix.telegram - INFO - 📊 Analyzing call 4/63 for @kariusgemscalls
+2025-05-22 21:38:56,573 - phoenix.telegram - INFO - 📊 Analyzing call 8/63 for @kariusgemscalls
+2025-05-22 21:38:57,729 - phoenix.telegram - INFO - 📊 Analyzing call 9/63 for @kariusgemscalls
+2025-05-22 21:38:58,872 - phoenix.telegram - INFO - 📊 Analyzing call 10/63 for @kariusgemscalls
+2025-05-22 21:39:00,064 - phoenix.telegram - INFO - 📊 Analyzing call 11/63 for @kariusgemscalls
+2025-05-22 21:39:01,391 - phoenix.birdeye - WARNING - No price history available for 7bceh4gvsctp9vy8ftiwvwb17rodj4662bidzason8qt
+2025-05-22 21:39:03,667 - phoenix.birdeye - WARNING - No price history available for 7bceh4gvsctp9vy8ftiwvwb17rodj4662bidzason8qt
+2025-05-22 21:39:05,830 - phoenix.birdeye - WARNING - No price history available for 7bceh4gvsctp9vy8ftiwvwb17rodj4662bidzason8qt
+2025-05-22 21:39:06,839 - phoenix.telegram - INFO - 📊 Analyzing call 13/63 for @kariusgemscalls
+2025-05-22 21:39:08,016 - phoenix.telegram - INFO - 📊 Analyzing call 15/63 for @kariusgemscalls
+2025-05-22 21:39:09,174 - phoenix.telegram - INFO - 📊 Analyzing call 17/63 for @kariusgemscalls
+2025-05-22 21:39:10,373 - phoenix.telegram - INFO - 📊 Analyzing call 19/63 for @kariusgemscalls
+2025-05-22 21:39:11,526 - phoenix.telegram - INFO - 📊 Analyzing call 27/63 for @kariusgemscalls
+2025-05-22 21:39:12,698 - phoenix.telegram - INFO - 📊 Analyzing call 28/63 for @kariusgemscalls
+2025-05-22 21:39:13,868 - phoenix.telegram - INFO - 📊 Analyzing call 32/63 for @kariusgemscalls
+2025-05-22 21:39:15,036 - phoenix.telegram - INFO - 📊 Analyzing call 35/63 for @kariusgemscalls
+2025-05-22 21:39:16,207 - phoenix.telegram - INFO - 📊 Analyzing call 36/63 for @kariusgemscalls
+2025-05-22 21:39:17,370 - phoenix.telegram - INFO - 📊 Analyzing call 38/63 for @kariusgemscalls
+2025-05-22 21:39:18,523 - phoenix.telegram - INFO - 📊 Analyzing call 40/63 for @kariusgemscalls
+2025-05-22 21:39:19,692 - phoenix.telegram - INFO - 📊 Analyzing call 43/63 for @kariusgemscalls
+2025-05-22 21:39:20,903 - phoenix.telegram - INFO - 📊 Analyzing call 45/63 for @kariusgemscalls
+2025-05-22 21:39:22,071 - phoenix.telegram - INFO - 📊 Analyzing call 49/63 for @kariusgemscalls
+2025-05-22 21:39:23,237 - phoenix.telegram - INFO - 📊 Analyzing call 50/63 for @kariusgemscalls
+2025-05-22 21:39:24,417 - phoenix.telegram - INFO - 📊 Analyzing call 51/63 for @kariusgemscalls
+2025-05-22 21:39:25,563 - phoenix.telegram - INFO - 📊 Analyzing call 52/63 for @kariusgemscalls
+2025-05-22 21:39:26,745 - phoenix.telegram - INFO - 📊 Analyzing call 54/63 for @kariusgemscalls
+2025-05-22 21:39:27,915 - phoenix.telegram - INFO - 📊 Analyzing call 56/63 for @kariusgemscalls
+2025-05-22 21:39:29,075 - phoenix.telegram - INFO - 📊 Analyzing call 60/63 for @kariusgemscalls
+2025-05-22 21:39:30,246 - phoenix.telegram - INFO - 📊 Analyzing call 62/63 for @kariusgemscalls
+2025-05-22 21:39:31,462 - phoenix.telegram - INFO - 📊 Analyzing call 63/63 for @kariusgemscalls
+2025-05-22 21:39:32,641 - phoenix.telegram - INFO - ✅ @kariusgemscalls: 29 calls, 41.4% 2x rate
+2025-05-22 21:39:34,652 - phoenix.telegram - INFO - 📊 Analyzing KOL 2/50: @zen_call (18 mentions)
+2025-05-22 21:39:34,652 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @zen_call
+2025-05-22 21:39:34,780 - phoenix.telegram - INFO - Scraping 1 days of messages from 2177594166
+2025-05-22 21:39:35,342 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 2177594166. Found 22 relevant messages.
+2025-05-22 21:39:35,342 - phoenix.telegram - INFO - 📨 Found 22 messages in @zen_call's channel
+2025-05-22 21:39:35,342 - phoenix.telegram - INFO - 🎯 Found 18 token calls for @zen_call
+2025-05-22 21:39:35,342 - phoenix.telegram - INFO - 📊 Analyzing call 1/18 for @zen_call
+2025-05-22 21:39:35,484 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'dfgjsbmdatpb3m7ubsjdybqksbsxbmafua3zv8rvzyjv', 'address_type': 'token', 'type': '15m', 'time_from': 1747967157, 'time_to': 1747975175}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:39:35,484 - phoenix.birdeye - WARNING - No price history available for dfgjsbmdatpb3m7ubsjdybqksbsxbmafua3zv8rvzyjv
+2025-05-22 21:39:37,610 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'dfgjsbmdatpb3m7ubsjdybqksbsxbmafua3zv8rvzyjv', 'address_type': 'token', 'type': '15m', 'time_from': 1747967157, 'time_to': 1747975177}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:39:37,610 - phoenix.birdeye - WARNING - No price history available for dfgjsbmdatpb3m7ubsjdybqksbsxbmafua3zv8rvzyjv
+2025-05-22 21:39:39,732 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'dfgjsbmdatpb3m7ubsjdybqksbsxbmafua3zv8rvzyjv', 'address_type': 'token', 'type': '15m', 'time_from': 1747967157, 'time_to': 1747975179}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:39:39,732 - phoenix.birdeye - WARNING - No price history available for dfgjsbmdatpb3m7ubsjdybqksbsxbmafua3zv8rvzyjv
+2025-05-22 21:39:41,917 - phoenix.telegram - INFO - 📊 Analyzing call 3/18 for @zen_call
+2025-05-22 21:39:43,243 - phoenix.birdeye - WARNING - No price history available for 9xtzzyj8qsy5epnydcxe7ky3dg1vu61siqea931bp4rk
+2025-05-22 21:39:45,390 - phoenix.birdeye - WARNING - No price history available for 9xtzzyj8qsy5epnydcxe7ky3dg1vu61siqea931bp4rk
+2025-05-22 21:39:47,573 - phoenix.birdeye - WARNING - No price history available for 9xtzzyj8qsy5epnydcxe7ky3dg1vu61siqea931bp4rk
+2025-05-22 21:39:48,585 - phoenix.telegram - INFO - 📊 Analyzing call 4/18 for @zen_call
+2025-05-22 21:39:49,875 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'gnd2p3skg5fxcjix836dcyuy3v5nzo1ykfetmxyymskn', 'address_type': 'token', 'type': '15m', 'time_from': 1747963462, 'time_to': 1747975189}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:39:49,875 - phoenix.birdeye - WARNING - No price history available for gnd2p3skg5fxcjix836dcyuy3v5nzo1ykfetmxyymskn
+2025-05-22 21:39:52,041 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'gnd2p3skg5fxcjix836dcyuy3v5nzo1ykfetmxyymskn', 'address_type': 'token', 'type': '15m', 'time_from': 1747963462, 'time_to': 1747975191}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:39:52,041 - phoenix.birdeye - WARNING - No price history available for gnd2p3skg5fxcjix836dcyuy3v5nzo1ykfetmxyymskn
+2025-05-22 21:39:54,156 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'gnd2p3skg5fxcjix836dcyuy3v5nzo1ykfetmxyymskn', 'address_type': 'token', 'type': '15m', 'time_from': 1747963462, 'time_to': 1747975194}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:39:54,156 - phoenix.birdeye - WARNING - No price history available for gnd2p3skg5fxcjix836dcyuy3v5nzo1ykfetmxyymskn
+2025-05-22 21:39:55,163 - phoenix.telegram - INFO - 📊 Analyzing call 7/18 for @zen_call
+2025-05-22 21:39:55,290 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'czy25wxujtkhgxwq7upu9pdmh1bqdw8hehja8jzkbwrp', 'address_type': 'token', 'type': '15m', 'time_from': 1747936297, 'time_to': 1747975195}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:39:55,292 - phoenix.birdeye - WARNING - No price history available for czy25wxujtkhgxwq7upu9pdmh1bqdw8hehja8jzkbwrp
+2025-05-22 21:39:57,401 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'czy25wxujtkhgxwq7upu9pdmh1bqdw8hehja8jzkbwrp', 'address_type': 'token', 'type': '15m', 'time_from': 1747936297, 'time_to': 1747975197}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:39:57,413 - phoenix.birdeye - WARNING - No price history available for czy25wxujtkhgxwq7upu9pdmh1bqdw8hehja8jzkbwrp
+2025-05-22 21:39:59,523 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'czy25wxujtkhgxwq7upu9pdmh1bqdw8hehja8jzkbwrp', 'address_type': 'token', 'type': '15m', 'time_from': 1747936297, 'time_to': 1747975199}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:39:59,523 - phoenix.birdeye - WARNING - No price history available for czy25wxujtkhgxwq7upu9pdmh1bqdw8hehja8jzkbwrp
+2025-05-22 21:40:01,709 - phoenix.telegram - INFO - 📊 Analyzing call 8/18 for @zen_call
+2025-05-22 21:40:03,038 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'fveyuwzbyn81stpbupyq7mrhtkhm16ofbe5gubba2g4s', 'address_type': 'token', 'type': '15m', 'time_from': 1747935773, 'time_to': 1747975202}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:40:03,038 - phoenix.birdeye - WARNING - No price history available for fveyuwzbyn81stpbupyq7mrhtkhm16ofbe5gubba2g4s
+2025-05-22 21:40:05,164 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'fveyuwzbyn81stpbupyq7mrhtkhm16ofbe5gubba2g4s', 'address_type': 'token', 'type': '15m', 'time_from': 1747935773, 'time_to': 1747975205}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:40:05,164 - phoenix.birdeye - WARNING - No price history available for fveyuwzbyn81stpbupyq7mrhtkhm16ofbe5gubba2g4s
+2025-05-22 21:40:07,276 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'fveyuwzbyn81stpbupyq7mrhtkhm16ofbe5gubba2g4s', 'address_type': 'token', 'type': '15m', 'time_from': 1747935773, 'time_to': 1747975207}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:40:07,286 - phoenix.birdeye - WARNING - No price history available for fveyuwzbyn81stpbupyq7mrhtkhm16ofbe5gubba2g4s
+2025-05-22 21:40:08,292 - phoenix.telegram - INFO - 📊 Analyzing call 9/18 for @zen_call
+2025-05-22 21:40:08,448 - phoenix.birdeye - WARNING - No price history available for 73cjxsy8nstmdy79tzmdgjxrfwskmv1criph4fffwi3s
+2025-05-22 21:40:10,633 - phoenix.birdeye - WARNING - No price history available for 73cjxsy8nstmdy79tzmdgjxrfwskmv1criph4fffwi3s
+2025-05-22 21:40:12,797 - phoenix.birdeye - WARNING - No price history available for 73cjxsy8nstmdy79tzmdgjxrfwskmv1criph4fffwi3s
+2025-05-22 21:40:14,964 - phoenix.telegram - INFO - 📊 Analyzing call 10/18 for @zen_call
+2025-05-22 21:40:16,242 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'gqghvrdggh6n8yvcc6ghtkubcf8g3newgtcytfe7kzyq', 'address_type': 'token', 'type': '15m', 'time_from': 1747932489, 'time_to': 1747975216}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:40:16,242 - phoenix.birdeye - WARNING - No price history available for gqghvrdggh6n8yvcc6ghtkubcf8g3newgtcytfe7kzyq
+2025-05-22 21:40:18,375 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'gqghvrdggh6n8yvcc6ghtkubcf8g3newgtcytfe7kzyq', 'address_type': 'token', 'type': '15m', 'time_from': 1747932489, 'time_to': 1747975218}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:40:18,380 - phoenix.birdeye - WARNING - No price history available for gqghvrdggh6n8yvcc6ghtkubcf8g3newgtcytfe7kzyq
+2025-05-22 21:40:20,517 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'gqghvrdggh6n8yvcc6ghtkubcf8g3newgtcytfe7kzyq', 'address_type': 'token', 'type': '15m', 'time_from': 1747932489, 'time_to': 1747975220}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:40:20,517 - phoenix.birdeye - WARNING - No price history available for gqghvrdggh6n8yvcc6ghtkubcf8g3newgtcytfe7kzyq
+2025-05-22 21:40:21,528 - phoenix.telegram - INFO - 📊 Analyzing call 11/18 for @zen_call
+2025-05-22 21:40:21,641 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'euhicjfqwaivmh5vsatr4bxbssnq8ujxpaz7daifb7do', 'address_type': 'token', 'type': '15m', 'time_from': 1747930784, 'time_to': 1747975221}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:40:21,641 - phoenix.birdeye - WARNING - No price history available for euhicjfqwaivmh5vsatr4bxbssnq8ujxpaz7daifb7do
+2025-05-22 21:40:23,776 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'euhicjfqwaivmh5vsatr4bxbssnq8ujxpaz7daifb7do', 'address_type': 'token', 'type': '15m', 'time_from': 1747930784, 'time_to': 1747975223}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:40:23,783 - phoenix.birdeye - WARNING - No price history available for euhicjfqwaivmh5vsatr4bxbssnq8ujxpaz7daifb7do
+2025-05-22 21:40:25,918 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'euhicjfqwaivmh5vsatr4bxbssnq8ujxpaz7daifb7do', 'address_type': 'token', 'type': '15m', 'time_from': 1747930784, 'time_to': 1747975225}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:40:25,918 - phoenix.birdeye - WARNING - No price history available for euhicjfqwaivmh5vsatr4bxbssnq8ujxpaz7daifb7do
+2025-05-22 21:40:28,104 - phoenix.telegram - INFO - 📊 Analyzing call 12/18 for @zen_call
+2025-05-22 21:40:28,245 - phoenix.birdeye - WARNING - No price history available for AM1WbJFpLcf7ett918sqcU2DmLs6zsgdnrkFDPqTRNx9
+2025-05-22 21:40:30,431 - phoenix.birdeye - WARNING - No price history available for AM1WbJFpLcf7ett918sqcU2DmLs6zsgdnrkFDPqTRNx9
+2025-05-22 21:40:32,617 - phoenix.birdeye - WARNING - No price history available for AM1WbJFpLcf7ett918sqcU2DmLs6zsgdnrkFDPqTRNx9
+2025-05-22 21:40:34,781 - phoenix.telegram - INFO - 📊 Analyzing call 14/18 for @zen_call
+2025-05-22 21:40:35,935 - phoenix.telegram - INFO - 📊 Analyzing call 15/18 for @zen_call
+2025-05-22 21:40:37,279 - phoenix.birdeye - WARNING - No price history available for 41hr2nbk9npvmpbgzt7ajggkfjsrhvzyjneg9bwa5qxq
+2025-05-22 21:40:39,481 - phoenix.birdeye - WARNING - No price history available for 41hr2nbk9npvmpbgzt7ajggkfjsrhvzyjneg9bwa5qxq
+2025-05-22 21:40:41,652 - phoenix.birdeye - WARNING - No price history available for 41hr2nbk9npvmpbgzt7ajggkfjsrhvzyjneg9bwa5qxq
+2025-05-22 21:40:42,668 - phoenix.telegram - INFO - 📊 Analyzing call 16/18 for @zen_call
+2025-05-22 21:40:43,961 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'haqpmqnsemjscrjfgby2fnhj1bxkqxbhm6mxx824nbwg', 'address_type': 'token', 'type': '15m', 'time_from': 1747917296, 'time_to': 1747975243}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:40:43,961 - phoenix.birdeye - WARNING - No price history available for haqpmqnsemjscrjfgby2fnhj1bxkqxbhm6mxx824nbwg
+2025-05-22 21:40:46,074 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'haqpmqnsemjscrjfgby2fnhj1bxkqxbhm6mxx824nbwg', 'address_type': 'token', 'type': '15m', 'time_from': 1747917296, 'time_to': 1747975245}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:40:46,074 - phoenix.birdeye - WARNING - No price history available for haqpmqnsemjscrjfgby2fnhj1bxkqxbhm6mxx824nbwg
+2025-05-22 21:40:48,176 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'haqpmqnsemjscrjfgby2fnhj1bxkqxbhm6mxx824nbwg', 'address_type': 'token', 'type': '15m', 'time_from': 1747917296, 'time_to': 1747975248}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:40:48,176 - phoenix.birdeye - WARNING - No price history available for haqpmqnsemjscrjfgby2fnhj1bxkqxbhm6mxx824nbwg
+2025-05-22 21:40:49,186 - phoenix.telegram - INFO - 📊 Analyzing call 17/18 for @zen_call
+2025-05-22 21:40:49,362 - phoenix.birdeye - WARNING - No price history available for LLw5kPTkxpRDp91paFuTp2DXPqr3U4WGjmzgvdLTeCj
+2025-05-22 21:40:51,535 - phoenix.birdeye - WARNING - No price history available for LLw5kPTkxpRDp91paFuTp2DXPqr3U4WGjmzgvdLTeCj
+2025-05-22 21:40:53,745 - phoenix.birdeye - WARNING - No price history available for LLw5kPTkxpRDp91paFuTp2DXPqr3U4WGjmzgvdLTeCj
+2025-05-22 21:40:55,923 - phoenix.telegram - INFO - ✅ @zen_call: 13 calls, 46.1% 2x rate
+2025-05-22 21:40:57,935 - phoenix.telegram - INFO - 📊 Analyzing KOL 3/50: @michiosuzukiofsatoshicalls (14 mentions)
+2025-05-22 21:40:57,935 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @michiosuzukiofsatoshicalls
+2025-05-22 21:40:58,073 - phoenix.telegram - INFO - Scraping 1 days of messages from 1818702441
+2025-05-22 21:40:58,494 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 1818702441. Found 31 relevant messages.
+2025-05-22 21:40:58,494 - phoenix.telegram - INFO - 📨 Found 31 messages in @michiosuzukiofsatoshicalls's channel
+2025-05-22 21:40:58,494 - phoenix.telegram - INFO - 🎯 Found 13 token calls for @michiosuzukiofsatoshicalls
+2025-05-22 21:40:58,494 - phoenix.telegram - INFO - 📊 Analyzing call 1/13 for @michiosuzukiofsatoshicalls
+2025-05-22 21:40:58,682 - phoenix.birdeye - WARNING - No price history available for 5i4p9no2m8HpCTGaXyA4gbAoNUsJtYGuPrmH7h9opump
+2025-05-22 21:41:00,867 - phoenix.birdeye - WARNING - No price history available for 5i4p9no2m8HpCTGaXyA4gbAoNUsJtYGuPrmH7h9opump
+2025-05-22 21:41:03,050 - phoenix.birdeye - WARNING - No price history available for 5i4p9no2m8HpCTGaXyA4gbAoNUsJtYGuPrmH7h9opump
+2025-05-22 21:41:04,202 - phoenix.birdeye - WARNING - No price history available for H4u8tR1hXHWiWVXGzYydiJogYjctAzaLydEoSv5Ypump
+2025-05-22 21:41:06,365 - phoenix.birdeye - WARNING - No price history available for H4u8tR1hXHWiWVXGzYydiJogYjctAzaLydEoSv5Ypump
+2025-05-22 21:41:08,547 - phoenix.birdeye - WARNING - No price history available for H4u8tR1hXHWiWVXGzYydiJogYjctAzaLydEoSv5Ypump
+2025-05-22 21:41:09,558 - phoenix.telegram - INFO - 📊 Analyzing call 2/13 for @michiosuzukiofsatoshicalls
+2025-05-22 21:41:11,875 - phoenix.telegram - INFO - 📊 Analyzing call 3/13 for @michiosuzukiofsatoshicalls
+2025-05-22 21:41:13,043 - phoenix.telegram - INFO - 📊 Analyzing call 4/13 for @michiosuzukiofsatoshicalls
+2025-05-22 21:41:14,211 - phoenix.telegram - INFO - 📊 Analyzing call 7/13 for @michiosuzukiofsatoshicalls
+2025-05-22 21:41:15,375 - phoenix.telegram - INFO - 📊 Analyzing call 8/13 for @michiosuzukiofsatoshicalls
+2025-05-22 21:41:15,545 - phoenix.birdeye - WARNING - No price history available for 47wiaw991pwxfwjf2p8upmpdn6fhdvn6iim1d8dscm1q
+2025-05-22 21:41:17,714 - phoenix.birdeye - WARNING - No price history available for 47wiaw991pwxfwjf2p8upmpdn6fhdvn6iim1d8dscm1q
+2025-05-22 21:41:19,897 - phoenix.birdeye - WARNING - No price history available for 47wiaw991pwxfwjf2p8upmpdn6fhdvn6iim1d8dscm1q
+2025-05-22 21:41:20,911 - phoenix.telegram - INFO - 📊 Analyzing call 9/13 for @michiosuzukiofsatoshicalls
+2025-05-22 21:41:21,073 - phoenix.birdeye - WARNING - No price history available for 4ncc2sevccskrtsduracgp55aomffjdg2qvb1ika6m8b
+2025-05-22 21:41:23,235 - phoenix.birdeye - WARNING - No price history available for 4ncc2sevccskrtsduracgp55aomffjdg2qvb1ika6m8b
+2025-05-22 21:41:25,428 - phoenix.birdeye - WARNING - No price history available for 4ncc2sevccskrtsduracgp55aomffjdg2qvb1ika6m8b
+2025-05-22 21:41:26,436 - phoenix.telegram - INFO - 📊 Analyzing call 10/13 for @michiosuzukiofsatoshicalls
+2025-05-22 21:41:26,613 - phoenix.birdeye - WARNING - No price history available for 84mq67x7ugrdycyqw897hdb8uydwbph3pnfr3j9igxp7
+2025-05-22 21:41:28,801 - phoenix.birdeye - WARNING - No price history available for 84mq67x7ugrdycyqw897hdb8uydwbph3pnfr3j9igxp7
+2025-05-22 21:41:30,966 - phoenix.birdeye - WARNING - No price history available for 84mq67x7ugrdycyqw897hdb8uydwbph3pnfr3j9igxp7
+2025-05-22 21:41:31,979 - phoenix.telegram - INFO - 📊 Analyzing call 11/13 for @michiosuzukiofsatoshicalls
+2025-05-22 21:41:32,089 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'drsx9bmermwjhrzqg9gpxp23qmmkjtqhsmtqdnmtr71n', 'address_type': 'token', 'type': '15m', 'time_from': 1747950994, 'time_to': 1747975291}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:41:32,089 - phoenix.birdeye - WARNING - No price history available for drsx9bmermwjhrzqg9gpxp23qmmkjtqhsmtqdnmtr71n
+2025-05-22 21:41:34,217 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'drsx9bmermwjhrzqg9gpxp23qmmkjtqhsmtqdnmtr71n', 'address_type': 'token', 'type': '15m', 'time_from': 1747950994, 'time_to': 1747975294}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:41:34,217 - phoenix.birdeye - WARNING - No price history available for drsx9bmermwjhrzqg9gpxp23qmmkjtqhsmtqdnmtr71n
+2025-05-22 21:41:36,355 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'drsx9bmermwjhrzqg9gpxp23qmmkjtqhsmtqdnmtr71n', 'address_type': 'token', 'type': '15m', 'time_from': 1747950994, 'time_to': 1747975296}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:41:36,355 - phoenix.birdeye - WARNING - No price history available for drsx9bmermwjhrzqg9gpxp23qmmkjtqhsmtqdnmtr71n
+2025-05-22 21:41:37,375 - phoenix.telegram - INFO - 📊 Analyzing call 12/13 for @michiosuzukiofsatoshicalls
+2025-05-22 21:41:37,542 - phoenix.birdeye - WARNING - No price history available for yrrustgpugdp8bbfosqdefssen6sa75zs1qjvgnhtmy
+2025-05-22 21:41:39,731 - phoenix.birdeye - WARNING - No price history available for yrrustgpugdp8bbfosqdefssen6sa75zs1qjvgnhtmy
+2025-05-22 21:41:41,913 - phoenix.birdeye - WARNING - No price history available for yrrustgpugdp8bbfosqdefssen6sa75zs1qjvgnhtmy
+2025-05-22 21:41:42,922 - phoenix.telegram - INFO - 📊 Analyzing call 13/13 for @michiosuzukiofsatoshicalls
+2025-05-22 21:41:44,075 - phoenix.telegram - INFO - ✅ @michiosuzukiofsatoshicalls: 6 calls, 0.0% 2x rate
+2025-05-22 21:41:46,079 - phoenix.telegram - INFO - 📊 Analyzing KOL 4/50: @mrbigbagcalls (13 mentions)
+2025-05-22 21:41:46,079 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @mrbigbagcalls
+2025-05-22 21:41:46,222 - phoenix.telegram - INFO - Scraping 1 days of messages from 2051055592
+2025-05-22 21:41:46,699 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 2051055592. Found 32 relevant messages.
+2025-05-22 21:41:46,699 - phoenix.telegram - INFO - 📨 Found 32 messages in @mrbigbagcalls's channel
+2025-05-22 21:41:46,699 - phoenix.telegram - INFO - 🎯 Found 22 token calls for @mrbigbagcalls
+2025-05-22 21:41:46,699 - phoenix.telegram - INFO - 📊 Analyzing call 3/22 for @mrbigbagcalls
+2025-05-22 21:41:46,874 - phoenix.birdeye - WARNING - No price history available for 9xtzzyJ8QSy5ePnYDCxE7ky3DG1vu61siQEA931bP4RK
+2025-05-22 21:41:49,061 - phoenix.birdeye - WARNING - No price history available for 9xtzzyJ8QSy5ePnYDCxE7ky3DG1vu61siQEA931bP4RK
+2025-05-22 21:41:51,217 - phoenix.birdeye - WARNING - No price history available for 9xtzzyJ8QSy5ePnYDCxE7ky3DG1vu61siQEA931bP4RK
+2025-05-22 21:41:53,387 - phoenix.telegram - INFO - 📊 Analyzing call 4/22 for @mrbigbagcalls
+2025-05-22 21:41:54,582 - phoenix.telegram - INFO - 📊 Analyzing call 6/22 for @mrbigbagcalls
+2025-05-22 21:41:55,762 - phoenix.telegram - INFO - 📊 Analyzing call 8/22 for @mrbigbagcalls
+2025-05-22 21:41:56,933 - phoenix.telegram - INFO - 📊 Analyzing call 12/22 for @mrbigbagcalls
+2025-05-22 21:41:58,122 - phoenix.telegram - INFO - 📊 Analyzing call 14/22 for @mrbigbagcalls
+2025-05-22 21:41:58,298 - phoenix.birdeye - WARNING - No price history available for 8XBSjs9dQ4RSRuchnn7AvXiJ5yxrsJKkCGvAVpvAu2C2
+2025-05-22 21:42:00,465 - phoenix.birdeye - WARNING - No price history available for 8XBSjs9dQ4RSRuchnn7AvXiJ5yxrsJKkCGvAVpvAu2C2
+2025-05-22 21:42:02,670 - phoenix.birdeye - WARNING - No price history available for 8XBSjs9dQ4RSRuchnn7AvXiJ5yxrsJKkCGvAVpvAu2C2
+2025-05-22 21:42:03,684 - phoenix.telegram - INFO - 📊 Analyzing call 19/22 for @mrbigbagcalls
+2025-05-22 21:42:03,861 - phoenix.birdeye - WARNING - No price history available for CGJvdjUhHy8oYC61PwcRmMD35zQD41s9pZP8z1QX9NvH
+2025-05-22 21:42:06,041 - phoenix.birdeye - WARNING - No price history available for CGJvdjUhHy8oYC61PwcRmMD35zQD41s9pZP8z1QX9NvH
+2025-05-22 21:42:08,205 - phoenix.birdeye - WARNING - No price history available for CGJvdjUhHy8oYC61PwcRmMD35zQD41s9pZP8z1QX9NvH
+2025-05-22 21:42:09,325 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '6yWYSTyoNkQSMgSyFaGmr7RhHu64R4dG991eFpump', 'address_type': 'token', 'type': '15m', 'time_from': 1747908845, 'time_to': 1747975329}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:42:09,325 - phoenix.birdeye - WARNING - No price history available for 6yWYSTyoNkQSMgSyFaGmr7RhHu64R4dG991eFpump
+2025-05-22 21:42:11,454 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '6yWYSTyoNkQSMgSyFaGmr7RhHu64R4dG991eFpump', 'address_type': 'token', 'type': '15m', 'time_from': 1747908845, 'time_to': 1747975331}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:42:11,470 - phoenix.birdeye - WARNING - No price history available for 6yWYSTyoNkQSMgSyFaGmr7RhHu64R4dG991eFpump
+2025-05-22 21:42:13,590 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': '6yWYSTyoNkQSMgSyFaGmr7RhHu64R4dG991eFpump', 'address_type': 'token', 'type': '15m', 'time_from': 1747908845, 'time_to': 1747975333}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:42:13,596 - phoenix.birdeye - WARNING - No price history available for 6yWYSTyoNkQSMgSyFaGmr7RhHu64R4dG991eFpump
+2025-05-22 21:42:14,605 - phoenix.telegram - INFO - ✅ @mrbigbagcalls: 5 calls, 80.0% 2x rate
+2025-05-22 21:42:16,613 - phoenix.telegram - INFO - 📊 Analyzing KOL 5/50: @topcallerschannel (12 mentions)
+2025-05-22 21:42:16,613 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @topcallerschannel
+2025-05-22 21:42:16,764 - phoenix.telegram - INFO - Scraping 1 days of messages from 1915321527
+2025-05-22 21:42:17,217 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 1915321527. Found 51 relevant messages.
+2025-05-22 21:42:17,217 - phoenix.telegram - INFO - 📨 Found 51 messages in @topcallerschannel's channel
+2025-05-22 21:42:17,217 - phoenix.telegram - INFO - 🎯 Found 3 token calls for @topcallerschannel
+2025-05-22 21:42:17,217 - phoenix.telegram - INFO - 📊 Analyzing call 1/3 for @topcallerschannel
+2025-05-22 21:42:17,355 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'h2e1pag5c1tyvqjatvhg4fejfic8ey5mjxcxcwezz7yn', 'address_type': 'token', 'type': '15m', 'time_from': 1747959061, 'time_to': 1747975337}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:42:17,355 - phoenix.birdeye - WARNING - No price history available for h2e1pag5c1tyvqjatvhg4fejfic8ey5mjxcxcwezz7yn
+2025-05-22 21:42:19,471 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'h2e1pag5c1tyvqjatvhg4fejfic8ey5mjxcxcwezz7yn', 'address_type': 'token', 'type': '15m', 'time_from': 1747959061, 'time_to': 1747975339}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:42:19,471 - phoenix.birdeye - WARNING - No price history available for h2e1pag5c1tyvqjatvhg4fejfic8ey5mjxcxcwezz7yn
+2025-05-22 21:42:21,604 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'h2e1pag5c1tyvqjatvhg4fejfic8ey5mjxcxcwezz7yn', 'address_type': 'token', 'type': '15m', 'time_from': 1747959061, 'time_to': 1747975341}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:42:21,604 - phoenix.birdeye - WARNING - No price history available for h2e1pag5c1tyvqjatvhg4fejfic8ey5mjxcxcwezz7yn
+2025-05-22 21:42:22,611 - phoenix.telegram - INFO - 📊 Analyzing call 2/3 for @topcallerschannel
+2025-05-22 21:42:23,762 - phoenix.telegram - INFO - 📊 Analyzing call 3/3 for @topcallerschannel
+2025-05-22 21:42:23,920 - phoenix.birdeye - WARNING - No price history available for 7edkwp93maqnwynm44rwdk3bmd3zygfkdba3ycrrjvkn
+2025-05-22 21:42:26,107 - phoenix.birdeye - WARNING - No price history available for 7edkwp93maqnwynm44rwdk3bmd3zygfkdba3ycrrjvkn
+2025-05-22 21:42:28,281 - phoenix.birdeye - WARNING - No price history available for 7edkwp93maqnwynm44rwdk3bmd3zygfkdba3ycrrjvkn
+2025-05-22 21:42:29,295 - phoenix.telegram - INFO - ✅ @topcallerschannel: 1 calls, 0.0% 2x rate
+2025-05-22 21:42:31,308 - phoenix.telegram - INFO - 📊 Analyzing KOL 6/50: @hulkgemscalls_real (10 mentions)
+2025-05-22 21:42:31,308 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @hulkgemscalls_real
+2025-05-22 21:42:31,436 - phoenix.telegram - INFO - Scraping 1 days of messages from 2353208529
+2025-05-22 21:42:31,979 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 2353208529. Found 35 relevant messages.
+2025-05-22 21:42:31,979 - phoenix.telegram - INFO - 📨 Found 35 messages in @hulkgemscalls_real's channel
+2025-05-22 21:42:31,979 - phoenix.telegram - INFO - 🎯 Found 32 token calls for @hulkgemscalls_real
+2025-05-22 21:42:31,979 - phoenix.telegram - INFO - 📊 Analyzing call 2/32 for @hulkgemscalls_real
+2025-05-22 21:42:33,156 - phoenix.telegram - INFO - 📊 Analyzing call 3/32 for @hulkgemscalls_real
+2025-05-22 21:42:34,341 - phoenix.telegram - INFO - 📊 Analyzing call 5/32 for @hulkgemscalls_real
+2025-05-22 21:42:35,523 - phoenix.telegram - INFO - 📊 Analyzing call 6/32 for @hulkgemscalls_real
+2025-05-22 21:42:36,672 - phoenix.telegram - INFO - 📊 Analyzing call 8/32 for @hulkgemscalls_real
+2025-05-22 21:42:37,840 - phoenix.telegram - INFO - 📊 Analyzing call 9/32 for @hulkgemscalls_real
+2025-05-22 21:42:39,023 - phoenix.telegram - INFO - 📊 Analyzing call 12/32 for @hulkgemscalls_real
+2025-05-22 21:42:40,186 - phoenix.telegram - INFO - 📊 Analyzing call 13/32 for @hulkgemscalls_real
+2025-05-22 21:42:41,387 - phoenix.telegram - INFO - 📊 Analyzing call 17/32 for @hulkgemscalls_real
+2025-05-22 21:42:42,557 - phoenix.telegram - INFO - 📊 Analyzing call 18/32 for @hulkgemscalls_real
+2025-05-22 21:42:43,710 - phoenix.telegram - INFO - 📊 Analyzing call 21/32 for @hulkgemscalls_real
+2025-05-22 21:42:44,872 - phoenix.telegram - INFO - 📊 Analyzing call 30/32 for @hulkgemscalls_real
+2025-05-22 21:42:46,043 - phoenix.telegram - INFO - 📊 Analyzing call 31/32 for @hulkgemscalls_real
+2025-05-22 21:42:47,226 - phoenix.telegram - INFO - ✅ @hulkgemscalls_real: 13 calls, 38.5% 2x rate
+2025-05-22 21:42:49,225 - phoenix.telegram - INFO - 📊 Analyzing KOL 7/50: @vulturesriskyhunter (10 mentions)
+2025-05-22 21:42:49,225 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @vulturesriskyhunter
+2025-05-22 21:42:49,355 - phoenix.telegram - INFO - Scraping 1 days of messages from 1637465785
+2025-05-22 21:42:49,767 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 1637465785. Found 7 relevant messages.
+2025-05-22 21:42:49,767 - phoenix.telegram - INFO - 📨 Found 7 messages in @vulturesriskyhunter's channel
+2025-05-22 21:42:49,767 - phoenix.telegram - INFO - 🎯 Found 0 token calls for @vulturesriskyhunter
+2025-05-22 21:42:49,767 - phoenix.telegram - INFO - ⚠️ @vulturesriskyhunter: No analyzable calls found
+2025-05-22 21:42:51,777 - phoenix.telegram - INFO - 📊 Analyzing KOL 8/50: @poseidon_degen_calls (9 mentions)
+2025-05-22 21:42:51,777 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @poseidon_degen_calls
+2025-05-22 21:42:51,919 - phoenix.telegram - INFO - Scraping 1 days of messages from 1869537526
+2025-05-22 21:42:52,511 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 1869537526. Found 15 relevant messages.
+2025-05-22 21:42:52,511 - phoenix.telegram - INFO - 📨 Found 15 messages in @poseidon_degen_calls's channel
+2025-05-22 21:42:52,511 - phoenix.telegram - INFO - 🎯 Found 15 token calls for @poseidon_degen_calls
+2025-05-22 21:42:52,511 - phoenix.telegram - INFO - 📊 Analyzing call 1/15 for @poseidon_degen_calls
+2025-05-22 21:42:53,688 - phoenix.telegram - INFO - 📊 Analyzing call 2/15 for @poseidon_degen_calls
+2025-05-22 21:42:54,867 - phoenix.telegram - INFO - 📊 Analyzing call 9/15 for @poseidon_degen_calls
+2025-05-22 21:42:56,027 - phoenix.telegram - INFO - 📊 Analyzing call 10/15 for @poseidon_degen_calls
+2025-05-22 21:42:57,214 - phoenix.telegram - INFO - 📊 Analyzing call 11/15 for @poseidon_degen_calls
+2025-05-22 21:42:58,364 - phoenix.telegram - INFO - 📊 Analyzing call 12/15 for @poseidon_degen_calls
+2025-05-22 21:42:59,544 - phoenix.telegram - INFO - 📊 Analyzing call 13/15 for @poseidon_degen_calls
+2025-05-22 21:43:00,730 - phoenix.telegram - INFO - ✅ @poseidon_degen_calls: 7 calls, 14.3% 2x rate
+2025-05-22 21:43:02,734 - phoenix.telegram - INFO - 📊 Analyzing KOL 9/50: @recklessmoonshots (8 mentions)
+2025-05-22 21:43:02,734 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @recklessmoonshots
+2025-05-22 21:43:02,861 - phoenix.telegram - INFO - Scraping 1 days of messages from 1723127464
+2025-05-22 21:43:03,310 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 1723127464. Found 2 relevant messages.
+2025-05-22 21:43:03,310 - phoenix.telegram - INFO - 📨 Found 2 messages in @recklessmoonshots's channel
+2025-05-22 21:43:03,310 - phoenix.telegram - INFO - 🎯 Found 1 token calls for @recklessmoonshots
+2025-05-22 21:43:03,310 - phoenix.telegram - INFO - ⚠️ @recklessmoonshots: No analyzable calls found
+2025-05-22 21:43:05,315 - phoenix.telegram - INFO - 📊 Analyzing KOL 10/50: @pepe_calls28 (8 mentions)
+2025-05-22 21:43:05,315 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @pepe_calls28
+2025-05-22 21:43:05,449 - phoenix.telegram - INFO - Scraping 1 days of messages from 2017857449
+2025-05-22 21:43:05,985 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 2017857449. Found 16 relevant messages.
+2025-05-22 21:43:05,985 - phoenix.telegram - INFO - 📨 Found 16 messages in @pepe_calls28's channel
+2025-05-22 21:43:05,985 - phoenix.telegram - INFO - 🎯 Found 12 token calls for @pepe_calls28
+2025-05-22 21:43:05,985 - phoenix.telegram - INFO - 📊 Analyzing call 2/12 for @pepe_calls28
+2025-05-22 21:43:07,153 - phoenix.telegram - INFO - 📊 Analyzing call 3/12 for @pepe_calls28
+2025-05-22 21:43:08,342 - phoenix.telegram - INFO - 📊 Analyzing call 5/12 for @pepe_calls28
+2025-05-22 21:43:09,502 - phoenix.telegram - INFO - 📊 Analyzing call 6/12 for @pepe_calls28
+2025-05-22 21:43:10,668 - phoenix.telegram - INFO - 📊 Analyzing call 7/12 for @pepe_calls28
+2025-05-22 21:43:11,827 - phoenix.telegram - INFO - 📊 Analyzing call 9/12 for @pepe_calls28
+2025-05-22 21:43:12,997 - phoenix.telegram - INFO - 📊 Analyzing call 10/12 for @pepe_calls28
+2025-05-22 21:43:14,181 - phoenix.telegram - INFO - 📊 Analyzing call 11/12 for @pepe_calls28
+2025-05-22 21:43:15,362 - phoenix.telegram - INFO - 📊 Analyzing call 12/12 for @pepe_calls28
+2025-05-22 21:43:16,552 - phoenix.telegram - INFO - ✅ @pepe_calls28: 9 calls, 22.2% 2x rate
+2025-05-22 21:43:18,565 - phoenix.telegram - INFO - 📊 Analyzing KOL 11/50: @nikola_calls (8 mentions)
+2025-05-22 21:43:18,565 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @nikola_calls
+2025-05-22 21:43:18,693 - phoenix.telegram - INFO - Scraping 1 days of messages from 2000078706
+2025-05-22 21:43:19,219 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 2000078706. Found 14 relevant messages.
+2025-05-22 21:43:19,219 - phoenix.telegram - INFO - 📨 Found 14 messages in @nikola_calls's channel
+2025-05-22 21:43:19,230 - phoenix.telegram - INFO - 🎯 Found 14 token calls for @nikola_calls
+2025-05-22 21:43:19,230 - phoenix.telegram - INFO - 📊 Analyzing call 7/14 for @nikola_calls
+2025-05-22 21:43:20,416 - phoenix.telegram - INFO - 📊 Analyzing call 8/14 for @nikola_calls
+2025-05-22 21:43:21,575 - phoenix.telegram - INFO - 📊 Analyzing call 9/14 for @nikola_calls
+2025-05-22 21:43:22,731 - phoenix.telegram - INFO - 📊 Analyzing call 10/14 for @nikola_calls
+2025-05-22 21:43:23,890 - phoenix.telegram - INFO - 📊 Analyzing call 12/14 for @nikola_calls
+2025-05-22 21:43:25,040 - phoenix.telegram - INFO - 📊 Analyzing call 13/14 for @nikola_calls
+2025-05-22 21:43:26,192 - phoenix.telegram - INFO - ✅ @nikola_calls: 6 calls, 50.0% 2x rate
+2025-05-22 21:43:28,202 - phoenix.telegram - INFO - 📊 Analyzing KOL 12/50: @michacalls (7 mentions)
+2025-05-22 21:43:28,202 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @michacalls
+2025-05-22 21:43:28,330 - phoenix.telegram - INFO - Scraping 1 days of messages from 1655443406
+2025-05-22 21:43:28,934 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 1655443406. Found 43 relevant messages.
+2025-05-22 21:43:28,934 - phoenix.telegram - INFO - 📨 Found 43 messages in @michacalls's channel
+2025-05-22 21:43:28,944 - phoenix.telegram - INFO - 🎯 Found 34 token calls for @michacalls
+2025-05-22 21:43:28,944 - phoenix.telegram - INFO - 📊 Analyzing call 1/34 for @michacalls
+2025-05-22 21:43:29,108 - phoenix.birdeye - WARNING - No price history available for 3ZbdC4Ek5WZ4Dp3iV1Qbc7NLa6XQuYh5gR6eVbV1pump
+2025-05-22 21:43:31,277 - phoenix.birdeye - WARNING - No price history available for 3ZbdC4Ek5WZ4Dp3iV1Qbc7NLa6XQuYh5gR6eVbV1pump
+2025-05-22 21:43:33,447 - phoenix.birdeye - WARNING - No price history available for 3ZbdC4Ek5WZ4Dp3iV1Qbc7NLa6XQuYh5gR6eVbV1pump
+2025-05-22 21:43:34,448 - phoenix.telegram - INFO - 📊 Analyzing call 2/34 for @michacalls
+2025-05-22 21:43:35,646 - phoenix.telegram - INFO - 📊 Analyzing call 3/34 for @michacalls
+2025-05-22 21:43:35,755 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'brgqbzik68jzfavtenhpcxrez3cy1r6keqaubqskrhoj', 'address_type': 'token', 'type': '15m', 'time_from': 1747960575, 'time_to': 1747975415}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:43:35,755 - phoenix.birdeye - WARNING - No price history available for brgqbzik68jzfavtenhpcxrez3cy1r6keqaubqskrhoj
+2025-05-22 21:43:37,871 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'brgqbzik68jzfavtenhpcxrez3cy1r6keqaubqskrhoj', 'address_type': 'token', 'type': '15m', 'time_from': 1747960575, 'time_to': 1747975417}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:43:37,871 - phoenix.birdeye - WARNING - No price history available for brgqbzik68jzfavtenhpcxrez3cy1r6keqaubqskrhoj
+2025-05-22 21:43:39,982 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'brgqbzik68jzfavtenhpcxrez3cy1r6keqaubqskrhoj', 'address_type': 'token', 'type': '15m', 'time_from': 1747960575, 'time_to': 1747975419}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:43:39,982 - phoenix.birdeye - WARNING - No price history available for brgqbzik68jzfavtenhpcxrez3cy1r6keqaubqskrhoj
+2025-05-22 21:43:40,983 - phoenix.telegram - INFO - 📊 Analyzing call 4/34 for @michacalls
+2025-05-22 21:43:41,092 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'dodxkdzcdd6anz7sxpxqfewi6ftbfo3uztvjhwe6n57z', 'address_type': 'token', 'type': '15m', 'time_from': 1747957209, 'time_to': 1747975420}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:43:41,092 - phoenix.birdeye - WARNING - No price history available for dodxkdzcdd6anz7sxpxqfewi6ftbfo3uztvjhwe6n57z
+2025-05-22 21:43:43,227 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'dodxkdzcdd6anz7sxpxqfewi6ftbfo3uztvjhwe6n57z', 'address_type': 'token', 'type': '15m', 'time_from': 1747957209, 'time_to': 1747975423}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:43:43,227 - phoenix.birdeye - WARNING - No price history available for dodxkdzcdd6anz7sxpxqfewi6ftbfo3uztvjhwe6n57z
+2025-05-22 21:43:45,353 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'dodxkdzcdd6anz7sxpxqfewi6ftbfo3uztvjhwe6n57z', 'address_type': 'token', 'type': '15m', 'time_from': 1747957209, 'time_to': 1747975425}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:43:45,353 - phoenix.birdeye - WARNING - No price history available for dodxkdzcdd6anz7sxpxqfewi6ftbfo3uztvjhwe6n57z
+2025-05-22 21:43:46,369 - phoenix.telegram - INFO - 📊 Analyzing call 5/34 for @michacalls
+2025-05-22 21:43:46,479 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'fveyuwzbyn81stpbupyq7mrhtkhm16ofbe5gubba2g4s', 'address_type': 'token', 'type': '15m', 'time_from': 1747956391, 'time_to': 1747975426}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:43:46,479 - phoenix.birdeye - WARNING - No price history available for fveyuwzbyn81stpbupyq7mrhtkhm16ofbe5gubba2g4s
+2025-05-22 21:43:48,590 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'fveyuwzbyn81stpbupyq7mrhtkhm16ofbe5gubba2g4s', 'address_type': 'token', 'type': '15m', 'time_from': 1747956391, 'time_to': 1747975428}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:43:48,590 - phoenix.birdeye - WARNING - No price history available for fveyuwzbyn81stpbupyq7mrhtkhm16ofbe5gubba2g4s
+2025-05-22 21:43:50,734 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'fveyuwzbyn81stpbupyq7mrhtkhm16ofbe5gubba2g4s', 'address_type': 'token', 'type': '15m', 'time_from': 1747956391, 'time_to': 1747975430}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:43:50,734 - phoenix.birdeye - WARNING - No price history available for fveyuwzbyn81stpbupyq7mrhtkhm16ofbe5gubba2g4s
+2025-05-22 21:43:51,750 - phoenix.telegram - INFO - 📊 Analyzing call 7/34 for @michacalls
+2025-05-22 21:43:51,954 - phoenix.birdeye - WARNING - No price history available for F6iRFSgDzdgTH7gUH5dzPHN8Ldjoj3iYKgNmyJwUpGa5
+2025-05-22 21:43:54,205 - phoenix.birdeye - WARNING - No price history available for F6iRFSgDzdgTH7gUH5dzPHN8Ldjoj3iYKgNmyJwUpGa5
+2025-05-22 21:43:56,388 - phoenix.birdeye - WARNING - No price history available for F6iRFSgDzdgTH7gUH5dzPHN8Ldjoj3iYKgNmyJwUpGa5
+2025-05-22 21:43:57,389 - phoenix.telegram - INFO - 📊 Analyzing call 10/34 for @michacalls
+2025-05-22 21:43:57,561 - phoenix.birdeye - WARNING - No price history available for 32qfzana7bamkynqdkyw7ec2xvnbfob5b1uxeq3bvner
+2025-05-22 21:43:59,715 - phoenix.birdeye - WARNING - No price history available for 32qfzana7bamkynqdkyw7ec2xvnbfob5b1uxeq3bvner
+2025-05-22 21:44:01,898 - phoenix.birdeye - WARNING - No price history available for 32qfzana7bamkynqdkyw7ec2xvnbfob5b1uxeq3bvner
+2025-05-22 21:44:02,898 - phoenix.telegram - INFO - 📊 Analyzing call 20/34 for @michacalls
+2025-05-22 21:44:04,056 - phoenix.telegram - INFO - 📊 Analyzing call 23/34 for @michacalls
+2025-05-22 21:44:05,241 - phoenix.telegram - INFO - 📊 Analyzing call 24/34 for @michacalls
+2025-05-22 21:44:06,399 - phoenix.telegram - INFO - ✅ @michacalls: 4 calls, 25.0% 2x rate
+2025-05-22 21:44:08,400 - phoenix.telegram - INFO - 📊 Analyzing KOL 13/50: @kiritomoonshots (7 mentions)
+2025-05-22 21:44:08,400 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @kiritomoonshots
+2025-05-22 21:44:08,526 - phoenix.telegram - INFO - Scraping 1 days of messages from 1437509797
+2025-05-22 21:44:09,010 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 1437509797. Found 2 relevant messages.
+2025-05-22 21:44:09,010 - phoenix.telegram - INFO - 📨 Found 2 messages in @kiritomoonshots's channel
+2025-05-22 21:44:09,025 - phoenix.telegram - INFO - 🎯 Found 0 token calls for @kiritomoonshots
+2025-05-22 21:44:09,025 - phoenix.telegram - INFO - ⚠️ @kiritomoonshots: No analyzable calls found
+2025-05-22 21:44:11,027 - phoenix.telegram - INFO - 📊 Analyzing KOL 14/50: @marksgems (6 mentions)
+2025-05-22 21:44:11,027 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @marksgems
+2025-05-22 21:44:11,183 - phoenix.telegram - INFO - Scraping 1 days of messages from 1508785153
+2025-05-22 21:44:11,652 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 1508785153. Found 70 relevant messages.
+2025-05-22 21:44:11,652 - phoenix.telegram - INFO - 📨 Found 70 messages in @marksgems's channel
+2025-05-22 21:44:11,652 - phoenix.telegram - INFO - 🎯 Found 48 token calls for @marksgems
+2025-05-22 21:44:11,652 - phoenix.telegram - INFO - 📊 Analyzing call 2/48 for @marksgems
+2025-05-22 21:44:12,809 - phoenix.telegram - INFO - 📊 Analyzing call 3/48 for @marksgems
+2025-05-22 21:44:13,967 - phoenix.telegram - INFO - 📊 Analyzing call 5/48 for @marksgems
+2025-05-22 21:44:15,125 - phoenix.telegram - INFO - 📊 Analyzing call 6/48 for @marksgems
+2025-05-22 21:44:15,281 - phoenix.birdeye - WARNING - No price history available for hx6u8TG5psJgUDiRDh8wX4pp7xVDi59A8WA8NUtyqJX
+2025-05-22 21:44:17,438 - phoenix.birdeye - WARNING - No price history available for hx6u8TG5psJgUDiRDh8wX4pp7xVDi59A8WA8NUtyqJX
+2025-05-22 21:44:19,595 - phoenix.birdeye - WARNING - No price history available for hx6u8TG5psJgUDiRDh8wX4pp7xVDi59A8WA8NUtyqJX
+2025-05-22 21:44:20,606 - phoenix.telegram - INFO - 📊 Analyzing call 7/48 for @marksgems
+2025-05-22 21:44:20,763 - phoenix.birdeye - WARNING - No price history available for CyGmcwBUHxdrDuBFo8eyd6v9C6Qk2mt85SgETcDXq64x
+2025-05-22 21:44:22,921 - phoenix.birdeye - WARNING - No price history available for CyGmcwBUHxdrDuBFo8eyd6v9C6Qk2mt85SgETcDXq64x
+2025-05-22 21:44:25,079 - phoenix.birdeye - WARNING - No price history available for CyGmcwBUHxdrDuBFo8eyd6v9C6Qk2mt85SgETcDXq64x
+2025-05-22 21:44:26,084 - phoenix.telegram - INFO - 📊 Analyzing call 8/48 for @marksgems
+2025-05-22 21:44:27,225 - phoenix.telegram - INFO - 📊 Analyzing call 13/48 for @marksgems
+2025-05-22 21:44:27,384 - phoenix.birdeye - WARNING - No price history available for 4PJDypg3acg3WAMjGb9TSX7JDuMzrChnvgN2jchtYigv
+2025-05-22 21:44:29,556 - phoenix.birdeye - WARNING - No price history available for 4PJDypg3acg3WAMjGb9TSX7JDuMzrChnvgN2jchtYigv
+2025-05-22 21:44:31,713 - phoenix.birdeye - WARNING - No price history available for 4PJDypg3acg3WAMjGb9TSX7JDuMzrChnvgN2jchtYigv
+2025-05-22 21:44:32,714 - phoenix.telegram - INFO - 📊 Analyzing call 28/48 for @marksgems
+2025-05-22 21:44:33,900 - phoenix.telegram - INFO - 📊 Analyzing call 36/48 for @marksgems
+2025-05-22 21:44:34,088 - phoenix.birdeye - WARNING - No price history available for H31bK4UofACwBbrBNUxEUnY2jbZS2njJa3JH15BmpKVk
+2025-05-22 21:44:36,257 - phoenix.birdeye - WARNING - No price history available for H31bK4UofACwBbrBNUxEUnY2jbZS2njJa3JH15BmpKVk
+2025-05-22 21:44:38,447 - phoenix.birdeye - WARNING - No price history available for H31bK4UofACwBbrBNUxEUnY2jbZS2njJa3JH15BmpKVk
+2025-05-22 21:44:39,448 - phoenix.telegram - INFO - 📊 Analyzing call 37/48 for @marksgems
+2025-05-22 21:44:40,604 - phoenix.telegram - INFO - 📊 Analyzing call 38/48 for @marksgems
+2025-05-22 21:44:41,777 - phoenix.telegram - INFO - 📊 Analyzing call 39/48 for @marksgems
+2025-05-22 21:44:42,934 - phoenix.telegram - INFO - 📊 Analyzing call 40/48 for @marksgems
+2025-05-22 21:44:44,138 - phoenix.telegram - INFO - ✅ @marksgems: 9 calls, 22.2% 2x rate
+2025-05-22 21:44:46,139 - phoenix.telegram - INFO - 📊 Analyzing KOL 15/50: @genesischain_calls (6 mentions)
+2025-05-22 21:44:46,140 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @genesischain_calls
+2025-05-22 21:44:46,265 - phoenix.telegram - INFO - Scraping 1 days of messages from 2086003521
+2025-05-22 21:44:46,796 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 2086003521. Found 5 relevant messages.
+2025-05-22 21:44:46,796 - phoenix.telegram - INFO - 📨 Found 5 messages in @genesischain_calls's channel
+2025-05-22 21:44:46,796 - phoenix.telegram - INFO - 🎯 Found 1 token calls for @genesischain_calls
+2025-05-22 21:44:46,796 - phoenix.telegram - INFO - 📊 Analyzing call 1/1 for @genesischain_calls
+2025-05-22 21:44:46,952 - phoenix.birdeye - WARNING - No price history available for Ds83Vw4YrurG9GbJZivBfjPsYCxuStjPZixKV7DanqLW
+2025-05-22 21:44:49,110 - phoenix.birdeye - WARNING - No price history available for Ds83Vw4YrurG9GbJZivBfjPsYCxuStjPZixKV7DanqLW
+2025-05-22 21:44:51,298 - phoenix.birdeye - WARNING - No price history available for Ds83Vw4YrurG9GbJZivBfjPsYCxuStjPZixKV7DanqLW
+2025-05-22 21:44:52,298 - phoenix.telegram - INFO - ⚠️ @genesischain_calls: No analyzable calls found
+2025-05-22 21:44:54,299 - phoenix.telegram - INFO - 📊 Analyzing KOL 16/50: @marshmellow100xcalls (5 mentions)
+2025-05-22 21:44:54,299 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @marshmellow100xcalls
+2025-05-22 21:44:54,440 - phoenix.telegram - INFO - Scraping 1 days of messages from 1693174179
+2025-05-22 21:44:54,987 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 1693174179. Found 10 relevant messages.
+2025-05-22 21:44:54,987 - phoenix.telegram - INFO - 📨 Found 10 messages in @marshmellow100xcalls's channel
+2025-05-22 21:44:54,987 - phoenix.telegram - INFO - 🎯 Found 7 token calls for @marshmellow100xcalls
+2025-05-22 21:44:54,987 - phoenix.telegram - INFO - 📊 Analyzing call 3/7 for @marshmellow100xcalls
+2025-05-22 21:44:56,238 - phoenix.telegram - INFO - 📊 Analyzing call 5/7 for @marshmellow100xcalls
+2025-05-22 21:44:57,440 - phoenix.telegram - INFO - 📊 Analyzing call 7/7 for @marshmellow100xcalls
+2025-05-22 21:44:58,613 - phoenix.telegram - INFO - ✅ @marshmellow100xcalls: 3 calls, 0.0% 2x rate
+2025-05-22 21:45:00,622 - phoenix.telegram - INFO - 📊 Analyzing KOL 17/50: @thanosgambles (5 mentions)
+2025-05-22 21:45:00,622 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @thanosgambles
+2025-05-22 21:45:00,747 - phoenix.telegram - INFO - Scraping 1 days of messages from 1730838033
+2025-05-22 21:45:01,153 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 1730838033. Found 4 relevant messages.
+2025-05-22 21:45:01,153 - phoenix.telegram - INFO - 📨 Found 4 messages in @thanosgambles's channel
+2025-05-22 21:45:01,153 - phoenix.telegram - INFO - 🎯 Found 3 token calls for @thanosgambles
+2025-05-22 21:45:01,153 - phoenix.telegram - INFO - 📊 Analyzing call 2/3 for @thanosgambles
+2025-05-22 21:45:02,310 - phoenix.telegram - INFO - ✅ @thanosgambles: 1 calls, 100.0% 2x rate
+2025-05-22 21:45:04,311 - phoenix.telegram - INFO - 📊 Analyzing KOL 18/50: @mredudotfun (5 mentions)
+2025-05-22 21:45:04,312 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @mredudotfun
+2025-05-22 21:45:04,437 - phoenix.telegram - INFO - Scraping 1 days of messages from 1925213644
+2025-05-22 21:45:04,860 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 1925213644. Found 12 relevant messages.
+2025-05-22 21:45:04,860 - phoenix.telegram - INFO - 📨 Found 12 messages in @mredudotfun's channel
+2025-05-22 21:45:04,860 - phoenix.telegram - INFO - 🎯 Found 6 token calls for @mredudotfun
+2025-05-22 21:45:04,860 - phoenix.telegram - INFO - 📊 Analyzing call 2/6 for @mredudotfun
+2025-05-22 21:45:04,970 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'xd843Eef66ef328cd519A5FCc545F7EF2A6865c5', 'address_type': 'token', 'type': '15m', 'time_from': 1747950340, 'time_to': 1747975504}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:45:04,970 - phoenix.birdeye - WARNING - No price history available for xd843Eef66ef328cd519A5FCc545F7EF2A6865c5
+2025-05-22 21:45:07,093 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'xd843Eef66ef328cd519A5FCc545F7EF2A6865c5', 'address_type': 'token', 'type': '15m', 'time_from': 1747950340, 'time_to': 1747975506}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:45:07,093 - phoenix.birdeye - WARNING - No price history available for xd843Eef66ef328cd519A5FCc545F7EF2A6865c5
+2025-05-22 21:45:09,220 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'xd843Eef66ef328cd519A5FCc545F7EF2A6865c5', 'address_type': 'token', 'type': '15m', 'time_from': 1747950340, 'time_to': 1747975509}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:45:09,220 - phoenix.birdeye - WARNING - No price history available for xd843Eef66ef328cd519A5FCc545F7EF2A6865c5
+2025-05-22 21:45:10,222 - phoenix.telegram - INFO - ⚠️ @mredudotfun: No analyzable calls found
+2025-05-22 21:45:12,224 - phoenix.telegram - INFO - 📊 Analyzing KOL 19/50: @azcalls (5 mentions)
+2025-05-22 21:45:12,224 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @azcalls
+2025-05-22 21:45:12,349 - phoenix.telegram - INFO - Scraping 1 days of messages from 1835256988
+2025-05-22 21:45:12,864 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 1835256988. Found 1 relevant messages.
+2025-05-22 21:45:12,864 - phoenix.telegram - INFO - 📨 Found 1 messages in @azcalls's channel
+2025-05-22 21:45:12,864 - phoenix.telegram - INFO - 🎯 Found 0 token calls for @azcalls
+2025-05-22 21:45:12,864 - phoenix.telegram - INFO - ⚠️ @azcalls: No analyzable calls found
+2025-05-22 21:45:14,866 - phoenix.telegram - INFO - 📊 Analyzing KOL 20/50: @yasuogems (5 mentions)
+2025-05-22 21:45:14,866 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @yasuogems
+2025-05-22 21:45:14,991 - phoenix.telegram - INFO - Scraping 1 days of messages from 2145843851
+2025-05-22 21:45:15,397 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 2145843851. Found 6 relevant messages.
+2025-05-22 21:45:15,397 - phoenix.telegram - INFO - 📨 Found 6 messages in @yasuogems's channel
+2025-05-22 21:45:15,397 - phoenix.telegram - INFO - 🎯 Found 3 token calls for @yasuogems
+2025-05-22 21:45:15,397 - phoenix.telegram - INFO - ⚠️ @yasuogems: No analyzable calls found
+2025-05-22 21:45:17,398 - phoenix.telegram - INFO - 📊 Analyzing KOL 21/50: @bob_alpha (5 mentions)
+2025-05-22 21:45:17,398 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @bob_alpha
+2025-05-22 21:45:17,524 - phoenix.telegram - INFO - Scraping 1 days of messages from 2437513900
+2025-05-22 21:45:18,524 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 2437513900. Found 7 relevant messages.
+2025-05-22 21:45:18,524 - phoenix.telegram - INFO - 📨 Found 7 messages in @bob_alpha's channel
+2025-05-22 21:45:18,524 - phoenix.telegram - INFO - 🎯 Found 6 token calls for @bob_alpha
+2025-05-22 21:45:18,524 - phoenix.telegram - INFO - 📊 Analyzing call 4/6 for @bob_alpha
+2025-05-22 21:45:18,664 - phoenix.birdeye - WARNING - No price history available for 73cjxsy8nstmdy79tzmdgjxrfwskmv1criph4fffwi3s
+2025-05-22 21:45:20,834 - phoenix.birdeye - WARNING - No price history available for 73cjxsy8nstmdy79tzmdgjxrfwskmv1criph4fffwi3s
+2025-05-22 21:45:23,019 - phoenix.birdeye - WARNING - No price history available for 73cjxsy8nstmdy79tzmdgjxrfwskmv1criph4fffwi3s
+2025-05-22 21:45:24,020 - phoenix.telegram - INFO - 📊 Analyzing call 6/6 for @bob_alpha
+2025-05-22 21:45:24,130 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'dtw5hs1orn1k8brzgr9e2gfpcyztcrnez9nq1puy89is', 'address_type': 'token', 'type': '15m', 'time_from': 1747929044, 'time_to': 1747975524}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:45:24,130 - phoenix.birdeye - WARNING - No price history available for dtw5hs1orn1k8brzgr9e2gfpcyztcrnez9nq1puy89is
+2025-05-22 21:45:26,256 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'dtw5hs1orn1k8brzgr9e2gfpcyztcrnez9nq1puy89is', 'address_type': 'token', 'type': '15m', 'time_from': 1747929044, 'time_to': 1747975526}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:45:26,256 - phoenix.birdeye - WARNING - No price history available for dtw5hs1orn1k8brzgr9e2gfpcyztcrnez9nq1puy89is
+2025-05-22 21:45:28,368 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'dtw5hs1orn1k8brzgr9e2gfpcyztcrnez9nq1puy89is', 'address_type': 'token', 'type': '15m', 'time_from': 1747929044, 'time_to': 1747975528}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:45:28,368 - phoenix.birdeye - WARNING - No price history available for dtw5hs1orn1k8brzgr9e2gfpcyztcrnez9nq1puy89is
+2025-05-22 21:45:29,384 - phoenix.telegram - INFO - ⚠️ @bob_alpha: No analyzable calls found
+2025-05-22 21:45:31,386 - phoenix.telegram - INFO - 📊 Analyzing KOL 22/50: @kingcowboycasino (4 mentions)
+2025-05-22 21:45:31,386 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @kingcowboycasino
+2025-05-22 21:45:31,511 - phoenix.telegram - INFO - Scraping 1 days of messages from 2192310683
+2025-05-22 21:45:31,940 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 2192310683. Found 1 relevant messages.
+2025-05-22 21:45:31,940 - phoenix.telegram - INFO - 📨 Found 1 messages in @kingcowboycasino's channel
+2025-05-22 21:45:31,940 - phoenix.telegram - INFO - 🎯 Found 0 token calls for @kingcowboycasino
+2025-05-22 21:45:31,940 - phoenix.telegram - INFO - ⚠️ @kingcowboycasino: No analyzable calls found
+2025-05-22 21:45:33,942 - phoenix.telegram - INFO - 📊 Analyzing KOL 23/50: @chapoinsider (4 mentions)
+2025-05-22 21:45:33,942 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @chapoinsider
+2025-05-22 21:45:34,067 - phoenix.telegram - INFO - Scraping 1 days of messages from 2300385026
+2025-05-22 21:45:34,505 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 2300385026. Found 18 relevant messages.
+2025-05-22 21:45:34,505 - phoenix.telegram - INFO - 📨 Found 18 messages in @chapoinsider's channel
+2025-05-22 21:45:34,505 - phoenix.telegram - INFO - 🎯 Found 14 token calls for @chapoinsider
+2025-05-22 21:45:34,505 - phoenix.telegram - INFO - 📊 Analyzing call 1/14 for @chapoinsider
+2025-05-22 21:45:35,691 - phoenix.telegram - INFO - 📊 Analyzing call 2/14 for @chapoinsider
+2025-05-22 21:45:36,996 - phoenix.birdeye - WARNING - No price history available for 7dz3zzgkt78fo8ngifbvgppcvfcjrfmnztavw2qdvzdt
+2025-05-22 21:45:39,208 - phoenix.birdeye - WARNING - No price history available for 7dz3zzgkt78fo8ngifbvgppcvfcjrfmnztavw2qdvzdt
+2025-05-22 21:45:41,381 - phoenix.birdeye - WARNING - No price history available for 7dz3zzgkt78fo8ngifbvgppcvfcjrfmnztavw2qdvzdt
+2025-05-22 21:45:42,382 - phoenix.telegram - INFO - 📊 Analyzing call 7/14 for @chapoinsider
+2025-05-22 21:45:43,555 - phoenix.telegram - INFO - 📊 Analyzing call 13/14 for @chapoinsider
+2025-05-22 21:45:44,712 - phoenix.telegram - INFO - ✅ @chapoinsider: 4 calls, 0.0% 2x rate
+2025-05-22 21:45:46,713 - phoenix.telegram - INFO - 📊 Analyzing KOL 24/50: @joesgems3 (4 mentions)
+2025-05-22 21:45:46,713 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @joesgems3
+2025-05-22 21:45:46,838 - phoenix.telegram - INFO - Scraping 1 days of messages from 1855309696
+2025-05-22 21:45:47,228 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 1855309696. Found 5 relevant messages.
+2025-05-22 21:45:47,228 - phoenix.telegram - INFO - 📨 Found 5 messages in @joesgems3's channel
+2025-05-22 21:45:47,228 - phoenix.telegram - INFO - 🎯 Found 0 token calls for @joesgems3
+2025-05-22 21:45:47,228 - phoenix.telegram - INFO - ⚠️ @joesgems3: No analyzable calls found
+2025-05-22 21:45:49,230 - phoenix.telegram - INFO - 📊 Analyzing KOL 25/50: @cryptsycalls (4 mentions)
+2025-05-22 21:45:49,230 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @cryptsycalls
+2025-05-22 21:45:49,417 - phoenix.telegram - INFO - Scraping 1 days of messages from 1549363617
+2025-05-22 21:45:50,017 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 1549363617. Found 6 relevant messages.
+2025-05-22 21:45:50,017 - phoenix.telegram - INFO - 📨 Found 6 messages in @cryptsycalls's channel
+2025-05-22 21:45:50,017 - phoenix.telegram - INFO - 🎯 Found 1 token calls for @cryptsycalls
+2025-05-22 21:45:50,017 - phoenix.telegram - INFO - ⚠️ @cryptsycalls: No analyzable calls found
+2025-05-22 21:45:52,018 - phoenix.telegram - INFO - 📊 Analyzing KOL 26/50: @michiicalls (4 mentions)
+2025-05-22 21:45:52,018 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @michiicalls
+2025-05-22 21:45:52,205 - phoenix.telegram - INFO - Scraping 1 days of messages from 1791368867
+2025-05-22 21:45:52,612 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 1791368867. Found 11 relevant messages.
+2025-05-22 21:45:52,612 - phoenix.telegram - INFO - 📨 Found 11 messages in @michiicalls's channel
+2025-05-22 21:45:52,612 - phoenix.telegram - INFO - 🎯 Found 2 token calls for @michiicalls
+2025-05-22 21:45:52,612 - phoenix.telegram - INFO - 📊 Analyzing call 2/2 for @michiicalls
+2025-05-22 21:45:52,721 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'xd843Eef66ef328cd519A5FCc545F7EF2A6865c5', 'address_type': 'token', 'type': '15m', 'time_from': 1747950948, 'time_to': 1747975552}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:45:52,721 - phoenix.birdeye - WARNING - No price history available for xd843Eef66ef328cd519A5FCc545F7EF2A6865c5
+2025-05-22 21:45:54,847 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'xd843Eef66ef328cd519A5FCc545F7EF2A6865c5', 'address_type': 'token', 'type': '15m', 'time_from': 1747950948, 'time_to': 1747975554}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:45:54,847 - phoenix.birdeye - WARNING - No price history available for xd843Eef66ef328cd519A5FCc545F7EF2A6865c5
+2025-05-22 21:45:56,958 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'xd843Eef66ef328cd519A5FCc545F7EF2A6865c5', 'address_type': 'token', 'type': '15m', 'time_from': 1747950948, 'time_to': 1747975556}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:45:56,973 - phoenix.birdeye - WARNING - No price history available for xd843Eef66ef328cd519A5FCc545F7EF2A6865c5
+2025-05-22 21:45:57,974 - phoenix.telegram - INFO - ⚠️ @michiicalls: No analyzable calls found
+2025-05-22 21:45:59,988 - phoenix.telegram - INFO - 📊 Analyzing KOL 27/50: @ethafterdark (4 mentions)
+2025-05-22 21:45:59,988 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @ethafterdark
+2025-05-22 21:46:00,113 - phoenix.telegram - INFO - Scraping 1 days of messages from 2406349598
+2025-05-22 21:46:00,652 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 2406349598. Found 14 relevant messages.
+2025-05-22 21:46:00,652 - phoenix.telegram - INFO - 📨 Found 14 messages in @ethafterdark's channel
+2025-05-22 21:46:00,652 - phoenix.telegram - INFO - 🎯 Found 4 token calls for @ethafterdark
+2025-05-22 21:46:00,652 - phoenix.telegram - INFO - ⚠️ @ethafterdark: No analyzable calls found
+2025-05-22 21:46:02,654 - phoenix.telegram - INFO - 📊 Analyzing KOL 28/50: @avrugs (4 mentions)
+2025-05-22 21:46:02,654 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @avrugs
+2025-05-22 21:46:02,779 - phoenix.telegram - INFO - Scraping 1 days of messages from 1691606433
+2025-05-22 21:46:03,217 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 1691606433. Found 9 relevant messages.
+2025-05-22 21:46:03,217 - phoenix.telegram - INFO - 📨 Found 9 messages in @avrugs's channel
+2025-05-22 21:46:03,217 - phoenix.telegram - INFO - 🎯 Found 3 token calls for @avrugs
+2025-05-22 21:46:03,217 - phoenix.telegram - INFO - ⚠️ @avrugs: No analyzable calls found
+2025-05-22 21:46:05,223 - phoenix.telegram - INFO - 📊 Analyzing KOL 29/50: @shutupandprint (4 mentions)
+2025-05-22 21:46:05,223 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @shutupandprint
+2025-05-22 21:46:05,340 - phoenix.telegram - INFO - Scraping 1 days of messages from 1659455616
+2025-05-22 21:46:05,856 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 1659455616. Found 3 relevant messages.
+2025-05-22 21:46:05,856 - phoenix.telegram - INFO - 📨 Found 3 messages in @shutupandprint's channel
+2025-05-22 21:46:05,856 - phoenix.telegram - INFO - 🎯 Found 3 token calls for @shutupandprint
+2025-05-22 21:46:05,856 - phoenix.telegram - INFO - 📊 Analyzing call 2/3 for @shutupandprint
+2025-05-22 21:46:06,997 - phoenix.telegram - INFO - ✅ @shutupandprint: 1 calls, 0.0% 2x rate
+2025-05-22 21:46:08,998 - phoenix.telegram - INFO - 📊 Analyzing KOL 30/50: @x666calls (4 mentions)
+2025-05-22 21:46:08,998 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @x666calls
+2025-05-22 21:46:09,123 - phoenix.telegram - INFO - Scraping 1 days of messages from 1903316574
+2025-05-22 21:46:09,568 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 1903316574. Found 10 relevant messages.
+2025-05-22 21:46:09,568 - phoenix.telegram - INFO - 📨 Found 10 messages in @x666calls's channel
+2025-05-22 21:46:09,576 - phoenix.telegram - INFO - 🎯 Found 7 token calls for @x666calls
+2025-05-22 21:46:09,576 - phoenix.telegram - INFO - ⚠️ @x666calls: No analyzable calls found
+2025-05-22 21:46:11,577 - phoenix.telegram - INFO - 📊 Analyzing KOL 31/50: @chinapumpcommunity (4 mentions)
+2025-05-22 21:46:11,577 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @chinapumpcommunity
+2025-05-22 21:46:11,702 - phoenix.telegram - INFO - Scraping 1 days of messages from 1502458504
+2025-05-22 21:46:12,280 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 1502458504. Found 12 relevant messages.
+2025-05-22 21:46:12,280 - phoenix.telegram - INFO - 📨 Found 12 messages in @chinapumpcommunity's channel
+2025-05-22 21:46:12,280 - phoenix.telegram - INFO - 🎯 Found 0 token calls for @chinapumpcommunity
+2025-05-22 21:46:12,280 - phoenix.telegram - INFO - ⚠️ @chinapumpcommunity: No analyzable calls found
+2025-05-22 21:46:14,282 - phoenix.telegram - INFO - 📊 Analyzing KOL 32/50: @phoenixtrenching (4 mentions)
+2025-05-22 21:46:14,282 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @phoenixtrenching
+2025-05-22 21:46:14,407 - phoenix.telegram - INFO - Scraping 1 days of messages from 2501595604
+2025-05-22 21:46:14,798 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 2501595604. Found 2 relevant messages.
+2025-05-22 21:46:14,798 - phoenix.telegram - INFO - 📨 Found 2 messages in @phoenixtrenching's channel
+2025-05-22 21:46:14,798 - phoenix.telegram - INFO - 🎯 Found 0 token calls for @phoenixtrenching
+2025-05-22 21:46:14,798 - phoenix.telegram - INFO - ⚠️ @phoenixtrenching: No analyzable calls found
+2025-05-22 21:46:16,799 - phoenix.telegram - INFO - 📊 Analyzing KOL 33/50: @henrygems (4 mentions)
+2025-05-22 21:46:16,799 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @henrygems
+2025-05-22 21:46:16,925 - phoenix.telegram - INFO - Scraping 1 days of messages from 1973702078
+2025-05-22 21:46:17,441 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 1973702078. Found 0 relevant messages.
+2025-05-22 21:46:17,441 - phoenix.telegram - INFO - 📨 Found 0 messages in @henrygems's channel
+2025-05-22 21:46:17,457 - phoenix.telegram - INFO - ⚠️ @henrygems: No analyzable calls found
+2025-05-22 21:46:19,458 - phoenix.telegram - INFO - 📊 Analyzing KOL 34/50: @persian_gambles (4 mentions)
+2025-05-22 21:46:19,458 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @persian_gambles
+2025-05-22 21:46:19,583 - phoenix.telegram - INFO - Scraping 1 days of messages from 2112818367
+2025-05-22 21:46:20,012 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 2112818367. Found 2 relevant messages.
+2025-05-22 21:46:20,012 - phoenix.telegram - INFO - 📨 Found 2 messages in @persian_gambles's channel
+2025-05-22 21:46:20,027 - phoenix.telegram - INFO - 🎯 Found 1 token calls for @persian_gambles
+2025-05-22 21:46:20,027 - phoenix.telegram - INFO - ⚠️ @persian_gambles: No analyzable calls found
+2025-05-22 21:46:22,035 - phoenix.telegram - INFO - 📊 Analyzing KOL 35/50: @elonmuskcallz (4 mentions)
+2025-05-22 21:46:22,035 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @elonmuskcallz
+2025-05-22 21:46:22,160 - phoenix.telegram - INFO - Scraping 1 days of messages from 1560091416
+2025-05-22 21:46:22,832 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 1560091416. Found 2 relevant messages.
+2025-05-22 21:46:22,832 - phoenix.telegram - INFO - 📨 Found 2 messages in @elonmuskcallz's channel
+2025-05-22 21:46:22,832 - phoenix.telegram - INFO - 🎯 Found 2 token calls for @elonmuskcallz
+2025-05-22 21:46:22,832 - phoenix.telegram - INFO - ⚠️ @elonmuskcallz: No analyzable calls found
+2025-05-22 21:46:24,833 - phoenix.telegram - INFO - 📊 Analyzing KOL 36/50: @markdegens (4 mentions)
+2025-05-22 21:46:24,833 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @markdegens
+2025-05-22 21:46:24,958 - phoenix.telegram - INFO - Scraping 1 days of messages from 1763265784
+2025-05-22 21:46:25,474 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 1763265784. Found 3 relevant messages.
+2025-05-22 21:46:25,474 - phoenix.telegram - INFO - 📨 Found 3 messages in @markdegens's channel
+2025-05-22 21:46:25,474 - phoenix.telegram - INFO - 🎯 Found 3 token calls for @markdegens
+2025-05-22 21:46:25,474 - phoenix.telegram - INFO - 📊 Analyzing call 1/3 for @markdegens
+2025-05-22 21:46:26,709 - phoenix.telegram - INFO - 📊 Analyzing call 2/3 for @markdegens
+2025-05-22 21:46:27,866 - phoenix.telegram - INFO - 📊 Analyzing call 3/3 for @markdegens
+2025-05-22 21:46:29,054 - phoenix.telegram - INFO - ✅ @markdegens: 3 calls, 66.7% 2x rate
+2025-05-22 21:46:31,056 - phoenix.telegram - INFO - 📊 Analyzing KOL 37/50: @quartzeth (4 mentions)
+2025-05-22 21:46:31,056 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @quartzeth
+2025-05-22 21:46:31,181 - phoenix.telegram - INFO - Scraping 1 days of messages from 1662909092
+2025-05-22 21:46:31,587 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 1662909092. Found 14 relevant messages.
+2025-05-22 21:46:31,587 - phoenix.telegram - INFO - 📨 Found 14 messages in @quartzeth's channel
+2025-05-22 21:46:31,587 - phoenix.telegram - INFO - 🎯 Found 4 token calls for @quartzeth
+2025-05-22 21:46:31,587 - phoenix.telegram - INFO - 📊 Analyzing call 1/4 for @quartzeth
+2025-05-22 21:46:31,759 - phoenix.birdeye - WARNING - No price history available for 73cjxsy8nstmdy79tzmdgjxrfwskmv1criph4fffwi3s
+2025-05-22 21:46:33,936 - phoenix.birdeye - WARNING - No price history available for 73cjxsy8nstmdy79tzmdgjxrfwskmv1criph4fffwi3s
+2025-05-22 21:46:36,101 - phoenix.birdeye - WARNING - No price history available for 73cjxsy8nstmdy79tzmdgjxrfwskmv1criph4fffwi3s
+2025-05-22 21:46:37,103 - phoenix.telegram - INFO - 📊 Analyzing call 2/4 for @quartzeth
+2025-05-22 21:46:37,212 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'fveyuwzbyn81stpbupyq7mrhtkhm16ofbe5gubba2g4s', 'address_type': 'token', 'type': '15m', 'time_from': 1747938960, 'time_to': 1747975597}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:46:37,212 - phoenix.birdeye - WARNING - No price history available for fveyuwzbyn81stpbupyq7mrhtkhm16ofbe5gubba2g4s
+2025-05-22 21:46:39,318 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'fveyuwzbyn81stpbupyq7mrhtkhm16ofbe5gubba2g4s', 'address_type': 'token', 'type': '15m', 'time_from': 1747938960, 'time_to': 1747975599}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:46:39,318 - phoenix.birdeye - WARNING - No price history available for fveyuwzbyn81stpbupyq7mrhtkhm16ofbe5gubba2g4s
+2025-05-22 21:46:41,448 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'fveyuwzbyn81stpbupyq7mrhtkhm16ofbe5gubba2g4s', 'address_type': 'token', 'type': '15m', 'time_from': 1747938960, 'time_to': 1747975601}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:46:41,448 - phoenix.birdeye - WARNING - No price history available for fveyuwzbyn81stpbupyq7mrhtkhm16ofbe5gubba2g4s
+2025-05-22 21:46:42,448 - phoenix.telegram - INFO - 📊 Analyzing call 3/4 for @quartzeth
+2025-05-22 21:46:42,588 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'gqghvrdggh6n8yvcc6ghtkubcf8g3newgtcytfe7kzyq', 'address_type': 'token', 'type': '15m', 'time_from': 1747933857, 'time_to': 1747975602}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:46:42,604 - phoenix.birdeye - WARNING - No price history available for gqghvrdggh6n8yvcc6ghtkubcf8g3newgtcytfe7kzyq
+2025-05-22 21:46:44,753 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'gqghvrdggh6n8yvcc6ghtkubcf8g3newgtcytfe7kzyq', 'address_type': 'token', 'type': '15m', 'time_from': 1747933857, 'time_to': 1747975604}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:46:44,753 - phoenix.birdeye - WARNING - No price history available for gqghvrdggh6n8yvcc6ghtkubcf8g3newgtcytfe7kzyq
+2025-05-22 21:46:46,889 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'gqghvrdggh6n8yvcc6ghtkubcf8g3newgtcytfe7kzyq', 'address_type': 'token', 'type': '15m', 'time_from': 1747933857, 'time_to': 1747975606}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:46:46,889 - phoenix.birdeye - WARNING - No price history available for gqghvrdggh6n8yvcc6ghtkubcf8g3newgtcytfe7kzyq
+2025-05-22 21:46:47,890 - phoenix.telegram - INFO - 📊 Analyzing call 4/4 for @quartzeth
+2025-05-22 21:46:48,047 - phoenix.birdeye - WARNING - No price history available for 65zjpa2dqjcyvc2up4ep5njpoqri7b8qxfcdedykez3
+2025-05-22 21:46:50,208 - phoenix.birdeye - WARNING - No price history available for 65zjpa2dqjcyvc2up4ep5njpoqri7b8qxfcdedykez3
+2025-05-22 21:46:52,372 - phoenix.birdeye - WARNING - No price history available for 65zjpa2dqjcyvc2up4ep5njpoqri7b8qxfcdedykez3
+2025-05-22 21:46:53,372 - phoenix.telegram - INFO - ⚠️ @quartzeth: No analyzable calls found
+2025-05-22 21:46:55,373 - phoenix.telegram - INFO - 📊 Analyzing KOL 38/50: @bassiecalls (4 mentions)
+2025-05-22 21:46:55,373 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @bassiecalls
+2025-05-22 21:46:55,498 - phoenix.telegram - INFO - Scraping 1 days of messages from 1875835628
+2025-05-22 21:46:55,983 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 1875835628. Found 14 relevant messages.
+2025-05-22 21:46:55,983 - phoenix.telegram - INFO - 📨 Found 14 messages in @bassiecalls's channel
+2025-05-22 21:46:55,998 - phoenix.telegram - INFO - 🎯 Found 6 token calls for @bassiecalls
+2025-05-22 21:46:55,998 - phoenix.telegram - INFO - 📊 Analyzing call 4/6 for @bassiecalls
+2025-05-22 21:46:57,234 - phoenix.telegram - INFO - ✅ @bassiecalls: 1 calls, 0.0% 2x rate
+2025-05-22 21:46:59,241 - phoenix.telegram - INFO - 📊 Analyzing KOL 39/50: @ryoshiriskydegen (3 mentions)
+2025-05-22 21:46:59,241 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @ryoshiriskydegen
+2025-05-22 21:46:59,366 - phoenix.telegram - INFO - Scraping 1 days of messages from 2318684007
+2025-05-22 21:46:59,930 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 2318684007. Found 9 relevant messages.
+2025-05-22 21:46:59,930 - phoenix.telegram - INFO - 📨 Found 9 messages in @ryoshiriskydegen's channel
+2025-05-22 21:46:59,930 - phoenix.telegram - INFO - 🎯 Found 1 token calls for @ryoshiriskydegen
+2025-05-22 21:46:59,945 - phoenix.telegram - INFO - ⚠️ @ryoshiriskydegen: No analyzable calls found
+2025-05-22 21:47:01,945 - phoenix.telegram - INFO - 📊 Analyzing KOL 40/50: @zspidercall (3 mentions)
+2025-05-22 21:47:01,945 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @zspidercall
+2025-05-22 21:47:02,070 - phoenix.telegram - INFO - Scraping 1 days of messages from 1693380562
+2025-05-22 21:47:02,461 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 1693380562. Found 5 relevant messages.
+2025-05-22 21:47:02,461 - phoenix.telegram - INFO - 📨 Found 5 messages in @zspidercall's channel
+2025-05-22 21:47:02,461 - phoenix.telegram - INFO - 🎯 Found 3 token calls for @zspidercall
+2025-05-22 21:47:02,461 - phoenix.telegram - INFO - ⚠️ @zspidercall: No analyzable calls found
+2025-05-22 21:47:04,463 - phoenix.telegram - INFO - 📊 Analyzing KOL 41/50: @begeneracy (3 mentions)
+2025-05-22 21:47:04,463 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @begeneracy
+2025-05-22 21:47:04,604 - phoenix.telegram - INFO - Scraping 1 days of messages from 2677781471
+2025-05-22 21:47:05,049 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 2677781471. Found 18 relevant messages.
+2025-05-22 21:47:05,049 - phoenix.telegram - INFO - 📨 Found 18 messages in @begeneracy's channel
+2025-05-22 21:47:05,049 - phoenix.telegram - INFO - 🎯 Found 14 token calls for @begeneracy
+2025-05-22 21:47:05,049 - phoenix.telegram - INFO - 📊 Analyzing call 3/14 for @begeneracy
+2025-05-22 21:47:05,228 - phoenix.birdeye - WARNING - No price history available for 62xF5bY99MkCRYrHBBXF7kgMnDcBDyqzu9YvmHcsDV4R
+2025-05-22 21:47:07,378 - phoenix.birdeye - WARNING - No price history available for 62xF5bY99MkCRYrHBBXF7kgMnDcBDyqzu9YvmHcsDV4R
+2025-05-22 21:47:09,565 - phoenix.birdeye - WARNING - No price history available for 62xF5bY99MkCRYrHBBXF7kgMnDcBDyqzu9YvmHcsDV4R
+2025-05-22 21:47:10,570 - phoenix.telegram - INFO - 📊 Analyzing call 5/14 for @begeneracy
+2025-05-22 21:47:10,679 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'xf63a8514f28e27ea235413b5a1cd4a21ca17ae19', 'address_type': 'token', 'type': '15m', 'time_from': 1747936113, 'time_to': 1747975630}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:47:10,679 - phoenix.birdeye - WARNING - No price history available for xf63a8514f28e27ea235413b5a1cd4a21ca17ae19
+2025-05-22 21:47:12,812 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'xf63a8514f28e27ea235413b5a1cd4a21ca17ae19', 'address_type': 'token', 'type': '15m', 'time_from': 1747936113, 'time_to': 1747975632}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:47:12,812 - phoenix.birdeye - WARNING - No price history available for xf63a8514f28e27ea235413b5a1cd4a21ca17ae19
+2025-05-22 21:47:14,936 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'xf63a8514f28e27ea235413b5a1cd4a21ca17ae19', 'address_type': 'token', 'type': '15m', 'time_from': 1747936113, 'time_to': 1747975634}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:47:14,936 - phoenix.birdeye - WARNING - No price history available for xf63a8514f28e27ea235413b5a1cd4a21ca17ae19
+2025-05-22 21:47:15,945 - phoenix.telegram - INFO - 📊 Analyzing call 7/14 for @begeneracy
+2025-05-22 21:47:16,102 - phoenix.birdeye - WARNING - No price history available for 32QFZanA7bAmkYNqDkYW7EC2xvnbfoB5B1uxEQ3bVNER
+2025-05-22 21:47:18,320 - phoenix.birdeye - WARNING - No price history available for 32QFZanA7bAmkYNqDkYW7EC2xvnbfoB5B1uxEQ3bVNER
+2025-05-22 21:47:20,489 - phoenix.birdeye - WARNING - No price history available for 32QFZanA7bAmkYNqDkYW7EC2xvnbfoB5B1uxEQ3bVNER
+2025-05-22 21:47:21,496 - phoenix.telegram - INFO - 📊 Analyzing call 11/14 for @begeneracy
+2025-05-22 21:47:21,652 - phoenix.birdeye - WARNING - No price history available for Bk5vPbLRgATgcqga1vPCZ55jU8rTfRVA6XQ2sUaLNGMz
+2025-05-22 21:47:23,835 - phoenix.birdeye - WARNING - No price history available for Bk5vPbLRgATgcqga1vPCZ55jU8rTfRVA6XQ2sUaLNGMz
+2025-05-22 21:47:26,004 - phoenix.birdeye - WARNING - No price history available for Bk5vPbLRgATgcqga1vPCZ55jU8rTfRVA6XQ2sUaLNGMz
+2025-05-22 21:47:27,011 - phoenix.telegram - INFO - 📊 Analyzing call 12/14 for @begeneracy
+2025-05-22 21:47:27,183 - phoenix.birdeye - WARNING - No price history available for 6E1HZY57fxVd3Ye5PHtEJBvP9KqrgGQ5AEicbmMuGYGg
+2025-05-22 21:47:29,360 - phoenix.birdeye - WARNING - No price history available for 6E1HZY57fxVd3Ye5PHtEJBvP9KqrgGQ5AEicbmMuGYGg
+2025-05-22 21:47:31,543 - phoenix.birdeye - WARNING - No price history available for 6E1HZY57fxVd3Ye5PHtEJBvP9KqrgGQ5AEicbmMuGYGg
+2025-05-22 21:47:32,548 - phoenix.telegram - INFO - 📊 Analyzing call 14/14 for @begeneracy
+2025-05-22 21:47:32,704 - phoenix.birdeye - WARNING - No price history available for 2R2kwfr7JVKp8u7fidHU17xBq1q3TawDhYAnS3ZxkyEu
+2025-05-22 21:47:34,877 - phoenix.birdeye - WARNING - No price history available for 2R2kwfr7JVKp8u7fidHU17xBq1q3TawDhYAnS3ZxkyEu
+2025-05-22 21:47:37,059 - phoenix.birdeye - WARNING - No price history available for 2R2kwfr7JVKp8u7fidHU17xBq1q3TawDhYAnS3ZxkyEu
+2025-05-22 21:47:38,059 - phoenix.telegram - INFO - ⚠️ @begeneracy: No analyzable calls found
+2025-05-22 21:47:40,060 - phoenix.telegram - INFO - 📊 Analyzing KOL 42/50: @geppettodegen (3 mentions)
+2025-05-22 21:47:40,060 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @geppettodegen
+2025-05-22 21:47:40,217 - phoenix.telegram - INFO - Scraping 1 days of messages from 2480481360
+2025-05-22 21:47:40,842 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 2480481360. Found 1 relevant messages.
+2025-05-22 21:47:40,842 - phoenix.telegram - INFO - 📨 Found 1 messages in @geppettodegen's channel
+2025-05-22 21:47:40,842 - phoenix.telegram - INFO - 🎯 Found 1 token calls for @geppettodegen
+2025-05-22 21:47:40,842 - phoenix.telegram - INFO - 📊 Analyzing call 1/1 for @geppettodegen
+2025-05-22 21:47:41,014 - phoenix.birdeye - WARNING - No price history available for 9ghpquhv8d4z2iqy6y9wteqxbqpogmjudqb2tje2gsz8
+2025-05-22 21:47:43,172 - phoenix.birdeye - WARNING - No price history available for 9ghpquhv8d4z2iqy6y9wteqxbqpogmjudqb2tje2gsz8
+2025-05-22 21:47:45,330 - phoenix.birdeye - WARNING - No price history available for 9ghpquhv8d4z2iqy6y9wteqxbqpogmjudqb2tje2gsz8
+2025-05-22 21:47:46,331 - phoenix.telegram - INFO - ⚠️ @geppettodegen: No analyzable calls found
+2025-05-22 21:47:48,348 - phoenix.telegram - INFO - 📊 Analyzing KOL 43/50: @ryujingambles (3 mentions)
+2025-05-22 21:47:48,348 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @ryujingambles
+2025-05-22 21:47:48,473 - phoenix.telegram - INFO - Scraping 1 days of messages from 2013329276
+2025-05-22 21:47:48,978 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 2013329276. Found 3 relevant messages.
+2025-05-22 21:47:48,978 - phoenix.telegram - INFO - 📨 Found 3 messages in @ryujingambles's channel
+2025-05-22 21:47:48,994 - phoenix.telegram - INFO - 🎯 Found 0 token calls for @ryujingambles
+2025-05-22 21:47:48,994 - phoenix.telegram - INFO - ⚠️ @ryujingambles: No analyzable calls found
+2025-05-22 21:47:51,009 - phoenix.telegram - INFO - 📊 Analyzing KOL 44/50: @witchlabs (3 mentions)
+2025-05-22 21:47:51,009 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @witchlabs
+2025-05-22 21:47:51,134 - phoenix.telegram - INFO - Scraping 1 days of messages from 2251415846
+2025-05-22 21:47:51,703 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 2251415846. Found 1 relevant messages.
+2025-05-22 21:47:51,703 - phoenix.telegram - INFO - 📨 Found 1 messages in @witchlabs's channel
+2025-05-22 21:47:51,703 - phoenix.telegram - INFO - 🎯 Found 1 token calls for @witchlabs
+2025-05-22 21:47:51,703 - phoenix.telegram - INFO - ⚠️ @witchlabs: No analyzable calls found
+2025-05-22 21:47:53,713 - phoenix.telegram - INFO - 📊 Analyzing KOL 45/50: @watisdes (3 mentions)
+2025-05-22 21:47:53,713 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @watisdes
+2025-05-22 21:47:53,838 - phoenix.telegram - INFO - Scraping 1 days of messages from 1870127953
+2025-05-22 21:47:54,354 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 1870127953. Found 8 relevant messages.
+2025-05-22 21:47:54,354 - phoenix.telegram - INFO - 📨 Found 8 messages in @watisdes's channel
+2025-05-22 21:47:54,354 - phoenix.telegram - INFO - 🎯 Found 3 token calls for @watisdes
+2025-05-22 21:47:54,354 - phoenix.telegram - INFO - 📊 Analyzing call 3/3 for @watisdes
+2025-05-22 21:47:54,479 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'xd843Eef66ef328cd519A5FCc545F7EF2A6865c5', 'address_type': 'token', 'type': '15m', 'time_from': 1747950135, 'time_to': 1747975674}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:47:54,486 - phoenix.birdeye - WARNING - No price history available for xd843Eef66ef328cd519A5FCc545F7EF2A6865c5
+2025-05-22 21:47:56,605 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'xd843Eef66ef328cd519A5FCc545F7EF2A6865c5', 'address_type': 'token', 'type': '15m', 'time_from': 1747950135, 'time_to': 1747975676}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:47:56,605 - phoenix.birdeye - WARNING - No price history available for xd843Eef66ef328cd519A5FCc545F7EF2A6865c5
+2025-05-22 21:47:58,733 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'xd843Eef66ef328cd519A5FCc545F7EF2A6865c5', 'address_type': 'token', 'type': '15m', 'time_from': 1747950135, 'time_to': 1747975678}: {"success":false,"message":"address is invalid format"}
+2025-05-22 21:47:58,733 - phoenix.birdeye - WARNING - No price history available for xd843Eef66ef328cd519A5FCc545F7EF2A6865c5
+2025-05-22 21:47:59,733 - phoenix.telegram - INFO - ⚠️ @watisdes: No analyzable calls found
+2025-05-22 21:48:01,742 - phoenix.telegram - INFO - 📊 Analyzing KOL 46/50: @himarscalls (3 mentions)
+2025-05-22 21:48:01,742 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @himarscalls
+2025-05-22 21:48:01,867 - phoenix.telegram - INFO - Scraping 1 days of messages from 1764056304
+2025-05-22 21:48:02,366 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 1764056304. Found 0 relevant messages.
+2025-05-22 21:48:02,366 - phoenix.telegram - INFO - 📨 Found 0 messages in @himarscalls's channel
+2025-05-22 21:48:02,366 - phoenix.telegram - INFO - ⚠️ @himarscalls: No analyzable calls found
+2025-05-22 21:48:04,367 - phoenix.telegram - INFO - 📊 Analyzing KOL 47/50: @spacemancallz (3 mentions)
+2025-05-22 21:48:04,367 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @spacemancallz
+2025-05-22 21:48:04,492 - phoenix.telegram - INFO - Scraping 1 days of messages from 1877172822
+2025-05-22 21:48:04,977 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 1877172822. Found 3 relevant messages.
+2025-05-22 21:48:04,977 - phoenix.telegram - INFO - 📨 Found 3 messages in @spacemancallz's channel
+2025-05-22 21:48:04,977 - phoenix.telegram - INFO - 🎯 Found 1 token calls for @spacemancallz
+2025-05-22 21:48:04,977 - phoenix.telegram - INFO - ⚠️ @spacemancallz: No analyzable calls found
+2025-05-22 21:48:06,992 - phoenix.telegram - INFO - 📊 Analyzing KOL 48/50: @parkergamblles (3 mentions)
+2025-05-22 21:48:06,992 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @parkergamblles
+2025-05-22 21:48:07,117 - phoenix.telegram - INFO - Scraping 1 days of messages from 2362597228
+2025-05-22 21:48:07,601 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 2362597228. Found 15 relevant messages.
+2025-05-22 21:48:07,601 - phoenix.telegram - INFO - 📨 Found 15 messages in @parkergamblles's channel
+2025-05-22 21:48:07,601 - phoenix.telegram - INFO - 🎯 Found 8 token calls for @parkergamblles
+2025-05-22 21:48:07,601 - phoenix.telegram - INFO - 📊 Analyzing call 4/8 for @parkergamblles
+2025-05-22 21:48:08,775 - phoenix.telegram - INFO - ✅ @parkergamblles: 1 calls, 0.0% 2x rate
+2025-05-22 21:48:10,777 - phoenix.telegram - INFO - 📊 Analyzing KOL 49/50: @bruiserscalls (3 mentions)
+2025-05-22 21:48:10,777 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @bruiserscalls
+2025-05-22 21:48:10,902 - phoenix.telegram - INFO - Scraping 1 days of messages from 1783503706
+2025-05-22 21:48:11,449 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 1783503706. Found 3 relevant messages.
+2025-05-22 21:48:11,449 - phoenix.telegram - INFO - 📨 Found 3 messages in @bruiserscalls's channel
+2025-05-22 21:48:11,449 - phoenix.telegram - INFO - 🎯 Found 0 token calls for @bruiserscalls
+2025-05-22 21:48:11,449 - phoenix.telegram - INFO - ⚠️ @bruiserscalls: No analyzable calls found
+2025-05-22 21:48:13,450 - phoenix.telegram - INFO - 📊 Analyzing KOL 50/50: @apewizardgambles (3 mentions)
+2025-05-22 21:48:13,450 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @apewizardgambles
+2025-05-22 21:48:13,591 - phoenix.telegram - INFO - Scraping 1 days of messages from 2184582956
+2025-05-22 21:48:14,138 - phoenix.telegram - INFO - ✅ Finished retrieving messages from 2184582956. Found 0 relevant messages.
+2025-05-22 21:48:14,138 - phoenix.telegram - INFO - 📨 Found 0 messages in @apewizardgambles's channel
+2025-05-22 21:48:14,138 - phoenix.telegram - INFO - ⚠️ @apewizardgambles: No analyzable calls found
+2025-05-22 21:48:16,139 - phoenix.telegram - INFO - 🎯 Phase 3: Ranking KOLs and calculating final metrics...
+2025-05-22 21:48:16,139 - phoenix.telegram - INFO - 🏆 TOP 10 KOLs by composite score:
+2025-05-22 21:48:16,139 - phoenix.telegram - INFO -    1. @kariusgemscalls: 278.4 score, 41.4% 2x rate, 29 calls
+2025-05-22 21:48:16,139 - phoenix.telegram - INFO -    2. @hulkgemscalls_real: 262.4 score, 38.5% 2x rate, 13 calls
+2025-05-22 21:48:16,139 - phoenix.telegram - INFO -    3. @zen_call: 261.6 score, 46.1% 2x rate, 13 calls
+2025-05-22 21:48:16,139 - phoenix.telegram - INFO -    4. @nikola_calls: 239.4 score, 50.0% 2x rate, 6 calls
+2025-05-22 21:48:16,139 - phoenix.telegram - INFO -    5. @pepe_calls28: 214.4 score, 22.2% 2x rate, 9 calls
+2025-05-22 21:48:16,139 - phoenix.telegram - INFO -    6. @poseidon_degen_calls: 146.3 score, 14.3% 2x rate, 7 calls
+2025-05-22 21:48:16,139 - phoenix.telegram - INFO -    7. @marksgems: 142.2 score, 22.2% 2x rate, 9 calls
+2025-05-22 21:48:16,139 - phoenix.telegram - INFO -    8. @mrbigbagcalls: 139.8 score, 80.0% 2x rate, 5 calls
+2025-05-22 21:48:16,139 - phoenix.telegram - INFO -    9. @michacalls: 133.4 score, 25.0% 2x rate, 4 calls
+2025-05-22 21:48:16,139 - phoenix.telegram - INFO -    10. @markdegens: 94.8 score, 66.7% 2x rate, 3 calls
+2025-05-22 21:48:16,139 - phoenix.telegram - INFO - 🎯 Phase 4: Getting channel IDs for TOP 10 KOLs...
+2025-05-22 21:48:16,139 - phoenix.telegram - INFO - 📞 Getting channel IDs for TOP 10 KOLs...
+2025-05-22 21:48:16,139 - phoenix.telegram - INFO - Getting channel ID for TOP 10 KOL 1/10: @kariusgemscalls
+2025-05-22 21:48:16,139 - phoenix.telegram - INFO - ✅ Found channel for @kariusgemscalls: 2222968620
+2025-05-22 21:48:19,140 - phoenix.telegram - INFO - Getting channel ID for TOP 10 KOL 2/10: @hulkgemscalls_real
+2025-05-22 21:48:19,140 - phoenix.telegram - INFO - ✅ Found channel for @hulkgemscalls_real: 2353208529
+2025-05-22 21:48:22,143 - phoenix.telegram - INFO - Getting channel ID for TOP 10 KOL 3/10: @zen_call
+2025-05-22 21:48:22,143 - phoenix.telegram - INFO - ✅ Found channel for @zen_call: 2177594166
+2025-05-22 21:48:25,154 - phoenix.telegram - INFO - Getting channel ID for TOP 10 KOL 4/10: @nikola_calls
+2025-05-22 21:48:25,154 - phoenix.telegram - INFO - ✅ Found channel for @nikola_calls: 2000078706
+2025-05-22 21:48:28,155 - phoenix.telegram - INFO - Getting channel ID for TOP 10 KOL 5/10: @pepe_calls28
+2025-05-22 21:48:28,155 - phoenix.telegram - INFO - ✅ Found channel for @pepe_calls28: 2017857449
+2025-05-22 21:48:31,160 - phoenix.telegram - INFO - Getting channel ID for TOP 10 KOL 6/10: @poseidon_degen_calls
+2025-05-22 21:48:31,160 - phoenix.telegram - INFO - ✅ Found channel for @poseidon_degen_calls: 1869537526
+2025-05-22 21:48:34,160 - phoenix.telegram - INFO - Getting channel ID for TOP 10 KOL 7/10: @marksgems
+2025-05-22 21:48:34,160 - phoenix.telegram - INFO - ✅ Found channel for @marksgems: 1508785153
+2025-05-22 21:48:37,162 - phoenix.telegram - INFO - Getting channel ID for TOP 10 KOL 8/10: @mrbigbagcalls
+2025-05-22 21:48:37,162 - phoenix.telegram - INFO - ✅ Found channel for @mrbigbagcalls: 2051055592
+2025-05-22 21:48:40,169 - phoenix.telegram - INFO - Getting channel ID for TOP 10 KOL 9/10: @michacalls
+2025-05-22 21:48:40,169 - phoenix.telegram - INFO - ✅ Found channel for @michacalls: 1655443406
+2025-05-22 21:48:43,172 - phoenix.telegram - INFO - Getting channel ID for TOP 10 KOL 10/10: @markdegens
+2025-05-22 21:48:43,172 - phoenix.telegram - INFO - ✅ Found channel for @markdegens: 1763265784
+2025-05-22 21:48:43,172 - phoenix.telegram - INFO - 📊 VALIDATION STATISTICS:
+2025-05-22 21:48:43,172 - phoenix.telegram - INFO -    📍 Contract extraction attempts: 2346
+2025-05-22 21:48:43,172 - phoenix.telegram - INFO -    ✅ Valid addresses found: 520
+2025-05-22 21:48:43,172 - phoenix.telegram - INFO -    ❌ Invalid addresses rejected: 0
+2025-05-22 21:48:43,172 - phoenix.telegram - INFO -    📞 Birdeye API calls made: 278
+2025-05-22 21:48:43,172 - phoenix.telegram - INFO -    ⚠️ API call failures: 0
+2025-05-22 21:48:43,172 - phoenix.telegram - INFO -    📈 Address validation success rate: 100.0%
+2025-05-22 21:48:43,172 - phoenix.telegram - INFO - 🎉 FIXED ANALYSIS COMPLETE!
+2025-05-22 21:48:43,172 - phoenix.telegram - INFO - 📊 Total KOLs analyzed: 18
+2025-05-22 21:48:43,172 - phoenix.telegram - INFO - 📊 Total calls analyzed: 116
+2025-05-22 21:48:43,172 - phoenix.telegram - INFO - 📊 2x success rate: 33.6%
+2025-05-22 21:48:43,172 - phoenix.telegram - INFO - 📊 5x success rate: 15.5%
+2025-05-22 21:48:43,172 - phoenix - INFO - 📊 Analysis completed, exporting results...
+2025-05-22 21:48:43,172 - phoenix.telegram - INFO - ✅ Exported 18 KOLs to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv
+2025-05-22 21:48:43,172 - phoenix.telegram - INFO - ✅ Exported 116 detailed calls to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced_detailed_calls.csv
+2025-05-22 21:48:43,172 - phoenix.telegram - INFO - ✅ Exported summary with validation stats to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced_summary.txt
+2025-05-22 21:48:43,172 - phoenix.telegram - INFO - Disconnecting from Telegram...
+2025-05-22 21:48:43,172 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-22 21:48:43,172 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-22 21:48:43,203 - phoenix.telegram - INFO - Disconnected from Telegram
+2025-05-22 21:48:43,203 - phoenix - INFO - 📞 Disconnected from Telegram
+2025-05-22 21:48:43,203 - phoenix - INFO - ✅ FIXED enhanced SpyDefi analysis completed successfully!
+2025-05-22 21:48:43,203 - phoenix - INFO - 🎯 Enhanced analysis coverage: 116/116 tokens (100.0%)
+2025-05-22 21:48:43,203 - phoenix - INFO - 📉 Pullback data calculated for stop loss optimization
+2025-05-22 21:48:43,203 - phoenix - INFO - ⏱️ Time-to-2x data calculated for holding strategy
+2025-05-22 21:48:43,203 - phoenix - INFO - 📊 Sample enhanced KOL metrics:
+2025-05-22 21:48:43,203 - phoenix - INFO -    @kariusgemscalls: 29 enhanced, avg pullback: 73.54%, time to 2x: 57m 42s
+2025-05-22 21:48:43,203 - phoenix - INFO -    @hulkgemscalls_real: 13 enhanced, avg pullback: 87.76%, time to 2x: 1h 6m 3s
+2025-05-22 21:48:43,203 - phoenix - INFO -    @zen_call: 13 enhanced, avg pullback: 78.41%, time to 2x: 42m 53s
+2025-05-22 21:48:43,203 - phoenix - INFO - 📁 FIXED enhanced telegram analysis completed. Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv
+2025-05-22 21:48:43,513 - phoenix.export - INFO - Creating consolidated Excel export: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced_enhanced.xlsx
+2025-05-22 21:48:43,551 - phoenix.export - INFO - Successfully created Excel workbook: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced_enhanced.xlsx
+2025-05-22 21:48:43,551 - phoenix - INFO - 📊 FIXED enhanced Excel export completed: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced_enhanced.xlsx
+2025-05-22 22:00:45,063 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-22 22:00:45,063 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-22 22:00:45,641 - phoenix - INFO - ✅ Imported FIXED telegram module
+2025-05-22 22:00:45,641 - phoenix - INFO - 🚀 Starting FIXED enhanced SpyDefi analysis for the past 24 hours.
+2025-05-22 22:00:45,641 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv
+2025-05-22 22:00:45,641 - phoenix - INFO - 🎯 Enhanced features: FIXED Pullback % + Time-to-2x analysis
+2025-05-22 22:00:45,641 - phoenix - INFO - ✅ Birdeye API initialized successfully
+2025-05-22 22:00:45,641 - phoenix - INFO - ✅ Telegram scraper initialized successfully
+2025-05-22 22:00:45,641 - phoenix - INFO - 🎯 SpyDefi channel detected. Running FIXED enhanced analysis...
+2025-05-22 22:00:45,641 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-22 22:00:45,641 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-22 22:00:45,771 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-22 22:00:46,565 - phoenix.telegram - INFO - Connected to Telegram
+2025-05-22 22:00:46,565 - phoenix - INFO - 📞 Connected to Telegram
+2025-05-22 22:00:46,565 - phoenix.telegram - INFO - 🚀 STARTING REDESIGNED SPYDEFI ANALYSIS
+2025-05-22 22:00:46,579 - phoenix.telegram - INFO - 🎯 Phase 1: Discovering active KOLs from SpyDefi...
+2025-05-22 22:00:46,707 - phoenix.telegram - INFO - 📨 Scanning SpyDefi for active KOLs...
+2025-05-22 22:00:48,491 - phoenix.telegram - INFO - 📊 Processed 500 SpyDefi messages
+2025-05-22 22:00:48,491 - phoenix.telegram - INFO - 🔍 Found 184 unique KOLs
+2025-05-22 22:00:48,491 - phoenix.telegram - INFO - ✅ Found 184 active KOLs from SpyDefi
+2025-05-22 22:00:48,491 - phoenix.telegram - INFO - 🎯 Phase 2: Analyzing individual KOL channels (24 hours each)...
+2025-05-22 22:00:48,491 - phoenix.telegram - INFO - 📊 Found 184 total KOLs, filtering to 24 (top 50 with 5+ mentions)
+2025-05-22 22:00:48,491 - phoenix.telegram - INFO - 📊 Analyzing KOL 1/24: @kariusgemscalls (28 mentions)
+2025-05-22 22:00:48,491 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @kariusgemscalls
+2025-05-22 22:00:48,650 - phoenix.telegram - INFO - Scraping 1 days of messages from 2222968620
+2025-05-22 22:00:49,250 - phoenix.telegram - INFO - Finished retrieving messages from 2222968620. Found 77 relevant messages.
+2025-05-22 22:00:49,250 - phoenix.telegram - INFO - 📨 Found 77 messages in @kariusgemscalls's channel
+2025-05-22 22:00:49,250 - phoenix.telegram - INFO - 🎯 Found 63 token calls for @kariusgemscalls
+2025-05-22 22:00:49,250 - phoenix.telegram - INFO - 📊 Analyzing call 1/63 for @kariusgemscalls
+2025-05-22 22:00:49,965 - phoenix.telegram - INFO - 📊 Analyzing call 3/63 for @kariusgemscalls
+2025-05-22 22:00:50,634 - phoenix.telegram - INFO - 📊 Analyzing call 4/63 for @kariusgemscalls
+2025-05-22 22:00:51,290 - phoenix.telegram - INFO - 📊 Analyzing call 5/63 for @kariusgemscalls
+2025-05-22 22:00:51,963 - phoenix.telegram - INFO - 📊 Analyzing call 9/63 for @kariusgemscalls
+2025-05-22 22:00:52,636 - phoenix.telegram - INFO - 📊 Analyzing call 10/63 for @kariusgemscalls
+2025-05-22 22:00:53,293 - phoenix.telegram - INFO - 📊 Analyzing call 11/63 for @kariusgemscalls
+2025-05-22 22:00:53,964 - phoenix.telegram - INFO - 📊 Analyzing call 12/63 for @kariusgemscalls
+2025-05-22 22:00:54,668 - phoenix.telegram - INFO - 📊 Analyzing call 14/63 for @kariusgemscalls
+2025-05-22 22:00:55,309 - phoenix.telegram - INFO - 📊 Analyzing call 16/63 for @kariusgemscalls
+2025-05-22 22:00:55,965 - phoenix.telegram - INFO - 📊 Analyzing call 18/63 for @kariusgemscalls
+2025-05-22 22:00:56,653 - phoenix.telegram - INFO - 📊 Analyzing call 20/63 for @kariusgemscalls
+2025-05-22 22:00:57,326 - phoenix.telegram - INFO - 📊 Analyzing call 28/63 for @kariusgemscalls
+2025-05-22 22:00:57,998 - phoenix.telegram - INFO - 📊 Analyzing call 29/63 for @kariusgemscalls
+2025-05-22 22:00:58,639 - phoenix.telegram - INFO - 📊 Analyzing call 33/63 for @kariusgemscalls
+2025-05-22 22:00:59,295 - phoenix.telegram - INFO - 📊 Analyzing call 36/63 for @kariusgemscalls
+2025-05-22 22:00:59,952 - phoenix.telegram - INFO - 📊 Analyzing call 37/63 for @kariusgemscalls
+2025-05-22 22:01:00,605 - phoenix.telegram - INFO - 📊 Analyzing call 39/63 for @kariusgemscalls
+2025-05-22 22:01:01,277 - phoenix.telegram - INFO - 📊 Analyzing call 41/63 for @kariusgemscalls
+2025-05-22 22:01:01,934 - phoenix.telegram - INFO - 📊 Analyzing call 44/63 for @kariusgemscalls
+2025-05-22 22:01:02,606 - phoenix.telegram - INFO - 📊 Analyzing call 46/63 for @kariusgemscalls
+2025-05-22 22:01:03,278 - phoenix.telegram - INFO - 📊 Analyzing call 50/63 for @kariusgemscalls
+2025-05-22 22:01:03,934 - phoenix.telegram - INFO - 📊 Analyzing call 51/63 for @kariusgemscalls
+2025-05-22 22:01:04,623 - phoenix.telegram - INFO - 📊 Analyzing call 52/63 for @kariusgemscalls
+2025-05-22 22:01:05,308 - phoenix.telegram - INFO - 📊 Analyzing call 53/63 for @kariusgemscalls
+2025-05-22 22:01:05,965 - phoenix.telegram - INFO - 📊 Analyzing call 55/63 for @kariusgemscalls
+2025-05-22 22:01:06,622 - phoenix.telegram - INFO - 📊 Analyzing call 57/63 for @kariusgemscalls
+2025-05-22 22:01:07,357 - phoenix.telegram - INFO - 📊 Analyzing call 61/63 for @kariusgemscalls
+2025-05-22 22:01:08,045 - phoenix.telegram - INFO - 📊 Analyzing call 63/63 for @kariusgemscalls
+2025-05-22 22:01:08,723 - phoenix.telegram - INFO - ✅ @kariusgemscalls: 29 calls, 37.9% 2x rate
+2025-05-22 22:01:09,739 - phoenix.telegram - INFO - 📊 Analyzing KOL 2/24: @mrbigbagcalls (15 mentions)
+2025-05-22 22:01:09,739 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @mrbigbagcalls
+2025-05-22 22:01:09,879 - phoenix.telegram - INFO - Scraping 1 days of messages from 2051055592
+2025-05-22 22:01:10,415 - phoenix.telegram - INFO - Finished retrieving messages from 2051055592. Found 32 relevant messages.
+2025-05-22 22:01:10,415 - phoenix.telegram - INFO - 📨 Found 32 messages in @mrbigbagcalls's channel
+2025-05-22 22:01:10,415 - phoenix.telegram - INFO - 🎯 Found 22 token calls for @mrbigbagcalls
+2025-05-22 22:01:10,415 - phoenix.telegram - INFO - 📊 Analyzing call 3/22 for @mrbigbagcalls
+2025-05-22 22:01:10,571 - phoenix.birdeye - WARNING - No price history available for 9xtzzyJ8QSy5ePnYDCxE7ky3DG1vu61siQEA931bP4RK
+2025-05-22 22:01:11,728 - phoenix.telegram - INFO - 📊 Analyzing call 4/22 for @mrbigbagcalls
+2025-05-22 22:01:12,416 - phoenix.telegram - INFO - 📊 Analyzing call 6/22 for @mrbigbagcalls
+2025-05-22 22:01:13,073 - phoenix.telegram - INFO - 📊 Analyzing call 8/22 for @mrbigbagcalls
+2025-05-22 22:01:13,761 - phoenix.telegram - INFO - 📊 Analyzing call 12/22 for @mrbigbagcalls
+2025-05-22 22:01:14,402 - phoenix.telegram - INFO - 📊 Analyzing call 14/22 for @mrbigbagcalls
+2025-05-22 22:01:15,231 - phoenix.birdeye - WARNING - No price history available for 8XBSjs9dQ4RSRuchnn7AvXiJ5yxrsJKkCGvAVpvAu2C2
+2025-05-22 22:01:15,731 - phoenix.telegram - INFO - 📊 Analyzing call 19/22 for @mrbigbagcalls
+2025-05-22 22:01:16,560 - phoenix.birdeye - WARNING - No price history available for CGJvdjUhHy8oYC61PwcRmMD35zQD41s9pZP8z1QX9NvH
+2025-05-22 22:01:17,060 - phoenix.telegram - INFO - ✅ @mrbigbagcalls: 7 calls, 57.1% 2x rate
+2025-05-22 22:01:18,062 - phoenix.telegram - INFO - 📊 Analyzing KOL 3/24: @zen_call (15 mentions)
+2025-05-22 22:01:18,062 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @zen_call
+2025-05-22 22:01:18,187 - phoenix.telegram - INFO - Scraping 1 days of messages from 2177594166
+2025-05-22 22:01:18,749 - phoenix.telegram - INFO - Finished retrieving messages from 2177594166. Found 22 relevant messages.
+2025-05-22 22:01:18,749 - phoenix.telegram - INFO - 📨 Found 22 messages in @zen_call's channel
+2025-05-22 22:01:18,749 - phoenix.telegram - INFO - 🎯 Found 18 token calls for @zen_call
+2025-05-22 22:01:18,749 - phoenix.telegram - INFO - 📊 Analyzing call 1/18 for @zen_call
+2025-05-22 22:01:19,407 - phoenix.telegram - INFO - 📊 Analyzing call 3/18 for @zen_call
+2025-05-22 22:01:20,085 - phoenix.telegram - INFO - 📊 Analyzing call 4/18 for @zen_call
+2025-05-22 22:01:20,734 - phoenix.telegram - INFO - 📊 Analyzing call 7/18 for @zen_call
+2025-05-22 22:01:21,390 - phoenix.telegram - INFO - 📊 Analyzing call 8/18 for @zen_call
+2025-05-22 22:01:22,047 - phoenix.telegram - INFO - 📊 Analyzing call 9/18 for @zen_call
+2025-05-22 22:01:22,703 - phoenix.telegram - INFO - 📊 Analyzing call 10/18 for @zen_call
+2025-05-22 22:01:23,360 - phoenix.telegram - INFO - 📊 Analyzing call 11/18 for @zen_call
+2025-05-22 22:01:24,002 - phoenix.telegram - INFO - 📊 Analyzing call 12/18 for @zen_call
+2025-05-22 22:01:24,158 - phoenix.birdeye - WARNING - No price history available for AM1WbJFpLcf7ett918sqcU2DmLs6zsgdnrkFDPqTRNx9
+2025-05-22 22:01:25,362 - phoenix.telegram - INFO - 📊 Analyzing call 14/18 for @zen_call
+2025-05-22 22:01:26,018 - phoenix.telegram - INFO - 📊 Analyzing call 15/18 for @zen_call
+2025-05-22 22:01:26,690 - phoenix.telegram - INFO - 📊 Analyzing call 16/18 for @zen_call
+2025-05-22 22:01:27,331 - phoenix.telegram - INFO - 📊 Analyzing call 17/18 for @zen_call
+2025-05-22 22:01:27,504 - phoenix.birdeye - WARNING - No price history available for LLw5kPTkxpRDp91paFuTp2DXPqr3U4WGjmzgvdLTeCj
+2025-05-22 22:01:28,677 - phoenix.telegram - INFO - ✅ @zen_call: 13 calls, 46.1% 2x rate
+2025-05-22 22:01:29,679 - phoenix.telegram - INFO - 📊 Analyzing KOL 4/24: @michiosuzukiofsatoshicalls (13 mentions)
+2025-05-22 22:01:29,679 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @michiosuzukiofsatoshicalls
+2025-05-22 22:01:29,804 - phoenix.telegram - INFO - Scraping 1 days of messages from 1818702441
+2025-05-22 22:01:30,226 - phoenix.telegram - INFO - Finished retrieving messages from 1818702441. Found 26 relevant messages.
+2025-05-22 22:01:30,226 - phoenix.telegram - INFO - 📨 Found 26 messages in @michiosuzukiofsatoshicalls's channel
+2025-05-22 22:01:30,226 - phoenix.telegram - INFO - 🎯 Found 8 token calls for @michiosuzukiofsatoshicalls
+2025-05-22 22:01:30,226 - phoenix.telegram - INFO - 📊 Analyzing call 1/8 for @michiosuzukiofsatoshicalls
+2025-05-22 22:01:31,555 - phoenix.telegram - INFO - 📊 Analyzing call 2/8 for @michiosuzukiofsatoshicalls
+2025-05-22 22:01:32,899 - phoenix.telegram - INFO - 📊 Analyzing call 3/8 for @michiosuzukiofsatoshicalls
+2025-05-22 22:01:33,587 - phoenix.telegram - INFO - 📊 Analyzing call 4/8 for @michiosuzukiofsatoshicalls
+2025-05-22 22:01:34,275 - phoenix.telegram - INFO - 📊 Analyzing call 7/8 for @michiosuzukiofsatoshicalls
+2025-05-22 22:01:34,963 - phoenix.telegram - INFO - 📊 Analyzing call 8/8 for @michiosuzukiofsatoshicalls
+2025-05-22 22:01:35,695 - phoenix.telegram - INFO - ✅ @michiosuzukiofsatoshicalls: 8 calls, 0.0% 2x rate
+2025-05-22 22:01:36,696 - phoenix.telegram - INFO - 📊 Analyzing KOL 5/24: @topcallerschannel (12 mentions)
+2025-05-22 22:01:36,696 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @topcallerschannel
+2025-05-22 22:01:36,821 - phoenix.telegram - INFO - Scraping 1 days of messages from 1915321527
+2025-05-22 22:01:37,260 - phoenix.telegram - INFO - Finished retrieving messages from 1915321527. Found 54 relevant messages.
+2025-05-22 22:01:37,260 - phoenix.telegram - INFO - 📨 Found 54 messages in @topcallerschannel's channel
+2025-05-22 22:01:37,260 - phoenix.telegram - INFO - 🎯 Found 2 token calls for @topcallerschannel
+2025-05-22 22:01:37,260 - phoenix.telegram - INFO - 📊 Analyzing call 1/2 for @topcallerschannel
+2025-05-22 22:01:37,932 - phoenix.telegram - INFO - 📊 Analyzing call 2/2 for @topcallerschannel
+2025-05-22 22:01:38,590 - phoenix.telegram - INFO - ✅ @topcallerschannel: 2 calls, 0.0% 2x rate
+2025-05-22 22:01:39,590 - phoenix.telegram - INFO - 📊 Analyzing KOL 6/24: @vulturesriskyhunter (10 mentions)
+2025-05-22 22:01:39,590 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @vulturesriskyhunter
+2025-05-22 22:01:39,715 - phoenix.telegram - INFO - Scraping 1 days of messages from 1637465785
+2025-05-22 22:01:40,200 - phoenix.telegram - INFO - Finished retrieving messages from 1637465785. Found 7 relevant messages.
+2025-05-22 22:01:40,200 - phoenix.telegram - INFO - 📨 Found 7 messages in @vulturesriskyhunter's channel
+2025-05-22 22:01:40,200 - phoenix.telegram - INFO - 🎯 Found 0 token calls for @vulturesriskyhunter
+2025-05-22 22:01:40,200 - phoenix.telegram - INFO - ⚠️ @vulturesriskyhunter: No analyzable calls found
+2025-05-22 22:01:41,200 - phoenix.telegram - INFO - 📊 Analyzing KOL 7/24: @phoenixtrenching (8 mentions)
+2025-05-22 22:01:41,200 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @phoenixtrenching
+2025-05-22 22:01:41,326 - phoenix.telegram - INFO - Scraping 1 days of messages from 2501595604
+2025-05-22 22:01:41,732 - phoenix.telegram - INFO - Finished retrieving messages from 2501595604. Found 2 relevant messages.
+2025-05-22 22:01:41,732 - phoenix.telegram - INFO - 📨 Found 2 messages in @phoenixtrenching's channel
+2025-05-22 22:01:41,732 - phoenix.telegram - INFO - 🎯 Found 0 token calls for @phoenixtrenching
+2025-05-22 22:01:41,732 - phoenix.telegram - INFO - ⚠️ @phoenixtrenching: No analyzable calls found
+2025-05-22 22:01:42,733 - phoenix.telegram - INFO - 📊 Analyzing KOL 8/24: @recklessmoonshots (8 mentions)
+2025-05-22 22:01:42,733 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @recklessmoonshots
+2025-05-22 22:01:42,874 - phoenix.telegram - INFO - Scraping 1 days of messages from 1723127464
+2025-05-22 22:01:43,311 - phoenix.telegram - INFO - Finished retrieving messages from 1723127464. Found 2 relevant messages.
+2025-05-22 22:01:43,311 - phoenix.telegram - INFO - 📨 Found 2 messages in @recklessmoonshots's channel
+2025-05-22 22:01:43,311 - phoenix.telegram - INFO - 🎯 Found 1 token calls for @recklessmoonshots
+2025-05-22 22:01:43,311 - phoenix.telegram - INFO - ⚠️ @recklessmoonshots: No analyzable calls found
+2025-05-22 22:01:44,312 - phoenix.telegram - INFO - 📊 Analyzing KOL 9/24: @pepe_calls28 (8 mentions)
+2025-05-22 22:01:44,312 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @pepe_calls28
+2025-05-22 22:01:44,437 - phoenix.telegram - INFO - Scraping 1 days of messages from 2017857449
+2025-05-22 22:01:45,000 - phoenix.telegram - INFO - Finished retrieving messages from 2017857449. Found 16 relevant messages.
+2025-05-22 22:01:45,000 - phoenix.telegram - INFO - 📨 Found 16 messages in @pepe_calls28's channel
+2025-05-22 22:01:45,000 - phoenix.telegram - INFO - 🎯 Found 12 token calls for @pepe_calls28
+2025-05-22 22:01:45,000 - phoenix.telegram - INFO - 📊 Analyzing call 2/12 for @pepe_calls28
+2025-05-22 22:01:45,672 - phoenix.telegram - INFO - 📊 Analyzing call 3/12 for @pepe_calls28
+2025-05-22 22:01:46,344 - phoenix.telegram - INFO - 📊 Analyzing call 5/12 for @pepe_calls28
+2025-05-22 22:01:47,017 - phoenix.telegram - INFO - 📊 Analyzing call 6/12 for @pepe_calls28
+2025-05-22 22:01:47,689 - phoenix.telegram - INFO - 📊 Analyzing call 7/12 for @pepe_calls28
+2025-05-22 22:01:48,361 - phoenix.telegram - INFO - 📊 Analyzing call 9/12 for @pepe_calls28
+2025-05-22 22:01:49,018 - phoenix.telegram - INFO - 📊 Analyzing call 10/12 for @pepe_calls28
+2025-05-22 22:01:49,706 - phoenix.telegram - INFO - 📊 Analyzing call 11/12 for @pepe_calls28
+2025-05-22 22:01:50,414 - phoenix.telegram - INFO - 📊 Analyzing call 12/12 for @pepe_calls28
+2025-05-22 22:01:51,086 - phoenix.telegram - INFO - ✅ @pepe_calls28: 9 calls, 22.2% 2x rate
+2025-05-22 22:01:52,092 - phoenix.telegram - INFO - 📊 Analyzing KOL 10/24: @genesischain_calls (7 mentions)
+2025-05-22 22:01:52,092 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @genesischain_calls
+2025-05-22 22:01:52,233 - phoenix.telegram - INFO - Scraping 1 days of messages from 2086003521
+2025-05-22 22:01:52,734 - phoenix.telegram - INFO - Finished retrieving messages from 2086003521. Found 5 relevant messages.
+2025-05-22 22:01:52,734 - phoenix.telegram - INFO - 📨 Found 5 messages in @genesischain_calls's channel
+2025-05-22 22:01:52,734 - phoenix.telegram - INFO - 🎯 Found 1 token calls for @genesischain_calls
+2025-05-22 22:01:52,734 - phoenix.telegram - INFO - 📊 Analyzing call 1/1 for @genesischain_calls
+2025-05-22 22:01:52,890 - phoenix.birdeye - WARNING - No price history available for Ds83Vw4YrurG9GbJZivBfjPsYCxuStjPZixKV7DanqLW
+2025-05-22 22:01:53,390 - phoenix.telegram - INFO - ⚠️ @genesischain_calls: No analyzable calls found
+2025-05-22 22:01:54,391 - phoenix.telegram - INFO - 📊 Analyzing KOL 11/24: @michacalls (7 mentions)
+2025-05-22 22:01:54,391 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @michacalls
+2025-05-22 22:01:54,516 - phoenix.telegram - INFO - Scraping 1 days of messages from 1655443406
+2025-05-22 22:01:55,126 - phoenix.telegram - INFO - Finished retrieving messages from 1655443406. Found 42 relevant messages.
+2025-05-22 22:01:55,126 - phoenix.telegram - INFO - 📨 Found 42 messages in @michacalls's channel
+2025-05-22 22:01:55,126 - phoenix.telegram - INFO - 🎯 Found 33 token calls for @michacalls
+2025-05-22 22:01:55,126 - phoenix.telegram - INFO - 📊 Analyzing call 1/33 for @michacalls
+2025-05-22 22:01:55,798 - phoenix.telegram - INFO - 📊 Analyzing call 2/33 for @michacalls
+2025-05-22 22:01:56,470 - phoenix.telegram - INFO - 📊 Analyzing call 3/33 for @michacalls
+2025-05-22 22:01:57,127 - phoenix.telegram - INFO - 📊 Analyzing call 4/33 for @michacalls
+2025-05-22 22:01:57,783 - phoenix.telegram - INFO - 📊 Analyzing call 6/33 for @michacalls
+2025-05-22 22:01:57,924 - phoenix.birdeye - WARNING - No price history available for F6iRFSgDzdgTH7gUH5dzPHN8Ldjoj3iYKgNmyJwUpGa5
+2025-05-22 22:01:58,440 - phoenix.telegram - INFO - 📊 Analyzing call 9/33 for @michacalls
+2025-05-22 22:01:59,097 - phoenix.telegram - INFO - 📊 Analyzing call 19/33 for @michacalls
+2025-05-22 22:01:59,754 - phoenix.telegram - INFO - 📊 Analyzing call 22/33 for @michacalls
+2025-05-22 22:02:00,417 - phoenix.telegram - INFO - 📊 Analyzing call 23/33 for @michacalls
+2025-05-22 22:02:01,074 - phoenix.telegram - INFO - ✅ @michacalls: 8 calls, 12.5% 2x rate
+2025-05-22 22:02:02,074 - phoenix.telegram - INFO - 📊 Analyzing KOL 12/24: @poseidon_degen_calls (7 mentions)
+2025-05-22 22:02:02,074 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @poseidon_degen_calls
+2025-05-22 22:02:02,293 - phoenix.telegram - INFO - Scraping 1 days of messages from 1869537526
+2025-05-22 22:02:03,077 - phoenix.telegram - INFO - Finished retrieving messages from 1869537526. Found 15 relevant messages.
+2025-05-22 22:02:03,077 - phoenix.telegram - INFO - 📨 Found 15 messages in @poseidon_degen_calls's channel
+2025-05-22 22:02:03,077 - phoenix.telegram - INFO - 🎯 Found 15 token calls for @poseidon_degen_calls
+2025-05-22 22:02:03,077 - phoenix.telegram - INFO - 📊 Analyzing call 1/15 for @poseidon_degen_calls
+2025-05-22 22:02:03,744 - phoenix.telegram - INFO - 📊 Analyzing call 2/15 for @poseidon_degen_calls
+2025-05-22 22:02:04,401 - phoenix.telegram - INFO - 📊 Analyzing call 9/15 for @poseidon_degen_calls
+2025-05-22 22:02:05,063 - phoenix.telegram - INFO - 📊 Analyzing call 10/15 for @poseidon_degen_calls
+2025-05-22 22:02:05,726 - phoenix.telegram - INFO - 📊 Analyzing call 11/15 for @poseidon_degen_calls
+2025-05-22 22:02:06,409 - phoenix.telegram - INFO - 📊 Analyzing call 12/15 for @poseidon_degen_calls
+2025-05-22 22:02:07,081 - phoenix.telegram - INFO - 📊 Analyzing call 13/15 for @poseidon_degen_calls
+2025-05-22 22:02:07,738 - phoenix.telegram - INFO - ✅ @poseidon_degen_calls: 7 calls, 14.3% 2x rate
+2025-05-22 22:02:08,739 - phoenix.telegram - INFO - 📊 Analyzing KOL 13/24: @kiritomoonshots (7 mentions)
+2025-05-22 22:02:08,739 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @kiritomoonshots
+2025-05-22 22:02:08,864 - phoenix.telegram - INFO - Scraping 1 days of messages from 1437509797
+2025-05-22 22:02:09,333 - phoenix.telegram - INFO - Finished retrieving messages from 1437509797. Found 3 relevant messages.
+2025-05-22 22:02:09,333 - phoenix.telegram - INFO - 📨 Found 3 messages in @kiritomoonshots's channel
+2025-05-22 22:02:09,333 - phoenix.telegram - INFO - 🎯 Found 0 token calls for @kiritomoonshots
+2025-05-22 22:02:09,333 - phoenix.telegram - INFO - ⚠️ @kiritomoonshots: No analyzable calls found
+2025-05-22 22:02:10,334 - phoenix.telegram - INFO - 📊 Analyzing KOL 14/24: @veigargambles (6 mentions)
+2025-05-22 22:02:10,334 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @veigargambles
+2025-05-22 22:02:10,459 - phoenix.telegram - INFO - Scraping 1 days of messages from 1671616196
+2025-05-22 22:02:10,882 - phoenix.telegram - INFO - Finished retrieving messages from 1671616196. Found 5 relevant messages.
+2025-05-22 22:02:10,882 - phoenix.telegram - INFO - 📨 Found 5 messages in @veigargambles's channel
+2025-05-22 22:02:10,882 - phoenix.telegram - INFO - 🎯 Found 4 token calls for @veigargambles
+2025-05-22 22:02:10,882 - phoenix.telegram - INFO - 📊 Analyzing call 2/4 for @veigargambles
+2025-05-22 22:02:11,085 - phoenix.birdeye - WARNING - No price history available for 4X5YeSRinsiUeg7dbSCg1jU4zSfaz24uy39L5FkSr9vs
+2025-05-22 22:02:11,601 - phoenix.telegram - INFO - 📊 Analyzing call 3/4 for @veigargambles
+2025-05-22 22:02:12,274 - phoenix.telegram - INFO - 📊 Analyzing call 4/4 for @veigargambles
+2025-05-22 22:02:12,930 - phoenix.telegram - INFO - ✅ @veigargambles: 2 calls, 0.0% 2x rate
+2025-05-22 22:02:13,931 - phoenix.telegram - INFO - 📊 Analyzing KOL 15/24: @marksgems (6 mentions)
+2025-05-22 22:02:13,931 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @marksgems
+2025-05-22 22:02:14,057 - phoenix.telegram - INFO - Scraping 1 days of messages from 1508785153
+2025-05-22 22:02:14,525 - phoenix.telegram - INFO - Finished retrieving messages from 1508785153. Found 70 relevant messages.
+2025-05-22 22:02:14,525 - phoenix.telegram - INFO - 📨 Found 70 messages in @marksgems's channel
+2025-05-22 22:02:14,525 - phoenix.telegram - INFO - 🎯 Found 48 token calls for @marksgems
+2025-05-22 22:02:14,525 - phoenix.telegram - INFO - 📊 Analyzing call 2/48 for @marksgems
+2025-05-22 22:02:15,183 - phoenix.telegram - INFO - 📊 Analyzing call 3/48 for @marksgems
+2025-05-22 22:02:15,839 - phoenix.telegram - INFO - 📊 Analyzing call 5/48 for @marksgems
+2025-05-22 22:02:16,497 - phoenix.telegram - INFO - 📊 Analyzing call 6/48 for @marksgems
+2025-05-22 22:02:16,668 - phoenix.birdeye - WARNING - No price history available for hx6u8TG5psJgUDiRDh8wX4pp7xVDi59A8WA8NUtyqJX
+2025-05-22 22:02:17,184 - phoenix.telegram - INFO - 📊 Analyzing call 7/48 for @marksgems
+2025-05-22 22:02:17,325 - phoenix.birdeye - WARNING - No price history available for CyGmcwBUHxdrDuBFo8eyd6v9C6Qk2mt85SgETcDXq64x
+2025-05-22 22:02:17,825 - phoenix.telegram - INFO - 📊 Analyzing call 8/48 for @marksgems
+2025-05-22 22:02:18,497 - phoenix.telegram - INFO - 📊 Analyzing call 13/48 for @marksgems
+2025-05-22 22:02:18,685 - phoenix.birdeye - WARNING - No price history available for 4PJDypg3acg3WAMjGb9TSX7JDuMzrChnvgN2jchtYigv
+2025-05-22 22:02:19,186 - phoenix.telegram - INFO - 📊 Analyzing call 28/48 for @marksgems
+2025-05-22 22:02:19,858 - phoenix.telegram - INFO - 📊 Analyzing call 36/48 for @marksgems
+2025-05-22 22:02:20,016 - phoenix.birdeye - WARNING - No price history available for H31bK4UofACwBbrBNUxEUnY2jbZS2njJa3JH15BmpKVk
+2025-05-22 22:02:20,527 - phoenix.telegram - INFO - 📊 Analyzing call 37/48 for @marksgems
+2025-05-22 22:02:21,199 - phoenix.telegram - INFO - 📊 Analyzing call 38/48 for @marksgems
+2025-05-22 22:02:21,872 - phoenix.telegram - INFO - 📊 Analyzing call 39/48 for @marksgems
+2025-05-22 22:02:22,544 - phoenix.telegram - INFO - 📊 Analyzing call 40/48 for @marksgems
+2025-05-22 22:02:23,216 - phoenix.telegram - INFO - ✅ @marksgems: 9 calls, 22.2% 2x rate
+2025-05-22 22:02:24,216 - phoenix.telegram - INFO - 📊 Analyzing KOL 16/24: @hermesapes (5 mentions)
+2025-05-22 22:02:24,216 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @hermesapes
+2025-05-22 22:02:24,341 - phoenix.telegram - INFO - Scraping 1 days of messages from 2323850439
+2025-05-22 22:02:24,654 - phoenix.telegram - INFO - Finished retrieving messages from 2323850439. Found 3 relevant messages.
+2025-05-22 22:02:24,654 - phoenix.telegram - INFO - 📨 Found 3 messages in @hermesapes's channel
+2025-05-22 22:02:24,654 - phoenix.telegram - INFO - 🎯 Found 2 token calls for @hermesapes
+2025-05-22 22:02:24,654 - phoenix.telegram - INFO - ⚠️ @hermesapes: No analyzable calls found
+2025-05-22 22:02:25,654 - phoenix.telegram - INFO - 📊 Analyzing KOL 17/24: @cluelesscalls (5 mentions)
+2025-05-22 22:02:25,654 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @cluelesscalls
+2025-05-22 22:02:25,779 - phoenix.telegram - INFO - Scraping 1 days of messages from 1742476790
+2025-05-22 22:02:26,311 - phoenix.telegram - INFO - Finished retrieving messages from 1742476790. Found 9 relevant messages.
+2025-05-22 22:02:26,311 - phoenix.telegram - INFO - 📨 Found 9 messages in @cluelesscalls's channel
+2025-05-22 22:02:26,311 - phoenix.telegram - INFO - 🎯 Found 4 token calls for @cluelesscalls
+2025-05-22 22:02:26,311 - phoenix.telegram - INFO - 📊 Analyzing call 2/4 for @cluelesscalls
+2025-05-22 22:02:26,968 - phoenix.telegram - INFO - ✅ @cluelesscalls: 1 calls, 0.0% 2x rate
+2025-05-22 22:02:27,969 - phoenix.telegram - INFO - 📊 Analyzing KOL 18/24: @killerscalls69 (5 mentions)
+2025-05-22 22:02:27,969 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @killerscalls69
+2025-05-22 22:02:28,094 - phoenix.telegram - INFO - Scraping 1 days of messages from 1526488093
+2025-05-22 22:02:28,484 - phoenix.telegram - INFO - Finished retrieving messages from 1526488093. Found 1 relevant messages.
+2025-05-22 22:02:28,484 - phoenix.telegram - INFO - 📨 Found 1 messages in @killerscalls69's channel
+2025-05-22 22:02:28,484 - phoenix.telegram - INFO - 🎯 Found 1 token calls for @killerscalls69
+2025-05-22 22:02:28,484 - phoenix.telegram - INFO - 📊 Analyzing call 1/1 for @killerscalls69
+2025-05-22 22:02:28,671 - phoenix.birdeye - WARNING - No price history available for 4m1vWsxQes9GCGeeFtW97agh65dbpDuPJ4DUgsoEbrj2
+2025-05-22 22:02:29,173 - phoenix.telegram - INFO - ⚠️ @killerscalls69: No analyzable calls found
+2025-05-22 22:02:30,173 - phoenix.telegram - INFO - 📊 Analyzing KOL 19/24: @marshmellow100xcalls (5 mentions)
+2025-05-22 22:02:30,173 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @marshmellow100xcalls
+2025-05-22 22:02:30,298 - phoenix.telegram - INFO - Scraping 1 days of messages from 1693174179
+2025-05-22 22:02:30,814 - phoenix.telegram - INFO - Finished retrieving messages from 1693174179. Found 10 relevant messages.
+2025-05-22 22:02:30,814 - phoenix.telegram - INFO - 📨 Found 10 messages in @marshmellow100xcalls's channel
+2025-05-22 22:02:30,814 - phoenix.telegram - INFO - 🎯 Found 7 token calls for @marshmellow100xcalls
+2025-05-22 22:02:30,814 - phoenix.telegram - INFO - 📊 Analyzing call 3/7 for @marshmellow100xcalls
+2025-05-22 22:02:31,488 - phoenix.telegram - INFO - 📊 Analyzing call 5/7 for @marshmellow100xcalls
+2025-05-22 22:02:32,145 - phoenix.telegram - INFO - 📊 Analyzing call 7/7 for @marshmellow100xcalls
+2025-05-22 22:02:32,785 - phoenix.telegram - INFO - ✅ @marshmellow100xcalls: 3 calls, 0.0% 2x rate
+2025-05-22 22:02:33,786 - phoenix.telegram - INFO - 📊 Analyzing KOL 20/24: @thanosgambles (5 mentions)
+2025-05-22 22:02:33,786 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @thanosgambles
+2025-05-22 22:02:33,911 - phoenix.telegram - INFO - Scraping 1 days of messages from 1730838033
+2025-05-22 22:02:34,286 - phoenix.telegram - INFO - Finished retrieving messages from 1730838033. Found 4 relevant messages.
+2025-05-22 22:02:34,286 - phoenix.telegram - INFO - 📨 Found 4 messages in @thanosgambles's channel
+2025-05-22 22:02:34,286 - phoenix.telegram - INFO - 🎯 Found 3 token calls for @thanosgambles
+2025-05-22 22:02:34,286 - phoenix.telegram - INFO - 📊 Analyzing call 2/3 for @thanosgambles
+2025-05-22 22:02:34,943 - phoenix.telegram - INFO - ✅ @thanosgambles: 1 calls, 100.0% 2x rate
+2025-05-22 22:02:35,956 - phoenix.telegram - INFO - 📊 Analyzing KOL 21/24: @mredudotfun (5 mentions)
+2025-05-22 22:02:35,956 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @mredudotfun
+2025-05-22 22:02:36,081 - phoenix.telegram - INFO - Scraping 1 days of messages from 1925213644
+2025-05-22 22:02:36,471 - phoenix.telegram - INFO - Finished retrieving messages from 1925213644. Found 11 relevant messages.
+2025-05-22 22:02:36,487 - phoenix.telegram - INFO - 📨 Found 11 messages in @mredudotfun's channel
+2025-05-22 22:02:36,487 - phoenix.telegram - INFO - 🎯 Found 5 token calls for @mredudotfun
+2025-05-22 22:02:36,487 - phoenix.telegram - INFO - ⚠️ @mredudotfun: No analyzable calls found
+2025-05-22 22:02:37,488 - phoenix.telegram - INFO - 📊 Analyzing KOL 22/24: @nikola_calls (5 mentions)
+2025-05-22 22:02:37,488 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @nikola_calls
+2025-05-22 22:02:37,613 - phoenix.telegram - INFO - Scraping 1 days of messages from 2000078706
+2025-05-22 22:02:38,144 - phoenix.telegram - INFO - Finished retrieving messages from 2000078706. Found 14 relevant messages.
+2025-05-22 22:02:38,144 - phoenix.telegram - INFO - 📨 Found 14 messages in @nikola_calls's channel
+2025-05-22 22:02:38,144 - phoenix.telegram - INFO - 🎯 Found 14 token calls for @nikola_calls
+2025-05-22 22:02:38,144 - phoenix.telegram - INFO - 📊 Analyzing call 7/14 for @nikola_calls
+2025-05-22 22:02:38,801 - phoenix.telegram - INFO - 📊 Analyzing call 8/14 for @nikola_calls
+2025-05-22 22:02:39,489 - phoenix.telegram - INFO - 📊 Analyzing call 9/14 for @nikola_calls
+2025-05-22 22:02:40,161 - phoenix.telegram - INFO - 📊 Analyzing call 10/14 for @nikola_calls
+2025-05-22 22:02:40,818 - phoenix.telegram - INFO - 📊 Analyzing call 12/14 for @nikola_calls
+2025-05-22 22:02:41,505 - phoenix.telegram - INFO - 📊 Analyzing call 13/14 for @nikola_calls
+2025-05-22 22:02:42,193 - phoenix.telegram - INFO - ✅ @nikola_calls: 6 calls, 50.0% 2x rate
+2025-05-22 22:02:43,194 - phoenix.telegram - INFO - 📊 Analyzing KOL 23/24: @azcalls (5 mentions)
+2025-05-22 22:02:43,194 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @azcalls
+2025-05-22 22:02:43,319 - phoenix.telegram - INFO - Scraping 1 days of messages from 1835256988
+2025-05-22 22:02:43,850 - phoenix.telegram - INFO - Finished retrieving messages from 1835256988. Found 1 relevant messages.
+2025-05-22 22:02:43,850 - phoenix.telegram - INFO - 📨 Found 1 messages in @azcalls's channel
+2025-05-22 22:02:43,850 - phoenix.telegram - INFO - 🎯 Found 0 token calls for @azcalls
+2025-05-22 22:02:43,850 - phoenix.telegram - INFO - ⚠️ @azcalls: No analyzable calls found
+2025-05-22 22:02:44,852 - phoenix.telegram - INFO - 📊 Analyzing KOL 24/24: @yasuogems (5 mentions)
+2025-05-22 22:02:44,852 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @yasuogems
+2025-05-22 22:02:44,977 - phoenix.telegram - INFO - Scraping 1 days of messages from 2145843851
+2025-05-22 22:02:45,399 - phoenix.telegram - INFO - Finished retrieving messages from 2145843851. Found 6 relevant messages.
+2025-05-22 22:02:45,399 - phoenix.telegram - INFO - 📨 Found 6 messages in @yasuogems's channel
+2025-05-22 22:02:45,399 - phoenix.telegram - INFO - 🎯 Found 3 token calls for @yasuogems
+2025-05-22 22:02:45,399 - phoenix.telegram - INFO - ⚠️ @yasuogems: No analyzable calls found
+2025-05-22 22:02:46,400 - phoenix.telegram - INFO - 🎯 Phase 3: Ranking KOLs and calculating final metrics...
+2025-05-22 22:02:46,400 - phoenix.telegram - INFO - 🏆 TOP 10 KOLs by composite score:
+2025-05-22 22:02:46,400 - phoenix.telegram - INFO -    1. @kariusgemscalls: 274.1 score, 37.9% 2x rate, 29 calls
+2025-05-22 22:02:46,400 - phoenix.telegram - INFO -    2. @zen_call: 261.6 score, 46.1% 2x rate, 13 calls
+2025-05-22 22:02:46,400 - phoenix.telegram - INFO -    3. @nikola_calls: 239.4 score, 50.0% 2x rate, 6 calls
+2025-05-22 22:02:46,400 - phoenix.telegram - INFO -    4. @pepe_calls28: 214.8 score, 22.2% 2x rate, 9 calls
+2025-05-22 22:02:46,400 - phoenix.telegram - INFO -    5. @michacalls: 154.7 score, 12.5% 2x rate, 8 calls
+2025-05-22 22:02:46,400 - phoenix.telegram - INFO -    6. @poseidon_degen_calls: 146.3 score, 14.3% 2x rate, 7 calls
+2025-05-22 22:02:46,400 - phoenix.telegram - INFO -    7. @mrbigbagcalls: 145.2 score, 57.1% 2x rate, 7 calls
+2025-05-22 22:02:46,400 - phoenix.telegram - INFO -    8. @marksgems: 142.2 score, 22.2% 2x rate, 9 calls
+2025-05-22 22:02:46,400 - phoenix.telegram - INFO -    9. @thanosgambles: 93.6 score, 100.0% 2x rate, 1 calls
+2025-05-22 22:02:46,400 - phoenix.telegram - INFO -    10. @michiosuzukiofsatoshicalls: 88.4 score, 0.0% 2x rate, 8 calls
+2025-05-22 22:02:46,400 - phoenix.telegram - INFO - 🎯 Phase 4: Getting channel IDs for TOP 10 KOLs...
+2025-05-22 22:02:46,400 - phoenix.telegram - INFO - 📞 Getting channel IDs for TOP 10 KOLs...
+2025-05-22 22:02:46,400 - phoenix.telegram - INFO - Getting channel ID for TOP 10 KOL 1/10: @kariusgemscalls
+2025-05-22 22:02:46,400 - phoenix.telegram - INFO - ✅ Found channel for @kariusgemscalls: 2222968620
+2025-05-22 22:02:48,418 - phoenix.telegram - INFO - Getting channel ID for TOP 10 KOL 2/10: @zen_call
+2025-05-22 22:02:48,418 - phoenix.telegram - INFO - ✅ Found channel for @zen_call: 2177594166
+2025-05-22 22:02:50,419 - phoenix.telegram - INFO - Getting channel ID for TOP 10 KOL 3/10: @nikola_calls
+2025-05-22 22:02:50,419 - phoenix.telegram - INFO - ✅ Found channel for @nikola_calls: 2000078706
+2025-05-22 22:02:52,421 - phoenix.telegram - INFO - Getting channel ID for TOP 10 KOL 4/10: @pepe_calls28
+2025-05-22 22:02:52,421 - phoenix.telegram - INFO - ✅ Found channel for @pepe_calls28: 2017857449
+2025-05-22 22:02:54,421 - phoenix.telegram - INFO - Getting channel ID for TOP 10 KOL 5/10: @michacalls
+2025-05-22 22:02:54,421 - phoenix.telegram - INFO - ✅ Found channel for @michacalls: 1655443406
+2025-05-22 22:02:56,422 - phoenix.telegram - INFO - Getting channel ID for TOP 10 KOL 6/10: @poseidon_degen_calls
+2025-05-22 22:02:56,422 - phoenix.telegram - INFO - ✅ Found channel for @poseidon_degen_calls: 1869537526
+2025-05-22 22:02:58,422 - phoenix.telegram - INFO - Getting channel ID for TOP 10 KOL 7/10: @mrbigbagcalls
+2025-05-22 22:02:58,422 - phoenix.telegram - INFO - ✅ Found channel for @mrbigbagcalls: 2051055592
+2025-05-22 22:03:00,431 - phoenix.telegram - INFO - Getting channel ID for TOP 10 KOL 8/10: @marksgems
+2025-05-22 22:03:00,431 - phoenix.telegram - INFO - ✅ Found channel for @marksgems: 1508785153
+2025-05-22 22:03:02,440 - phoenix.telegram - INFO - Getting channel ID for TOP 10 KOL 9/10: @thanosgambles
+2025-05-22 22:03:02,440 - phoenix.telegram - INFO - ✅ Found channel for @thanosgambles: 1730838033
+2025-05-22 22:03:04,441 - phoenix.telegram - INFO - Getting channel ID for TOP 10 KOL 10/10: @michiosuzukiofsatoshicalls
+2025-05-22 22:03:04,441 - phoenix.telegram - INFO - ✅ Found channel for @michiosuzukiofsatoshicalls: 1818702441
+2025-05-22 22:03:04,441 - phoenix.telegram - INFO - 📊 VALIDATION STATISTICS:
+2025-05-22 22:03:04,441 - phoenix.telegram - INFO -    📍 Contract extraction attempts: 1444
+2025-05-22 22:03:04,441 - phoenix.telegram - INFO -    ✅ Valid addresses found: 786
+2025-05-22 22:03:04,441 - phoenix.telegram - INFO -    ❌ Invalid addresses rejected: 146
+2025-05-22 22:03:04,441 - phoenix.telegram - INFO -    📞 Birdeye API calls made: 118
+2025-05-22 22:03:04,441 - phoenix.telegram - INFO -    ⚠️ API call failures: 13
+2025-05-22 22:03:04,441 - phoenix.telegram - INFO -    📈 Address validation success rate: 84.3%
+2025-05-22 22:03:04,441 - phoenix.telegram - INFO - 🎉 REDESIGNED ANALYSIS COMPLETE!
+2025-05-22 22:03:04,441 - phoenix.telegram - INFO - 📊 Total KOLs analyzed: 14
+2025-05-22 22:03:04,441 - phoenix.telegram - INFO - 📊 Total calls analyzed: 105
+2025-05-22 22:03:04,441 - phoenix.telegram - INFO - 📊 2x success rate: 29.5%
+2025-05-22 22:03:04,441 - phoenix.telegram - INFO - 📊 5x success rate: 14.3%
+2025-05-22 22:03:04,441 - phoenix - INFO - 📊 Analysis completed, exporting results...
+2025-05-22 22:03:04,441 - phoenix.telegram - INFO - ✅ Exported 14 KOLs to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv
+2025-05-22 22:03:04,441 - phoenix.telegram - INFO - ✅ Exported 105 detailed calls to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced_detailed_calls.csv
+2025-05-22 22:03:04,441 - phoenix.telegram - INFO - ✅ Exported summary with validation stats to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced_summary.txt
+2025-05-22 22:03:04,441 - phoenix.telegram - INFO - Disconnecting from Telegram...
+2025-05-22 22:03:04,441 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-22 22:03:04,441 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-22 22:03:04,457 - phoenix.telegram - INFO - Disconnected from Telegram
+2025-05-22 22:03:04,457 - phoenix - INFO - 📞 Disconnected from Telegram
+2025-05-22 22:03:04,457 - phoenix - INFO - ✅ FIXED enhanced SpyDefi analysis completed successfully!
+2025-05-22 22:03:04,457 - phoenix - INFO - 🎯 Enhanced analysis coverage: 105/105 tokens (100.0%)
+2025-05-22 22:03:04,457 - phoenix - INFO - 📉 Pullback data calculated for stop loss optimization
+2025-05-22 22:03:04,457 - phoenix - INFO - ⏱️ Time-to-2x data calculated for holding strategy
+2025-05-22 22:03:04,457 - phoenix - INFO - 📊 Sample enhanced KOL metrics:
+2025-05-22 22:03:04,457 - phoenix - INFO -    @kariusgemscalls: 29 enhanced, avg pullback: 73.85%, time to 2x: 57m 13s
+2025-05-22 22:03:04,457 - phoenix - INFO -    @zen_call: 13 enhanced, avg pullback: 78.41%, time to 2x: 42m 53s
+2025-05-22 22:03:04,457 - phoenix - INFO -    @nikola_calls: 6 enhanced, avg pullback: 83.0%, time to 2x: 1h 6m 5s
+2025-05-22 22:03:04,457 - phoenix - INFO - 📁 FIXED enhanced telegram analysis completed. Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv
+2025-05-22 22:03:04,754 - phoenix.export - INFO - Creating consolidated Excel export: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced_enhanced.xlsx
+2025-05-22 22:03:04,801 - phoenix.export - INFO - Successfully created Excel workbook: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced_enhanced.xlsx
+2025-05-22 22:03:04,801 - phoenix - INFO - 📊 FIXED enhanced Excel export completed: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced_enhanced.xlsx

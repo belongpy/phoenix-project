@@ -6,6 +6,8 @@ This module implements the complete redesigned SpyDefi analysis process:
 2. Individual KOL Analysis (24h each) -> Real performance metrics  
 3. Enhanced Metrics Calculation -> Time-to-2x, pullback data
 4. Consistent TOP 10 Ranking -> Channel ID collection
+
+FIXED: Enhanced contract address validation to prevent Birdeye API errors
 """
 
 import re
@@ -13,6 +15,7 @@ import csv
 import os
 import logging
 import asyncio
+import base58  # Added for address validation
 from typing import Dict, List, Any, Optional, Set, Tuple
 from datetime import datetime, timedelta, timezone
 from telethon import TelegramClient
@@ -65,6 +68,15 @@ class TelegramScraper:
         self.spydefi_message_limit = 1000
         self.kol_channel_cache = {}
         self.birdeye_api = None  # Will be set externally
+        
+        # Track validation statistics
+        self.validation_stats = {
+            "total_extracted": 0,
+            "valid_addresses": 0,
+            "invalid_addresses": 0,
+            "birdeye_calls": 0,
+            "birdeye_failures": 0
+        }
     
     async def connect(self) -> None:
         """Connect to Telegram API."""
@@ -82,29 +94,155 @@ class TelegramScraper:
             self.client = None
             logger.info("Disconnected from Telegram")
     
+    def _is_valid_solana_address(self, address: str) -> bool:
+        """
+        Validate if a string is a valid Solana address.
+        
+        Solana addresses are base58 encoded and typically 32-44 characters.
+        They should decode to exactly 32 bytes.
+        """
+        try:
+            # Basic length check
+            if not address or len(address) < 32 or len(address) > 44:
+                return False
+            
+            # Check if it contains only valid base58 characters
+            valid_chars = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
+            if not all(c in valid_chars for c in address):
+                return False
+            
+            # Additional checks for obviously invalid patterns
+            # All lowercase addresses are usually invalid (except pump.fun tokens)
+            if address.islower() and not address.endswith('pump'):
+                return False
+            
+            # Try to decode as base58
+            try:
+                decoded = base58.b58decode(address)
+                
+                # Solana addresses should decode to 32 bytes
+                if len(decoded) == 32:
+                    return True
+                
+                # Some addresses might be longer (with checksum or program-derived addresses)
+                # but should be at least 32 bytes
+                return len(decoded) >= 32
+                
+            except:
+                # If base58 decode fails, do additional checks
+                # Check for reasonable character distribution
+                uppercase_count = sum(1 for c in address if c.isupper())
+                lowercase_count = sum(1 for c in address if c.islower())
+                digit_count = sum(1 for c in address if c.isdigit())
+                
+                # Valid Solana addresses typically have a mix of upper, lower, and digits
+                if uppercase_count > 0 and (lowercase_count > 0 or digit_count > 0):
+                    return True
+                
+                # Special case for pump.fun addresses which might be different
+                if address.endswith('pump'):
+                    return True
+                
+                return False
+            
+        except Exception as e:
+            logger.debug(f"Address validation error for {address}: {str(e)}")
+            return False
+    
     def extract_contract_addresses(self, text: str) -> List[str]:
-        """Extract potential contract addresses from text."""
+        """Extract potential contract addresses from text with enhanced validation."""
         addresses = set()
+        self.validation_stats["total_extracted"] += 1
+        
+        # Enhanced contract patterns with better specificity
+        CONTRACT_PATTERNS = [
+            # Specific patterns for contract mentions
+            r'(?i)contract(?:\s*address)?[:\s]+([1-9A-HJ-NP-Za-km-z]{32,44})',
+            r'(?i)token(?:\s*address)?[:\s]+([1-9A-HJ-NP-Za-km-z]{32,44})',
+            r'(?i)CA\s*(?:is|:)?\s*([1-9A-HJ-NP-Za-km-z]{32,44})',
+            r'(?i)address[:\s]+([1-9A-HJ-NP-Za-km-z]{32,44})',
+            r'(?i)Ca:?\s*([1-9A-HJ-NP-Za-km-z]{32,44})',
+            r'(?i)Pump:?\s*([1-9A-HJ-NP-Za-km-z]{32,44})',
+            r'(?i)Token:?\s*([1-9A-HJ-NP-Za-km-z]{32,44})',
+            # Pattern for pump.fun addresses
+            r'\b([1-9A-HJ-NP-Za-km-z]{32,44}pump)\b',
+        ]
         
         # Try specific contract patterns first
         for pattern in CONTRACT_PATTERNS:
             matches = re.finditer(pattern, text)
             for match in matches:
                 if len(match.groups()) > 0:
-                    addresses.add(match.group(1))
+                    address = match.group(1)
+                    # Validate the address
+                    if self._is_valid_solana_address(address):
+                        addresses.add(address)
+                        self.validation_stats["valid_addresses"] += 1
+                    else:
+                        self.validation_stats["invalid_addresses"] += 1
+                        logger.debug(f"❌ Invalid address rejected: {address}")
         
         # Look for URLs that might contain contract addresses
-        url_pattern = r'https?://(?:www\.)?(?:dexscreener\.com|birdeye\.so|solscan\.io|explorer\.solana\.com)/[^"\s]+?([1-9A-HJ-NP-Za-km-z]{32,44})'
-        url_matches = re.finditer(url_pattern, text)
-        for match in url_matches:
-            if len(match.groups()) > 0:
-                addresses.add(match.group(1))
+        url_patterns = [
+            r'https?://(?:www\.)?dexscreener\.com/solana/([1-9A-HJ-NP-Za-km-z]{32,44})',
+            r'https?://(?:www\.)?birdeye\.so/token/([1-9A-HJ-NP-Za-km-z]{32,44})',
+            r'https?://(?:www\.)?solscan\.io/token/([1-9A-HJ-NP-Za-km-z]{32,44})',
+            r'https?://(?:www\.)?explorer\.solana\.com/address/([1-9A-HJ-NP-Za-km-z]{32,44})',
+            r'https?://pump\.fun/([1-9A-HJ-NP-Za-km-z]{32,44})',
+            r'https?://(?:www\.)?pump\.fun/coin/([1-9A-HJ-NP-Za-km-z]{32,44})',
+        ]
         
-        # If no matches found with specific patterns, try generic Solana address pattern
-        if not addresses:
-            matches = re.finditer(SOLANA_ADDRESS_PATTERN, text)
+        for pattern in url_patterns:
+            matches = re.finditer(pattern, text, re.IGNORECASE)
             for match in matches:
-                addresses.add(match.group(0))
+                if len(match.groups()) > 0:
+                    address = match.group(1)
+                    if self._is_valid_solana_address(address):
+                        addresses.add(address)
+                        self.validation_stats["valid_addresses"] += 1
+                    else:
+                        self.validation_stats["invalid_addresses"] += 1
+                        logger.debug(f"❌ Invalid URL address rejected: {address}")
+        
+        # If no matches found with specific patterns, try generic pattern
+        # but with stricter validation
+        if not addresses:
+            # Generic Solana address pattern
+            generic_pattern = r'\b([1-9A-HJ-NP-Za-km-z]{32,44})\b'
+            matches = re.finditer(generic_pattern, text)
+            
+            for match in matches:
+                address = match.group(0)
+                
+                # Additional heuristics for generic matches
+                # 1. Must have mixed case (not all lowercase)
+                if address.islower():
+                    self.validation_stats["invalid_addresses"] += 1
+                    continue
+                
+                # 2. Should not be a common word that happens to match pattern
+                common_words = ['description', 'information', 'transaction', 'documentation', 
+                              'organization', 'application', 'implementation', 'administration',
+                              'communication', 'notification', 'configuration', 'authorization']
+                if any(word in address.lower() for word in common_words):
+                    self.validation_stats["invalid_addresses"] += 1
+                    continue
+                
+                # 3. Validate as Solana address
+                if self._is_valid_solana_address(address):
+                    # 4. Additional check: if it's near certain keywords
+                    text_around = text[max(0, match.start()-50):match.end()+50].lower()
+                    if any(keyword in text_around for keyword in ['contract', 'token', 'ca', 'address', 'pump', 'solana', 'dex', 'buy', 'launch']):
+                        addresses.add(address)
+                        self.validation_stats["valid_addresses"] += 1
+                    else:
+                        self.validation_stats["invalid_addresses"] += 1
+                else:
+                    self.validation_stats["invalid_addresses"] += 1
+        
+        # Log validation stats
+        if addresses:
+            logger.debug(f"✅ Found {len(addresses)} valid contract addresses")
         
         return list(addresses)
     
@@ -504,6 +642,9 @@ class TelegramScraper:
                 # Analyze each contract in the call
                 for contract_address in call['contract_addresses']:
                     try:
+                        # Track Birdeye API calls
+                        self.validation_stats["birdeye_calls"] += 1
+                        
                         # Get price history from call time to now
                         call_time = datetime.fromtimestamp(call['call_timestamp'])
                         
@@ -532,12 +673,15 @@ class TelegramScraper:
                                     successful_2x += 1
                                 if enhanced_metrics['reached_5x']:
                                     successful_5x += 1
+                            else:
+                                self.validation_stats["birdeye_failures"] += 1
                             
                             # Rate limiting
                             await asyncio.sleep(0.5)
                         
                     except Exception as e:
                         logger.error(f"❌ Error analyzing contract {contract_address}: {str(e)}")
+                        self.validation_stats["birdeye_failures"] += 1
                         continue
             
             # Calculate KOL performance metrics
@@ -682,7 +826,7 @@ class TelegramScraper:
             
             # Configuration: How many KOLs to analyze (top X by mentions)
             MAX_KOLS_TO_ANALYZE = 50  # Configurable limit
-            MIN_MENTIONS_REQUIRED = 2  # Only analyze KOLs with 2+ mentions
+            MIN_MENTIONS_REQUIRED = 5  # Only analyze KOLs with 2+ mentions
             
             # Filter and sort KOLs
             filtered_kols = {k: v for k, v in active_kols.items() if v >= MIN_MENTIONS_REQUIRED}
@@ -722,6 +866,19 @@ class TelegramScraper:
             success_rate_2x = (total_2x / total_calls * 100) if total_calls > 0 else 0
             success_rate_5x = (total_5x / total_calls * 100) if total_calls > 0 else 0
             
+            # Log validation statistics
+            logger.info("📊 VALIDATION STATISTICS:")
+            logger.info(f"   📍 Contract extraction attempts: {self.validation_stats['total_extracted']}")
+            logger.info(f"   ✅ Valid addresses found: {self.validation_stats['valid_addresses']}")
+            logger.info(f"   ❌ Invalid addresses rejected: {self.validation_stats['invalid_addresses']}")
+            logger.info(f"   📞 Birdeye API calls made: {self.validation_stats['birdeye_calls']}")
+            logger.info(f"   ⚠️ API call failures: {self.validation_stats['birdeye_failures']}")
+            
+            if self.validation_stats['valid_addresses'] + self.validation_stats['invalid_addresses'] > 0:
+                success_rate = (self.validation_stats['valid_addresses'] / 
+                               (self.validation_stats['valid_addresses'] + self.validation_stats['invalid_addresses']) * 100)
+                logger.info(f"   📈 Address validation success rate: {success_rate:.1f}%")
+            
             logger.info("🎉 REDESIGNED ANALYSIS COMPLETE!")
             logger.info(f"📊 Total KOLs analyzed: {len(ranked_kols)}")
             logger.info(f"📊 Total calls analyzed: {total_calls}")
@@ -739,6 +896,7 @@ class TelegramScraper:
                 'success_rate_5x': round(success_rate_5x, 2),
                 'ranked_kols': ranked_kols,
                 'top_10_with_channels': top_10_with_channels,
+                'validation_stats': self.validation_stats.copy(),
                 'summary': {
                     'kols_analyzed': len(ranked_kols),
                     'total_calls': total_calls,
@@ -898,7 +1056,7 @@ class TelegramScraper:
             detail_file = output_file.replace('.csv', '_detailed_calls.csv')
             self._export_detailed_calls(analysis['ranked_kols'], detail_file)
             
-            # Export summary
+            # Export summary with validation stats
             summary_file = output_file.replace('.csv', '_summary.txt')
             self._export_summary(analysis, summary_file)
             
@@ -939,7 +1097,7 @@ class TelegramScraper:
             logger.error(f"❌ Error exporting detailed calls: {str(e)}")
     
     def _export_summary(self, analysis: Dict[str, Any], output_file: str) -> None:
-        """Export analysis summary."""
+        """Export analysis summary with validation statistics."""
         try:
             with open(output_file, 'w', encoding='utf-8') as f:
                 f.write("=== REDESIGNED SPYDEFI PERFORMANCE ANALYSIS ===\n\n")
@@ -954,6 +1112,22 @@ class TelegramScraper:
                 f.write(f"Success rate (2x): {analysis.get('success_rate_2x', 0):.2f}%\n")
                 f.write(f"Success rate (5x): {analysis.get('success_rate_5x', 0):.2f}%\n\n")
                 
+                # Add validation statistics
+                if 'validation_stats' in analysis:
+                    f.write("=== VALIDATION STATISTICS ===\n")
+                    stats = analysis['validation_stats']
+                    f.write(f"Contract extraction attempts: {stats.get('total_extracted', 0)}\n")
+                    f.write(f"Valid addresses found: {stats.get('valid_addresses', 0)}\n")
+                    f.write(f"Invalid addresses rejected: {stats.get('invalid_addresses', 0)}\n")
+                    f.write(f"Birdeye API calls made: {stats.get('birdeye_calls', 0)}\n")
+                    f.write(f"API call failures: {stats.get('birdeye_failures', 0)}\n")
+                    
+                    total = stats.get('valid_addresses', 0) + stats.get('invalid_addresses', 0)
+                    if total > 0:
+                        success_rate = (stats.get('valid_addresses', 0) / total * 100)
+                        f.write(f"Address validation success rate: {success_rate:.1f}%\n")
+                    f.write("\n")
+                
                 f.write("=== TOP 10 KOLs (with enhanced metrics) ===\n")
                 ranked_kols = analysis.get('ranked_kols', {})
                 for i, (kol, data) in enumerate(list(ranked_kols.items())[:10]):
@@ -966,7 +1140,7 @@ class TelegramScraper:
                     f.write(f"   Avg time to 2x: {data.get('avg_time_to_2x_formatted', 'N/A')}\n")
                     f.write(f"   Composite score: {data.get('composite_score', 0):.1f}\n\n")
             
-            logger.info(f"✅ Exported summary to {output_file}")
+            logger.info(f"✅ Exported summary with validation stats to {output_file}")
             
         except Exception as e:
             logger.error(f"❌ Error exporting summary: {str(e)}")
