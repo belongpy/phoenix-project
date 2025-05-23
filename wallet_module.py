@@ -1,13 +1,12 @@
 """
-Wallet Analysis Module - Phoenix Project (FIXED VERSION WITH RATE LIMITING)
+Wallet Analysis Module - Phoenix Project (FIXED VERSION WITH CIELO API FORMAT)
 
 FIXES:
-- Added RPC rate limiting to prevent 429 errors
-- Implemented exponential backoff for retries
-- Reduced concurrent workers to prevent overwhelming RPC
-- Added request throttling between RPC calls
-- Better error handling for rate limit errors
-- Request batching where possible
+- Updated to match actual Cielo Finance API response format
+- Fixed field mappings (pnl, winrate, swaps_count, etc.)
+- Added ROI distribution conversion
+- Maintained rate limiting and error handling
+- Fixed metric calculations based on actual data structure
 """
 
 import csv
@@ -405,7 +404,7 @@ class WalletAnalyzer:
             }
     
     def _extract_aggregated_metrics_from_cielo(self, stats_data: Dict[str, Any]) -> Dict[str, Any]:
-        """Extract aggregated metrics from Cielo Finance response - FIXED."""
+        """Extract aggregated metrics from Cielo Finance response - FIXED for actual API format."""
         try:
             # Check if stats_data has the expected structure
             if not isinstance(stats_data, dict):
@@ -415,162 +414,50 @@ class WalletAnalyzer:
             # Log the actual structure we receive
             logger.debug(f"Cielo Finance response structure: {list(stats_data.keys())[:10]}")
             
-            # Log sample data to understand the format
-            for key in list(stats_data.keys())[:5]:
-                value = stats_data[key]
-                if isinstance(value, (int, float, str)):
-                    logger.debug(f"  {key}: {value}")
-                elif isinstance(value, dict):
-                    logger.debug(f"  {key}: dict with keys {list(value.keys())[:5]}")
-                elif isinstance(value, list):
-                    logger.debug(f"  {key}: list with {len(value)} items")
-            
-            # Handle different possible response structures from Cielo Finance
-            # The trading-stats endpoint should return wallet-level statistics
-            
-            # First, check if the data might be the stats directly (not nested)
-            # Common fields from Cielo Finance trading-stats endpoint
-            direct_fields = [
-                "totalTrades", "winRate", "totalPnl", "avgTradeSize", "totalVolume",
-                "bestTrade", "worstTrade", "avgHoldTime", "tokensTraded",
-                "totalInvested", "totalRealized", "profitFactor", "sharpeRatio"
-            ]
-            
-            # Check if we have direct fields at root level
-            has_direct_fields = any(field in stats_data for field in direct_fields)
-            
-            if has_direct_fields:
-                logger.debug("Found direct fields in Cielo response")
-                # Extract directly from root level
-                metrics = {
-                    "total_trades": self._safe_get_numeric(stats_data, [
-                        "totalTrades", "total_trades", "transaction_count", 
-                        "transactionCount", "trades_count", "tradesCount", "txCount"
-                    ], 0),
-                    
-                    "win_rate": self._safe_get_numeric(stats_data, [
-                        "winRate", "win_rate", "win_percentage", "winPercentage", 
-                        "winning_percentage", "winningPercentage", "profitRate"
-                    ], 0),
-                    
-                    "total_pnl_usd": self._safe_get_numeric(stats_data, [
-                        "totalPnl", "total_pnl_usd", "totalPnlUsd", "total_pnl",
-                        "realized_pnl", "realizedPnl", "pnl", "netProfit"
-                    ], 0),
-                    
-                    "avg_trade_size": self._safe_get_numeric(stats_data, [
-                        "avgTradeSize", "avg_trade_size", "average_trade_size",
-                        "averageTradeSize", "avg_investment", "avgInvestment"
-                    ], 0),
-                    
-                    "total_volume": self._safe_get_numeric(stats_data, [
-                        "totalVolume", "total_volume", "volume", "total_traded",
-                        "totalTraded", "tradingVolume"
-                    ], 0),
-                    
-                    "best_trade": self._safe_get_numeric(stats_data, [
-                        "bestTrade", "best_trade", "max_profit", "maxProfit",
-                        "highest_profit", "highestProfit", "largestWin"
-                    ], 0),
-                    
-                    "worst_trade": self._safe_get_numeric(stats_data, [
-                        "worstTrade", "worst_trade", "max_loss", "maxLoss",
-                        "largest_loss", "largestLoss", "biggestLoss"
-                    ], 0),
-                    
-                    "avg_hold_time": self._safe_get_numeric(stats_data, [
-                        "avgHoldTime", "avg_hold_time", "average_hold_time",
-                        "averageHoldTime", "avg_holding_time", "avgHoldingTime"
-                    ], 0),
-                    
-                    "tokens_traded": self._safe_get_numeric(stats_data, [
-                        "tokensTraded", "tokens_traded", "unique_tokens",
-                        "uniqueTokens", "token_count", "tokenCount"
-                    ], 0),
-                    
-                    # Additional fields that might be useful
-                    "total_invested": self._safe_get_numeric(stats_data, [
-                        "totalInvested", "total_invested", "totalBuy", "total_buy"
-                    ], 0),
-                    
-                    "total_realized": self._safe_get_numeric(stats_data, [
-                        "totalRealized", "total_realized", "totalSell", "total_sell"
-                    ], 0)
-                }
-            else:
-                # Try extracting with multiple fallback keys for nested structures
-                metrics = {
-                    "total_trades": self._safe_get_numeric(stats_data, [
-                        "total_trades", "totalTrades", "transaction_count", 
-                        "transactionCount", "trades_count", "tradesCount", "txCount"
-                    ], 0),
-                    
-                    "win_rate": self._safe_get_numeric(stats_data, [
-                        "win_rate", "winRate", "win_percentage", "winPercentage", 
-                        "winning_percentage", "winningPercentage", "profitRate"
-                    ], 0),
-                    
-                    "total_pnl_usd": self._safe_get_numeric(stats_data, [
-                        "total_pnl_usd", "totalPnlUsd", "total_pnl", "totalPnl",
-                        "realized_pnl", "realizedPnl", "pnl", "netProfit"
-                    ], 0),
-                    
-                    "avg_trade_size": self._safe_get_numeric(stats_data, [
-                        "avg_trade_size", "avgTradeSize", "average_trade_size",
-                        "averageTradeSize", "avg_investment", "avgInvestment"
-                    ], 0),
-                    
-                    "total_volume": self._safe_get_numeric(stats_data, [
-                        "total_volume", "totalVolume", "volume", "total_traded",
-                        "totalTraded", "tradingVolume"
-                    ], 0),
-                    
-                    "best_trade": self._safe_get_numeric(stats_data, [
-                        "best_trade", "bestTrade", "max_profit", "maxProfit",
-                        "highest_profit", "highestProfit", "largestWin"
-                    ], 0),
-                    
-                    "worst_trade": self._safe_get_numeric(stats_data, [
-                        "worst_trade", "worstTrade", "max_loss", "maxLoss",
-                        "largest_loss", "largestLoss", "biggestLoss"
-                    ], 0),
-                    
-                    "avg_hold_time": self._safe_get_numeric(stats_data, [
-                        "avg_hold_time", "avgHoldTime", "average_hold_time",
-                        "averageHoldTime", "avg_holding_time", "avgHoldingTime"
-                    ], 0),
-                    
-                    "tokens_traded": self._safe_get_numeric(stats_data, [
-                        "tokens_traded", "tokensTraded", "unique_tokens",
-                        "uniqueTokens", "token_count", "tokenCount"
-                    ], 0),
-                    
-                    # Additional fields that might be useful
-                    "total_invested": self._safe_get_numeric(stats_data, [
-                        "totalInvested", "total_invested", "totalBuy", "total_buy"
-                    ], 0),
-                    
-                    "total_realized": self._safe_get_numeric(stats_data, [
-                        "totalRealized", "total_realized", "totalSell", "total_sell"
-                    ], 0)
-                }
-            
-            # If we got mostly zeros, try to extract from nested structures
-            if all(v == 0 for k, v in metrics.items() if k != "worst_trade"):
-                logger.info("Trying to extract from nested data structures...")
+            # Extract metrics using the ACTUAL field names from Cielo Finance API
+            metrics = {
+                "total_trades": stats_data.get("swaps_count", 0),
+                "win_rate": stats_data.get("winrate", 0),
+                "total_pnl_usd": stats_data.get("pnl", 0),
+                "avg_trade_size": stats_data.get("average_buy_amount_usd", 0),
+                "total_volume": (stats_data.get("total_buy_amount_usd", 0) + 
+                               stats_data.get("total_sell_amount_usd", 0)),
+                "best_trade": 0,  # Will calculate from ROI distribution
+                "worst_trade": 0,  # Will calculate from ROI distribution
+                "avg_hold_time": stats_data.get("average_holding_time_sec", 0) / 3600 if stats_data.get("average_holding_time_sec", 0) else 0,  # Convert seconds to hours
+                "tokens_traded": stats_data.get("buy_count", 0),  # Or use unique token count if available
+                "total_invested": stats_data.get("total_buy_amount_usd", 0),
+                "total_realized": stats_data.get("total_sell_amount_usd", 0),
                 
-                # Check for nested data or summary fields
-                if "summary" in stats_data:
-                    return self._extract_aggregated_metrics_from_cielo(stats_data["summary"])
-                elif "stats" in stats_data:
-                    return self._extract_aggregated_metrics_from_cielo(stats_data["stats"])
-                elif "trading" in stats_data:
-                    return self._extract_aggregated_metrics_from_cielo(stats_data["trading"])
-                elif "performance" in stats_data:
-                    return self._extract_aggregated_metrics_from_cielo(stats_data["performance"])
+                # Additional fields from API
+                "buy_count": stats_data.get("buy_count", 0),
+                "sell_count": stats_data.get("sell_count", 0),
+                "consecutive_trading_days": stats_data.get("consecutive_trading_days", 0),
+                "roi_distribution": stats_data.get("roi_distribution", {}),
+                "holding_distribution": stats_data.get("holding_distribution", {})
+            }
+            
+            # Calculate best/worst trades from ROI distribution if possible
+            roi_dist = stats_data.get("roi_distribution", {})
+            if roi_dist.get("roi_above_500", 0) > 0:
+                metrics["best_trade"] = 500  # Conservative estimate
+            elif roi_dist.get("roi_200_to_500", 0) > 0:
+                metrics["best_trade"] = 200
+            elif roi_dist.get("roi_0_to_200", 0) > 0:
+                metrics["best_trade"] = 100
+            else:
+                metrics["best_trade"] = 50
+            
+            if roi_dist.get("roi_below_neg50", 0) > 0:
+                metrics["worst_trade"] = -50
+            elif roi_dist.get("roi_neg50_to_0", 0) > 0:
+                metrics["worst_trade"] = -25
+            else:
+                metrics["worst_trade"] = 0
             
             # Log what we extracted
-            logger.debug(f"Extracted Cielo metrics: {metrics}")
+            logger.debug(f"Extracted Cielo metrics: trades={metrics['total_trades']}, "
+                        f"win_rate={metrics['win_rate']}, pnl={metrics['total_pnl_usd']}")
             
             return metrics
             
@@ -605,7 +492,9 @@ class WalletAnalyzer:
             "avg_hold_time": 0,
             "tokens_traded": 0,
             "total_invested": 0,
-            "total_realized": 0
+            "total_realized": 0,
+            "roi_distribution": {},
+            "holding_distribution": {}
         }
     
     def _get_recent_token_swaps_rpc(self, wallet_address: str, limit: int = 5) -> List[Dict[str, Any]]:
@@ -940,11 +829,6 @@ class WalletAnalyzer:
             total_invested = combined.get("total_invested", 0)
             total_realized = combined.get("total_realized", 0)
             
-            # If we have total_invested and total_realized, calculate PnL from them
-            if total_invested > 0 and total_realized > 0 and total_pnl == 0:
-                total_pnl = total_realized - total_invested
-                combined["total_pnl_usd"] = total_pnl
-            
             # Calculate win/loss counts
             if total_trades > 0 and win_rate > 0:
                 win_count = int(total_trades * (win_rate / 100))
@@ -954,24 +838,12 @@ class WalletAnalyzer:
                 loss_count = total_trades
             
             # Calculate profit/loss breakdown
-            if win_count > 0 and best_trade > 0:
-                total_profit_usd = best_trade * win_count * 0.5  # Estimate
+            if total_pnl > 0:
+                total_profit_usd = total_pnl
+                total_loss_usd = 0
             else:
-                total_profit_usd = max(0, total_pnl)
-            
-            if loss_count > 0 and worst_trade < 0:
-                total_loss_usd = abs(worst_trade * loss_count * 0.5)  # Estimate
-            else:
-                total_loss_usd = max(0, -total_pnl) if total_pnl < 0 else 0
-            
-            # If we don't have good profit/loss data, derive from PnL
-            if total_profit_usd == 0 and total_loss_usd == 0 and total_pnl != 0:
-                if total_pnl > 0:
-                    total_profit_usd = total_pnl
-                    total_loss_usd = 0
-                else:
-                    total_profit_usd = 0
-                    total_loss_usd = abs(total_pnl)
+                total_profit_usd = 0
+                total_loss_usd = abs(total_pnl)
             
             # Calculate profit factor
             if total_loss_usd > 0:
@@ -982,9 +854,7 @@ class WalletAnalyzer:
                 profit_factor = 0
             
             # Calculate average ROI
-            if total_volume > 0:
-                avg_roi = (total_pnl / total_volume) * 100
-            elif total_invested > 0 and total_pnl != 0:
+            if total_invested > 0:
                 avg_roi = (total_pnl / total_invested) * 100
             else:
                 avg_roi = 0
@@ -1005,17 +875,12 @@ class WalletAnalyzer:
             else:
                 # Use estimates based on Cielo data
                 median_roi = avg_roi * 0.8  # Conservative estimate
-                if best_trade > 0 and total_volume > 0:
-                    max_roi = (best_trade / (total_volume / total_trades)) * 100 if total_trades > 0 else 0
-                else:
-                    max_roi = 100 if win_rate > 50 else 50
-                
-                if worst_trade < 0 and total_volume > 0:
-                    min_roi = (worst_trade / (total_volume / total_trades)) * 100 if total_trades > 0 else 0
-                else:
-                    min_roi = -50
-                
+                max_roi = best_trade  # Use best trade as max ROI
+                min_roi = worst_trade  # Use worst trade as min ROI
                 std_dev_roi = abs(max_roi - min_roi) / 4  # Rough estimate
+            
+            # Convert Cielo ROI distribution to our format
+            roi_distribution = self._convert_roi_distribution(combined.get("roi_distribution", {}))
             
             # Build complete metrics dictionary
             complete_metrics = {
@@ -1028,7 +893,7 @@ class WalletAnalyzer:
                 # Profit/Loss metrics
                 "total_profit_usd": total_profit_usd,
                 "total_loss_usd": total_loss_usd,
-                "net_profit_usd": total_pnl,  # This is the key field that was missing!
+                "net_profit_usd": total_pnl,  # This is the key field
                 "profit_factor": profit_factor,
                 
                 # ROI metrics
@@ -1040,14 +905,12 @@ class WalletAnalyzer:
                 
                 # Other metrics
                 "avg_hold_time_hours": combined.get("avg_hold_time", 0),
-                "total_bet_size_usd": total_volume,
+                "total_bet_size_usd": total_invested,
                 "avg_bet_size_usd": combined.get("avg_trade_size", 0),
                 "total_tokens_traded": combined.get("tokens_traded", 0),
                 
-                # ROI distribution (estimate if no detailed data)
-                "roi_distribution": self._estimate_roi_distribution(
-                    total_trades, win_rate, max_roi, analyzed_trades
-                )
+                # ROI distribution
+                "roi_distribution": roi_distribution
             }
             
             return complete_metrics
@@ -1057,66 +920,18 @@ class WalletAnalyzer:
             # Return safe default metrics with all required fields
             return self._get_empty_metrics()
     
-    def _estimate_roi_distribution(self, total_trades: int, win_rate: float, 
-                                  max_roi: float, analyzed_trades: List[Dict[str, Any]]) -> Dict[str, int]:
-        """Estimate ROI distribution from available data."""
-        if analyzed_trades:
-            # Calculate from actual trades
-            roi_buckets = {
-                "10x_plus": 0,
-                "5x_to_10x": 0,
-                "2x_to_5x": 0,
-                "1x_to_2x": 0,
-                "50_to_100": 0,
-                "0_to_50": 0,
-                "minus50_to_0": 0,
-                "below_minus50": 0
-            }
-            
-            for trade in analyzed_trades:
-                roi = trade.get("roi_percent", 0)
-                if roi >= 1000:
-                    roi_buckets["10x_plus"] += 1
-                elif roi >= 500:
-                    roi_buckets["5x_to_10x"] += 1
-                elif roi >= 200:
-                    roi_buckets["2x_to_5x"] += 1
-                elif roi >= 100:
-                    roi_buckets["1x_to_2x"] += 1
-                elif roi >= 50:
-                    roi_buckets["50_to_100"] += 1
-                elif roi >= 0:
-                    roi_buckets["0_to_50"] += 1
-                elif roi >= -50:
-                    roi_buckets["minus50_to_0"] += 1
-                else:
-                    roi_buckets["below_minus50"] += 1
-            
-            return roi_buckets
-        else:
-            # Estimate distribution based on win rate and max ROI
-            win_count = int(total_trades * (win_rate / 100))
-            loss_count = total_trades - win_count
-            
-            # Rough distribution estimate
-            roi_buckets = {
-                "10x_plus": max(0, int(win_count * 0.01)) if max_roi >= 1000 else 0,
-                "5x_to_10x": max(0, int(win_count * 0.02)) if max_roi >= 500 else 0,
-                "2x_to_5x": max(0, int(win_count * 0.05)) if max_roi >= 200 else 0,
-                "1x_to_2x": max(0, int(win_count * 0.1)) if max_roi >= 100 else 0,
-                "50_to_100": max(0, int(win_count * 0.2)),
-                "0_to_50": max(0, win_count - sum([
-                    max(0, int(win_count * 0.01)) if max_roi >= 1000 else 0,
-                    max(0, int(win_count * 0.02)) if max_roi >= 500 else 0,
-                    max(0, int(win_count * 0.05)) if max_roi >= 200 else 0,
-                    max(0, int(win_count * 0.1)) if max_roi >= 100 else 0,
-                    max(0, int(win_count * 0.2))
-                ])),
-                "minus50_to_0": max(0, int(loss_count * 0.7)),
-                "below_minus50": max(0, loss_count - int(loss_count * 0.7))
-            }
-            
-            return roi_buckets
+    def _convert_roi_distribution(self, cielo_roi_dist: Dict[str, Any]) -> Dict[str, int]:
+        """Convert Cielo Finance ROI distribution format to our expected format."""
+        return {
+            "10x_plus": cielo_roi_dist.get("roi_above_500", 0),  # 500% = 5x, so above 500% = close to 10x
+            "5x_to_10x": cielo_roi_dist.get("roi_above_500", 0),  # Same as above for now
+            "2x_to_5x": cielo_roi_dist.get("roi_200_to_500", 0),  # 200-500% = 2x-5x
+            "1x_to_2x": int(cielo_roi_dist.get("roi_0_to_200", 0) / 2),  # Estimate half are 100-200%
+            "50_to_100": int(cielo_roi_dist.get("roi_0_to_200", 0) / 2),  # Estimate half are 50-100%
+            "0_to_50": int(cielo_roi_dist.get("roi_0_to_200", 0) / 2),  # Conservative estimate
+            "minus50_to_0": cielo_roi_dist.get("roi_neg50_to_0", 0),
+            "below_minus50": cielo_roi_dist.get("roi_below_neg50", 0)
+        }
     
     def _calculate_composite_score(self, metrics: Dict[str, Any]) -> float:
         """
@@ -1691,31 +1506,17 @@ class WalletAnalyzer:
         """Create a summary trade from wallet-level statistics."""
         try:
             # Only create summary if we have meaningful data
-            if not any(self._safe_get_numeric(stats_data, [key], 0) != 0 
-                      for key in ["total_trades", "totalTrades", "transaction_count", 
-                                  "transactionCount", "win_rate", "winRate"]):
+            if not any(stats_data.get(key, 0) != 0 
+                      for key in ["swaps_count", "pnl", "winrate", "total_buy_amount_usd"]):
                 return None
             
-            # Extract key metrics
-            total_trades = self._safe_get_numeric(stats_data, [
-                "total_trades", "totalTrades", "transaction_count", "transactionCount"
-            ], 0)
-            
-            win_rate = self._safe_get_numeric(stats_data, [
-                "win_rate", "winRate", "win_percentage", "winPercentage"
-            ], 0)
-            
-            total_pnl = self._safe_get_numeric(stats_data, [
-                "total_pnl_usd", "totalPnlUsd", "total_pnl", "totalPnl", "pnl"
-            ], 0)
-            
-            total_invested = self._safe_get_numeric(stats_data, [
-                "total_invested", "totalInvested", "total_buy", "totalBuy"
-            ], 0)
-            
-            total_realized = self._safe_get_numeric(stats_data, [
-                "total_realized", "totalRealized", "total_sell", "totalSell"
-            ], 0)
+            # Extract key metrics using actual field names
+            total_trades = stats_data.get("swaps_count", 0)
+            win_rate = stats_data.get("winrate", 0)
+            total_pnl = stats_data.get("pnl", 0)
+            total_invested = stats_data.get("total_buy_amount_usd", 0)
+            total_realized = stats_data.get("total_sell_amount_usd", 0)
+            avg_hold_time_sec = stats_data.get("average_holding_time_sec", 0)
             
             # Calculate ROI
             roi_percent = 0
@@ -1728,17 +1529,17 @@ class WalletAnalyzer:
             return {
                 "token_address": "",
                 "token_symbol": f"WALLET_SUMMARY_{total_trades}_TRADES",
-                "buy_timestamp": stats_data.get("first_trade_time", stats_data.get("start_time", 0)),
+                "buy_timestamp": 0,
                 "buy_date": "",
                 "buy_price": 0,
                 "buy_value_usd": total_invested,
                 "buy_value_sol": 0,
-                "sell_timestamp": stats_data.get("last_trade_time", stats_data.get("end_time", 0)),
+                "sell_timestamp": 0,
                 "sell_date": "",
                 "sell_price": 0,
                 "sell_value_usd": total_realized,
                 "sell_value_sol": 0,
-                "holding_time_hours": self._safe_get_numeric(stats_data, ["avg_hold_time", "avgHoldTime"], 0),
+                "holding_time_hours": avg_hold_time_sec / 3600 if avg_hold_time_sec else 0,
                 "roi_percent": roi_percent,
                 "is_win": total_pnl > 0,
                 "market_cap_at_buy": 0,

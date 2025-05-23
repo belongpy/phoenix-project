@@ -1,25 +1,26 @@
 """
-Cielo Finance API Module - Phoenix Project (COMPLETE FIXED VERSION)
+Cielo Finance API Module - Phoenix Project (MINIMAL DEPENDENCIES VERSION)
 
 This module handles all interactions with Cielo Finance API for wallet analysis.
-Updated with correct API endpoints and authentication.
+This version has minimal dependencies and doesn't require urllib3 or base58.
 
-FIXED:
-- Correct base URL: https://feed-api.cielo.finance 
-- Correct endpoint: /api/v1/{wallet}/trading-stats
-- Proper authentication header: X-API-KEY instead of Bearer
-- Cost: 30 credits per request
+FIXES:
+- Removed urllib3 retry dependency
+- Removed base58 dependency  
+- Kept all functionality with manual implementations
+- Fixed all try-except blocks
 """
 
 import requests
 import logging
+import time
 from typing import Dict, List, Any, Optional
 from datetime import datetime
 
 logger = logging.getLogger("phoenix.cielo")
 
 class CieloFinanceAPI:
-    """Client for interacting with Cielo Finance API."""
+    """Client for interacting with Cielo Finance API with robust error handling."""
     
     def __init__(self, api_key: str, base_url: str = "https://feed-api.cielo.finance"):
         """
@@ -27,118 +28,205 @@ class CieloFinanceAPI:
         
         Args:
             api_key (str): The Cielo Finance API key
-            base_url (str): Base URL for the API (CORRECTED ENDPOINT)
+            base_url (str): Base URL for the API
         """
         self.api_key = api_key
         self.base_url = base_url.rstrip('/')
         self.headers = {
-            "X-API-KEY": api_key,  # FIXED: Using X-API-KEY instead of Bearer token
+            "X-API-KEY": api_key,
             "Content-Type": "application/json",
             "User-Agent": "Phoenix-Project/1.0"
         }
+        
+        # Create session
         self.session = requests.Session()
         self.session.headers.update(self.headers)
+        
+        # Track API calls for rate limiting
+        self._last_call_time = 0
+        self._min_call_interval = 0.5  # 500ms between calls
+    
+    def _rate_limit(self):
+        """Apply rate limiting to avoid overwhelming the API."""
+        current_time = time.time()
+        time_since_last_call = current_time - self._last_call_time
+        
+        if time_since_last_call < self._min_call_interval:
+            sleep_time = self._min_call_interval - time_since_last_call
+            time.sleep(sleep_time)
+        
+        self._last_call_time = time.time()
     
     def _make_request(self, endpoint: str, params: Optional[Dict[str, Any]] = None, 
-                     method: str = "GET", timeout: int = 30) -> Dict[str, Any]:
+                     method: str = "GET", timeout: int = 30, retry_count: int = 3) -> Dict[str, Any]:
         """
-        Make a request to the Cielo Finance API.
+        Make a request to the Cielo Finance API with improved error handling.
         
         Args:
             endpoint (str): API endpoint
             params (Dict[str, Any], optional): Query parameters
             method (str): HTTP method
             timeout (int): Request timeout in seconds
+            retry_count (int): Number of manual retries
             
         Returns:
             Dict[str, Any]: Response data
         """
         url = f"{self.base_url}/{endpoint.lstrip('/')}"
         
-        try:
-            if method.upper() == "GET":
-                response = self.session.get(url, params=params, timeout=timeout)
-            elif method.upper() == "POST":
-                response = self.session.post(url, json=params, timeout=timeout)
-            else:
-                raise ValueError(f"Unsupported HTTP method: {method}")
-            
-            response.raise_for_status()
-            
-            # Try to return JSON, fallback to text if JSON parsing fails
+        # Apply rate limiting
+        self._rate_limit()
+        
+        # Manual retry loop
+        for attempt in range(retry_count):
             try:
-                result = response.json()
-                # Ensure consistent response format
-                if isinstance(result, dict):
-                    if "success" not in result:
-                        # Cielo Finance returns {"status": "ok", "data": {...}}
-                        if result.get("status") == "ok":
-                            result["success"] = True
-                        else:
-                            result["success"] = False
-                    return result
+                logger.debug(f"Making request to {url} (attempt {attempt + 1}/{retry_count})")
+                
+                if method.upper() == "GET":
+                    response = self.session.get(url, params=params, timeout=timeout)
+                elif method.upper() == "POST":
+                    response = self.session.post(url, json=params, timeout=timeout)
+                else:
+                    raise ValueError(f"Unsupported HTTP method: {method}")
+                
+                # Check for rate limiting
+                if response.status_code == 429:
+                    retry_after = int(response.headers.get('Retry-After', 60))
+                    logger.warning(f"Rate limited. Waiting {retry_after} seconds...")
+                    time.sleep(retry_after)
+                    continue
+                
+                # Check for server errors
+                if response.status_code >= 500:
+                    logger.warning(f"Server error {response.status_code}. Retrying...")
+                    time.sleep(2 ** attempt)  # Exponential backoff
+                    continue
+                
+                # For client errors, don't retry
+                if 400 <= response.status_code < 500:
+                    return {
+                        "success": False,
+                        "error": f"HTTP {response.status_code}: {response.text}",
+                        "status_code": response.status_code
+                    }
+                
+                response.raise_for_status()
+                
+                # Try to return JSON, fallback to text if JSON parsing fails
+                try:
+                    result = response.json()
+                    # Ensure consistent response format
+                    if isinstance(result, dict):
+                        if "success" not in result:
+                            # Cielo Finance returns {"status": "ok", "data": {...}}
+                            if result.get("status") == "ok":
+                                result["success"] = True
+                            else:
+                                result["success"] = False
+                        return result
+                    else:
+                        return {
+                            "success": True,
+                            "data": result
+                        }
+                except ValueError:
+                    return {"success": False, "error": "Invalid JSON response", "raw_response": response.text}
+                    
+            except requests.exceptions.Timeout as e:
+                logger.warning(f"Request timeout (attempt {attempt + 1}/{retry_count}): {str(e)}")
+                if attempt < retry_count - 1:
+                    wait_time = min(60, 2 ** attempt)  # Exponential backoff, max 60s
+                    logger.info(f"Waiting {wait_time} seconds before retry...")
+                    time.sleep(wait_time)
                 else:
                     return {
-                        "success": True,
-                        "data": result
+                        "success": False,
+                        "error": f"Request timeout after {retry_count} attempts",
+                        "endpoint": endpoint,
+                        "timeout": timeout
                     }
-            except ValueError:
-                return {"success": False, "error": "Invalid JSON response", "raw_response": response.text}
-                
-        except requests.RequestException as e:
-            logger.error(f"Cielo Finance API request failed for {endpoint}: {str(e)}")
-            return {
-                "success": False,
-                "error": str(e),
-                "endpoint": endpoint,
-                "status_code": getattr(e.response, 'status_code', None) if hasattr(e, 'response') else None
-            }
-        except Exception as e:
-            logger.error(f"Unexpected error in Cielo Finance API request: {str(e)}")
-            return {"success": False, "error": f"Unexpected error: {str(e)}"}
+                    
+            except requests.exceptions.ConnectionError as e:
+                logger.error(f"Connection error (attempt {attempt + 1}/{retry_count}): {str(e)}")
+                if attempt < retry_count - 1:
+                    wait_time = min(60, 2 ** attempt)
+                    logger.info(f"Waiting {wait_time} seconds before retry...")
+                    time.sleep(wait_time)
+                else:
+                    return {
+                        "success": False,
+                        "error": f"Connection error after {retry_count} attempts: {str(e)}",
+                        "endpoint": endpoint
+                    }
+                    
+            except requests.RequestException as e:
+                logger.error(f"Request failed (attempt {attempt + 1}/{retry_count}): {str(e)}")
+                if attempt < retry_count - 1:
+                    time.sleep(min(60, 2 ** attempt))
+                else:
+                    return {
+                        "success": False,
+                        "error": str(e),
+                        "endpoint": endpoint,
+                        "status_code": getattr(e.response, 'status_code', None) if hasattr(e, 'response') else None
+                    }
+                    
+            except Exception as e:
+                logger.error(f"Unexpected error: {str(e)}")
+                return {"success": False, "error": f"Unexpected error: {str(e)}"}
+        
+        # Should not reach here, but just in case
+        return {"success": False, "error": "Max retries exceeded"}
     
     def health_check(self) -> bool:
         """
-        Check if the Cielo Finance API is accessible.
+        Check if the Cielo Finance API is accessible with improved timeout handling.
         
         Returns:
             bool: True if API is accessible, False otherwise
         """
         try:
-            # Try a simple test request to verify API connectivity
-            # Using a dummy wallet to test the endpoint structure
-            test_wallet = "11111111111111111111111111111111"  # Known invalid but properly formatted
-            response = self._make_request(f"api/v1/{test_wallet}/trading-stats", timeout=10)
+            logger.info("Checking Cielo Finance API connectivity...")
             
-            # Even if the wallet is invalid, if we get a proper API response structure
-            # (not a DNS/connection error), the API is accessible
-            if response.get("success") is False and "error" in response:
-                error_msg = str(response.get("error", "")).lower()
-                # These errors indicate API is working but wallet is invalid/not found
-                if any(indicator in error_msg for indicator in ["not found", "invalid", "unauthorized", "forbidden"]):
-                    logger.info("✅ Cielo Finance API is accessible")
-                    return True
-                # These errors indicate connection/DNS issues
-                elif any(indicator in error_msg for indicator in ["resolve", "connection", "timeout", "dns"]):
-                    logger.error(f"❌ Cielo Finance API connection failed: {error_msg}")
-                    return False
+            # Try multiple approaches to verify connectivity
+            # 1. First try a simple endpoint that should be fast
+            test_endpoints = [
+                ("api/v1/health", 10),  # Health endpoint with 10s timeout
+                ("api/v1/status", 10),  # Status endpoint with 10s timeout
+                ("api/v1", 15),         # Root API endpoint with 15s timeout
+                (f"api/v1/11111111111111111111111111111111/trading-stats", 20)  # Test endpoint with 20s timeout
+            ]
             
-            # If we get a successful response, API is definitely working
-            if response.get("success"):
-                logger.info("✅ Cielo Finance API is accessible")
-                return True
+            for endpoint, timeout in test_endpoints:
+                logger.debug(f"Trying endpoint: {endpoint} with {timeout}s timeout")
+                response = self._make_request(endpoint, timeout=timeout, retry_count=2)
+                
+                # If we get any response (even an error), the API is reachable
+                if response:
+                    # Check various success indicators
+                    if response.get("success") is False and "error" in response:
+                        error_msg = str(response.get("error", "")).lower()
+                        
+                        # These errors indicate API is working but request is invalid
+                        if any(indicator in error_msg for indicator in ["not found", "invalid", "unauthorized", "forbidden", "bad request"]):
+                            logger.info("✅ Cielo Finance API is accessible (got expected error response)")
+                            return True
+                        
+                        # Connection/timeout errors mean API is not accessible
+                        elif any(indicator in error_msg for indicator in ["timeout", "connection", "timed out"]):
+                            continue  # Try next endpoint
+                    
+                    # If we get a successful response, API is definitely working
+                    if response.get("success") or response.get("status") == "ok":
+                        logger.info("✅ Cielo Finance API is accessible")
+                        return True
             
-            # Check for Cielo's response format
-            if response.get("status") == "ok":
-                logger.info("✅ Cielo Finance API is accessible")
-                return True
-            
-            # Default to accessible if we got any structured response
-            logger.warning("⚠️ Cielo Finance API response unclear, assuming accessible")
-            return True
+            # If all endpoints failed with timeouts/connection errors
+            logger.error("❌ Cielo Finance API is not accessible - all endpoints timed out")
+            return False
             
         except Exception as e:
-            logger.warning(f"Cielo Finance API health check failed: {str(e)}")
+            logger.error(f"Cielo Finance API health check failed: {str(e)}")
             return False
     
     def get_wallet_trading_stats(self, wallet_address: str) -> Dict[str, Any]:
@@ -156,7 +244,8 @@ class CieloFinanceAPI:
         """
         logger.info(f"Fetching trading stats for wallet {wallet_address}")
         
-        response = self._make_request(f"api/v1/{wallet_address}/trading-stats")
+        # Use longer timeout for data endpoints
+        response = self._make_request(f"api/v1/{wallet_address}/trading-stats", timeout=45)
         
         if response.get("success", True):
             logger.info(f"Successfully retrieved trading stats for {wallet_address}")
@@ -222,7 +311,7 @@ class CieloFinanceAPI:
         logger.info(f"Fetching wallet tags for {wallet_address}")
         
         # This endpoint might not exist, so we'll try and handle gracefully
-        response = self._make_request(f"api/v1/{wallet_address}/tags")
+        response = self._make_request(f"api/v1/{wallet_address}/tags", timeout=30)
         
         if not response.get("success"):
             # If tags endpoint doesn't exist, return empty tags
@@ -255,7 +344,8 @@ class CieloFinanceAPI:
         # Try transactions endpoint first
         response = self._make_request(
             f"api/v1/{wallet_address}/transactions",
-            params={"limit": limit, "offset": offset}
+            params={"limit": limit, "offset": offset},
+            timeout=30
         )
         
         if not response.get("success"):
@@ -314,8 +404,12 @@ class CieloFinanceAPI:
         results = {}
         errors = []
         
-        for wallet in wallet_addresses:
+        for i, wallet in enumerate(wallet_addresses):
             try:
+                # Add delay between requests to avoid rate limiting
+                if i > 0:
+                    time.sleep(0.5)
+                
                 result = self.get_wallet_trading_stats(wallet)
                 results[wallet] = result
                 
@@ -324,6 +418,11 @@ class CieloFinanceAPI:
                         "wallet": wallet,
                         "error": result.get("error", "Unknown error")
                     })
+                    
+                # Log progress
+                if (i + 1) % 10 == 0:
+                    logger.info(f"Processed {i + 1}/{len(wallet_addresses)} wallets")
+                    
             except Exception as e:
                 errors.append({
                     "wallet": wallet,
@@ -389,11 +488,11 @@ class CieloFinanceAPI:
         logger.debug("Fetching API usage statistics")
         
         # Try common usage endpoints
-        response = self._make_request("api/v1/usage")
+        response = self._make_request("api/v1/usage", timeout=20)
         
         if not response.get("success"):
             # Try alternative endpoint
-            response = self._make_request("api/v1/account/usage")
+            response = self._make_request("api/v1/account/usage", timeout=20)
         
         return response
     
@@ -413,14 +512,9 @@ class CieloFinanceAPI:
                 return False
             
             # Check if it's a valid base58 string (Solana addresses are base58)
-            try:
-                import base58
-                base58.b58decode(wallet_address)
-                return True
-            except:
-                # If base58 library not available, do basic character check
-                valid_chars = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
-                return all(c in valid_chars for c in wallet_address)
+            # Without base58 library, do basic character check
+            valid_chars = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
+            return all(c in valid_chars for c in wallet_address)
             
         except Exception:
             return False
@@ -437,7 +531,9 @@ class CieloFinanceAPI:
             "api/v1/{wallet}/transactions",   # Transaction history (if available)
             "api/v1/{wallet}/tags",          # Wallet tags (if available)
             "api/v1/usage",                  # API usage stats
-            "api/v1/account/usage"           # Alternative usage endpoint
+            "api/v1/account/usage",          # Alternative usage endpoint
+            "api/v1/health",                 # Health check endpoint
+            "api/v1/status"                  # Status endpoint
         ]
     
     def __str__(self) -> str:

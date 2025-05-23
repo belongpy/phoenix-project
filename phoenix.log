@@ -34105,3 +34105,122 @@ AttributeError: 'TelegramScraper' object has no attribute 'export_enhanced_spyde
 2025-05-23 11:43:17,401 - phoenix.wallet - INFO -   └─ Score: 30.0/100, Type: unknown
 2025-05-23 11:43:17,721 - phoenix - INFO - Exported wallet analysis to Excel: C:\Users\Administrator\Desktop\phoenix-project\outputs\wallet_analysis_20250523_114317.xlsx
 2025-05-23 11:43:17,721 - phoenix - INFO - Exported wallet analysis to C:\Users\Administrator\Desktop\phoenix-project\outputs\wallet_analysis_20250523_114317.csv
+2025-05-23 12:04:10,942 - phoenix - INFO - Loaded 9 wallet addresses from wallets.txt
+2025-05-23 12:04:12,696 - phoenix.api_manager - INFO - Birdeye API initialized for TOKEN analysis ONLY
+2025-05-23 12:04:12,696 - phoenix.api_manager - INFO - Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-23 12:04:22,727 - phoenix.cielo - ERROR - Cielo Finance API request failed for api/v1/11111111111111111111111111111111/trading-stats: HTTPSConnectionPool(host='feed-api.cielo.finance', port=443): Read timed out. (read timeout=10)
+2025-05-23 12:04:22,727 - phoenix.cielo - ERROR - ❌ Cielo Finance API connection failed: httpsconnectionpool(host='feed-api.cielo.finance', port=443): read timed out. (read timeout=10)
+2025-05-23 12:04:22,727 - phoenix.wallet - ERROR - ❌ Cielo Finance API health check failed
+2025-05-23 12:04:22,727 - phoenix - ERROR - Wallet analysis error: Cannot connect to Cielo Finance API
+2025-05-23 12:27:27,583 - phoenix - INFO - Loaded 9 wallet addresses from wallets.txt
+2025-05-23 12:27:29,870 - phoenix.api_manager - INFO - Birdeye API initialized for TOKEN analysis ONLY
+2025-05-23 12:27:29,885 - phoenix.api_manager - INFO - Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-23 12:27:29,885 - phoenix.cielo - INFO - Checking Cielo Finance API connectivity...
+2025-05-23 12:27:30,091 - phoenix.cielo - INFO - ✅ Cielo Finance API is accessible (got expected error response)
+2025-05-23 12:27:30,091 - phoenix.wallet - INFO - ✅ Cielo Finance API connection verified
+2025-05-23 12:27:30,107 - phoenix.wallet - INFO - Batch analyzing 9 wallets using hybrid approach
+2025-05-23 12:27:30,109 - phoenix.wallet - INFO - Analyzing wallet 1/9: Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-23 12:27:30,109 - phoenix.wallet - INFO - 🔍 Analyzing wallet Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ (hybrid approach)
+2025-05-23 12:27:30,109 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 12:27:30,109 - phoenix.cielo - INFO - Fetching trading stats for wallet Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-23 12:27:32,473 - phoenix.cielo - INFO - Successfully retrieved trading stats for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-23 12:27:32,473 - phoenix.wallet - INFO - Processing dict response - looking for aggregated stats
+2025-05-23 12:27:32,475 - phoenix.wallet - INFO - Final extracted metrics: trades=0, win_rate=0.0%, pnl=$3167.34
+2025-05-23 12:27:32,475 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 12:27:32,475 - phoenix.wallet - INFO - Fetching last 5 token swaps for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-23 12:27:45,522 - phoenix.wallet - INFO - Found 5 swaps from 50 signatures
+2025-05-23 12:27:48,660 - phoenix.birdeye - WARNING - No price history available for NudrMewGMrwiad82MQSUoxQ78UtyS8BF2Zv9Mpcpump
+2025-05-23 12:27:48,660 - phoenix.wallet - WARNING - Failed to get price history for NudrMewGMrwiad82MQSUoxQ78UtyS8BF2Zv9Mpcpump
+2025-05-23 12:27:50,842 - phoenix.birdeye - WARNING - No price history available for 76EDL5qNcte2ZH29quTaFzagXjWAEY83CATEjyA6pump
+2025-05-23 12:27:50,842 - phoenix.wallet - WARNING - Failed to get price history for 76EDL5qNcte2ZH29quTaFzagXjWAEY83CATEjyA6pump
+2025-05-23 12:27:50,859 - phoenix.wallet - INFO -   └─ Score: 36.3/100, Type: unknown
+2025-05-23 12:27:52,863 - phoenix.wallet - INFO - Analyzing wallet 2/9: 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-23 12:27:52,863 - phoenix.wallet - INFO - 🔍 Analyzing wallet 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX (hybrid approach)
+2025-05-23 12:27:52,863 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 12:27:52,863 - phoenix.cielo - INFO - Fetching trading stats for wallet 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-23 12:27:53,883 - phoenix.cielo - INFO - Successfully retrieved trading stats for 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-23 12:27:53,883 - phoenix.wallet - INFO - Processing dict response - looking for aggregated stats
+2025-05-23 12:27:53,883 - phoenix.wallet - INFO - Final extracted metrics: trades=0, win_rate=0.0%, pnl=$4261.77
+2025-05-23 12:27:53,883 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 12:27:53,883 - phoenix.wallet - INFO - Fetching last 5 token swaps for 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-23 12:27:59,175 - phoenix.wallet - INFO - Found 5 swaps from 50 signatures
+2025-05-23 12:28:05,641 - phoenix.wallet - INFO -   └─ Score: 48.6/100, Type: unknown
+2025-05-23 12:28:07,651 - phoenix.wallet - INFO - Analyzing wallet 3/9: 7brTP49Rx7vLM2W6Pxtspmna2UqGtjtgcF9q3W7qtcPt
+2025-05-23 12:28:07,651 - phoenix.wallet - INFO - 🔍 Analyzing wallet 7brTP49Rx7vLM2W6Pxtspmna2UqGtjtgcF9q3W7qtcPt (hybrid approach)
+2025-05-23 12:28:07,651 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 12:28:07,651 - phoenix.cielo - INFO - Fetching trading stats for wallet 7brTP49Rx7vLM2W6Pxtspmna2UqGtjtgcF9q3W7qtcPt
+2025-05-23 12:28:09,205 - phoenix.cielo - INFO - Successfully retrieved trading stats for 7brTP49Rx7vLM2W6Pxtspmna2UqGtjtgcF9q3W7qtcPt
+2025-05-23 12:28:09,205 - phoenix.wallet - INFO - Processing dict response - looking for aggregated stats
+2025-05-23 12:28:09,205 - phoenix.wallet - INFO - Final extracted metrics: trades=0, win_rate=0.0%, pnl=$15093.51
+2025-05-23 12:28:09,205 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 12:28:09,205 - phoenix.wallet - INFO - Fetching last 5 token swaps for 7brTP49Rx7vLM2W6Pxtspmna2UqGtjtgcF9q3W7qtcPt
+2025-05-23 12:28:15,718 - phoenix.wallet - INFO - Found 5 swaps from 50 signatures
+2025-05-23 12:28:22,171 - phoenix.wallet - INFO -   └─ Score: 89.6/100, Type: unknown
+2025-05-23 12:28:24,173 - phoenix.wallet - INFO - Analyzing wallet 4/9: 6f1NUwuzAXMMPUTwbbJ2Mhh1zMoUQWCL4fdTKS6sr6wK
+2025-05-23 12:28:24,173 - phoenix.wallet - INFO - 🔍 Analyzing wallet 6f1NUwuzAXMMPUTwbbJ2Mhh1zMoUQWCL4fdTKS6sr6wK (hybrid approach)
+2025-05-23 12:28:24,173 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 12:28:24,173 - phoenix.cielo - INFO - Fetching trading stats for wallet 6f1NUwuzAXMMPUTwbbJ2Mhh1zMoUQWCL4fdTKS6sr6wK
+2025-05-23 12:28:25,832 - phoenix.cielo - INFO - Successfully retrieved trading stats for 6f1NUwuzAXMMPUTwbbJ2Mhh1zMoUQWCL4fdTKS6sr6wK
+2025-05-23 12:28:25,832 - phoenix.wallet - INFO - Processing dict response - looking for aggregated stats
+2025-05-23 12:28:25,832 - phoenix.wallet - INFO - Final extracted metrics: trades=0, win_rate=0.0%, pnl=$3304.83
+2025-05-23 12:28:25,832 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 12:28:25,832 - phoenix.wallet - INFO - Fetching last 5 token swaps for 6f1NUwuzAXMMPUTwbbJ2Mhh1zMoUQWCL4fdTKS6sr6wK
+2025-05-23 12:28:32,574 - phoenix.wallet - INFO - Found 5 swaps from 50 signatures
+2025-05-23 12:28:39,067 - phoenix.wallet - INFO -   └─ Score: 43.4/100, Type: unknown
+2025-05-23 12:28:41,077 - phoenix.wallet - INFO - Analyzing wallet 5/9: 3jjcLMgZYvTc8xDLwshX4rCdcLphczQw8WZXbDVDuz7D
+2025-05-23 12:28:41,077 - phoenix.wallet - INFO - 🔍 Analyzing wallet 3jjcLMgZYvTc8xDLwshX4rCdcLphczQw8WZXbDVDuz7D (hybrid approach)
+2025-05-23 12:28:41,078 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 12:28:41,078 - phoenix.cielo - INFO - Fetching trading stats for wallet 3jjcLMgZYvTc8xDLwshX4rCdcLphczQw8WZXbDVDuz7D
+2025-05-23 12:28:42,446 - phoenix.cielo - INFO - Successfully retrieved trading stats for 3jjcLMgZYvTc8xDLwshX4rCdcLphczQw8WZXbDVDuz7D
+2025-05-23 12:28:42,446 - phoenix.wallet - INFO - Processing dict response - looking for aggregated stats
+2025-05-23 12:28:42,448 - phoenix.wallet - INFO - Final extracted metrics: trades=0, win_rate=0.0%, pnl=$9983.52
+2025-05-23 12:28:42,448 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 12:28:42,448 - phoenix.wallet - INFO - Fetching last 5 token swaps for 3jjcLMgZYvTc8xDLwshX4rCdcLphczQw8WZXbDVDuz7D
+2025-05-23 12:28:48,355 - phoenix.wallet - INFO - Found 5 swaps from 50 signatures
+2025-05-23 12:28:54,757 - phoenix.wallet - INFO -   └─ Score: 67.8/100, Type: unknown
+2025-05-23 12:28:56,761 - phoenix.wallet - INFO - Analyzing wallet 6/9: ExbKNUwVtyRjrJMPLnVWRus9BxTRpt6BRXWxGYTyfcYS
+2025-05-23 12:28:56,762 - phoenix.wallet - INFO - 🔍 Analyzing wallet ExbKNUwVtyRjrJMPLnVWRus9BxTRpt6BRXWxGYTyfcYS (hybrid approach)
+2025-05-23 12:28:56,762 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 12:28:56,762 - phoenix.cielo - INFO - Fetching trading stats for wallet ExbKNUwVtyRjrJMPLnVWRus9BxTRpt6BRXWxGYTyfcYS
+2025-05-23 12:28:58,347 - phoenix.cielo - INFO - Successfully retrieved trading stats for ExbKNUwVtyRjrJMPLnVWRus9BxTRpt6BRXWxGYTyfcYS
+2025-05-23 12:28:58,347 - phoenix.wallet - INFO - Processing dict response - looking for aggregated stats
+2025-05-23 12:28:58,347 - phoenix.wallet - INFO - Final extracted metrics: trades=0, win_rate=0.0%, pnl=$94810.56
+2025-05-23 12:28:58,347 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 12:28:58,347 - phoenix.wallet - INFO - Fetching last 5 token swaps for ExbKNUwVtyRjrJMPLnVWRus9BxTRpt6BRXWxGYTyfcYS
+2025-05-23 12:29:04,757 - phoenix.wallet - INFO - Found 5 swaps from 50 signatures
+2025-05-23 12:29:11,096 - phoenix.wallet - INFO -   └─ Score: 54.3/100, Type: unknown
+2025-05-23 12:29:13,107 - phoenix.wallet - INFO - Analyzing wallet 7/9: 4uRrQUR4zMdoaD91bZbYE7c5EHAqKxkcGeDGqYsmn7Pb
+2025-05-23 12:29:13,107 - phoenix.wallet - INFO - 🔍 Analyzing wallet 4uRrQUR4zMdoaD91bZbYE7c5EHAqKxkcGeDGqYsmn7Pb (hybrid approach)
+2025-05-23 12:29:13,109 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 12:29:13,109 - phoenix.cielo - INFO - Fetching trading stats for wallet 4uRrQUR4zMdoaD91bZbYE7c5EHAqKxkcGeDGqYsmn7Pb
+2025-05-23 12:29:14,241 - phoenix.cielo - INFO - Successfully retrieved trading stats for 4uRrQUR4zMdoaD91bZbYE7c5EHAqKxkcGeDGqYsmn7Pb
+2025-05-23 12:29:14,241 - phoenix.wallet - INFO - Processing dict response - looking for aggregated stats
+2025-05-23 12:29:14,241 - phoenix.wallet - INFO - Final extracted metrics: trades=0, win_rate=0.0%, pnl=$0.00
+2025-05-23 12:29:14,241 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 12:29:14,241 - phoenix.wallet - INFO - Fetching last 5 token swaps for 4uRrQUR4zMdoaD91bZbYE7c5EHAqKxkcGeDGqYsmn7Pb
+2025-05-23 12:29:23,182 - phoenix.wallet - INFO - Found 5 swaps from 50 signatures
+2025-05-23 12:29:29,567 - phoenix.wallet - INFO -   └─ Score: 28.4/100, Type: unknown
+2025-05-23 12:29:31,570 - phoenix.wallet - INFO - Analyzing wallet 8/9: D4zwkUJF4FbmnRgtL6nphhunrMZdoFtBJ39Nsf2cNoZy
+2025-05-23 12:29:31,570 - phoenix.wallet - INFO - 🔍 Analyzing wallet D4zwkUJF4FbmnRgtL6nphhunrMZdoFtBJ39Nsf2cNoZy (hybrid approach)
+2025-05-23 12:29:31,571 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 12:29:31,571 - phoenix.cielo - INFO - Fetching trading stats for wallet D4zwkUJF4FbmnRgtL6nphhunrMZdoFtBJ39Nsf2cNoZy
+2025-05-23 12:29:33,412 - phoenix.cielo - INFO - Successfully retrieved trading stats for D4zwkUJF4FbmnRgtL6nphhunrMZdoFtBJ39Nsf2cNoZy
+2025-05-23 12:29:33,412 - phoenix.wallet - INFO - Processing dict response - looking for aggregated stats
+2025-05-23 12:29:33,413 - phoenix.wallet - INFO - Final extracted metrics: trades=0, win_rate=0.0%, pnl=$2763.95
+2025-05-23 12:29:33,413 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 12:29:33,413 - phoenix.wallet - INFO - Fetching last 5 token swaps for D4zwkUJF4FbmnRgtL6nphhunrMZdoFtBJ39Nsf2cNoZy
+2025-05-23 12:29:44,199 - phoenix.wallet - INFO - Found 5 swaps from 50 signatures
+2025-05-23 12:29:50,493 - phoenix.wallet - INFO -   └─ Score: 45.2/100, Type: unknown
+2025-05-23 12:29:52,501 - phoenix.wallet - INFO - Analyzing wallet 9/9: Gd6qobzV7KbNaYkKtiF3NUuSAU9SyJFZSoHA9pn4ZQqt
+2025-05-23 12:29:52,501 - phoenix.wallet - INFO - 🔍 Analyzing wallet Gd6qobzV7KbNaYkKtiF3NUuSAU9SyJFZSoHA9pn4ZQqt (hybrid approach)
+2025-05-23 12:29:52,502 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 12:29:52,502 - phoenix.cielo - INFO - Fetching trading stats for wallet Gd6qobzV7KbNaYkKtiF3NUuSAU9SyJFZSoHA9pn4ZQqt
+2025-05-23 12:29:53,570 - phoenix.cielo - INFO - Successfully retrieved trading stats for Gd6qobzV7KbNaYkKtiF3NUuSAU9SyJFZSoHA9pn4ZQqt
+2025-05-23 12:29:53,570 - phoenix.wallet - INFO - Processing dict response - looking for aggregated stats
+2025-05-23 12:29:53,586 - phoenix.wallet - INFO - Final extracted metrics: trades=0, win_rate=0.0%, pnl=$0.00
+2025-05-23 12:29:53,586 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 12:29:53,586 - phoenix.wallet - INFO - Fetching last 5 token swaps for Gd6qobzV7KbNaYkKtiF3NUuSAU9SyJFZSoHA9pn4ZQqt
+2025-05-23 12:30:01,377 - phoenix.wallet - INFO - Found 5 swaps from 50 signatures
+2025-05-23 12:30:09,498 - phoenix.wallet - INFO -   └─ Score: 30.0/100, Type: unknown
+2025-05-23 12:30:09,813 - phoenix - INFO - Exported wallet analysis to Excel: C:\Users\Administrator\Desktop\phoenix-project\outputs\wallet_analysis_20250523_123009.xlsx
+2025-05-23 12:30:09,813 - phoenix - INFO - Exported wallet analysis to C:\Users\Administrator\Desktop\phoenix-project\outputs\wallet_analysis_20250523_123009.csv
