@@ -139,6 +139,7 @@ class PhoenixCLI:
         print("\n" + "="*80)
         print("Phoenix Project - Enhanced Solana Chain Analysis Tool")
         print("🎯 UPDATED: Helius Integration for Pump.fun Tokens")
+        print(f"📅 Current Date: May 23, 2025")
         print("="*80)
         print("\nSelect an option:")
         print("\n🔧 CONFIGURATION:")
