@@ -145,19 +145,17 @@ class PhoenixCLI:
         print("1. Configure API Keys")
         print("2. Check Configuration")
         print("3. Test API Connectivity")
-        print("4. Add Data Sources")
-        print("\n📊 FIXED ENHANCED ANALYSIS:")
-        print("5. 🎯 FIXED Enhanced Telegram Analysis (Pullback % + Time-to-2x)")
-        print("6. Analyze Wallets (Auto-load from wallets.txt)")
+        print("\n📊 TOOLS:")
+        print("4. SPYDEFI")
+        print("5. ANALYZE WALLETS")
         print("\n🔍 UTILITIES:")
-        print("7. View Current Sources")
-        print("8. View Wallets File")
-        print("9. Help & Examples")
+        print("6. View Current Sources")
+        print("7. Help & Examples")
         print("0. Exit")
         print("="*80)
         
         try:
-            choice = input("\nEnter your choice (0-9): ").strip()
+            choice = input("\nEnter your choice (0-7): ").strip()
             
             if choice == '0':
                 print("\nExiting Phoenix Project. Goodbye! 👋")
@@ -169,16 +167,12 @@ class PhoenixCLI:
             elif choice == '3':
                 self._test_api_connectivity()
             elif choice == '4':
-                self._interactive_add_sources()
-            elif choice == '5':
                 self._fixed_enhanced_telegram_analysis()
-            elif choice == '6':
+            elif choice == '5':
                 self._auto_wallet_analysis()
-            elif choice == '7':
+            elif choice == '6':
                 self._view_current_sources()
-            elif choice == '8':
-                self._view_wallets_file()
-            elif choice == '9':
+            elif choice == '7':
                 self._show_help()
             else:
                 print("❌ Invalid choice. Please try again.")
@@ -642,7 +636,7 @@ class PhoenixCLI:
         print("   - Birdeye API: https://birdeye.so (CRITICAL for enhanced features)")
         print("   - Telegram API: https://my.telegram.org (CRITICAL for SpyDefi)")
         print()
-        print("2. Run enhanced analysis (Option 5)")
+        print("2. Run enhanced analysis (Option 4 - SPYDEFI)")
         print("   - FIXED Enhanced SpyDefi analysis with pullback & time-to-2x")
         print("   - Proper CSV export with all enhanced metrics")
         print("   - Expanded contract address detection")
@@ -706,20 +700,29 @@ class PhoenixCLI:
         print("\n📝 Wallet analysis functionality available in full version.")
         input("Press Enter to continue...")
     
-    def _interactive_add_sources(self):
-        """Placeholder for adding sources."""
-        print("\n📝 Add sources functionality available in full version.")
-        input("Press Enter to continue...")
-    
     def _view_current_sources(self):
-        """Placeholder for viewing sources."""
-        print("\n📝 View sources functionality available in full version.")
-        input("Press Enter to continue...")
-    
-    def _view_wallets_file(self):
-        """Placeholder for viewing wallets file."""
-        print("\n📝 View wallets file functionality available in full version.")
-        input("Press Enter to continue...")
+        """View current data sources."""
+        print("\n" + "="*70)
+        print("    📊 CURRENT DATA SOURCES")
+        print("="*70)
+        
+        print(f"\n📱 TELEGRAM CHANNELS:")
+        channels = self.config.get('sources', {}).get('telegram_groups', [])
+        if channels:
+            for channel in channels:
+                print(f"   • {channel}")
+        else:
+            print("   No telegram channels configured")
+        
+        print(f"\n💰 WALLETS:")
+        wallets_from_file = load_wallets_from_file("wallets.txt")
+        print(f"   Wallets in wallets.txt: {len(wallets_from_file)}")
+        for wallet in wallets_from_file[:10]:
+            print(f"   • {wallet}")
+        if len(wallets_from_file) > 10:
+            print(f"   ... and {len(wallets_from_file) - 10} more")
+        
+        input("\nPress Enter to continue...")
     
     def run(self) -> None:
         """Run the CLI application."""
