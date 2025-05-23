@@ -33513,3 +33513,500 @@ AttributeError: 'TelegramScraper' object has no attribute 'export_enhanced_spyde
 2025-05-23 09:29:42,920 - phoenix.wallet - INFO - Collecting results for wallet 9/9: Gd6qobzV7KbNaYkKtiF3NUuSAU9SyJFZSoHA9pn4ZQqt
 2025-05-23 09:29:42,921 - phoenix.wallet - INFO -   └─ Score: 18/100, Type: unknown
 2025-05-23 09:29:42,922 - phoenix - ERROR - Wallet analysis error: 'net_profit_usd'
+2025-05-23 11:03:42,872 - phoenix - INFO - Loaded 9 wallet addresses from wallets.txt
+2025-05-23 11:03:46,067 - phoenix.api_manager - INFO - Birdeye API initialized for TOKEN analysis ONLY
+2025-05-23 11:03:46,067 - phoenix.api_manager - INFO - Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-23 11:03:48,177 - phoenix.cielo - INFO - ✅ Cielo Finance API is accessible
+2025-05-23 11:03:48,177 - phoenix.wallet - INFO - ✅ Cielo Finance API connection verified
+2025-05-23 11:03:48,177 - phoenix.wallet - INFO - Batch analyzing 9 wallets using hybrid approach
+2025-05-23 11:03:48,177 - phoenix.wallet - INFO - 🔍 Analyzing wallet Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ (hybrid approach)
+2025-05-23 11:03:48,177 - phoenix.wallet - INFO - 🔍 Analyzing wallet 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX (hybrid approach)
+2025-05-23 11:03:48,177 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 11:03:48,177 - phoenix.wallet - INFO - 🔍 Analyzing wallet 7brTP49Rx7vLM2W6Pxtspmna2UqGtjtgcF9q3W7qtcPt (hybrid approach)
+2025-05-23 11:03:48,177 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 11:03:48,177 - phoenix.wallet - INFO - 🔍 Analyzing wallet 6f1NUwuzAXMMPUTwbbJ2Mhh1zMoUQWCL4fdTKS6sr6wK (hybrid approach)
+2025-05-23 11:03:48,177 - phoenix.cielo - INFO - Fetching trading stats for wallet Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-23 11:03:48,177 - phoenix.wallet - INFO - 🔍 Analyzing wallet 3jjcLMgZYvTc8xDLwshX4rCdcLphczQw8WZXbDVDuz7D (hybrid approach)
+2025-05-23 11:03:48,177 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 11:03:48,177 - phoenix.wallet - INFO - 🔍 Analyzing wallet ExbKNUwVtyRjrJMPLnVWRus9BxTRpt6BRXWxGYTyfcYS (hybrid approach)
+2025-05-23 11:03:48,190 - phoenix.cielo - INFO - Fetching trading stats for wallet 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-23 11:03:48,190 - phoenix.wallet - INFO - 🔍 Analyzing wallet 4uRrQUR4zMdoaD91bZbYE7c5EHAqKxkcGeDGqYsmn7Pb (hybrid approach)
+2025-05-23 11:03:48,190 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 11:03:48,190 - phoenix.wallet - INFO - 🔍 Analyzing wallet D4zwkUJF4FbmnRgtL6nphhunrMZdoFtBJ39Nsf2cNoZy (hybrid approach)
+2025-05-23 11:03:48,190 - phoenix.wallet - INFO - 🔍 Analyzing wallet Gd6qobzV7KbNaYkKtiF3NUuSAU9SyJFZSoHA9pn4ZQqt (hybrid approach)
+2025-05-23 11:03:48,190 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 11:03:48,190 - phoenix.wallet - INFO - Collecting results for wallet 1/9: Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-23 11:03:48,190 - phoenix.cielo - INFO - Fetching trading stats for wallet 7brTP49Rx7vLM2W6Pxtspmna2UqGtjtgcF9q3W7qtcPt
+2025-05-23 11:03:48,190 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 11:03:48,190 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 11:03:48,190 - phoenix.cielo - INFO - Fetching trading stats for wallet 6f1NUwuzAXMMPUTwbbJ2Mhh1zMoUQWCL4fdTKS6sr6wK
+2025-05-23 11:03:48,190 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 11:03:48,190 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 11:03:48,190 - phoenix.cielo - INFO - Fetching trading stats for wallet 3jjcLMgZYvTc8xDLwshX4rCdcLphczQw8WZXbDVDuz7D
+2025-05-23 11:03:48,190 - phoenix.cielo - INFO - Fetching trading stats for wallet ExbKNUwVtyRjrJMPLnVWRus9BxTRpt6BRXWxGYTyfcYS
+2025-05-23 11:03:48,190 - phoenix.cielo - INFO - Fetching trading stats for wallet 4uRrQUR4zMdoaD91bZbYE7c5EHAqKxkcGeDGqYsmn7Pb
+2025-05-23 11:03:48,190 - phoenix.cielo - INFO - Fetching trading stats for wallet D4zwkUJF4FbmnRgtL6nphhunrMZdoFtBJ39Nsf2cNoZy
+2025-05-23 11:03:48,190 - phoenix.cielo - INFO - Fetching trading stats for wallet Gd6qobzV7KbNaYkKtiF3NUuSAU9SyJFZSoHA9pn4ZQqt
+2025-05-23 11:03:51,071 - phoenix.cielo - INFO - Successfully retrieved trading stats for 3jjcLMgZYvTc8xDLwshX4rCdcLphczQw8WZXbDVDuz7D
+2025-05-23 11:03:51,071 - phoenix.wallet - ERROR - Error extracting Cielo metrics: cannot access local variable 'k' where it is not associated with a value
+2025-05-23 11:03:51,071 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 11:03:51,071 - phoenix.wallet - INFO - Fetching last 5 token swaps for 3jjcLMgZYvTc8xDLwshX4rCdcLphczQw8WZXbDVDuz7D
+2025-05-23 11:03:51,309 - phoenix.cielo - INFO - Successfully retrieved trading stats for ExbKNUwVtyRjrJMPLnVWRus9BxTRpt6BRXWxGYTyfcYS
+2025-05-23 11:03:51,309 - phoenix.wallet - ERROR - Error extracting Cielo metrics: cannot access local variable 'k' where it is not associated with a value
+2025-05-23 11:03:51,309 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 11:03:51,309 - phoenix.wallet - INFO - Fetching last 5 token swaps for ExbKNUwVtyRjrJMPLnVWRus9BxTRpt6BRXWxGYTyfcYS
+2025-05-23 11:03:51,790 - phoenix.wallet - INFO - Found 5 swaps from 100 transactions
+2025-05-23 11:03:52,115 - phoenix.cielo - INFO - Successfully retrieved trading stats for Gd6qobzV7KbNaYkKtiF3NUuSAU9SyJFZSoHA9pn4ZQqt
+2025-05-23 11:03:52,115 - phoenix.wallet - ERROR - Error extracting Cielo metrics: cannot access local variable 'k' where it is not associated with a value
+2025-05-23 11:03:52,115 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 11:03:52,115 - phoenix.wallet - INFO - Fetching last 5 token swaps for Gd6qobzV7KbNaYkKtiF3NUuSAU9SyJFZSoHA9pn4ZQqt
+2025-05-23 11:03:52,302 - phoenix.wallet - INFO - Found 5 swaps from 100 transactions
+2025-05-23 11:03:52,490 - phoenix.cielo - INFO - Successfully retrieved trading stats for 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-23 11:03:52,490 - phoenix.wallet - ERROR - Error extracting Cielo metrics: cannot access local variable 'k' where it is not associated with a value
+2025-05-23 11:03:52,490 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 11:03:52,490 - phoenix.wallet - INFO - Fetching last 5 token swaps for 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-23 11:03:52,680 - phoenix.cielo - INFO - Successfully retrieved trading stats for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-23 11:03:52,680 - phoenix.wallet - ERROR - Error extracting Cielo metrics: cannot access local variable 'k' where it is not associated with a value
+2025-05-23 11:03:52,680 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 11:03:52,680 - phoenix.wallet - INFO - Fetching last 5 token swaps for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-23 11:03:52,759 - phoenix.cielo - INFO - Successfully retrieved trading stats for 4uRrQUR4zMdoaD91bZbYE7c5EHAqKxkcGeDGqYsmn7Pb
+2025-05-23 11:03:52,759 - phoenix.wallet - ERROR - Error extracting Cielo metrics: cannot access local variable 'k' where it is not associated with a value
+2025-05-23 11:03:52,759 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 11:03:52,759 - phoenix.wallet - INFO - Fetching last 5 token swaps for 4uRrQUR4zMdoaD91bZbYE7c5EHAqKxkcGeDGqYsmn7Pb
+2025-05-23 11:03:52,759 - phoenix.cielo - INFO - Successfully retrieved trading stats for 7brTP49Rx7vLM2W6Pxtspmna2UqGtjtgcF9q3W7qtcPt
+2025-05-23 11:03:52,759 - phoenix.wallet - ERROR - Error extracting Cielo metrics: cannot access local variable 'k' where it is not associated with a value
+2025-05-23 11:03:52,759 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 11:03:52,759 - phoenix.wallet - INFO - Fetching last 5 token swaps for 7brTP49Rx7vLM2W6Pxtspmna2UqGtjtgcF9q3W7qtcPt
+2025-05-23 11:03:52,854 - phoenix.cielo - INFO - Successfully retrieved trading stats for 6f1NUwuzAXMMPUTwbbJ2Mhh1zMoUQWCL4fdTKS6sr6wK
+2025-05-23 11:03:52,854 - phoenix.wallet - ERROR - Error extracting Cielo metrics: cannot access local variable 'k' where it is not associated with a value
+2025-05-23 11:03:52,854 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 11:03:52,854 - phoenix.wallet - INFO - Fetching last 5 token swaps for 6f1NUwuzAXMMPUTwbbJ2Mhh1zMoUQWCL4fdTKS6sr6wK
+2025-05-23 11:03:52,902 - phoenix.wallet - INFO - Found 5 swaps from 100 transactions
+2025-05-23 11:03:52,918 - phoenix.cielo - INFO - Successfully retrieved trading stats for D4zwkUJF4FbmnRgtL6nphhunrMZdoFtBJ39Nsf2cNoZy
+2025-05-23 11:03:52,918 - phoenix.wallet - ERROR - Error extracting Cielo metrics: cannot access local variable 'k' where it is not associated with a value
+2025-05-23 11:03:52,918 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 11:03:52,918 - phoenix.wallet - INFO - Fetching last 5 token swaps for D4zwkUJF4FbmnRgtL6nphhunrMZdoFtBJ39Nsf2cNoZy
+2025-05-23 11:03:53,661 - phoenix.wallet - INFO - Found 5 swaps from 100 transactions
+2025-05-23 11:03:54,247 - phoenix.wallet - INFO - Found 5 swaps from 100 transactions
+2025-05-23 11:03:56,364 - phoenix.wallet - INFO - Found 5 swaps from 100 transactions
+2025-05-23 11:03:56,898 - phoenix.wallet - INFO - Found 5 swaps from 100 transactions
+2025-05-23 11:04:02,310 - phoenix.wallet - INFO - Found 5 swaps from 100 transactions
+2025-05-23 11:04:06,636 - phoenix.wallet - INFO - Found 5 swaps from 100 transactions
+2025-05-23 11:21:44,327 - phoenix - INFO - Loaded 9 wallet addresses from wallets.txt
+2025-05-23 11:21:45,667 - phoenix.api_manager - INFO - Birdeye API initialized for TOKEN analysis ONLY
+2025-05-23 11:21:45,667 - phoenix.api_manager - INFO - Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-23 11:21:47,305 - phoenix.cielo - INFO - ✅ Cielo Finance API is accessible
+2025-05-23 11:21:47,305 - phoenix.wallet - INFO - ✅ Cielo Finance API connection verified
+2025-05-23 11:21:47,305 - phoenix.wallet - INFO - Batch analyzing 9 wallets using hybrid approach
+2025-05-23 11:21:47,307 - phoenix.wallet - INFO - 🔍 Analyzing wallet Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ (hybrid approach)
+2025-05-23 11:21:47,307 - phoenix.wallet - INFO - 🔍 Analyzing wallet 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX (hybrid approach)
+2025-05-23 11:21:47,307 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 11:21:47,307 - phoenix.wallet - INFO - 🔍 Analyzing wallet 7brTP49Rx7vLM2W6Pxtspmna2UqGtjtgcF9q3W7qtcPt (hybrid approach)
+2025-05-23 11:21:47,307 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 11:21:47,307 - phoenix.wallet - INFO - 🔍 Analyzing wallet 6f1NUwuzAXMMPUTwbbJ2Mhh1zMoUQWCL4fdTKS6sr6wK (hybrid approach)
+2025-05-23 11:21:47,307 - phoenix.cielo - INFO - Fetching trading stats for wallet Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-23 11:21:47,307 - phoenix.wallet - INFO - 🔍 Analyzing wallet 3jjcLMgZYvTc8xDLwshX4rCdcLphczQw8WZXbDVDuz7D (hybrid approach)
+2025-05-23 11:21:47,307 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 11:21:47,307 - phoenix.wallet - INFO - 🔍 Analyzing wallet ExbKNUwVtyRjrJMPLnVWRus9BxTRpt6BRXWxGYTyfcYS (hybrid approach)
+2025-05-23 11:21:47,307 - phoenix.cielo - INFO - Fetching trading stats for wallet 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-23 11:21:47,307 - phoenix.wallet - INFO - 🔍 Analyzing wallet 4uRrQUR4zMdoaD91bZbYE7c5EHAqKxkcGeDGqYsmn7Pb (hybrid approach)
+2025-05-23 11:21:47,307 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 11:21:47,307 - phoenix.wallet - INFO - 🔍 Analyzing wallet D4zwkUJF4FbmnRgtL6nphhunrMZdoFtBJ39Nsf2cNoZy (hybrid approach)
+2025-05-23 11:21:47,307 - phoenix.wallet - INFO - 🔍 Analyzing wallet Gd6qobzV7KbNaYkKtiF3NUuSAU9SyJFZSoHA9pn4ZQqt (hybrid approach)
+2025-05-23 11:21:47,307 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 11:21:47,307 - phoenix.wallet - INFO - Collecting results for wallet 1/9: Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-23 11:21:47,307 - phoenix.cielo - INFO - Fetching trading stats for wallet 7brTP49Rx7vLM2W6Pxtspmna2UqGtjtgcF9q3W7qtcPt
+2025-05-23 11:21:47,307 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 11:21:47,307 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 11:21:47,307 - phoenix.cielo - INFO - Fetching trading stats for wallet 6f1NUwuzAXMMPUTwbbJ2Mhh1zMoUQWCL4fdTKS6sr6wK
+2025-05-23 11:21:47,307 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 11:21:47,307 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 11:21:47,307 - phoenix.cielo - INFO - Fetching trading stats for wallet 3jjcLMgZYvTc8xDLwshX4rCdcLphczQw8WZXbDVDuz7D
+2025-05-23 11:21:47,307 - phoenix.cielo - INFO - Fetching trading stats for wallet ExbKNUwVtyRjrJMPLnVWRus9BxTRpt6BRXWxGYTyfcYS
+2025-05-23 11:21:47,307 - phoenix.cielo - INFO - Fetching trading stats for wallet 4uRrQUR4zMdoaD91bZbYE7c5EHAqKxkcGeDGqYsmn7Pb
+2025-05-23 11:21:47,307 - phoenix.cielo - INFO - Fetching trading stats for wallet D4zwkUJF4FbmnRgtL6nphhunrMZdoFtBJ39Nsf2cNoZy
+2025-05-23 11:21:47,307 - phoenix.cielo - INFO - Fetching trading stats for wallet Gd6qobzV7KbNaYkKtiF3NUuSAU9SyJFZSoHA9pn4ZQqt
+2025-05-23 11:21:49,057 - phoenix.cielo - INFO - Successfully retrieved trading stats for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-23 11:21:49,057 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 11:21:49,057 - phoenix.wallet - INFO - Fetching last 5 token swaps for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-23 11:21:50,947 - phoenix.cielo - INFO - Successfully retrieved trading stats for 3jjcLMgZYvTc8xDLwshX4rCdcLphczQw8WZXbDVDuz7D
+2025-05-23 11:21:50,947 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 11:21:50,947 - phoenix.wallet - INFO - Fetching last 5 token swaps for 3jjcLMgZYvTc8xDLwshX4rCdcLphczQw8WZXbDVDuz7D
+2025-05-23 11:21:51,010 - phoenix.cielo - INFO - Successfully retrieved trading stats for 7brTP49Rx7vLM2W6Pxtspmna2UqGtjtgcF9q3W7qtcPt
+2025-05-23 11:21:51,010 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 11:21:51,010 - phoenix.wallet - INFO - Fetching last 5 token swaps for 7brTP49Rx7vLM2W6Pxtspmna2UqGtjtgcF9q3W7qtcPt
+2025-05-23 11:21:51,167 - phoenix.cielo - INFO - Successfully retrieved trading stats for 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-23 11:21:51,167 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 11:21:51,167 - phoenix.wallet - INFO - Fetching last 5 token swaps for 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-23 11:21:51,182 - phoenix.cielo - INFO - Successfully retrieved trading stats for Gd6qobzV7KbNaYkKtiF3NUuSAU9SyJFZSoHA9pn4ZQqt
+2025-05-23 11:21:51,182 - phoenix.wallet - INFO - Trying to extract from nested data structures...
+2025-05-23 11:21:51,182 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 11:21:51,182 - phoenix.wallet - INFO - Fetching last 5 token swaps for Gd6qobzV7KbNaYkKtiF3NUuSAU9SyJFZSoHA9pn4ZQqt
+2025-05-23 11:21:51,229 - phoenix.cielo - INFO - Successfully retrieved trading stats for 6f1NUwuzAXMMPUTwbbJ2Mhh1zMoUQWCL4fdTKS6sr6wK
+2025-05-23 11:21:51,229 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 11:21:51,229 - phoenix.wallet - INFO - Fetching last 5 token swaps for 6f1NUwuzAXMMPUTwbbJ2Mhh1zMoUQWCL4fdTKS6sr6wK
+2025-05-23 11:21:51,245 - phoenix.cielo - INFO - Successfully retrieved trading stats for ExbKNUwVtyRjrJMPLnVWRus9BxTRpt6BRXWxGYTyfcYS
+2025-05-23 11:21:51,245 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 11:21:51,245 - phoenix.wallet - INFO - Fetching last 5 token swaps for ExbKNUwVtyRjrJMPLnVWRus9BxTRpt6BRXWxGYTyfcYS
+2025-05-23 11:21:51,260 - phoenix.cielo - INFO - Successfully retrieved trading stats for 4uRrQUR4zMdoaD91bZbYE7c5EHAqKxkcGeDGqYsmn7Pb
+2025-05-23 11:21:51,260 - phoenix.wallet - INFO - Trying to extract from nested data structures...
+2025-05-23 11:21:51,260 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 11:21:51,260 - phoenix.wallet - INFO - Fetching last 5 token swaps for 4uRrQUR4zMdoaD91bZbYE7c5EHAqKxkcGeDGqYsmn7Pb
+2025-05-23 11:21:51,260 - phoenix.cielo - INFO - Successfully retrieved trading stats for D4zwkUJF4FbmnRgtL6nphhunrMZdoFtBJ39Nsf2cNoZy
+2025-05-23 11:21:51,260 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 11:21:51,260 - phoenix.wallet - INFO - Fetching last 5 token swaps for D4zwkUJF4FbmnRgtL6nphhunrMZdoFtBJ39Nsf2cNoZy
+2025-05-23 11:21:51,573 - phoenix.wallet - INFO - Found 5 swaps from 100 transactions
+2025-05-23 11:21:51,604 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,604 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,620 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,620 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,620 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,620 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,620 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,620 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,620 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,620 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,635 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,635 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,635 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,635 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,635 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,635 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,651 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,651 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,651 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,651 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,651 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,651 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,667 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,667 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,667 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,667 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,682 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,682 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,682 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,682 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,698 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,698 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,698 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,698 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,698 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,698 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,698 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,698 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,698 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,698 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,714 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,714 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,714 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,714 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,714 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,714 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,714 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,714 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,714 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,729 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,729 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,729 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,729 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,729 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,729 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,729 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,729 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,729 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,729 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,729 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,729 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,729 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,745 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,745 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,745 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,745 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,745 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,745 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,745 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,745 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,760 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,760 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,760 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,760 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,760 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,760 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,760 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,760 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,760 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,760 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,776 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,776 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,776 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,776 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,776 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,776 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,776 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,776 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,792 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,792 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,792 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,792 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,792 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,792 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,792 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,792 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,792 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,792 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,792 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,792 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,792 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,792 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,807 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,807 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,807 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,807 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,807 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,807 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,807 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,807 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,807 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,807 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,807 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,807 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,823 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,823 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,823 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,823 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,823 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,823 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,839 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,839 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,839 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,839 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,839 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,839 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,839 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,839 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,839 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,839 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,839 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,839 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,854 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,854 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,854 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,854 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,854 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,854 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,854 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,854 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,854 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,854 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,854 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,854 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,870 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,870 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,870 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,870 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,870 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,870 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,870 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,870 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,870 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,870 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,870 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,870 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,870 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,870 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,885 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,885 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,885 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,885 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,885 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,885 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,885 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,885 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,885 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,885 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,885 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,885 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,885 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,885 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,885 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,885 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,901 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,901 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,901 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,901 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,901 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,901 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,901 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,901 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,901 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,901 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,901 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,901 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,917 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,917 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,917 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,917 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,917 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,917 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,917 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,917 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,917 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,917 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,917 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,917 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,917 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,917 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,917 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,917 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,932 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,932 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,932 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,932 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,932 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,932 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,932 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,932 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,932 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,932 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,948 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,948 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,948 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,948 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,948 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,948 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,948 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,948 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,948 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,948 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,948 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,948 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,948 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,948 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,948 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,948 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,963 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,963 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,963 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,963 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,963 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,963 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,963 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,963 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,963 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,963 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,963 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,963 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,963 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,963 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,963 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,963 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,979 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,979 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,979 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,979 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,979 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,979 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,979 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,979 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,979 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,979 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,979 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,979 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,979 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,979 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,979 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,995 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,995 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,995 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,995 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,995 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,995 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,995 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,995 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,995 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,995 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,995 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,995 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:51,995 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,010 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,010 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,010 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,010 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,010 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,010 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,010 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,010 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,010 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,010 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,010 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,010 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,026 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,026 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,026 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,026 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,026 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,026 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,026 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,026 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,026 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,026 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,026 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,026 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,026 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,026 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,042 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,042 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,042 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,042 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,042 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,042 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,042 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,042 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,057 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,057 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,057 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,057 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,057 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,057 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,057 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,057 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,057 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,073 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,073 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,073 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,073 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,073 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,073 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,073 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,088 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,088 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,088 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,088 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,088 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,088 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,088 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,088 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,104 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,104 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,104 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,104 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,104 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,104 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,104 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,104 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,120 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,120 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,120 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,120 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,120 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,120 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,135 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,135 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,151 - phoenix.wallet - ERROR - RPC call failed for getTransaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,151 - phoenix.wallet - ERROR - Error getting transaction: 429 Client Error: Too Many Requests for url: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-23 11:21:52,479 - phoenix.wallet - INFO - Found 5 swaps from 100 transactions
+2025-05-23 11:21:53,646 - phoenix.wallet - INFO - Found 5 swaps from 100 transactions
+2025-05-23 11:21:53,662 - phoenix.wallet - INFO - Found 5 swaps from 100 transactions
+2025-05-23 11:21:57,471 - phoenix.wallet - INFO - Found 5 swaps from 100 transactions
+2025-05-23 11:21:57,901 - phoenix.wallet - INFO - Found 5 swaps from 100 transactions
+2025-05-23 11:21:58,373 - phoenix.wallet - INFO - Found 5 swaps from 100 transactions
