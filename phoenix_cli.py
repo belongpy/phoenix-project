@@ -8,6 +8,8 @@ Phoenix Project - UPDATED Enhanced CLI Tool
 - Always export to Excel (no need to ask)
 - Simplified wallet analysis flow
 - Updated help text to reflect new thresholds
+- Fixed profit factor display (capped at 999.99)
+- Changed hold time display to minutes instead of hours
 """
 
 import os
@@ -314,10 +316,17 @@ class PhoenixCLI:
                 metrics = analysis['metrics']
                 composite_score = analysis.get('composite_score', metrics.get('composite_score', 0))
                 
+                # Cap profit factor for display
+                profit_factor = metrics['profit_factor']
+                if profit_factor > 999.99:
+                    profit_factor_display = "999.99x"
+                else:
+                    profit_factor_display = f"{profit_factor:.2f}x"
+                
                 print(f"\n{i}. Wallet: {wallet[:8]}...{wallet[-4:]}")
                 print(f"   Score: {format_score(composite_score)}")
                 print(f"   Type: {analysis['wallet_type']} | Win Rate: {metrics['win_rate']:.1f}%")
-                print(f"   Profit Factor: {metrics['profit_factor']:.2f}x | Total Trades: {metrics['total_trades']}")
+                print(f"   Profit Factor: {profit_factor_display} | Total Trades: {metrics['total_trades']}")
                 print(f"   Net Profit: ${metrics['net_profit_usd']:.2f} | Avg ROI: {metrics['avg_roi']:.1f}%")
                 
                 # Entry/Exit Analysis
@@ -349,7 +358,7 @@ class PhoenixCLI:
                     print(f"   {wallet['wallet_address'][:8]}... | {format_score(score)}")
     
     def _export_wallet_analysis_csv(self, results: Dict[str, Any], output_file: str) -> None:
-        """Export wallet analysis results to CSV."""
+        """Export wallet analysis results to CSV with hold time in minutes."""
         try:
             all_wallets = []
             for category in ['gem_finders', 'consistent', 'flippers', 'mixed', 'underperformers', 'unknown']:
@@ -363,7 +372,8 @@ class PhoenixCLI:
                     'rank', 'wallet_address', 'composite_score', 'score_rating',
                     'wallet_type', 'total_trades', 'win_rate', 'profit_factor',
                     'net_profit_usd', 'avg_roi', 'median_roi', 'max_roi',
-                    'avg_hold_time_hours', 'total_tokens_traded',
+                    'avg_hold_time_minutes',  # Changed from hours to minutes
+                    'total_tokens_traded',
                     'entry_exit_pattern', 'entry_quality', 'exit_quality',
                     'missed_gains_percent', 'early_exit_rate',
                     'strategy_recommendation', 'confidence'
@@ -388,6 +398,14 @@ class PhoenixCLI:
                     else:
                         rating = "VERY POOR"
                     
+                    # Convert hold time from hours to minutes
+                    hold_time_minutes = round(metrics.get('avg_hold_time_hours', 0) * 60, 2)
+                    
+                    # Cap profit factor at 999.99 for display
+                    profit_factor = metrics.get('profit_factor', 0)
+                    if profit_factor > 999.99:
+                        profit_factor = 999.99
+                    
                     row = {
                         'rank': rank,
                         'wallet_address': analysis['wallet_address'],
@@ -396,12 +414,12 @@ class PhoenixCLI:
                         'wallet_type': analysis['wallet_type'],
                         'total_trades': metrics['total_trades'],
                         'win_rate': round(metrics['win_rate'], 2),
-                        'profit_factor': round(metrics['profit_factor'], 2),
+                        'profit_factor': profit_factor,
                         'net_profit_usd': round(metrics['net_profit_usd'], 2),
                         'avg_roi': round(metrics['avg_roi'], 2),
                         'median_roi': round(metrics['median_roi'], 2),
                         'max_roi': round(metrics['max_roi'], 2),
-                        'avg_hold_time_hours': round(metrics['avg_hold_time_hours'], 2),
+                        'avg_hold_time_minutes': hold_time_minutes,
                         'total_tokens_traded': metrics['total_tokens_traded'],
                         'strategy_recommendation': analysis['strategy']['recommendation'],
                         'confidence': analysis['strategy'].get('confidence', 'LOW')
@@ -430,7 +448,7 @@ class PhoenixCLI:
             logger.error(f"Error exporting CSV: {str(e)}")
     
     def _export_wallet_analysis_excel(self, results: Dict[str, Any], output_file: str) -> None:
-        """Export wallet analysis results to Excel."""
+        """Export wallet analysis results to Excel with hold time in minutes."""
         try:
             import pandas as pd
             import xlsxwriter
@@ -461,6 +479,14 @@ class PhoenixCLI:
                 else:
                     rating = "VERY POOR"
                 
+                # Convert hold time from hours to minutes
+                hold_time_minutes = round(metrics.get('avg_hold_time_hours', 0) * 60, 2)
+                
+                # Cap profit factor at 999.99 for display
+                profit_factor = metrics.get('profit_factor', 0)
+                if profit_factor > 999.99:
+                    profit_factor = 999.99
+                
                 row = {
                     'Rank': rank,
                     'Wallet Address': analysis['wallet_address'],
@@ -469,10 +495,11 @@ class PhoenixCLI:
                     'Type': analysis['wallet_type'],
                     'Total Trades': metrics['total_trades'],
                     'Win Rate %': metrics['win_rate'],
-                    'Profit Factor': metrics['profit_factor'],
+                    'Profit Factor': profit_factor,
                     'Net Profit USD': metrics['net_profit_usd'],
                     'Avg ROI %': metrics['avg_roi'],
                     'Max ROI %': metrics['max_roi'],
+                    'Avg Hold Time (Minutes)': hold_time_minutes,  # Changed to minutes
                     'Strategy': analysis['strategy']['recommendation'],
                     'Confidence': analysis['strategy'].get('confidence', 'LOW')
                 }
@@ -576,7 +603,8 @@ class PhoenixCLI:
                 worksheet.set_column('C:C', 15)  # Composite Score
                 worksheet.set_column('D:D', 12)  # Rating
                 worksheet.set_column('E:E', 15)  # Type
-                worksheet.set_column('F:L', 15)  # Metrics
+                worksheet.set_column('F:K', 15)  # Metrics
+                worksheet.set_column('L:L', 20)  # Avg Hold Time (Minutes)
                 worksheet.set_column('M:M', 20)  # Strategy
                 worksheet.set_column('N:N', 12)  # Confidence
                 worksheet.set_column('O:R', 15)  # Entry/Exit analysis

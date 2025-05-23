@@ -2,6 +2,10 @@
 Birdeye API Module - Phoenix Project (Complete Fixed Version)
 
 This module handles all interactions with Birdeye Solana API with proper error handling.
+FIXES:
+- Special handling for pump.fun tokens
+- Better error handling and logging
+- Improved price history resolution handling
 """
 
 import requests
@@ -117,7 +121,7 @@ class BirdeyeAPI:
         result = self._make_request(endpoint, params)
         
         # Handle pump.fun tokens that might not have data
-        if not result.get("success") and "pump" in token_address.lower():
+        if not result.get("success") and token_address.endswith("pump"):
             logger.info(f"Token {token_address} appears to be a pump.fun token with limited data")
             return {
                 "success": True,
@@ -174,6 +178,16 @@ class BirdeyeAPI:
         Returns:
             Dict[str, Any]: Historical price data
         """
+        # Special handling for pump.fun tokens
+        if token_address.endswith("pump"):
+            logger.info(f"Token {token_address} is a pump.fun token, limited price history available")
+            return {
+                "success": False,
+                "error": "Limited data for pump.fun tokens",
+                "data": {"items": []},
+                "is_pump_token": True
+            }
+        
         endpoint = f"/defi/history_price"
         params = {
             "address": token_address,
@@ -189,6 +203,14 @@ class BirdeyeAPI:
         # Handle tokens without price history
         if not result.get("success") or not result.get("data", {}).get("items"):
             logger.warning(f"No price history available for {token_address}")
+            # Check if it's a pump.fun token
+            if "pump" in token_address.lower():
+                return {
+                    "success": False,
+                    "error": "No price history available for pump.fun token",
+                    "data": {"items": []},
+                    "is_pump_token": True
+                }
             return {
                 "success": False,
                 "error": "No price history available",
@@ -310,6 +332,17 @@ class BirdeyeAPI:
             "15m"  # Use 15m for better data availability
         )
         
+        # Handle pump.fun tokens
+        if price_history.get("is_pump_token"):
+            logger.warning(f"Cannot calculate performance for pump.fun token {token_address}")
+            return {
+                "success": False,
+                "error": "Cannot calculate performance for pump.fun token",
+                "is_pump_token": True,
+                "token_address": token_address,
+                "note": "pump.fun tokens have limited price history"
+            }
+        
         # Get current price
         current_price_data = self.get_token_price(token_address)
         
@@ -334,6 +367,7 @@ class BirdeyeAPI:
                     "max_price": current_price,
                     "min_price": current_price,
                     "roi_percent": 0,
+                    "current_roi_percent": 0,
                     "max_roi_percent": 0,
                     "max_drawdown_percent": 0,
                     "start_time": start_time.isoformat(),
@@ -373,6 +407,14 @@ class BirdeyeAPI:
         max_roi = ((max_price / initial_price) - 1) * 100
         max_drawdown = ((min_price / initial_price) - 1) * 100
         
+        # Find time to max price
+        time_to_max_roi_hours = 0
+        for i, price_point in enumerate(prices):
+            if price_point.get("value", 0) == max_price:
+                max_timestamp = price_point.get("unixTime", start_timestamp)
+                time_to_max_roi_hours = (max_timestamp - start_timestamp) / 3600
+                break
+        
         return {
             "success": True,
             "token_address": token_address,
@@ -381,11 +423,14 @@ class BirdeyeAPI:
             "max_price": max_price,
             "min_price": min_price,
             "roi_percent": roi,
+            "current_roi_percent": roi,
             "max_roi_percent": max_roi,
             "max_drawdown_percent": max_drawdown,
+            "time_to_max_roi_hours": time_to_max_roi_hours,
             "start_time": start_time.isoformat(),
             "end_time": datetime.now().isoformat(),
-            "market_cap_usd": market_cap_usd
+            "market_cap_usd": market_cap_usd,
+            "price_points_analyzed": len(prices)
         }
     
     def identify_platform(self, contract_address: str, token_info: Optional[Dict[str, Any]] = None) -> str:

@@ -34318,3 +34318,124 @@ AttributeError: 'TelegramScraper' object has no attribute 'export_enhanced_spyde
 2025-05-23 12:48:37,946 - phoenix.wallet - INFO -   └─ Score: 30.0/100, Type: unknown
 2025-05-23 12:48:38,262 - phoenix - INFO - Exported wallet analysis to Excel: C:\Users\Administrator\Desktop\phoenix-project\outputs\wallet_analysis_20250523_124837.xlsx
 2025-05-23 12:48:38,262 - phoenix - INFO - Exported wallet analysis to C:\Users\Administrator\Desktop\phoenix-project\outputs\wallet_analysis_20250523_124837.csv
+2025-05-23 13:37:01,240 - phoenix - INFO - Loaded 9 wallet addresses from wallets.txt
+2025-05-23 13:37:03,010 - phoenix.api_manager - INFO - Birdeye API initialized for TOKEN analysis ONLY
+2025-05-23 13:37:03,010 - phoenix.api_manager - INFO - Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-23 13:37:03,010 - phoenix.cielo - INFO - Checking Cielo Finance API connectivity...
+2025-05-23 13:37:03,223 - phoenix.cielo - INFO - ✅ Cielo Finance API is accessible (got expected error response)
+2025-05-23 13:37:03,223 - phoenix.wallet - INFO - ✅ Cielo Finance API connection verified
+2025-05-23 13:37:03,232 - phoenix.wallet - INFO - Batch analyzing 9 wallets using hybrid approach
+2025-05-23 13:37:03,232 - phoenix.wallet - INFO - Analyzing wallet 1/9: Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-23 13:37:03,232 - phoenix.wallet - INFO - 🔍 Analyzing wallet Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ (hybrid approach)
+2025-05-23 13:37:03,232 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 13:37:03,232 - phoenix.cielo - INFO - Fetching trading stats for wallet Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-23 13:37:04,896 - phoenix.cielo - INFO - Successfully retrieved trading stats for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-23 13:37:04,896 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 13:37:04,896 - phoenix.wallet - INFO - Fetching last 5 token swaps for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-23 13:37:18,622 - phoenix.wallet - INFO - Found 5 swaps from 50 signatures
+2025-05-23 13:37:18,622 - phoenix.wallet - INFO - Token Ea1iFm51ot2d6b86KEZMPPtRwz6yZZHu4aVobfbzpump is a pump.fun token, limited analysis available
+2025-05-23 13:37:19,124 - phoenix.wallet - INFO - Token Ea1iFm51ot2d6b86KEZMPPtRwz6yZZHu4aVobfbzpump is a pump.fun token, limited analysis available
+2025-05-23 13:37:19,625 - phoenix.wallet - INFO - Token NudrMewGMrwiad82MQSUoxQ78UtyS8BF2Zv9Mpcpump is a pump.fun token, limited analysis available
+2025-05-23 13:37:20,126 - phoenix.wallet - INFO - Token NudrMewGMrwiad82MQSUoxQ78UtyS8BF2Zv9Mpcpump is a pump.fun token, limited analysis available
+2025-05-23 13:37:20,627 - phoenix.wallet - INFO - Token 76EDL5qNcte2ZH29quTaFzagXjWAEY83CATEjyA6pump is a pump.fun token, limited analysis available
+2025-05-23 13:37:20,627 - phoenix.wallet - INFO -   └─ Score: 100/100, Type: flipper
+2025-05-23 13:37:22,629 - phoenix.wallet - INFO - Analyzing wallet 2/9: 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-23 13:37:22,629 - phoenix.wallet - INFO - 🔍 Analyzing wallet 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX (hybrid approach)
+2025-05-23 13:37:22,629 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 13:37:22,629 - phoenix.cielo - INFO - Fetching trading stats for wallet 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-23 13:37:24,390 - phoenix.cielo - INFO - Successfully retrieved trading stats for 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-23 13:37:24,390 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 13:37:24,390 - phoenix.wallet - INFO - Fetching last 5 token swaps for 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-23 13:37:30,126 - phoenix.wallet - INFO - Found 5 swaps from 50 signatures
+2025-05-23 13:37:30,126 - phoenix.wallet - INFO - Token CYCLVZfdraZHENtHJxKoc31CKysgRsEw1s5ahD7Apump is a pump.fun token, limited analysis available
+2025-05-23 13:37:30,629 - phoenix.wallet - INFO - Token CYCLVZfdraZHENtHJxKoc31CKysgRsEw1s5ahD7Apump is a pump.fun token, limited analysis available
+2025-05-23 13:37:31,129 - phoenix.wallet - INFO - Token 8CZtx6PCAtdemEJvp48ify2fkZLWeyLEXAkQuqMHpump is a pump.fun token, limited analysis available
+2025-05-23 13:37:31,630 - phoenix.wallet - INFO - Token 8CZtx6PCAtdemEJvp48ify2fkZLWeyLEXAkQuqMHpump is a pump.fun token, limited analysis available
+2025-05-23 13:37:32,131 - phoenix.wallet - INFO - Token 8CZtx6PCAtdemEJvp48ify2fkZLWeyLEXAkQuqMHpump is a pump.fun token, limited analysis available
+2025-05-23 13:37:32,131 - phoenix.wallet - INFO -   └─ Score: 100/100, Type: flipper
+2025-05-23 13:37:34,134 - phoenix.wallet - INFO - Analyzing wallet 3/9: 7brTP49Rx7vLM2W6Pxtspmna2UqGtjtgcF9q3W7qtcPt
+2025-05-23 13:37:34,134 - phoenix.wallet - INFO - 🔍 Analyzing wallet 7brTP49Rx7vLM2W6Pxtspmna2UqGtjtgcF9q3W7qtcPt (hybrid approach)
+2025-05-23 13:37:34,134 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 13:37:34,134 - phoenix.cielo - INFO - Fetching trading stats for wallet 7brTP49Rx7vLM2W6Pxtspmna2UqGtjtgcF9q3W7qtcPt
+2025-05-23 13:37:35,301 - phoenix.cielo - INFO - Successfully retrieved trading stats for 7brTP49Rx7vLM2W6Pxtspmna2UqGtjtgcF9q3W7qtcPt
+2025-05-23 13:37:35,301 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 13:37:35,301 - phoenix.wallet - INFO - Fetching last 5 token swaps for 7brTP49Rx7vLM2W6Pxtspmna2UqGtjtgcF9q3W7qtcPt
+2025-05-23 13:37:41,714 - phoenix.wallet - INFO - Found 5 swaps from 50 signatures
+2025-05-23 13:37:41,714 - phoenix.wallet - INFO - Token GQES2mRcYXemGnpaZ6augr9ArWcHt4EmCnnfg9Ydpump is a pump.fun token, limited analysis available
+2025-05-23 13:37:42,217 - phoenix.wallet - INFO - Token GQES2mRcYXemGnpaZ6augr9ArWcHt4EmCnnfg9Ydpump is a pump.fun token, limited analysis available
+2025-05-23 13:37:42,718 - phoenix.wallet - INFO - Token GQES2mRcYXemGnpaZ6augr9ArWcHt4EmCnnfg9Ydpump is a pump.fun token, limited analysis available
+2025-05-23 13:37:43,219 - phoenix.wallet - INFO - Token GQES2mRcYXemGnpaZ6augr9ArWcHt4EmCnnfg9Ydpump is a pump.fun token, limited analysis available
+2025-05-23 13:37:43,720 - phoenix.wallet - INFO - Token GQES2mRcYXemGnpaZ6augr9ArWcHt4EmCnnfg9Ydpump is a pump.fun token, limited analysis available
+2025-05-23 13:37:43,720 - phoenix.wallet - INFO -   └─ Score: 100/100, Type: flipper
+2025-05-23 13:37:45,723 - phoenix.wallet - INFO - Analyzing wallet 4/9: 6f1NUwuzAXMMPUTwbbJ2Mhh1zMoUQWCL4fdTKS6sr6wK
+2025-05-23 13:37:45,723 - phoenix.wallet - INFO - 🔍 Analyzing wallet 6f1NUwuzAXMMPUTwbbJ2Mhh1zMoUQWCL4fdTKS6sr6wK (hybrid approach)
+2025-05-23 13:37:45,723 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 13:37:45,725 - phoenix.cielo - INFO - Fetching trading stats for wallet 6f1NUwuzAXMMPUTwbbJ2Mhh1zMoUQWCL4fdTKS6sr6wK
+2025-05-23 13:37:47,758 - phoenix.cielo - INFO - Successfully retrieved trading stats for 6f1NUwuzAXMMPUTwbbJ2Mhh1zMoUQWCL4fdTKS6sr6wK
+2025-05-23 13:37:47,758 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 13:37:47,758 - phoenix.wallet - INFO - Fetching last 5 token swaps for 6f1NUwuzAXMMPUTwbbJ2Mhh1zMoUQWCL4fdTKS6sr6wK
+2025-05-23 13:37:54,613 - phoenix.wallet - INFO - Found 5 swaps from 50 signatures
+2025-05-23 13:37:57,498 - phoenix.wallet - INFO - Token 9HcRdHYMooeWRcJH5CxNgm6aovhytw61u35iPbBCpump is a pump.fun token, limited analysis available
+2025-05-23 13:37:57,999 - phoenix.wallet - INFO - Token 9HcRdHYMooeWRcJH5CxNgm6aovhytw61u35iPbBCpump is a pump.fun token, limited analysis available
+2025-05-23 13:37:58,500 - phoenix.wallet - INFO - Token FF61x1XAN6nrBoe9aZjPFb2rfjhKhGR4RW65Pfnrpump is a pump.fun token, limited analysis available
+2025-05-23 13:37:58,500 - phoenix.wallet - INFO -   └─ Score: 83.6/100, Type: flipper
+2025-05-23 13:38:00,508 - phoenix.wallet - INFO - Analyzing wallet 5/9: 3jjcLMgZYvTc8xDLwshX4rCdcLphczQw8WZXbDVDuz7D
+2025-05-23 13:38:00,508 - phoenix.wallet - INFO - 🔍 Analyzing wallet 3jjcLMgZYvTc8xDLwshX4rCdcLphczQw8WZXbDVDuz7D (hybrid approach)
+2025-05-23 13:38:00,508 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 13:38:00,508 - phoenix.cielo - INFO - Fetching trading stats for wallet 3jjcLMgZYvTc8xDLwshX4rCdcLphczQw8WZXbDVDuz7D
+2025-05-23 13:38:01,207 - phoenix.cielo - INFO - Successfully retrieved trading stats for 3jjcLMgZYvTc8xDLwshX4rCdcLphczQw8WZXbDVDuz7D
+2025-05-23 13:38:01,207 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 13:38:01,207 - phoenix.wallet - INFO - Fetching last 5 token swaps for 3jjcLMgZYvTc8xDLwshX4rCdcLphczQw8WZXbDVDuz7D
+2025-05-23 13:38:06,956 - phoenix.wallet - INFO - Found 5 swaps from 50 signatures
+2025-05-23 13:38:06,956 - phoenix.wallet - INFO - Token ByLhHAq8zrsupJkKDf2cfxNHNYiKqkNHASde4c3npump is a pump.fun token, limited analysis available
+2025-05-23 13:38:07,458 - phoenix.wallet - INFO - Token ByLhHAq8zrsupJkKDf2cfxNHNYiKqkNHASde4c3npump is a pump.fun token, limited analysis available
+2025-05-23 13:38:10,832 - phoenix.wallet - INFO - Token CgPDsx1DXR3fogSZu41zJ4aALU2worJERsb8YPD5pump is a pump.fun token, limited analysis available
+2025-05-23 13:38:10,832 - phoenix.wallet - INFO -   └─ Score: 88.0/100, Type: flipper
+2025-05-23 13:38:12,835 - phoenix.wallet - INFO - Analyzing wallet 6/9: ExbKNUwVtyRjrJMPLnVWRus9BxTRpt6BRXWxGYTyfcYS
+2025-05-23 13:38:12,835 - phoenix.wallet - INFO - 🔍 Analyzing wallet ExbKNUwVtyRjrJMPLnVWRus9BxTRpt6BRXWxGYTyfcYS (hybrid approach)
+2025-05-23 13:38:12,836 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 13:38:12,836 - phoenix.cielo - INFO - Fetching trading stats for wallet ExbKNUwVtyRjrJMPLnVWRus9BxTRpt6BRXWxGYTyfcYS
+2025-05-23 13:38:14,087 - phoenix.cielo - INFO - Successfully retrieved trading stats for ExbKNUwVtyRjrJMPLnVWRus9BxTRpt6BRXWxGYTyfcYS
+2025-05-23 13:38:14,087 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 13:38:14,087 - phoenix.wallet - INFO - Fetching last 5 token swaps for ExbKNUwVtyRjrJMPLnVWRus9BxTRpt6BRXWxGYTyfcYS
+2025-05-23 13:38:23,094 - phoenix.wallet - INFO - Found 5 swaps from 50 signatures
+2025-05-23 13:38:23,094 - phoenix.wallet - INFO - Token BaHv4oSZMQ7oWnGimJWD9xF88sQkZfM8a4pkAvYupump is a pump.fun token, limited analysis available
+2025-05-23 13:38:24,982 - phoenix.wallet - INFO - Token Lp8ZMw9KsVaEWBknqMfBBd8fweGzLYLF4K751hGpump is a pump.fun token, limited analysis available
+2025-05-23 13:38:25,483 - phoenix.wallet - INFO - Token HDJi1P8YYaaatADcdeyxTSdhLZCwgM1e9bYRCaAJpump is a pump.fun token, limited analysis available
+2025-05-23 13:38:25,983 - phoenix.wallet - INFO - Token HDJi1P8YYaaatADcdeyxTSdhLZCwgM1e9bYRCaAJpump is a pump.fun token, limited analysis available
+2025-05-23 13:38:25,983 - phoenix.wallet - INFO -   └─ Score: 93.5/100, Type: flipper
+2025-05-23 13:38:27,986 - phoenix.wallet - INFO - Analyzing wallet 7/9: 4uRrQUR4zMdoaD91bZbYE7c5EHAqKxkcGeDGqYsmn7Pb
+2025-05-23 13:38:27,986 - phoenix.wallet - INFO - 🔍 Analyzing wallet 4uRrQUR4zMdoaD91bZbYE7c5EHAqKxkcGeDGqYsmn7Pb (hybrid approach)
+2025-05-23 13:38:27,986 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 13:38:27,986 - phoenix.cielo - INFO - Fetching trading stats for wallet 4uRrQUR4zMdoaD91bZbYE7c5EHAqKxkcGeDGqYsmn7Pb
+2025-05-23 13:38:29,435 - phoenix.cielo - INFO - Successfully retrieved trading stats for 4uRrQUR4zMdoaD91bZbYE7c5EHAqKxkcGeDGqYsmn7Pb
+2025-05-23 13:38:29,435 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 13:38:29,435 - phoenix.wallet - INFO - Fetching last 5 token swaps for 4uRrQUR4zMdoaD91bZbYE7c5EHAqKxkcGeDGqYsmn7Pb
+2025-05-23 13:38:44,681 - phoenix.wallet - INFO - Found 5 swaps from 50 signatures
+2025-05-23 13:38:48,912 - phoenix.wallet - INFO - Token E2kGUkJgUvoN4fKHoNPiLYvagu4mS9WVppBZSxtypump is a pump.fun token, limited analysis available
+2025-05-23 13:38:50,286 - phoenix.wallet - INFO -   └─ Score: 39.4/100, Type: unknown
+2025-05-23 13:38:52,296 - phoenix.wallet - INFO - Analyzing wallet 8/9: D4zwkUJF4FbmnRgtL6nphhunrMZdoFtBJ39Nsf2cNoZy
+2025-05-23 13:38:52,296 - phoenix.wallet - INFO - 🔍 Analyzing wallet D4zwkUJF4FbmnRgtL6nphhunrMZdoFtBJ39Nsf2cNoZy (hybrid approach)
+2025-05-23 13:38:52,296 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 13:38:52,296 - phoenix.cielo - INFO - Fetching trading stats for wallet D4zwkUJF4FbmnRgtL6nphhunrMZdoFtBJ39Nsf2cNoZy
+2025-05-23 13:38:54,758 - phoenix.cielo - INFO - Successfully retrieved trading stats for D4zwkUJF4FbmnRgtL6nphhunrMZdoFtBJ39Nsf2cNoZy
+2025-05-23 13:38:54,758 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 13:38:54,774 - phoenix.wallet - INFO - Fetching last 5 token swaps for D4zwkUJF4FbmnRgtL6nphhunrMZdoFtBJ39Nsf2cNoZy
+2025-05-23 13:38:59,866 - phoenix.wallet - INFO - Found 5 swaps from 50 signatures
+2025-05-23 13:39:06,898 - phoenix.wallet - INFO -   └─ Score: 77.0/100, Type: flipper
+2025-05-23 13:39:08,910 - phoenix.wallet - INFO - Analyzing wallet 9/9: Gd6qobzV7KbNaYkKtiF3NUuSAU9SyJFZSoHA9pn4ZQqt
+2025-05-23 13:39:08,910 - phoenix.wallet - INFO - 🔍 Analyzing wallet Gd6qobzV7KbNaYkKtiF3NUuSAU9SyJFZSoHA9pn4ZQqt (hybrid approach)
+2025-05-23 13:39:08,910 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 13:39:08,910 - phoenix.cielo - INFO - Fetching trading stats for wallet Gd6qobzV7KbNaYkKtiF3NUuSAU9SyJFZSoHA9pn4ZQqt
+2025-05-23 13:39:10,558 - phoenix.cielo - INFO - Successfully retrieved trading stats for Gd6qobzV7KbNaYkKtiF3NUuSAU9SyJFZSoHA9pn4ZQqt
+2025-05-23 13:39:10,558 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 13:39:10,558 - phoenix.wallet - INFO - Fetching last 5 token swaps for Gd6qobzV7KbNaYkKtiF3NUuSAU9SyJFZSoHA9pn4ZQqt
+2025-05-23 13:39:18,286 - phoenix.wallet - INFO - Found 5 swaps from 50 signatures
+2025-05-23 13:39:18,286 - phoenix.wallet - INFO - Token 5YxXvio26Mv2RfZEYMPVcStKRVMG7TTjcWJjYjjGpump is a pump.fun token, limited analysis available
+2025-05-23 13:39:18,789 - phoenix.wallet - INFO - Token 5YxXvio26Mv2RfZEYMPVcStKRVMG7TTjcWJjYjjGpump is a pump.fun token, limited analysis available
+2025-05-23 13:39:19,290 - phoenix.wallet - INFO - Token 349UqbnQp9DckhCm1we2wDihGmRXNPGoCpJ49gc8pump is a pump.fun token, limited analysis available
+2025-05-23 13:39:19,791 - phoenix.wallet - INFO - Token 349UqbnQp9DckhCm1we2wDihGmRXNPGoCpJ49gc8pump is a pump.fun token, limited analysis available
+2025-05-23 13:39:20,293 - phoenix.wallet - INFO - Token G7eMQsuwR7eZwDGSPgo6SKjsges7H5UJcv6YHbmDpump is a pump.fun token, limited analysis available
+2025-05-23 13:39:20,293 - phoenix.wallet - INFO -   └─ Score: 15.0/100, Type: unknown
+2025-05-23 13:39:20,659 - phoenix - INFO - Exported wallet analysis to Excel: C:\Users\Administrator\Desktop\phoenix-project\outputs\wallet_analysis_20250523_133920.xlsx
+2025-05-23 13:39:20,659 - phoenix - INFO - Exported wallet analysis to C:\Users\Administrator\Desktop\phoenix-project\outputs\wallet_analysis_20250523_133920.csv

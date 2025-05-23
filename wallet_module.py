@@ -1,12 +1,14 @@
 """
-Wallet Analysis Module - Phoenix Project (FIXED VERSION WITH CIELO API FORMAT)
+Wallet Analysis Module - Phoenix Project (COMPLETE FIXED VERSION)
 
 FIXES:
 - Updated to match actual Cielo Finance API response format
 - Fixed field mappings (pnl, winrate, swaps_count, etc.)
 - Added ROI distribution conversion
-- Maintained rate limiting and error handling
-- Fixed metric calculations based on actual data structure
+- Profit factor capped at 999.99 instead of inf
+- Hold time converted to minutes for display
+- Better handling of pump.fun tokens without price history
+- Improved entry/exit analysis for missing data
 """
 
 import csv
@@ -339,6 +341,9 @@ class WalletAnalyzer:
             combined_metrics = self._combine_metrics(aggregated_metrics, analyzed_trades)
             combined_metrics["wallet_address"] = wallet_address  # Add for score variation
             
+            # Convert hold time from hours to minutes for display
+            combined_metrics["avg_hold_time_minutes"] = round(combined_metrics.get("avg_hold_time_hours", 0) * 60, 2)
+            
             # Step 5: Calculate composite score for ALL wallets
             composite_score = self._calculate_composite_score(combined_metrics)
             combined_metrics["composite_score"] = composite_score
@@ -633,6 +638,17 @@ class WalletAnalyzer:
             return {"success": False, "error": "Birdeye API not available"}
         
         try:
+            # Handle pump.fun tokens specially
+            if token_mint.endswith("pump"):
+                logger.info(f"Token {token_mint} is a pump.fun token, limited analysis available")
+                return {
+                    "success": False,
+                    "error": "Limited data for pump.fun tokens",
+                    "is_pump_token": True,
+                    "entry_timing": "UNKNOWN",
+                    "exit_timing": "UNKNOWN"
+                }
+            
             # Ensure we have valid timestamps
             current_time = int(datetime.now().timestamp())
             
@@ -683,7 +699,9 @@ class WalletAnalyzer:
                 logger.warning(f"Failed to get price history for {token_mint}")
                 return {
                     "success": False,
-                    "error": "Failed to get price history"
+                    "error": "Failed to get price history",
+                    "entry_timing": "UNKNOWN",
+                    "exit_timing": "UNKNOWN"
                 }
             
             # Calculate performance metrics
@@ -703,7 +721,9 @@ class WalletAnalyzer:
             logger.error(f"Error analyzing token performance: {str(e)}")
             return {
                 "success": False,
-                "error": str(e)
+                "error": str(e),
+                "entry_timing": "UNKNOWN",
+                "exit_timing": "UNKNOWN"
             }
     
     def _analyze_entry_timing(self, performance: Dict[str, Any]) -> str:
@@ -758,17 +778,43 @@ class WalletAnalyzer:
                 "entry_quality": "UNKNOWN",
                 "exit_quality": "UNKNOWN",
                 "missed_gains_percent": 0,
+                "early_exit_rate": 0,
                 "recommendations": "Need more trade data for analysis"
             }
+        
+        # Filter out trades without proper analysis
+        valid_trades = [t for t in analyzed_trades if t.get("success", False)]
+        
+        if not valid_trades:
+            # Check if all trades are pump.fun tokens
+            pump_token_count = sum(1 for t in analyzed_trades if t.get("is_pump_token", False))
+            if pump_token_count > 0:
+                return {
+                    "pattern": "PUMP_TOKEN_TRADER",
+                    "entry_quality": "UNKNOWN",
+                    "exit_quality": "UNKNOWN",
+                    "missed_gains_percent": 0,
+                    "early_exit_rate": 0,
+                    "recommendations": f"Price history unavailable for {pump_token_count} pump.fun tokens"
+                }
+            else:
+                return {
+                    "pattern": "LIMITED_DATA",
+                    "entry_quality": "UNKNOWN",
+                    "exit_quality": "UNKNOWN",
+                    "missed_gains_percent": 0,
+                    "early_exit_rate": 0,
+                    "recommendations": "Price history unavailable for recent trades"
+                }
         
         entry_timings = []
         exit_timings = []
         missed_gains = []
         
-        for trade in analyzed_trades:
-            if "entry_timing" in trade:
+        for trade in valid_trades:
+            if "entry_timing" in trade and trade["entry_timing"] != "UNKNOWN":
                 entry_timings.append(trade["entry_timing"])
-            if "exit_timing" in trade:
+            if "exit_timing" in trade and trade["exit_timing"] != "UNKNOWN":
                 exit_timings.append(trade["exit_timing"])
             
             # Calculate missed gains
@@ -805,7 +851,8 @@ class WalletAnalyzer:
             "missed_gains_percent": round(avg_missed_gains, 2),
             "early_exit_rate": round(early_exits / len(exit_timings) * 100, 2) if exit_timings else 0,
             "recommendations": recommendations,
-            "trades_analyzed": len(analyzed_trades)
+            "trades_analyzed": len(valid_trades),
+            "pump_tokens_skipped": sum(1 for t in analyzed_trades if t.get("is_pump_token", False))
         }
     
     def _combine_metrics(self, cielo_metrics: Dict[str, Any], 
@@ -845,13 +892,13 @@ class WalletAnalyzer:
                 total_profit_usd = 0
                 total_loss_usd = abs(total_pnl)
             
-            # Calculate profit factor
+            # Calculate profit factor (FIXED - capped at 999.99)
             if total_loss_usd > 0:
-                profit_factor = total_profit_usd / total_loss_usd
+                profit_factor = round(total_profit_usd / total_loss_usd, 2)
             elif total_profit_usd > 0:
-                profit_factor = float('inf')
+                profit_factor = 999.99  # Cap at 999.99 instead of inf
             else:
-                profit_factor = 0
+                profit_factor = 0.0
             
             # Calculate average ROI
             if total_invested > 0:
@@ -1079,6 +1126,99 @@ class WalletAnalyzer:
         except Exception as e:
             logger.error(f"Error calculating composite score: {str(e)}")
             return 0
+    
+    def _calculate_metrics(self, paired_trades: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Calculate performance metrics from paired trades - FIXED."""
+        if not paired_trades:
+            logger.warning("No paired trades for metrics calculation")
+            return self._get_empty_metrics()
+        
+        try:
+            # Basic counts
+            total_trades = len(paired_trades)
+            win_count = sum(1 for trade in paired_trades if trade.get("is_win", False))
+            loss_count = total_trades - win_count
+            
+            # ROI statistics
+            roi_values = [trade.get("roi_percent", 0) for trade in paired_trades]
+            avg_roi = np.mean(roi_values) if roi_values else 0
+            median_roi = np.median(roi_values) if roi_values else 0
+            std_dev_roi = np.std(roi_values) if roi_values else 0
+            max_roi = max(roi_values) if roi_values else 0
+            min_roi = min(roi_values) if roi_values else 0
+            
+            # Profit/loss calculations
+            total_profit_usd = 0
+            total_loss_usd = 0
+            
+            for trade in paired_trades:
+                buy_value = trade.get("buy_value_usd", 0)
+                sell_value = trade.get("sell_value_usd", 0)
+                pnl = sell_value - buy_value
+                
+                if pnl > 0:
+                    total_profit_usd += pnl
+                else:
+                    total_loss_usd += abs(pnl)
+            
+            net_profit_usd = total_profit_usd - total_loss_usd
+            
+            # FIXED profit factor calculation - capped at 999.99
+            if total_loss_usd > 0:
+                profit_factor = round(total_profit_usd / total_loss_usd, 2)
+            elif total_profit_usd > 0:
+                profit_factor = 999.99  # Cap at 999.99 instead of inf
+            else:
+                profit_factor = 0.0
+            
+            # Holding time
+            holding_times = [trade.get("holding_time_hours", 0) for trade in paired_trades if "holding_time_hours" in trade and trade.get("holding_time_hours", 0) > 0]
+            avg_hold_time_hours = np.mean(holding_times) if holding_times else 0
+            
+            # Bet size
+            bet_sizes = [trade.get("buy_value_usd", 0) for trade in paired_trades]
+            total_bet_size_usd = sum(bet_sizes)
+            avg_bet_size_usd = np.mean(bet_sizes) if bet_sizes else 0
+            
+            # Unique tokens
+            unique_tokens = len(set(trade.get("token_address", "") for trade in paired_trades if trade.get("token_address")))
+            
+            # ROI distribution buckets
+            roi_buckets = {
+                "10x_plus": len([t for t in paired_trades if t.get("roi_percent", 0) >= 1000]),
+                "5x_to_10x": len([t for t in paired_trades if 500 <= t.get("roi_percent", 0) < 1000]),
+                "2x_to_5x": len([t for t in paired_trades if 200 <= t.get("roi_percent", 0) < 500]),
+                "1x_to_2x": len([t for t in paired_trades if 100 <= t.get("roi_percent", 0) < 200]),
+                "50_to_100": len([t for t in paired_trades if 50 <= t.get("roi_percent", 0) < 100]),
+                "0_to_50": len([t for t in paired_trades if 0 <= t.get("roi_percent", 0) < 50]),
+                "minus50_to_0": len([t for t in paired_trades if -50 <= t.get("roi_percent", 0) < 0]),
+                "below_minus50": len([t for t in paired_trades if t.get("roi_percent", 0) < -50])
+            }
+            
+            return {
+                "total_trades": total_trades,
+                "win_count": win_count,
+                "loss_count": loss_count,
+                "win_rate": (win_count / total_trades * 100) if total_trades > 0 else 0,
+                "total_profit_usd": total_profit_usd,
+                "total_loss_usd": total_loss_usd,
+                "net_profit_usd": net_profit_usd,
+                "profit_factor": profit_factor,
+                "avg_roi": avg_roi,
+                "median_roi": median_roi,
+                "std_dev_roi": std_dev_roi,
+                "max_roi": max_roi,
+                "min_roi": min_roi,
+                "avg_hold_time_hours": avg_hold_time_hours,
+                "total_bet_size_usd": total_bet_size_usd,
+                "avg_bet_size_usd": avg_bet_size_usd,
+                "total_tokens_traded": unique_tokens,
+                "roi_distribution": roi_buckets
+            }
+            
+        except Exception as e:
+            logger.error(f"Error calculating metrics: {str(e)}")
+            return self._get_empty_metrics()
     
     def _get_empty_metrics(self) -> Dict[str, Any]:
         """Return empty metrics structure with ALL required fields."""
@@ -1370,6 +1510,9 @@ class WalletAnalyzer:
             # Calculate metrics
             metrics = self._calculate_metrics(paired_trades)
             
+            # Add hold time in minutes
+            metrics["avg_hold_time_minutes"] = round(metrics.get("avg_hold_time_hours", 0) * 60, 2)
+            
             # Calculate composite score
             composite_score = self._calculate_composite_score(metrics)
             metrics["composite_score"] = composite_score
@@ -1577,92 +1720,6 @@ class WalletAnalyzer:
         
         logger.info(f"Validated {len(paired_trades)} paired trades from {len(trades)} trades")
         return paired_trades
-    
-    def _calculate_metrics(self, paired_trades: List[Dict[str, Any]]) -> Dict[str, Any]:
-        """Calculate performance metrics from paired trades - FIXED."""
-        if not paired_trades:
-            logger.warning("No paired trades for metrics calculation")
-            return self._get_empty_metrics()
-        
-        try:
-            # Basic counts
-            total_trades = len(paired_trades)
-            win_count = sum(1 for trade in paired_trades if trade.get("is_win", False))
-            loss_count = total_trades - win_count
-            
-            # ROI statistics
-            roi_values = [trade.get("roi_percent", 0) for trade in paired_trades]
-            avg_roi = np.mean(roi_values) if roi_values else 0
-            median_roi = np.median(roi_values) if roi_values else 0
-            std_dev_roi = np.std(roi_values) if roi_values else 0
-            max_roi = max(roi_values) if roi_values else 0
-            min_roi = min(roi_values) if roi_values else 0
-            
-            # Profit/loss calculations
-            total_profit_usd = 0
-            total_loss_usd = 0
-            
-            for trade in paired_trades:
-                buy_value = trade.get("buy_value_usd", 0)
-                sell_value = trade.get("sell_value_usd", 0)
-                pnl = sell_value - buy_value
-                
-                if pnl > 0:
-                    total_profit_usd += pnl
-                else:
-                    total_loss_usd += abs(pnl)
-            
-            net_profit_usd = total_profit_usd - total_loss_usd
-            profit_factor = total_profit_usd / total_loss_usd if total_loss_usd > 0 else float('inf') if total_profit_usd > 0 else 0
-            
-            # Holding time
-            holding_times = [trade.get("holding_time_hours", 0) for trade in paired_trades if "holding_time_hours" in trade and trade.get("holding_time_hours", 0) > 0]
-            avg_hold_time_hours = np.mean(holding_times) if holding_times else 0
-            
-            # Bet size
-            bet_sizes = [trade.get("buy_value_usd", 0) for trade in paired_trades]
-            total_bet_size_usd = sum(bet_sizes)
-            avg_bet_size_usd = np.mean(bet_sizes) if bet_sizes else 0
-            
-            # Unique tokens
-            unique_tokens = len(set(trade.get("token_address", "") for trade in paired_trades if trade.get("token_address")))
-            
-            # ROI distribution buckets
-            roi_buckets = {
-                "10x_plus": len([t for t in paired_trades if t.get("roi_percent", 0) >= 1000]),
-                "5x_to_10x": len([t for t in paired_trades if 500 <= t.get("roi_percent", 0) < 1000]),
-                "2x_to_5x": len([t for t in paired_trades if 200 <= t.get("roi_percent", 0) < 500]),
-                "1x_to_2x": len([t for t in paired_trades if 100 <= t.get("roi_percent", 0) < 200]),
-                "50_to_100": len([t for t in paired_trades if 50 <= t.get("roi_percent", 0) < 100]),
-                "0_to_50": len([t for t in paired_trades if 0 <= t.get("roi_percent", 0) < 50]),
-                "minus50_to_0": len([t for t in paired_trades if -50 <= t.get("roi_percent", 0) < 0]),
-                "below_minus50": len([t for t in paired_trades if t.get("roi_percent", 0) < -50])
-            }
-            
-            return {
-                "total_trades": total_trades,
-                "win_count": win_count,
-                "loss_count": loss_count,
-                "win_rate": (win_count / total_trades * 100) if total_trades > 0 else 0,
-                "total_profit_usd": total_profit_usd,
-                "total_loss_usd": total_loss_usd,
-                "net_profit_usd": net_profit_usd,
-                "profit_factor": profit_factor,
-                "avg_roi": avg_roi,
-                "median_roi": median_roi,
-                "std_dev_roi": std_dev_roi,
-                "max_roi": max_roi,
-                "min_roi": min_roi,
-                "avg_hold_time_hours": avg_hold_time_hours,
-                "total_bet_size_usd": total_bet_size_usd,
-                "avg_bet_size_usd": avg_bet_size_usd,
-                "total_tokens_traded": unique_tokens,
-                "roi_distribution": roi_buckets
-            }
-            
-        except Exception as e:
-            logger.error(f"Error calculating metrics: {str(e)}")
-            return self._get_empty_metrics()
     
     def _find_correlated_wallets(self, wallet_address: str, time_threshold: int = 300) -> List[Dict[str, Any]]:
         """Find wallets that entered the same tokens within a close time window."""
