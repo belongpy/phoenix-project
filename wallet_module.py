@@ -1,13 +1,13 @@
 """
-Wallet Analysis Module - Phoenix Project (FIXED VERSION)
+Wallet Analysis Module - Phoenix Project (FIXED VERSION WITH RATE LIMITING)
 
 FIXES:
-- Proper Cielo Finance data extraction
-- Ensure all metrics fields exist
-- Fix composite score calculation
-- Fix wallet categorization
-- Better error handling
-- Proper metric calculation from Cielo data
+- Added RPC rate limiting to prevent 429 errors
+- Implemented exponential backoff for retries
+- Reduced concurrent workers to prevent overwhelming RPC
+- Added request throttling between RPC calls
+- Better error handling for rate limit errors
+- Request batching where possible
 """
 
 import csv
@@ -16,19 +16,37 @@ import logging
 import numpy as np
 import requests
 import json
+import time
 from typing import Dict, List, Any, Optional, Tuple
 from datetime import datetime, timedelta
 from collections import defaultdict, Counter
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import threading
 from functools import lru_cache
-import time
 
 logger = logging.getLogger("phoenix.wallet")
 
 class CieloFinanceAPIError(Exception):
     """Custom exception for Cielo Finance API errors."""
     pass
+
+class RateLimiter:
+    """Simple rate limiter for RPC calls."""
+    def __init__(self, calls_per_second: float = 10.0):
+        self.calls_per_second = calls_per_second
+        self.min_interval = 1.0 / calls_per_second
+        self.last_call = 0
+        self.lock = threading.Lock()
+    
+    def wait(self):
+        """Wait if necessary to respect rate limit."""
+        with self.lock:
+            current_time = time.time()
+            time_since_last_call = current_time - self.last_call
+            if time_since_last_call < self.min_interval:
+                sleep_time = self.min_interval - time_since_last_call
+                time.sleep(sleep_time)
+            self.last_call = time.time()
 
 class WalletAnalyzer:
     """Class for analyzing wallets for copy trading using Cielo Finance API + RPC."""
@@ -61,8 +79,15 @@ class WalletAnalyzer:
         self._cache_lock = threading.Lock()
         self._cache_ttl = 300  # 5 minutes TTL
         
-        # Thread pool for parallel processing
-        self.executor = ThreadPoolExecutor(max_workers=10)
+        # Rate limiter for RPC calls (reduced to 5 calls per second)
+        self._rate_limiter = RateLimiter(calls_per_second=5.0)
+        
+        # Thread pool for parallel processing (reduced workers)
+        self.executor = ThreadPoolExecutor(max_workers=3)  # Reduced from 10 to 3
+        
+        # Track RPC errors
+        self._rpc_error_count = 0
+        self._last_rpc_error_time = 0
     
     def _verify_cielo_api_connection(self) -> bool:
         """
@@ -107,13 +132,14 @@ class WalletAnalyzer:
         with self._cache_lock:
             self._rpc_cache[cache_key] = (data, time.time())
     
-    def _make_rpc_call(self, method: str, params: List[Any]) -> Dict[str, Any]:
+    def _make_rpc_call(self, method: str, params: List[Any], retry_count: int = 3) -> Dict[str, Any]:
         """
-        Make direct RPC call to Solana node with caching.
+        Make direct RPC call to Solana node with caching and rate limiting.
         
         Args:
             method (str): RPC method name
             params (List[Any]): Method parameters
+            retry_count (int): Number of retries on failure
             
         Returns:
             Dict[str, Any]: RPC response
@@ -125,6 +151,9 @@ class WalletAnalyzer:
             logger.debug(f"Cache hit for {method}")
             return cached_result
         
+        # Apply rate limiting
+        self._rate_limiter.wait()
+        
         payload = {
             "jsonrpc": "2.0",
             "id": 1,
@@ -132,24 +161,71 @@ class WalletAnalyzer:
             "params": params
         }
         
-        try:
-            response = requests.post(
-                self.rpc_url,
-                json=payload,
-                headers={"Content-Type": "application/json"},
-                timeout=30
-            )
-            response.raise_for_status()
-            result = response.json()
-            
-            # Cache successful responses
-            if "result" in result:
-                self._set_cache(cache_key, result)
-            
-            return result
-        except Exception as e:
-            logger.error(f"RPC call failed for {method}: {str(e)}")
-            return {"error": str(e)}
+        # Exponential backoff for retries
+        backoff_base = 2
+        for attempt in range(retry_count):
+            try:
+                response = requests.post(
+                    self.rpc_url,
+                    json=payload,
+                    headers={"Content-Type": "application/json"},
+                    timeout=30
+                )
+                
+                # Handle rate limiting specifically
+                if response.status_code == 429:
+                    self._rpc_error_count += 1
+                    self._last_rpc_error_time = time.time()
+                    
+                    # Calculate backoff time
+                    backoff_time = backoff_base ** attempt
+                    max_backoff = 60  # Max 60 seconds
+                    wait_time = min(backoff_time, max_backoff)
+                    
+                    logger.warning(f"RPC rate limit hit (429). Waiting {wait_time}s before retry {attempt + 1}/{retry_count}")
+                    time.sleep(wait_time)
+                    
+                    # If we're getting too many errors, slow down globally
+                    if self._rpc_error_count > 10:
+                        logger.warning("Too many RPC errors. Slowing down request rate.")
+                        self._rate_limiter.calls_per_second = max(1.0, self._rate_limiter.calls_per_second * 0.5)
+                        self._rate_limiter.min_interval = 1.0 / self._rate_limiter.calls_per_second
+                    
+                    continue
+                
+                response.raise_for_status()
+                result = response.json()
+                
+                # Cache successful responses
+                if "result" in result:
+                    self._set_cache(cache_key, result)
+                    # Reset error count on success
+                    if self._rpc_error_count > 0:
+                        self._rpc_error_count = max(0, self._rpc_error_count - 1)
+                    return result
+                else:
+                    # RPC error response
+                    return {"error": result.get("error", "Unknown RPC error")}
+                    
+            except requests.exceptions.Timeout:
+                logger.error(f"RPC timeout for {method} (attempt {attempt + 1}/{retry_count})")
+                if attempt < retry_count - 1:
+                    time.sleep(backoff_base ** attempt)
+                else:
+                    return {"error": "RPC timeout"}
+                    
+            except requests.RequestException as e:
+                logger.error(f"RPC request failed for {method}: {str(e)}")
+                if attempt < retry_count - 1:
+                    time.sleep(backoff_base ** attempt)
+                else:
+                    return {"error": str(e)}
+                    
+            except Exception as e:
+                logger.error(f"Unexpected RPC error for {method}: {str(e)}")
+                return {"error": str(e)}
+        
+        return {"error": "Max retries exceeded"}
     
     def _get_signatures_for_address(self, address: str, limit: int = 50) -> List[Dict[str, Any]]:
         """Get transaction signatures for an address using direct RPC with caching."""
@@ -174,12 +250,32 @@ class WalletAnalyzer:
         if "result" in response:
             return response["result"]
         else:
-            logger.error(f"Error getting transaction: {response.get('error', 'Unknown error')}")
+            # Don't log every single transaction error to reduce noise
             return {}
+    
+    def _batch_get_transactions(self, signatures: List[str]) -> List[Dict[str, Any]]:
+        """
+        Get multiple transactions in a more efficient way.
+        Still makes individual calls but with better rate limiting.
+        """
+        transactions = []
+        
+        for i, signature in enumerate(signatures):
+            # Add extra delay every 10 transactions
+            if i > 0 and i % 10 == 0:
+                logger.debug(f"Processed {i}/{len(signatures)} transactions, pausing...")
+                time.sleep(2)  # 2 second pause every 10 transactions
+            
+            tx = self._get_transaction(signature)
+            if tx:
+                transactions.append(tx)
+                
+        return transactions
     
     def analyze_wallet_hybrid(self, wallet_address: str, days_back: int = 30) -> Dict[str, Any]:
         """
         UPDATED hybrid wallet analysis using Cielo Finance for aggregated stats and RPC for recent transactions.
+        Now with better rate limiting and error handling.
         
         Args:
             wallet_address (str): Wallet address
@@ -217,14 +313,18 @@ class WalletAnalyzer:
                 stats_data = cielo_stats.get("data", {})
                 aggregated_metrics = self._extract_aggregated_metrics_from_cielo(stats_data)
             
-            # Step 2: Get recent token trades via RPC for detailed analysis
+            # Step 2: Get recent token trades via RPC for detailed analysis (with rate limiting)
             logger.info(f"🪙 Analyzing last 5 tokens...")
             recent_swaps = self._get_recent_token_swaps_rpc(wallet_address, limit=5)
             
             # Step 3: Analyze token performance for recent trades (if Birdeye available)
             analyzed_trades = []
             if self.birdeye_api and recent_swaps:
-                for swap in recent_swaps[:5]:  # Analyze up to 5 most recent
+                for i, swap in enumerate(recent_swaps[:5]):  # Analyze up to 5 most recent
+                    # Add delay between Birdeye API calls
+                    if i > 0:
+                        time.sleep(0.5)
+                        
                     token_analysis = self._analyze_token_performance(
                         swap['token_mint'],
                         swap['buy_timestamp'],
@@ -509,37 +609,52 @@ class WalletAnalyzer:
         }
     
     def _get_recent_token_swaps_rpc(self, wallet_address: str, limit: int = 5) -> List[Dict[str, Any]]:
-        """Get recent token swaps using RPC calls."""
+        """Get recent token swaps using RPC calls with better rate limiting."""
         try:
             logger.info(f"Fetching last {limit} token swaps for {wallet_address}")
             
-            # Get recent signatures
-            signatures = self._get_signatures_for_address(wallet_address, limit=100)
+            # Get recent signatures (with rate limiting applied)
+            signatures = self._get_signatures_for_address(wallet_address, limit=50)  # Reduced from 100
             
             if not signatures:
                 logger.warning(f"No transactions found for {wallet_address}")
                 return []
             
             swaps = []
+            sig_infos = []
+            
+            # Collect signatures first
             for sig_info in signatures:
                 if len(swaps) >= limit:
                     break
-                
+                    
                 signature = sig_info.get("signature")
-                if not signature:
-                    continue
-                
-                # Get transaction details
-                tx_details = self._get_transaction(signature)
-                if not tx_details:
-                    continue
-                
-                # Extract swap info
-                swap_info = self._extract_token_swaps_from_transaction(tx_details, wallet_address)
-                if swap_info:
-                    swaps.extend(swap_info)
+                if signature:
+                    sig_infos.append(sig_info)
             
-            logger.info(f"Found {len(swaps)} swaps from {len(signatures)} transactions")
+            # Get transactions in smaller batches
+            batch_size = 10
+            for i in range(0, len(sig_infos), batch_size):
+                batch = sig_infos[i:i + batch_size]
+                batch_signatures = [s.get("signature") for s in batch if s.get("signature")]
+                
+                # Process batch with delay
+                for signature in batch_signatures:
+                    if len(swaps) >= limit:
+                        break
+                        
+                    tx_details = self._get_transaction(signature)
+                    if tx_details:
+                        # Extract swap info
+                        swap_info = self._extract_token_swaps_from_transaction(tx_details, wallet_address)
+                        if swap_info:
+                            swaps.extend(swap_info)
+                
+                # Add delay between batches
+                if i + batch_size < len(sig_infos):
+                    time.sleep(1)
+            
+            logger.info(f"Found {len(swaps)} swaps from {len(signatures)} signatures")
             return swaps[:limit]
             
         except Exception as e:
@@ -1796,7 +1911,7 @@ class WalletAnalyzer:
                             use_hybrid: bool = True) -> Dict[str, Any]:
         """
         Batch analyze multiple wallets with Cielo Finance API.
-        Added parallel processing.
+        Added parallel processing with better rate limiting.
         Lowered thresholds.
         
         Args:
@@ -1821,21 +1936,15 @@ class WalletAnalyzer:
             wallet_analyses = []
             failed_analyses = []
             
-            # Use parallel processing for wallet analysis
-            futures = []
-            
-            for wallet_address in wallet_addresses:
-                if use_hybrid:
-                    future = self.executor.submit(self.analyze_wallet_hybrid, wallet_address, days_back)
-                else:
-                    future = self.executor.submit(self.analyze_wallet, wallet_address, days_back)
-                futures.append((wallet_address, future))
-            
-            # Collect results
-            for i, (wallet_address, future) in enumerate(futures, 1):
+            # Process wallets sequentially to avoid overwhelming RPC
+            for i, wallet_address in enumerate(wallet_addresses, 1):
+                logger.info(f"Analyzing wallet {i}/{len(wallet_addresses)}: {wallet_address}")
+                
                 try:
-                    logger.info(f"Collecting results for wallet {i}/{len(wallet_addresses)}: {wallet_address}")
-                    analysis = future.result(timeout=60)  # 60 second timeout per wallet
+                    if use_hybrid:
+                        analysis = self.analyze_wallet_hybrid(wallet_address, days_back)
+                    else:
+                        analysis = self.analyze_wallet(wallet_address, days_back)
                     
                     # Always add to analyses if we have metrics
                     if "metrics" in analysis:
@@ -1848,6 +1957,10 @@ class WalletAnalyzer:
                             "error": analysis.get("error", "No metrics available"),
                             "error_type": analysis.get("error_type", "NO_METRICS")
                         })
+                    
+                    # Add delay between wallets to respect rate limits
+                    if i < len(wallet_addresses):
+                        time.sleep(2)  # 2 second delay between wallets
                         
                 except Exception as e:
                     logger.error(f"Error analyzing wallet {wallet_address}: {str(e)}")

@@ -1,0 +1,10 @@
+rank,wallet_address,composite_score,score_rating,wallet_type,total_trades,win_rate,profit_factor,net_profit_usd,avg_roi,median_roi,max_roi,avg_hold_time_hours,total_tokens_traded,entry_exit_pattern,entry_quality,exit_quality,missed_gains_percent,early_exit_rate,strategy_recommendation,confidence
+1,7brTP49Rx7vLM2W6Pxtspmna2UqGtjtgcF9q3W7qtcPt,79.6,GOOD,unknown,0,0,inf,15093.51,0,9374.45,9374.45,0,0,BALANCED,GOOD,POOR,0,0.0,CAUTIOUS,HIGH
+2,3jjcLMgZYvTc8xDLwshX4rCdcLphczQw8WZXbDVDuz7D,50.1,AVERAGE,unknown,0,0,inf,9983.52,0,17.67,168.65,0,0,BALANCED,GOOD,POOR,0,0.0,CAUTIOUS,MEDIUM
+3,9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX,44.3,AVERAGE,unknown,0,0,inf,4261.77,0,39.95,39.95,0,0,BALANCED,GOOD,POOR,0,0.0,CAUTIOUS,MEDIUM
+4,ExbKNUwVtyRjrJMPLnVWRus9BxTRpt6BRXWxGYTyfcYS,44.3,AVERAGE,unknown,0,0,inf,94810.56,0,-47.53,140.14,0,0,BALANCED,GOOD,POOR,0,0.0,CAUTIOUS,MEDIUM
+5,D4zwkUJF4FbmnRgtL6nphhunrMZdoFtBJ39Nsf2cNoZy,42.4,AVERAGE,unknown,0,0,inf,2763.95,0,0.37,1.98,0,0,BALANCED,POOR,POOR,0,0.0,CAUTIOUS,MEDIUM
+6,6f1NUwuzAXMMPUTwbbJ2Mhh1zMoUQWCL4fdTKS6sr6wK,40.1,POOR,unknown,0,0,inf,3304.83,0,-0.96,4.3,0,0,BALANCED,POOR,POOR,0,0.0,CAUTIOUS,MEDIUM
+7,Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ,33.1,POOR,unknown,0,0,inf,3167.34,0,-89.63,-88.68,0,0,BALANCED,POOR,POOR,0,0.0,CAUTIOUS,LOW
+8,Gd6qobzV7KbNaYkKtiF3NUuSAU9SyJFZSoHA9pn4ZQqt,30.0,POOR,unknown,0,0,0,0.0,0,-34.89,3581.55,0,0,BALANCED,GOOD,POOR,0,0.0,CAUTIOUS,LOW
+9,4uRrQUR4zMdoaD91bZbYE7c5EHAqKxkcGeDGqYsmn7Pb,28.4,POOR,unknown,0,0,0,0.0,0,-27.28,582.98,0,0,BALANCED,GOOD,POOR,0,0.0,CAUTIOUS,LOW
