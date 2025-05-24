@@ -1341,3 +1341,285 @@ RuntimeError: cannot schedule new futures after shutdown
 2025-05-24 02:09:18,143 - phoenix.helius - INFO - Fetching pump.fun token price for 2WzwVJhXeid8FUceWj84cu6VY3noyTwuLk7eGcHZpump
 2025-05-24 02:09:18,513 - phoenix.telegram - WARNING - Could not get price data for pump token 2WzwVJhXeid8FUceWj84cu6VY3noyTwuLk7eGcHZpump
 2025-05-24 02:09:19,017 - phoenix.telegram - INFO - 📊 Analyzing call 30/77 for @kariusgemscalls
+2025-05-24 02:19:45,472 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-24 02:19:45,472 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-24 02:19:46,035 - phoenix - INFO - ✅ Imported telegram module
+2025-05-24 02:19:46,035 - phoenix - INFO - 🚀 Starting enhanced SpyDefi analysis for the past 24 hours.
+2025-05-24 02:19:46,051 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv
+2025-05-24 02:19:46,051 - phoenix - INFO - ✅ Birdeye API initialized successfully
+2025-05-24 02:19:46,051 - phoenix.helius - INFO - Helius API initialized for enhanced transaction parsing
+2025-05-24 02:19:46,051 - phoenix - INFO - ✅ Helius API initialized successfully for pump.fun tokens
+2025-05-24 02:19:46,051 - phoenix - INFO - ✅ Telegram scraper initialized successfully
+2025-05-24 02:19:46,051 - phoenix - INFO - 🎯 SpyDefi channel detected. Running enhanced analysis...
+2025-05-24 02:19:46,051 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-24 02:19:46,051 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-24 02:19:46,175 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-24 02:19:46,948 - phoenix.telegram - INFO - Connected to Telegram
+2025-05-24 02:19:46,948 - phoenix - INFO - 📞 Connected to Telegram
+2025-05-24 02:19:46,948 - phoenix.telegram - INFO - 🚀 STARTING REDESIGNED SPYDEFI ANALYSIS (5x+ Gem Focus)
+2025-05-24 02:19:46,948 - phoenix.telegram - INFO - 🎯 Phase 1: Discovering active KOLs from SpyDefi...
+2025-05-24 02:19:46,948 - phoenix.telegram - INFO - ✅ Birdeye API available for mainstream tokens
+2025-05-24 02:19:46,948 - phoenix.telegram - INFO - ✅ Helius API available for pump.fun tokens
+2025-05-24 02:19:47,075 - phoenix.telegram - INFO - 📨 Scanning SpyDefi for active KOLs...
+2025-05-24 02:19:48,722 - phoenix.telegram - INFO - 📊 Processed 500 SpyDefi messages
+2025-05-24 02:19:48,722 - phoenix.telegram - INFO - 🔍 Found 155 unique KOLs
+2025-05-24 02:19:48,722 - phoenix.telegram - INFO - ✅ Found 155 active KOLs from SpyDefi
+2025-05-24 02:19:48,722 - phoenix.telegram - INFO - 🎯 Phase 2: Analyzing individual KOL channels (24 hours each)...
+2025-05-24 02:19:48,722 - phoenix.telegram - INFO - 📊 Found 155 total KOLs, filtering to 29 (top 50 with 5+ mentions)
+2025-05-24 02:19:48,722 - phoenix.telegram - INFO - 📊 Analyzing KOL 1/29: @kariusgemscalls (41 mentions)
+2025-05-24 02:19:48,722 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @kariusgemscalls
+2025-05-24 02:19:48,847 - phoenix.telegram - INFO - Scraping 1 days of messages from 2222968620
+2025-05-24 02:19:49,387 - phoenix.telegram - INFO - Finished retrieving messages from 2222968620. Found 82 relevant messages.
+2025-05-24 02:19:49,387 - phoenix.telegram - INFO - 📨 Found 82 messages in @kariusgemscalls's channel
+2025-05-24 02:19:49,387 - phoenix.telegram - INFO - 🎯 Found 79 token calls for @kariusgemscalls
+2025-05-24 02:19:49,387 - phoenix.telegram - INFO - 📊 Analyzing call 5/79 for @kariusgemscalls
+2025-05-24 02:19:49,863 - phoenix.helius - INFO - Fetching pump.fun token data for 42bAEfJjdWMbz833f9W5cQMumnQ5a3DaNWedMRdopump
+2025-05-24 02:19:50,366 - phoenix.telegram - WARNING - Could not get price data for pump token 42bAEfJjdWMbz833f9W5cQMumnQ5a3DaNWedMRdopump
+2025-05-24 02:19:50,893 - phoenix.telegram - INFO - 📊 Analyzing call 9/79 for @kariusgemscalls
+2025-05-24 02:19:51,178 - phoenix.helius - INFO - Fetching pump.fun token data for HmjCoarLh5duURfJ333DwfFiPyTCgFT35pRSAoP8pump
+2025-05-24 02:19:51,535 - phoenix.telegram - WARNING - Could not get price data for pump token HmjCoarLh5duURfJ333DwfFiPyTCgFT35pRSAoP8pump
+2025-05-24 02:19:52,036 - phoenix.telegram - INFO - 📊 Analyzing call 11/79 for @kariusgemscalls
+2025-05-24 02:19:52,488 - phoenix.helius - INFO - Fetching pump.fun token data for 4mS9wBksny7seS3d4aPs4kWhpzxLiD7Vz1fQYiDepump
+2025-05-24 02:19:52,942 - phoenix.telegram - WARNING - Could not get price data for pump token 4mS9wBksny7seS3d4aPs4kWhpzxLiD7Vz1fQYiDepump
+2025-05-24 02:19:53,442 - phoenix.telegram - INFO - 📊 Analyzing call 12/79 for @kariusgemscalls
+2025-05-24 02:19:53,864 - phoenix.helius - INFO - Fetching pump.fun token data for 5aPxqVF3h55JPUWVEt3QoWPZULVsc5JDBpnoMmvGpump
+2025-05-24 02:19:54,114 - phoenix.telegram - WARNING - Could not get price data for pump token 5aPxqVF3h55JPUWVEt3QoWPZULVsc5JDBpnoMmvGpump
+2025-05-24 02:19:54,620 - phoenix.telegram - INFO - 📊 Analyzing call 14/79 for @kariusgemscalls
+2025-05-24 02:19:54,984 - phoenix.helius - INFO - Fetching pump.fun token data for D9niM43mjEf324WkA9BHsrQBfh5RfKhJZbMNFuxepump
+2025-05-24 02:19:55,505 - phoenix.telegram - WARNING - Could not get price data for pump token D9niM43mjEf324WkA9BHsrQBfh5RfKhJZbMNFuxepump
+2025-05-24 02:19:56,020 - phoenix.telegram - INFO - 📊 Analyzing call 16/79 for @kariusgemscalls
+2025-05-24 02:19:56,379 - phoenix.helius - INFO - Fetching pump.fun token data for 7a8sVBPtamzGNCB7wUpuwdMDrsEq9N7F9i1xugTKpump
+2025-05-24 02:19:56,790 - phoenix.telegram - WARNING - Could not get price data for pump token 7a8sVBPtamzGNCB7wUpuwdMDrsEq9N7F9i1xugTKpump
+2025-05-24 02:19:57,301 - phoenix.telegram - INFO - 📊 Analyzing call 17/79 for @kariusgemscalls
+2025-05-24 02:19:57,650 - phoenix.helius - INFO - Fetching pump.fun token data for MM2ujMcMehSGLn1x3CJCJR2gVuHRDZqfmm7QLaLpump
+2025-05-24 02:19:58,098 - phoenix.telegram - WARNING - Could not get price data for pump token MM2ujMcMehSGLn1x3CJCJR2gVuHRDZqfmm7QLaLpump
+2025-05-24 02:19:58,598 - phoenix.telegram - INFO - 📊 Analyzing call 19/79 for @kariusgemscalls
+2025-05-24 02:19:58,895 - phoenix.helius - INFO - Fetching pump.fun token data for HrLmhCjqEzVS7fJ7mSjM1q7thQn1mwqWbiRbLLUCpump
+2025-05-24 02:19:59,146 - phoenix.telegram - WARNING - Could not get price data for pump token HrLmhCjqEzVS7fJ7mSjM1q7thQn1mwqWbiRbLLUCpump
+2025-05-24 02:19:59,656 - phoenix.telegram - INFO - 📊 Analyzing call 20/79 for @kariusgemscalls
+2025-05-24 02:20:00,054 - phoenix.helius - INFO - Fetching pump.fun token data for 6s7RK1wLoUf8zUFdMrAcMH6oxBnkqDQx7V2ZRn9Apump
+2025-05-24 02:20:00,560 - phoenix.telegram - WARNING - Could not get price data for pump token 6s7RK1wLoUf8zUFdMrAcMH6oxBnkqDQx7V2ZRn9Apump
+2025-05-24 02:20:01,067 - phoenix.telegram - INFO - 📊 Analyzing call 22/79 for @kariusgemscalls
+2025-05-24 02:20:01,800 - phoenix.telegram - INFO - 📊 Analyzing call 25/79 for @kariusgemscalls
+2025-05-24 02:20:02,304 - phoenix.helius - INFO - Fetching pump.fun token data for 5FeSG8hNEejaoHZNPEC7TaFqY63T8EvPyFtK5hALpump
+2025-05-24 02:20:02,784 - phoenix.telegram - WARNING - Could not get price data for pump token 5FeSG8hNEejaoHZNPEC7TaFqY63T8EvPyFtK5hALpump
+2025-05-24 02:20:03,286 - phoenix.telegram - INFO - 📊 Analyzing call 27/79 for @kariusgemscalls
+2025-05-24 02:20:03,754 - phoenix.helius - INFO - Fetching pump.fun token data for 5zwdHSnHgKySYQEfUqGKf2hx76rCKJ9qZqdPTVwrpump
+2025-05-24 02:20:04,118 - phoenix.telegram - WARNING - Could not get price data for pump token 5zwdHSnHgKySYQEfUqGKf2hx76rCKJ9qZqdPTVwrpump
+2025-05-24 02:20:04,626 - phoenix.telegram - INFO - 📊 Analyzing call 29/79 for @kariusgemscalls
+2025-05-24 02:20:55,191 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-24 02:20:55,191 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-24 02:20:55,723 - phoenix - INFO - ✅ Imported telegram module
+2025-05-24 02:20:55,723 - phoenix - INFO - 🚀 Starting enhanced SpyDefi analysis for the past 24 hours.
+2025-05-24 02:20:55,723 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv
+2025-05-24 02:20:55,723 - phoenix - INFO - ✅ Birdeye API initialized successfully
+2025-05-24 02:20:55,723 - phoenix.helius - INFO - Helius API initialized for enhanced transaction parsing
+2025-05-24 02:20:55,723 - phoenix - INFO - ✅ Helius API initialized successfully for pump.fun tokens
+2025-05-24 02:20:55,723 - phoenix - INFO - ✅ Telegram scraper initialized successfully
+2025-05-24 02:20:55,723 - phoenix - INFO - 🎯 SpyDefi channel detected. Running enhanced analysis...
+2025-05-24 02:20:55,723 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-24 02:20:55,723 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-24 02:20:55,848 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-24 02:20:56,618 - phoenix.telegram - INFO - Connected to Telegram
+2025-05-24 02:20:56,618 - phoenix - INFO - 📞 Connected to Telegram
+2025-05-24 02:20:56,618 - phoenix.telegram - INFO - 🚀 STARTING REDESIGNED SPYDEFI ANALYSIS (5x+ Gem Focus)
+2025-05-24 02:20:56,618 - phoenix.telegram - INFO - 🎯 Phase 1: Discovering active KOLs from SpyDefi...
+2025-05-24 02:20:56,618 - phoenix.telegram - INFO - ✅ Birdeye API available for mainstream tokens
+2025-05-24 02:20:56,618 - phoenix.telegram - INFO - ✅ Helius API available for pump.fun tokens
+2025-05-24 02:20:56,754 - phoenix.telegram - INFO - 📨 Scanning SpyDefi for active KOLs...
+2025-05-24 02:20:58,577 - phoenix.telegram - INFO - 📊 Processed 500 SpyDefi messages
+2025-05-24 02:20:58,577 - phoenix.telegram - INFO - 🔍 Found 156 unique KOLs
+2025-05-24 02:20:58,577 - phoenix.telegram - INFO - ✅ Found 156 active KOLs from SpyDefi
+2025-05-24 02:20:58,577 - phoenix.telegram - INFO - 🎯 Phase 2: Analyzing individual KOL channels (24 hours each)...
+2025-05-24 02:20:58,577 - phoenix.telegram - INFO - 📊 Found 156 total KOLs, filtering to 29 (top 50 with 5+ mentions)
+2025-05-24 02:20:58,577 - phoenix.telegram - INFO - 📊 Analyzing KOL 1/29: @kariusgemscalls (41 mentions)
+2025-05-24 02:20:58,577 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @kariusgemscalls
+2025-05-24 02:20:58,719 - phoenix.telegram - INFO - Scraping 1 days of messages from 2222968620
+2025-05-24 02:20:59,286 - phoenix.telegram - INFO - Finished retrieving messages from 2222968620. Found 82 relevant messages.
+2025-05-24 02:20:59,286 - phoenix.telegram - INFO - 📨 Found 82 messages in @kariusgemscalls's channel
+2025-05-24 02:20:59,286 - phoenix.telegram - INFO - 🎯 Found 79 token calls for @kariusgemscalls
+2025-05-24 02:20:59,286 - phoenix.telegram - INFO - 📊 Analyzing call 5/79 for @kariusgemscalls
+2025-05-24 02:20:59,757 - phoenix.helius - INFO - Fetching pump.fun token data for 42bAEfJjdWMbz833f9W5cQMumnQ5a3DaNWedMRdopump
+2025-05-24 02:21:00,214 - phoenix.telegram - WARNING - Could not get price data for pump token 42bAEfJjdWMbz833f9W5cQMumnQ5a3DaNWedMRdopump
+2025-05-24 02:21:00,720 - phoenix.telegram - INFO - 📊 Analyzing call 9/79 for @kariusgemscalls
+2025-05-24 02:21:01,132 - phoenix.helius - INFO - Fetching pump.fun token data for HmjCoarLh5duURfJ333DwfFiPyTCgFT35pRSAoP8pump
+2025-05-24 02:21:01,594 - phoenix.telegram - WARNING - Could not get price data for pump token HmjCoarLh5duURfJ333DwfFiPyTCgFT35pRSAoP8pump
+2025-05-24 02:21:02,099 - phoenix.telegram - INFO - 📊 Analyzing call 11/79 for @kariusgemscalls
+2025-05-24 02:21:02,379 - phoenix.helius - INFO - Fetching pump.fun token data for 4mS9wBksny7seS3d4aPs4kWhpzxLiD7Vz1fQYiDepump
+2025-05-24 02:21:02,723 - phoenix.telegram - WARNING - Could not get price data for pump token 4mS9wBksny7seS3d4aPs4kWhpzxLiD7Vz1fQYiDepump
+2025-05-24 02:21:03,235 - phoenix.telegram - INFO - 📊 Analyzing call 12/79 for @kariusgemscalls
+2025-05-24 02:21:03,598 - phoenix.helius - INFO - Fetching pump.fun token data for 5aPxqVF3h55JPUWVEt3QoWPZULVsc5JDBpnoMmvGpump
+2025-05-24 02:21:04,052 - phoenix.telegram - WARNING - Could not get price data for pump token 5aPxqVF3h55JPUWVEt3QoWPZULVsc5JDBpnoMmvGpump
+2025-05-24 02:21:04,579 - phoenix.telegram - INFO - 📊 Analyzing call 14/79 for @kariusgemscalls
+2025-05-24 02:21:04,927 - phoenix.helius - INFO - Fetching pump.fun token data for D9niM43mjEf324WkA9BHsrQBfh5RfKhJZbMNFuxepump
+2025-05-24 02:21:05,435 - phoenix.telegram - WARNING - Could not get price data for pump token D9niM43mjEf324WkA9BHsrQBfh5RfKhJZbMNFuxepump
+2025-05-24 02:21:05,942 - phoenix.telegram - INFO - 📊 Analyzing call 16/79 for @kariusgemscalls
+2025-05-24 02:21:06,084 - phoenix.helius - INFO - Fetching pump.fun token data for 7a8sVBPtamzGNCB7wUpuwdMDrsEq9N7F9i1xugTKpump
+2025-05-24 02:21:06,515 - phoenix.telegram - WARNING - Could not get price data for pump token 7a8sVBPtamzGNCB7wUpuwdMDrsEq9N7F9i1xugTKpump
+2025-05-24 02:21:07,023 - phoenix.telegram - INFO - 📊 Analyzing call 17/79 for @kariusgemscalls
+2025-05-24 02:21:07,181 - phoenix.helius - INFO - Fetching pump.fun token data for MM2ujMcMehSGLn1x3CJCJR2gVuHRDZqfmm7QLaLpump
+2025-05-24 02:21:07,629 - phoenix.telegram - WARNING - Could not get price data for pump token MM2ujMcMehSGLn1x3CJCJR2gVuHRDZqfmm7QLaLpump
+2025-05-24 02:21:08,130 - phoenix.telegram - INFO - 📊 Analyzing call 19/79 for @kariusgemscalls
+2025-05-24 02:21:08,473 - phoenix.helius - INFO - Fetching pump.fun token data for HrLmhCjqEzVS7fJ7mSjM1q7thQn1mwqWbiRbLLUCpump
+2025-05-24 02:21:08,960 - phoenix.telegram - WARNING - Could not get price data for pump token HrLmhCjqEzVS7fJ7mSjM1q7thQn1mwqWbiRbLLUCpump
+2025-05-24 02:21:09,471 - phoenix.telegram - INFO - 📊 Analyzing call 20/79 for @kariusgemscalls
+2025-05-24 02:21:09,645 - phoenix.helius - INFO - Fetching pump.fun token data for 6s7RK1wLoUf8zUFdMrAcMH6oxBnkqDQx7V2ZRn9Apump
+2025-05-24 02:21:09,997 - phoenix.telegram - WARNING - Could not get price data for pump token 6s7RK1wLoUf8zUFdMrAcMH6oxBnkqDQx7V2ZRn9Apump
+2025-05-24 02:21:10,505 - phoenix.telegram - INFO - 📊 Analyzing call 22/79 for @kariusgemscalls
+2025-05-24 02:21:11,348 - phoenix.telegram - INFO - 📊 Analyzing call 25/79 for @kariusgemscalls
+2025-05-24 02:21:11,513 - phoenix.helius - INFO - Fetching pump.fun token data for 5FeSG8hNEejaoHZNPEC7TaFqY63T8EvPyFtK5hALpump
+2025-05-24 02:21:11,879 - phoenix.telegram - WARNING - Could not get price data for pump token 5FeSG8hNEejaoHZNPEC7TaFqY63T8EvPyFtK5hALpump
+2025-05-24 02:21:12,380 - phoenix.telegram - INFO - 📊 Analyzing call 27/79 for @kariusgemscalls
+2025-05-24 02:21:12,712 - phoenix.helius - INFO - Fetching pump.fun token data for 5zwdHSnHgKySYQEfUqGKf2hx76rCKJ9qZqdPTVwrpump
+2025-05-24 02:21:13,192 - phoenix.telegram - WARNING - Could not get price data for pump token 5zwdHSnHgKySYQEfUqGKf2hx76rCKJ9qZqdPTVwrpump
+2025-05-24 02:21:13,697 - phoenix.telegram - INFO - 📊 Analyzing call 29/79 for @kariusgemscalls
+2025-05-24 02:21:13,973 - phoenix.helius - INFO - Fetching pump.fun token data for A2ynrR2ouALX27psD3c3rzaWMuK1X1J6mZauNaEQpump
+2025-05-24 02:21:14,317 - phoenix.telegram - WARNING - Could not get price data for pump token A2ynrR2ouALX27psD3c3rzaWMuK1X1J6mZauNaEQpump
+2025-05-24 02:22:10,061 - phoenix - INFO - Loaded 2 wallet addresses from wallets.txt
+2025-05-24 02:22:11,286 - phoenix.api_manager - INFO - Birdeye API initialized for mainstream token analysis
+2025-05-24 02:22:11,286 - phoenix.helius - INFO - Helius API initialized for enhanced transaction parsing
+2025-05-24 02:22:11,286 - phoenix.api_manager - INFO - Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-24 02:22:11,286 - phoenix.api_manager - INFO - Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-24 02:22:11,286 - phoenix.cielo - INFO - Checking Cielo Finance API connectivity...
+2025-05-24 02:22:11,516 - phoenix.cielo - INFO - ✅ Cielo Finance API is accessible (got expected error response)
+2025-05-24 02:22:11,516 - phoenix.wallet - INFO - ✅ Cielo Finance API connection verified
+2025-05-24 02:22:11,516 - phoenix.wallet - INFO - Batch analyzing 2 wallets with 3-tier memecoin analysis
+2025-05-24 02:22:11,516 - phoenix.wallet - INFO - Analyzing wallet 1/2: Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 02:22:11,516 - phoenix.wallet - INFO - 🔍 Analyzing wallet Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ (3-tier memecoin analysis)
+2025-05-24 02:22:11,516 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-24 02:22:11,516 - phoenix.cielo - INFO - Fetching trading stats for wallet Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 02:22:13,958 - phoenix.cielo - INFO - Successfully retrieved trading stats for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 02:22:13,958 - phoenix.wallet - INFO - 📊 Wallet tier: INITIAL - Scanning 5 recent trades
+2025-05-24 02:22:13,958 - phoenix.wallet - INFO -    Score: 45/100
+2025-05-24 02:22:13,958 - phoenix.wallet - INFO -    Win Rate: 50.0%
+2025-05-24 02:22:13,958 - phoenix.wallet - INFO -    Profit Factor: 6.83
+2025-05-24 02:22:13,958 - phoenix.wallet - INFO -    Net Profit: $3167.34
+2025-05-24 02:22:13,958 - phoenix.wallet - INFO - Fetching last 5 token swaps for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 02:22:35,294 - phoenix.wallet - INFO - Found 5 swaps from 100 signatures
+2025-05-24 02:22:39,485 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 1, Birdeye: 0, Helius: 5, RPC: 23
+2025-05-24 02:22:39,485 - phoenix.wallet - INFO -   └─ Score: 48/100, Type: swing_trader, Tier: INITIAL
+2025-05-24 02:22:41,498 - phoenix.wallet - INFO - Analyzing wallet 2/2: 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 02:22:41,498 - phoenix.wallet - INFO - 🔍 Analyzing wallet 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX (3-tier memecoin analysis)
+2025-05-24 02:22:41,499 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-24 02:22:41,499 - phoenix.cielo - INFO - Fetching trading stats for wallet 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 02:22:42,539 - phoenix.cielo - INFO - Successfully retrieved trading stats for 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 02:22:42,539 - phoenix.wallet - INFO - 📊 Wallet tier: DEEP - Scanning 20 recent trades
+2025-05-24 02:22:42,539 - phoenix.wallet - INFO -    Score: 85/100
+2025-05-24 02:22:42,539 - phoenix.wallet - INFO -    Win Rate: 71.4%
+2025-05-24 02:22:42,539 - phoenix.wallet - INFO -    Profit Factor: 15.17
+2025-05-24 02:22:42,539 - phoenix.wallet - INFO -    Net Profit: $5481.24
+2025-05-24 02:22:42,539 - phoenix.wallet - INFO - Fetching last 20 token swaps for 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 02:23:03,582 - phoenix.wallet - INFO - Found 20 swaps from 100 signatures
+2025-05-24 02:23:20,240 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 2, Birdeye: 0, Helius: 25, RPC: 86
+2025-05-24 02:23:20,240 - phoenix.wallet - INFO -   └─ Score: 55/100, Type: flipper, Tier: DEEP
+2025-05-24 02:23:20,240 - phoenix.wallet - INFO - 📊 FINAL API CALL STATISTICS:
+2025-05-24 02:23:20,240 - phoenix.wallet - INFO -    Cielo: 2 calls
+2025-05-24 02:23:20,240 - phoenix.wallet - INFO -    Birdeye: 0 calls
+2025-05-24 02:23:20,240 - phoenix.wallet - INFO -    Helius: 25 calls
+2025-05-24 02:23:20,240 - phoenix.wallet - INFO -    RPC: 86 calls
+2025-05-24 02:23:20,240 - phoenix.wallet - INFO -    Total API calls: 113
+2025-05-24 02:23:20,240 - phoenix.wallet - INFO - 📊 TIER DISTRIBUTION:
+2025-05-24 02:23:20,240 - phoenix.wallet - INFO -    INITIAL (5 tokens): 1 wallets (50.0%)
+2025-05-24 02:23:20,240 - phoenix.wallet - INFO -    STANDARD (10 tokens): 0 wallets (0.0%)
+2025-05-24 02:23:20,240 - phoenix.wallet - INFO -    DEEP (20 tokens): 1 wallets (50.0%)
+2025-05-24 02:23:20,256 - phoenix - INFO - Exported 5x+ gem hunter analysis to C:\Users\Administrator\Desktop\phoenix-project\outputs\wallet_analysis_5x_gem_20250524_022320.csv
+2025-05-24 02:24:23,741 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-24 02:24:23,741 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-24 02:24:24,326 - phoenix - INFO - ✅ Imported telegram module
+2025-05-24 02:24:24,326 - phoenix - INFO - 🚀 Starting enhanced SpyDefi analysis for the past 24 hours.
+2025-05-24 02:24:24,326 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv
+2025-05-24 02:24:24,326 - phoenix - INFO - ✅ Birdeye API initialized successfully
+2025-05-24 02:24:24,341 - phoenix.helius - INFO - Helius API initialized for enhanced transaction parsing
+2025-05-24 02:24:24,341 - phoenix - INFO - ✅ Helius API initialized successfully for pump.fun tokens
+2025-05-24 02:24:24,341 - phoenix - INFO - ✅ Telegram scraper initialized successfully
+2025-05-24 02:24:24,341 - phoenix - INFO - 🎯 SpyDefi channel detected. Running enhanced analysis...
+2025-05-24 02:24:24,341 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-24 02:24:24,341 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-24 02:24:24,456 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-24 02:24:25,233 - phoenix.telegram - INFO - Connected to Telegram
+2025-05-24 02:24:25,233 - phoenix - INFO - 📞 Connected to Telegram
+2025-05-24 02:24:25,233 - phoenix.telegram - INFO - 🚀 STARTING REDESIGNED SPYDEFI ANALYSIS (5x+ Gem Focus)
+2025-05-24 02:24:25,233 - phoenix.telegram - INFO - 🎯 Phase 1: Discovering active KOLs from SpyDefi...
+2025-05-24 02:24:25,233 - phoenix.telegram - INFO - ✅ Birdeye API available for mainstream tokens
+2025-05-24 02:24:25,233 - phoenix.telegram - INFO - ✅ Helius API available for pump.fun tokens
+2025-05-24 02:24:25,359 - phoenix.telegram - INFO - 📨 Scanning SpyDefi for active KOLs...
+2025-05-24 02:24:26,861 - phoenix.telegram - INFO - 📊 Processed 500 SpyDefi messages
+2025-05-24 02:24:26,861 - phoenix.telegram - INFO - 🔍 Found 154 unique KOLs
+2025-05-24 02:24:26,861 - phoenix.telegram - INFO - ✅ Found 154 active KOLs from SpyDefi
+2025-05-24 02:24:26,861 - phoenix.telegram - INFO - 🎯 Phase 2: Analyzing individual KOL channels (24 hours each)...
+2025-05-24 02:24:26,861 - phoenix.telegram - INFO - 📊 Found 154 total KOLs, filtering to 30 (top 50 with 5+ mentions)
+2025-05-24 02:24:26,861 - phoenix.telegram - INFO - 📊 Analyzing KOL 1/30: @kariusgemscalls (41 mentions)
+2025-05-24 02:24:26,861 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @kariusgemscalls
+2025-05-24 02:24:26,990 - phoenix.telegram - INFO - Scraping 1 days of messages from 2222968620
+2025-05-24 02:24:27,505 - phoenix.telegram - INFO - Finished retrieving messages from 2222968620. Found 82 relevant messages.
+2025-05-24 02:24:27,505 - phoenix.telegram - INFO - 📨 Found 82 messages in @kariusgemscalls's channel
+2025-05-24 02:24:27,505 - phoenix.telegram - INFO - 🎯 Found 79 token calls for @kariusgemscalls
+2025-05-24 02:24:27,505 - phoenix.telegram - INFO - 📊 Analyzing call 1/79 for @kariusgemscalls
+2025-05-24 02:24:27,505 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:27,505 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:27,505 - phoenix.telegram - WARNING - Could not get price data for pump token E5dpauhuRdWLKWQfbTPaHRGdJJyfGu7sjoRj8kabpump
+2025-05-24 02:24:28,005 - phoenix.telegram - INFO - 📊 Analyzing call 6/79 for @kariusgemscalls
+2025-05-24 02:24:28,005 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:28,005 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:28,005 - phoenix.telegram - WARNING - Could not get price data for pump token 42bAEfJjdWMbz833f9W5cQMumnQ5a3DaNWedMRdopump
+2025-05-24 02:24:28,512 - phoenix.telegram - INFO - 📊 Analyzing call 10/79 for @kariusgemscalls
+2025-05-24 02:24:28,512 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:28,512 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:28,512 - phoenix.telegram - WARNING - Could not get price data for pump token HmjCoarLh5duURfJ333DwfFiPyTCgFT35pRSAoP8pump
+2025-05-24 02:24:29,023 - phoenix.telegram - INFO - 📊 Analyzing call 12/79 for @kariusgemscalls
+2025-05-24 02:24:29,023 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:29,024 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:29,024 - phoenix.telegram - WARNING - Could not get price data for pump token 4mS9wBksny7seS3d4aPs4kWhpzxLiD7Vz1fQYiDepump
+2025-05-24 02:24:29,535 - phoenix.telegram - INFO - 📊 Analyzing call 13/79 for @kariusgemscalls
+2025-05-24 02:24:29,535 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:29,536 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:29,536 - phoenix.telegram - WARNING - Could not get price data for pump token 5aPxqVF3h55JPUWVEt3QoWPZULVsc5JDBpnoMmvGpump
+2025-05-24 02:24:30,037 - phoenix.telegram - INFO - 📊 Analyzing call 15/79 for @kariusgemscalls
+2025-05-24 02:24:30,037 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:30,037 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:30,037 - phoenix.telegram - WARNING - Could not get price data for pump token D9niM43mjEf324WkA9BHsrQBfh5RfKhJZbMNFuxepump
+2025-05-24 02:24:30,539 - phoenix.telegram - INFO - 📊 Analyzing call 17/79 for @kariusgemscalls
+2025-05-24 02:24:30,539 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:30,539 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:30,539 - phoenix.telegram - WARNING - Could not get price data for pump token 7a8sVBPtamzGNCB7wUpuwdMDrsEq9N7F9i1xugTKpump
+2025-05-24 02:24:31,048 - phoenix.telegram - INFO - 📊 Analyzing call 18/79 for @kariusgemscalls
+2025-05-24 02:24:38,138 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:38,154 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:38,154 - phoenix.telegram - WARNING - Could not get price data for pump token MM2ujMcMehSGLn1x3CJCJR2gVuHRDZqfmm7QLaLpump
+2025-05-24 02:24:38,661 - phoenix.telegram - INFO - 📊 Analyzing call 20/79 for @kariusgemscalls
+2025-05-24 02:24:38,661 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:38,661 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:38,661 - phoenix.telegram - WARNING - Could not get price data for pump token HrLmhCjqEzVS7fJ7mSjM1q7thQn1mwqWbiRbLLUCpump
+2025-05-24 02:24:39,161 - phoenix.telegram - INFO - 📊 Analyzing call 21/79 for @kariusgemscalls
+2025-05-24 02:24:39,161 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:39,161 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:39,161 - phoenix.telegram - WARNING - Could not get price data for pump token 6s7RK1wLoUf8zUFdMrAcMH6oxBnkqDQx7V2ZRn9Apump
+2025-05-24 02:24:39,661 - phoenix.telegram - INFO - 📊 Analyzing call 23/79 for @kariusgemscalls
+2025-05-24 02:24:40,383 - phoenix.telegram - INFO - 📊 Analyzing call 26/79 for @kariusgemscalls
+2025-05-24 02:24:40,383 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:40,383 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:40,383 - phoenix.telegram - WARNING - Could not get price data for pump token 5FeSG8hNEejaoHZNPEC7TaFqY63T8EvPyFtK5hALpump
+2025-05-24 02:24:40,894 - phoenix.telegram - INFO - 📊 Analyzing call 28/79 for @kariusgemscalls
+2025-05-24 02:24:40,894 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:40,894 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:40,894 - phoenix.telegram - WARNING - Could not get price data for pump token 5zwdHSnHgKySYQEfUqGKf2hx76rCKJ9qZqdPTVwrpump
+2025-05-24 02:24:41,404 - phoenix.telegram - INFO - 📊 Analyzing call 30/79 for @kariusgemscalls
+2025-05-24 02:24:41,404 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:41,405 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:41,405 - phoenix.telegram - WARNING - Could not get price data for pump token A2ynrR2ouALX27psD3c3rzaWMuK1X1J6mZauNaEQpump
+2025-05-24 02:24:41,912 - phoenix.telegram - INFO - 📊 Analyzing call 31/79 for @kariusgemscalls
+2025-05-24 02:24:41,912 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:41,912 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:41,912 - phoenix.telegram - WARNING - Could not get price data for pump token 2WzwVJhXeid8FUceWj84cu6VY3noyTwuLk7eGcHZpump
+2025-05-24 02:24:42,412 - phoenix.telegram - INFO - 📊 Analyzing call 33/79 for @kariusgemscalls
+2025-05-24 02:24:43,319 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:43,647 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:43,662 - phoenix.telegram - WARNING - Could not get price data for pump token 2MLwYCTZdRBJFqAMPGhd2KSxK3aatZeriLSoHH6ipump
+2025-05-24 02:24:44,178 - phoenix.telegram - INFO - 📊 Analyzing call 34/79 for @kariusgemscalls
+2025-05-24 02:24:44,178 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:44,178 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:44,178 - phoenix.telegram - WARNING - Could not get price data for pump token 6Vo5m3BgxbjRzU8xxypd9Xp1tAvt7XbLPWAYuxNypump
+2025-05-24 02:24:44,690 - phoenix.telegram - INFO - 📊 Analyzing call 37/79 for @kariusgemscalls
+2025-05-24 02:24:44,690 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:44,690 - phoenix.helius - INFO - Pump.fun token detected, returning minimal metadata
+2025-05-24 02:24:44,690 - phoenix.telegram - WARNING - Could not get price data for pump token EQtqxu5F5kPgBoyQetiyJZdJmSa1ywXmfUQMRn2epump

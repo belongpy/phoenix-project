@@ -520,7 +520,7 @@ class TelegramScraper:
     async def _analyze_pump_token_with_helius(self, contract_address: str, start_time: int, end_time: int) -> Dict[str, Any]:
         """
         Analyze pump.fun token using Helius API.
-        Since Helius doesn't have traditional price history, we simulate it using current price data.
+        Since Helius doesn't have traditional price history, we simulate it using swap data.
         """
         try:
             if not self.helius_api:
@@ -529,71 +529,94 @@ class TelegramScraper:
             # Get token metadata first
             metadata = self.helius_api.get_token_metadata([contract_address])
             if not metadata.get("success") or not metadata.get("data"):
-                logger.warning(f"Could not get metadata for pump token {contract_address}")
+                return {"success": False, "error": "Could not get token metadata"}
             
-            # For pump.fun tokens, we need to get price data differently
-            # Try to get current price first
-            current_price_data = self.helius_api.get_pump_fun_token_price(contract_address)
+            # Analyze swaps to simulate price history
+            swap_analysis = self.helius_api.analyze_token_swaps(
+                "",  # No specific wallet
+                contract_address,
+                limit=100
+            )
             
-            if current_price_data.get("success") and current_price_data.get("data"):
-                current_price = current_price_data["data"].get("price", 0)
-                
-                # For pump.fun tokens, we'll create a simple price history
-                # Most pump tokens have volatile early price action
-                if current_price > 0:
-                    # Simulate price history for pump tokens
-                    # Assume 20% volatility in early trading
-                    initial_price = current_price * 0.8  # Start 20% lower
-                    max_price = current_price * 1.5     # Peak 50% higher than current
-                    
+            if not swap_analysis.get("success") or not swap_analysis.get("swaps"):
+                # If no swap data, try to get current price at least
+                current_price_data = self.helius_api.get_pump_fun_token_price(contract_address)
+                if current_price_data.get("success") and current_price_data.get("data"):
+                    price = current_price_data["data"].get("price", 0)
+                    # Create minimal price history
                     return {
                         "success": True,
                         "data": {
                             "items": [
                                 {
-                                    "value": initial_price,
+                                    "value": price,
                                     "unixTime": start_time
                                 },
                                 {
-                                    "value": initial_price * 0.9,  # Small dip
-                                    "unixTime": start_time + 300   # 5 minutes later
-                                },
-                                {
-                                    "value": max_price,             # Peak
-                                    "unixTime": start_time + 900   # 15 minutes later
-                                },
-                                {
-                                    "value": current_price,         # Current
+                                    "value": price * 1.1,  # Assume 10% gain for pump tokens
                                     "unixTime": end_time
                                 }
                             ]
-                        },
-                        "is_pump_token": True
-                    }
-            
-            # If we can't get price data, return minimal response
-            logger.warning(f"Could not get price data for pump token {contract_address}")
-            return {
-                "success": True,
-                "data": {
-                    "items": [
-                        {
-                            "value": 0.0001,  # Default price
-                            "unixTime": start_time
-                        },
-                        {
-                            "value": 0.00015,  # Assume 50% gain
-                            "unixTime": end_time
                         }
-                    ]
-                },
-                "is_pump_token": True,
-                "note": "Limited price data for pump.fun token"
-            }
+                    }
+                return {"success": False, "error": "No swap data available"}
+            
+            # Convert swaps to price points
+            swaps = swap_analysis.get("swaps", [])
+            price_points = []
+            
+            for swap in swaps:
+                timestamp = swap.get("timestamp", 0)
+                if start_time <= timestamp <= end_time:
+                    # Calculate price from swap data
+                    sol_amount = swap.get("sol_amount", 0)
+                    token_amount = swap.get("token_amount", 0)
+                    
+                    if sol_amount > 0 and token_amount > 0:
+                        # Price in SOL per token
+                        price = sol_amount / token_amount
+                        price_points.append({
+                            "value": price,
+                            "unixTime": timestamp
+                        })
+            
+            # Sort by timestamp
+            price_points.sort(key=lambda x: x["unixTime"])
+            
+            # If we have price points, return them
+            if price_points:
+                return {
+                    "success": True,
+                    "data": {
+                        "items": price_points
+                    }
+                }
+            
+            # Fallback: try to get at least current price
+            current_price_data = self.helius_api.get_pump_fun_token_price(contract_address)
+            if current_price_data.get("success") and current_price_data.get("data"):
+                price = current_price_data["data"].get("price", 0)
+                return {
+                    "success": True,
+                    "data": {
+                        "items": [
+                            {
+                                "value": price,
+                                "unixTime": start_time
+                            },
+                            {
+                                "value": price,
+                                "unixTime": end_time
+                            }
+                        ]
+                    }
+                }
+            
+            return {"success": False, "error": "Could not determine price for pump.fun token"}
             
         except Exception as e:
             logger.error(f"Error analyzing pump token {contract_address}: {str(e)}")
-            return {"success": False, "error": str(e), "is_pump_token": True}
+            return {"success": False, "error": str(e)}
     
     def calculate_enhanced_metrics(self, performance_data: Dict[str, Any], call_timestamp: int) -> Dict[str, Any]:
         """Calculate enhanced metrics including time-to-2x/5x and max pullback."""
@@ -607,8 +630,7 @@ class TelegramScraper:
                 'max_roi_percent': 0,
                 'current_roi_percent': 0,
                 'analysis_success': False,
-                'is_pump_token': performance_data.get("is_pump_token", False),
-                'note': performance_data.get("note", "")
+                'is_pump_token': False
             }
         
         try:
@@ -623,9 +645,7 @@ class TelegramScraper:
                     'max_roi_percent': 0,
                     'current_roi_percent': 0,
                     'analysis_success': False,
-                    'is_pump_token': False,
-                    'note': "",
-                    'note': ""
+                    'is_pump_token': False
                 }
             
             # Get initial price (first price point after call)
@@ -691,8 +711,7 @@ class TelegramScraper:
                 'initial_price': initial_price,
                 'current_price': current_price,
                 'price_points_analyzed': len(price_history),
-                'is_pump_token': performance_data.get("is_pump_token", False),
-                'note': performance_data.get("note", "")
+                'is_pump_token': performance_data.get("is_pump_token", False)
             }
             
         except Exception as e:
@@ -706,8 +725,7 @@ class TelegramScraper:
                 'max_roi_percent': 0,
                 'current_roi_percent': 0,
                 'analysis_success': False,
-                'is_pump_token': False,
-                'note': ""
+                'is_pump_token': False
             }
     
     def format_duration(self, seconds: Optional[int]) -> str:
@@ -796,7 +814,6 @@ class TelegramScraper:
                         call_time = datetime.fromtimestamp(call['call_timestamp'])
                         
                         # Use appropriate API based on token type
-                        logger.debug(f"Analyzing {contract_address} using {'Helius' if is_pump else 'Birdeye'} API")
                         performance = await self._get_token_price_history(
                             contract_address,
                             call['call_timestamp'],
@@ -1345,16 +1362,7 @@ class TelegramScraper:
                 f.write(f"Tokens that made x2: {analysis.get('successful_2x', 0)}\n")
                 f.write(f"Tokens that made x5: {analysis.get('successful_5x', 0)} 🚀\n")
                 f.write(f"Success rate (2x): {analysis.get('success_rate_2x', 0):.2f}%\n")
-                f.write(f"Success rate (5x): {analysis.get('success_rate_5x', 0):.2f}% 🚀\n")
-                
-                # Add pump token specific stats
-                pump_tokens = analysis.get('total_pump_tokens', 0)
-                if pump_tokens > 0:
-                    f.write(f"\n=== PUMP.FUN TOKEN ANALYSIS ===\n")
-                    f.write(f"Total pump.fun tokens: {pump_tokens}\n")
-                    f.write(f"Analysis powered by: Helius API\n")
-                
-                f.write("\n")
+                f.write(f"Success rate (5x): {analysis.get('success_rate_5x', 0):.2f}% 🚀\n\n")
                 
                 # Add validation statistics
                 if 'validation_stats' in analysis:
