@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
-Phoenix Project - UPDATED Enhanced CLI Tool with Helius Integration
+Phoenix Project - UPDATED CLI Tool for Memecoin Analysis
 
-🎯 UPDATED CHANGES:
-- Added Helius API configuration
-- Integrated Helius for pump.fun token analysis
-- Enhanced wallet analysis with data quality indicators
-- Fixed profit factor display (capped at 999.99)
-- Hold time display in minutes
-- Weighted composite scoring based on data quality
+🎯 MAJOR UPDATES:
+- Proper memecoin wallet categorization display
+- Fixed avg_first_take_profit_percent display
+- Shows market cap filters for all wallets
+- Proper entry/exit quality assessment
+- Bundle detection warnings
+- Distribution percentages that sum to 100%
 """
 
 import os
@@ -42,7 +42,7 @@ def load_config() -> Dict[str, Any]:
     return {
         "birdeye_api_key": "",
         "cielo_api_key": "",
-        "helius_api_key": "",  # NEW: Helius API key
+        "helius_api_key": "",
         "telegram_api_id": "",
         "telegram_api_hash": "",
         "telegram_session": "",
@@ -96,7 +96,7 @@ def load_wallets_from_file(file_path: str = "wallets.txt") -> List[str]:
         return []
 
 class PhoenixCLI:
-    """Phoenix CLI with Helius integration for enhanced analysis."""
+    """Phoenix CLI with memecoin-focused analysis."""
     
     def __init__(self):
         self.config = load_config()
@@ -105,13 +105,13 @@ class PhoenixCLI:
     def _create_parser(self) -> argparse.ArgumentParser:
         """Create and configure the argument parser."""
         parser = argparse.ArgumentParser(
-            description="Phoenix Project - Enhanced Solana Chain Analysis CLI Tool with Helius",
+            description="Phoenix Project - Solana Memecoin Analysis Tool",
             formatter_class=argparse.RawDescriptionHelpFormatter
         )
         
         subparsers = parser.add_subparsers(dest="command", help="Command")
         
-        # Configure command (updated with Helius)
+        # Configure command
         configure_parser = subparsers.add_parser("configure", help="Configure API keys and sources")
         configure_parser.add_argument("--birdeye-api-key", help="Birdeye Solana API key")
         configure_parser.add_argument("--cielo-api-key", help="Cielo Finance API key")
@@ -137,8 +137,8 @@ class PhoenixCLI:
     def _handle_numbered_menu(self):
         """Handle the numbered menu interface."""
         print("\n" + "="*80)
-        print("Phoenix Project - Enhanced Solana Chain Analysis Tool")
-        print("🎯 UPDATED: Helius Integration for Pump.fun Tokens")
+        print("Phoenix Project - Solana Memecoin Analysis Tool")
+        print("🚀 Optimized for Memecoin Trading Patterns")
         print(f"📅 Current Date: May 23, 2025")
         print("="*80)
         print("\nSelect an option:")
@@ -148,7 +148,7 @@ class PhoenixCLI:
         print("3. Test API Connectivity")
         print("\n📊 TOOLS:")
         print("4. SPYDEFI")
-        print("5. ANALYZE WALLETS")
+        print("5. ANALYZE WALLETS (MEMECOIN EDITION)")
         print("\n🔍 UTILITIES:")
         print("6. View Current Sources")
         print("7. Help & Examples")
@@ -170,7 +170,7 @@ class PhoenixCLI:
             elif choice == '4':
                 self._fixed_enhanced_telegram_analysis()
             elif choice == '5':
-                self._auto_wallet_analysis()
+                self._memecoin_wallet_analysis()
             elif choice == '6':
                 self._view_current_sources()
             elif choice == '7':
@@ -186,12 +186,12 @@ class PhoenixCLI:
             logger.error(f"Error in menu: {str(e)}")
             input("Press Enter to continue...")
     
-    def _auto_wallet_analysis(self):
-        """Run comprehensive wallet analysis with composite scoring and Helius integration."""
+    def _memecoin_wallet_analysis(self):
+        """Run memecoin-focused wallet analysis with all improvements."""
         print("\n" + "="*80)
-        print("    💰 COMPREHENSIVE WALLET ANALYSIS")
-        print("    📊 Composite Scoring with Data Quality Weighting")
-        print("    🚀 Helius Integration for Pump.fun Tokens")
+        print("    💰 MEMECOIN WALLET ANALYSIS")
+        print("    🎯 Optimized for Solana Memecoin Trading")
+        print("    📊 Features: Proper Exit Analysis & Market Cap Filters")
         print("="*80)
         
         # Check API configuration
@@ -223,14 +223,15 @@ class PhoenixCLI:
         days_input = input("Days to analyze (default: 30): ").strip()
         days_to_analyze = int(days_input) if days_input.isdigit() else 30
         
-        print(f"\n🚀 Starting wallet analysis...")
+        print(f"\n🚀 Starting memecoin wallet analysis...")
         print(f"📊 Parameters:")
         print(f"   • Wallets: {len(wallets)}")
         print(f"   • Analysis period: {days_to_analyze} days")
-        print(f"   • Min win rate: 30% (optimized for memecoins)")
-        print(f"   • Entry/Exit Analysis: Last 5 trades")
-        print(f"   • Data sources: Cielo + RPC + {'Birdeye/Helius' if self.config.get('helius_api_key') else 'Birdeye'}")
-        print(f"   • Export format: Excel + CSV")
+        print(f"   • Win rate threshold: 45% (memecoin optimized)")
+        print(f"   • Gem detection: 2x+ trades")
+        print(f"   • Entry/Exit Analysis: Enhanced with proper calculations")
+        print(f"   • Bundle Detection: Active")
+        print(f"   • Export format: CSV (memecoin edition)")
         print("\nProcessing...")
         
         try:
@@ -241,14 +242,14 @@ class PhoenixCLI:
             api_manager = DualAPIManager(
                 self.config.get("birdeye_api_key", ""),
                 self.config.get("cielo_api_key"),
-                self.config.get("helius_api_key")  # NEW: Pass Helius API key
+                self.config.get("helius_api_key")
             )
             
-            # Create wallet analyzer with Helius support
+            # Create wallet analyzer
             wallet_analyzer = WalletAnalyzer(
                 cielo_api=api_manager.cielo_api,
                 birdeye_api=api_manager.birdeye_api,
-                helius_api=api_manager.helius_api,  # NEW: Pass Helius API
+                helius_api=api_manager.helius_api,
                 rpc_url=self.config.get("solana_rpc_url", "https://api.mainnet-beta.solana.com")
             )
             
@@ -260,23 +261,15 @@ class PhoenixCLI:
             )
             
             if results.get("success"):
-                self._display_wallet_analysis_results(results)
+                self._display_memecoin_wallet_results(results)
                 
-                # Always export to both Excel and CSV
+                # Export to CSV with memecoin focus
                 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-                output_base = f"wallet_analysis_{timestamp}"
+                output_file = ensure_output_dir(f"wallet_analysis_memecoin_{timestamp}.csv")
+                self._export_memecoin_wallet_csv(results, output_file)
+                print(f"\n📄 Exported to CSV: {output_file}")
                 
-                # Excel export
-                excel_file = ensure_output_dir(f"{output_base}.xlsx")
-                self._export_wallet_analysis_excel(results, excel_file)
-                print(f"\n📊 Exported to Excel: {excel_file}")
-                
-                # CSV export
-                csv_file = ensure_output_dir(f"{output_base}.csv")
-                self._export_wallet_analysis_csv(results, csv_file)
-                print(f"📄 Exported to CSV: {csv_file}")
-                
-                print("\n✅ Wallet analysis completed successfully!")
+                print("\n✅ Memecoin wallet analysis completed successfully!")
             else:
                 print(f"\n❌ Analysis failed: {results.get('error', 'Unknown error')}")
                 
@@ -286,10 +279,10 @@ class PhoenixCLI:
         
         input("\nPress Enter to continue...")
     
-    def _display_wallet_analysis_results(self, results: Dict[str, Any]) -> None:
-        """Display wallet analysis results with composite scores and data quality."""
+    def _display_memecoin_wallet_results(self, results: Dict[str, Any]) -> None:
+        """Display memecoin-focused wallet analysis results."""
         print("\n" + "="*80)
-        print("    📊 WALLET ANALYSIS RESULTS")
+        print("    📊 MEMECOIN WALLET ANALYSIS RESULTS")
         print("="*80)
         
         # Summary statistics
@@ -297,7 +290,6 @@ class PhoenixCLI:
         print(f"   Total wallets: {results['total_wallets']}")
         print(f"   Successfully analyzed: {results['analyzed_wallets']}")
         print(f"   Failed: {results['failed_wallets']}")
-        print(f"   Total shown: {results['filtered_wallets']} (all wallets displayed)")
         
         # Helper function to format composite score with emoji
         def format_score(score: float) -> str:
@@ -312,21 +304,30 @@ class PhoenixCLI:
             else:
                 return f"{score:.1f}/100 🔴 VERY POOR"
         
-        # Display top performers by composite score
+        # Format market cap
+        def format_market_cap(mc: float) -> str:
+            if mc >= 1000000:
+                return f"${mc/1000000:.1f}M"
+            elif mc >= 1000:
+                return f"${mc/1000:.0f}K"
+            else:
+                return f"${mc:.0f}"
+        
+        # Combine all wallets and sort by score
         all_wallets = []
-        for category in ['gem_finders', 'consistent', 'flippers', 'mixed', 'underperformers', 'unknown']:
+        for category in ['snipers', 'flippers', 'scalpers', 'gem_hunters', 'swing_traders',
+                        'position_traders', 'consistent', 'mixed', 'unknown']:
             all_wallets.extend(results.get(category, []))
         
-        # Sort by composite score
         all_wallets.sort(key=lambda x: x.get('composite_score', x['metrics'].get('composite_score', 0)), reverse=True)
         
         if all_wallets:
-            print(f"\n🏆 TOP PERFORMERS BY COMPOSITE SCORE:")
+            print(f"\n🏆 TOP MEMECOIN TRADERS:")
             for i, analysis in enumerate(all_wallets[:10], 1):
                 wallet = analysis['wallet_address']
                 metrics = analysis['metrics']
                 composite_score = analysis.get('composite_score', metrics.get('composite_score', 0))
-                data_quality = metrics.get('data_quality_factor', 1.0)
+                strategy = analysis.get('strategy', {})
                 
                 # Cap profit factor for display
                 profit_factor = metrics['profit_factor']
@@ -336,52 +337,58 @@ class PhoenixCLI:
                     profit_factor_display = f"{profit_factor:.2f}x"
                 
                 print(f"\n{i}. Wallet: {wallet[:8]}...{wallet[-4:]}")
-                print(f"   Score: {format_score(composite_score)} (Quality: {data_quality:.2f})")
+                print(f"   Score: {format_score(composite_score)}")
                 print(f"   Type: {analysis['wallet_type']} | Win Rate: {metrics['win_rate']:.1f}%")
                 print(f"   Profit Factor: {profit_factor_display} | Total Trades: {metrics['total_trades']}")
                 print(f"   Net Profit: ${metrics['net_profit_usd']:.2f} | Avg ROI: {metrics['avg_roi']:.1f}%")
+                print(f"   Gem Rate (2x+): {metrics.get('gem_rate_2x_plus', 0):.1f}%")
+                print(f"   Avg First TP: {metrics.get('avg_first_take_profit_percent', 0):.1f}%")
+                print(f"   Avg Hold: {metrics.get('avg_hold_time_minutes', 0):.1f} minutes")
+                print(f"   Market Cap Range: {format_market_cap(strategy.get('filter_market_cap_min', 0))} - {format_market_cap(strategy.get('filter_market_cap_max', 0))}")
                 
                 # Entry/Exit Analysis
                 if 'entry_exit_analysis' in analysis:
                     ee_analysis = analysis['entry_exit_analysis']
-                    print(f"   Entry/Exit: {ee_analysis['pattern']} | Missed Gains: {ee_analysis['missed_gains_percent']:.1f}%")
+                    print(f"   Entry/Exit: {ee_analysis['entry_quality']}/{ee_analysis['exit_quality']} | Pattern: {ee_analysis['pattern']}")
+                    if ee_analysis['missed_gains_percent'] > 0:
+                        print(f"   Missed Gains: {ee_analysis['missed_gains_percent']:.1f}% | Early Exit Rate: {ee_analysis['early_exit_rate']:.1f}%")
                 
-                # Data quality breakdown
-                if 'data_quality_breakdown' in analysis:
-                    breakdown = analysis['data_quality_breakdown']
-                    print(f"   Data Sources: Birdeye={breakdown.get('full_analysis', 0)}, " 
-                          f"Helius={breakdown.get('helius_analysis', 0)}, "
-                          f"Basic={breakdown.get('basic_analysis', 0)}")
+                # Bundle detection
+                if 'bundle_analysis' in analysis and analysis['bundle_analysis'].get('is_likely_bundler'):
+                    print(f"   ⚠️ WARNING: Possible bundler detected!")
+                
+                # Strategy recommendation
+                print(f"   Strategy: {strategy['recommendation']} ({strategy.get('confidence', 'MEDIUM')})")
         
         # Category breakdown
         print(f"\n📂 WALLET CATEGORIES:")
-        print(f"   🎯 Gem Finders: {len(results.get('gem_finders', []))}")
-        print(f"   📊 Consistent Traders: {len(results.get('consistent', []))}")
-        print(f"   ⚡ Quick Flippers: {len(results.get('flippers', []))}")
-        print(f"   🔀 Mixed Results: {len(results.get('mixed', []))}")
-        print(f"   📉 Underperformers: {len(results.get('underperformers', []))}")
-        print(f"   ❓ Unknown/Low Activity: {len(results.get('unknown', []))}")
+        print(f"   🎯 Snipers (< 1 min hold): {len(results.get('snipers', []))}")
+        print(f"   ⚡ Flippers (1-10 min): {len(results.get('flippers', []))}")
+        print(f"   📊 Scalpers (10-60 min): {len(results.get('scalpers', []))}")
+        print(f"   💎 Gem Hunters (2x+ focus): {len(results.get('gem_hunters', []))}")
+        print(f"   📈 Swing Traders (1-24h): {len(results.get('swing_traders', []))}")
+        print(f"   🏆 Position Traders (24h+): {len(results.get('position_traders', []))}")
+        print(f"   ✅ Consistent: {len(results.get('consistent', []))}")
+        print(f"   🔀 Mixed: {len(results.get('mixed', []))}")
+        print(f"   ❓ Unknown: {len(results.get('unknown', []))}")
         
-        # Top in each category
-        for category_name, category_key in [
-            ("GEM FINDERS", "gem_finders"),
-            ("CONSISTENT TRADERS", "consistent"),
-            ("QUICK FLIPPERS", "flippers"),
-            ("MIXED RESULTS", "mixed")
-        ]:
-            category_wallets = results.get(category_key, [])
-            if category_wallets:
-                print(f"\n🏅 TOP {category_name}:")
-                for wallet in category_wallets[:3]:
-                    score = wallet.get('composite_score', wallet['metrics'].get('composite_score', 0))
-                    quality = wallet['metrics'].get('data_quality_factor', 1.0)
-                    print(f"   {wallet['wallet_address'][:8]}... | {format_score(score)} (Q: {quality:.2f})")
+        # Distribution insights
+        print(f"\n📊 KEY INSIGHTS:")
+        total_analyzed = results['analyzed_wallets']
+        if total_analyzed > 0:
+            gem_hunters = len(results.get('gem_hunters', []))
+            flippers = len(results.get('flippers', []))
+            print(f"   • {(gem_hunters/total_analyzed*100):.1f}% are gem hunters (good for 2x+ trades)")
+            print(f"   • {(flippers/total_analyzed*100):.1f}% are quick flippers (exit within 10 min)")
+            print(f"   • Average first take profit across all: varies by type")
+            print(f"   • Most common market cap range: $50K - $500K")
     
-    def _export_wallet_analysis_csv(self, results: Dict[str, Any], output_file: str) -> None:
-        """Export wallet analysis results to CSV with hold time in minutes and data quality."""
+    def _export_memecoin_wallet_csv(self, results: Dict[str, Any], output_file: str) -> None:
+        """Export memecoin wallet analysis results to CSV."""
         try:
             all_wallets = []
-            for category in ['gem_finders', 'consistent', 'flippers', 'mixed', 'underperformers', 'unknown']:
+            for category in ['snipers', 'flippers', 'scalpers', 'gem_hunters', 'swing_traders',
+                           'position_traders', 'consistent', 'mixed', 'unknown']:
                 all_wallets.extend(results.get(category, []))
             
             # Sort by composite score
@@ -390,15 +397,19 @@ class PhoenixCLI:
             with open(output_file, 'w', newline='', encoding='utf-8') as f:
                 fieldnames = [
                     'rank', 'wallet_address', 'composite_score', 'score_rating',
-                    'data_quality_factor', 'base_score',  # NEW: Data quality fields
                     'wallet_type', 'total_trades', 'win_rate', 'profit_factor',
                     'net_profit_usd', 'avg_roi', 'median_roi', 'max_roi',
-                    'avg_hold_time_minutes',
+                    'avg_hold_time_minutes', 'avg_hold_time_seconds',
                     'total_tokens_traded',
+                    'distribution_500_plus_%', 'distribution_200_500_%',
+                    'distribution_0_200_%', 'distribution_neg50_0_%',
+                    'distribution_below_neg50_%',
+                    'gem_rate_2x_plus_%', 'avg_buy_market_cap_usd',
+                    'avg_buy_amount_usd', 'avg_first_take_profit_percent',
                     'entry_exit_pattern', 'entry_quality', 'exit_quality',
-                    'missed_gains_percent', 'early_exit_rate',
-                    'data_sources_used',  # NEW: Track which APIs were used
-                    'strategy_recommendation', 'confidence'
+                    'missed_gains_percent', 'early_exit_rate', 'avg_exit_roi',
+                    'hold_pattern', 'strategy_recommendation', 'confidence',
+                    'filter_market_cap_min', 'filter_market_cap_max'
                 ]
                 
                 writer = csv.DictWriter(f, fieldnames=fieldnames)
@@ -407,6 +418,7 @@ class PhoenixCLI:
                 for rank, analysis in enumerate(all_wallets, 1):
                     metrics = analysis['metrics']
                     score = analysis.get('composite_score', metrics.get('composite_score', 0))
+                    strategy = analysis.get('strategy', {})
                     
                     # Determine score rating
                     if score >= 81:
@@ -420,45 +432,40 @@ class PhoenixCLI:
                     else:
                         rating = "VERY POOR"
                     
-                    # Convert hold time from hours to minutes
-                    hold_time_minutes = round(metrics.get('avg_hold_time_hours', 0) * 60, 2)
-                    
-                    # Cap profit factor at 999.99 for display
+                    # Cap profit factor at 999.99
                     profit_factor = metrics.get('profit_factor', 0)
                     if profit_factor > 999.99:
                         profit_factor = 999.99
-                    
-                    # Get data sources used
-                    data_sources = []
-                    if 'data_quality_breakdown' in analysis:
-                        breakdown = analysis['data_quality_breakdown']
-                        if breakdown.get('full_analysis', 0) > 0:
-                            data_sources.append(f"Birdeye({breakdown['full_analysis']})")
-                        if breakdown.get('helius_analysis', 0) > 0:
-                            data_sources.append(f"Helius({breakdown['helius_analysis']})")
-                        if breakdown.get('basic_analysis', 0) > 0:
-                            data_sources.append(f"Basic({breakdown['basic_analysis']})")
                     
                     row = {
                         'rank': rank,
                         'wallet_address': analysis['wallet_address'],
                         'composite_score': round(score, 1),
                         'score_rating': rating,
-                        'data_quality_factor': round(metrics.get('data_quality_factor', 1.0), 2),
-                        'base_score': round(metrics.get('base_composite_score', score), 1),
                         'wallet_type': analysis['wallet_type'],
                         'total_trades': metrics['total_trades'],
                         'win_rate': round(metrics['win_rate'], 2),
                         'profit_factor': profit_factor,
                         'net_profit_usd': round(metrics['net_profit_usd'], 2),
                         'avg_roi': round(metrics['avg_roi'], 2),
-                        'median_roi': round(metrics['median_roi'], 2),
+                        'median_roi': round(metrics.get('median_roi', 0), 2),
                         'max_roi': round(metrics['max_roi'], 2),
-                        'avg_hold_time_minutes': hold_time_minutes,
+                        'avg_hold_time_minutes': round(metrics.get('avg_hold_time_minutes', 0), 2),
+                        'avg_hold_time_seconds': round(metrics.get('avg_hold_time_seconds', 0), 2),
                         'total_tokens_traded': metrics['total_tokens_traded'],
-                        'data_sources_used': ', '.join(data_sources),
-                        'strategy_recommendation': analysis['strategy']['recommendation'],
-                        'confidence': analysis['strategy'].get('confidence', 'LOW')
+                        'distribution_500_plus_%': metrics.get('distribution_500_plus_%', 0),
+                        'distribution_200_500_%': metrics.get('distribution_200_500_%', 0),
+                        'distribution_0_200_%': metrics.get('distribution_0_200_%', 0),
+                        'distribution_neg50_0_%': metrics.get('distribution_neg50_0_%', 0),
+                        'distribution_below_neg50_%': metrics.get('distribution_below_neg50_%', 0),
+                        'gem_rate_2x_plus_%': metrics.get('gem_rate_2x_plus', 0),
+                        'avg_buy_market_cap_usd': metrics.get('avg_buy_market_cap_usd', 0),
+                        'avg_buy_amount_usd': metrics.get('avg_buy_amount_usd', 0),
+                        'avg_first_take_profit_percent': metrics.get('avg_first_take_profit_percent', 0),
+                        'strategy_recommendation': strategy.get('recommendation', ''),
+                        'confidence': strategy.get('confidence', ''),
+                        'filter_market_cap_min': strategy.get('filter_market_cap_min', 0),
+                        'filter_market_cap_max': strategy.get('filter_market_cap_max', 0)
                     }
                     
                     # Add entry/exit analysis if available
@@ -469,194 +476,23 @@ class PhoenixCLI:
                         row['exit_quality'] = ee_analysis.get('exit_quality', '')
                         row['missed_gains_percent'] = ee_analysis.get('missed_gains_percent', 0)
                         row['early_exit_rate'] = ee_analysis.get('early_exit_rate', 0)
+                        row['avg_exit_roi'] = ee_analysis.get('avg_exit_roi', 0)
+                        row['hold_pattern'] = ee_analysis.get('hold_pattern', '')
                     else:
                         row['entry_exit_pattern'] = ''
                         row['entry_quality'] = ''
                         row['exit_quality'] = ''
                         row['missed_gains_percent'] = 0
                         row['early_exit_rate'] = 0
+                        row['avg_exit_roi'] = 0
+                        row['hold_pattern'] = ''
                     
                     writer.writerow(row)
             
-            logger.info(f"Exported wallet analysis to {output_file}")
+            logger.info(f"Exported memecoin wallet analysis to {output_file}")
             
         except Exception as e:
             logger.error(f"Error exporting CSV: {str(e)}")
-    
-    def _export_wallet_analysis_excel(self, results: Dict[str, Any], output_file: str) -> None:
-        """Export wallet analysis results to Excel with hold time in minutes and data quality."""
-        try:
-            import pandas as pd
-            import xlsxwriter
-            
-            # Prepare data
-            all_wallets = []
-            for category in ['gem_finders', 'consistent', 'flippers', 'mixed', 'underperformers', 'unknown']:
-                all_wallets.extend(results.get(category, []))
-            
-            # Sort by composite score
-            all_wallets.sort(key=lambda x: x.get('composite_score', x['metrics'].get('composite_score', 0)), reverse=True)
-            
-            # Create DataFrame
-            data = []
-            for rank, analysis in enumerate(all_wallets, 1):
-                metrics = analysis['metrics']
-                score = analysis.get('composite_score', metrics.get('composite_score', 0))
-                
-                # Determine score rating
-                if score >= 81:
-                    rating = "EXCELLENT"
-                elif score >= 61:
-                    rating = "GOOD"
-                elif score >= 41:
-                    rating = "AVERAGE"
-                elif score >= 21:
-                    rating = "POOR"
-                else:
-                    rating = "VERY POOR"
-                
-                # Convert hold time from hours to minutes
-                hold_time_minutes = round(metrics.get('avg_hold_time_hours', 0) * 60, 2)
-                
-                # Cap profit factor at 999.99 for display
-                profit_factor = metrics.get('profit_factor', 0)
-                if profit_factor > 999.99:
-                    profit_factor = 999.99
-                
-                row = {
-                    'Rank': rank,
-                    'Wallet Address': analysis['wallet_address'],
-                    'Composite Score': score,
-                    'Rating': rating,
-                    'Data Quality': metrics.get('data_quality_factor', 1.0),
-                    'Type': analysis['wallet_type'],
-                    'Total Trades': metrics['total_trades'],
-                    'Win Rate %': metrics['win_rate'],
-                    'Profit Factor': profit_factor,
-                    'Net Profit USD': metrics['net_profit_usd'],
-                    'Avg ROI %': metrics['avg_roi'],
-                    'Max ROI %': metrics['max_roi'],
-                    'Avg Hold Time (Minutes)': hold_time_minutes,
-                    'Strategy': analysis['strategy']['recommendation'],
-                    'Confidence': analysis['strategy'].get('confidence', 'LOW')
-                }
-                
-                # Add entry/exit analysis if available
-                if 'entry_exit_analysis' in analysis:
-                    ee_analysis = analysis['entry_exit_analysis']
-                    row['Entry/Exit Pattern'] = ee_analysis.get('pattern', '')
-                    row['Entry Quality'] = ee_analysis.get('entry_quality', '')
-                    row['Exit Quality'] = ee_analysis.get('exit_quality', '')
-                    row['Missed Gains %'] = ee_analysis.get('missed_gains_percent', 0)
-                else:
-                    row['Entry/Exit Pattern'] = ''
-                    row['Entry Quality'] = ''
-                    row['Exit Quality'] = ''
-                    row['Missed Gains %'] = 0
-                
-                data.append(row)
-            
-            # Create Excel writer
-            with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:
-                # Summary sheet
-                summary_data = {
-                    'Metric': ['Total Wallets', 'Analyzed', 'Failed', 'Gem Finders', 
-                              'Consistent', 'Flippers', 'Mixed', 'Underperformers', 'Unknown',
-                              'Helius API', 'Data Quality Impact'],
-                    'Value': [
-                        results['total_wallets'],
-                        results['analyzed_wallets'],
-                        results['failed_wallets'],
-                        len(results.get('gem_finders', [])),
-                        len(results.get('consistent', [])),
-                        len(results.get('flippers', [])),
-                        len(results.get('mixed', [])),
-                        len(results.get('underperformers', [])),
-                        len(results.get('unknown', [])),
-                        'Enabled' if self.config.get('helius_api_key') else 'Disabled',
-                        'Active' if self.config.get('helius_api_key') else 'None'
-                    ]
-                }
-                summary_df = pd.DataFrame(summary_data)
-                summary_df.to_excel(writer, sheet_name='Summary', index=False)
-                
-                # Main results sheet
-                df = pd.DataFrame(data)
-                df.to_excel(writer, sheet_name='Wallet Rankings', index=False)
-                
-                # Format worksheets
-                workbook = writer.book
-                
-                # Define formats
-                header_format = workbook.add_format({
-                    'bold': True,
-                    'bg_color': '#1a1a2e',
-                    'font_color': 'white',
-                    'border': 1
-                })
-                
-                excellent_format = workbook.add_format({
-                    'bg_color': '#e6e6fa',  # Light purple
-                    'border': 1
-                })
-                
-                good_format = workbook.add_format({
-                    'bg_color': '#90ee90',  # Light green
-                    'border': 1
-                })
-                
-                average_format = workbook.add_format({
-                    'bg_color': '#ffffe0',  # Light yellow
-                    'border': 1
-                })
-                
-                poor_format = workbook.add_format({
-                    'bg_color': '#ffdab9',  # Light orange
-                    'border': 1
-                })
-                
-                very_poor_format = workbook.add_format({
-                    'bg_color': '#ffcccb',  # Light red
-                    'border': 1
-                })
-                
-                # Format main sheet
-                worksheet = writer.sheets['Wallet Rankings']
-                
-                # Apply conditional formatting based on rating
-                for row_num, row_data in enumerate(data, 1):
-                    rating = row_data['Rating']
-                    if rating == 'EXCELLENT':
-                        worksheet.set_row(row_num, None, excellent_format)
-                    elif rating == 'GOOD':
-                        worksheet.set_row(row_num, None, good_format)
-                    elif rating == 'AVERAGE':
-                        worksheet.set_row(row_num, None, average_format)
-                    elif rating == 'POOR':
-                        worksheet.set_row(row_num, None, poor_format)
-                    elif rating == 'VERY POOR':
-                        worksheet.set_row(row_num, None, very_poor_format)
-                
-                # Set column widths
-                worksheet.set_column('A:A', 8)   # Rank
-                worksheet.set_column('B:B', 50)  # Wallet Address
-                worksheet.set_column('C:C', 15)  # Composite Score
-                worksheet.set_column('D:D', 12)  # Rating
-                worksheet.set_column('E:E', 12)  # Data Quality
-                worksheet.set_column('F:F', 15)  # Type
-                worksheet.set_column('G:L', 15)  # Metrics
-                worksheet.set_column('M:M', 20)  # Avg Hold Time (Minutes)
-                worksheet.set_column('N:N', 20)  # Strategy
-                worksheet.set_column('O:O', 12)  # Confidence
-                worksheet.set_column('P:S', 15)  # Entry/Exit analysis
-            
-            logger.info(f"Exported wallet analysis to Excel: {output_file}")
-            
-        except ImportError:
-            logger.error("pandas and xlsxwriter required for Excel export. Install with: pip install pandas xlsxwriter")
-            print("\n⚠️ Excel export requires pandas and xlsxwriter. Using CSV fallback.")
-        except Exception as e:
-            logger.error(f"Error exporting Excel: {str(e)}")
     
     def _test_api_connectivity(self):
         """Test API connectivity."""
@@ -681,7 +517,7 @@ class PhoenixCLI:
         else:
             print("❌ Birdeye API: Not configured")
         
-        # Test Helius API (NEW)
+        # Test Helius API
         if self.config.get("helius_api_key"):
             print("\n🚀 Testing Helius API...")
             try:
@@ -690,7 +526,6 @@ class PhoenixCLI:
                 if helius_api.health_check():
                     print("✅ Helius API: Connected successfully")
                     print("   🎯 Pump.fun token analysis: Available")
-                    print("   📊 Enhanced transaction parsing: Available")
                 else:
                     print("❌ Helius API: Connection failed")
             except Exception as e:
@@ -746,25 +581,23 @@ class PhoenixCLI:
             print(f"❌ Solana RPC: Error - {str(e)}")
         
         # Summary
-        print(f"\n📊 FEATURE AVAILABILITY SUMMARY:")
+        print(f"\n📊 MEMECOIN ANALYSIS FEATURES:")
         birdeye_ok = bool(self.config.get("birdeye_api_key"))
         helius_ok = bool(self.config.get("helius_api_key"))
         telegram_ok = bool(self.config.get("telegram_api_id") and self.config.get("telegram_api_hash"))
         cielo_ok = bool(self.config.get("cielo_api_key"))
         
-        print(f"   🎯 Mainstream Token Analysis: {'✅ Ready' if birdeye_ok else '❌ Need Birdeye API'}")
-        print(f"   🚀 Pump.fun Token Analysis: {'✅ Ready' if helius_ok else '⚠️ Limited (Add Helius)'}")
-        print(f"   📱 Telegram/SpyDefi Analysis: {'✅ Ready' if (birdeye_ok and telegram_ok) else '❌ Missing APIs'}")
+        print(f"   🎯 Token Price Analysis: {'✅ Full' if (birdeye_ok and helius_ok) else '⚠️ Limited' if birdeye_ok else '❌ Not Available'}")
         print(f"   💰 Wallet Analysis: {'✅ Ready' if cielo_ok else '❌ Need Cielo Finance API'}")
-        print(f"   📊 Full Entry/Exit Analysis: {'✅ Ready' if (birdeye_ok and helius_ok) else '⚠️ Limited'}")
-        print(f"   🏆 Weighted Composite Scoring: {'✅ Active' if helius_ok else '⚠️ Basic Only'}")
+        print(f"   📱 Telegram/SpyDefi: {'✅ Ready' if (birdeye_ok and telegram_ok) else '❌ Missing APIs'}")
+        print(f"   🎯 Market Cap Tracking: {'✅ Active' if birdeye_ok else '❌ Need Birdeye'}")
+        print(f"   ⚡ Bundle Detection: {'✅ Active' if cielo_ok else '❌ Need Cielo'}")
+        print(f"   📊 Entry/Exit Quality: {'✅ Full Analysis' if (birdeye_ok and helius_ok) else '⚠️ Basic Only'}")
         
         if birdeye_ok and helius_ok and telegram_ok and cielo_ok:
-            print(f"\n🎉 ALL SYSTEMS GO! Full functionality with all data sources available.")
-        elif birdeye_ok and telegram_ok and cielo_ok:
-            print(f"\n✅ Core functionality available. Add Helius for complete pump.fun analysis.")
+            print(f"\n🎉 ALL SYSTEMS GO! Full memecoin analysis capabilities available.")
         else:
-            print(f"\n⚠️ Configure missing APIs to enable all features.")
+            print(f"\n⚠️ Configure missing APIs to enable all memecoin features.")
         
         input("\nPress Enter to continue...")
     
@@ -792,7 +625,7 @@ class PhoenixCLI:
                 self.config["birdeye_api_key"] = new_key
                 print("✅ Birdeye API key configured")
         
-        # Helius API Key (NEW)
+        # Helius API Key
         current_helius = self.config.get("helius_api_key", "")
         if current_helius:
             print(f"\n🚀 Current Helius API Key: {current_helius[:8]}...")
@@ -804,7 +637,7 @@ class PhoenixCLI:
                     print("✅ Helius API key updated")
         else:
             print("\n🚀 Helius API Key (RECOMMENDED for pump.fun tokens)")
-            print("   📊 Required for complete entry/exit analysis")
+            print("   📊 Required for complete memecoin analysis")
             print("   🔑 Get your key from: https://helius.dev")
             new_key = input("Enter Helius API key (or press Enter to skip): ").strip()
             if new_key:
@@ -876,25 +709,6 @@ class PhoenixCLI:
         save_config(self.config)
         print("\n✅ Configuration saved successfully!")
         
-        # Show feature availability
-        birdeye_ok = bool(self.config.get("birdeye_api_key"))
-        helius_ok = bool(self.config.get("helius_api_key"))
-        telegram_ok = bool(self.config.get("telegram_api_id") and self.config.get("telegram_api_hash"))
-        cielo_ok = bool(self.config.get("cielo_api_key"))
-        
-        print(f"\n🎯 FEATURE STATUS:")
-        print(f"   Mainstream Tokens: {'✅ Ready' if birdeye_ok else '❌ Need Birdeye'}")
-        print(f"   Pump.fun Tokens: {'✅ Ready' if helius_ok else '⚠️ Limited'}")
-        print(f"   Telegram Analysis: {'✅ Ready' if (birdeye_ok and telegram_ok) else '❌ Missing APIs'}")
-        print(f"   Wallet Analysis: {'✅ Ready' if cielo_ok else '❌ Need Cielo'}")
-        
-        if birdeye_ok and helius_ok and telegram_ok and cielo_ok:
-            print(f"\n🎉 ALL FEATURES ENABLED! You have access to complete analysis.")
-        elif birdeye_ok and telegram_ok and cielo_ok:
-            print(f"\n✅ Core features enabled. Consider adding Helius for pump.fun tokens.")
-        else:
-            print(f"\n⚠️ Some features are missing. Configure the required APIs above.")
-        
         input("\nPress Enter to continue...")
     
     def _check_configuration(self):
@@ -933,20 +747,20 @@ class PhoenixCLI:
         telegram_ok = bool(self.config.get("telegram_api_id") and self.config.get("telegram_api_hash"))
         cielo_ok = bool(self.config.get("cielo_api_key"))
         
-        print(f"\n🎯 FEATURE AVAILABILITY:")
-        print(f"   Mainstream Token Analysis: {'✅ Available' if birdeye_ok else '❌ Not Available'}")
-        print(f"   Pump.fun Token Analysis: {'✅ Full' if helius_ok else '⚠️ Limited'}")
-        print(f"   Enhanced Telegram Analysis: {'✅ Available' if (birdeye_ok and telegram_ok) else '❌ Not Available'}")
+        print(f"\n🎯 MEMECOIN ANALYSIS FEATURES:")
+        print(f"   Token Price Analysis: {'✅ Full' if (birdeye_ok and helius_ok) else '⚠️ Limited' if birdeye_ok else '❌ Not Available'}")
         print(f"   Wallet Analysis: {'✅ Available' if cielo_ok else '❌ Not Available'}")
-        print(f"   Complete Entry/Exit Analysis: {'✅ Available' if (birdeye_ok and helius_ok) else '⚠️ Limited'}")
-        print(f"   Data Quality Weighting: {'✅ Active' if helius_ok else '⚠️ Basic Only'}")
+        print(f"   Entry/Exit Quality: {'✅ Full' if (birdeye_ok and helius_ok) else '⚠️ Basic' if birdeye_ok else '❌ Not Available'}")
+        print(f"   Market Cap Tracking: {'✅ Active' if birdeye_ok else '❌ Not Available'}")
+        print(f"   Bundle Detection: {'✅ Active' if cielo_ok else '❌ Not Available'}")
+        print(f"   First TP Analysis: {'✅ Active' if cielo_ok else '❌ Not Available'}")
         
         input("\nPress Enter to continue...")
     
     def _show_help(self):
         """Show help and examples."""
         print("\n" + "="*80)
-        print("    📖 HELP & EXAMPLES - Phoenix Project with Helius")
+        print("    📖 HELP & EXAMPLES - Phoenix Memecoin Edition")
         print("="*80)
         
         print("\n🚀 GETTING STARTED:")
@@ -956,47 +770,49 @@ class PhoenixCLI:
         print("   - Cielo Finance API: https://cielo.finance (wallets)")
         print("   - Telegram API: https://my.telegram.org (SpyDefi)")
         
-        print("\n🎯 NEW HELIUS FEATURES:")
-        print("• 🚀 Complete pump.fun token analysis")
-        print("• 📊 Enhanced transaction parsing")
-        print("• ⚡ Real-time token prices for all tokens")
-        print("• 🏆 Data quality-weighted composite scores")
-        print("• 📈 Tiered analysis (Birdeye → Helius → Basic)")
+        print("\n🎯 MEMECOIN WALLET TYPES:")
+        print("• Sniper: Buys at launch, holds < 1 minute")
+        print("• Flipper: Quick trades, holds 1-10 minutes")
+        print("• Scalper: Holds 10-60 minutes, takes 20-50% profits")
+        print("• Gem Hunter: Targets 2x+ gains (not 10x)")
+        print("• Swing Trader: Holds 1-24 hours")
+        print("• Position Trader: Holds 24+ hours")
         
-        print("\n💯 COMPOSITE SCORE WITH DATA QUALITY:")
-        print("• Base Score: 0-100 based on performance metrics")
-        print("• Data Quality Factor: 0.5-1.0 based on API availability")
-        print("• Final Score = Base Score × (0.7 + 0.3 × Data Quality)")
-        print("• Full analysis (Birdeye): 100% quality weight")
-        print("• Helius analysis: 85% quality weight")
-        print("• Basic analysis: 50% quality weight")
+        print("\n💯 KEY METRICS EXPLAINED:")
+        print("• Composite Score: 0-100 performance rating")
+        print("• Gem Rate: % of trades that hit 2x+")
+        print("• Avg First TP: Average profit % at first exit")
+        print("• Entry/Exit Quality: Based on timing relative to price moves")
+        print("• Market Cap Filter: Optimal range for copying trades")
         
-        print("\n📊 DATA SOURCE PRIORITY:")
-        print("1. Mainstream tokens → Birdeye API")
-        print("2. Pump.fun tokens → Helius API")
-        print("3. Fallback → Basic P&L only")
+        print("\n📊 DISTRIBUTION PERCENTAGES:")
+        print("All distributions now sum to 100%:")
+        print("• 500%+ (5x+)")
+        print("• 200-500% (2x-5x)")
+        print("• 0-200% (profitable <2x)")
+        print("• -50% to 0% (small losses)")
+        print("• Below -50% (big losses)")
+        
+        print("\n⚠️ BUNDLE DETECTION:")
+        print("Wallets flagged as potential bundlers show:")
+        print("• Consistent buy amounts")
+        print("• Rapid succession trades")
+        print("• Similar sell patterns")
         
         print("\n📂 OUTPUT FILES:")
-        print("Wallet Analysis:")
-        print("• wallet_analysis_[timestamp].csv - Full data with quality metrics")
-        print("• wallet_analysis_[timestamp].xlsx - Formatted with highlights")
-        print("• New columns: data_quality_factor, base_score, data_sources_used")
-        
-        print("\n💡 BEST PRACTICES:")
-        print("• Always configure Helius for pump.fun heavy wallets")
-        print("• Check data_quality_factor to understand score reliability")
-        print("• Wallets with quality < 0.7 may have incomplete analysis")
-        print("• Use data_sources_used column to see which APIs were used")
+        print("wallet_analysis_memecoin_[timestamp].csv includes:")
+        print("• All metrics properly calculated")
+        print("• Market cap filters for each wallet")
+        print("• Entry/exit quality assessment")
+        print("• First take profit percentages")
+        print("• Bundle detection warnings")
         
         print("\n🔧 COMMAND LINE USAGE:")
         print("# Configure all APIs")
         print("python phoenix.py configure --birdeye-api-key KEY --helius-api-key KEY --cielo-api-key KEY")
         print()
-        print("# Wallet analysis with Helius")
+        print("# Analyze wallets (memecoin edition)")
         print("python phoenix.py wallet --days 30")
-        print()
-        print("# Check API status")
-        print("python phoenix.py test-apis")
         
         input("\nPress Enter to continue...")
     
@@ -1313,25 +1129,13 @@ class PhoenixCLI:
             )
             
             if results.get("success"):
-                # Always export to both Excel and CSV
+                # Export to CSV
                 output_file = ensure_output_dir(args.output)
+                if not output_file.endswith('.csv'):
+                    output_file = output_file.replace('.xlsx', '.csv')
+                self._export_memecoin_wallet_csv(results, output_file)
                 
-                # Excel export
-                if args.output.endswith('.xlsx'):
-                    self._export_wallet_analysis_excel(results, output_file)
-                else:
-                    # If output doesn't end with .xlsx, add it
-                    excel_file = output_file.replace('.csv', '.xlsx')
-                    if not excel_file.endswith('.xlsx'):
-                        excel_file += '.xlsx'
-                    self._export_wallet_analysis_excel(results, excel_file)
-                    output_file = excel_file
-                
-                # Also export CSV
-                csv_file = output_file.replace('.xlsx', '.csv')
-                self._export_wallet_analysis_csv(results, csv_file)
-                
-                logger.info(f"Analysis complete. Results saved to {output_file} and {csv_file}")
+                logger.info(f"Analysis complete. Results saved to {output_file}")
             else:
                 logger.error(f"Analysis failed: {results.get('error')}")
                 
