@@ -1,0 +1,10 @@
+rank,wallet_address,composite_score,score_rating,data_quality_factor,base_score,wallet_type,total_trades,win_rate,profit_factor,net_profit_usd,avg_roi,median_roi,max_roi,avg_hold_time_minutes,total_tokens_traded,entry_exit_pattern,entry_quality,exit_quality,missed_gains_percent,early_exit_rate,data_sources_used,strategy_recommendation,confidence
+1,ExbKNUwVtyRjrJMPLnVWRus9BxTRpt6BRXWxGYTyfcYS,84.8,EXCELLENT,0.88,88.0,flipper,335,58.73,999.99,87528.96,324.88,0.0,140.14,996.67,83,BALANCED,POOR,POOR,86.12,0.0,"Birdeye(1), Helius(4)",QUICK_SCALP,VERY_HIGH
+2,9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX,84.0,EXCELLENT,0.85,88.0,flipper,81,76.47,999.99,4337.92,69.19,25.0,25.0,7.47,21,BALANCED,POOR,POOR,0,0.0,Helius(5),QUICK_SCALP,VERY_HIGH
+3,7brTP49Rx7vLM2W6Pxtspmna2UqGtjtgcF9q3W7qtcPt,84.0,EXCELLENT,0.85,88.0,flipper,54,76.47,999.99,15093.51,202.63,25.0,25.0,1311.18,19,BALANCED,POOR,POOR,0,0,Helius(5),QUICK_SCALP,VERY_HIGH
+4,6f1NUwuzAXMMPUTwbbJ2Mhh1zMoUQWCL4fdTKS6sr6wK,83.5,EXCELLENT,0.91,85.8,flipper,80,78.95,999.99,3304.83,43.52,3.47,25.0,407.35,39,BALANCED,POOR,POOR,25.52,33.33,"Birdeye(2), Helius(3)",QUICK_SCALP,VERY_HIGH
+5,3jjcLMgZYvTc8xDLwshX4rCdcLphczQw8WZXbDVDuz7D,83.5,EXCELLENT,0.91,85.8,flipper,55,90,999.99,9983.52,70.55,0.0,25.0,75.71,21,BALANCED,GOOD,POOR,0,0.0,"Birdeye(2), Helius(3)",QUICK_SCALP,VERY_HIGH
+6,D4zwkUJF4FbmnRgtL6nphhunrMZdoFtBJ39Nsf2cNoZy,77.0,GOOD,1.0,77.0,flipper,96,75,999.99,4970.9,123.43,-95.23,-95.23,0.3,12,BALANCED,POOR,POOR,0,0.0,Birdeye(5),QUICK_SCALP,HIGH
+7,Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ,73.5,GOOD,0.85,77.0,flipper,41,50,999.99,3167.34,47.04,25.0,25.0,215.28,26,BALANCED,POOR,POOR,0,0.0,Helius(5),QUICK_SCALP,HIGH
+8,4uRrQUR4zMdoaD91bZbYE7c5EHAqKxkcGeDGqYsmn7Pb,27.6,POOR,0.97,27.9,unknown,0,0,0.0,0,0,25.0,486.14,0,0,MISSING_RUNNERS,POOR,POOR,14273.32,50.0,"Birdeye(4), Helius(1)",CAUTIOUS,LOW
+9,Gd6qobzV7KbNaYkKtiF3NUuSAU9SyJFZSoHA9pn4ZQqt,14.3,VERY POOR,0.85,15.0,unknown,0,0,0.0,0,0,25.0,25.0,0,0,BALANCED,POOR,POOR,0,0.0,Helius(5),CAUTIOUS,VERY_LOW

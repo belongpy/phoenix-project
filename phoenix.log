@@ -1,0 +1,154 @@
+2025-05-23 14:56:49,077 - phoenix - INFO - Loaded 9 wallet addresses from wallets.txt
+2025-05-23 14:56:50,585 - phoenix.api_manager - INFO - Birdeye API initialized for mainstream token analysis
+2025-05-23 14:56:50,592 - phoenix.helius - INFO - Helius API initialized for enhanced transaction parsing
+2025-05-23 14:56:50,592 - phoenix.api_manager - INFO - Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-23 14:56:50,592 - phoenix.api_manager - INFO - Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-23 14:56:50,592 - phoenix.cielo - INFO - Checking Cielo Finance API connectivity...
+2025-05-23 14:56:50,795 - phoenix.cielo - INFO - ✅ Cielo Finance API is accessible (got expected error response)
+2025-05-23 14:56:50,795 - phoenix.wallet - INFO - ✅ Cielo Finance API connection verified
+2025-05-23 14:56:50,795 - phoenix.wallet - INFO - Batch analyzing 9 wallets using hybrid approach
+2025-05-23 14:56:50,795 - phoenix.wallet - INFO - Analyzing wallet 1/9: Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-23 14:56:50,795 - phoenix.wallet - INFO - 🔍 Analyzing wallet Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ (hybrid approach with Helius)
+2025-05-23 14:56:50,795 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 14:56:50,795 - phoenix.cielo - INFO - Fetching trading stats for wallet Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-23 14:56:53,624 - phoenix.cielo - INFO - Successfully retrieved trading stats for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-23 14:56:53,624 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 14:56:53,624 - phoenix.wallet - INFO - Fetching last 5 token swaps for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-23 14:57:05,745 - phoenix.wallet - INFO - Found 5 swaps from 50 signatures
+2025-05-23 14:57:05,745 - phoenix.wallet - INFO - Using Helius API for pump.fun token Ea1iFm51ot2d6b86KEZMPPtRwz6yZZHu4aVobfbzpump
+2025-05-23 14:57:05,746 - phoenix.wallet - INFO - Analyzing pump.fun token Ea1iFm51ot2d6b86KEZMPPtRwz6yZZHu4aVobfbzpump with Helius
+2025-05-23 14:57:06,817 - phoenix.wallet - INFO - Using Helius API for pump.fun token Ea1iFm51ot2d6b86KEZMPPtRwz6yZZHu4aVobfbzpump
+2025-05-23 14:57:06,817 - phoenix.wallet - INFO - Analyzing pump.fun token Ea1iFm51ot2d6b86KEZMPPtRwz6yZZHu4aVobfbzpump with Helius
+2025-05-23 14:57:07,958 - phoenix.wallet - INFO - Using Helius API for pump.fun token NudrMewGMrwiad82MQSUoxQ78UtyS8BF2Zv9Mpcpump
+2025-05-23 14:57:07,958 - phoenix.wallet - INFO - Analyzing pump.fun token NudrMewGMrwiad82MQSUoxQ78UtyS8BF2Zv9Mpcpump with Helius
+2025-05-23 14:57:09,006 - phoenix.wallet - INFO - Using Helius API for pump.fun token NudrMewGMrwiad82MQSUoxQ78UtyS8BF2Zv9Mpcpump
+2025-05-23 14:57:09,006 - phoenix.wallet - INFO - Analyzing pump.fun token NudrMewGMrwiad82MQSUoxQ78UtyS8BF2Zv9Mpcpump with Helius
+2025-05-23 14:57:10,044 - phoenix.wallet - INFO - Using Helius API for pump.fun token 76EDL5qNcte2ZH29quTaFzagXjWAEY83CATEjyA6pump
+2025-05-23 14:57:10,044 - phoenix.wallet - INFO - Analyzing pump.fun token 76EDL5qNcte2ZH29quTaFzagXjWAEY83CATEjyA6pump with Helius
+2025-05-23 14:57:10,480 - phoenix.wallet - INFO -   └─ Score: 73.5/100, Type: flipper
+2025-05-23 14:57:12,492 - phoenix.wallet - INFO - Analyzing wallet 2/9: 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-23 14:57:12,492 - phoenix.wallet - INFO - 🔍 Analyzing wallet 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX (hybrid approach with Helius)
+2025-05-23 14:57:12,492 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 14:57:12,492 - phoenix.cielo - INFO - Fetching trading stats for wallet 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-23 14:57:14,392 - phoenix.cielo - INFO - Successfully retrieved trading stats for 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-23 14:57:14,392 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 14:57:14,408 - phoenix.wallet - INFO - Fetching last 5 token swaps for 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-23 14:57:19,720 - phoenix.wallet - INFO - Found 5 swaps from 50 signatures
+2025-05-23 14:57:19,720 - phoenix.wallet - INFO - Using Helius API for pump.fun token Ha4aA4KDmkfdrQFMSvokCX176zHt5QHQ4jsV3tSUpump
+2025-05-23 14:57:19,721 - phoenix.wallet - INFO - Analyzing pump.fun token Ha4aA4KDmkfdrQFMSvokCX176zHt5QHQ4jsV3tSUpump with Helius
+2025-05-23 14:57:20,748 - phoenix.wallet - INFO - Using Helius API for pump.fun token Ha4aA4KDmkfdrQFMSvokCX176zHt5QHQ4jsV3tSUpump
+2025-05-23 14:57:20,748 - phoenix.wallet - INFO - Analyzing pump.fun token Ha4aA4KDmkfdrQFMSvokCX176zHt5QHQ4jsV3tSUpump with Helius
+2025-05-23 14:57:21,758 - phoenix.wallet - INFO - Using Helius API for pump.fun token Ha4aA4KDmkfdrQFMSvokCX176zHt5QHQ4jsV3tSUpump
+2025-05-23 14:57:21,758 - phoenix.wallet - INFO - Analyzing pump.fun token Ha4aA4KDmkfdrQFMSvokCX176zHt5QHQ4jsV3tSUpump with Helius
+2025-05-23 14:57:22,712 - phoenix.wallet - INFO - Using Helius API for pump.fun token Ha4aA4KDmkfdrQFMSvokCX176zHt5QHQ4jsV3tSUpump
+2025-05-23 14:57:22,712 - phoenix.wallet - INFO - Analyzing pump.fun token Ha4aA4KDmkfdrQFMSvokCX176zHt5QHQ4jsV3tSUpump with Helius
+2025-05-23 14:57:23,669 - phoenix.wallet - INFO - Using Helius API for pump.fun token 8MrJHePBUpGdYYfUZ59pGDWrmLN2bztquYHGNDa9pump
+2025-05-23 14:57:23,669 - phoenix.wallet - INFO - Analyzing pump.fun token 8MrJHePBUpGdYYfUZ59pGDWrmLN2bztquYHGNDa9pump with Helius
+2025-05-23 14:57:24,239 - phoenix.wallet - INFO -   └─ Score: 84.0/100, Type: flipper
+2025-05-23 14:57:26,252 - phoenix.wallet - INFO - Analyzing wallet 3/9: 7brTP49Rx7vLM2W6Pxtspmna2UqGtjtgcF9q3W7qtcPt
+2025-05-23 14:57:26,252 - phoenix.wallet - INFO - 🔍 Analyzing wallet 7brTP49Rx7vLM2W6Pxtspmna2UqGtjtgcF9q3W7qtcPt (hybrid approach with Helius)
+2025-05-23 14:57:26,252 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 14:57:26,252 - phoenix.cielo - INFO - Fetching trading stats for wallet 7brTP49Rx7vLM2W6Pxtspmna2UqGtjtgcF9q3W7qtcPt
+2025-05-23 14:57:28,163 - phoenix.cielo - INFO - Successfully retrieved trading stats for 7brTP49Rx7vLM2W6Pxtspmna2UqGtjtgcF9q3W7qtcPt
+2025-05-23 14:57:28,163 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 14:57:28,163 - phoenix.wallet - INFO - Fetching last 5 token swaps for 7brTP49Rx7vLM2W6Pxtspmna2UqGtjtgcF9q3W7qtcPt
+2025-05-23 14:57:35,506 - phoenix.wallet - INFO - Found 5 swaps from 50 signatures
+2025-05-23 14:57:35,506 - phoenix.wallet - INFO - Using Helius API for pump.fun token GQES2mRcYXemGnpaZ6augr9ArWcHt4EmCnnfg9Ydpump
+2025-05-23 14:57:35,506 - phoenix.wallet - INFO - Analyzing pump.fun token GQES2mRcYXemGnpaZ6augr9ArWcHt4EmCnnfg9Ydpump with Helius
+2025-05-23 14:57:36,614 - phoenix.wallet - INFO - Using Helius API for pump.fun token GQES2mRcYXemGnpaZ6augr9ArWcHt4EmCnnfg9Ydpump
+2025-05-23 14:57:36,614 - phoenix.wallet - INFO - Analyzing pump.fun token GQES2mRcYXemGnpaZ6augr9ArWcHt4EmCnnfg9Ydpump with Helius
+2025-05-23 14:57:37,645 - phoenix.wallet - INFO - Using Helius API for pump.fun token GQES2mRcYXemGnpaZ6augr9ArWcHt4EmCnnfg9Ydpump
+2025-05-23 14:57:37,645 - phoenix.wallet - INFO - Analyzing pump.fun token GQES2mRcYXemGnpaZ6augr9ArWcHt4EmCnnfg9Ydpump with Helius
+2025-05-23 14:57:38,685 - phoenix.wallet - INFO - Using Helius API for pump.fun token GQES2mRcYXemGnpaZ6augr9ArWcHt4EmCnnfg9Ydpump
+2025-05-23 14:57:38,685 - phoenix.wallet - INFO - Analyzing pump.fun token GQES2mRcYXemGnpaZ6augr9ArWcHt4EmCnnfg9Ydpump with Helius
+2025-05-23 14:57:39,630 - phoenix.wallet - INFO - Using Helius API for pump.fun token GQES2mRcYXemGnpaZ6augr9ArWcHt4EmCnnfg9Ydpump
+2025-05-23 14:57:39,630 - phoenix.wallet - INFO - Analyzing pump.fun token GQES2mRcYXemGnpaZ6augr9ArWcHt4EmCnnfg9Ydpump with Helius
+2025-05-23 14:57:40,109 - phoenix.wallet - INFO -   └─ Score: 84.0/100, Type: flipper
+2025-05-23 14:57:42,120 - phoenix.wallet - INFO - Analyzing wallet 4/9: 6f1NUwuzAXMMPUTwbbJ2Mhh1zMoUQWCL4fdTKS6sr6wK
+2025-05-23 14:57:42,120 - phoenix.wallet - INFO - 🔍 Analyzing wallet 6f1NUwuzAXMMPUTwbbJ2Mhh1zMoUQWCL4fdTKS6sr6wK (hybrid approach with Helius)
+2025-05-23 14:57:42,120 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 14:57:42,120 - phoenix.cielo - INFO - Fetching trading stats for wallet 6f1NUwuzAXMMPUTwbbJ2Mhh1zMoUQWCL4fdTKS6sr6wK
+2025-05-23 14:57:44,071 - phoenix.cielo - INFO - Successfully retrieved trading stats for 6f1NUwuzAXMMPUTwbbJ2Mhh1zMoUQWCL4fdTKS6sr6wK
+2025-05-23 14:57:44,071 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 14:57:44,071 - phoenix.wallet - INFO - Fetching last 5 token swaps for 6f1NUwuzAXMMPUTwbbJ2Mhh1zMoUQWCL4fdTKS6sr6wK
+2025-05-23 14:57:51,107 - phoenix.wallet - INFO - Found 5 swaps from 50 signatures
+2025-05-23 14:57:53,838 - phoenix.wallet - INFO - Using Helius API for pump.fun token 9HcRdHYMooeWRcJH5CxNgm6aovhytw61u35iPbBCpump
+2025-05-23 14:57:53,838 - phoenix.wallet - INFO - Analyzing pump.fun token 9HcRdHYMooeWRcJH5CxNgm6aovhytw61u35iPbBCpump with Helius
+2025-05-23 14:57:55,092 - phoenix.wallet - INFO - Using Helius API for pump.fun token 9HcRdHYMooeWRcJH5CxNgm6aovhytw61u35iPbBCpump
+2025-05-23 14:57:55,092 - phoenix.wallet - INFO - Analyzing pump.fun token 9HcRdHYMooeWRcJH5CxNgm6aovhytw61u35iPbBCpump with Helius
+2025-05-23 14:57:56,074 - phoenix.wallet - INFO - Using Helius API for pump.fun token FF61x1XAN6nrBoe9aZjPFb2rfjhKhGR4RW65Pfnrpump
+2025-05-23 14:57:56,074 - phoenix.wallet - INFO - Analyzing pump.fun token FF61x1XAN6nrBoe9aZjPFb2rfjhKhGR4RW65Pfnrpump with Helius
+2025-05-23 14:57:56,800 - phoenix.wallet - INFO -   └─ Score: 83.5/100, Type: flipper
+2025-05-23 14:57:58,803 - phoenix.wallet - INFO - Analyzing wallet 5/9: 3jjcLMgZYvTc8xDLwshX4rCdcLphczQw8WZXbDVDuz7D
+2025-05-23 14:57:58,803 - phoenix.wallet - INFO - 🔍 Analyzing wallet 3jjcLMgZYvTc8xDLwshX4rCdcLphczQw8WZXbDVDuz7D (hybrid approach with Helius)
+2025-05-23 14:57:58,803 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 14:57:58,803 - phoenix.cielo - INFO - Fetching trading stats for wallet 3jjcLMgZYvTc8xDLwshX4rCdcLphczQw8WZXbDVDuz7D
+2025-05-23 14:57:59,874 - phoenix.cielo - INFO - Successfully retrieved trading stats for 3jjcLMgZYvTc8xDLwshX4rCdcLphczQw8WZXbDVDuz7D
+2025-05-23 14:57:59,874 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 14:57:59,874 - phoenix.wallet - INFO - Fetching last 5 token swaps for 3jjcLMgZYvTc8xDLwshX4rCdcLphczQw8WZXbDVDuz7D
+2025-05-23 14:58:06,148 - phoenix.wallet - INFO - Found 5 swaps from 50 signatures
+2025-05-23 14:58:06,148 - phoenix.wallet - INFO - Using Helius API for pump.fun token ByLhHAq8zrsupJkKDf2cfxNHNYiKqkNHASde4c3npump
+2025-05-23 14:58:06,149 - phoenix.wallet - INFO - Analyzing pump.fun token ByLhHAq8zrsupJkKDf2cfxNHNYiKqkNHASde4c3npump with Helius
+2025-05-23 14:58:07,143 - phoenix.wallet - INFO - Using Helius API for pump.fun token ByLhHAq8zrsupJkKDf2cfxNHNYiKqkNHASde4c3npump
+2025-05-23 14:58:07,143 - phoenix.wallet - INFO - Analyzing pump.fun token ByLhHAq8zrsupJkKDf2cfxNHNYiKqkNHASde4c3npump with Helius
+2025-05-23 14:58:10,859 - phoenix.wallet - INFO - Using Helius API for pump.fun token CgPDsx1DXR3fogSZu41zJ4aALU2worJERsb8YPD5pump
+2025-05-23 14:58:10,859 - phoenix.wallet - INFO - Analyzing pump.fun token CgPDsx1DXR3fogSZu41zJ4aALU2worJERsb8YPD5pump with Helius
+2025-05-23 14:58:11,221 - phoenix.wallet - INFO -   └─ Score: 83.5/100, Type: flipper
+2025-05-23 14:58:13,229 - phoenix.wallet - INFO - Analyzing wallet 6/9: ExbKNUwVtyRjrJMPLnVWRus9BxTRpt6BRXWxGYTyfcYS
+2025-05-23 14:58:33,918 - phoenix.wallet - INFO - 🔍 Analyzing wallet ExbKNUwVtyRjrJMPLnVWRus9BxTRpt6BRXWxGYTyfcYS (hybrid approach with Helius)
+2025-05-23 14:58:33,937 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 14:58:33,937 - phoenix.cielo - INFO - Fetching trading stats for wallet ExbKNUwVtyRjrJMPLnVWRus9BxTRpt6BRXWxGYTyfcYS
+2025-05-23 14:58:35,094 - phoenix.cielo - INFO - Successfully retrieved trading stats for ExbKNUwVtyRjrJMPLnVWRus9BxTRpt6BRXWxGYTyfcYS
+2025-05-23 14:58:35,094 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 14:58:35,094 - phoenix.wallet - INFO - Fetching last 5 token swaps for ExbKNUwVtyRjrJMPLnVWRus9BxTRpt6BRXWxGYTyfcYS
+2025-05-23 14:58:42,113 - phoenix.wallet - INFO - Found 5 swaps from 50 signatures
+2025-05-23 14:58:42,113 - phoenix.wallet - INFO - Using Helius API for pump.fun token BaHv4oSZMQ7oWnGimJWD9xF88sQkZfM8a4pkAvYupump
+2025-05-23 14:58:42,113 - phoenix.wallet - INFO - Analyzing pump.fun token BaHv4oSZMQ7oWnGimJWD9xF88sQkZfM8a4pkAvYupump with Helius
+2025-05-23 14:58:44,529 - phoenix.wallet - INFO - Using Helius API for pump.fun token Lp8ZMw9KsVaEWBknqMfBBd8fweGzLYLF4K751hGpump
+2025-05-23 14:58:44,529 - phoenix.wallet - INFO - Analyzing pump.fun token Lp8ZMw9KsVaEWBknqMfBBd8fweGzLYLF4K751hGpump with Helius
+2025-05-23 14:58:45,369 - phoenix.wallet - INFO - Using Helius API for pump.fun token HDJi1P8YYaaatADcdeyxTSdhLZCwgM1e9bYRCaAJpump
+2025-05-23 14:58:45,369 - phoenix.wallet - INFO - Analyzing pump.fun token HDJi1P8YYaaatADcdeyxTSdhLZCwgM1e9bYRCaAJpump with Helius
+2025-05-23 14:58:46,396 - phoenix.wallet - INFO - Using Helius API for pump.fun token HDJi1P8YYaaatADcdeyxTSdhLZCwgM1e9bYRCaAJpump
+2025-05-23 14:58:46,396 - phoenix.wallet - INFO - Analyzing pump.fun token HDJi1P8YYaaatADcdeyxTSdhLZCwgM1e9bYRCaAJpump with Helius
+2025-05-23 14:58:46,867 - phoenix.wallet - INFO -   └─ Score: 84.8/100, Type: flipper
+2025-05-23 14:58:48,869 - phoenix.wallet - INFO - Analyzing wallet 7/9: 4uRrQUR4zMdoaD91bZbYE7c5EHAqKxkcGeDGqYsmn7Pb
+2025-05-23 14:58:48,869 - phoenix.wallet - INFO - 🔍 Analyzing wallet 4uRrQUR4zMdoaD91bZbYE7c5EHAqKxkcGeDGqYsmn7Pb (hybrid approach with Helius)
+2025-05-23 14:58:48,870 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 14:58:48,870 - phoenix.cielo - INFO - Fetching trading stats for wallet 4uRrQUR4zMdoaD91bZbYE7c5EHAqKxkcGeDGqYsmn7Pb
+2025-05-23 14:58:50,019 - phoenix.cielo - INFO - Successfully retrieved trading stats for 4uRrQUR4zMdoaD91bZbYE7c5EHAqKxkcGeDGqYsmn7Pb
+2025-05-23 14:58:50,019 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 14:58:50,026 - phoenix.wallet - INFO - Fetching last 5 token swaps for 4uRrQUR4zMdoaD91bZbYE7c5EHAqKxkcGeDGqYsmn7Pb
+2025-05-23 14:59:02,045 - phoenix.wallet - INFO - Found 5 swaps from 50 signatures
+2025-05-23 14:59:06,362 - phoenix.wallet - INFO - Using Helius API for pump.fun token E2kGUkJgUvoN4fKHoNPiLYvagu4mS9WVppBZSxtypump
+2025-05-23 14:59:06,362 - phoenix.wallet - INFO - Analyzing pump.fun token E2kGUkJgUvoN4fKHoNPiLYvagu4mS9WVppBZSxtypump with Helius
+2025-05-23 14:59:08,422 - phoenix.wallet - INFO -   └─ Score: 27.6/100, Type: unknown
+2025-05-23 14:59:10,431 - phoenix.wallet - INFO - Analyzing wallet 8/9: D4zwkUJF4FbmnRgtL6nphhunrMZdoFtBJ39Nsf2cNoZy
+2025-05-23 14:59:10,431 - phoenix.wallet - INFO - 🔍 Analyzing wallet D4zwkUJF4FbmnRgtL6nphhunrMZdoFtBJ39Nsf2cNoZy (hybrid approach with Helius)
+2025-05-23 14:59:10,432 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 14:59:10,432 - phoenix.cielo - INFO - Fetching trading stats for wallet D4zwkUJF4FbmnRgtL6nphhunrMZdoFtBJ39Nsf2cNoZy
+2025-05-23 14:59:12,499 - phoenix.cielo - INFO - Successfully retrieved trading stats for D4zwkUJF4FbmnRgtL6nphhunrMZdoFtBJ39Nsf2cNoZy
+2025-05-23 14:59:12,514 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 14:59:12,514 - phoenix.wallet - INFO - Fetching last 5 token swaps for D4zwkUJF4FbmnRgtL6nphhunrMZdoFtBJ39Nsf2cNoZy
+2025-05-23 14:59:17,640 - phoenix.wallet - INFO - Found 5 swaps from 50 signatures
+2025-05-23 14:59:23,799 - phoenix.wallet - INFO -   └─ Score: 77.0/100, Type: flipper
+2025-05-23 14:59:25,813 - phoenix.wallet - INFO - Analyzing wallet 9/9: Gd6qobzV7KbNaYkKtiF3NUuSAU9SyJFZSoHA9pn4ZQqt
+2025-05-23 14:59:25,813 - phoenix.wallet - INFO - 🔍 Analyzing wallet Gd6qobzV7KbNaYkKtiF3NUuSAU9SyJFZSoHA9pn4ZQqt (hybrid approach with Helius)
+2025-05-23 14:59:25,813 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-23 14:59:25,813 - phoenix.cielo - INFO - Fetching trading stats for wallet Gd6qobzV7KbNaYkKtiF3NUuSAU9SyJFZSoHA9pn4ZQqt
+2025-05-23 14:59:27,016 - phoenix.cielo - INFO - Successfully retrieved trading stats for Gd6qobzV7KbNaYkKtiF3NUuSAU9SyJFZSoHA9pn4ZQqt
+2025-05-23 14:59:27,016 - phoenix.wallet - INFO - 🪙 Analyzing last 5 tokens...
+2025-05-23 14:59:27,016 - phoenix.wallet - INFO - Fetching last 5 token swaps for Gd6qobzV7KbNaYkKtiF3NUuSAU9SyJFZSoHA9pn4ZQqt
+2025-05-23 14:59:35,964 - phoenix.wallet - INFO - Found 5 swaps from 50 signatures
+2025-05-23 14:59:35,964 - phoenix.wallet - INFO - Using Helius API for pump.fun token 5YxXvio26Mv2RfZEYMPVcStKRVMG7TTjcWJjYjjGpump
+2025-05-23 14:59:35,965 - phoenix.wallet - INFO - Analyzing pump.fun token 5YxXvio26Mv2RfZEYMPVcStKRVMG7TTjcWJjYjjGpump with Helius
+2025-05-23 14:59:36,999 - phoenix.wallet - INFO - Using Helius API for pump.fun token 5YxXvio26Mv2RfZEYMPVcStKRVMG7TTjcWJjYjjGpump
+2025-05-23 14:59:36,999 - phoenix.wallet - INFO - Analyzing pump.fun token 5YxXvio26Mv2RfZEYMPVcStKRVMG7TTjcWJjYjjGpump with Helius
+2025-05-23 14:59:37,678 - phoenix.wallet - INFO - Using Helius API for pump.fun token 349UqbnQp9DckhCm1we2wDihGmRXNPGoCpJ49gc8pump
+2025-05-23 14:59:37,678 - phoenix.wallet - INFO - Analyzing pump.fun token 349UqbnQp9DckhCm1we2wDihGmRXNPGoCpJ49gc8pump with Helius
+2025-05-23 14:59:38,711 - phoenix.wallet - INFO - Using Helius API for pump.fun token 349UqbnQp9DckhCm1we2wDihGmRXNPGoCpJ49gc8pump
+2025-05-23 14:59:38,711 - phoenix.wallet - INFO - Analyzing pump.fun token 349UqbnQp9DckhCm1we2wDihGmRXNPGoCpJ49gc8pump with Helius
+2025-05-23 14:59:39,695 - phoenix.wallet - INFO - Using Helius API for pump.fun token G7eMQsuwR7eZwDGSPgo6SKjsges7H5UJcv6YHbmDpump
+2025-05-23 14:59:39,695 - phoenix.wallet - INFO - Analyzing pump.fun token G7eMQsuwR7eZwDGSPgo6SKjsges7H5UJcv6YHbmDpump with Helius
+2025-05-23 14:59:40,203 - phoenix.wallet - INFO -   └─ Score: 14.3/100, Type: unknown
+2025-05-23 14:59:40,535 - phoenix - INFO - Exported wallet analysis to Excel: C:\Users\Administrator\Desktop\phoenix-project\outputs\wallet_analysis_20250523_145940.xlsx
+2025-05-23 14:59:40,535 - phoenix - INFO - Exported wallet analysis to C:\Users\Administrator\Desktop\phoenix-project\outputs\wallet_analysis_20250523_145940.csv
