@@ -990,3 +990,19 @@ RuntimeError: cannot schedule new futures after shutdown
 2025-05-24 01:04:44,650 - phoenix - INFO - 📊 Exported to Excel: C:\Users\Administrator\Desktop\phoenix-project\outputs\memecoin_wallets_20250524_010444.xlsx
 2025-05-24 01:04:44,650 - phoenix - INFO - Generated summary report: C:\Users\Administrator\Desktop\phoenix-project\outputs\memecoin_wallets_20250524_010444_summary.txt
 2025-05-24 01:04:44,650 - phoenix - INFO - 📋 Generated summary: C:\Users\Administrator\Desktop\phoenix-project\outputs\memecoin_wallets_20250524_010444_summary.txt
+2025-05-24 01:08:47,265 - phoenix - INFO - Loaded 2 wallet addresses from wallets.txt
+2025-05-24 01:08:48,973 - phoenix.api_manager - INFO - Birdeye API initialized for mainstream token analysis
+2025-05-24 01:08:48,973 - phoenix.helius - INFO - Helius API initialized for enhanced transaction parsing
+2025-05-24 01:08:48,973 - phoenix.api_manager - INFO - Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-24 01:08:48,973 - phoenix.api_manager - INFO - Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-24 01:08:48,973 - phoenix.cielo - INFO - Checking Cielo Finance API connectivity...
+2025-05-24 01:08:49,179 - phoenix.cielo - INFO - ✅ Cielo Finance API is accessible (got expected error response)
+2025-05-24 01:08:49,179 - phoenix.wallet - INFO - ✅ Cielo Finance API connection verified
+2025-05-24 01:08:49,179 - phoenix.wallet - INFO - Batch analyzing 2 wallets for memecoin trading
+2025-05-24 01:08:49,195 - phoenix.wallet - INFO - Analyzing wallet 1/2: Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 01:08:49,195 - phoenix.wallet - INFO - 🔍 Analyzing wallet Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ (memecoin-focused analysis)
+2025-05-24 01:08:49,195 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-24 01:08:49,195 - phoenix.cielo - INFO - Fetching trading stats for wallet Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 01:08:51,459 - phoenix.cielo - INFO - Successfully retrieved trading stats for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 01:08:51,459 - phoenix.wallet - INFO - 🪙 Analyzing recent trades...
+2025-05-24 01:08:51,459 - phoenix.wallet - INFO - Fetching last 20 token swaps for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
