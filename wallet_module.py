@@ -1,12 +1,11 @@
 """
-Wallet Analysis Module - Phoenix Project (TIERED ANALYSIS EDITION)
+Wallet Analysis Module - Phoenix Project (3-TIER ANALYSIS EDITION)
 
 MAJOR UPDATES:
-- Tiered analysis: Initial 5 tokens scan, then deep 20 tokens for promising wallets
-- Gem hunters now require 5x+ (500%+) instead of 2x+
-- Fixed avg_hold_time_minutes extraction from Cielo
-- Distribution now factors into composite score
-- Removed seconds from hold time display
+- 3-tier analysis system: Initial (5), Standard (10), Deep (20) tokens
+- Stricter criteria to reduce API calls (~60% initial, ~30% standard, ~10% deep)
+- Elite wallet detection for 5x+ gem hunters
+- Improved initial scoring with net profit consideration
 """
 
 import csv
@@ -50,11 +49,10 @@ class RateLimiter:
 class WalletAnalyzer:
     """Class for analyzing wallets for copy trading using Cielo Finance API + RPC + Helius."""
     
-    # Tiered analysis constants
+    # 3-Tier analysis constants
     INITIAL_SCAN_TOKENS = 5
+    STANDARD_SCAN_TOKENS = 10
     DEEP_SCAN_TOKENS = 20
-    PROMISING_SCORE_THRESHOLD = 50  # Minimum score to trigger deep scan
-    PROMISING_WIN_RATE = 40  # Minimum win rate to trigger deep scan
     
     def __init__(self, cielo_api: Any, birdeye_api: Any = None, helius_api: Any = None, 
                  rpc_url: str = "https://api.mainnet-beta.solana.com"):
@@ -275,9 +273,137 @@ class WalletAnalyzer:
                 
         return transactions
     
+    def _determine_scan_tier(self, metrics: Dict[str, Any], initial_score: float) -> Tuple[int, str]:
+        """Determine scan depth based on wallet performance metrics."""
+        win_rate = metrics.get("win_rate", 0)
+        profit_factor = metrics.get("profit_factor", 0)
+        total_trades = metrics.get("total_trades", 0)
+        net_profit = metrics.get("net_profit_usd", 0)
+        
+        # Check for DEEP tier (elite performers)
+        if self._is_elite_wallet(metrics, initial_score):
+            return self.DEEP_SCAN_TOKENS, "DEEP"
+        
+        # Check for STANDARD tier (decent performers)
+        elif self._is_standard_wallet(metrics, initial_score):
+            return self.STANDARD_SCAN_TOKENS, "STANDARD"
+        
+        # Default to INITIAL tier
+        else:
+            return self.INITIAL_SCAN_TOKENS, "INITIAL"
+    
+    def _is_elite_wallet(self, metrics: Dict[str, Any], initial_score: float) -> bool:
+        """Check if wallet qualifies for deep analysis."""
+        win_rate = metrics.get("win_rate", 0)
+        profit_factor = metrics.get("profit_factor", 0)
+        total_trades = metrics.get("total_trades", 0)
+        net_profit = metrics.get("net_profit_usd", 0)
+        
+        # Score-based qualification
+        if initial_score >= 70:
+            return True
+        
+        # High performance combo
+        if win_rate >= 65 and profit_factor >= 4.0:
+            return True
+        
+        # High profit with good win rate
+        if net_profit >= 10000 and win_rate >= 60:
+            return True
+        
+        # Exceptional gem hunter
+        roi_dist = metrics.get("roi_distribution", {})
+        trades_5x_plus = roi_dist.get("roi_above_500", 0)
+        if total_trades >= 30 and trades_5x_plus >= total_trades * 0.1:  # 10%+ are 5x
+            return True
+        
+        # Check for exceptional ROI distribution
+        high_roi_trades = roi_dist.get("roi_above_500", 0) + roi_dist.get("roi_200_to_500", 0)
+        if total_trades >= 20 and high_roi_trades >= total_trades * 0.2:  # 20%+ are 2x+
+            return True
+        
+        return False
+    
+    def _is_standard_wallet(self, metrics: Dict[str, Any], initial_score: float) -> bool:
+        """Check if wallet qualifies for standard analysis."""
+        win_rate = metrics.get("win_rate", 0)
+        profit_factor = metrics.get("profit_factor", 0)
+        total_trades = metrics.get("total_trades", 0)
+        net_profit = metrics.get("net_profit_usd", 0)
+        
+        # Must meet ALL criteria for standard tier
+        return (
+            win_rate >= 55 and win_rate < 65 and
+            profit_factor >= 2.0 and profit_factor < 4.0 and
+            total_trades >= 20 and
+            net_profit >= 1000 and
+            initial_score >= 50 and initial_score < 70
+        )
+    
+    def _calculate_initial_score(self, metrics: Dict[str, Any]) -> float:
+        """Calculate initial score with stricter thresholds."""
+        win_rate = metrics.get("win_rate", 0)
+        profit_factor = metrics.get("profit_factor", 0)
+        total_trades = metrics.get("total_trades", 0)
+        net_profit = metrics.get("net_profit_usd", 0)
+        
+        score = 0
+        
+        # Win rate scoring (0-25 points)
+        if win_rate >= 70:
+            score += 25
+        elif win_rate >= 65:
+            score += 20
+        elif win_rate >= 60:
+            score += 15
+        elif win_rate >= 55:
+            score += 10
+        elif win_rate >= 50:
+            score += 5
+        
+        # Profit factor scoring (0-25 points)
+        if profit_factor >= 5.0:
+            score += 25
+        elif profit_factor >= 4.0:
+            score += 20
+        elif profit_factor >= 3.0:
+            score += 15
+        elif profit_factor >= 2.0:
+            score += 10
+        elif profit_factor >= 1.5:
+            score += 5
+        
+        # Trade count scoring (0-20 points)
+        if total_trades >= 100:
+            score += 20
+        elif total_trades >= 50:
+            score += 15
+        elif total_trades >= 30:
+            score += 10
+        elif total_trades >= 20:
+            score += 5
+        
+        # Net profit scoring (0-20 points)
+        if net_profit >= 20000:
+            score += 20
+        elif net_profit >= 10000:
+            score += 15
+        elif net_profit >= 5000:
+            score += 10
+        elif net_profit >= 2000:
+            score += 5
+        
+        # Bonus points for exceptional combinations (0-10 points)
+        if win_rate >= 60 and profit_factor >= 3.0 and net_profit >= 5000:
+            score += 10
+        elif win_rate >= 55 and profit_factor >= 2.5 and net_profit >= 2000:
+            score += 5
+        
+        return min(score, 100)  # Cap at 100
+    
     def analyze_wallet_hybrid(self, wallet_address: str, days_back: int = 30) -> Dict[str, Any]:
         """
-        UPDATED hybrid wallet analysis with tiered scanning and fixed metrics.
+        UPDATED hybrid wallet analysis with 3-tier scanning system.
         
         Args:
             wallet_address (str): Wallet address
@@ -286,7 +412,7 @@ class WalletAnalyzer:
         Returns:
             Dict[str, Any]: Wallet analysis results
         """
-        logger.info(f"🔍 Analyzing wallet {wallet_address} (tiered memecoin analysis)")
+        logger.info(f"🔍 Analyzing wallet {wallet_address} (3-tier memecoin analysis)")
         
         try:
             # Step 1: Get aggregated stats from Cielo Finance
@@ -307,14 +433,17 @@ class WalletAnalyzer:
                 stats_data = cielo_stats.get("data", {})
                 aggregated_metrics = self._extract_aggregated_metrics_from_cielo(stats_data)
             
-            # Step 2: Determine if wallet is promising enough for deep analysis
+            # Step 2: Calculate initial score and determine scan tier
             initial_score = self._calculate_initial_score(aggregated_metrics)
-            is_promising = self._is_wallet_promising(aggregated_metrics, initial_score)
+            scan_limit, tier = self._determine_scan_tier(aggregated_metrics, initial_score)
             
-            # Step 3: Tiered token analysis
-            scan_limit = self.DEEP_SCAN_TOKENS if is_promising else self.INITIAL_SCAN_TOKENS
-            logger.info(f"{'🌟 Promising wallet detected!' if is_promising else '📊 Standard wallet'} - Scanning {scan_limit} recent trades...")
+            logger.info(f"📊 Wallet tier: {tier} - Scanning {scan_limit} recent trades")
+            logger.info(f"   Score: {initial_score}/100")
+            logger.info(f"   Win Rate: {aggregated_metrics.get('win_rate', 0):.1f}%")
+            logger.info(f"   Profit Factor: {aggregated_metrics.get('profit_factor', 0):.2f}")
+            logger.info(f"   Net Profit: ${aggregated_metrics.get('net_profit_usd', 0):.2f}")
             
+            # Step 3: Get recent token swaps based on tier
             recent_swaps = self._get_recent_token_swaps_rpc(wallet_address, limit=scan_limit)
             
             # Step 4: Analyze token performance with market cap data
@@ -372,6 +501,7 @@ class WalletAnalyzer:
             logger.debug(f"  - composite_score: {composite_score}")
             logger.debug(f"  - gem_rate_5x_plus: {enhanced_metrics.get('gem_rate_5x_plus', 0):.1f}%")
             logger.debug(f"  - tokens_scanned: {len(analyzed_trades)}/{scan_limit}")
+            logger.debug(f"  - analysis_tier: {tier}")
             
             return {
                 "success": True,
@@ -387,7 +517,7 @@ class WalletAnalyzer:
                 "api_source": "Cielo Finance + RPC + Birdeye/Helius",
                 "cielo_data": aggregated_metrics,
                 "recent_trades_analyzed": len(analyzed_trades),
-                "analysis_tier": "DEEP" if is_promising else "INITIAL",
+                "analysis_tier": tier,
                 "tokens_scanned": len(analyzed_trades),
                 "api_calls": self.api_call_stats.copy()
             }
@@ -415,57 +545,6 @@ class WalletAnalyzer:
                     "filter_market_cap_max": 0
                 }
             }
-    
-    def _calculate_initial_score(self, metrics: Dict[str, Any]) -> float:
-        """Calculate initial score from Cielo metrics only."""
-        win_rate = metrics.get("win_rate", 0)
-        profit_factor = metrics.get("profit_factor", 0)
-        total_trades = metrics.get("total_trades", 0)
-        
-        # Simple initial scoring
-        score = 0
-        if win_rate >= 60:
-            score += 40
-        elif win_rate >= 45:
-            score += 30
-        elif win_rate >= 30:
-            score += 20
-        
-        if profit_factor >= 2.0:
-            score += 30
-        elif profit_factor >= 1.5:
-            score += 20
-        elif profit_factor >= 1.0:
-            score += 10
-        
-        if total_trades >= 20:
-            score += 30
-        elif total_trades >= 10:
-            score += 20
-        elif total_trades >= 5:
-            score += 10
-        
-        return score
-    
-    def _is_wallet_promising(self, metrics: Dict[str, Any], initial_score: float) -> bool:
-        """Determine if wallet deserves deep analysis."""
-        # Check multiple criteria
-        if initial_score >= self.PROMISING_SCORE_THRESHOLD:
-            return True
-        
-        if metrics.get("win_rate", 0) >= self.PROMISING_WIN_RATE and metrics.get("total_trades", 0) >= 10:
-            return True
-        
-        if metrics.get("profit_factor", 0) >= 2.0 and metrics.get("total_trades", 0) >= 5:
-            return True
-        
-        # Check ROI distribution for high performers
-        roi_dist = metrics.get("roi_distribution", {})
-        high_roi_trades = roi_dist.get("roi_above_500", 0) + roi_dist.get("roi_200_to_500", 0)
-        if high_roi_trades >= 5:
-            return True
-        
-        return False
     
     def _analyze_token_with_market_cap(self, token_mint: str, buy_timestamp: Optional[int], 
                                      sell_timestamp: Optional[int] = None, 
@@ -1644,8 +1723,8 @@ class WalletAnalyzer:
                             days_back: int = 30,
                             min_winrate: float = 30.0,
                             use_hybrid: bool = True) -> Dict[str, Any]:
-        """Batch analyze multiple wallets with tiered scanning."""
-        logger.info(f"Batch analyzing {len(wallet_addresses)} wallets with tiered memecoin analysis")
+        """Batch analyze multiple wallets with 3-tier scanning."""
+        logger.info(f"Batch analyzing {len(wallet_addresses)} wallets with 3-tier memecoin analysis")
         
         if not wallet_addresses:
             return {
@@ -1666,6 +1745,9 @@ class WalletAnalyzer:
                 "rpc": 0
             }
             
+            # Track tier distribution
+            tier_counts = {"INITIAL": 0, "STANDARD": 0, "DEEP": 0}
+            
             for i, wallet_address in enumerate(wallet_addresses, 1):
                 logger.info(f"Analyzing wallet {i}/{len(wallet_addresses)}: {wallet_address}")
                 
@@ -1679,6 +1761,7 @@ class WalletAnalyzer:
                         wallet_analyses.append(analysis)
                         score = analysis.get("composite_score", analysis.get("metrics", {}).get("composite_score", 0))
                         tier = analysis.get("analysis_tier", "INITIAL")
+                        tier_counts[tier] = tier_counts.get(tier, 0) + 1
                         logger.info(f"  └─ Score: {score}/100, Type: {analysis.get('wallet_type', 'unknown')}, Tier: {tier}")
                     else:
                         failed_analyses.append({
@@ -1722,9 +1805,12 @@ class WalletAnalyzer:
                            position_traders, consistent, mixed, unknown]:
                 category.sort(key=lambda x: x.get("composite_score", x.get("metrics", {}).get("composite_score", 0)), reverse=True)
             
-            # Count analysis tiers
-            deep_analyses = len([a for a in wallet_analyses if a.get("analysis_tier") == "DEEP"])
-            initial_analyses = len([a for a in wallet_analyses if a.get("analysis_tier") == "INITIAL"])
+            # Calculate tier distribution percentages
+            total_analyzed = len(wallet_analyses)
+            tier_percentages = {
+                tier: (count / total_analyzed * 100) if total_analyzed > 0 else 0
+                for tier, count in tier_counts.items()
+            }
             
             # Log final API call statistics
             logger.info(f"📊 FINAL API CALL STATISTICS:")
@@ -1733,7 +1819,10 @@ class WalletAnalyzer:
             logger.info(f"   Helius: {self.api_call_stats['helius']} calls")
             logger.info(f"   RPC: {self.api_call_stats['rpc']} calls")
             logger.info(f"   Total API calls: {sum(self.api_call_stats.values())}")
-            logger.info(f"   Deep analyses: {deep_analyses}, Initial analyses: {initial_analyses}")
+            logger.info(f"📊 TIER DISTRIBUTION:")
+            logger.info(f"   INITIAL (5 tokens): {tier_counts['INITIAL']} wallets ({tier_percentages['INITIAL']:.1f}%)")
+            logger.info(f"   STANDARD (10 tokens): {tier_counts['STANDARD']} wallets ({tier_percentages['STANDARD']:.1f}%)")
+            logger.info(f"   DEEP (20 tokens): {tier_counts['DEEP']} wallets ({tier_percentages['DEEP']:.1f}%)")
             
             return {
                 "success": True,
@@ -1753,8 +1842,8 @@ class WalletAnalyzer:
                 "failed_analyses": failed_analyses,
                 "api_source": "Hybrid (Cielo + RPC + Birdeye/Helius)" if use_hybrid else "Cielo Finance + RPC",
                 "api_calls": self.api_call_stats.copy(),
-                "deep_analyses": deep_analyses,
-                "initial_analyses": initial_analyses
+                "tier_distribution": tier_counts,
+                "tier_percentages": tier_percentages
             }
             
         except Exception as e:

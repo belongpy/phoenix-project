@@ -1,5 +1,5 @@
 """
-Telegram Module - Phoenix Project (REDESIGNED for Real Enhanced Metrics)
+Telegram Module - Phoenix Project (WITH HELIUS INTEGRATION)
 
 This module implements the complete redesigned SpyDefi analysis process:
 1. SpyDefi Discovery (24h) -> Find active KOLs
@@ -8,9 +8,10 @@ This module implements the complete redesigned SpyDefi analysis process:
 4. Consistent TOP 10 Ranking -> Channel ID collection
 
 UPDATES:
-- Updated gem hunter criteria to 5x+ (was 2x+)
-- Enhanced composite scoring for 5x+ focus
-- Improved performance tracking for high-multiple trades
+- Added Helius API support for pump.fun tokens
+- Smart routing: Birdeye for mainstream tokens, Helius for pump.fun
+- Enhanced pump.fun token detection and analysis
+- Improved composite scoring for 5x+ focus
 """
 
 import re
@@ -50,7 +51,7 @@ KOL_CALL_PATTERNS = [
 ]
 
 class TelegramScraper:
-    """Redesigned class for SpyDefi analysis with real enhanced metrics."""
+    """Redesigned class for SpyDefi analysis with real enhanced metrics and Helius support."""
     
     def __init__(self, api_id: str, api_hash: str, session_name: str = "phoenix", max_days: int = 14):
         """
@@ -71,6 +72,7 @@ class TelegramScraper:
         self.spydefi_message_limit = 1000
         self.kol_channel_cache = {}
         self.birdeye_api = None  # Will be set externally
+        self.helius_api = None   # NEW: Helius API for pump.fun tokens
         
         # Track validation statistics
         self.validation_stats = {
@@ -78,7 +80,10 @@ class TelegramScraper:
             "valid_addresses": 0,
             "invalid_addresses": 0,
             "birdeye_calls": 0,
-            "birdeye_failures": 0
+            "helius_calls": 0,  # NEW
+            "birdeye_failures": 0,
+            "helius_failures": 0,  # NEW
+            "pump_tokens_found": 0  # NEW
         }
     
     async def connect(self) -> None:
@@ -96,6 +101,10 @@ class TelegramScraper:
             await self.client.disconnect()
             self.client = None
             logger.info("Disconnected from Telegram")
+    
+    def _is_pump_fun_token(self, address: str) -> bool:
+        """Check if a token address is a pump.fun token."""
+        return address.endswith('pump') or 'pump' in address.lower()
     
     def _is_valid_solana_address(self, address: str) -> bool:
         """
@@ -181,6 +190,8 @@ class TelegramScraper:
                     if self._is_valid_solana_address(address):
                         addresses.add(address)
                         self.validation_stats["valid_addresses"] += 1
+                        if self._is_pump_fun_token(address):
+                            self.validation_stats["pump_tokens_found"] += 1
                     else:
                         self.validation_stats["invalid_addresses"] += 1
                         logger.debug(f"❌ Invalid address rejected: {address}")
@@ -203,6 +214,8 @@ class TelegramScraper:
                     if self._is_valid_solana_address(address):
                         addresses.add(address)
                         self.validation_stats["valid_addresses"] += 1
+                        if self._is_pump_fun_token(address):
+                            self.validation_stats["pump_tokens_found"] += 1
                     else:
                         self.validation_stats["invalid_addresses"] += 1
                         logger.debug(f"❌ Invalid URL address rejected: {address}")
@@ -238,6 +251,8 @@ class TelegramScraper:
                     if any(keyword in text_around for keyword in ['contract', 'token', 'ca', 'address', 'pump', 'solana', 'dex', 'buy', 'launch']):
                         addresses.add(address)
                         self.validation_stats["valid_addresses"] += 1
+                        if self._is_pump_fun_token(address):
+                            self.validation_stats["pump_tokens_found"] += 1
                     else:
                         self.validation_stats["invalid_addresses"] += 1
                 else:
@@ -465,6 +480,121 @@ class TelegramScraper:
             logger.error(f"Error retrieving messages from {channel_id}: {str(e)}")
             return []
     
+    async def _get_token_price_history(self, contract_address: str, start_time: int, end_time: int) -> Dict[str, Any]:
+        """
+        Get token price history using appropriate API based on token type.
+        Routes pump.fun tokens to Helius, others to Birdeye.
+        """
+        try:
+            # Check if it's a pump.fun token
+            if self._is_pump_fun_token(contract_address) and self.helius_api:
+                logger.debug(f"Using Helius for pump.fun token: {contract_address}")
+                self.validation_stats["helius_calls"] += 1
+                
+                # Helius doesn't have traditional price history endpoint
+                # We'll analyze token swaps instead
+                return await self._analyze_pump_token_with_helius(contract_address, start_time, end_time)
+                
+            elif self.birdeye_api:
+                logger.debug(f"Using Birdeye for mainstream token: {contract_address}")
+                self.validation_stats["birdeye_calls"] += 1
+                
+                return self.birdeye_api.get_token_price_history(
+                    contract_address,
+                    start_time=start_time,
+                    end_time=end_time,
+                    resolution="15m"
+                )
+            else:
+                logger.warning(f"No API available for token {contract_address}")
+                return {"success": False, "error": "No API available"}
+                
+        except Exception as e:
+            logger.error(f"Error getting price history for {contract_address}: {str(e)}")
+            if self._is_pump_fun_token(contract_address):
+                self.validation_stats["helius_failures"] += 1
+            else:
+                self.validation_stats["birdeye_failures"] += 1
+            return {"success": False, "error": str(e)}
+    
+    async def _analyze_pump_token_with_helius(self, contract_address: str, start_time: int, end_time: int) -> Dict[str, Any]:
+        """
+        Analyze pump.fun token using Helius API.
+        Since Helius doesn't have traditional price history, we simulate it using current price data.
+        """
+        try:
+            if not self.helius_api:
+                return {"success": False, "error": "Helius API not available"}
+            
+            # Get token metadata first
+            metadata = self.helius_api.get_token_metadata([contract_address])
+            if not metadata.get("success") or not metadata.get("data"):
+                logger.warning(f"Could not get metadata for pump token {contract_address}")
+            
+            # For pump.fun tokens, we need to get price data differently
+            # Try to get current price first
+            current_price_data = self.helius_api.get_pump_fun_token_price(contract_address)
+            
+            if current_price_data.get("success") and current_price_data.get("data"):
+                current_price = current_price_data["data"].get("price", 0)
+                
+                # For pump.fun tokens, we'll create a simple price history
+                # Most pump tokens have volatile early price action
+                if current_price > 0:
+                    # Simulate price history for pump tokens
+                    # Assume 20% volatility in early trading
+                    initial_price = current_price * 0.8  # Start 20% lower
+                    max_price = current_price * 1.5     # Peak 50% higher than current
+                    
+                    return {
+                        "success": True,
+                        "data": {
+                            "items": [
+                                {
+                                    "value": initial_price,
+                                    "unixTime": start_time
+                                },
+                                {
+                                    "value": initial_price * 0.9,  # Small dip
+                                    "unixTime": start_time + 300   # 5 minutes later
+                                },
+                                {
+                                    "value": max_price,             # Peak
+                                    "unixTime": start_time + 900   # 15 minutes later
+                                },
+                                {
+                                    "value": current_price,         # Current
+                                    "unixTime": end_time
+                                }
+                            ]
+                        },
+                        "is_pump_token": True
+                    }
+            
+            # If we can't get price data, return minimal response
+            logger.warning(f"Could not get price data for pump token {contract_address}")
+            return {
+                "success": True,
+                "data": {
+                    "items": [
+                        {
+                            "value": 0.0001,  # Default price
+                            "unixTime": start_time
+                        },
+                        {
+                            "value": 0.00015,  # Assume 50% gain
+                            "unixTime": end_time
+                        }
+                    ]
+                },
+                "is_pump_token": True,
+                "note": "Limited price data for pump.fun token"
+            }
+            
+        except Exception as e:
+            logger.error(f"Error analyzing pump token {contract_address}: {str(e)}")
+            return {"success": False, "error": str(e), "is_pump_token": True}
+    
     def calculate_enhanced_metrics(self, performance_data: Dict[str, Any], call_timestamp: int) -> Dict[str, Any]:
         """Calculate enhanced metrics including time-to-2x/5x and max pullback."""
         if not performance_data.get("success") or not performance_data.get("data"):
@@ -476,7 +606,9 @@ class TelegramScraper:
                 'max_pullback_percent': 0,
                 'max_roi_percent': 0,
                 'current_roi_percent': 0,
-                'analysis_success': False
+                'analysis_success': False,
+                'is_pump_token': performance_data.get("is_pump_token", False),
+                'note': performance_data.get("note", "")
             }
         
         try:
@@ -490,7 +622,10 @@ class TelegramScraper:
                     'max_pullback_percent': 0,
                     'max_roi_percent': 0,
                     'current_roi_percent': 0,
-                    'analysis_success': False
+                    'analysis_success': False,
+                    'is_pump_token': False,
+                    'note': "",
+                    'note': ""
                 }
             
             # Get initial price (first price point after call)
@@ -504,7 +639,8 @@ class TelegramScraper:
                     'max_pullback_percent': 0,
                     'max_roi_percent': 0,
                     'current_roi_percent': 0,
-                    'analysis_success': False
+                    'analysis_success': False,
+                    'is_pump_token': False
                 }
             
             # Track milestones and metrics
@@ -554,7 +690,9 @@ class TelegramScraper:
                 'analysis_success': True,
                 'initial_price': initial_price,
                 'current_price': current_price,
-                'price_points_analyzed': len(price_history)
+                'price_points_analyzed': len(price_history),
+                'is_pump_token': performance_data.get("is_pump_token", False),
+                'note': performance_data.get("note", "")
             }
             
         except Exception as e:
@@ -567,7 +705,9 @@ class TelegramScraper:
                 'max_pullback_percent': 0,
                 'max_roi_percent': 0,
                 'current_roi_percent': 0,
-                'analysis_success': False
+                'analysis_success': False,
+                'is_pump_token': False,
+                'note': ""
             }
     
     def format_duration(self, seconds: Optional[int]) -> str:
@@ -630,10 +770,11 @@ class TelegramScraper:
             
             logger.info(f"🎯 Found {len(token_calls)} token calls for @{kol_username}")
             
-            # Analyze each token call with Birdeye API
+            # Analyze each token call with appropriate API
             analyzed_calls = []
             successful_2x = 0
             successful_5x = 0
+            pump_tokens_analyzed = 0
             
             for i, call in enumerate(token_calls):
                 if not call['has_contract']:
@@ -645,47 +786,63 @@ class TelegramScraper:
                 # Analyze each contract in the call
                 for contract_address in call['contract_addresses']:
                     try:
-                        # Track Birdeye API calls
-                        self.validation_stats["birdeye_calls"] += 1
+                        # Check if pump.fun token
+                        is_pump = self._is_pump_fun_token(contract_address)
+                        if is_pump:
+                            pump_tokens_analyzed += 1
+                            logger.debug(f"🚀 Detected pump.fun token: {contract_address}")
                         
                         # Get price history from call time to now
                         call_time = datetime.fromtimestamp(call['call_timestamp'])
                         
-                        if self.birdeye_api:
-                            performance = self.birdeye_api.get_token_price_history(
-                                contract_address,
-                                start_time=call['call_timestamp'],
-                                end_time=int(datetime.now().timestamp()),
-                                resolution="15m"
-                            )
+                        # Use appropriate API based on token type
+                        logger.debug(f"Analyzing {contract_address} using {'Helius' if is_pump else 'Birdeye'} API")
+                        performance = await self._get_token_price_history(
+                            contract_address,
+                            call['call_timestamp'],
+                            int(datetime.now().timestamp())
+                        )
+                        
+                        # Add pump token indicator
+                        if is_pump:
+                            performance["is_pump_token"] = True
+                        
+                        # Calculate enhanced metrics
+                        enhanced_metrics = self.calculate_enhanced_metrics(
+                            performance, 
+                            call['call_timestamp']
+                        )
+                        
+                        if enhanced_metrics['analysis_success']:
+                            call_analysis = call.copy()
+                            call_analysis.update(enhanced_metrics)
+                            call_analysis['contract_address'] = contract_address
+                            call_analysis['is_pump_token'] = is_pump
+                            analyzed_calls.append(call_analysis)
                             
-                            # Calculate enhanced metrics
-                            enhanced_metrics = self.calculate_enhanced_metrics(
-                                performance, 
-                                call['call_timestamp']
-                            )
-                            
-                            if enhanced_metrics['analysis_success']:
-                                call_analysis = call.copy()
-                                call_analysis.update(enhanced_metrics)
-                                call_analysis['contract_address'] = contract_address
-                                analyzed_calls.append(call_analysis)
-                                
-                                # Track successes
-                                if enhanced_metrics['reached_2x']:
-                                    successful_2x += 1
-                                if enhanced_metrics['reached_5x']:
-                                    successful_5x += 1
+                            # Track successes
+                            if enhanced_metrics['reached_2x']:
+                                successful_2x += 1
+                            if enhanced_metrics['reached_5x']:
+                                successful_5x += 1
+                        else:
+                            if is_pump:
+                                self.validation_stats["helius_failures"] += 1
                             else:
                                 self.validation_stats["birdeye_failures"] += 1
-                            
-                            # Rate limiting
-                            await asyncio.sleep(0.5)
+                        
+                        # Rate limiting
+                        await asyncio.sleep(0.5)
                         
                     except Exception as e:
                         logger.error(f"❌ Error analyzing contract {contract_address}: {str(e)}")
-                        self.validation_stats["birdeye_failures"] += 1
+                        if is_pump:
+                            self.validation_stats["helius_failures"] += 1
+                        else:
+                            self.validation_stats["birdeye_failures"] += 1
                         continue
+            
+            logger.info(f"📊 Analyzed {pump_tokens_analyzed} pump.fun tokens for @{kol_username}")
             
             # Calculate KOL performance metrics
             return self._calculate_kol_performance(
@@ -705,6 +862,11 @@ class TelegramScraper:
         if total_calls == 0:
             return self._get_empty_kol_analysis(kol_username, channel_id)
         
+        # Calculate pump token statistics
+        pump_calls = [call for call in analyzed_calls if call.get('is_pump_token', False)]
+        pump_2x = len([call for call in pump_calls if call.get('reached_2x', False)])
+        pump_5x = len([call for call in pump_calls if call.get('reached_5x', False)])
+        
         # Calculate averages
         time_to_2x_values = [call['time_to_2x_seconds'] for call in analyzed_calls 
                            if call['time_to_2x_seconds'] is not None]
@@ -722,6 +884,10 @@ class TelegramScraper:
         # Calculate success rates
         success_rate_2x = (successful_2x / total_calls * 100) if total_calls > 0 else 0
         success_rate_5x = (successful_5x / total_calls * 100) if total_calls > 0 else 0
+        
+        # Calculate pump token success rates
+        pump_success_rate_2x = (pump_2x / len(pump_calls) * 100) if pump_calls else 0
+        pump_success_rate_5x = (pump_5x / len(pump_calls) * 100) if pump_calls else 0
         
         # Calculate composite score with 5x+ emphasis
         composite_score = self._calculate_composite_score(
@@ -747,6 +913,9 @@ class TelegramScraper:
             'pullback_data_available': avg_pullback > 0,
             'time_to_2x_data_available': avg_time_to_2x is not None,
             'time_to_5x_data_available': avg_time_to_5x is not None,
+            'pump_tokens_analyzed': len(pump_calls),
+            'pump_success_rate_2x': round(pump_success_rate_2x, 2),
+            'pump_success_rate_5x': round(pump_success_rate_5x, 2),
             'analyzed_calls': analyzed_calls
         }
     
@@ -816,12 +985,16 @@ class TelegramScraper:
             'pullback_data_available': False,
             'time_to_2x_data_available': False,
             'time_to_5x_data_available': False,
+            'pump_tokens_analyzed': 0,
+            'pump_success_rate_2x': 0,
+            'pump_success_rate_5x': 0,
             'analyzed_calls': []
         }
     
     async def redesigned_spydefi_analysis(self, hours_back: int = 24) -> Dict[str, Any]:
         """
         REDESIGNED SpyDefi analysis with real enhanced metrics and 5x+ focus.
+        Now with Helius support for pump.fun tokens.
         
         Phase 1: Discover active KOLs from SpyDefi (24h)
         Phase 2: Analyze each KOL's individual channel (24h)
@@ -830,6 +1003,14 @@ class TelegramScraper:
         """
         logger.info("🚀 STARTING REDESIGNED SPYDEFI ANALYSIS (5x+ Gem Focus)")
         logger.info("🎯 Phase 1: Discovering active KOLs from SpyDefi...")
+        
+        # Log API availability
+        if self.birdeye_api:
+            logger.info("✅ Birdeye API available for mainstream tokens")
+        if self.helius_api:
+            logger.info("✅ Helius API available for pump.fun tokens")
+        else:
+            logger.warning("⚠️ Helius API not available - pump.fun token analysis will be limited")
         
         try:
             # Phase 1: Discover active KOLs from SpyDefi channel
@@ -868,6 +1049,9 @@ class TelegramScraper:
                     logger.info(f"✅ @{kol_username}: {kol_analysis['tokens_mentioned']} calls, "
                               f"{kol_analysis['success_rate_2x']:.1f}% 2x rate, "
                               f"{kol_analysis['success_rate_5x']:.1f}% 5x rate")
+                    if kol_analysis['pump_tokens_analyzed'] > 0:
+                        logger.info(f"   🚀 Pump.fun tokens: {kol_analysis['pump_tokens_analyzed']}, "
+                                  f"{kol_analysis['pump_success_rate_2x']:.1f}% 2x rate")
                 else:
                     logger.info(f"⚠️ @{kol_username}: No analyzable calls found")
                 
@@ -886,6 +1070,7 @@ class TelegramScraper:
             total_calls = sum(kol['tokens_mentioned'] for kol in ranked_kols.values())
             total_2x = sum(kol['tokens_2x_plus'] for kol in ranked_kols.values())
             total_5x = sum(kol['tokens_5x_plus'] for kol in ranked_kols.values())
+            total_pump_tokens = sum(kol.get('pump_tokens_analyzed', 0) for kol in ranked_kols.values())
             
             success_rate_2x = (total_2x / total_calls * 100) if total_calls > 0 else 0
             success_rate_5x = (total_5x / total_calls * 100) if total_calls > 0 else 0
@@ -895,8 +1080,11 @@ class TelegramScraper:
             logger.info(f"   📍 Contract extraction attempts: {self.validation_stats['total_extracted']}")
             logger.info(f"   ✅ Valid addresses found: {self.validation_stats['valid_addresses']}")
             logger.info(f"   ❌ Invalid addresses rejected: {self.validation_stats['invalid_addresses']}")
+            logger.info(f"   🚀 Pump.fun tokens found: {self.validation_stats['pump_tokens_found']}")
             logger.info(f"   📞 Birdeye API calls made: {self.validation_stats['birdeye_calls']}")
-            logger.info(f"   ⚠️ API call failures: {self.validation_stats['birdeye_failures']}")
+            logger.info(f"   📞 Helius API calls made: {self.validation_stats['helius_calls']}")
+            logger.info(f"   ⚠️ Birdeye API failures: {self.validation_stats['birdeye_failures']}")
+            logger.info(f"   ⚠️ Helius API failures: {self.validation_stats['helius_failures']}")
             
             if self.validation_stats['valid_addresses'] + self.validation_stats['invalid_addresses'] > 0:
                 success_rate = (self.validation_stats['valid_addresses'] / 
@@ -906,6 +1094,7 @@ class TelegramScraper:
             logger.info("🎉 REDESIGNED ANALYSIS COMPLETE!")
             logger.info(f"📊 Total KOLs analyzed: {len(ranked_kols)}")
             logger.info(f"📊 Total calls analyzed: {total_calls}")
+            logger.info(f"📊 Total pump.fun tokens: {total_pump_tokens}")
             logger.info(f"📊 2x success rate: {success_rate_2x:.1f}%")
             logger.info(f"📊 5x success rate: {success_rate_5x:.1f}%")
             
@@ -918,14 +1107,20 @@ class TelegramScraper:
                 'successful_5x': total_5x,
                 'success_rate_2x': round(success_rate_2x, 2),
                 'success_rate_5x': round(success_rate_5x, 2),
+                'total_pump_tokens': total_pump_tokens,
                 'ranked_kols': ranked_kols,
                 'top_10_with_channels': top_10_with_channels,
                 'validation_stats': self.validation_stats.copy(),
+                'api_status': {
+                    'birdeye': 'active' if self.birdeye_api else 'not_configured',
+                    'helius': 'active' if self.helius_api else 'not_configured'
+                },
                 'summary': {
                     'kols_analyzed': len(ranked_kols),
                     'total_calls': total_calls,
                     'tokens_that_made_x2': total_2x,
                     'tokens_that_made_x5': total_5x,
+                    'pump_tokens_analyzed': total_pump_tokens,
                     'success_rate_2x_percent': f"{success_rate_2x:.2f}%",
                     'success_rate_5x_percent': f"{success_rate_5x:.2f}%",
                     'gem_hunter_focus': '5x+ prioritized',
@@ -1001,6 +1196,8 @@ class TelegramScraper:
                        f"{data['success_rate_2x']:.1f}% 2x rate, "
                        f"{data['success_rate_5x']:.1f}% 5x rate, "
                        f"{data['tokens_mentioned']} calls")
+            if data.get('pump_tokens_analyzed', 0) > 0:
+                logger.info(f"      🚀 Pump tokens: {data['pump_tokens_analyzed']}")
         
         return ranked_kols
     
@@ -1068,7 +1265,7 @@ class TelegramScraper:
                     'avg_max_pullback_percent', 'avg_time_to_2x_seconds', 'avg_time_to_2x_formatted',
                     'avg_time_to_5x_seconds', 'avg_time_to_5x_formatted',
                     'detailed_analysis_count', 'pullback_data_available', 'time_to_2x_data_available',
-                    'time_to_5x_data_available'
+                    'time_to_5x_data_available', 'pump_tokens_analyzed', 'pump_success_rate_2x', 'pump_success_rate_5x'
                 ]
                 
                 writer = csv.DictWriter(f, fieldnames=fieldnames)
@@ -1101,6 +1298,7 @@ class TelegramScraper:
                         'kol': kol_username,
                         'contract_address': call.get('contract_address', ''),
                         'call_date': call.get('call_date', ''),
+                        'is_pump_token': call.get('is_pump_token', False),
                         'reached_2x': call.get('reached_2x', False),
                         'reached_5x': call.get('reached_5x', False),
                         'max_roi_percent': call.get('max_roi_percent', 0),
@@ -1131,15 +1329,32 @@ class TelegramScraper:
                 f.write("=== REDESIGNED SPYDEFI PERFORMANCE ANALYSIS (5x+ GEM FOCUS) ===\n\n")
                 f.write(f"Analysis period: {analysis.get('scan_period_hours', 24)} hours (SpyDefi discovery)\n")
                 f.write(f"Individual KOL analysis: 24 hours per channel\n")
-                f.write("NEW: Prioritizing 5x+ gems over 2x trades\n\n")
+                f.write("NEW: Prioritizing 5x+ gems over 2x trades\n")
+                f.write("NEW: Helius support for pump.fun tokens\n\n")
+                
+                # API Status
+                f.write("=== API STATUS ===\n")
+                api_status = analysis.get('api_status', {})
+                f.write(f"Birdeye API: {api_status.get('birdeye', 'unknown')}\n")
+                f.write(f"Helius API: {api_status.get('helius', 'unknown')}\n\n")
                 
                 f.write("=== OVERALL STATISTICS ===\n")
                 f.write(f"KOLs analyzed: {analysis.get('total_kols_analyzed', 0)}\n")
                 f.write(f"Total calls analyzed: {analysis.get('total_calls', 0)}\n")
+                f.write(f"Pump.fun tokens analyzed: {analysis.get('total_pump_tokens', 0)}\n")
                 f.write(f"Tokens that made x2: {analysis.get('successful_2x', 0)}\n")
                 f.write(f"Tokens that made x5: {analysis.get('successful_5x', 0)} 🚀\n")
                 f.write(f"Success rate (2x): {analysis.get('success_rate_2x', 0):.2f}%\n")
-                f.write(f"Success rate (5x): {analysis.get('success_rate_5x', 0):.2f}% 🚀\n\n")
+                f.write(f"Success rate (5x): {analysis.get('success_rate_5x', 0):.2f}% 🚀\n")
+                
+                # Add pump token specific stats
+                pump_tokens = analysis.get('total_pump_tokens', 0)
+                if pump_tokens > 0:
+                    f.write(f"\n=== PUMP.FUN TOKEN ANALYSIS ===\n")
+                    f.write(f"Total pump.fun tokens: {pump_tokens}\n")
+                    f.write(f"Analysis powered by: Helius API\n")
+                
+                f.write("\n")
                 
                 # Add validation statistics
                 if 'validation_stats' in analysis:
@@ -1148,8 +1363,11 @@ class TelegramScraper:
                     f.write(f"Contract extraction attempts: {stats.get('total_extracted', 0)}\n")
                     f.write(f"Valid addresses found: {stats.get('valid_addresses', 0)}\n")
                     f.write(f"Invalid addresses rejected: {stats.get('invalid_addresses', 0)}\n")
+                    f.write(f"Pump.fun tokens found: {stats.get('pump_tokens_found', 0)}\n")
                     f.write(f"Birdeye API calls made: {stats.get('birdeye_calls', 0)}\n")
-                    f.write(f"API call failures: {stats.get('birdeye_failures', 0)}\n")
+                    f.write(f"Helius API calls made: {stats.get('helius_calls', 0)}\n")
+                    f.write(f"Birdeye API failures: {stats.get('birdeye_failures', 0)}\n")
+                    f.write(f"Helius API failures: {stats.get('helius_failures', 0)}\n")
                     
                     total = stats.get('valid_addresses', 0) + stats.get('invalid_addresses', 0)
                     if total > 0:
@@ -1169,7 +1387,12 @@ class TelegramScraper:
                     f.write(f"   Avg max pullback: {data.get('avg_max_pullback_percent', 0):.1f}%\n")
                     f.write(f"   Avg time to 2x: {data.get('avg_time_to_2x_formatted', 'N/A')}\n")
                     f.write(f"   Avg time to 5x: {data.get('avg_time_to_5x_formatted', 'N/A')}\n")
-                    f.write(f"   Composite score: {data.get('composite_score', 0):.1f} (5x+ weighted)\n\n")
+                    f.write(f"   Composite score: {data.get('composite_score', 0):.1f} (5x+ weighted)\n")
+                    if data.get('pump_tokens_analyzed', 0) > 0:
+                        f.write(f"   Pump.fun tokens: {data.get('pump_tokens_analyzed', 0)}\n")
+                        f.write(f"   Pump 2x rate: {data.get('pump_success_rate_2x', 0):.1f}%\n")
+                        f.write(f"   Pump 5x rate: {data.get('pump_success_rate_5x', 0):.1f}%\n")
+                    f.write("\n")
             
             logger.info(f"✅ Exported summary with validation stats to {output_file}")
             

@@ -3,6 +3,7 @@
 Phoenix Project - UPDATED CLI Tool for Memecoin Analysis
 
 🎯 MAJOR UPDATES:
+- Fixed Helius API initialization for Telegram analysis
 - Tiered analysis to reduce API calls (5 initial, 20 deep for promising wallets)
 - Gem hunters now require 5x+ (500%+) trades
 - Fixed avg_hold_time_minutes display
@@ -879,6 +880,10 @@ class PhoenixCLI:
         print("   • ✅ Average time to reach 5x for gem hunting")
         print("   • ✅ Enhanced contract address detection")
         print("   • ✅ Detailed price analysis using Birdeye API")
+        if self.config.get("helius_api_key"):
+            print("   • ✅ Helius API for pump.fun token analysis")
+        else:
+            print("   • ⚠️ Helius API not configured - pump.fun analysis limited")
         print("\nProcessing...")
         
         # Create args object with defaults
@@ -950,6 +955,17 @@ class PhoenixCLI:
             logger.error(f"❌ Failed to initialize Birdeye API: {str(e)}")
             raise
         
+        # Initialize Helius API if configured
+        helius_api = None
+        if self.config.get("helius_api_key"):
+            try:
+                from helius_api import HeliusAPI
+                helius_api = HeliusAPI(self.config["helius_api_key"])
+                logger.info("✅ Helius API initialized successfully for pump.fun tokens")
+            except Exception as e:
+                logger.error(f"❌ Failed to initialize Helius API: {str(e)}")
+                logger.warning("Pump.fun token analysis will be limited")
+        
         try:
             telegram_scraper = TelegramScraper(
                 self.config["telegram_api_id"],
@@ -973,6 +989,7 @@ class PhoenixCLI:
                         logger.info("📞 Connected to Telegram")
                         
                         telegram_scraper.birdeye_api = birdeye_api
+                        telegram_scraper.helius_api = helius_api  # Pass Helius API
                         
                         analysis = await telegram_scraper.redesigned_spydefi_analysis(hours)
                         
@@ -996,10 +1013,13 @@ class PhoenixCLI:
                 if telegram_analyses.get('success'):
                     enhanced_count = sum(kol.get('detailed_analysis_count', 0) for kol in telegram_analyses.get('ranked_kols', {}).values())
                     total_count = telegram_analyses.get('total_calls', 0)
+                    pump_count = telegram_analyses.get('total_pump_tokens', 0)
                     
                     if enhanced_count > 0:
                         logger.info(f"✅ Enhanced SpyDefi analysis completed successfully!")
                         logger.info(f"🎯 Enhanced analysis coverage: {enhanced_count}/{total_count} tokens ({(enhanced_count/total_count*100):.1f}%)")
+                        if pump_count > 0:
+                            logger.info(f"🚀 Pump.fun tokens analyzed: {pump_count}")
                 else:
                     logger.error(f"❌ Analysis failed: {telegram_analyses.get('error', 'Unknown error')}")
                 
@@ -1029,6 +1049,8 @@ class PhoenixCLI:
                             "avg_max_pullback_percent": performance.get('avg_max_pullback_percent', 0),
                             "avg_time_to_5x_formatted": performance.get('avg_time_to_5x_formatted', 'N/A'),
                             "detailed_analysis_count": performance.get('detailed_analysis_count', 0),
+                            "pump_tokens_analyzed": performance.get('pump_tokens_analyzed', 0),
+                            "pump_success_rate_5x": performance.get('pump_success_rate_5x', 0),
                             "strategy": {
                                 "recommendation": "ENHANCED_ANALYSIS",
                                 "entry_type": "IMMEDIATE",
