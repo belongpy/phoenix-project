@@ -4,10 +4,13 @@ Telegram Module - Phoenix Project (REDESIGNED for Real Enhanced Metrics)
 This module implements the complete redesigned SpyDefi analysis process:
 1. SpyDefi Discovery (24h) -> Find active KOLs
 2. Individual KOL Analysis (24h each) -> Real performance metrics  
-3. Enhanced Metrics Calculation -> Time-to-2x, pullback data
+3. Enhanced Metrics Calculation -> Time-to-2x/5x, pullback data
 4. Consistent TOP 10 Ranking -> Channel ID collection
 
-FIXED: Enhanced contract address validation to prevent Birdeye API errors
+UPDATES:
+- Updated gem hunter criteria to 5x+ (was 2x+)
+- Enhanced composite scoring for 5x+ focus
+- Improved performance tracking for high-multiple trades
 """
 
 import re
@@ -463,7 +466,7 @@ class TelegramScraper:
             return []
     
     def calculate_enhanced_metrics(self, performance_data: Dict[str, Any], call_timestamp: int) -> Dict[str, Any]:
-        """Calculate enhanced metrics including time-to-2x and max pullback."""
+        """Calculate enhanced metrics including time-to-2x/5x and max pullback."""
         if not performance_data.get("success") or not performance_data.get("data"):
             return {
                 'reached_2x': False,
@@ -705,11 +708,14 @@ class TelegramScraper:
         # Calculate averages
         time_to_2x_values = [call['time_to_2x_seconds'] for call in analyzed_calls 
                            if call['time_to_2x_seconds'] is not None]
+        time_to_5x_values = [call['time_to_5x_seconds'] for call in analyzed_calls 
+                           if call['time_to_5x_seconds'] is not None]
         pullback_values = [call['max_pullback_percent'] for call in analyzed_calls 
                          if call['max_pullback_percent'] > 0]
         roi_values = [call['max_roi_percent'] for call in analyzed_calls]
         
         avg_time_to_2x = sum(time_to_2x_values) / len(time_to_2x_values) if time_to_2x_values else None
+        avg_time_to_5x = sum(time_to_5x_values) / len(time_to_5x_values) if time_to_5x_values else None
         avg_pullback = sum(pullback_values) / len(pullback_values) if pullback_values else 0
         avg_max_roi = sum(roi_values) / len(roi_values) if roi_values else 0
         
@@ -717,9 +723,9 @@ class TelegramScraper:
         success_rate_2x = (successful_2x / total_calls * 100) if total_calls > 0 else 0
         success_rate_5x = (successful_5x / total_calls * 100) if total_calls > 0 else 0
         
-        # Calculate composite score
+        # Calculate composite score with 5x+ emphasis
         composite_score = self._calculate_composite_score(
-            total_calls, success_rate_2x, success_rate_5x, avg_time_to_2x, avg_pullback, avg_max_roi
+            total_calls, success_rate_2x, success_rate_5x, avg_time_to_2x, avg_time_to_5x, avg_pullback, avg_max_roi
         )
         
         return {
@@ -735,30 +741,44 @@ class TelegramScraper:
             'avg_max_pullback_percent': round(avg_pullback, 2) if avg_pullback > 0 else 0,
             'avg_time_to_2x_seconds': int(avg_time_to_2x) if avg_time_to_2x else None,
             'avg_time_to_2x_formatted': self.format_duration(int(avg_time_to_2x)) if avg_time_to_2x else "N/A",
+            'avg_time_to_5x_seconds': int(avg_time_to_5x) if avg_time_to_5x else None,
+            'avg_time_to_5x_formatted': self.format_duration(int(avg_time_to_5x)) if avg_time_to_5x else "N/A",
             'detailed_analysis_count': total_calls,
             'pullback_data_available': avg_pullback > 0,
             'time_to_2x_data_available': avg_time_to_2x is not None,
+            'time_to_5x_data_available': avg_time_to_5x is not None,
             'analyzed_calls': analyzed_calls
         }
     
     def _calculate_composite_score(self, total_calls: int, success_rate_2x: float, 
                                  success_rate_5x: float, avg_time_to_2x: Optional[int], 
-                                 avg_pullback: float, avg_max_roi: float) -> float:
-        """Calculate composite score for ranking KOLs."""
+                                 avg_time_to_5x: Optional[int], avg_pullback: float, 
+                                 avg_max_roi: float) -> float:
+        """Calculate composite score for ranking KOLs with 5x+ emphasis."""
         # Base score from sample size (more calls = more reliable)
         sample_score = min(total_calls * 10, 100)
         
-        # Success rate bonus (weighted towards 5x)
-        success_bonus = (success_rate_2x * 0.5) + (success_rate_5x * 1.5)
+        # Success rate bonus (heavily weighted towards 5x+)
+        success_bonus = (success_rate_2x * 0.3) + (success_rate_5x * 2.0)  # Increased 5x weight
         
-        # ROI bonus
-        roi_bonus = min(avg_max_roi / 10, 50)
+        # ROI bonus (emphasize high multiples)
+        if avg_max_roi >= 1000:  # 10x+
+            roi_bonus = 60
+        elif avg_max_roi >= 500:  # 5x+
+            roi_bonus = 40
+        elif avg_max_roi >= 200:  # 2x+
+            roi_bonus = 20
+        else:
+            roi_bonus = min(avg_max_roi / 10, 10)
         
-        # Time bonus (faster to 2x is better)
+        # Time bonus (faster to 5x is better)
         time_bonus = 0
-        if avg_time_to_2x:
-            # Bonus for reaching 2x quickly (max 24 hours = 86400 seconds)
-            time_bonus = max(0, 25 - (avg_time_to_2x / 3600))  # 25 points max, decreases with time
+        if avg_time_to_5x:
+            # Bonus for reaching 5x quickly (max 48 hours)
+            time_bonus = max(0, 30 - (avg_time_to_5x / 3600))  # 30 points max
+        elif avg_time_to_2x:
+            # Smaller bonus for just 2x
+            time_bonus = max(0, 15 - (avg_time_to_2x / 3600))  # 15 points max
         
         # Risk bonus (lower pullback is better)
         risk_bonus = max(0, 25 - avg_pullback)  # 25 points max, decreases with pullback
@@ -790,22 +810,25 @@ class TelegramScraper:
             'avg_max_pullback_percent': 0,
             'avg_time_to_2x_seconds': None,
             'avg_time_to_2x_formatted': "N/A",
+            'avg_time_to_5x_seconds': None,
+            'avg_time_to_5x_formatted': "N/A",
             'detailed_analysis_count': 0,
             'pullback_data_available': False,
             'time_to_2x_data_available': False,
+            'time_to_5x_data_available': False,
             'analyzed_calls': []
         }
     
     async def redesigned_spydefi_analysis(self, hours_back: int = 24) -> Dict[str, Any]:
         """
-        REDESIGNED SpyDefi analysis with real enhanced metrics.
+        REDESIGNED SpyDefi analysis with real enhanced metrics and 5x+ focus.
         
         Phase 1: Discover active KOLs from SpyDefi (24h)
         Phase 2: Analyze each KOL's individual channel (24h)
         Phase 3: Calculate enhanced metrics and rank
         Phase 4: Get channel IDs for TOP 10
         """
-        logger.info("🚀 STARTING REDESIGNED SPYDEFI ANALYSIS")
+        logger.info("🚀 STARTING REDESIGNED SPYDEFI ANALYSIS (5x+ Gem Focus)")
         logger.info("🎯 Phase 1: Discovering active KOLs from SpyDefi...")
         
         try:
@@ -826,7 +849,7 @@ class TelegramScraper:
             
             # Configuration: How many KOLs to analyze (top X by mentions)
             MAX_KOLS_TO_ANALYZE = 50  # Configurable limit
-            MIN_MENTIONS_REQUIRED = 5  # Only analyze KOLs with 2+ mentions
+            MIN_MENTIONS_REQUIRED = 5  # Only analyze KOLs with 5+ mentions
             
             # Filter and sort KOLs
             filtered_kols = {k: v for k, v in active_kols.items() if v >= MIN_MENTIONS_REQUIRED}
@@ -843,7 +866,8 @@ class TelegramScraper:
                 if kol_analysis['tokens_mentioned'] > 0:
                     kol_analyses[kol_username] = kol_analysis
                     logger.info(f"✅ @{kol_username}: {kol_analysis['tokens_mentioned']} calls, "
-                              f"{kol_analysis['success_rate_2x']:.1f}% 2x rate")
+                              f"{kol_analysis['success_rate_2x']:.1f}% 2x rate, "
+                              f"{kol_analysis['success_rate_5x']:.1f}% 5x rate")
                 else:
                     logger.info(f"⚠️ @{kol_username}: No analyzable calls found")
                 
@@ -851,7 +875,7 @@ class TelegramScraper:
                 await asyncio.sleep(1)
             
             # Phase 3: Rank KOLs and calculate summary statistics
-            logger.info("🎯 Phase 3: Ranking KOLs and calculating final metrics...")
+            logger.info("🎯 Phase 3: Ranking KOLs by 5x+ performance...")
             ranked_kols = self._rank_kols_consistently(kol_analyses)
             
             # Phase 4: Get channel IDs for TOP 10 only
@@ -904,6 +928,7 @@ class TelegramScraper:
                     'tokens_that_made_x5': total_5x,
                     'success_rate_2x_percent': f"{success_rate_2x:.2f}%",
                     'success_rate_5x_percent': f"{success_rate_5x:.2f}%",
+                    'gem_hunter_focus': '5x+ prioritized',
                     'enhanced_data_coverage': f"{sum(1 for k in ranked_kols.values() if k['pullback_data_available'])}/{len(ranked_kols)} KOLs"
                 }
             }
@@ -958,7 +983,7 @@ class TelegramScraper:
             return {}
     
     def _rank_kols_consistently(self, kol_analyses: Dict[str, Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
-        """Phase 3: Rank KOLs consistently by composite score."""
+        """Phase 3: Rank KOLs consistently by composite score (5x+ focused)."""
         # Convert to list for sorting
         kol_list = list(kol_analyses.items())
         
@@ -970,10 +995,11 @@ class TelegramScraper:
         for kol_username, kol_data in kol_list:
             ranked_kols[kol_username] = kol_data
         
-        logger.info("🏆 TOP 10 KOLs by composite score:")
+        logger.info("🏆 TOP 10 KOLs by composite score (5x+ weighted):")
         for i, (kol, data) in enumerate(list(ranked_kols.items())[:10]):
             logger.info(f"   {i+1}. @{kol}: {data['composite_score']:.1f} score, "
                        f"{data['success_rate_2x']:.1f}% 2x rate, "
+                       f"{data['success_rate_5x']:.1f}% 5x rate, "
                        f"{data['tokens_mentioned']} calls")
         
         return ranked_kols
@@ -1040,7 +1066,9 @@ class TelegramScraper:
                     'kol', 'channel_id', 'tokens_mentioned', 'tokens_2x_plus', 'tokens_5x_plus',
                     'success_rate_2x', 'success_rate_5x', 'avg_ath_roi', 'composite_score',
                     'avg_max_pullback_percent', 'avg_time_to_2x_seconds', 'avg_time_to_2x_formatted',
-                    'detailed_analysis_count', 'pullback_data_available', 'time_to_2x_data_available'
+                    'avg_time_to_5x_seconds', 'avg_time_to_5x_formatted',
+                    'detailed_analysis_count', 'pullback_data_available', 'time_to_2x_data_available',
+                    'time_to_5x_data_available'
                 ]
                 
                 writer = csv.DictWriter(f, fieldnames=fieldnames)
@@ -1100,17 +1128,18 @@ class TelegramScraper:
         """Export analysis summary with validation statistics."""
         try:
             with open(output_file, 'w', encoding='utf-8') as f:
-                f.write("=== REDESIGNED SPYDEFI PERFORMANCE ANALYSIS ===\n\n")
+                f.write("=== REDESIGNED SPYDEFI PERFORMANCE ANALYSIS (5x+ GEM FOCUS) ===\n\n")
                 f.write(f"Analysis period: {analysis.get('scan_period_hours', 24)} hours (SpyDefi discovery)\n")
-                f.write(f"Individual KOL analysis: 24 hours per channel\n\n")
+                f.write(f"Individual KOL analysis: 24 hours per channel\n")
+                f.write("NEW: Prioritizing 5x+ gems over 2x trades\n\n")
                 
                 f.write("=== OVERALL STATISTICS ===\n")
                 f.write(f"KOLs analyzed: {analysis.get('total_kols_analyzed', 0)}\n")
                 f.write(f"Total calls analyzed: {analysis.get('total_calls', 0)}\n")
                 f.write(f"Tokens that made x2: {analysis.get('successful_2x', 0)}\n")
-                f.write(f"Tokens that made x5: {analysis.get('successful_5x', 0)}\n")
+                f.write(f"Tokens that made x5: {analysis.get('successful_5x', 0)} 🚀\n")
                 f.write(f"Success rate (2x): {analysis.get('success_rate_2x', 0):.2f}%\n")
-                f.write(f"Success rate (5x): {analysis.get('success_rate_5x', 0):.2f}%\n\n")
+                f.write(f"Success rate (5x): {analysis.get('success_rate_5x', 0):.2f}% 🚀\n\n")
                 
                 # Add validation statistics
                 if 'validation_stats' in analysis:
@@ -1128,17 +1157,19 @@ class TelegramScraper:
                         f.write(f"Address validation success rate: {success_rate:.1f}%\n")
                     f.write("\n")
                 
-                f.write("=== TOP 10 KOLs (with enhanced metrics) ===\n")
+                f.write("=== TOP 10 KOLs (5x+ Gem Hunters) ===\n")
                 ranked_kols = analysis.get('ranked_kols', {})
                 for i, (kol, data) in enumerate(list(ranked_kols.items())[:10]):
                     f.write(f"{i+1}. @{kol}\n")
                     f.write(f"   Channel ID: {data.get('channel_id', 'Not found')}\n")
                     f.write(f"   Calls analyzed: {data.get('tokens_mentioned', 0)}\n")
                     f.write(f"   2x success rate: {data.get('success_rate_2x', 0):.1f}%\n")
-                    f.write(f"   5x success rate: {data.get('success_rate_5x', 0):.1f}%\n")
+                    f.write(f"   5x success rate: {data.get('success_rate_5x', 0):.1f}% 🚀\n")
+                    f.write(f"   Avg ATH ROI: {data.get('avg_ath_roi', 0):.1f}%\n")
                     f.write(f"   Avg max pullback: {data.get('avg_max_pullback_percent', 0):.1f}%\n")
                     f.write(f"   Avg time to 2x: {data.get('avg_time_to_2x_formatted', 'N/A')}\n")
-                    f.write(f"   Composite score: {data.get('composite_score', 0):.1f}\n\n")
+                    f.write(f"   Avg time to 5x: {data.get('avg_time_to_5x_formatted', 'N/A')}\n")
+                    f.write(f"   Composite score: {data.get('composite_score', 0):.1f} (5x+ weighted)\n\n")
             
             logger.info(f"✅ Exported summary with validation stats to {output_file}")
             
