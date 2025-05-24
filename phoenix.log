@@ -1046,3 +1046,20 @@ RuntimeError: cannot schedule new futures after shutdown
 2025-05-24 01:23:52,867 - phoenix.wallet - INFO - Found 20 swaps from 100 signatures
 2025-05-24 01:24:09,519 - phoenix.wallet - INFO -   └─ Score: 100/100, Type: gem_hunter
 2025-05-24 01:24:09,534 - phoenix - INFO - Exported memecoin wallet analysis to C:\Users\Administrator\Desktop\phoenix-project\outputs\wallet_analysis_memecoin_20250524_012409.csv
+2025-05-24 01:43:27,036 - phoenix - INFO - Loaded 2 wallet addresses from wallets.txt
+2025-05-24 01:43:31,540 - phoenix.api_manager - INFO - Birdeye API initialized for mainstream token analysis
+2025-05-24 01:43:31,540 - phoenix.helius - INFO - Helius API initialized for enhanced transaction parsing
+2025-05-24 01:43:31,540 - phoenix.api_manager - INFO - Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-24 01:43:31,540 - phoenix.api_manager - INFO - Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-24 01:43:31,540 - phoenix.cielo - INFO - Checking Cielo Finance API connectivity...
+2025-05-24 01:43:31,774 - phoenix.cielo - INFO - ✅ Cielo Finance API is accessible (got expected error response)
+2025-05-24 01:43:31,774 - phoenix.wallet - INFO - ✅ Cielo Finance API connection verified
+2025-05-24 01:43:31,774 - phoenix.wallet - INFO - Batch analyzing 2 wallets with tiered memecoin analysis
+2025-05-24 01:43:31,774 - phoenix.wallet - INFO - Analyzing wallet 1/2: Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 01:43:31,774 - phoenix.wallet - INFO - 🔍 Analyzing wallet Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ (tiered memecoin analysis)
+2025-05-24 01:43:31,774 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-24 01:43:31,774 - phoenix.cielo - INFO - Fetching trading stats for wallet Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 01:43:33,525 - phoenix.cielo - INFO - Successfully retrieved trading stats for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 01:43:33,525 - phoenix.wallet - INFO - 🌟 Promising wallet detected! - Scanning 20 recent trades...
+2025-05-24 01:43:33,525 - phoenix.wallet - INFO - Fetching last 20 token swaps for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 01:44:04,859 - phoenix.wallet - INFO - Found 20 swaps from 100 signatures
