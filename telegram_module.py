@@ -1046,8 +1046,8 @@ class TelegramScraper:
             kol_analyses = {}
             
             # Configuration: How many KOLs to analyze (top X by mentions)
-            MAX_KOLS_TO_ANALYZE = 50  # Configurable limit
-            MIN_MENTIONS_REQUIRED = 5  # Only analyze KOLs with 5+ mentions
+            MAX_KOLS_TO_ANALYZE = 25  # Configurable limit
+            MIN_MENTIONS_REQUIRED = 3  # Only analyze KOLs with 5+ mentions
             
             # Filter and sort KOLs
             filtered_kols = {k: v for k, v in active_kols.items() if v >= MIN_MENTIONS_REQUIRED}
