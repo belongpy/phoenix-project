@@ -3,12 +3,11 @@
 Phoenix Project - UPDATED CLI Tool for Memecoin Analysis
 
 🎯 MAJOR UPDATES:
-- Proper memecoin wallet categorization display
-- Fixed avg_first_take_profit_percent display
-- Shows market cap filters for all wallets
-- Proper entry/exit quality assessment
-- Bundle detection warnings
-- Distribution percentages that sum to 100%
+- Tiered analysis to reduce API calls (5 initial, 20 deep for promising wallets)
+- Gem hunters now require 5x+ (500%+) trades
+- Fixed avg_hold_time_minutes display
+- Removed seconds from hold time display
+- Distribution now factors into wallet score
 """
 
 import os
@@ -138,7 +137,7 @@ class PhoenixCLI:
         """Handle the numbered menu interface."""
         print("\n" + "="*80)
         print("Phoenix Project - Solana Memecoin Analysis Tool")
-        print("🚀 Optimized for Memecoin Trading Patterns")
+        print("🚀 Optimized for 5x+ Gem Hunting")
         print(f"📅 Current Date: May 23, 2025")
         print("="*80)
         print("\nSelect an option:")
@@ -148,7 +147,7 @@ class PhoenixCLI:
         print("3. Test API Connectivity")
         print("\n📊 TOOLS:")
         print("4. SPYDEFI")
-        print("5. ANALYZE WALLETS (MEMECOIN EDITION)")
+        print("5. ANALYZE WALLETS (5x+ GEM HUNTER EDITION)")
         print("\n🔍 UTILITIES:")
         print("6. View Current Sources")
         print("7. Help & Examples")
@@ -189,9 +188,9 @@ class PhoenixCLI:
     def _memecoin_wallet_analysis(self):
         """Run memecoin-focused wallet analysis with all improvements."""
         print("\n" + "="*80)
-        print("    💰 MEMECOIN WALLET ANALYSIS")
-        print("    🎯 Optimized for Solana Memecoin Trading")
-        print("    📊 Features: Proper Exit Analysis & Market Cap Filters")
+        print("    💰 MEMECOIN WALLET ANALYSIS - 5x+ GEM HUNTER EDITION")
+        print("    🎯 Tiered Analysis: 5 tokens initial, 20 for promising wallets")
+        print("    📊 Features: Distribution-weighted scoring & Fixed hold times")
         print("="*80)
         
         # Check API configuration
@@ -223,15 +222,15 @@ class PhoenixCLI:
         days_input = input("Days to analyze (default: 30): ").strip()
         days_to_analyze = int(days_input) if days_input.isdigit() else 30
         
-        print(f"\n🚀 Starting memecoin wallet analysis...")
+        print(f"\n🚀 Starting tiered memecoin wallet analysis...")
         print(f"📊 Parameters:")
         print(f"   • Wallets: {len(wallets)}")
         print(f"   • Analysis period: {days_to_analyze} days")
-        print(f"   • Win rate threshold: 45% (memecoin optimized)")
-        print(f"   • Gem detection: 2x+ trades")
-        print(f"   • Entry/Exit Analysis: Enhanced with proper calculations")
-        print(f"   • Bundle Detection: Active")
-        print(f"   • Export format: CSV (memecoin edition)")
+        print(f"   • Initial scan: 5 tokens per wallet")
+        print(f"   • Deep scan: 20 tokens for promising wallets (score 50+)")
+        print(f"   • Gem detection: 5x+ trades (500%+)")
+        print(f"   • Distribution factored into score")
+        print(f"   • Export format: CSV (5x+ gem hunter edition)")
         print("\nProcessing...")
         
         try:
@@ -265,11 +264,22 @@ class PhoenixCLI:
                 
                 # Export to CSV with memecoin focus
                 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-                output_file = ensure_output_dir(f"wallet_analysis_memecoin_{timestamp}.csv")
+                output_file = ensure_output_dir(f"wallet_analysis_5x_gem_{timestamp}.csv")
                 self._export_memecoin_wallet_csv(results, output_file)
                 print(f"\n📄 Exported to CSV: {output_file}")
                 
-                print("\n✅ Memecoin wallet analysis completed successfully!")
+                print("\n✅ 5x+ gem hunter analysis completed successfully!")
+                
+                # Display API call statistics
+                if "api_calls" in results:
+                    print(f"\n📊 API CALL EFFICIENCY:")
+                    print(f"   Cielo: {results['api_calls']['cielo']} calls")
+                    print(f"   Birdeye: {results['api_calls']['birdeye']} calls")
+                    print(f"   Helius: {results['api_calls']['helius']} calls")
+                    print(f"   RPC: {results['api_calls']['rpc']} calls")
+                    print(f"   Total: {sum(results['api_calls'].values())} calls")
+                    print(f"   Deep analyses: {results.get('deep_analyses', 0)}")
+                    print(f"   Initial analyses: {results.get('initial_analyses', 0)}")
             else:
                 print(f"\n❌ Analysis failed: {results.get('error', 'Unknown error')}")
                 
@@ -282,7 +292,7 @@ class PhoenixCLI:
     def _display_memecoin_wallet_results(self, results: Dict[str, Any]) -> None:
         """Display memecoin-focused wallet analysis results."""
         print("\n" + "="*80)
-        print("    📊 MEMECOIN WALLET ANALYSIS RESULTS")
+        print("    📊 5x+ GEM HUNTER ANALYSIS RESULTS")
         print("="*80)
         
         # Summary statistics
@@ -322,7 +332,7 @@ class PhoenixCLI:
         all_wallets.sort(key=lambda x: x.get('composite_score', x['metrics'].get('composite_score', 0)), reverse=True)
         
         if all_wallets:
-            print(f"\n🏆 TOP MEMECOIN TRADERS:")
+            print(f"\n🏆 TOP 10 5x+ GEM HUNTERS:")
             for i, analysis in enumerate(all_wallets[:10], 1):
                 wallet = analysis['wallet_address']
                 metrics = analysis['metrics']
@@ -341,10 +351,16 @@ class PhoenixCLI:
                 print(f"   Type: {analysis['wallet_type']} | Win Rate: {metrics['win_rate']:.1f}%")
                 print(f"   Profit Factor: {profit_factor_display} | Total Trades: {metrics['total_trades']}")
                 print(f"   Net Profit: ${metrics['net_profit_usd']:.2f} | Avg ROI: {metrics['avg_roi']:.1f}%")
-                print(f"   Gem Rate (2x+): {metrics.get('gem_rate_2x_plus', 0):.1f}%")
+                print(f"   5x+ Gem Rate: {metrics.get('gem_rate_5x_plus', 0):.1f}%")
+                print(f"   2x+ Rate: {metrics.get('gem_rate_2x_plus', 0):.1f}%")
                 print(f"   Avg First TP: {metrics.get('avg_first_take_profit_percent', 0):.1f}%")
                 print(f"   Avg Hold: {metrics.get('avg_hold_time_minutes', 0):.1f} minutes")
                 print(f"   Market Cap Range: {format_market_cap(strategy.get('filter_market_cap_min', 0))} - {format_market_cap(strategy.get('filter_market_cap_max', 0))}")
+                
+                # Distribution breakdown
+                print(f"   Distribution: 5x+: {metrics.get('distribution_500_plus_%', 0):.1f}% | "
+                      f"2-5x: {metrics.get('distribution_200_500_%', 0):.1f}% | "
+                      f"<2x: {metrics.get('distribution_0_200_%', 0):.1f}%")
                 
                 # Entry/Exit Analysis
                 if 'entry_exit_analysis' in analysis:
@@ -359,13 +375,18 @@ class PhoenixCLI:
                 
                 # Strategy recommendation
                 print(f"   Strategy: {strategy['recommendation']} ({strategy.get('confidence', 'MEDIUM')})")
+                
+                # Analysis tier
+                tier = analysis.get('analysis_tier', 'INITIAL')
+                tokens_scanned = analysis.get('tokens_scanned', 0)
+                print(f"   Analysis Tier: {tier} ({tokens_scanned} tokens scanned)")
         
         # Category breakdown
         print(f"\n📂 WALLET CATEGORIES:")
         print(f"   🎯 Snipers (< 1 min hold): {len(results.get('snipers', []))}")
         print(f"   ⚡ Flippers (1-10 min): {len(results.get('flippers', []))}")
         print(f"   📊 Scalpers (10-60 min): {len(results.get('scalpers', []))}")
-        print(f"   💎 Gem Hunters (2x+ focus): {len(results.get('gem_hunters', []))}")
+        print(f"   💎 5x+ Gem Hunters: {len(results.get('gem_hunters', []))}")
         print(f"   📈 Swing Traders (1-24h): {len(results.get('swing_traders', []))}")
         print(f"   🏆 Position Traders (24h+): {len(results.get('position_traders', []))}")
         print(f"   ✅ Consistent: {len(results.get('consistent', []))}")
@@ -378,9 +399,9 @@ class PhoenixCLI:
         if total_analyzed > 0:
             gem_hunters = len(results.get('gem_hunters', []))
             flippers = len(results.get('flippers', []))
-            print(f"   • {(gem_hunters/total_analyzed*100):.1f}% are gem hunters (good for 2x+ trades)")
+            print(f"   • {(gem_hunters/total_analyzed*100):.1f}% are 5x+ gem hunters")
             print(f"   • {(flippers/total_analyzed*100):.1f}% are quick flippers (exit within 10 min)")
-            print(f"   • Average first take profit across all: varies by type")
+            print(f"   • Distribution now factors into wallet scoring")
             print(f"   • Most common market cap range: $50K - $500K")
     
     def _export_memecoin_wallet_csv(self, results: Dict[str, Any], output_file: str) -> None:
@@ -399,17 +420,18 @@ class PhoenixCLI:
                     'rank', 'wallet_address', 'composite_score', 'score_rating',
                     'wallet_type', 'total_trades', 'win_rate', 'profit_factor',
                     'net_profit_usd', 'avg_roi', 'median_roi', 'max_roi',
-                    'avg_hold_time_minutes', 'avg_hold_time_seconds',
-                    'total_tokens_traded',
+                    'avg_hold_time_minutes', 'total_tokens_traded',
                     'distribution_500_plus_%', 'distribution_200_500_%',
                     'distribution_0_200_%', 'distribution_neg50_0_%',
                     'distribution_below_neg50_%',
-                    'gem_rate_2x_plus_%', 'avg_buy_market_cap_usd',
+                    'gem_rate_5x_plus_%', 'gem_rate_2x_plus_%',
+                    'avg_buy_market_cap_usd',
                     'avg_buy_amount_usd', 'avg_first_take_profit_percent',
                     'entry_exit_pattern', 'entry_quality', 'exit_quality',
                     'missed_gains_percent', 'early_exit_rate', 'avg_exit_roi',
                     'hold_pattern', 'strategy_recommendation', 'confidence',
-                    'filter_market_cap_min', 'filter_market_cap_max'
+                    'filter_market_cap_min', 'filter_market_cap_max',
+                    'analysis_tier', 'tokens_scanned'
                 ]
                 
                 writer = csv.DictWriter(f, fieldnames=fieldnames)
@@ -451,13 +473,13 @@ class PhoenixCLI:
                         'median_roi': round(metrics.get('median_roi', 0), 2),
                         'max_roi': round(metrics['max_roi'], 2),
                         'avg_hold_time_minutes': round(metrics.get('avg_hold_time_minutes', 0), 2),
-                        'avg_hold_time_seconds': round(metrics.get('avg_hold_time_seconds', 0), 2),
                         'total_tokens_traded': metrics['total_tokens_traded'],
                         'distribution_500_plus_%': metrics.get('distribution_500_plus_%', 0),
                         'distribution_200_500_%': metrics.get('distribution_200_500_%', 0),
                         'distribution_0_200_%': metrics.get('distribution_0_200_%', 0),
                         'distribution_neg50_0_%': metrics.get('distribution_neg50_0_%', 0),
                         'distribution_below_neg50_%': metrics.get('distribution_below_neg50_%', 0),
+                        'gem_rate_5x_plus_%': metrics.get('gem_rate_5x_plus', 0),
                         'gem_rate_2x_plus_%': metrics.get('gem_rate_2x_plus', 0),
                         'avg_buy_market_cap_usd': metrics.get('avg_buy_market_cap_usd', 0),
                         'avg_buy_amount_usd': metrics.get('avg_buy_amount_usd', 0),
@@ -465,7 +487,9 @@ class PhoenixCLI:
                         'strategy_recommendation': strategy.get('recommendation', ''),
                         'confidence': strategy.get('confidence', ''),
                         'filter_market_cap_min': strategy.get('filter_market_cap_min', 0),
-                        'filter_market_cap_max': strategy.get('filter_market_cap_max', 0)
+                        'filter_market_cap_max': strategy.get('filter_market_cap_max', 0),
+                        'analysis_tier': analysis.get('analysis_tier', 'INITIAL'),
+                        'tokens_scanned': analysis.get('tokens_scanned', 0)
                     }
                     
                     # Add entry/exit analysis if available
@@ -489,7 +513,7 @@ class PhoenixCLI:
                     
                     writer.writerow(row)
             
-            logger.info(f"Exported memecoin wallet analysis to {output_file}")
+            logger.info(f"Exported 5x+ gem hunter analysis to {output_file}")
             
         except Exception as e:
             logger.error(f"Error exporting CSV: {str(e)}")
@@ -581,7 +605,7 @@ class PhoenixCLI:
             print(f"❌ Solana RPC: Error - {str(e)}")
         
         # Summary
-        print(f"\n📊 MEMECOIN ANALYSIS FEATURES:")
+        print(f"\n📊 5x+ GEM HUNTER FEATURES:")
         birdeye_ok = bool(self.config.get("birdeye_api_key"))
         helius_ok = bool(self.config.get("helius_api_key"))
         telegram_ok = bool(self.config.get("telegram_api_id") and self.config.get("telegram_api_hash"))
@@ -593,11 +617,13 @@ class PhoenixCLI:
         print(f"   🎯 Market Cap Tracking: {'✅ Active' if birdeye_ok else '❌ Need Birdeye'}")
         print(f"   ⚡ Bundle Detection: {'✅ Active' if cielo_ok else '❌ Need Cielo'}")
         print(f"   📊 Entry/Exit Quality: {'✅ Full Analysis' if (birdeye_ok and helius_ok) else '⚠️ Basic Only'}")
+        print(f"   🚀 5x+ Gem Detection: {'✅ Active' if cielo_ok else '❌ Need Cielo'}")
+        print(f"   ⚙️ Tiered Analysis: {'✅ Active (API efficiency)' if cielo_ok else '❌ Need Cielo'}")
         
         if birdeye_ok and helius_ok and telegram_ok and cielo_ok:
-            print(f"\n🎉 ALL SYSTEMS GO! Full memecoin analysis capabilities available.")
+            print(f"\n🎉 ALL SYSTEMS GO! Full 5x+ gem hunter capabilities available.")
         else:
-            print(f"\n⚠️ Configure missing APIs to enable all memecoin features.")
+            print(f"\n⚠️ Configure missing APIs to enable all 5x+ gem hunter features.")
         
         input("\nPress Enter to continue...")
     
@@ -747,20 +773,22 @@ class PhoenixCLI:
         telegram_ok = bool(self.config.get("telegram_api_id") and self.config.get("telegram_api_hash"))
         cielo_ok = bool(self.config.get("cielo_api_key"))
         
-        print(f"\n🎯 MEMECOIN ANALYSIS FEATURES:")
+        print(f"\n🎯 5x+ GEM HUNTER FEATURES:")
         print(f"   Token Price Analysis: {'✅ Full' if (birdeye_ok and helius_ok) else '⚠️ Limited' if birdeye_ok else '❌ Not Available'}")
         print(f"   Wallet Analysis: {'✅ Available' if cielo_ok else '❌ Not Available'}")
         print(f"   Entry/Exit Quality: {'✅ Full' if (birdeye_ok and helius_ok) else '⚠️ Basic' if birdeye_ok else '❌ Not Available'}")
         print(f"   Market Cap Tracking: {'✅ Active' if birdeye_ok else '❌ Not Available'}")
         print(f"   Bundle Detection: {'✅ Active' if cielo_ok else '❌ Not Available'}")
         print(f"   First TP Analysis: {'✅ Active' if cielo_ok else '❌ Not Available'}")
+        print(f"   5x+ Gem Detection: {'✅ Active' if cielo_ok else '❌ Not Available'}")
+        print(f"   Tiered Analysis: {'✅ Active' if cielo_ok else '❌ Not Available'}")
         
         input("\nPress Enter to continue...")
     
     def _show_help(self):
         """Show help and examples."""
         print("\n" + "="*80)
-        print("    📖 HELP & EXAMPLES - Phoenix Memecoin Edition")
+        print("    📖 HELP & EXAMPLES - Phoenix 5x+ Gem Hunter Edition")
         print("="*80)
         
         print("\n🚀 GETTING STARTED:")
@@ -770,28 +798,33 @@ class PhoenixCLI:
         print("   - Cielo Finance API: https://cielo.finance (wallets)")
         print("   - Telegram API: https://my.telegram.org (SpyDefi)")
         
-        print("\n🎯 MEMECOIN WALLET TYPES:")
+        print("\n🎯 5x+ GEM HUNTER WALLET TYPES:")
         print("• Sniper: Buys at launch, holds < 1 minute")
         print("• Flipper: Quick trades, holds 1-10 minutes")
         print("• Scalper: Holds 10-60 minutes, takes 20-50% profits")
-        print("• Gem Hunter: Targets 2x+ gains (not 10x)")
+        print("• Gem Hunter: Targets 5x+ gains (500%+) - NEW CRITERIA!")
         print("• Swing Trader: Holds 1-24 hours")
         print("• Position Trader: Holds 24+ hours")
         
         print("\n💯 KEY METRICS EXPLAINED:")
-        print("• Composite Score: 0-100 performance rating")
-        print("• Gem Rate: % of trades that hit 2x+")
+        print("• Composite Score: 0-100 with distribution factored in")
+        print("• 5x+ Gem Rate: % of trades that hit 500%+ (5x)")
         print("• Avg First TP: Average profit % at first exit")
         print("• Entry/Exit Quality: Based on timing relative to price moves")
         print("• Market Cap Filter: Optimal range for copying trades")
         
-        print("\n📊 DISTRIBUTION PERCENTAGES:")
-        print("All distributions now sum to 100%:")
-        print("• 500%+ (5x+)")
-        print("• 200-500% (2x-5x)")
-        print("• 0-200% (profitable <2x)")
-        print("• -50% to 0% (small losses)")
-        print("• Below -50% (big losses)")
+        print("\n📊 DISTRIBUTION SCORING (NEW):")
+        print("Distribution now affects composite score:")
+        print("• High 5x+ rate (10%+) = bonus points")
+        print("• Good 2x-5x rate = bonus points")
+        print("• Low catastrophic losses = bonus points")
+        print("• Distribution must sum to 100%")
+        
+        print("\n⚙️ TIERED ANALYSIS (NEW):")
+        print("Reduces API calls through smart scanning:")
+        print("• Initial scan: 5 tokens per wallet")
+        print("• Deep scan: 20 tokens for promising wallets")
+        print("• Promising = Score 50+ or Win rate 40%+")
         
         print("\n⚠️ BUNDLE DETECTION:")
         print("Wallets flagged as potential bundlers show:")
@@ -800,18 +833,19 @@ class PhoenixCLI:
         print("• Similar sell patterns")
         
         print("\n📂 OUTPUT FILES:")
-        print("wallet_analysis_memecoin_[timestamp].csv includes:")
-        print("• All metrics properly calculated")
+        print("wallet_analysis_5x_gem_[timestamp].csv includes:")
+        print("• All metrics with 5x+ gem rate")
         print("• Market cap filters for each wallet")
         print("• Entry/exit quality assessment")
-        print("• First take profit percentages")
+        print("• Distribution percentages")
         print("• Bundle detection warnings")
+        print("• Analysis tier (INITIAL/DEEP)")
         
         print("\n🔧 COMMAND LINE USAGE:")
         print("# Configure all APIs")
         print("python phoenix.py configure --birdeye-api-key KEY --helius-api-key KEY --cielo-api-key KEY")
         print()
-        print("# Analyze wallets (memecoin edition)")
+        print("# Analyze wallets (5x+ gem hunter edition)")
         print("python phoenix.py wallet --days 30")
         
         input("\nPress Enter to continue...")
@@ -819,8 +853,8 @@ class PhoenixCLI:
     def _fixed_enhanced_telegram_analysis(self):
         """Run FIXED enhanced Telegram analysis with proper pullback % and time-to-2x metrics."""
         print("\n" + "="*80)
-        print("    🎯 ENHANCED SPYDEFI TELEGRAM ANALYSIS")
-        print("    📉 Max Pullback % + ⏱️ Time to 2x Analysis")
+        print("    🎯 ENHANCED SPYDEFI TELEGRAM ANALYSIS (5x+ FOCUS)")
+        print("    📉 Max Pullback % + ⏱️ Time to 5x Analysis")
         print("="*80)
         
         # Check API configuration first
@@ -842,7 +876,7 @@ class PhoenixCLI:
         print("📊 Excel export: Enabled")
         print("🎯 Enhanced features:")
         print("   • ✅ Max pullback % for stop loss calculation")
-        print("   • ✅ Average time to reach 2x for holding strategy")
+        print("   • ✅ Average time to reach 5x for gem hunting")
         print("   • ✅ Enhanced contract address detection")
         print("   • ✅ Detailed price analysis using Birdeye API")
         print("\nProcessing...")
@@ -988,19 +1022,19 @@ class PhoenixCLI:
                         enhanced_kol_data = {
                             "channel_id": performance.get('channel_id', ''),
                             "total_calls": performance.get('tokens_mentioned', 0),
-                            "success_rate": performance.get('success_rate_2x', 0),
+                            "success_rate": performance.get('success_rate_5x', 0),
                             "avg_roi": performance.get('avg_ath_roi', 0),
                             "avg_max_roi": performance.get('avg_ath_roi', 0),
                             "confidence_level": performance.get('composite_score', 0),
                             "avg_max_pullback_percent": performance.get('avg_max_pullback_percent', 0),
-                            "avg_time_to_2x_formatted": performance.get('avg_time_to_2x_formatted', 'N/A'),
+                            "avg_time_to_5x_formatted": performance.get('avg_time_to_5x_formatted', 'N/A'),
                             "detailed_analysis_count": performance.get('detailed_analysis_count', 0),
                             "strategy": {
                                 "recommendation": "ENHANCED_ANALYSIS",
                                 "entry_type": "IMMEDIATE",
-                                "take_profit_1": 50,
-                                "take_profit_2": 100,
-                                "take_profit_3": 200,
+                                "take_profit_1": 100,
+                                "take_profit_2": 300,
+                                "take_profit_3": 500,
                                 "stop_loss": -(performance.get('avg_max_pullback_percent', 25) + 10)
                             }
                         }
