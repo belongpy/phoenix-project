@@ -215,7 +215,7 @@ class WalletAnalyzer:
         with self._cache_lock:
             self._rpc_cache[cache_key] = (data, time.time())
     
-    def _make_rpc_batch_call(self, requests: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    def _make_rpc_batch_call(self, batch_requests: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         """Make batch RPC call to Solana node."""
         self._rate_limiter.wait()
         self.api_call_stats["rpc"] += 1
@@ -223,7 +223,7 @@ class WalletAnalyzer:
         try:
             response = requests.post(
                 self.rpc_url,
-                json=requests,
+                json=batch_requests,
                 headers={"Content-Type": "application/json"},
                 timeout=self.RPC_TIMEOUT
             )
