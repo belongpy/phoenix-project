@@ -8,6 +8,7 @@ MAJOR UPDATES:
 - Reduced timeouts and better error handling
 - Smart batching to prevent rate limits
 - Direct RPC pool queries for entry prices
+- Proper CSV export functionality
 """
 
 import asyncio
@@ -69,7 +70,7 @@ class TelegramScraper:
     DEEP_ANALYSIS_CALLS = 20
     DEEP_ANALYSIS_THRESHOLD = 0.40  # 40% 2x success rate triggers deep analysis
     
-    # Performance constants - UPDATED
+    # Performance constants - UPDATED WITH FIXES
     DEFAULT_MESSAGE_LIMIT = 500
     PROGRESS_INTERVAL = 100
     SPYDEFI_TIMEOUT = 60  # seconds
@@ -899,13 +900,18 @@ class TelegramScraper:
         return self._generate_error_result("Analysis timeout - partial results not available")
     
     async def export_spydefi_analysis(self, analysis_results: Dict[str, Any], output_file: str = "spydefi_analysis_2x.csv"):
-        """Export the SpyDefi analysis results."""
+        """Export the SpyDefi analysis results to CSV with proper formatting."""
         try:
             ranked_kols = analysis_results.get('ranked_kols', {})
             
             if not ranked_kols:
                 logger.warning("No KOL data to export")
                 return
+            
+            # Ensure output directory exists
+            output_dir = os.path.dirname(output_file)
+            if output_dir and not os.path.exists(output_dir):
+                os.makedirs(output_dir)
             
             # Prepare CSV data
             csv_data = []
@@ -933,6 +939,7 @@ class TelegramScraper:
                     writer.writerows(csv_data)
             
             logger.info(f"✅ Exported {len(csv_data)} KOLs to {output_file}")
+            print(f"📄 CSV export complete: {output_file}")
             
             # Export summary
             summary_file = output_file.replace('.csv', '_summary.txt')
@@ -950,6 +957,8 @@ class TelegramScraper:
                 f.write(f"Birdeye Calls: {api_stats.get('birdeye', 0)}\n")
                 f.write(f"Helius Calls: {api_stats.get('helius', 0)}\n")
                 f.write(f"RPC Calls: {api_stats.get('rpc', 0)}\n")
+                f.write(f"Tokens Cached: {api_stats.get('tokens_cached', 0)}\n")
+                f.write(f"Price Discovery Success Rate: {api_stats.get('price_discovery_successes', 0)}/{api_stats.get('price_discovery_attempts', 0)}\n")
                 
                 # Top performers
                 f.write("\nTOP 10 KOLS:\n")
@@ -960,12 +969,16 @@ class TelegramScraper:
                     f.write(f"\n{i}. @{kol}\n")
                     f.write(f"   Composite Score: {data.get('composite_score', 0):.1f}\n")
                     f.write(f"   2x Success Rate: {data.get('success_rate_2x', 0):.1f}%\n")
+                    f.write(f"   Tokens Analyzed: {data.get('tokens_mentioned', 0)}\n")
+                    f.write(f"   2x Tokens: {data.get('tokens_2x_plus', 0)}\n")
                     f.write(f"   Avg ATH ROI: {data.get('avg_ath_roi', 0):.1f}%\n")
             
             logger.info(f"✅ Exported summary to {summary_file}")
+            print(f"📄 Summary export complete: {summary_file}")
             
         except Exception as e:
             logger.error(f"Error exporting analysis: {str(e)}")
+            print(f"❌ Export error: {str(e)}")
     
     def clear_cache(self):
         """Clear all cached data."""
