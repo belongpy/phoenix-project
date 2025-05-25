@@ -8252,3 +8252,659 @@ TypeError: '>=' not supported between instances of 'NoneType' and 'int'
 2025-05-25 09:49:35,711 - phoenix - INFO - 📞 Disconnected from Telegram
 2025-05-25 09:49:35,711 - phoenix - ERROR - ❌ Analysis failed: Analysis timeout after 300 seconds
 2025-05-25 09:49:35,721 - phoenix - INFO - 📁 Enhanced telegram analysis completed. Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv
+2025-05-25 10:18:45,824 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-25 10:18:45,824 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-25 10:18:46,152 - phoenix - INFO - ✅ Imported telegram module
+2025-05-25 10:18:46,152 - phoenix - INFO - 🚀 Starting enhanced SpyDefi analysis for the past 24 hours.
+2025-05-25 10:18:46,152 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv
+2025-05-25 10:18:46,152 - phoenix - INFO - 🔄 Force refresh enabled - ignoring cache
+2025-05-25 10:18:46,152 - phoenix - INFO - ✅ Birdeye API initialized successfully
+2025-05-25 10:18:46,152 - phoenix - INFO - ✅ Helius API initialized successfully for pump.fun tokens
+2025-05-25 10:18:46,152 - phoenix - INFO - ✅ Telegram scraper initialized successfully
+2025-05-25 10:18:46,152 - phoenix - INFO - 🎯 SpyDefi channel detected. Running enhanced analysis...
+2025-05-25 10:18:46,152 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-25 10:18:46,152 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-25 10:18:46,277 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-25 10:18:47,050 - phoenix.telegram - INFO - Connected to Telegram
+2025-05-25 10:18:47,050 - phoenix - INFO - 📞 Connected to Telegram
+2025-05-25 10:18:47,066 - phoenix.telegram - INFO - 🚀 STARTING OPTIMIZED SPYDEFI ANALYSIS (2x Hot Streak Focus)
+2025-05-25 10:18:47,066 - phoenix.telegram - INFO - 🎯 Phase 1: Discovering active KOLs from SpyDefi...
+2025-05-25 10:18:47,066 - phoenix.telegram - INFO - ✅ Birdeye API available for mainstream tokens
+2025-05-25 10:18:47,066 - phoenix.telegram - INFO - ✅ Helius API available for pump.fun tokens
+2025-05-25 10:18:47,066 - phoenix.telegram - INFO - 🔍 Scanning SpyDefi for last 6 hours...
+2025-05-25 10:18:47,193 - phoenix.telegram - INFO - Scraping up to 1000 messages from SpyDefi (ID: 1960616143)
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - Finished retrieving 841 messages from 1960616143
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - ✅ Found 187 unique KOLs (+187 new) from 841 messages
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 🎯 Sufficient KOLs found (187), stopping discovery
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - ✅ Saved SpyDefi cache with 187 KOLs
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - ✅ Found 187 active KOLs from SpyDefi
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 🎯 Phase 2: Initial analysis of KOLs (last 5 calls each)...
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 📊 Analyzing top 30 KOLs for initial screening
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @avrugs (initial analysis)
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @dextradegems (initial analysis)
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @RimberioGamble (initial analysis)
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @GemsmineEth (initial analysis)
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @Zen_call (initial analysis)
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @Insider_ECA (initial analysis)
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @bossygambles (initial analysis)
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @ChapoInsider (initial analysis)
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @RedBullCallz (initial analysis)
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @TopCallersChannel (initial analysis)
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @Maestrosdegen (initial analysis)
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @MitchGemsGambles (initial analysis)
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @LoomRipple (initial analysis)
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @WitchLabs (initial analysis)
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @hulkgemscalls_real (initial analysis)
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @FrostScribe (initial analysis)
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @Mrbigbagcalls (initial analysis)
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @PEPE_Calls28 (initial analysis)
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @chiggajogambles (initial analysis)
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @mewgambles (initial analysis)
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @DONALD_CALL (initial analysis)
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @BreezeTrack (initial analysis)
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @CryptachCalls (initial analysis)
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @JuLzLabs (initial analysis)
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @bidaopd (initial analysis)
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @InsiderSolanaPrintors (initial analysis)
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @PEYOSDEGENHUB (initial analysis)
+2025-05-25 10:18:49,933 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @michiosuzukiofsatoshicalls (initial analysis)
+2025-05-25 10:18:49,949 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @AZcalls (initial analysis)
+2025-05-25 10:18:49,949 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @FrenzGems (initial analysis)
+2025-05-25 10:18:50,080 - phoenix.telegram - INFO - Scraping up to 500 messages from Rimberio Gamble (ID: 1771818884)
+2025-05-25 10:18:50,080 - phoenix.telegram - INFO - Scraping up to 500 messages from DeXGems (ID: 1268629886)
+2025-05-25 10:18:50,080 - phoenix.telegram - INFO - Scraping up to 500 messages from TokyoHunter Calls (ID: 1691606433)
+2025-05-25 10:18:50,366 - phoenix.telegram - INFO - Finished retrieving 22 messages from 1771818884
+2025-05-25 10:18:50,366 - phoenix.telegram - INFO - 📨 Found 22 messages in @RimberioGamble's channel
+2025-05-25 10:18:50,366 - phoenix.telegram - INFO - 🎯 Found 4 unique token calls for @RimberioGamble
+2025-05-25 10:18:50,366 - phoenix.telegram - INFO - 📊 Analyzing call 1/4 for @RimberioGamble
+2025-05-25 10:18:50,574 - phoenix.telegram - INFO - 📊 Analyzing call 2/4 for @RimberioGamble
+2025-05-25 10:18:50,574 - phoenix.telegram - INFO - Finished retrieving 41 messages from 1691606433
+2025-05-25 10:18:50,574 - phoenix.telegram - INFO - 📨 Found 41 messages in @avrugs's channel
+2025-05-25 10:18:50,589 - phoenix.telegram - INFO - 🎯 Found 5 unique token calls for @avrugs
+2025-05-25 10:18:50,589 - phoenix.telegram - INFO - 📊 Analyzing call 1/5 for @avrugs
+2025-05-25 10:18:50,589 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 3xppG9kV9Y4TGxfAwU2vwW7HhZvKfQnpGMBJv1jipump
+2025-05-25 10:18:50,589 - phoenix.helius - INFO - Analyzing swaps for token 3xppG9kV9Y4TGxfAwU2vwW7HhZvKfQnpGMBJv1jipump
+2025-05-25 10:18:50,589 - phoenix.helius - INFO - Using pump.fun specific analysis for 3xppG9kV9Y4TGxfAwU2vwW7HhZvKfQnpGMBJv1jipump
+2025-05-25 10:18:50,589 - phoenix.telegram - WARNING - No swap data available for pump token 3xppG9kV9Y4TGxfAwU2vwW7HhZvKfQnpGMBJv1jipump
+2025-05-25 10:18:50,589 - phoenix.telegram - INFO - Helius failed for 3xppG9kV9Y4TGxfAwU2vwW7HhZvKfQnpGMBJv1jipump, trying RPC fallback
+2025-05-25 10:18:50,589 - phoenix.telegram - INFO - Finished retrieving 36 messages from 1268629886
+2025-05-25 10:18:50,589 - phoenix.telegram - INFO - 📨 Found 36 messages in @dextradegems's channel
+2025-05-25 10:18:50,589 - phoenix.telegram - INFO - 🎯 Found 5 unique token calls for @dextradegems
+2025-05-25 10:18:50,589 - phoenix.telegram - INFO - 📊 Analyzing call 1/5 for @dextradegems
+2025-05-25 10:18:50,589 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for X2Uw5C5HmSgCrJ9j2U7umjBhFq8tR3ov7JF5yyfpump
+2025-05-25 10:18:50,589 - phoenix.helius - INFO - Analyzing swaps for token X2Uw5C5HmSgCrJ9j2U7umjBhFq8tR3ov7JF5yyfpump
+2025-05-25 10:18:50,589 - phoenix.helius - INFO - Using pump.fun specific analysis for X2Uw5C5HmSgCrJ9j2U7umjBhFq8tR3ov7JF5yyfpump
+2025-05-25 10:18:50,589 - phoenix.telegram - WARNING - No swap data available for pump token X2Uw5C5HmSgCrJ9j2U7umjBhFq8tR3ov7JF5yyfpump
+2025-05-25 10:18:50,589 - phoenix.telegram - INFO - Helius failed for X2Uw5C5HmSgCrJ9j2U7umjBhFq8tR3ov7JF5yyfpump, trying RPC fallback
+2025-05-25 10:18:50,605 - phoenix.telegram - INFO - 📊 Analyzing call 2/5 for @dextradegems
+2025-05-25 10:18:50,605 - phoenix.telegram - INFO - 📊 Analyzing call 2/5 for @avrugs
+2025-05-25 10:18:50,699 - phoenix.telegram - INFO - Scraping up to 500 messages from Gems Mine(Gamble) (ID: 1500214409)
+2025-05-25 10:18:50,715 - phoenix.telegram - INFO - Scraping up to 500 messages from OxyZen Calls (ID: 2177594166)
+2025-05-25 10:18:50,715 - phoenix.telegram - INFO - Scraping up to 500 messages from Bobby Degen Calls (ID: 1851567457)
+2025-05-25 10:18:51,014 - phoenix.telegram - INFO - Finished retrieving 14 messages from 1500214409
+2025-05-25 10:18:51,014 - phoenix.telegram - INFO - 📨 Found 14 messages in @GemsmineEth's channel
+2025-05-25 10:18:51,014 - phoenix.telegram - INFO - 🎯 Found 4 unique token calls for @GemsmineEth
+2025-05-25 10:18:51,014 - phoenix.telegram - INFO - 📊 Analyzing call 1/4 for @GemsmineEth
+2025-05-25 10:18:51,014 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 10:18:51,014 - phoenix.helius - INFO - Analyzing swaps for token Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 10:18:51,014 - phoenix.helius - INFO - Using pump.fun specific analysis for Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 10:18:51,014 - phoenix.telegram - WARNING - No swap data available for pump token Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 10:18:51,014 - phoenix.telegram - INFO - Helius failed for Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump, trying RPC fallback
+2025-05-25 10:18:51,030 - phoenix.telegram - INFO - 📊 Analyzing call 2/4 for @GemsmineEth
+2025-05-25 10:18:51,046 - phoenix.telegram - INFO - Finished retrieving 26 messages from 1851567457
+2025-05-25 10:18:51,046 - phoenix.telegram - INFO - 📨 Found 26 messages in @Insider_ECA's channel
+2025-05-25 10:18:51,046 - phoenix.telegram - INFO - 🎯 Found 5 unique token calls for @Insider_ECA
+2025-05-25 10:18:51,046 - phoenix.telegram - INFO - 📊 Analyzing call 1/5 for @Insider_ECA
+2025-05-25 10:18:51,046 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for G4PLXS424HxKWoehEUzyLsR8QhHSTVuLgFbHUh8spump
+2025-05-25 10:18:51,046 - phoenix.helius - INFO - Analyzing swaps for token G4PLXS424HxKWoehEUzyLsR8QhHSTVuLgFbHUh8spump
+2025-05-25 10:18:51,046 - phoenix.helius - INFO - Using pump.fun specific analysis for G4PLXS424HxKWoehEUzyLsR8QhHSTVuLgFbHUh8spump
+2025-05-25 10:18:51,046 - phoenix.telegram - WARNING - No swap data available for pump token G4PLXS424HxKWoehEUzyLsR8QhHSTVuLgFbHUh8spump
+2025-05-25 10:18:51,046 - phoenix.telegram - INFO - Helius failed for G4PLXS424HxKWoehEUzyLsR8QhHSTVuLgFbHUh8spump, trying RPC fallback
+2025-05-25 10:18:51,062 - phoenix.telegram - INFO - 📊 Analyzing call 2/5 for @Insider_ECA
+2025-05-25 10:18:51,062 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 10:18:51,062 - phoenix.helius - INFO - Analyzing swaps for token Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 10:18:51,062 - phoenix.helius - INFO - Using pump.fun specific analysis for Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 10:18:51,062 - phoenix.telegram - WARNING - No swap data available for pump token Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 10:18:51,062 - phoenix.telegram - INFO - Helius failed for Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump, trying RPC fallback
+2025-05-25 10:18:51,078 - phoenix.telegram - INFO - 📊 Analyzing call 3/4 for @RimberioGamble
+2025-05-25 10:18:51,293 - phoenix.telegram - INFO - 📊 Analyzing call 3/5 for @dextradegems
+2025-05-25 10:18:51,293 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 9hgemospDxy8qeuGu4mTD3jDyzTN6EVWix8XGJQApump
+2025-05-25 10:18:51,293 - phoenix.helius - INFO - Analyzing swaps for token 9hgemospDxy8qeuGu4mTD3jDyzTN6EVWix8XGJQApump
+2025-05-25 10:18:51,293 - phoenix.helius - INFO - Using pump.fun specific analysis for 9hgemospDxy8qeuGu4mTD3jDyzTN6EVWix8XGJQApump
+2025-05-25 10:18:51,293 - phoenix.telegram - WARNING - No swap data available for pump token 9hgemospDxy8qeuGu4mTD3jDyzTN6EVWix8XGJQApump
+2025-05-25 10:18:51,300 - phoenix.telegram - INFO - Helius failed for 9hgemospDxy8qeuGu4mTD3jDyzTN6EVWix8XGJQApump, trying RPC fallback
+2025-05-25 10:18:51,300 - phoenix.telegram - INFO - Finished retrieving 52 messages from 2177594166
+2025-05-25 10:18:51,300 - phoenix.telegram - INFO - 📨 Found 52 messages in @Zen_call's channel
+2025-05-25 10:18:51,300 - phoenix.telegram - INFO - 🎯 Found 5 unique token calls for @Zen_call
+2025-05-25 10:18:51,300 - phoenix.telegram - INFO - 📊 Analyzing call 1/5 for @Zen_call
+2025-05-25 10:18:51,300 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for GA3f16j97uiNS7ygjzSVDEq5VvKS1GNWgCauMGsYpump
+2025-05-25 10:18:51,300 - phoenix.helius - INFO - Analyzing swaps for token GA3f16j97uiNS7ygjzSVDEq5VvKS1GNWgCauMGsYpump
+2025-05-25 10:18:51,300 - phoenix.helius - INFO - Using pump.fun specific analysis for GA3f16j97uiNS7ygjzSVDEq5VvKS1GNWgCauMGsYpump
+2025-05-25 10:18:51,300 - phoenix.telegram - WARNING - No swap data available for pump token GA3f16j97uiNS7ygjzSVDEq5VvKS1GNWgCauMGsYpump
+2025-05-25 10:18:51,300 - phoenix.telegram - INFO - Helius failed for GA3f16j97uiNS7ygjzSVDEq5VvKS1GNWgCauMGsYpump, trying RPC fallback
+2025-05-25 10:18:51,300 - phoenix.telegram - INFO - Scraping up to 500 messages from Bossy Gambles 🎲 (ID: 1608644886)
+2025-05-25 10:18:51,300 - phoenix.telegram - INFO - Scraping up to 500 messages from ChapoTheCrypto (ID: 2300385026)
+2025-05-25 10:18:51,316 - phoenix.telegram - INFO - 📊 Analyzing call 2/5 for @Zen_call
+2025-05-25 10:18:51,316 - phoenix.telegram - INFO - 📊 Analyzing call 3/5 for @avrugs
+2025-05-25 10:18:51,434 - phoenix.telegram - INFO - Scraping up to 500 messages from Red Bull Callz - Cross Chain 🔥 (ID: 1862641859)
+2025-05-25 10:18:51,685 - phoenix.telegram - INFO - 📊 Analyzing call 3/4 for @GemsmineEth
+2025-05-25 10:18:51,845 - phoenix.telegram - INFO - 📊 Analyzing call 3/5 for @Insider_ECA
+2025-05-25 10:18:52,022 - phoenix.birdeye - WARNING - No price history available for 9a56aCDDuu6q2cwH6yAv4Swmx9xHGbN84yT74stRSELe
+2025-05-25 10:18:52,022 - phoenix.telegram - WARNING - No price history available for 9a56aCDDuu6q2cwH6yAv4Swmx9xHGbN84yT74stRSELe
+2025-05-25 10:18:52,022 - phoenix.telegram - INFO - Birdeye failed for 9a56aCDDuu6q2cwH6yAv4Swmx9xHGbN84yT74stRSELe, trying RPC fallback
+2025-05-25 10:18:52,053 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 9ihbizVx81PfJ428x4GUyCtVCeepDSU7QsqTERpxpump
+2025-05-25 10:18:52,053 - phoenix.helius - INFO - Analyzing swaps for token 9ihbizVx81PfJ428x4GUyCtVCeepDSU7QsqTERpxpump
+2025-05-25 10:18:52,053 - phoenix.helius - INFO - Using pump.fun specific analysis for 9ihbizVx81PfJ428x4GUyCtVCeepDSU7QsqTERpxpump
+2025-05-25 10:18:52,053 - phoenix.telegram - WARNING - No swap data available for pump token 9ihbizVx81PfJ428x4GUyCtVCeepDSU7QsqTERpxpump
+2025-05-25 10:18:52,053 - phoenix.telegram - INFO - Helius failed for 9ihbizVx81PfJ428x4GUyCtVCeepDSU7QsqTERpxpump, trying RPC fallback
+2025-05-25 10:18:52,053 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for GTGUTdfZsxP94LXiLSjL9E7CT2wevxEF7gBZkFeYpump
+2025-05-25 10:18:52,053 - phoenix.helius - INFO - Analyzing swaps for token GTGUTdfZsxP94LXiLSjL9E7CT2wevxEF7gBZkFeYpump
+2025-05-25 10:18:52,053 - phoenix.helius - INFO - Using pump.fun specific analysis for GTGUTdfZsxP94LXiLSjL9E7CT2wevxEF7gBZkFeYpump
+2025-05-25 10:18:52,053 - phoenix.telegram - WARNING - No swap data available for pump token GTGUTdfZsxP94LXiLSjL9E7CT2wevxEF7gBZkFeYpump
+2025-05-25 10:18:52,069 - phoenix.telegram - INFO - Helius failed for GTGUTdfZsxP94LXiLSjL9E7CT2wevxEF7gBZkFeYpump, trying RPC fallback
+2025-05-25 10:18:52,069 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 6hyCxZLN1jJmTxTUAoB4JqCoNMS917EtkrMJYHKNpump
+2025-05-25 10:18:52,069 - phoenix.helius - INFO - Analyzing swaps for token 6hyCxZLN1jJmTxTUAoB4JqCoNMS917EtkrMJYHKNpump
+2025-05-25 10:18:52,069 - phoenix.helius - INFO - Using pump.fun specific analysis for 6hyCxZLN1jJmTxTUAoB4JqCoNMS917EtkrMJYHKNpump
+2025-05-25 10:18:52,069 - phoenix.telegram - WARNING - No swap data available for pump token 6hyCxZLN1jJmTxTUAoB4JqCoNMS917EtkrMJYHKNpump
+2025-05-25 10:18:52,069 - phoenix.telegram - INFO - Helius failed for 6hyCxZLN1jJmTxTUAoB4JqCoNMS917EtkrMJYHKNpump, trying RPC fallback
+2025-05-25 10:18:52,148 - phoenix.telegram - ERROR - RPC error: {'code': -32602, 'message': 'Invalid param: not a Token mint'}
+2025-05-25 10:18:52,148 - phoenix.telegram - WARNING - Could not get token supply for 9a56aCDDuu6q2cwH6yAv4Swmx9xHGbN84yT74stRSELe
+2025-05-25 10:18:52,148 - phoenix.telegram - WARNING - Could not determine initial price for 9a56aCDDuu6q2cwH6yAv4Swmx9xHGbN84yT74stRSELe
+2025-05-25 10:18:52,148 - phoenix.telegram - INFO - 📊 Analyzing call 4/4 for @RimberioGamble
+2025-05-25 10:18:52,199 - phoenix.telegram - INFO - 📊 Analyzing call 4/5 for @dextradegems
+2025-05-25 10:18:52,199 - phoenix.telegram - INFO - 📊 Analyzing call 3/5 for @Zen_call
+2025-05-25 10:18:52,199 - phoenix.telegram - INFO - 📊 Analyzing call 4/5 for @avrugs
+2025-05-25 10:18:52,199 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for CLyhG2aVrnvbxXAXokBGvKjmNfsamPKtGW4Gu9AHpump
+2025-05-25 10:18:52,199 - phoenix.helius - INFO - Analyzing swaps for token CLyhG2aVrnvbxXAXokBGvKjmNfsamPKtGW4Gu9AHpump
+2025-05-25 10:18:52,199 - phoenix.helius - INFO - Using pump.fun specific analysis for CLyhG2aVrnvbxXAXokBGvKjmNfsamPKtGW4Gu9AHpump
+2025-05-25 10:18:52,199 - phoenix.telegram - WARNING - No swap data available for pump token CLyhG2aVrnvbxXAXokBGvKjmNfsamPKtGW4Gu9AHpump
+2025-05-25 10:18:52,199 - phoenix.telegram - INFO - Helius failed for CLyhG2aVrnvbxXAXokBGvKjmNfsamPKtGW4Gu9AHpump, trying RPC fallback
+2025-05-25 10:18:52,212 - phoenix.telegram - INFO - 📊 Analyzing call 4/4 for @GemsmineEth
+2025-05-25 10:18:52,275 - phoenix.telegram - INFO - Finished retrieving 55 messages from 2300385026
+2025-05-25 10:18:52,275 - phoenix.telegram - INFO - 📨 Found 55 messages in @ChapoInsider's channel
+2025-05-25 10:18:52,275 - phoenix.telegram - INFO - 🎯 Found 5 unique token calls for @ChapoInsider
+2025-05-25 10:18:52,275 - phoenix.telegram - INFO - 📊 Analyzing call 1/5 for @ChapoInsider
+2025-05-25 10:18:52,275 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 9XAvuGJT51uysYxppLLyeadgo5kE1Ad9V2yq9EKGpump
+2025-05-25 10:18:52,275 - phoenix.helius - INFO - Analyzing swaps for token 9XAvuGJT51uysYxppLLyeadgo5kE1Ad9V2yq9EKGpump
+2025-05-25 10:18:52,275 - phoenix.helius - INFO - Using pump.fun specific analysis for 9XAvuGJT51uysYxppLLyeadgo5kE1Ad9V2yq9EKGpump
+2025-05-25 10:18:52,275 - phoenix.telegram - WARNING - No swap data available for pump token 9XAvuGJT51uysYxppLLyeadgo5kE1Ad9V2yq9EKGpump
+2025-05-25 10:18:52,275 - phoenix.telegram - INFO - Helius failed for 9XAvuGJT51uysYxppLLyeadgo5kE1Ad9V2yq9EKGpump, trying RPC fallback
+2025-05-25 10:18:52,307 - phoenix.telegram - INFO - 📊 Analyzing call 2/5 for @ChapoInsider
+2025-05-25 10:18:52,324 - phoenix.telegram - INFO - Finished retrieving 80 messages from 1608644886
+2025-05-25 10:18:52,324 - phoenix.telegram - INFO - 📨 Found 80 messages in @bossygambles's channel
+2025-05-25 10:18:52,324 - phoenix.telegram - INFO - 🎯 Found 5 unique token calls for @bossygambles
+2025-05-25 10:18:52,324 - phoenix.telegram - INFO - 📊 Analyzing call 1/5 for @bossygambles
+2025-05-25 10:18:52,481 - phoenix.telegram - INFO - 📊 Analyzing call 2/5 for @bossygambles
+2025-05-25 10:18:52,481 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for AMNbh8v8iSDVB4kZCfmzuVD9YrNg657k7jNTMJBMpump
+2025-05-25 10:18:52,481 - phoenix.helius - INFO - Analyzing swaps for token AMNbh8v8iSDVB4kZCfmzuVD9YrNg657k7jNTMJBMpump
+2025-05-25 10:18:52,481 - phoenix.helius - INFO - Using pump.fun specific analysis for AMNbh8v8iSDVB4kZCfmzuVD9YrNg657k7jNTMJBMpump
+2025-05-25 10:18:52,481 - phoenix.telegram - WARNING - No swap data available for pump token AMNbh8v8iSDVB4kZCfmzuVD9YrNg657k7jNTMJBMpump
+2025-05-25 10:18:52,481 - phoenix.telegram - INFO - Helius failed for AMNbh8v8iSDVB4kZCfmzuVD9YrNg657k7jNTMJBMpump, trying RPC fallback
+2025-05-25 10:18:52,481 - phoenix.telegram - INFO - Finished retrieving 46 messages from 1862641859
+2025-05-25 10:18:52,481 - phoenix.telegram - INFO - 📨 Found 46 messages in @RedBullCallz's channel
+2025-05-25 10:18:52,481 - phoenix.telegram - INFO - 🎯 Found 1 unique token calls for @RedBullCallz
+2025-05-25 10:18:52,481 - phoenix.telegram - INFO - 📊 Analyzing call 1/1 for @RedBullCallz
+2025-05-25 10:18:52,481 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for Vy6JvipAXWeRJQsePYnQ4AWzTuGHxFG3e1UnaDopump
+2025-05-25 10:18:52,481 - phoenix.helius - INFO - Analyzing swaps for token Vy6JvipAXWeRJQsePYnQ4AWzTuGHxFG3e1UnaDopump
+2025-05-25 10:18:52,481 - phoenix.helius - INFO - Using pump.fun specific analysis for Vy6JvipAXWeRJQsePYnQ4AWzTuGHxFG3e1UnaDopump
+2025-05-25 10:18:52,481 - phoenix.telegram - WARNING - No swap data available for pump token Vy6JvipAXWeRJQsePYnQ4AWzTuGHxFG3e1UnaDopump
+2025-05-25 10:18:52,481 - phoenix.telegram - INFO - Helius failed for Vy6JvipAXWeRJQsePYnQ4AWzTuGHxFG3e1UnaDopump, trying RPC fallback
+2025-05-25 10:18:52,496 - phoenix.telegram - INFO - Scraping up to 500 messages from Top Callers-Channel 🤖 (ID: 1915321527)
+2025-05-25 10:18:52,496 - phoenix.telegram - INFO - 📊 Analyzing call 4/5 for @Insider_ECA
+2025-05-25 10:18:52,605 - phoenix.telegram - INFO - Scraping up to 500 messages from Maestros Gamble Degen Apes (ID: 1810124798)
+2025-05-25 10:18:52,794 - phoenix.birdeye - WARNING - No price history available for DjMPcFT2Yg8nhHvUM6dAqUtjVNgb9Ms8sCbJ2FtodxG9
+2025-05-25 10:18:52,794 - phoenix.telegram - WARNING - No price history available for DjMPcFT2Yg8nhHvUM6dAqUtjVNgb9Ms8sCbJ2FtodxG9
+2025-05-25 10:18:52,794 - phoenix.telegram - INFO - Birdeye failed for DjMPcFT2Yg8nhHvUM6dAqUtjVNgb9Ms8sCbJ2FtodxG9, trying RPC fallback
+2025-05-25 10:18:52,794 - phoenix.telegram - INFO - Scraping up to 500 messages from Mitch 🎲 Gambles (ID: 2015715777)
+2025-05-25 10:18:52,794 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 5NfgMnLmPHCpiiD9fk1zrNwBUndEUt58n3reG8r2pump
+2025-05-25 10:18:52,794 - phoenix.helius - INFO - Analyzing swaps for token 5NfgMnLmPHCpiiD9fk1zrNwBUndEUt58n3reG8r2pump
+2025-05-25 10:18:52,794 - phoenix.helius - INFO - Using pump.fun specific analysis for 5NfgMnLmPHCpiiD9fk1zrNwBUndEUt58n3reG8r2pump
+2025-05-25 10:18:52,810 - phoenix.telegram - WARNING - No swap data available for pump token 5NfgMnLmPHCpiiD9fk1zrNwBUndEUt58n3reG8r2pump
+2025-05-25 10:18:52,810 - phoenix.telegram - INFO - Helius failed for 5NfgMnLmPHCpiiD9fk1zrNwBUndEUt58n3reG8r2pump, trying RPC fallback
+2025-05-25 10:18:52,810 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for CGQzLofhtcLHR4uyGF2SVBEGiBiuw1s6fV6sZdWkpump
+2025-05-25 10:18:52,810 - phoenix.helius - INFO - Analyzing swaps for token CGQzLofhtcLHR4uyGF2SVBEGiBiuw1s6fV6sZdWkpump
+2025-05-25 10:18:52,810 - phoenix.helius - INFO - Using pump.fun specific analysis for CGQzLofhtcLHR4uyGF2SVBEGiBiuw1s6fV6sZdWkpump
+2025-05-25 10:18:52,810 - phoenix.telegram - WARNING - No swap data available for pump token CGQzLofhtcLHR4uyGF2SVBEGiBiuw1s6fV6sZdWkpump
+2025-05-25 10:18:52,810 - phoenix.telegram - INFO - Helius failed for CGQzLofhtcLHR4uyGF2SVBEGiBiuw1s6fV6sZdWkpump, trying RPC fallback
+2025-05-25 10:18:52,810 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for DdLxQnM1hQ7GsqPMzFBVyKiN1m9QFuEMsRNemWQqpump
+2025-05-25 10:18:52,810 - phoenix.helius - INFO - Analyzing swaps for token DdLxQnM1hQ7GsqPMzFBVyKiN1m9QFuEMsRNemWQqpump
+2025-05-25 10:18:52,810 - phoenix.helius - INFO - Using pump.fun specific analysis for DdLxQnM1hQ7GsqPMzFBVyKiN1m9QFuEMsRNemWQqpump
+2025-05-25 10:18:52,810 - phoenix.telegram - WARNING - No swap data available for pump token DdLxQnM1hQ7GsqPMzFBVyKiN1m9QFuEMsRNemWQqpump
+2025-05-25 10:18:52,810 - phoenix.telegram - INFO - Helius failed for DdLxQnM1hQ7GsqPMzFBVyKiN1m9QFuEMsRNemWQqpump, trying RPC fallback
+2025-05-25 10:18:52,810 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for F82BirtqKPbcPZuGY4VHv7EUFGhA8PzL3DRx5pcrpump
+2025-05-25 10:18:52,810 - phoenix.helius - INFO - Analyzing swaps for token F82BirtqKPbcPZuGY4VHv7EUFGhA8PzL3DRx5pcrpump
+2025-05-25 10:18:52,810 - phoenix.helius - INFO - Using pump.fun specific analysis for F82BirtqKPbcPZuGY4VHv7EUFGhA8PzL3DRx5pcrpump
+2025-05-25 10:18:52,810 - phoenix.telegram - WARNING - No swap data available for pump token F82BirtqKPbcPZuGY4VHv7EUFGhA8PzL3DRx5pcrpump
+2025-05-25 10:18:52,810 - phoenix.telegram - INFO - Helius failed for F82BirtqKPbcPZuGY4VHv7EUFGhA8PzL3DRx5pcrpump, trying RPC fallback
+2025-05-25 10:18:52,858 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for zUhQJEezevzboprwhD6vomXXpjPK9d47MtwW4Aqpump
+2025-05-25 10:18:52,858 - phoenix.helius - INFO - Analyzing swaps for token zUhQJEezevzboprwhD6vomXXpjPK9d47MtwW4Aqpump
+2025-05-25 10:18:52,858 - phoenix.helius - INFO - Using pump.fun specific analysis for zUhQJEezevzboprwhD6vomXXpjPK9d47MtwW4Aqpump
+2025-05-25 10:18:52,858 - phoenix.telegram - WARNING - No swap data available for pump token zUhQJEezevzboprwhD6vomXXpjPK9d47MtwW4Aqpump
+2025-05-25 10:18:52,858 - phoenix.telegram - INFO - Helius failed for zUhQJEezevzboprwhD6vomXXpjPK9d47MtwW4Aqpump, trying RPC fallback
+2025-05-25 10:18:52,858 - phoenix.telegram - INFO - 📊 Analyzing call 5/5 for @dextradegems
+2025-05-25 10:18:52,918 - phoenix.telegram - INFO - 📊 Analyzing call 5/5 for @avrugs
+2025-05-25 10:18:52,918 - phoenix.telegram - INFO - 📊 Analyzing call 4/5 for @Zen_call
+2025-05-25 10:18:52,918 - phoenix.telegram - ERROR - RPC error: {'code': -32602, 'message': 'Invalid param: not a Token mint'}
+2025-05-25 10:18:52,918 - phoenix.telegram - WARNING - Could not get token supply for DjMPcFT2Yg8nhHvUM6dAqUtjVNgb9Ms8sCbJ2FtodxG9
+2025-05-25 10:18:52,918 - phoenix.telegram - WARNING - Could not determine initial price for DjMPcFT2Yg8nhHvUM6dAqUtjVNgb9Ms8sCbJ2FtodxG9
+2025-05-25 10:18:52,953 - phoenix.telegram - INFO - 📊 Analyzing call 3/5 for @ChapoInsider
+2025-05-25 10:18:53,178 - phoenix.birdeye - WARNING - No price history available for FTVfrnFb48apSPKTBkB5cdTu6AiTRSX5wdV68uTrPiWu
+2025-05-25 10:18:53,178 - phoenix.telegram - WARNING - No price history available for FTVfrnFb48apSPKTBkB5cdTu6AiTRSX5wdV68uTrPiWu
+2025-05-25 10:18:53,178 - phoenix.telegram - INFO - Birdeye failed for FTVfrnFb48apSPKTBkB5cdTu6AiTRSX5wdV68uTrPiWu, trying RPC fallback
+2025-05-25 10:18:53,178 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for GdyWzsHdbFUokEEyi3phXZHL8xXMQqhkaMeWyGXrpump
+2025-05-25 10:18:53,178 - phoenix.helius - INFO - Analyzing swaps for token GdyWzsHdbFUokEEyi3phXZHL8xXMQqhkaMeWyGXrpump
+2025-05-25 10:18:53,178 - phoenix.helius - INFO - Using pump.fun specific analysis for GdyWzsHdbFUokEEyi3phXZHL8xXMQqhkaMeWyGXrpump
+2025-05-25 10:18:53,178 - phoenix.telegram - WARNING - No swap data available for pump token GdyWzsHdbFUokEEyi3phXZHL8xXMQqhkaMeWyGXrpump
+2025-05-25 10:18:53,178 - phoenix.telegram - INFO - Helius failed for GdyWzsHdbFUokEEyi3phXZHL8xXMQqhkaMeWyGXrpump, trying RPC fallback
+2025-05-25 10:18:53,178 - phoenix.telegram - INFO - Finished retrieving 57 messages from 1915321527
+2025-05-25 10:18:53,178 - phoenix.telegram - INFO - 📨 Found 57 messages in @TopCallersChannel's channel
+2025-05-25 10:18:53,178 - phoenix.telegram - INFO - 🎯 Found 0 unique token calls for @TopCallersChannel
+2025-05-25 10:18:53,178 - phoenix.telegram - INFO - Finished retrieving 60 messages from 1810124798
+2025-05-25 10:18:53,178 - phoenix.telegram - INFO - 📨 Found 60 messages in @Maestrosdegen's channel
+2025-05-25 10:18:53,178 - phoenix.telegram - INFO - 🎯 Found 5 unique token calls for @Maestrosdegen
+2025-05-25 10:18:53,178 - phoenix.telegram - INFO - 📊 Analyzing call 1/5 for @Maestrosdegen
+2025-05-25 10:18:53,372 - phoenix.telegram - INFO - 📊 Analyzing call 2/5 for @Maestrosdegen
+2025-05-25 10:18:53,372 - phoenix.telegram - INFO - 📊 Analyzing call 5/5 for @Insider_ECA
+2025-05-25 10:18:53,372 - phoenix.telegram - ERROR - RPC error: {'code': -32602, 'message': 'Invalid param: not a Token mint'}
+2025-05-25 10:18:53,372 - phoenix.telegram - WARNING - Could not get token supply for FTVfrnFb48apSPKTBkB5cdTu6AiTRSX5wdV68uTrPiWu
+2025-05-25 10:18:53,372 - phoenix.telegram - WARNING - Could not determine initial price for FTVfrnFb48apSPKTBkB5cdTu6AiTRSX5wdV68uTrPiWu
+2025-05-25 10:18:53,372 - phoenix.telegram - INFO - 📊 Analyzing call 3/5 for @bossygambles
+2025-05-25 10:18:53,372 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for Cu39JF2kZZn8wYPd5wTKfCSnDSCnv2k43kNTvToFpump
+2025-05-25 10:18:53,372 - phoenix.helius - INFO - Analyzing swaps for token Cu39JF2kZZn8wYPd5wTKfCSnDSCnv2k43kNTvToFpump
+2025-05-25 10:18:53,372 - phoenix.helius - INFO - Using pump.fun specific analysis for Cu39JF2kZZn8wYPd5wTKfCSnDSCnv2k43kNTvToFpump
+2025-05-25 10:18:53,372 - phoenix.telegram - WARNING - No swap data available for pump token Cu39JF2kZZn8wYPd5wTKfCSnDSCnv2k43kNTvToFpump
+2025-05-25 10:18:53,372 - phoenix.telegram - INFO - Helius failed for Cu39JF2kZZn8wYPd5wTKfCSnDSCnv2k43kNTvToFpump, trying RPC fallback
+2025-05-25 10:18:53,435 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 10:18:53,435 - phoenix.helius - INFO - Analyzing swaps for token Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 10:18:53,435 - phoenix.helius - INFO - Using pump.fun specific analysis for Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 10:18:53,435 - phoenix.telegram - WARNING - No swap data available for pump token Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 10:18:53,435 - phoenix.telegram - INFO - Helius failed for Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump, trying RPC fallback
+2025-05-25 10:18:53,435 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 7oo5E641XKma8458xZBssKtcUrmwGP2dsqsGAvrPpump
+2025-05-25 10:18:53,435 - phoenix.helius - INFO - Analyzing swaps for token 7oo5E641XKma8458xZBssKtcUrmwGP2dsqsGAvrPpump
+2025-05-25 10:18:53,435 - phoenix.helius - INFO - Using pump.fun specific analysis for 7oo5E641XKma8458xZBssKtcUrmwGP2dsqsGAvrPpump
+2025-05-25 10:18:53,435 - phoenix.telegram - WARNING - No swap data available for pump token 7oo5E641XKma8458xZBssKtcUrmwGP2dsqsGAvrPpump
+2025-05-25 10:18:53,435 - phoenix.telegram - INFO - Helius failed for 7oo5E641XKma8458xZBssKtcUrmwGP2dsqsGAvrPpump, trying RPC fallback
+2025-05-25 10:18:53,435 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for G4PLXS424HxKWoehEUzyLsR8QhHSTVuLgFbHUh8spump
+2025-05-25 10:18:53,435 - phoenix.helius - INFO - Analyzing swaps for token G4PLXS424HxKWoehEUzyLsR8QhHSTVuLgFbHUh8spump
+2025-05-25 10:18:53,435 - phoenix.helius - INFO - Using pump.fun specific analysis for G4PLXS424HxKWoehEUzyLsR8QhHSTVuLgFbHUh8spump
+2025-05-25 10:18:53,435 - phoenix.telegram - WARNING - No swap data available for pump token G4PLXS424HxKWoehEUzyLsR8QhHSTVuLgFbHUh8spump
+2025-05-25 10:18:53,435 - phoenix.telegram - INFO - Helius failed for G4PLXS424HxKWoehEUzyLsR8QhHSTVuLgFbHUh8spump, trying RPC fallback
+2025-05-25 10:18:53,451 - phoenix.telegram - INFO - 📊 Analyzing call 5/5 for @Zen_call
+2025-05-25 10:18:53,467 - phoenix.telegram - INFO - 📊 Analyzing call 4/5 for @ChapoInsider
+2025-05-25 10:18:53,499 - phoenix.telegram - INFO - Scraping up to 500 messages from Hollow Gaze (ID: 2408147215)
+2025-05-25 10:18:53,562 - phoenix.telegram - INFO - Scraping up to 500 messages from WitchLabs (ID: 2251415846)
+2025-05-25 10:18:53,562 - phoenix.telegram - INFO - Finished retrieving 56 messages from 2015715777
+2025-05-25 10:18:53,562 - phoenix.telegram - INFO - 📨 Found 56 messages in @MitchGemsGambles's channel
+2025-05-25 10:18:53,574 - phoenix.telegram - INFO - 🎯 Found 5 unique token calls for @MitchGemsGambles
+2025-05-25 10:18:53,574 - phoenix.telegram - INFO - 📊 Analyzing call 1/5 for @MitchGemsGambles
+2025-05-25 10:18:53,574 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 66Q1zx1STVGprgcM1kiZUkdGgFPvUnM2LofexnxKpump
+2025-05-25 10:18:53,574 - phoenix.helius - INFO - Analyzing swaps for token 66Q1zx1STVGprgcM1kiZUkdGgFPvUnM2LofexnxKpump
+2025-05-25 10:18:53,574 - phoenix.helius - INFO - Using pump.fun specific analysis for 66Q1zx1STVGprgcM1kiZUkdGgFPvUnM2LofexnxKpump
+2025-05-25 10:18:53,578 - phoenix.telegram - WARNING - No swap data available for pump token 66Q1zx1STVGprgcM1kiZUkdGgFPvUnM2LofexnxKpump
+2025-05-25 10:18:53,578 - phoenix.telegram - INFO - Helius failed for 66Q1zx1STVGprgcM1kiZUkdGgFPvUnM2LofexnxKpump, trying RPC fallback
+2025-05-25 10:18:53,594 - phoenix.telegram - INFO - 📊 Analyzing call 2/5 for @MitchGemsGambles
+2025-05-25 10:18:53,705 - phoenix.telegram - INFO - Scraping up to 500 messages from TUBOR DEGEN CALLS (ID: 2353208529)
+2025-05-25 10:18:53,768 - phoenix.telegram - INFO - Finished retrieving 2 messages from 2408147215
+2025-05-25 10:18:53,768 - phoenix.telegram - INFO - 📨 Found 2 messages in @LoomRipple's channel
+2025-05-25 10:18:53,768 - phoenix.telegram - INFO - 🎯 Found 2 unique token calls for @LoomRipple
+2025-05-25 10:18:53,768 - phoenix.telegram - INFO - 📊 Analyzing call 1/2 for @LoomRipple
+2025-05-25 10:18:53,768 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 2ppiXBBf1nv2HVaVCiHhgwXAqDx3EWihKbTaxUjtpump
+2025-05-25 10:18:53,768 - phoenix.helius - INFO - Analyzing swaps for token 2ppiXBBf1nv2HVaVCiHhgwXAqDx3EWihKbTaxUjtpump
+2025-05-25 10:18:53,768 - phoenix.helius - INFO - Using pump.fun specific analysis for 2ppiXBBf1nv2HVaVCiHhgwXAqDx3EWihKbTaxUjtpump
+2025-05-25 10:18:53,768 - phoenix.telegram - WARNING - No swap data available for pump token 2ppiXBBf1nv2HVaVCiHhgwXAqDx3EWihKbTaxUjtpump
+2025-05-25 10:18:53,768 - phoenix.telegram - INFO - Helius failed for 2ppiXBBf1nv2HVaVCiHhgwXAqDx3EWihKbTaxUjtpump, trying RPC fallback
+2025-05-25 10:18:53,793 - phoenix.telegram - INFO - 📊 Analyzing call 2/2 for @LoomRipple
+2025-05-25 10:18:53,847 - phoenix.telegram - INFO - Finished retrieving 5 messages from 2251415846
+2025-05-25 10:18:53,847 - phoenix.telegram - INFO - 📨 Found 5 messages in @WitchLabs's channel
+2025-05-25 10:18:53,847 - phoenix.telegram - INFO - 🎯 Found 0 unique token calls for @WitchLabs
+2025-05-25 10:18:54,022 - phoenix.telegram - INFO - 📊 Analyzing call 3/5 for @Maestrosdegen
+2025-05-25 10:18:54,022 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 3xppG9kV9Y4TGxfAwU2vwW7HhZvKfQnpGMBJv1jipump
+2025-05-25 10:18:54,022 - phoenix.helius - INFO - Analyzing swaps for token 3xppG9kV9Y4TGxfAwU2vwW7HhZvKfQnpGMBJv1jipump
+2025-05-25 10:18:54,022 - phoenix.helius - INFO - Using pump.fun specific analysis for 3xppG9kV9Y4TGxfAwU2vwW7HhZvKfQnpGMBJv1jipump
+2025-05-25 10:18:54,022 - phoenix.telegram - WARNING - No swap data available for pump token 3xppG9kV9Y4TGxfAwU2vwW7HhZvKfQnpGMBJv1jipump
+2025-05-25 10:18:54,022 - phoenix.telegram - INFO - Helius failed for 3xppG9kV9Y4TGxfAwU2vwW7HhZvKfQnpGMBJv1jipump, trying RPC fallback
+2025-05-25 10:18:54,214 - phoenix.birdeye - WARNING - No price history available for 8zFY19ivsJ1kVE7WQCq4QBhVtj7xPaaFgvnQybTbrafd
+2025-05-25 10:18:54,214 - phoenix.telegram - WARNING - No price history available for 8zFY19ivsJ1kVE7WQCq4QBhVtj7xPaaFgvnQybTbrafd
+2025-05-25 10:18:54,214 - phoenix.telegram - INFO - Birdeye failed for 8zFY19ivsJ1kVE7WQCq4QBhVtj7xPaaFgvnQybTbrafd, trying RPC fallback
+2025-05-25 10:18:54,372 - phoenix.birdeye - WARNING - No price history available for 8kwMNvEEPUiTBhpzRwuA34L6mc9DHzvdQwDfgLWebYZs
+2025-05-25 10:18:54,372 - phoenix.telegram - WARNING - No price history available for 8kwMNvEEPUiTBhpzRwuA34L6mc9DHzvdQwDfgLWebYZs
+2025-05-25 10:18:54,388 - phoenix.telegram - INFO - Birdeye failed for 8kwMNvEEPUiTBhpzRwuA34L6mc9DHzvdQwDfgLWebYZs, trying RPC fallback
+2025-05-25 10:18:54,388 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 2F9XvEBsdcd8exmfwBpHkusXTJLE2xw1si7PCYWRpump
+2025-05-25 10:18:54,388 - phoenix.helius - INFO - Analyzing swaps for token 2F9XvEBsdcd8exmfwBpHkusXTJLE2xw1si7PCYWRpump
+2025-05-25 10:18:54,388 - phoenix.helius - INFO - Using pump.fun specific analysis for 2F9XvEBsdcd8exmfwBpHkusXTJLE2xw1si7PCYWRpump
+2025-05-25 10:18:54,388 - phoenix.telegram - WARNING - No swap data available for pump token 2F9XvEBsdcd8exmfwBpHkusXTJLE2xw1si7PCYWRpump
+2025-05-25 10:18:54,388 - phoenix.telegram - INFO - Helius failed for 2F9XvEBsdcd8exmfwBpHkusXTJLE2xw1si7PCYWRpump, trying RPC fallback
+2025-05-25 10:18:54,388 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for B42XkbYAPf2WBGbBFb5gNUvyRogv4bbowUrBhyQ7pump
+2025-05-25 10:18:54,388 - phoenix.helius - INFO - Analyzing swaps for token B42XkbYAPf2WBGbBFb5gNUvyRogv4bbowUrBhyQ7pump
+2025-05-25 10:18:54,388 - phoenix.helius - INFO - Using pump.fun specific analysis for B42XkbYAPf2WBGbBFb5gNUvyRogv4bbowUrBhyQ7pump
+2025-05-25 10:18:54,388 - phoenix.telegram - WARNING - No swap data available for pump token B42XkbYAPf2WBGbBFb5gNUvyRogv4bbowUrBhyQ7pump
+2025-05-25 10:18:54,388 - phoenix.telegram - INFO - Helius failed for B42XkbYAPf2WBGbBFb5gNUvyRogv4bbowUrBhyQ7pump, trying RPC fallback
+2025-05-25 10:18:54,388 - phoenix.telegram - INFO - Scraping up to 500 messages from frost❄️ (ID: 2417566236)
+2025-05-25 10:18:54,388 - phoenix.telegram - ERROR - RPC error: {'code': -32602, 'message': 'Invalid param: not a Token mint'}
+2025-05-25 10:18:54,388 - phoenix.telegram - WARNING - Could not get token supply for 8zFY19ivsJ1kVE7WQCq4QBhVtj7xPaaFgvnQybTbrafd
+2025-05-25 10:18:54,388 - phoenix.telegram - WARNING - Could not determine initial price for 8zFY19ivsJ1kVE7WQCq4QBhVtj7xPaaFgvnQybTbrafd
+2025-05-25 10:18:54,388 - phoenix.telegram - INFO - 📊 Analyzing call 4/5 for @bossygambles
+2025-05-25 10:18:54,388 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 9HWSkKD8igSuNmEqbE1qsghZy7v6FFDog5meqicNpump
+2025-05-25 10:18:54,388 - phoenix.helius - INFO - Analyzing swaps for token 9HWSkKD8igSuNmEqbE1qsghZy7v6FFDog5meqicNpump
+2025-05-25 10:18:54,388 - phoenix.helius - INFO - Using pump.fun specific analysis for 9HWSkKD8igSuNmEqbE1qsghZy7v6FFDog5meqicNpump
+2025-05-25 10:18:54,388 - phoenix.telegram - WARNING - No swap data available for pump token 9HWSkKD8igSuNmEqbE1qsghZy7v6FFDog5meqicNpump
+2025-05-25 10:18:54,388 - phoenix.telegram - INFO - Helius failed for 9HWSkKD8igSuNmEqbE1qsghZy7v6FFDog5meqicNpump, trying RPC fallback
+2025-05-25 10:18:54,449 - phoenix.telegram - ERROR - RPC error: {'code': -32602, 'message': 'Invalid param: not a Token mint'}
+2025-05-25 10:18:54,449 - phoenix.telegram - WARNING - Could not get token supply for 8kwMNvEEPUiTBhpzRwuA34L6mc9DHzvdQwDfgLWebYZs
+2025-05-25 10:18:54,451 - phoenix.telegram - WARNING - Could not determine initial price for 8kwMNvEEPUiTBhpzRwuA34L6mc9DHzvdQwDfgLWebYZs
+2025-05-25 10:18:54,451 - phoenix.telegram - INFO - 📊 Analyzing call 3/5 for @MitchGemsGambles
+2025-05-25 10:18:54,451 - phoenix.telegram - INFO - Scraping up to 500 messages from Mr BigBag Calls (ID: 2051055592)
+2025-05-25 10:18:54,451 - phoenix.telegram - INFO - 📊 Analyzing call 5/5 for @ChapoInsider
+2025-05-25 10:18:54,705 - phoenix.birdeye - WARNING - No price history available for 21nz1iVYspbz1Y3rvCQyerD8TaHbaKmno4zxuRpA7Bcp
+2025-05-25 10:18:54,705 - phoenix.telegram - WARNING - No price history available for 21nz1iVYspbz1Y3rvCQyerD8TaHbaKmno4zxuRpA7Bcp
+2025-05-25 10:18:54,705 - phoenix.telegram - INFO - Birdeye failed for 21nz1iVYspbz1Y3rvCQyerD8TaHbaKmno4zxuRpA7Bcp, trying RPC fallback
+2025-05-25 10:18:54,705 - phoenix.telegram - INFO - Finished retrieving 45 messages from 2353208529
+2025-05-25 10:18:54,721 - phoenix.telegram - INFO - 📨 Found 45 messages in @hulkgemscalls_real's channel
+2025-05-25 10:18:54,721 - phoenix.telegram - INFO - 🎯 Found 5 unique token calls for @hulkgemscalls_real
+2025-05-25 10:18:54,721 - phoenix.telegram - INFO - 📊 Analyzing call 1/5 for @hulkgemscalls_real
+2025-05-25 10:18:54,721 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 8BhDv7YjmKk948QE7w9GGJ6q21ufTzSLjEZ6Vtropump
+2025-05-25 10:18:54,721 - phoenix.helius - INFO - Analyzing swaps for token 8BhDv7YjmKk948QE7w9GGJ6q21ufTzSLjEZ6Vtropump
+2025-05-25 10:18:54,721 - phoenix.helius - INFO - Using pump.fun specific analysis for 8BhDv7YjmKk948QE7w9GGJ6q21ufTzSLjEZ6Vtropump
+2025-05-25 10:18:54,721 - phoenix.telegram - WARNING - No swap data available for pump token 8BhDv7YjmKk948QE7w9GGJ6q21ufTzSLjEZ6Vtropump
+2025-05-25 10:18:54,721 - phoenix.telegram - INFO - Helius failed for 8BhDv7YjmKk948QE7w9GGJ6q21ufTzSLjEZ6Vtropump, trying RPC fallback
+2025-05-25 10:18:54,800 - phoenix.telegram - ERROR - RPC error: {'code': -32602, 'message': 'Invalid param: not a Token mint'}
+2025-05-25 10:18:54,800 - phoenix.telegram - WARNING - Could not get token supply for 21nz1iVYspbz1Y3rvCQyerD8TaHbaKmno4zxuRpA7Bcp
+2025-05-25 10:18:54,800 - phoenix.telegram - WARNING - Could not determine initial price for 21nz1iVYspbz1Y3rvCQyerD8TaHbaKmno4zxuRpA7Bcp
+2025-05-25 10:18:54,800 - phoenix.telegram - INFO - 📊 Analyzing call 4/5 for @Maestrosdegen
+2025-05-25 10:18:54,800 - phoenix.telegram - INFO - 📊 Analyzing call 2/5 for @hulkgemscalls_real
+2025-05-25 10:18:55,054 - phoenix.birdeye - WARNING - No price history available for BKFRonHVE4coCPDbLyYnKZKnyavN4mknfYogQsDpY3Y6
+2025-05-25 10:18:55,054 - phoenix.telegram - WARNING - No price history available for BKFRonHVE4coCPDbLyYnKZKnyavN4mknfYogQsDpY3Y6
+2025-05-25 10:18:55,054 - phoenix.telegram - INFO - Birdeye failed for BKFRonHVE4coCPDbLyYnKZKnyavN4mknfYogQsDpY3Y6, trying RPC fallback
+2025-05-25 10:18:55,054 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for aABiFtKUvRRaLVXPDBtL72weQ9tHvyjPwP3GNuQpump
+2025-05-25 10:18:55,054 - phoenix.helius - INFO - Analyzing swaps for token aABiFtKUvRRaLVXPDBtL72weQ9tHvyjPwP3GNuQpump
+2025-05-25 10:18:55,054 - phoenix.helius - INFO - Using pump.fun specific analysis for aABiFtKUvRRaLVXPDBtL72weQ9tHvyjPwP3GNuQpump
+2025-05-25 10:18:55,054 - phoenix.telegram - WARNING - No swap data available for pump token aABiFtKUvRRaLVXPDBtL72weQ9tHvyjPwP3GNuQpump
+2025-05-25 10:18:55,054 - phoenix.telegram - INFO - Helius failed for aABiFtKUvRRaLVXPDBtL72weQ9tHvyjPwP3GNuQpump, trying RPC fallback
+2025-05-25 10:18:55,212 - phoenix.telegram - INFO - Finished retrieving 3 messages from 2417566236
+2025-05-25 10:18:55,212 - phoenix.telegram - INFO - 📨 Found 3 messages in @FrostScribe's channel
+2025-05-25 10:18:55,228 - phoenix.telegram - INFO - 🎯 Found 3 unique token calls for @FrostScribe
+2025-05-25 10:18:55,228 - phoenix.telegram - INFO - 📊 Analyzing call 1/3 for @FrostScribe
+2025-05-25 10:18:55,228 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 2ppiXBBf1nv2HVaVCiHhgwXAqDx3EWihKbTaxUjtpump
+2025-05-25 10:18:55,228 - phoenix.helius - INFO - Analyzing swaps for token 2ppiXBBf1nv2HVaVCiHhgwXAqDx3EWihKbTaxUjtpump
+2025-05-25 10:18:55,228 - phoenix.helius - INFO - Using pump.fun specific analysis for 2ppiXBBf1nv2HVaVCiHhgwXAqDx3EWihKbTaxUjtpump
+2025-05-25 10:18:55,228 - phoenix.telegram - WARNING - No swap data available for pump token 2ppiXBBf1nv2HVaVCiHhgwXAqDx3EWihKbTaxUjtpump
+2025-05-25 10:18:55,228 - phoenix.telegram - INFO - Helius failed for 2ppiXBBf1nv2HVaVCiHhgwXAqDx3EWihKbTaxUjtpump, trying RPC fallback
+2025-05-25 10:18:55,231 - phoenix.telegram - ERROR - RPC error: {'code': -32602, 'message': 'Invalid param: not a Token mint'}
+2025-05-25 10:18:55,231 - phoenix.telegram - WARNING - Could not get token supply for BKFRonHVE4coCPDbLyYnKZKnyavN4mknfYogQsDpY3Y6
+2025-05-25 10:18:55,231 - phoenix.telegram - WARNING - Could not determine initial price for BKFRonHVE4coCPDbLyYnKZKnyavN4mknfYogQsDpY3Y6
+2025-05-25 10:18:55,231 - phoenix.telegram - INFO - 📊 Analyzing call 5/5 for @bossygambles
+2025-05-25 10:18:55,231 - phoenix.telegram - INFO - 📊 Analyzing call 4/5 for @MitchGemsGambles
+2025-05-25 10:18:55,231 - phoenix.telegram - INFO - Scraping up to 500 messages from PEPE CALLS (ID: 2017857449)
+2025-05-25 10:18:55,231 - phoenix.telegram - INFO - Finished retrieving 37 messages from 2051055592
+2025-05-25 10:18:55,231 - phoenix.telegram - INFO - 📨 Found 37 messages in @Mrbigbagcalls's channel
+2025-05-25 10:18:55,231 - phoenix.telegram - INFO - 🎯 Found 5 unique token calls for @Mrbigbagcalls
+2025-05-25 10:18:55,231 - phoenix.telegram - INFO - 📊 Analyzing call 1/5 for @Mrbigbagcalls
+2025-05-25 10:18:55,434 - phoenix.telegram - INFO - 📊 Analyzing call 2/5 for @Mrbigbagcalls
+2025-05-25 10:18:55,434 - phoenix.telegram - INFO - 📊 Analyzing call 2/3 for @FrostScribe
+2025-05-25 10:18:55,434 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 2KWFKhk5UXosoWeWYERNdogAfFMWBPi5Tdz9i8wZpump
+2025-05-25 10:18:55,434 - phoenix.helius - INFO - Analyzing swaps for token 2KWFKhk5UXosoWeWYERNdogAfFMWBPi5Tdz9i8wZpump
+2025-05-25 10:18:55,434 - phoenix.helius - INFO - Using pump.fun specific analysis for 2KWFKhk5UXosoWeWYERNdogAfFMWBPi5Tdz9i8wZpump
+2025-05-25 10:18:55,434 - phoenix.telegram - WARNING - No swap data available for pump token 2KWFKhk5UXosoWeWYERNdogAfFMWBPi5Tdz9i8wZpump
+2025-05-25 10:18:55,434 - phoenix.telegram - INFO - Helius failed for 2KWFKhk5UXosoWeWYERNdogAfFMWBPi5Tdz9i8wZpump, trying RPC fallback
+2025-05-25 10:18:55,434 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 5jU2im7a41T1R6HwdgrrwBAENGXeLXRdCApV6h2upump
+2025-05-25 10:18:55,434 - phoenix.helius - INFO - Analyzing swaps for token 5jU2im7a41T1R6HwdgrrwBAENGXeLXRdCApV6h2upump
+2025-05-25 10:18:55,434 - phoenix.helius - INFO - Using pump.fun specific analysis for 5jU2im7a41T1R6HwdgrrwBAENGXeLXRdCApV6h2upump
+2025-05-25 10:18:55,449 - phoenix.telegram - WARNING - No swap data available for pump token 5jU2im7a41T1R6HwdgrrwBAENGXeLXRdCApV6h2upump
+2025-05-25 10:18:55,449 - phoenix.telegram - INFO - Helius failed for 5jU2im7a41T1R6HwdgrrwBAENGXeLXRdCApV6h2upump, trying RPC fallback
+2025-05-25 10:18:55,449 - phoenix.telegram - INFO - Scraping up to 500 messages from Chigga's Gambles 赌博日记 (ID: 1927494975)
+2025-05-25 10:18:55,496 - phoenix.telegram - ERROR - RPC HTTP error: 429
+2025-05-25 10:18:55,496 - phoenix.telegram - WARNING - Could not get token supply for 2KWFKhk5UXosoWeWYERNdogAfFMWBPi5Tdz9i8wZpump
+2025-05-25 10:18:55,496 - phoenix.telegram - INFO - 📊 Analyzing call 3/5 for @hulkgemscalls_real
+2025-05-25 10:18:55,496 - phoenix.telegram - ERROR - RPC HTTP error: 429
+2025-05-25 10:18:55,496 - phoenix.telegram - WARNING - Could not get token supply for 5jU2im7a41T1R6HwdgrrwBAENGXeLXRdCApV6h2upump
+2025-05-25 10:18:55,496 - phoenix.telegram - INFO - 📊 Analyzing call 5/5 for @Maestrosdegen
+2025-05-25 10:18:55,574 - phoenix.telegram - INFO - Scraping up to 500 messages from 1mew gambles (ID: 1523240618)
+2025-05-25 10:18:55,621 - phoenix.telegram - INFO - Finished retrieving 27 messages from 2017857449
+2025-05-25 10:18:55,621 - phoenix.telegram - INFO - 📨 Found 27 messages in @PEPE_Calls28's channel
+2025-05-25 10:18:55,621 - phoenix.telegram - INFO - 🎯 Found 5 unique token calls for @PEPE_Calls28
+2025-05-25 10:18:55,621 - phoenix.telegram - INFO - 📊 Analyzing call 1/5 for @PEPE_Calls28
+2025-05-25 10:18:55,621 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for GTGUTdfZsxP94LXiLSjL9E7CT2wevxEF7gBZkFeYpump
+2025-05-25 10:18:55,621 - phoenix.helius - INFO - Analyzing swaps for token GTGUTdfZsxP94LXiLSjL9E7CT2wevxEF7gBZkFeYpump
+2025-05-25 10:18:55,621 - phoenix.helius - INFO - Using pump.fun specific analysis for GTGUTdfZsxP94LXiLSjL9E7CT2wevxEF7gBZkFeYpump
+2025-05-25 10:18:55,621 - phoenix.telegram - WARNING - No swap data available for pump token GTGUTdfZsxP94LXiLSjL9E7CT2wevxEF7gBZkFeYpump
+2025-05-25 10:18:55,621 - phoenix.telegram - INFO - Helius failed for GTGUTdfZsxP94LXiLSjL9E7CT2wevxEF7gBZkFeYpump, trying RPC fallback
+2025-05-25 10:18:55,636 - phoenix.telegram - ERROR - RPC HTTP error: 429
+2025-05-25 10:18:55,636 - phoenix.telegram - WARNING - Could not get token supply for GTGUTdfZsxP94LXiLSjL9E7CT2wevxEF7gBZkFeYpump
+2025-05-25 10:18:55,636 - phoenix.telegram - INFO - 📊 Analyzing call 2/5 for @PEPE_Calls28
+2025-05-25 10:18:55,902 - phoenix.birdeye - WARNING - No price history available for Gi8s6pZarHMi3qbTeKuwjQ6vAQ9G1TTkXF2jUdK5nDpV
+2025-05-25 10:18:55,902 - phoenix.telegram - WARNING - No price history available for Gi8s6pZarHMi3qbTeKuwjQ6vAQ9G1TTkXF2jUdK5nDpV
+2025-05-25 10:18:55,918 - phoenix.telegram - INFO - Birdeye failed for Gi8s6pZarHMi3qbTeKuwjQ6vAQ9G1TTkXF2jUdK5nDpV, trying RPC fallback
+2025-05-25 10:18:55,918 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for BAKozgPSDuKuRMuzMgLLg8mWssKtkFuGUiAfH1qNpump
+2025-05-25 10:18:55,918 - phoenix.helius - INFO - Analyzing swaps for token BAKozgPSDuKuRMuzMgLLg8mWssKtkFuGUiAfH1qNpump
+2025-05-25 10:18:55,918 - phoenix.helius - INFO - Using pump.fun specific analysis for BAKozgPSDuKuRMuzMgLLg8mWssKtkFuGUiAfH1qNpump
+2025-05-25 10:18:55,918 - phoenix.telegram - WARNING - No swap data available for pump token BAKozgPSDuKuRMuzMgLLg8mWssKtkFuGUiAfH1qNpump
+2025-05-25 10:18:55,918 - phoenix.telegram - INFO - Helius failed for BAKozgPSDuKuRMuzMgLLg8mWssKtkFuGUiAfH1qNpump, trying RPC fallback
+2025-05-25 10:18:56,121 - phoenix.birdeye - WARNING - No price history available for 8BWh8n2C44dcoQNpj8svevhHEvgeBSCtSm8peYyhFmzj
+2025-05-25 10:18:56,121 - phoenix.telegram - WARNING - No price history available for 8BWh8n2C44dcoQNpj8svevhHEvgeBSCtSm8peYyhFmzj
+2025-05-25 10:18:56,121 - phoenix.telegram - INFO - Birdeye failed for 8BWh8n2C44dcoQNpj8svevhHEvgeBSCtSm8peYyhFmzj, trying RPC fallback
+2025-05-25 10:18:56,121 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 78Xxh4yrBahSskAYpxmG5LHuA65EksrXkjZQKZoRpump
+2025-05-25 10:18:56,121 - phoenix.helius - INFO - Analyzing swaps for token 78Xxh4yrBahSskAYpxmG5LHuA65EksrXkjZQKZoRpump
+2025-05-25 10:18:56,121 - phoenix.helius - INFO - Using pump.fun specific analysis for 78Xxh4yrBahSskAYpxmG5LHuA65EksrXkjZQKZoRpump
+2025-05-25 10:18:56,121 - phoenix.telegram - WARNING - No swap data available for pump token 78Xxh4yrBahSskAYpxmG5LHuA65EksrXkjZQKZoRpump
+2025-05-25 10:18:56,121 - phoenix.telegram - INFO - Helius failed for 78Xxh4yrBahSskAYpxmG5LHuA65EksrXkjZQKZoRpump, trying RPC fallback
+2025-05-25 10:18:56,121 - phoenix.telegram - ERROR - RPC HTTP error: 429
+2025-05-25 10:18:56,121 - phoenix.telegram - WARNING - Could not get token supply for Gi8s6pZarHMi3qbTeKuwjQ6vAQ9G1TTkXF2jUdK5nDpV
+2025-05-25 10:18:56,121 - phoenix.telegram - WARNING - Could not determine initial price for Gi8s6pZarHMi3qbTeKuwjQ6vAQ9G1TTkXF2jUdK5nDpV
+2025-05-25 10:18:56,121 - phoenix.telegram - ERROR - RPC HTTP error: 429
+2025-05-25 10:18:56,121 - phoenix.telegram - WARNING - Could not get token supply for BAKozgPSDuKuRMuzMgLLg8mWssKtkFuGUiAfH1qNpump
+2025-05-25 10:18:56,121 - phoenix.telegram - INFO - 📊 Analyzing call 5/5 for @MitchGemsGambles
+2025-05-25 10:18:56,309 - phoenix.telegram - INFO - 📊 Analyzing call 4/5 for @hulkgemscalls_real
+2025-05-25 10:18:56,309 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for BdQft5ECzAkBN5ouE4ZpTnmzgL16n9bHYHCykUrUpump
+2025-05-25 10:18:56,309 - phoenix.helius - INFO - Analyzing swaps for token BdQft5ECzAkBN5ouE4ZpTnmzgL16n9bHYHCykUrUpump
+2025-05-25 10:18:56,309 - phoenix.helius - INFO - Using pump.fun specific analysis for BdQft5ECzAkBN5ouE4ZpTnmzgL16n9bHYHCykUrUpump
+2025-05-25 10:18:56,309 - phoenix.telegram - WARNING - No swap data available for pump token BdQft5ECzAkBN5ouE4ZpTnmzgL16n9bHYHCykUrUpump
+2025-05-25 10:18:56,309 - phoenix.telegram - INFO - Helius failed for BdQft5ECzAkBN5ouE4ZpTnmzgL16n9bHYHCykUrUpump, trying RPC fallback
+2025-05-25 10:18:56,309 - phoenix.telegram - INFO - Scraping up to 500 messages from DONALD CALLS (ID: 2187518673)
+2025-05-25 10:18:56,309 - phoenix.telegram - INFO - Finished retrieving 46 messages from 1927494975
+2025-05-25 10:18:56,309 - phoenix.telegram - INFO - 📨 Found 46 messages in @chiggajogambles's channel
+2025-05-25 10:18:56,325 - phoenix.telegram - INFO - 🎯 Found 0 unique token calls for @chiggajogambles
+2025-05-25 10:18:56,325 - phoenix.telegram - ERROR - RPC HTTP error: 429
+2025-05-25 10:18:56,325 - phoenix.telegram - WARNING - Could not get token supply for 8BWh8n2C44dcoQNpj8svevhHEvgeBSCtSm8peYyhFmzj
+2025-05-25 10:18:56,325 - phoenix.telegram - WARNING - Could not determine initial price for 8BWh8n2C44dcoQNpj8svevhHEvgeBSCtSm8peYyhFmzj
+2025-05-25 10:18:56,325 - phoenix.telegram - INFO - 📊 Analyzing call 3/5 for @Mrbigbagcalls
+2025-05-25 10:18:56,325 - phoenix.telegram - ERROR - RPC HTTP error: 429
+2025-05-25 10:18:56,325 - phoenix.telegram - WARNING - Could not get token supply for 78Xxh4yrBahSskAYpxmG5LHuA65EksrXkjZQKZoRpump
+2025-05-25 10:18:56,325 - phoenix.telegram - INFO - 📊 Analyzing call 3/3 for @FrostScribe
+2025-05-25 10:18:56,325 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 2mUcMjj3naKMVmPWbFoAUeuc1f7Lqs2n3bJfYApLpump
+2025-05-25 10:18:56,325 - phoenix.helius - INFO - Analyzing swaps for token 2mUcMjj3naKMVmPWbFoAUeuc1f7Lqs2n3bJfYApLpump
+2025-05-25 10:18:56,325 - phoenix.helius - INFO - Using pump.fun specific analysis for 2mUcMjj3naKMVmPWbFoAUeuc1f7Lqs2n3bJfYApLpump
+2025-05-25 10:18:56,325 - phoenix.telegram - WARNING - No swap data available for pump token 2mUcMjj3naKMVmPWbFoAUeuc1f7Lqs2n3bJfYApLpump
+2025-05-25 10:18:56,325 - phoenix.telegram - INFO - Helius failed for 2mUcMjj3naKMVmPWbFoAUeuc1f7Lqs2n3bJfYApLpump, trying RPC fallback
+2025-05-25 10:18:56,325 - phoenix.telegram - INFO - Finished retrieving 16 messages from 1523240618
+2025-05-25 10:18:56,325 - phoenix.telegram - INFO - 📨 Found 16 messages in @mewgambles's channel
+2025-05-25 10:18:56,325 - phoenix.telegram - INFO - 🎯 Found 5 unique token calls for @mewgambles
+2025-05-25 10:18:56,325 - phoenix.telegram - INFO - 📊 Analyzing call 1/5 for @mewgambles
+2025-05-25 10:18:56,325 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 6Z7DS329KyJkVBseX2byzSDywMQKH6c6gMisa999pump
+2025-05-25 10:18:56,325 - phoenix.helius - INFO - Analyzing swaps for token 6Z7DS329KyJkVBseX2byzSDywMQKH6c6gMisa999pump
+2025-05-25 10:18:56,325 - phoenix.helius - INFO - Using pump.fun specific analysis for 6Z7DS329KyJkVBseX2byzSDywMQKH6c6gMisa999pump
+2025-05-25 10:18:56,325 - phoenix.telegram - WARNING - No swap data available for pump token 6Z7DS329KyJkVBseX2byzSDywMQKH6c6gMisa999pump
+2025-05-25 10:18:56,325 - phoenix.telegram - INFO - Helius failed for 6Z7DS329KyJkVBseX2byzSDywMQKH6c6gMisa999pump, trying RPC fallback
+2025-05-25 10:18:56,325 - phoenix.telegram - ERROR - RPC HTTP error: 429
+2025-05-25 10:18:56,325 - phoenix.telegram - WARNING - Could not get token supply for BdQft5ECzAkBN5ouE4ZpTnmzgL16n9bHYHCykUrUpump
+2025-05-25 10:18:56,341 - phoenix.telegram - ERROR - RPC HTTP error: 429
+2025-05-25 10:18:56,341 - phoenix.telegram - WARNING - Could not get token supply for 2mUcMjj3naKMVmPWbFoAUeuc1f7Lqs2n3bJfYApLpump
+2025-05-25 10:18:56,341 - phoenix.telegram - INFO - 📊 Analyzing call 3/5 for @PEPE_Calls28
+2025-05-25 10:18:56,341 - phoenix.telegram - ERROR - RPC HTTP error: 429
+2025-05-25 10:18:56,341 - phoenix.telegram - WARNING - Could not get token supply for 6Z7DS329KyJkVBseX2byzSDywMQKH6c6gMisa999pump
+2025-05-25 10:18:56,341 - phoenix.telegram - INFO - 📊 Analyzing call 2/5 for @mewgambles
+2025-05-25 10:18:56,452 - phoenix.telegram - INFO - Scraping up to 500 messages from Loom (ID: 2250709123)
+2025-05-25 10:18:56,452 - phoenix.telegram - INFO - Scraping up to 500 messages from Cryptach⚡️Calls (ID: 1568396440)
+2025-05-25 10:18:56,610 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for H4Mku9rY1rZZozJL44BgwkeVW6gPNumNNekXzPvipump
+2025-05-25 10:18:56,610 - phoenix.helius - INFO - Analyzing swaps for token H4Mku9rY1rZZozJL44BgwkeVW6gPNumNNekXzPvipump
+2025-05-25 10:18:56,610 - phoenix.helius - INFO - Using pump.fun specific analysis for H4Mku9rY1rZZozJL44BgwkeVW6gPNumNNekXzPvipump
+2025-05-25 10:18:56,610 - phoenix.telegram - WARNING - No swap data available for pump token H4Mku9rY1rZZozJL44BgwkeVW6gPNumNNekXzPvipump
+2025-05-25 10:18:56,610 - phoenix.telegram - INFO - Helius failed for H4Mku9rY1rZZozJL44BgwkeVW6gPNumNNekXzPvipump, trying RPC fallback
+2025-05-25 10:18:56,626 - phoenix.telegram - ERROR - RPC HTTP error: 429
+2025-05-25 10:18:56,626 - phoenix.telegram - WARNING - Could not get token supply for H4Mku9rY1rZZozJL44BgwkeVW6gPNumNNekXzPvipump
+2025-05-25 10:18:56,673 - phoenix.telegram - INFO - Finished retrieving 19 messages from 2187518673
+2025-05-25 10:18:56,673 - phoenix.telegram - INFO - 📨 Found 19 messages in @DONALD_CALL's channel
+2025-05-25 10:18:56,673 - phoenix.telegram - INFO - 🎯 Found 5 unique token calls for @DONALD_CALL
+2025-05-25 10:18:56,673 - phoenix.telegram - INFO - 📊 Analyzing call 1/5 for @DONALD_CALL
+2025-05-25 10:18:56,673 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for DdLxQnM1hQ7GsqPMzFBVyKiN1m9QFuEMsRNemWQqpump
+2025-05-25 10:18:56,673 - phoenix.helius - INFO - Analyzing swaps for token DdLxQnM1hQ7GsqPMzFBVyKiN1m9QFuEMsRNemWQqpump
+2025-05-25 10:18:56,673 - phoenix.helius - INFO - Using pump.fun specific analysis for DdLxQnM1hQ7GsqPMzFBVyKiN1m9QFuEMsRNemWQqpump
+2025-05-25 10:18:56,673 - phoenix.telegram - WARNING - No swap data available for pump token DdLxQnM1hQ7GsqPMzFBVyKiN1m9QFuEMsRNemWQqpump
+2025-05-25 10:18:56,673 - phoenix.telegram - INFO - Helius failed for DdLxQnM1hQ7GsqPMzFBVyKiN1m9QFuEMsRNemWQqpump, trying RPC fallback
+2025-05-25 10:18:56,705 - phoenix.telegram - ERROR - RPC HTTP error: 429
+2025-05-25 10:18:56,705 - phoenix.telegram - WARNING - Could not get token supply for DdLxQnM1hQ7GsqPMzFBVyKiN1m9QFuEMsRNemWQqpump
+2025-05-25 10:18:56,705 - phoenix.telegram - INFO - 📊 Analyzing call 2/5 for @DONALD_CALL
+2025-05-25 10:18:56,768 - phoenix.telegram - INFO - Finished retrieving 2 messages from 2250709123
+2025-05-25 10:18:56,768 - phoenix.telegram - INFO - 📨 Found 2 messages in @BreezeTrack's channel
+2025-05-25 10:18:56,768 - phoenix.telegram - INFO - 🎯 Found 2 unique token calls for @BreezeTrack
+2025-05-25 10:18:56,768 - phoenix.telegram - INFO - 📊 Analyzing call 1/2 for @BreezeTrack
+2025-05-25 10:18:56,768 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 78Xxh4yrBahSskAYpxmG5LHuA65EksrXkjZQKZoRpump
+2025-05-25 10:18:56,768 - phoenix.helius - INFO - Analyzing swaps for token 78Xxh4yrBahSskAYpxmG5LHuA65EksrXkjZQKZoRpump
+2025-05-25 10:18:56,768 - phoenix.helius - INFO - Using pump.fun specific analysis for 78Xxh4yrBahSskAYpxmG5LHuA65EksrXkjZQKZoRpump
+2025-05-25 10:18:56,768 - phoenix.telegram - WARNING - No swap data available for pump token 78Xxh4yrBahSskAYpxmG5LHuA65EksrXkjZQKZoRpump
+2025-05-25 10:18:56,768 - phoenix.telegram - INFO - Helius failed for 78Xxh4yrBahSskAYpxmG5LHuA65EksrXkjZQKZoRpump, trying RPC fallback
+2025-05-25 10:18:56,784 - phoenix.telegram - ERROR - RPC HTTP error: 429
+2025-05-25 10:18:56,784 - phoenix.telegram - WARNING - Could not get token supply for 78Xxh4yrBahSskAYpxmG5LHuA65EksrXkjZQKZoRpump
+2025-05-25 10:18:56,784 - phoenix.telegram - INFO - 📊 Analyzing call 2/2 for @BreezeTrack
+2025-05-25 10:18:56,816 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for A6pHEmc5HyTgso851CfueQAqsFuuBTu9dJczTLLfpump
+2025-05-25 10:18:56,816 - phoenix.helius - INFO - Analyzing swaps for token A6pHEmc5HyTgso851CfueQAqsFuuBTu9dJczTLLfpump
+2025-05-25 10:18:56,816 - phoenix.helius - INFO - Using pump.fun specific analysis for A6pHEmc5HyTgso851CfueQAqsFuuBTu9dJczTLLfpump
+2025-05-25 10:18:56,816 - phoenix.telegram - WARNING - No swap data available for pump token A6pHEmc5HyTgso851CfueQAqsFuuBTu9dJczTLLfpump
+2025-05-25 10:18:56,816 - phoenix.telegram - INFO - Helius failed for A6pHEmc5HyTgso851CfueQAqsFuuBTu9dJczTLLfpump, trying RPC fallback
+2025-05-25 10:18:56,816 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 7y9CHrZz1G5j1RU3zy93a9hhbXqbp9AyQRsWi4VWpump
+2025-05-25 10:18:56,816 - phoenix.helius - INFO - Analyzing swaps for token 7y9CHrZz1G5j1RU3zy93a9hhbXqbp9AyQRsWi4VWpump
+2025-05-25 10:18:56,816 - phoenix.helius - INFO - Using pump.fun specific analysis for 7y9CHrZz1G5j1RU3zy93a9hhbXqbp9AyQRsWi4VWpump
+2025-05-25 10:18:56,816 - phoenix.telegram - WARNING - No swap data available for pump token 7y9CHrZz1G5j1RU3zy93a9hhbXqbp9AyQRsWi4VWpump
+2025-05-25 10:18:56,816 - phoenix.telegram - INFO - Helius failed for 7y9CHrZz1G5j1RU3zy93a9hhbXqbp9AyQRsWi4VWpump, trying RPC fallback
+2025-05-25 10:18:56,816 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 987ttRwHLSjAfLC4kXxVJHwyV9kmuq5hGWDhQWJVpump
+2025-05-25 10:18:56,816 - phoenix.helius - INFO - Analyzing swaps for token 987ttRwHLSjAfLC4kXxVJHwyV9kmuq5hGWDhQWJVpump
+2025-05-25 10:18:56,816 - phoenix.helius - INFO - Using pump.fun specific analysis for 987ttRwHLSjAfLC4kXxVJHwyV9kmuq5hGWDhQWJVpump
+2025-05-25 10:18:56,816 - phoenix.telegram - WARNING - No swap data available for pump token 987ttRwHLSjAfLC4kXxVJHwyV9kmuq5hGWDhQWJVpump
+2025-05-25 10:18:56,816 - phoenix.telegram - INFO - Helius failed for 987ttRwHLSjAfLC4kXxVJHwyV9kmuq5hGWDhQWJVpump, trying RPC fallback
+2025-05-25 10:18:56,832 - phoenix.telegram - ERROR - RPC HTTP error: 429
+2025-05-25 10:18:56,832 - phoenix.telegram - WARNING - Could not get token supply for 987ttRwHLSjAfLC4kXxVJHwyV9kmuq5hGWDhQWJVpump
+2025-05-25 10:18:56,832 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for DhPRTBumVz2UC1ajQLodKxE2S6Lg254hypJuvg3Fpump
+2025-05-25 10:18:56,832 - phoenix.helius - INFO - Analyzing swaps for token DhPRTBumVz2UC1ajQLodKxE2S6Lg254hypJuvg3Fpump
+2025-05-25 10:18:56,832 - phoenix.helius - INFO - Using pump.fun specific analysis for DhPRTBumVz2UC1ajQLodKxE2S6Lg254hypJuvg3Fpump
+2025-05-25 10:18:56,832 - phoenix.telegram - WARNING - No swap data available for pump token DhPRTBumVz2UC1ajQLodKxE2S6Lg254hypJuvg3Fpump
+2025-05-25 10:18:56,832 - phoenix.telegram - INFO - Helius failed for DhPRTBumVz2UC1ajQLodKxE2S6Lg254hypJuvg3Fpump, trying RPC fallback
+2025-05-25 10:18:56,832 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for AMNbh8v8iSDVB4kZCfmzuVD9YrNg657k7jNTMJBMpump
+2025-05-25 10:18:56,832 - phoenix.helius - INFO - Analyzing swaps for token AMNbh8v8iSDVB4kZCfmzuVD9YrNg657k7jNTMJBMpump
+2025-05-25 10:18:56,832 - phoenix.helius - INFO - Using pump.fun specific analysis for AMNbh8v8iSDVB4kZCfmzuVD9YrNg657k7jNTMJBMpump
+2025-05-25 10:18:56,832 - phoenix.telegram - WARNING - No swap data available for pump token AMNbh8v8iSDVB4kZCfmzuVD9YrNg657k7jNTMJBMpump
+2025-05-25 10:18:56,832 - phoenix.telegram - INFO - Helius failed for AMNbh8v8iSDVB4kZCfmzuVD9YrNg657k7jNTMJBMpump, trying RPC fallback
+2025-05-25 10:18:56,832 - phoenix.telegram - ERROR - RPC HTTP error: 429
+2025-05-25 10:18:56,832 - phoenix.telegram - WARNING - Could not get token supply for 7y9CHrZz1G5j1RU3zy93a9hhbXqbp9AyQRsWi4VWpump
+2025-05-25 10:18:56,832 - phoenix.telegram - INFO - 📊 Analyzing call 4/5 for @Mrbigbagcalls
+2025-05-25 10:18:56,832 - phoenix.telegram - ERROR - RPC HTTP error: 429
+2025-05-25 10:18:56,832 - phoenix.telegram - WARNING - Could not get token supply for A6pHEmc5HyTgso851CfueQAqsFuuBTu9dJczTLLfpump
+2025-05-25 10:18:56,832 - phoenix.telegram - INFO - 📊 Analyzing call 5/5 for @hulkgemscalls_real
+2025-05-25 10:18:56,847 - phoenix.telegram - INFO - Finished retrieving 30 messages from 1568396440
+2025-05-25 10:18:56,847 - phoenix.telegram - INFO - 📨 Found 30 messages in @CryptachCalls's channel
+2025-05-25 10:18:56,847 - phoenix.telegram - INFO - 🎯 Found 0 unique token calls for @CryptachCalls
+2025-05-25 10:18:56,847 - phoenix.telegram - ERROR - RPC HTTP error: 429
+2025-05-25 10:18:56,847 - phoenix.telegram - WARNING - Could not get token supply for DhPRTBumVz2UC1ajQLodKxE2S6Lg254hypJuvg3Fpump
+2025-05-25 10:18:56,847 - phoenix.telegram - INFO - 📊 Analyzing call 4/5 for @PEPE_Calls28
+2025-05-25 10:18:56,847 - phoenix.telegram - ERROR - RPC HTTP error: 429
+2025-05-25 10:18:56,847 - phoenix.telegram - WARNING - Could not get token supply for AMNbh8v8iSDVB4kZCfmzuVD9YrNg657k7jNTMJBMpump
+2025-05-25 10:18:56,855 - phoenix.telegram - INFO - 📊 Analyzing call 3/5 for @mewgambles
+2025-05-25 10:18:56,855 - phoenix.telegram - INFO - Scraping up to 500 messages from Julz Labs 🧪 (ID: 1605011371)
+2025-05-25 10:18:56,895 - phoenix.telegram - INFO - Scraping up to 500 messages from 🇨🇳币道 🟢SOL/BSC/ETH @BiDaoBi 📞🎙 (ID: 1541757109)
+2025-05-25 10:18:56,980 - phoenix.telegram - INFO - Scraping up to 500 messages from $SOLANA PRINTERS (ID: 2329593730)
+2025-05-25 10:18:57,117 - phoenix.telegram - INFO - Finished retrieving 4 messages from 1605011371
+2025-05-25 10:18:57,117 - phoenix.telegram - INFO - 📨 Found 4 messages in @JuLzLabs's channel
+2025-05-25 10:18:57,117 - phoenix.telegram - INFO - 🎯 Found 0 unique token calls for @JuLzLabs
+2025-05-25 10:18:57,212 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 3MRub2Uo1s2FumjhX2qkVEFBFQxUVtDxK1yuX8uupump
+2025-05-25 10:18:57,212 - phoenix.helius - INFO - Analyzing swaps for token 3MRub2Uo1s2FumjhX2qkVEFBFQxUVtDxK1yuX8uupump
+2025-05-25 10:18:57,212 - phoenix.helius - INFO - Using pump.fun specific analysis for 3MRub2Uo1s2FumjhX2qkVEFBFQxUVtDxK1yuX8uupump
+2025-05-25 10:18:57,212 - phoenix.telegram - WARNING - No swap data available for pump token 3MRub2Uo1s2FumjhX2qkVEFBFQxUVtDxK1yuX8uupump
+2025-05-25 10:18:57,212 - phoenix.telegram - INFO - Helius failed for 3MRub2Uo1s2FumjhX2qkVEFBFQxUVtDxK1yuX8uupump, trying RPC fallback
+2025-05-25 10:18:57,212 - telethon.client.users - INFO - Sleeping for 21s (0:00:21) on GetHistoryRequest flood wait
+2025-05-25 10:18:57,244 - phoenix.telegram - ERROR - RPC HTTP error: 429
+2025-05-25 10:18:57,244 - phoenix.telegram - WARNING - Could not get token supply for 3MRub2Uo1s2FumjhX2qkVEFBFQxUVtDxK1yuX8uupump
+2025-05-25 10:18:57,244 - phoenix.telegram - INFO - 📊 Analyzing call 3/5 for @DONALD_CALL
+2025-05-25 10:18:57,244 - phoenix.telegram - INFO - Scraping up to 500 messages from PEYO'S DEGEN HUB🔥 (ID: 1529480805)
+2025-05-25 10:18:57,244 - telethon.client.users - INFO - Sleeping early for 21s (0:00:21) on GetHistoryRequest flood wait
+2025-05-25 10:18:57,291 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 987ttRwHLSjAfLC4kXxVJHwyV9kmuq5hGWDhQWJVpump
+2025-05-25 10:18:57,291 - phoenix.helius - INFO - Analyzing swaps for token 987ttRwHLSjAfLC4kXxVJHwyV9kmuq5hGWDhQWJVpump
+2025-05-25 10:18:57,291 - phoenix.helius - INFO - Using pump.fun specific analysis for 987ttRwHLSjAfLC4kXxVJHwyV9kmuq5hGWDhQWJVpump
+2025-05-25 10:18:57,293 - phoenix.telegram - WARNING - No swap data available for pump token 987ttRwHLSjAfLC4kXxVJHwyV9kmuq5hGWDhQWJVpump
+2025-05-25 10:18:57,293 - phoenix.telegram - INFO - Helius failed for 987ttRwHLSjAfLC4kXxVJHwyV9kmuq5hGWDhQWJVpump, trying RPC fallback
+2025-05-25 10:18:57,293 - telethon.client.users - INFO - Sleeping for 21s (0:00:21) on GetHistoryRequest flood wait
+2025-05-25 10:18:57,314 - phoenix.telegram - ERROR - RPC HTTP error: 429
+2025-05-25 10:18:57,314 - phoenix.telegram - WARNING - Could not get token supply for 987ttRwHLSjAfLC4kXxVJHwyV9kmuq5hGWDhQWJVpump
+2025-05-25 10:18:57,339 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 9j51gyW94WJ5A89cQkGAjJjjaZxhcLq6tEVqE72Rpump
+2025-05-25 10:18:57,339 - phoenix.helius - INFO - Analyzing swaps for token 9j51gyW94WJ5A89cQkGAjJjjaZxhcLq6tEVqE72Rpump
+2025-05-25 10:18:57,339 - phoenix.helius - INFO - Using pump.fun specific analysis for 9j51gyW94WJ5A89cQkGAjJjjaZxhcLq6tEVqE72Rpump
+2025-05-25 10:18:57,339 - phoenix.telegram - WARNING - No swap data available for pump token 9j51gyW94WJ5A89cQkGAjJjjaZxhcLq6tEVqE72Rpump
+2025-05-25 10:18:57,339 - phoenix.telegram - INFO - Helius failed for 9j51gyW94WJ5A89cQkGAjJjjaZxhcLq6tEVqE72Rpump, trying RPC fallback
+2025-05-25 10:18:57,339 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for GjGmkC899vNwUKjdMpiH4qV1ejhDGsBaojpwDGJzpump
+2025-05-25 10:18:57,339 - phoenix.helius - INFO - Analyzing swaps for token GjGmkC899vNwUKjdMpiH4qV1ejhDGsBaojpwDGJzpump
+2025-05-25 10:18:57,339 - phoenix.helius - INFO - Using pump.fun specific analysis for GjGmkC899vNwUKjdMpiH4qV1ejhDGsBaojpwDGJzpump
+2025-05-25 10:18:57,339 - phoenix.telegram - WARNING - No swap data available for pump token GjGmkC899vNwUKjdMpiH4qV1ejhDGsBaojpwDGJzpump
+2025-05-25 10:18:57,339 - phoenix.telegram - INFO - Helius failed for GjGmkC899vNwUKjdMpiH4qV1ejhDGsBaojpwDGJzpump, trying RPC fallback
+2025-05-25 10:18:57,339 - phoenix.telegram - ERROR - RPC HTTP error: 429
+2025-05-25 10:18:57,339 - phoenix.telegram - WARNING - Could not get token supply for 9j51gyW94WJ5A89cQkGAjJjjaZxhcLq6tEVqE72Rpump
+2025-05-25 10:18:57,339 - phoenix.telegram - INFO - 📊 Analyzing call 5/5 for @Mrbigbagcalls
+2025-05-25 10:18:57,355 - phoenix.telegram - ERROR - RPC HTTP error: 429
+2025-05-25 10:18:57,355 - phoenix.telegram - WARNING - Could not get token supply for GjGmkC899vNwUKjdMpiH4qV1ejhDGsBaojpwDGJzpump
+2025-05-25 10:18:57,355 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 4WwCULxxf79aNguzqFXgskiY7jxA9aLXp44vp9Vypump
+2025-05-25 10:18:57,355 - phoenix.helius - INFO - Analyzing swaps for token 4WwCULxxf79aNguzqFXgskiY7jxA9aLXp44vp9Vypump
+2025-05-25 10:18:57,355 - phoenix.helius - INFO - Using pump.fun specific analysis for 4WwCULxxf79aNguzqFXgskiY7jxA9aLXp44vp9Vypump
+2025-05-25 10:18:57,355 - phoenix.telegram - WARNING - No swap data available for pump token 4WwCULxxf79aNguzqFXgskiY7jxA9aLXp44vp9Vypump
+2025-05-25 10:18:57,355 - phoenix.telegram - INFO - Helius failed for 4WwCULxxf79aNguzqFXgskiY7jxA9aLXp44vp9Vypump, trying RPC fallback
+2025-05-25 10:18:57,355 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 3FcnniRLtrW2kKSBoRBNofUUeM75EtNVMFVr24RDpump
+2025-05-25 10:18:57,355 - phoenix.helius - INFO - Analyzing swaps for token 3FcnniRLtrW2kKSBoRBNofUUeM75EtNVMFVr24RDpump
+2025-05-25 10:18:57,355 - phoenix.helius - INFO - Using pump.fun specific analysis for 3FcnniRLtrW2kKSBoRBNofUUeM75EtNVMFVr24RDpump
+2025-05-25 10:18:57,355 - phoenix.telegram - WARNING - No swap data available for pump token 3FcnniRLtrW2kKSBoRBNofUUeM75EtNVMFVr24RDpump
+2025-05-25 10:18:57,355 - phoenix.telegram - INFO - Helius failed for 3FcnniRLtrW2kKSBoRBNofUUeM75EtNVMFVr24RDpump, trying RPC fallback
+2025-05-25 10:18:57,370 - phoenix.telegram - ERROR - RPC HTTP error: 429
+2025-05-25 10:18:57,370 - phoenix.telegram - WARNING - Could not get token supply for 4WwCULxxf79aNguzqFXgskiY7jxA9aLXp44vp9Vypump
+2025-05-25 10:18:57,370 - phoenix.telegram - INFO - 📊 Analyzing call 5/5 for @PEPE_Calls28
+2025-05-25 10:18:57,370 - phoenix.telegram - ERROR - RPC HTTP error: 429
+2025-05-25 10:18:57,370 - phoenix.telegram - WARNING - Could not get token supply for 3FcnniRLtrW2kKSBoRBNofUUeM75EtNVMFVr24RDpump
+2025-05-25 10:18:57,370 - phoenix.telegram - INFO - 📊 Analyzing call 4/5 for @mewgambles
+2025-05-25 10:18:57,748 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for C3roTxTctpX2h9GESfsCaTp7xG9MU2DsGCPs6Ua2pump
+2025-05-25 10:18:57,748 - phoenix.helius - INFO - Analyzing swaps for token C3roTxTctpX2h9GESfsCaTp7xG9MU2DsGCPs6Ua2pump
+2025-05-25 10:18:57,748 - phoenix.helius - INFO - Using pump.fun specific analysis for C3roTxTctpX2h9GESfsCaTp7xG9MU2DsGCPs6Ua2pump
+2025-05-25 10:18:57,748 - phoenix.telegram - WARNING - No swap data available for pump token C3roTxTctpX2h9GESfsCaTp7xG9MU2DsGCPs6Ua2pump
+2025-05-25 10:18:57,748 - phoenix.telegram - INFO - Helius failed for C3roTxTctpX2h9GESfsCaTp7xG9MU2DsGCPs6Ua2pump, trying RPC fallback
+2025-05-25 10:18:57,764 - phoenix.telegram - ERROR - RPC HTTP error: 429
+2025-05-25 10:18:57,764 - phoenix.telegram - WARNING - Could not get token supply for C3roTxTctpX2h9GESfsCaTp7xG9MU2DsGCPs6Ua2pump
+2025-05-25 10:18:57,764 - phoenix.telegram - INFO - 📊 Analyzing call 4/5 for @DONALD_CALL
+2025-05-25 10:18:57,843 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 3xppG9kV9Y4TGxfAwU2vwW7HhZvKfQnpGMBJv1jipump
+2025-05-25 10:18:57,843 - phoenix.helius - INFO - Analyzing swaps for token 3xppG9kV9Y4TGxfAwU2vwW7HhZvKfQnpGMBJv1jipump
+2025-05-25 10:18:57,843 - phoenix.helius - INFO - Using pump.fun specific analysis for 3xppG9kV9Y4TGxfAwU2vwW7HhZvKfQnpGMBJv1jipump
+2025-05-25 10:18:57,843 - phoenix.telegram - WARNING - No swap data available for pump token 3xppG9kV9Y4TGxfAwU2vwW7HhZvKfQnpGMBJv1jipump
+2025-05-25 10:18:57,843 - phoenix.telegram - INFO - Helius failed for 3xppG9kV9Y4TGxfAwU2vwW7HhZvKfQnpGMBJv1jipump, trying RPC fallback
+2025-05-25 10:18:57,859 - phoenix.telegram - ERROR - RPC HTTP error: 429
+2025-05-25 10:18:57,859 - phoenix.telegram - WARNING - Could not get token supply for 3xppG9kV9Y4TGxfAwU2vwW7HhZvKfQnpGMBJv1jipump
+2025-05-25 10:18:58,043 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for F3Yjfhq6XHWz44Ee9CLkKCxE6g6VqXTmrsiSCXaGpump
+2025-05-25 10:18:58,043 - phoenix.helius - INFO - Analyzing swaps for token F3Yjfhq6XHWz44Ee9CLkKCxE6g6VqXTmrsiSCXaGpump
+2025-05-25 10:18:58,043 - phoenix.helius - INFO - Using pump.fun specific analysis for F3Yjfhq6XHWz44Ee9CLkKCxE6g6VqXTmrsiSCXaGpump
+2025-05-25 10:18:58,043 - phoenix.telegram - WARNING - No swap data available for pump token F3Yjfhq6XHWz44Ee9CLkKCxE6g6VqXTmrsiSCXaGpump
+2025-05-25 10:18:58,043 - phoenix.telegram - INFO - Helius failed for F3Yjfhq6XHWz44Ee9CLkKCxE6g6VqXTmrsiSCXaGpump, trying RPC fallback
+2025-05-25 10:18:58,074 - phoenix.telegram - ERROR - RPC HTTP error: 429
+2025-05-25 10:18:58,074 - phoenix.telegram - WARNING - Could not get token supply for F3Yjfhq6XHWz44Ee9CLkKCxE6g6VqXTmrsiSCXaGpump
+2025-05-25 10:18:58,074 - phoenix.telegram - INFO - 📊 Analyzing call 5/5 for @mewgambles
+2025-05-25 10:18:58,274 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for FWK4vQHsc9DGDDaNuoXLsZtNmWnjPUo89FT3gxe9pump
+2025-05-25 10:18:58,274 - phoenix.helius - INFO - Analyzing swaps for token FWK4vQHsc9DGDDaNuoXLsZtNmWnjPUo89FT3gxe9pump
+2025-05-25 10:18:58,274 - phoenix.helius - INFO - Using pump.fun specific analysis for FWK4vQHsc9DGDDaNuoXLsZtNmWnjPUo89FT3gxe9pump
+2025-05-25 10:18:58,274 - phoenix.telegram - WARNING - No swap data available for pump token FWK4vQHsc9DGDDaNuoXLsZtNmWnjPUo89FT3gxe9pump
+2025-05-25 10:18:58,274 - phoenix.telegram - INFO - Helius failed for FWK4vQHsc9DGDDaNuoXLsZtNmWnjPUo89FT3gxe9pump, trying RPC fallback
+2025-05-25 10:18:58,293 - phoenix.telegram - ERROR - RPC HTTP error: 429
+2025-05-25 10:18:58,293 - phoenix.telegram - WARNING - Could not get token supply for FWK4vQHsc9DGDDaNuoXLsZtNmWnjPUo89FT3gxe9pump
+2025-05-25 10:18:58,293 - phoenix.telegram - INFO - 📊 Analyzing call 5/5 for @DONALD_CALL
+2025-05-25 10:18:58,558 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for GjGmkC899vNwUKjdMpiH4qV1ejhDGsBaojpwDGJzpump
+2025-05-25 10:18:58,558 - phoenix.helius - INFO - Analyzing swaps for token GjGmkC899vNwUKjdMpiH4qV1ejhDGsBaojpwDGJzpump
+2025-05-25 10:18:58,558 - phoenix.helius - INFO - Using pump.fun specific analysis for GjGmkC899vNwUKjdMpiH4qV1ejhDGsBaojpwDGJzpump
+2025-05-25 10:18:58,558 - phoenix.telegram - WARNING - No swap data available for pump token GjGmkC899vNwUKjdMpiH4qV1ejhDGsBaojpwDGJzpump
+2025-05-25 10:18:58,558 - phoenix.telegram - INFO - Helius failed for GjGmkC899vNwUKjdMpiH4qV1ejhDGsBaojpwDGJzpump, trying RPC fallback
+2025-05-25 10:18:58,574 - phoenix.telegram - ERROR - RPC HTTP error: 429
+2025-05-25 10:18:58,574 - phoenix.telegram - WARNING - Could not get token supply for GjGmkC899vNwUKjdMpiH4qV1ejhDGsBaojpwDGJzpump
+2025-05-25 10:18:58,794 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for DMDqFzhVMbVQNLVnhV8pgdJcArkcVyzq4MrJ2d8Npump
+2025-05-25 10:18:58,794 - phoenix.helius - INFO - Analyzing swaps for token DMDqFzhVMbVQNLVnhV8pgdJcArkcVyzq4MrJ2d8Npump
+2025-05-25 10:18:58,794 - phoenix.helius - INFO - Using pump.fun specific analysis for DMDqFzhVMbVQNLVnhV8pgdJcArkcVyzq4MrJ2d8Npump
+2025-05-25 10:18:58,794 - phoenix.telegram - WARNING - No swap data available for pump token DMDqFzhVMbVQNLVnhV8pgdJcArkcVyzq4MrJ2d8Npump
+2025-05-25 10:18:58,794 - phoenix.telegram - INFO - Helius failed for DMDqFzhVMbVQNLVnhV8pgdJcArkcVyzq4MrJ2d8Npump, trying RPC fallback
+2025-05-25 10:18:58,810 - phoenix.telegram - ERROR - RPC HTTP error: 429
+2025-05-25 10:18:58,810 - phoenix.telegram - WARNING - Could not get token supply for DMDqFzhVMbVQNLVnhV8pgdJcArkcVyzq4MrJ2d8Npump
