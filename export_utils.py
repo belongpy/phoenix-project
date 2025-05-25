@@ -1,12 +1,12 @@
 """
-Export Utilities Module - Phoenix Project (BINARY COPY DECISION VERSION)
+Export Utilities Module - Phoenix Project (2X HOT STREAK VERSION)
 
 Handles Excel and CSV exports for memecoin analysis results.
 UPDATES:
-- Added binary copy_decision column after wallet_address
-- Removed strategy_recommendation column
-- Removed filter_market_cap_min/max columns
-- Kept avg_buy_market_cap_usd column
+- Updated telegram export for 2x-focused analysis
+- Removed 5x columns from telegram exports
+- Added avg_time_to_2x_minutes to telegram exports
+- Maintained all wallet analysis functionality
 """
 
 import os
@@ -102,9 +102,28 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                 'border': 1
             })
             
-            # Export Telegram data if available
+            # Export Telegram data if available (2x-focused)
             if telegram_data and "ranked_kols" in telegram_data:
-                telegram_df = pd.DataFrame(telegram_data["ranked_kols"])
+                # Prepare telegram data for export
+                telegram_rows = []
+                for kol, performance in telegram_data["ranked_kols"].items():
+                    row = {
+                        'KOL': f"@{kol}",
+                        'Channel ID': performance.get('channel_id', ''),
+                        'Calls Analyzed': performance.get('tokens_mentioned', 0),
+                        '2x Success Rate %': performance.get('success_rate_2x', 0),
+                        'Avg ATH ROI %': performance.get('avg_ath_roi', 0),
+                        'Composite Score': performance.get('composite_score', 0),
+                        'Avg Max Pullback %': performance.get('avg_max_pullback_percent', 0),
+                        'Avg Time to 2x (min)': performance.get('avg_time_to_2x_minutes', 0),
+                        'Analysis Type': performance.get('analysis_type', 'initial')
+                    }
+                    telegram_rows.append(row)
+                
+                # Sort by composite score
+                telegram_rows.sort(key=lambda x: x['Composite Score'], reverse=True)
+                
+                telegram_df = pd.DataFrame(telegram_rows)
                 telegram_df.to_excel(writer, sheet_name='Telegram KOLs', index=False)
                 
                 # Format Telegram sheet
@@ -114,13 +133,57 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                 for col_num, value in enumerate(telegram_df.columns.values):
                     telegram_sheet.write(0, col_num, value, header_format)
                 
+                # Apply conditional formatting for composite scores
+                telegram_sheet.conditional_format('F2:F{}'.format(len(telegram_df) + 1), {
+                    'type': 'cell',
+                    'criteria': '>=',
+                    'value': 81,
+                    'format': score_excellent_format
+                })
+                
+                telegram_sheet.conditional_format('F2:F{}'.format(len(telegram_df) + 1), {
+                    'type': 'cell',
+                    'criteria': 'between',
+                    'minimum': 61,
+                    'maximum': 80.99,
+                    'format': score_good_format
+                })
+                
+                telegram_sheet.conditional_format('F2:F{}'.format(len(telegram_df) + 1), {
+                    'type': 'cell',
+                    'criteria': 'between',
+                    'minimum': 41,
+                    'maximum': 60.99,
+                    'format': score_average_format
+                })
+                
+                telegram_sheet.conditional_format('F2:F{}'.format(len(telegram_df) + 1), {
+                    'type': 'cell',
+                    'criteria': 'between',
+                    'minimum': 21,
+                    'maximum': 40.99,
+                    'format': score_poor_format
+                })
+                
+                telegram_sheet.conditional_format('F2:F{}'.format(len(telegram_df) + 1), {
+                    'type': 'cell',
+                    'criteria': '<=',
+                    'value': 20.99,
+                    'format': score_very_poor_format
+                })
+                
                 # Set column widths
-                telegram_sheet.set_column('A:A', 20)  # Channel ID
-                telegram_sheet.set_column('B:B', 15)  # Total calls
-                telegram_sheet.set_column('C:E', 15)  # Success rates
-                telegram_sheet.set_column('F:G', 20)  # Metrics
+                telegram_sheet.set_column('A:A', 20)  # KOL
+                telegram_sheet.set_column('B:B', 15)  # Channel ID
+                telegram_sheet.set_column('C:C', 15)  # Calls Analyzed
+                telegram_sheet.set_column('D:D', 18)  # 2x Success Rate
+                telegram_sheet.set_column('E:E', 15)  # Avg ATH ROI
+                telegram_sheet.set_column('F:F', 15)  # Composite Score
+                telegram_sheet.set_column('G:G', 18)  # Avg Max Pullback
+                telegram_sheet.set_column('H:H', 20)  # Avg Time to 2x
+                telegram_sheet.set_column('I:I', 15)  # Analysis Type
             
-            # Export Wallet data if available
+            # Export Wallet data if available (unchanged)
             if wallet_data:
                 # Create summary sheet for 7-day active traders
                 if "total_wallets" in wallet_data:
@@ -370,7 +433,7 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                     wallet_sheet.set_column('W:AA', 15) # Entry/Exit
                     wallet_sheet.set_column('AB:AF', 12) # Distribution
             
-            logger.info(f"Successfully exported 7-day active trader analysis to Excel: {output_file}")
+            logger.info(f"Successfully exported analysis to Excel: {output_file}")
             return True
             
     except Exception as e:
@@ -523,28 +586,28 @@ def generate_memecoin_analysis_report(telegram_data: Dict[str, Any],
             f.write(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
             f.write("=" * 80 + "\n\n")
             
-            # Telegram Analysis Section
+            # Telegram Analysis Section (2x-focused)
             if telegram_data and "ranked_kols" in telegram_data:
-                f.write("📱 TELEGRAM ANALYSIS (SPYDEFI)\n")
+                f.write("📱 TELEGRAM ANALYSIS (SPYDEFI - 2X HOT STREAK FOCUS)\n")
                 f.write("-" * 40 + "\n")
                 f.write(f"Total KOLs analyzed: {telegram_data.get('total_kols_analyzed', 0)}\n")
+                f.write(f"Deep analyses performed: {telegram_data.get('deep_analyses_performed', 0)}\n")
                 f.write(f"Total calls analyzed: {telegram_data.get('total_calls', 0)}\n")
-                f.write(f"2x success rate: {telegram_data.get('success_rate_2x', 0):.2f}%\n")
-                f.write(f"5x success rate: {telegram_data.get('success_rate_5x', 0):.2f}%\n\n")
+                f.write(f"2x success rate: {telegram_data.get('success_rate_2x', 0):.2f}%\n\n")
                 
-                f.write("Top 5 KOLs:\n")
+                f.write("Top 5 KOLs (2x Hot Streaks):\n")
                 ranked_kols = telegram_data.get('ranked_kols', {})
                 for i, (kol, data) in enumerate(list(ranked_kols.items())[:5], 1):
                     f.write(f"{i}. @{kol}\n")
                     f.write(f"   Composite Score: {data.get('composite_score', 0):.1f}\n")
-                    f.write(f"   Success Rate (5x): {data.get('success_rate_5x', 0):.1f}%\n")
-                    if data.get('avg_max_pullback_percent', 0) > 0:
-                        f.write(f"   Avg Pullback: {data.get('avg_max_pullback_percent', 0):.1f}%\n")
-                    if data.get('avg_time_to_5x_formatted', 'N/A') != 'N/A':
-                        f.write(f"   Avg Time to 5x: {data.get('avg_time_to_5x_formatted', 'N/A')}\n")
+                    f.write(f"   2x Success Rate: {data.get('success_rate_2x', 0):.1f}%\n")
+                    f.write(f"   Avg Time to 2x: {data.get('avg_time_to_2x_minutes', 0):.1f} minutes\n")
+                    f.write(f"   Avg ATH ROI: {data.get('avg_ath_roi', 0):.1f}%\n")
+                    f.write(f"   Avg Max Pullback: {data.get('avg_max_pullback_percent', 0):.1f}%\n")
+                    f.write(f"   Analysis Type: {data.get('analysis_type', 'initial')}\n")
                     f.write("\n")
             
-            # Wallet Analysis Section
+            # Wallet Analysis Section (unchanged)
             if wallet_data and wallet_data.get('success'):
                 f.write("\n💰 7-DAY ACTIVE TRADER WALLET ANALYSIS\n")
                 f.write("-" * 40 + "\n")
