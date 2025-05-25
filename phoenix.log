@@ -5402,3 +5402,210 @@ TypeError: '>=' not supported between instances of 'NoneType' and 'int'
 2025-05-24 20:01:43,383 - phoenix.wallet - INFO -    Total API calls: 383
 2025-05-24 20:01:43,712 - phoenix.export - INFO - Successfully exported 7-day active trader rankings to CSV: C:\Users\Administrator\Desktop\phoenix-project\outputs\active_traders_7day_20250524_200143.csv
 2025-05-24 20:01:43,712 - phoenix - INFO - Exported active trader analysis to C:\Users\Administrator\Desktop\phoenix-project\outputs\active_traders_7day_20250524_200143.csv
+2025-05-24 20:42:44,207 - phoenix - INFO - Loaded 2 wallet addresses from wallets.txt
+2025-05-24 20:42:46,540 - phoenix.api_manager - INFO - Birdeye API initialized for mainstream token analysis
+2025-05-24 20:42:46,540 - phoenix.api_manager - INFO - Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-24 20:42:46,540 - phoenix.api_manager - INFO - Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-24 20:42:46,540 - phoenix.cielo - INFO - Checking Cielo Finance API connectivity...
+2025-05-24 20:42:46,801 - phoenix.cielo - INFO - ✅ Cielo Finance API is accessible (got expected error response)
+2025-05-24 20:42:46,801 - phoenix.wallet - INFO - ✅ Cielo Finance API connection verified
+2025-05-24 20:42:46,801 - phoenix.wallet - INFO - Batch analyzing 2 wallets (7-day active trader focus)
+2025-05-24 20:42:46,801 - phoenix.wallet - INFO - Analyzing wallet 1/2: Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 20:42:46,801 - phoenix.wallet - INFO - 🔍 Analyzing wallet Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ (7-day active trader focus)
+2025-05-24 20:42:46,801 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-24 20:42:46,801 - phoenix.cielo - INFO - Fetching trading stats for wallet Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 20:42:48,972 - phoenix.cielo - INFO - Successfully retrieved trading stats for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 20:42:48,972 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-24 20:42:48,972 - phoenix.wallet - INFO - Fetching last 100 token swaps for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 20:44:35,017 - phoenix.wallet - INFO - Found 80 swaps from 200 signatures
+2025-05-24 20:44:35,017 - phoenix.wallet - INFO - 📊 Wallet tier: INITIAL - Scanning 5 recent trades
+2025-05-24 20:44:35,017 - phoenix.wallet - INFO -    7-day trades: 1
+2025-05-24 20:44:35,017 - phoenix.wallet - INFO -    7-day win rate: 0.0%
+2025-05-24 20:44:35,017 - phoenix.wallet - INFO -    7-day profit: $0.00
+2025-05-24 20:44:35,017 - phoenix.wallet - INFO -    Days since last trade: 4
+2025-05-24 20:44:37,178 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 1, Birdeye: 0, Helius: 2, RPC: 201
+2025-05-24 20:44:37,178 - phoenix.wallet - INFO -   └─ Score: 15/100, Type: consistent
+2025-05-24 20:44:39,179 - phoenix.wallet - INFO - Analyzing wallet 2/2: 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 20:44:39,181 - phoenix.wallet - INFO - 🔍 Analyzing wallet 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX (7-day active trader focus)
+2025-05-24 20:44:39,181 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-24 20:44:39,181 - phoenix.cielo - INFO - Fetching trading stats for wallet 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 20:44:40,942 - phoenix.cielo - INFO - Successfully retrieved trading stats for 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 20:44:40,942 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-24 20:44:40,942 - phoenix.wallet - INFO - Fetching last 100 token swaps for 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 20:45:54,464 - phoenix.wallet - INFO - Found 91 swaps from 176 signatures
+2025-05-24 20:45:54,464 - phoenix.wallet - INFO - 📊 Wallet tier: INITIAL - Scanning 5 recent trades
+2025-05-24 20:45:54,464 - phoenix.wallet - INFO -    7-day trades: 25
+2025-05-24 20:45:54,464 - phoenix.wallet - INFO -    7-day win rate: 0.0%
+2025-05-24 20:45:54,464 - phoenix.wallet - INFO -    7-day profit: $0.00
+2025-05-24 20:45:54,464 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-24 20:45:56,565 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 2, Birdeye: 0, Helius: 3, RPC: 378
+2025-05-24 20:45:56,565 - phoenix.wallet - INFO -   └─ Score: 40/100, Type: consistent
+2025-05-24 20:45:56,565 - phoenix.wallet - INFO - 📊 FINAL API CALL STATISTICS:
+2025-05-24 20:45:56,565 - phoenix.wallet - INFO -    Cielo: 2 calls
+2025-05-24 20:45:56,565 - phoenix.wallet - INFO -    Birdeye: 0 calls
+2025-05-24 20:45:56,565 - phoenix.wallet - INFO -    Helius: 3 calls
+2025-05-24 20:45:56,565 - phoenix.wallet - INFO -    RPC: 378 calls
+2025-05-24 20:45:56,565 - phoenix.wallet - INFO -    Total API calls: 383
+2025-05-24 20:45:56,884 - phoenix.export - INFO - Successfully exported 7-day active trader rankings to CSV: C:\Users\Administrator\Desktop\phoenix-project\outputs\active_traders_7day_20250524_204556.csv
+2025-05-24 20:45:56,884 - phoenix - INFO - Exported active trader analysis to C:\Users\Administrator\Desktop\phoenix-project\outputs\active_traders_7day_20250524_204556.csv
+2025-05-24 21:09:26,339 - phoenix - ERROR - ❌ Error importing modules: cannot import name 'TelegramScraper' from 'telegram_module' (C:\Users\Administrator\Desktop\phoenix-project\telegram_module.py)
+2025-05-24 21:09:26,339 - phoenix - ERROR - Enhanced telegram analysis error: cannot import name 'TelegramScraper' from 'telegram_module' (C:\Users\Administrator\Desktop\phoenix-project\telegram_module.py)
+2025-05-24 21:10:04,996 - phoenix - INFO - Loaded 2 wallet addresses from wallets.txt
+2025-05-24 21:10:06,940 - phoenix.api_manager - INFO - Birdeye API initialized for mainstream token analysis
+2025-05-24 21:10:06,940 - phoenix.api_manager - INFO - Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-24 21:10:06,940 - phoenix.api_manager - INFO - Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-24 21:10:06,940 - phoenix.diagnostic - INFO - === WALLET ANALYZER INITIALIZATION ===
+2025-05-24 21:10:06,940 - phoenix.diagnostic - INFO - Cielo API: Initialized
+2025-05-24 21:10:06,940 - phoenix.diagnostic - INFO - Birdeye API: Initialized
+2025-05-24 21:10:06,940 - phoenix.diagnostic - INFO - Helius API: Initialized
+2025-05-24 21:10:06,940 - phoenix.diagnostic - INFO - RPC URL: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-24 21:10:06,940 - phoenix.cielo - INFO - Checking Cielo Finance API connectivity...
+2025-05-24 21:10:07,146 - phoenix.cielo - INFO - ✅ Cielo Finance API is accessible (got expected error response)
+2025-05-24 21:10:07,146 - phoenix.wallet - INFO - ✅ Cielo Finance API connection verified
+2025-05-24 21:10:07,146 - phoenix.wallet - INFO - Batch analyzing 2 wallets (7-day active trader focus)
+2025-05-24 21:10:07,152 - phoenix.wallet - INFO - Analyzing wallet 1/2: Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 21:10:07,152 - phoenix.wallet - INFO - 🔍 Analyzing wallet Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ (7-day active trader focus)
+2025-05-24 21:10:07,152 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-24 21:10:07,152 - phoenix.cielo - INFO - Fetching trading stats for wallet Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 21:10:08,501 - phoenix.cielo - INFO - Successfully retrieved trading stats for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 21:10:08,501 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-24 21:10:08,501 - phoenix.wallet - INFO - Fetching last 100 token swaps for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 21:12:02,524 - phoenix.wallet - INFO - Found 80 swaps from 200 signatures
+2025-05-24 21:12:02,524 - phoenix.wallet - INFO - 📊 Wallet tier: INITIAL - Scanning 5 recent trades
+2025-05-24 21:12:02,524 - phoenix.wallet - INFO -    7-day trades: 1
+2025-05-24 21:12:02,524 - phoenix.wallet - INFO -    7-day win rate: 0.0%
+2025-05-24 21:12:02,524 - phoenix.wallet - INFO -    7-day profit: $0.00
+2025-05-24 21:12:02,524 - phoenix.wallet - INFO -    Days since last trade: 4
+2025-05-24 21:12:02,524 - phoenix.diagnostic - INFO - 
+=== TOKEN ANALYSIS START ===
+2025-05-24 21:12:02,524 - phoenix.diagnostic - INFO - Token: Ea1iFm51ot2d6b86KEZMPPtRwz6yZZHu4aVobfbzpump
+2025-05-24 21:12:02,524 - phoenix.diagnostic - INFO - Token length: 44
+2025-05-24 21:12:02,524 - phoenix.diagnostic - INFO - Buy timestamp: None (type: NoneType)
+2025-05-24 21:12:02,524 - phoenix.diagnostic - INFO - Sell timestamp: 1747771704 (type: int)
+2025-05-24 21:12:02,524 - phoenix.diagnostic - WARNING - VALIDATION FAILED: Invalid buy timestamp
+2025-05-24 21:12:03,032 - phoenix.diagnostic - INFO - 
+=== TOKEN ANALYSIS START ===
+2025-05-24 21:12:03,032 - phoenix.diagnostic - INFO - Token: Ea1iFm51ot2d6b86KEZMPPtRwz6yZZHu4aVobfbzpump
+2025-05-24 21:12:03,032 - phoenix.diagnostic - INFO - Token length: 44
+2025-05-24 21:12:03,032 - phoenix.diagnostic - INFO - Buy timestamp: 1747771540 (type: int)
+2025-05-24 21:12:03,032 - phoenix.diagnostic - INFO - Sell timestamp: None (type: None)
+2025-05-24 21:12:03,032 - phoenix.diagnostic - INFO - Token classification: PUMP.FUN
+2025-05-24 21:12:03,032 - phoenix.diagnostic - INFO -   - ends with 'pump': True
+2025-05-24 21:12:03,032 - phoenix.diagnostic - INFO -   - contains 'pump': True
+2025-05-24 21:12:03,032 - phoenix.diagnostic - INFO - API availability:
+2025-05-24 21:12:03,032 - phoenix.diagnostic - INFO -   - Birdeye API: Available
+2025-05-24 21:12:03,032 - phoenix.diagnostic - INFO -   - Helius API: Available
+2025-05-24 21:12:03,032 - phoenix.diagnostic - INFO - Open position - held for: 6246.38 minutes
+2025-05-24 21:12:03,032 - phoenix.diagnostic - INFO - ROUTING DECISION: Using Helius for pump.fun token
+2025-05-24 21:12:03,032 - phoenix.diagnostic - INFO - Making Helius API call for pump token...
+2025-05-24 21:12:03,032 - phoenix.diagnostic - INFO - USING FALLBACK LOGIC - No price data retrieved
+2025-05-24 21:12:03,032 - phoenix.diagnostic - INFO - Swap data available: type=buy
+2025-05-24 21:12:03,032 - phoenix.diagnostic - INFO - Open position fallback: estimated ROI 20%
+2025-05-24 21:12:03,032 - phoenix.diagnostic - INFO - === TOKEN ANALYSIS COMPLETE ===
+2025-05-24 21:12:03,032 - phoenix.diagnostic - INFO - Success: True
+2025-05-24 21:12:03,032 - phoenix.diagnostic - INFO - API used: helius
+2025-05-24 21:12:03,032 - phoenix.diagnostic - INFO - Price data retrieved: False
+2025-05-24 21:12:03,032 - phoenix.diagnostic - INFO - ROI: 20.00%
+2025-05-24 21:12:03,032 - phoenix.diagnostic - INFO - Max ROI: 30.00%
+2025-05-24 21:12:03,032 - phoenix.diagnostic - INFO - Entry timing: BELOW_AVERAGE
+2025-05-24 21:12:03,032 - phoenix.diagnostic - INFO - Exit timing: HOLDING
+2025-05-24 21:12:03,543 - phoenix.diagnostic - INFO - 
+=== TOKEN ANALYSIS START ===
+2025-05-24 21:12:03,543 - phoenix.diagnostic - INFO - Token: NudrMewGMrwiad82MQSUoxQ78UtyS8BF2Zv9Mpcpump
+2025-05-24 21:12:03,544 - phoenix.diagnostic - INFO - Token length: 43
+2025-05-24 21:12:03,544 - phoenix.diagnostic - INFO - Buy timestamp: None (type: NoneType)
+2025-05-24 21:12:03,544 - phoenix.diagnostic - INFO - Sell timestamp: 1747413992 (type: int)
+2025-05-24 21:12:03,544 - phoenix.diagnostic - WARNING - VALIDATION FAILED: Invalid buy timestamp
+2025-05-24 21:12:04,048 - phoenix.diagnostic - INFO - 
+=== TOKEN ANALYSIS START ===
+2025-05-24 21:12:04,048 - phoenix.diagnostic - INFO - Token: NudrMewGMrwiad82MQSUoxQ78UtyS8BF2Zv9Mpcpump
+2025-05-24 21:12:04,050 - phoenix.diagnostic - INFO - Token length: 43
+2025-05-24 21:12:04,050 - phoenix.diagnostic - INFO - Buy timestamp: 1747412098 (type: int)
+2025-05-24 21:12:04,050 - phoenix.diagnostic - INFO - Sell timestamp: None (type: None)
+2025-05-24 21:12:04,050 - phoenix.diagnostic - INFO - Token classification: PUMP.FUN
+2025-05-24 21:12:04,050 - phoenix.diagnostic - INFO -   - ends with 'pump': True
+2025-05-24 21:12:04,050 - phoenix.diagnostic - INFO -   - contains 'pump': True
+2025-05-24 21:12:04,050 - phoenix.diagnostic - INFO - API availability:
+2025-05-24 21:12:04,050 - phoenix.diagnostic - INFO -   - Birdeye API: Available
+2025-05-24 21:12:04,050 - phoenix.diagnostic - INFO -   - Helius API: Available
+2025-05-24 21:12:04,050 - phoenix.diagnostic - INFO - Open position - held for: 12237.10 minutes
+2025-05-24 21:12:04,050 - phoenix.diagnostic - INFO - ROUTING DECISION: Using Helius for pump.fun token
+2025-05-24 21:12:04,050 - phoenix.diagnostic - INFO - Making Helius API call for pump token...
+2025-05-24 21:12:04,050 - phoenix.diagnostic - INFO - USING FALLBACK LOGIC - No price data retrieved
+2025-05-24 21:12:04,050 - phoenix.diagnostic - INFO - Swap data available: type=buy
+2025-05-24 21:12:04,050 - phoenix.diagnostic - INFO - Open position fallback: estimated ROI 20%
+2025-05-24 21:12:04,050 - phoenix.diagnostic - INFO - === TOKEN ANALYSIS COMPLETE ===
+2025-05-24 21:12:04,050 - phoenix.diagnostic - INFO - Success: True
+2025-05-24 21:12:04,050 - phoenix.diagnostic - INFO - API used: helius
+2025-05-24 21:12:04,050 - phoenix.diagnostic - INFO - Price data retrieved: False
+2025-05-24 21:12:04,050 - phoenix.diagnostic - INFO - ROI: 20.00%
+2025-05-24 21:12:04,050 - phoenix.diagnostic - INFO - Max ROI: 30.00%
+2025-05-24 21:12:04,059 - phoenix.diagnostic - INFO - Entry timing: BELOW_AVERAGE
+2025-05-24 21:12:04,059 - phoenix.diagnostic - INFO - Exit timing: HOLDING
+2025-05-24 21:12:04,562 - phoenix.diagnostic - INFO - 
+=== TOKEN ANALYSIS START ===
+2025-05-24 21:12:04,562 - phoenix.diagnostic - INFO - Token: 76EDL5qNcte2ZH29quTaFzagXjWAEY83CATEjyA6pump
+2025-05-24 21:12:04,562 - phoenix.diagnostic - INFO - Token length: 44
+2025-05-24 21:12:04,562 - phoenix.diagnostic - INFO - Buy timestamp: None (type: NoneType)
+2025-05-24 21:12:04,562 - phoenix.diagnostic - INFO - Sell timestamp: 1747373213 (type: int)
+2025-05-24 21:12:04,562 - phoenix.diagnostic - WARNING - VALIDATION FAILED: Invalid buy timestamp
+2025-05-24 21:12:04,562 - phoenix.diagnostic - INFO - === DIAGNOSTIC SUMMARY ===
+2025-05-24 21:12:04,562 - phoenix.diagnostic - INFO - Total token analysis attempts: 5
+2025-05-24 21:12:04,562 - phoenix.diagnostic - INFO - Pump tokens detected: 2
+2025-05-24 21:12:04,562 - phoenix.diagnostic - INFO - Mainstream tokens detected: 0
+2025-05-24 21:12:04,562 - phoenix.diagnostic - INFO - Birdeye call attempts: 0
+2025-05-24 21:12:04,562 - phoenix.diagnostic - INFO - Birdeye call successes: 0
+2025-05-24 21:12:04,562 - phoenix.diagnostic - INFO - Birdeye call failures: 0
+2025-05-24 21:12:04,562 - phoenix.diagnostic - INFO - Helius call attempts: 2
+2025-05-24 21:12:04,562 - phoenix.diagnostic - INFO - Helius call successes: 2
+2025-05-24 21:12:04,562 - phoenix.diagnostic - INFO - Helius call failures: 0
+2025-05-24 21:12:04,562 - phoenix.diagnostic - INFO - Validation failures: 3
+2025-05-24 21:12:04,562 - phoenix.diagnostic - INFO - Timestamp issues: 3
+2025-05-24 21:12:04,562 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 1, Birdeye: 0, Helius: 2, RPC: 201
+2025-05-24 21:12:04,562 - phoenix.wallet - INFO -   └─ Score: 15/100, Type: position_trader
+2025-05-24 21:12:06,573 - phoenix.wallet - INFO - Analyzing wallet 2/2: 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 21:12:06,573 - phoenix.wallet - INFO - 🔍 Analyzing wallet 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX (7-day active trader focus)
+2025-05-24 21:12:06,573 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-24 21:12:06,573 - phoenix.cielo - INFO - Fetching trading stats for wallet 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 21:12:07,856 - phoenix.cielo - INFO - Successfully retrieved trading stats for 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 21:12:07,856 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-24 21:12:07,864 - phoenix.wallet - INFO - Fetching last 100 token swaps for 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 21:24:52,774 - phoenix - INFO - Loaded 2 wallet addresses from wallets.txt
+2025-05-24 21:24:54,040 - phoenix.api_manager - INFO - Birdeye API initialized for mainstream token analysis
+2025-05-24 21:24:54,057 - phoenix.api_manager - INFO - Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-24 21:24:54,060 - phoenix.api_manager - INFO - Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-24 21:24:54,063 - phoenix.cielo - INFO - Checking Cielo Finance API connectivity...
+2025-05-24 21:24:54,289 - phoenix.cielo - INFO - ✅ Cielo Finance API is accessible (got expected error response)
+2025-05-24 21:24:54,289 - phoenix.wallet - INFO - ✅ Cielo Finance API connection verified
+2025-05-24 21:24:54,289 - phoenix.wallet - INFO - Batch analyzing 2 wallets (7-day active trader focus)
+2025-05-24 21:24:54,289 - phoenix.wallet - INFO - Analyzing wallet 1/2: Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 21:24:54,289 - phoenix.wallet - INFO - 🔍 Analyzing wallet Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ (7-day active trader focus)
+2025-05-24 21:24:54,289 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-24 21:24:54,289 - phoenix.cielo - INFO - Fetching trading stats for wallet Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 21:24:55,547 - phoenix.cielo - INFO - Successfully retrieved trading stats for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 21:24:55,547 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-24 21:24:55,547 - phoenix.wallet - INFO - Fetching last 150 token swaps for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 21:27:26,011 - phoenix.wallet - INFO - Pairing buy/sell transactions for 30 tokens
+2025-05-24 21:27:26,011 - phoenix.wallet - INFO - Found 66 swaps (43 paired)
+2025-05-24 21:27:26,011 - phoenix.wallet - INFO - 📊 Wallet tier: INITIAL - Scanning 5 recent trades
+2025-05-24 21:27:26,011 - phoenix.wallet - INFO -    7-day trades: 1
+2025-05-24 21:27:26,011 - phoenix.wallet - INFO -    7-day win rate: 0.0%
+2025-05-24 21:27:26,011 - phoenix.wallet - INFO -    7-day profit: $0.00
+2025-05-24 21:27:26,011 - phoenix.wallet - INFO -    Days since last trade: 4
+2025-05-24 21:27:26,220 - phoenix.helius - INFO - Analyzing pump.fun token swaps for Ea1iFm51ot2d6b86KEZMPPtRwz6yZZHu4aVobfbzpump
+2025-05-24 21:27:27,097 - phoenix.helius - INFO - Analyzing pump.fun token swaps for NudrMewGMrwiad82MQSUoxQ78UtyS8BF2Zv9Mpcpump
+2025-05-24 21:27:28,002 - phoenix.helius - INFO - Analyzing pump.fun token swaps for 76EDL5qNcte2ZH29quTaFzagXjWAEY83CATEjyA6pump
+2025-05-24 21:27:28,908 - phoenix.helius - INFO - Analyzing pump.fun token swaps for 76EDL5qNcte2ZH29quTaFzagXjWAEY83CATEjyA6pump
+2025-05-24 21:27:29,939 - phoenix.helius - ERROR - Error getting pump token price: 'NoneType' object has no attribute 'get'
+2025-05-24 21:27:29,939 - phoenix.wallet - ERROR - Error detecting bundle activity: cannot access local variable 'amount_variance' where it is not associated with a value
+2025-05-24 21:27:29,939 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 1, Birdeye: 0, Helius: 5, RPC: 301
+2025-05-24 21:27:29,939 - phoenix.wallet - INFO -   └─ Score: 15/100, Type: flipper
+2025-05-24 21:27:31,950 - phoenix.wallet - INFO - Analyzing wallet 2/2: 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 21:27:31,953 - phoenix.wallet - INFO - 🔍 Analyzing wallet 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX (7-day active trader focus)
+2025-05-24 21:27:31,954 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-24 21:27:31,954 - phoenix.cielo - INFO - Fetching trading stats for wallet 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 21:28:16,955 - phoenix.cielo - WARNING - Request timeout (attempt 1/3): HTTPSConnectionPool(host='feed-api.cielo.finance', port=443): Read timed out. (read timeout=45)
+2025-05-24 21:28:16,955 - phoenix.cielo - INFO - Waiting 1 seconds before retry...
+2025-05-24 21:28:19,887 - phoenix.cielo - INFO - Successfully retrieved trading stats for 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 21:28:19,887 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-24 21:28:19,887 - phoenix.wallet - INFO - Fetching last 150 token swaps for 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX

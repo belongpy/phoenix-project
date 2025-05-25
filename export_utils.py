@@ -3,10 +3,10 @@ Export Utilities Module - Phoenix Project (7-DAY ACTIVE TRADER EDITION)
 
 Handles Excel and CSV exports for memecoin analysis results.
 UPDATES:
-- Removed redundant columns (confidence, analysis_tier, score_rating)
-- Added enhanced strategy columns (follow_sells, tp1%, tp2%, sell_strategy)
-- 7-day focus metrics included
-- Proper distribution percentages that sum to 100%
+- Removed redundant columns (win_rate, net_profit_usd, days_since_last_trade, suggested_slippage, suggested_gas)
+- Focus on 7-day metrics (win_rate_7d, profit_7d)
+- Active trader detection and prioritization
+- Enhanced strategy columns remain
 - Market cap filter ranges for all wallets
 - Entry/exit quality based on performance
 - Bundle detection warnings
@@ -218,7 +218,7 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                         if profit_factor > 999.99:
                             profit_factor = 999.99
                         
-                        # Build row data
+                        # Build row data (REMOVED win_rate, net_profit_usd, suggested_slippage, suggested_gas)
                         row = {
                             'Rank': rank,
                             'Wallet': wallet['wallet_address'],
@@ -226,17 +226,15 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                             'Type': wallet['wallet_type'],
                             'Trades': metrics['total_trades'],
                             'Trades 7d': metrics.get('trades_last_7_days', 0),
-                            'Win Rate': metrics['win_rate'] / 100,
-                            'Win Rate 7d': metrics.get('win_rate_7d', 0) / 100,
+                            'Win Rate 7d': metrics.get('win_rate_7d', 0) / 100,  # Only 7-day win rate
                             'Profit Factor': profit_factor,
-                            'Net Profit': metrics['net_profit_usd'],
-                            'Profit 7d': metrics.get('profit_7d', 0),
+                            'Profit 7d': metrics.get('profit_7d', 0),  # Only 7-day profit
                             'Avg ROI': metrics['avg_roi'] / 100,
                             'Max ROI': metrics['max_roi'] / 100,
                             'Gem Rate (5x+)': metrics.get('gem_rate_5x_plus', 0) / 100,
                             'Hold Time (min)': metrics.get('avg_hold_time_minutes', 0),
                             'Avg First TP %': metrics.get('avg_first_take_profit_percent', 0) / 100,
-                            'Days Since Trade': metrics.get('days_since_last_trade', 999),
+                            'Active': 'YES' if metrics.get('active_trader', False) else 'NO',  # Active instead of days since
                             'Strategy': strategy.get('recommendation', ''),
                             'Follow Sells': 'YES' if strategy.get('follow_sells', False) else 'NO',
                             'TP1 %': strategy.get('tp1_percent', 0) / 100,
@@ -321,7 +319,7 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                     })
                     
                     # Apply percentage format to percentage columns
-                    percent_cols = ['Win Rate', 'Win Rate 7d', 'Avg ROI', 'Max ROI', 'Gem Rate (5x+)', 
+                    percent_cols = ['Win Rate 7d', 'Avg ROI', 'Max ROI', 'Gem Rate (5x+)', 
                                    'Avg First TP %', 'Missed Gains %', 'Avg Exit ROI',
                                    'TP1 %', 'TP2 %',
                                    'Dist 500%+', 'Dist 200-500%', 'Dist 0-200%', 
@@ -335,7 +333,7 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                                 wallet_sheet.write(row_num, col_idx, value, percent_format)
                     
                     # Apply money format to profit and market cap columns
-                    money_cols = ['Net Profit', 'Profit 7d', 'MC Min', 'MC Max']
+                    money_cols = ['Profit 7d', 'MC Min', 'MC Max']
                     for row_num in range(1, len(wallet_df) + 1):
                         for col_name in money_cols:
                             if col_name in wallet_df.columns:
@@ -358,23 +356,23 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                     wallet_sheet.set_column('C:C', 10)  # Score
                     wallet_sheet.set_column('D:D', 15)  # Type
                     wallet_sheet.set_column('E:F', 10)  # Trades
-                    wallet_sheet.set_column('G:H', 12)  # Win Rates
-                    wallet_sheet.set_column('I:I', 15)  # Profit Factor
-                    wallet_sheet.set_column('J:K', 15)  # Profits
-                    wallet_sheet.set_column('L:M', 12)  # ROI columns
-                    wallet_sheet.set_column('N:N', 15)  # Gem Rate
-                    wallet_sheet.set_column('O:O', 15)  # Hold Time
-                    wallet_sheet.set_column('P:P', 15)  # First TP
-                    wallet_sheet.set_column('Q:Q', 15)  # Days Since
-                    wallet_sheet.set_column('R:R', 20)  # Strategy
-                    wallet_sheet.set_column('S:S', 12)  # Follow Sells
-                    wallet_sheet.set_column('T:U', 10)  # TPs
-                    wallet_sheet.set_column('V:V', 15)  # Sell Strategy
-                    wallet_sheet.set_column('W:W', 30)  # TP Guidance
-                    wallet_sheet.set_column('X:Y', 15)  # Market Cap
-                    wallet_sheet.set_column('Z:AD', 15) # Entry/Exit
-                    wallet_sheet.set_column('AE:AE', 12) # Warning
-                    wallet_sheet.set_column('AF:AJ', 12) # Distribution
+                    wallet_sheet.set_column('G:G', 12)  # Win Rate 7d
+                    wallet_sheet.set_column('H:H', 15)  # Profit Factor
+                    wallet_sheet.set_column('I:I', 15)  # Profit 7d
+                    wallet_sheet.set_column('J:K', 12)  # ROI columns
+                    wallet_sheet.set_column('L:L', 15)  # Gem Rate
+                    wallet_sheet.set_column('M:M', 15)  # Hold Time
+                    wallet_sheet.set_column('N:N', 15)  # First TP
+                    wallet_sheet.set_column('O:O', 10)  # Active
+                    wallet_sheet.set_column('P:P', 20)  # Strategy
+                    wallet_sheet.set_column('Q:Q', 12)  # Follow Sells
+                    wallet_sheet.set_column('R:S', 10)  # TPs
+                    wallet_sheet.set_column('T:T', 15)  # Sell Strategy
+                    wallet_sheet.set_column('U:U', 30)  # TP Guidance
+                    wallet_sheet.set_column('V:W', 15)  # Market Cap
+                    wallet_sheet.set_column('X:AB', 15) # Entry/Exit
+                    wallet_sheet.set_column('AC:AC', 12) # Warning
+                    wallet_sheet.set_column('AD:AH', 12) # Distribution
             
             logger.info(f"Successfully exported 7-day active trader analysis to Excel: {output_file}")
             return True
@@ -405,13 +403,14 @@ def export_wallet_rankings_csv(wallet_data: Dict[str, Any], output_file: str) ->
         all_wallets.sort(key=lambda x: x.get('composite_score', x['metrics'].get('composite_score', 0)), reverse=True)
         
         with open(output_file, 'w', newline='', encoding='utf-8') as f:
+            # Updated fieldnames - removed redundant columns
             fieldnames = [
                 'rank', 'wallet_address', 'composite_score',
                 'wallet_type', 'total_trades', 'trades_last_7_days',
-                'win_rate', 'win_rate_7d', 'profit_factor',
-                'net_profit_usd', 'profit_7d', 'avg_roi', 'median_roi', 'max_roi',
+                'win_rate_7d', 'profit_factor',  # Removed win_rate, kept win_rate_7d
+                'profit_7d', 'avg_roi', 'median_roi', 'max_roi',  # Removed net_profit_usd, kept profit_7d
                 'avg_hold_time_minutes', 'total_tokens_traded',
-                'days_since_last_trade', 'active_trader',
+                'active_trader',  # Removed days_since_last_trade, kept active_trader
                 'distribution_500_plus_%', 'distribution_200_500_%',
                 'distribution_0_200_%', 'distribution_neg50_0_%',
                 'distribution_below_neg50_%',
@@ -425,7 +424,7 @@ def export_wallet_rankings_csv(wallet_data: Dict[str, Any], output_file: str) ->
                 'sell_strategy', 'tp_guidance',
                 'filter_market_cap_min', 'filter_market_cap_max',
                 'is_likely_bundler', 'bundle_indicators',
-                'estimated_copytraders', 'suggested_slippage', 'suggested_gas'
+                'estimated_copytraders'  # Removed suggested_slippage, suggested_gas
             ]
             
             writer = csv.DictWriter(f, fieldnames=fieldnames)
@@ -448,18 +447,15 @@ def export_wallet_rankings_csv(wallet_data: Dict[str, Any], output_file: str) ->
                     'wallet_type': analysis['wallet_type'],
                     'total_trades': metrics['total_trades'],
                     'trades_last_7_days': metrics.get('trades_last_7_days', 0),
-                    'win_rate': round(metrics['win_rate'], 2),
-                    'win_rate_7d': round(metrics.get('win_rate_7d', 0), 2),
+                    'win_rate_7d': round(metrics.get('win_rate_7d', 0), 2),  # Only 7-day win rate
                     'profit_factor': profit_factor,
-                    'net_profit_usd': round(metrics['net_profit_usd'], 2),
-                    'profit_7d': round(metrics.get('profit_7d', 0), 2),
+                    'profit_7d': round(metrics.get('profit_7d', 0), 2),  # Only 7-day profit
                     'avg_roi': round(metrics['avg_roi'], 2),
                     'median_roi': round(metrics.get('median_roi', 0), 2),
                     'max_roi': round(metrics['max_roi'], 2),
                     'avg_hold_time_minutes': round(metrics.get('avg_hold_time_minutes', 0), 2),
                     'total_tokens_traded': metrics['total_tokens_traded'],
-                    'days_since_last_trade': metrics.get('days_since_last_trade', 999),
-                    'active_trader': 'YES' if metrics.get('active_trader', False) else 'NO',
+                    'active_trader': 'YES' if metrics.get('active_trader', False) else 'NO',  # Active instead of days since
                     'distribution_500_plus_%': metrics.get('distribution_500_plus_%', 0),
                     'distribution_200_500_%': metrics.get('distribution_200_500_%', 0),
                     'distribution_0_200_%': metrics.get('distribution_0_200_%', 0),
@@ -477,9 +473,8 @@ def export_wallet_rankings_csv(wallet_data: Dict[str, Any], output_file: str) ->
                     'sell_strategy': strategy.get('sell_strategy', ''),
                     'tp_guidance': strategy.get('tp_guidance', ''),
                     'filter_market_cap_min': strategy.get('filter_market_cap_min', 0),
-                    'filter_market_cap_max': strategy.get('filter_market_cap_max', 0),
-                    'suggested_slippage': strategy.get('suggested_slippage', 15),
-                    'suggested_gas': strategy.get('suggested_gas', 'medium')
+                    'filter_market_cap_max': strategy.get('filter_market_cap_max', 0)
+                    # Removed suggested_slippage and suggested_gas
                 }
                 
                 # Add entry/exit analysis if available
@@ -728,7 +723,8 @@ def export_distribution_analysis(wallet_data: Dict[str, Any], output_file: str) 
             fieldnames = [
                 'wallet_address', 'wallet_type', 'composite_score',
                 'total_trades', 'trades_last_7_days', 'active_trader',
-                'days_since_last_trade', 'distribution_sum_%',
+                'win_rate_7d', 'profit_7d',  # Focus on 7-day metrics
+                'distribution_sum_%',
                 'distribution_500_plus_%', 'distribution_200_500_%',
                 'distribution_0_200_%', 'distribution_neg50_0_%',
                 'distribution_below_neg50_%',
@@ -767,7 +763,8 @@ def export_distribution_analysis(wallet_data: Dict[str, Any], output_file: str) 
                     'total_trades': metrics['total_trades'],
                     'trades_last_7_days': metrics.get('trades_last_7_days', 0),
                     'active_trader': 'YES' if metrics.get('active_trader', False) else 'NO',
-                    'days_since_last_trade': metrics.get('days_since_last_trade', 999),
+                    'win_rate_7d': round(metrics.get('win_rate_7d', 0), 2),
+                    'profit_7d': round(metrics.get('profit_7d', 0), 2),
                     'distribution_sum_%': round(dist_sum, 1),
                     'distribution_500_plus_%': metrics.get('distribution_500_plus_%', 0),
                     'distribution_200_500_%': metrics.get('distribution_200_500_%', 0),

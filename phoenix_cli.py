@@ -8,6 +8,7 @@ Phoenix Project - UPDATED CLI Tool for 7-Day Active Trader Analysis
 - Removed redundant columns (confidence, tier, rating)
 - Smart sell following based on exit quality
 - Active trader detection and prioritization
+- Fixed progress output and buffering issues
 
 FIXES IMPLEMENTED:
 - Improved console output buffering
@@ -366,12 +367,11 @@ class PhoenixCLI:
                 print(f"   === 7-DAY PERFORMANCE ===", flush=True)
                 print(f"   Trades (7d): {metrics.get('trades_last_7_days', 0)} | Win Rate (7d): {metrics.get('win_rate_7d', 0):.1f}%", flush=True)
                 print(f"   Profit (7d): ${metrics.get('profit_7d', 0):.2f}", flush=True)
-                print(f"   Days since trade: {metrics.get('days_since_last_trade', 999)}", flush=True)
                 print(f"   === OVERALL STATS ===", flush=True)
-                print(f"   Total Trades: {metrics['total_trades']} | Win Rate: {metrics['win_rate']:.1f}%", flush=True)
-                print(f"   Profit Factor: {profit_factor_display} | Net Profit: ${metrics['net_profit_usd']:.2f}", flush=True)
+                print(f"   Total Trades: {metrics['total_trades']} | Profit Factor: {profit_factor_display}", flush=True)
                 print(f"   5x+ Gem Rate: {metrics.get('gem_rate_5x_plus', 0):.1f}%", flush=True)
                 print(f"   Avg Hold: {metrics.get('avg_hold_time_minutes', 0):.1f} min", flush=True)
+                print(f"   Avg First TP: {metrics.get('avg_first_take_profit_percent', 0):.1f}%", flush=True)
                 print(f"   === STRATEGY RECOMMENDATION ===", flush=True)
                 print(f"   Action: {strategy.get('recommendation', 'UNKNOWN')}", flush=True)
                 print(f"   Follow Sells: {'YES ✅' if strategy.get('follow_sells', False) else 'NO ❌'}", flush=True)
@@ -961,7 +961,7 @@ class PhoenixCLI:
         print("• Swing Trader: TP1=100-200% (patience pays)", flush=True)
         
         print("\n⚠️ RED FLAGS TO WATCH:", flush=True)
-        print("• Days since trade > 3 = Getting inactive", flush=True)
+        print("• Days since trade > 7 = Getting inactive", flush=True)
         print("• Exit quality = POOR = Don't follow sells", flush=True)
         print("• Bundle warning = Verify on-chain first", flush=True)
         print("• Missed gains > 200% = They panic sell", flush=True)
