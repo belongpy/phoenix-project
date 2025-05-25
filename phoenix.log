@@ -8102,3 +8102,153 @@ TypeError: '>=' not supported between instances of 'NoneType' and 'int'
 2025-05-25 09:18:47,244 - phoenix.telegram - INFO - ✅ Birdeye API available for mainstream tokens
 2025-05-25 09:18:47,244 - phoenix.telegram - INFO - ✅ Helius API available for pump.fun tokens
 2025-05-25 09:18:47,371 - phoenix.telegram - INFO - Scraping 1.0 days of messages from 1960616143
+2025-05-25 09:44:24,007 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-25 09:44:24,007 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-25 09:44:24,339 - phoenix - INFO - ✅ Imported telegram module
+2025-05-25 09:44:24,339 - phoenix - INFO - 🚀 Starting enhanced SpyDefi analysis for the past 24 hours.
+2025-05-25 09:44:24,344 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv
+2025-05-25 09:44:24,344 - phoenix - INFO - 🔄 Force refresh enabled - ignoring cache
+2025-05-25 09:44:24,344 - phoenix - INFO - ✅ Birdeye API initialized successfully
+2025-05-25 09:44:24,344 - phoenix - INFO - ✅ Helius API initialized successfully for pump.fun tokens
+2025-05-25 09:44:24,344 - phoenix - INFO - ✅ Telegram scraper initialized successfully
+2025-05-25 09:44:24,344 - phoenix - INFO - 🎯 SpyDefi channel detected. Running enhanced analysis...
+2025-05-25 09:44:24,344 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-25 09:44:24,344 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-25 09:44:24,466 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-25 09:44:25,267 - phoenix.telegram - INFO - Connected to Telegram
+2025-05-25 09:44:25,267 - phoenix - INFO - 📞 Connected to Telegram
+2025-05-25 09:44:25,267 - phoenix.telegram - INFO - 🚀 STARTING OPTIMIZED SPYDEFI ANALYSIS (2x Hot Streak Focus)
+2025-05-25 09:44:25,267 - phoenix.telegram - INFO - 🎯 Phase 1: Discovering active KOLs from SpyDefi...
+2025-05-25 09:44:25,267 - phoenix.telegram - INFO - ✅ Birdeye API available for mainstream tokens
+2025-05-25 09:44:25,267 - phoenix.telegram - INFO - ✅ Helius API available for pump.fun tokens
+2025-05-25 09:44:25,267 - phoenix.telegram - INFO - 🔍 Scanning SpyDefi for last 6 hours...
+2025-05-25 09:44:25,393 - phoenix.telegram - INFO - Scraping up to 1000 messages from SpyDefi (ID: 1960616143)
+2025-05-25 09:44:28,360 - phoenix.telegram - INFO - Finished retrieving 810 messages from 1960616143
+2025-05-25 09:44:28,376 - phoenix.telegram - INFO - ✅ Found 186 unique KOLs (+186 new) from 810 messages
+2025-05-25 09:44:28,376 - phoenix.telegram - INFO - 🎯 Sufficient KOLs found (186), stopping discovery
+2025-05-25 09:44:28,376 - phoenix.telegram - INFO - ✅ Saved SpyDefi cache with 186 KOLs
+2025-05-25 09:44:28,376 - phoenix.telegram - INFO - ✅ Found 186 active KOLs from SpyDefi
+2025-05-25 09:44:28,376 - phoenix.telegram - INFO - 🎯 Phase 2: Initial analysis of KOLs (last 5 calls each)...
+2025-05-25 09:44:28,376 - phoenix.telegram - INFO - 📊 Analyzing top 30 KOLs for initial screening
+2025-05-25 09:44:28,376 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @avrugs (initial analysis)
+2025-05-25 09:44:28,501 - phoenix.telegram - INFO - Scraping up to 500 messages from TokyoHunter Calls (ID: 1691606433)
+2025-05-25 09:44:28,876 - phoenix.telegram - INFO - Finished retrieving 41 messages from 1691606433
+2025-05-25 09:44:28,876 - phoenix.telegram - INFO - 📨 Found 41 messages in @avrugs's channel
+2025-05-25 09:44:28,876 - phoenix.telegram - INFO - 🎯 Found 5 token calls for @avrugs
+2025-05-25 09:44:28,876 - phoenix.telegram - INFO - 📊 Analyzing call 1/5 for @avrugs
+2025-05-25 09:44:28,876 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 3xppG9kV9Y4TGxfAwU2vwW7HhZvKfQnpGMBJv1jipump
+2025-05-25 09:44:28,876 - phoenix.helius - INFO - Analyzing pump.fun token swaps for 3xppG9kV9Y4TGxfAwU2vwW7HhZvKfQnpGMBJv1jipump
+2025-05-25 09:44:45,363 - phoenix.telegram - WARNING - No swap data available for pump token 3xppG9kV9Y4TGxfAwU2vwW7HhZvKfQnpGMBJv1jipump
+2025-05-25 09:44:45,363 - phoenix.telegram - INFO - 📊 Analyzing call 2/5 for @avrugs
+2025-05-25 09:44:45,871 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 09:44:45,871 - phoenix.helius - INFO - Analyzing pump.fun token swaps for Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 09:45:02,658 - phoenix.telegram - WARNING - No swap data available for pump token Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 09:45:02,658 - phoenix.telegram - INFO - 📊 Analyzing call 3/5 for @avrugs
+2025-05-25 09:45:03,158 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 9hgemospDxy8qeuGu4mTD3jDyzTN6EVWix8XGJQApump
+2025-05-25 09:45:03,158 - phoenix.helius - INFO - Analyzing pump.fun token swaps for 9hgemospDxy8qeuGu4mTD3jDyzTN6EVWix8XGJQApump
+2025-05-25 09:45:20,418 - phoenix.telegram - WARNING - No swap data available for pump token 9hgemospDxy8qeuGu4mTD3jDyzTN6EVWix8XGJQApump
+2025-05-25 09:45:20,418 - phoenix.telegram - INFO - 📊 Analyzing call 4/5 for @avrugs
+2025-05-25 09:45:20,433 - phoenix.telegram - ERROR - Timeout analyzing @avrugs after 45s
+2025-05-25 09:45:20,944 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @RimberioGamble (initial analysis)
+2025-05-25 09:45:21,071 - phoenix.telegram - INFO - Scraping up to 500 messages from Rimberio Gamble (ID: 1771818884)
+2025-05-25 09:45:21,408 - phoenix.telegram - INFO - Finished retrieving 22 messages from 1771818884
+2025-05-25 09:45:21,408 - phoenix.telegram - INFO - 📨 Found 22 messages in @RimberioGamble's channel
+2025-05-25 09:45:21,408 - phoenix.telegram - INFO - 🎯 Found 5 token calls for @RimberioGamble
+2025-05-25 09:45:21,408 - phoenix.telegram - INFO - 📊 Analyzing call 1/5 for @RimberioGamble
+2025-05-25 09:45:21,626 - phoenix.telegram - INFO - 📊 Analyzing call 2/5 for @RimberioGamble
+2025-05-25 09:45:22,283 - phoenix.telegram - INFO - 📊 Analyzing call 3/5 for @RimberioGamble
+2025-05-25 09:45:22,939 - phoenix.telegram - INFO - 📊 Analyzing call 4/5 for @RimberioGamble
+2025-05-25 09:45:23,452 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 09:45:23,452 - phoenix.helius - INFO - Analyzing pump.fun token swaps for Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 09:45:40,282 - phoenix.telegram - WARNING - No swap data available for pump token Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 09:45:40,282 - phoenix.telegram - INFO - 📊 Analyzing call 5/5 for @RimberioGamble
+2025-05-25 09:45:40,782 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 09:45:40,782 - phoenix.helius - INFO - Analyzing pump.fun token swaps for Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 09:45:57,283 - phoenix.telegram - WARNING - No swap data available for pump token Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 09:45:57,795 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @dextradegems (initial analysis)
+2025-05-25 09:45:57,935 - phoenix.telegram - INFO - Scraping up to 500 messages from DeXGems (ID: 1268629886)
+2025-05-25 09:45:58,332 - phoenix.telegram - INFO - Finished retrieving 38 messages from 1268629886
+2025-05-25 09:45:58,332 - phoenix.telegram - INFO - 📨 Found 38 messages in @dextradegems's channel
+2025-05-25 09:45:58,332 - phoenix.telegram - INFO - 🎯 Found 5 token calls for @dextradegems
+2025-05-25 09:45:58,332 - phoenix.telegram - INFO - 📊 Analyzing call 1/5 for @dextradegems
+2025-05-25 09:45:58,332 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for X2Uw5C5HmSgCrJ9j2U7umjBhFq8tR3ov7JF5yyfpump
+2025-05-25 09:45:58,332 - phoenix.helius - INFO - Analyzing pump.fun token swaps for X2Uw5C5HmSgCrJ9j2U7umjBhFq8tR3ov7JF5yyfpump
+2025-05-25 09:46:25,052 - phoenix.telegram - WARNING - No swap data available for pump token X2Uw5C5HmSgCrJ9j2U7umjBhFq8tR3ov7JF5yyfpump
+2025-05-25 09:46:25,052 - phoenix.telegram - INFO - 📊 Analyzing call 2/5 for @dextradegems
+2025-05-25 09:46:25,720 - phoenix.telegram - INFO - 📊 Analyzing call 3/5 for @dextradegems
+2025-05-25 09:46:26,230 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 9ihbizVx81PfJ428x4GUyCtVCeepDSU7QsqTERpxpump
+2025-05-25 09:46:26,230 - phoenix.helius - INFO - Analyzing pump.fun token swaps for 9ihbizVx81PfJ428x4GUyCtVCeepDSU7QsqTERpxpump
+2025-05-25 09:46:59,532 - phoenix.telegram - WARNING - No swap data available for pump token 9ihbizVx81PfJ428x4GUyCtVCeepDSU7QsqTERpxpump
+2025-05-25 09:46:59,532 - phoenix.telegram - INFO - 📊 Analyzing call 4/5 for @dextradegems
+2025-05-25 09:46:59,550 - phoenix.telegram - ERROR - Timeout analyzing @dextradegems after 45s
+2025-05-25 09:47:00,051 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @GemsmineEth (initial analysis)
+2025-05-25 09:47:00,179 - phoenix.telegram - INFO - Scraping up to 500 messages from Gems Mine(Gamble) (ID: 1500214409)
+2025-05-25 09:47:00,533 - phoenix.telegram - INFO - Finished retrieving 15 messages from 1500214409
+2025-05-25 09:47:00,533 - phoenix.telegram - INFO - 📨 Found 15 messages in @GemsmineEth's channel
+2025-05-25 09:47:00,533 - phoenix.telegram - INFO - 🎯 Found 5 token calls for @GemsmineEth
+2025-05-25 09:47:00,533 - phoenix.telegram - INFO - 📊 Analyzing call 1/5 for @GemsmineEth
+2025-05-25 09:47:00,675 - phoenix.birdeye - WARNING - Bad request for /defi/history_price with params {'address': 'ftvfrnfb48apspktbkb5cdtu6aitrsx5wdv68utrpiwu', 'address_type': 'token', 'type': '15m', 'time_from': 1748182609, 'time_to': 1748191620}: {"success":false,"message":"address is invalid format"}
+2025-05-25 09:47:00,675 - phoenix.birdeye - WARNING - No price history available for ftvfrnfb48apspktbkb5cdtu6aitrsx5wdv68utrpiwu
+2025-05-25 09:47:00,675 - phoenix.telegram - WARNING - No price history available for ftvfrnfb48apspktbkb5cdtu6aitrsx5wdv68utrpiwu
+2025-05-25 09:47:00,675 - phoenix.telegram - INFO - 📊 Analyzing call 2/5 for @GemsmineEth
+2025-05-25 09:47:01,185 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 09:47:01,185 - phoenix.helius - INFO - Analyzing pump.fun token swaps for Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 09:47:19,358 - phoenix.telegram - WARNING - No swap data available for pump token Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 09:47:19,358 - phoenix.telegram - INFO - 📊 Analyzing call 3/5 for @GemsmineEth
+2025-05-25 09:47:19,867 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 09:47:19,867 - phoenix.helius - INFO - Analyzing pump.fun token swaps for Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 09:47:36,093 - phoenix.telegram - WARNING - No swap data available for pump token Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 09:47:36,093 - phoenix.telegram - INFO - 📊 Analyzing call 4/5 for @GemsmineEth
+2025-05-25 09:47:36,601 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 09:47:36,601 - phoenix.helius - INFO - Analyzing pump.fun token swaps for Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 09:47:53,305 - phoenix.telegram - WARNING - No swap data available for pump token Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 09:47:53,305 - phoenix.telegram - INFO - 📊 Analyzing call 5/5 for @GemsmineEth
+2025-05-25 09:47:53,310 - phoenix.telegram - ERROR - Timeout analyzing @GemsmineEth after 45s
+2025-05-25 09:47:53,815 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @Insider_ECA (initial analysis)
+2025-05-25 09:47:53,959 - phoenix.telegram - INFO - Scraping up to 500 messages from Bobby Degen Calls (ID: 1851567457)
+2025-05-25 09:47:54,295 - phoenix.telegram - INFO - Finished retrieving 25 messages from 1851567457
+2025-05-25 09:47:54,295 - phoenix.telegram - INFO - 📨 Found 25 messages in @Insider_ECA's channel
+2025-05-25 09:47:54,295 - phoenix.telegram - INFO - 🎯 Found 5 token calls for @Insider_ECA
+2025-05-25 09:47:54,295 - phoenix.telegram - INFO - 📊 Analyzing call 1/5 for @Insider_ECA
+2025-05-25 09:47:54,471 - phoenix.telegram - INFO - 📊 Analyzing call 2/5 for @Insider_ECA
+2025-05-25 09:47:54,976 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for AMNbh8v8iSDVB4kZCfmzuVD9YrNg657k7jNTMJBMpump
+2025-05-25 09:47:54,976 - phoenix.helius - INFO - Analyzing pump.fun token swaps for AMNbh8v8iSDVB4kZCfmzuVD9YrNg657k7jNTMJBMpump
+2025-05-25 09:48:12,656 - phoenix.telegram - WARNING - No swap data available for pump token AMNbh8v8iSDVB4kZCfmzuVD9YrNg657k7jNTMJBMpump
+2025-05-25 09:48:12,656 - phoenix.telegram - INFO - 📊 Analyzing call 3/5 for @Insider_ECA
+2025-05-25 09:48:13,159 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 09:48:13,159 - phoenix.helius - INFO - Analyzing pump.fun token swaps for Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 09:48:30,059 - phoenix.telegram - WARNING - No swap data available for pump token Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump
+2025-05-25 09:48:30,059 - phoenix.telegram - INFO - 📊 Analyzing call 4/5 for @Insider_ECA
+2025-05-25 09:48:30,546 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for GdyWzsHdbFUokEEyi3phXZHL8xXMQqhkaMeWyGXrpump
+2025-05-25 09:48:30,546 - phoenix.helius - INFO - Analyzing pump.fun token swaps for GdyWzsHdbFUokEEyi3phXZHL8xXMQqhkaMeWyGXrpump
+2025-05-25 09:48:48,425 - phoenix.telegram - WARNING - No swap data available for pump token GdyWzsHdbFUokEEyi3phXZHL8xXMQqhkaMeWyGXrpump
+2025-05-25 09:48:48,425 - phoenix.telegram - INFO - 📊 Analyzing call 5/5 for @Insider_ECA
+2025-05-25 09:48:48,434 - phoenix.telegram - ERROR - Timeout analyzing @Insider_ECA after 45s
+2025-05-25 09:48:48,944 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @Zen_call (initial analysis)
+2025-05-25 09:48:49,091 - phoenix.telegram - INFO - Scraping up to 500 messages from OxyZen Calls (ID: 2177594166)
+2025-05-25 09:48:49,517 - phoenix.telegram - INFO - Finished retrieving 53 messages from 2177594166
+2025-05-25 09:48:49,517 - phoenix.telegram - INFO - 📨 Found 53 messages in @Zen_call's channel
+2025-05-25 09:48:49,517 - phoenix.telegram - INFO - 🎯 Found 5 token calls for @Zen_call
+2025-05-25 09:48:49,517 - phoenix.telegram - INFO - 📊 Analyzing call 1/5 for @Zen_call
+2025-05-25 09:48:49,517 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for GTGUTdfZsxP94LXiLSjL9E7CT2wevxEF7gBZkFeYpump
+2025-05-25 09:48:49,517 - phoenix.helius - INFO - Analyzing pump.fun token swaps for GTGUTdfZsxP94LXiLSjL9E7CT2wevxEF7gBZkFeYpump
+2025-05-25 09:49:06,037 - phoenix.telegram - WARNING - No swap data available for pump token GTGUTdfZsxP94LXiLSjL9E7CT2wevxEF7gBZkFeYpump
+2025-05-25 09:49:06,037 - phoenix.telegram - INFO - 📊 Analyzing call 2/5 for @Zen_call
+2025-05-25 09:49:06,530 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for CGQzLofhtcLHR4uyGF2SVBEGiBiuw1s6fV6sZdWkpump
+2025-05-25 09:49:06,530 - phoenix.helius - INFO - Analyzing pump.fun token swaps for CGQzLofhtcLHR4uyGF2SVBEGiBiuw1s6fV6sZdWkpump
+2025-05-25 09:49:24,074 - phoenix.telegram - WARNING - No swap data available for pump token CGQzLofhtcLHR4uyGF2SVBEGiBiuw1s6fV6sZdWkpump
+2025-05-25 09:49:24,074 - phoenix.telegram - INFO - 📊 Analyzing call 3/5 for @Zen_call
+2025-05-25 09:49:24,588 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for CGQzLofhtcLHR4uyGF2SVBEGiBiuw1s6fV6sZdWkpump
+2025-05-25 09:49:24,588 - phoenix.helius - INFO - Analyzing pump.fun token swaps for CGQzLofhtcLHR4uyGF2SVBEGiBiuw1s6fV6sZdWkpump
+2025-05-25 09:49:35,680 - phoenix.telegram - WARNING - No swap data available for pump token CGQzLofhtcLHR4uyGF2SVBEGiBiuw1s6fV6sZdWkpump
+2025-05-25 09:49:35,680 - phoenix.telegram - INFO - 📊 Analyzing call 4/5 for @Zen_call
+2025-05-25 09:49:35,680 - phoenix.telegram - ERROR - Global timeout reached (300s), returning partial results
+2025-05-25 09:49:35,680 - phoenix - INFO - 📊 Analysis completed, exporting results...
+2025-05-25 09:49:35,680 - phoenix.telegram - ERROR - No data to export
+2025-05-25 09:49:35,680 - phoenix.telegram - INFO - Disconnecting from Telegram...
+2025-05-25 09:49:35,695 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-25 09:49:35,695 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-25 09:49:35,711 - phoenix.telegram - INFO - Disconnected from Telegram
+2025-05-25 09:49:35,711 - phoenix - INFO - 📞 Disconnected from Telegram
+2025-05-25 09:49:35,711 - phoenix - ERROR - ❌ Analysis failed: Analysis timeout after 300 seconds
+2025-05-25 09:49:35,721 - phoenix - INFO - 📁 Enhanced telegram analysis completed. Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv

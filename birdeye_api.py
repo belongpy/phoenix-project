@@ -3,6 +3,7 @@ Birdeye API Module - Phoenix Project (Complete Fixed Version)
 
 This module handles all interactions with Birdeye Solana API with proper error handling.
 FIXES:
+- Added address validation to prevent invalid API calls
 - Special handling for pump.fun tokens
 - Better error handling and logging
 - Improved price history resolution handling
@@ -33,6 +34,41 @@ class BirdeyeAPI:
             "X-API-KEY": api_key,
             "Content-Type": "application/json"
         }
+    
+    def _is_valid_solana_address(self, address: str) -> bool:
+        """
+        Validate Solana address format before making API calls.
+        
+        Args:
+            address (str): Address to validate
+            
+        Returns:
+            bool: True if valid, False otherwise
+        """
+        # Basic validation
+        if not address or len(address) < 32 or len(address) > 44:
+            return False
+        
+        # Check if it contains only base58 characters
+        base58_chars = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
+        if not all(c in base58_chars for c in address):
+            return False
+        
+        # Reject if ALL lowercase (likely invalid)
+        if address.islower():
+            logger.warning(f"Rejecting all-lowercase address: {address}")
+            return False
+        
+        # Reject known system programs
+        system_programs = [
+            "11111111111111111111111111111111",
+            "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+            "So11111111111111111111111111111111111111112",
+        ]
+        if address in system_programs:
+            return False
+        
+        return True
     
     def _make_request(self, endpoint: str, params: Optional[Dict[str, Any]] = None, 
                      retry_count: int = 3, retry_delay: int = 2) -> Dict[str, Any]:
@@ -113,6 +149,15 @@ class BirdeyeAPI:
         Returns:
             Dict[str, Any]: Token information
         """
+        # Validate address first
+        if not self._is_valid_solana_address(token_address):
+            logger.warning(f"Invalid token address format: {token_address}")
+            return {
+                "success": False,
+                "error": "Invalid token address format",
+                "data": None
+            }
+        
         # Use the correct endpoint
         endpoint = f"/defi/token_overview"
         params = {"address": token_address}
@@ -146,6 +191,15 @@ class BirdeyeAPI:
         Returns:
             Dict[str, Any]: Token price information
         """
+        # Validate address first
+        if not self._is_valid_solana_address(token_address):
+            logger.warning(f"Invalid token address format: {token_address}")
+            return {
+                "success": False,
+                "error": "Invalid token address format",
+                "data": {"value": 0, "solPrice": 0}
+            }
+        
         endpoint = f"/defi/price"
         params = {"address": token_address}
         
@@ -178,6 +232,15 @@ class BirdeyeAPI:
         Returns:
             Dict[str, Any]: Historical price data
         """
+        # Validate address first
+        if not self._is_valid_solana_address(token_address):
+            logger.warning(f"Invalid token address format: {token_address}")
+            return {
+                "success": False,
+                "error": "Invalid token address format",
+                "data": {"items": []}
+            }
+        
         # Special handling for pump.fun tokens
         if token_address.endswith("pump"):
             logger.info(f"Token {token_address} is a pump.fun token, limited price history available")
@@ -231,6 +294,15 @@ class BirdeyeAPI:
         Returns:
             Dict[str, Any]: Wallet transactions
         """
+        # Validate address first
+        if not self._is_valid_solana_address(wallet_address):
+            logger.warning(f"Invalid wallet address format: {wallet_address}")
+            return {
+                "success": False,
+                "error": "Invalid wallet address format",
+                "data": []
+            }
+        
         endpoint = f"/v1/wallet/tx"
         params = {
             "wallet": wallet_address,
@@ -260,6 +332,15 @@ class BirdeyeAPI:
         Returns:
             Dict[str, Any]: Wallet token holdings
         """
+        # Validate address first
+        if not self._is_valid_solana_address(wallet_address):
+            logger.warning(f"Invalid wallet address format: {wallet_address}")
+            return {
+                "success": False,
+                "error": "Invalid wallet address format",
+                "data": []
+            }
+        
         endpoint = f"/v1/wallet/token_list"
         params = {"wallet": wallet_address}
         
@@ -288,6 +369,15 @@ class BirdeyeAPI:
         Returns:
             Dict[str, Any]: DEX trades for the token
         """
+        # Validate address first
+        if not self._is_valid_solana_address(token_address):
+            logger.warning(f"Invalid token address format: {token_address}")
+            return {
+                "success": False,
+                "error": "Invalid token address format",
+                "data": {"items": []}
+            }
+        
         endpoint = f"/defi/txs/token"
         params = {
             "address": token_address,
@@ -320,6 +410,14 @@ class BirdeyeAPI:
         Returns:
             Dict[str, Any]: Token performance metrics
         """
+        # Validate address first
+        if not self._is_valid_solana_address(token_address):
+            logger.warning(f"Invalid token address format: {token_address}")
+            return {
+                "success": False,
+                "error": "Invalid token address format"
+            }
+        
         # Convert datetime to second timestamps (not milliseconds)
         start_timestamp = int(start_time.timestamp())
         end_timestamp = int(datetime.now().timestamp())
