@@ -1,20 +1,13 @@
 #!/usr/bin/env python3
 """
-Phoenix Project - UPDATED CLI Tool for 7-Day Active Trader Analysis
+Phoenix Project - UPDATED CLI Tool for Wallet Analysis
 
 🎯 MAJOR UPDATES:
-- 7-day recency focus for all wallet analysis
-- Enhanced strategy recommendations with TP guidance
-- Removed redundant columns (confidence, tier, rating)
-- Smart sell following based on exit quality
-- Active trader detection and prioritization
-- Fixed progress output and buffering issues
-
-FIXES IMPLEMENTED:
-- Improved console output buffering
-- Better progress tracking
-- Fixed screen freezing issues
-- Added real-time feedback during long operations
+- Simplified wallet analysis menu
+- Default 7-day analysis (configurable)
+- Direct to processing without parameter prompts
+- Removed bundle detection displays
+- Improved performance with optimizations
 """
 
 import os
@@ -72,7 +65,11 @@ def load_config() -> Dict[str, Any]:
             "telegram_groups": ["spydefi"],
             "wallets": []
         },
-        "analysis_period_days": 7  # Changed default to 7 days
+        "analysis_period_days": 7,  # Default 7 days
+        "wallet_analysis": {
+            "days_to_analyze": 7,  # Configurable days for wallet analysis
+            "skip_prompts": True   # Skip parameter prompts
+        }
     }
 
 def ensure_output_dir(output_path: str) -> str:
@@ -117,7 +114,7 @@ def load_wallets_from_file(file_path: str = "wallets.txt") -> List[str]:
         return []
 
 class PhoenixCLI:
-    """Phoenix CLI with 7-day active trader focus."""
+    """Phoenix CLI with simplified wallet analysis."""
     
     def __init__(self):
         self.config = load_config()
@@ -126,7 +123,7 @@ class PhoenixCLI:
     def _create_parser(self) -> argparse.ArgumentParser:
         """Create and configure the argument parser."""
         parser = argparse.ArgumentParser(
-            description="Phoenix Project - 7-Day Active Solana Trader Analysis Tool",
+            description="Phoenix Project - Solana Wallet Analysis Tool",
             formatter_class=argparse.RawDescriptionHelpFormatter
         )
         
@@ -140,6 +137,7 @@ class PhoenixCLI:
         configure_parser.add_argument("--telegram-api-id", help="Telegram API ID")
         configure_parser.add_argument("--telegram-api-hash", help="Telegram API hash")
         configure_parser.add_argument("--rpc-url", help="Solana RPC URL (P9 or other provider)")
+        configure_parser.add_argument("--analysis-days", type=int, help="Default days for wallet analysis")
         
         # Enhanced telegram analysis command
         telegram_parser = subparsers.add_parser("telegram", help="Enhanced SpyDefi analysis")
@@ -147,19 +145,19 @@ class PhoenixCLI:
         telegram_parser.add_argument("--output", default="spydefi_analysis_enhanced.csv", help="Output CSV file")
         telegram_parser.add_argument("--excel", action="store_true", help="Also export to Excel format")
         
-        # Wallet analysis command with 7-day default
-        wallet_parser = subparsers.add_parser("wallet", help="Analyze wallets for copy trading (7-day focus)")
+        # Wallet analysis command
+        wallet_parser = subparsers.add_parser("wallet", help="Analyze wallets for copy trading")
         wallet_parser.add_argument("--wallets-file", default="wallets.txt", help="File containing wallet addresses")
-        wallet_parser.add_argument("--days", type=int, default=7, help="Number of days to analyze (default: 7)")
-        wallet_parser.add_argument("--output", default="wallet_analysis_7day.csv", help="Output file")
+        wallet_parser.add_argument("--days", type=int, help="Number of days to analyze (overrides config)")
+        wallet_parser.add_argument("--output", default="wallet_analysis.csv", help="Output file")
         
         return parser
     
     def _handle_numbered_menu(self):
         """Handle the numbered menu interface."""
         print("\n" + "="*80, flush=True)
-        print("Phoenix Project - 7-Day Active Trader Analysis Tool", flush=True)
-        print("🚀 Focus on ACTIVE traders with recent wins", flush=True)
+        print("Phoenix Project - Solana Wallet Analysis Tool", flush=True)
+        print("🚀 Focus on active traders with recent performance", flush=True)
         print(f"📅 Current Date: {datetime.now().strftime('%Y-%m-%d')}", flush=True)
         print("="*80, flush=True)
         print("\nSelect an option:", flush=True)
@@ -169,7 +167,7 @@ class PhoenixCLI:
         print("3. Test API Connectivity", flush=True)
         print("\n📊 TOOLS:", flush=True)
         print("4. SPYDEFI ANALYSIS", flush=True)
-        print("5. 7-DAY ACTIVE WALLET ANALYSIS (Enhanced Strategies)", flush=True)
+        print("5. WALLET ANALYSIS", flush=True)  # Simplified name
         print("\n🔍 UTILITIES:", flush=True)
         print("6. View Current Sources", flush=True)
         print("7. Help & Strategy Guide", flush=True)
@@ -191,7 +189,7 @@ class PhoenixCLI:
             elif choice == '4':
                 self._enhanced_telegram_analysis()
             elif choice == '5':
-                self._active_trader_wallet_analysis()
+                self._wallet_analysis()  # Simplified method name
             elif choice == '6':
                 self._view_current_sources()
             elif choice == '7':
@@ -207,12 +205,12 @@ class PhoenixCLI:
             logger.error(f"Error in menu: {str(e)}")
             input("Press Enter to continue...")
     
-    def _active_trader_wallet_analysis(self):
-        """Run 7-day active trader wallet analysis with enhanced strategies."""
+    def _wallet_analysis(self):
+        """Run wallet analysis with configurable days (default 7)."""
         print("\n" + "="*80, flush=True)
-        print("    💰 7-DAY ACTIVE TRADER ANALYSIS", flush=True)
-        print("    🎯 Focus: Recent winners with smart exit strategies", flush=True)
-        print("    📊 Features: Custom TPs based on trader behavior", flush=True)
+        print("    💰 WALLET ANALYSIS", flush=True)
+        print("    🎯 Analyzing active traders with smart strategies", flush=True)
+        print("    📊 Features: Performance metrics & exit guidance", flush=True)
         print("="*80, flush=True)
         
         # Check API configuration
@@ -237,21 +235,23 @@ class PhoenixCLI:
         
         print(f"\n📁 Found {len(wallets)} wallets in wallets.txt", flush=True)
         
-        # Get analysis parameters
-        print("\n🔧 ANALYSIS PARAMETERS:", flush=True)
+        # Get days to analyze from config (default 7)
+        days_to_analyze = self.config.get("wallet_analysis", {}).get("days_to_analyze", 7)
         
-        # Days to analyze (default 7)
-        days_input = input("Days to analyze (default: 7, max: 30): ").strip()
-        if days_input.isdigit():
-            days_to_analyze = min(int(days_input), 30)
-        else:
-            days_to_analyze = 7
+        # Direct to processing without prompts (unless skip_prompts is False)
+        skip_prompts = self.config.get("wallet_analysis", {}).get("skip_prompts", True)
         
-        print(f"\n🚀 Starting 7-day active trader analysis...", flush=True)
+        if not skip_prompts:
+            # Optional: Ask for days if not skipping prompts
+            days_input = input(f"Days to analyze (default: {days_to_analyze}, max: 30): ").strip()
+            if days_input.isdigit():
+                days_to_analyze = min(int(days_input), 30)
+        
+        print(f"\n🚀 Starting wallet analysis...", flush=True)
         print(f"📊 Parameters:", flush=True)
         print(f"   • Wallets: {len(wallets)}", flush=True)
         print(f"   • Analysis period: {days_to_analyze} days", flush=True)
-        print(f"   • Focus: Active traders only (traded in last 7 days)", flush=True)
+        print(f"   • Focus: Active traders (recent activity)", flush=True)
         print(f"   • Strategy: Enhanced with TP guidance", flush=True)
         print(f"   • Export format: CSV with strategy details", flush=True)
         print("\nProcessing...", flush=True)
@@ -283,15 +283,15 @@ class PhoenixCLI:
             )
             
             if results.get("success"):
-                self._display_active_trader_results(results)
+                self._display_wallet_results(results)
                 
                 # Export to CSV with enhanced format
                 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-                output_file = ensure_output_dir(f"active_traders_7day_{timestamp}.csv")
-                self._export_active_trader_csv(results, output_file)
+                output_file = ensure_output_dir(f"wallet_analysis_{timestamp}.csv")
+                self._export_wallet_csv(results, output_file)
                 print(f"\n📄 Exported to CSV: {output_file}", flush=True)
                 
-                print("\n✅ 7-day active trader analysis completed successfully!", flush=True)
+                print("\n✅ Wallet analysis completed successfully!", flush=True)
                 
                 # Display API call statistics
                 if "api_calls" in results:
@@ -310,10 +310,10 @@ class PhoenixCLI:
         
         input("\nPress Enter to continue...")
     
-    def _display_active_trader_results(self, results: Dict[str, Any]) -> None:
-        """Display 7-day active trader analysis results."""
+    def _display_wallet_results(self, results: Dict[str, Any]) -> None:
+        """Display wallet analysis results."""
         print("\n" + "="*80, flush=True)
-        print("    📊 7-DAY ACTIVE TRADER ANALYSIS RESULTS", flush=True)
+        print("    📊 WALLET ANALYSIS RESULTS", flush=True)
         print("="*80, flush=True)
         
         # Summary statistics
@@ -337,7 +337,7 @@ class PhoenixCLI:
                 else:
                     inactive_count += 1
         
-        print(f"\n🟢 Active traders (7-day): {active_count}", flush=True)
+        print(f"\n🟢 Active traders: {active_count}", flush=True)
         print(f"🔴 Inactive traders: {inactive_count}", flush=True)
         
         # Sort all wallets by score
@@ -347,7 +347,7 @@ class PhoenixCLI:
         active_wallets = [w for w in all_wallets if w.get('metrics', {}).get('active_trader', False)]
         
         if active_wallets:
-            print(f"\n🏆 TOP 10 ACTIVE TRADERS (Last 7 Days):", flush=True)
+            print(f"\n🏆 TOP 10 ACTIVE TRADERS:", flush=True)
             for i, analysis in enumerate(active_wallets[:10], 1):
                 wallet = analysis['wallet_address']
                 metrics = analysis['metrics']
@@ -361,12 +361,14 @@ class PhoenixCLI:
                 else:
                     profit_factor_display = f"{profit_factor:.2f}x"
                 
+                days_analyzed = analysis.get('analysis_period_days', 7)
+                
                 print(f"\n{i}. Wallet: {wallet[:8]}...{wallet[-4:]}", flush=True)
                 print(f"   Score: {composite_score:.1f}/100", flush=True)
                 print(f"   Type: {analysis['wallet_type']}", flush=True)
-                print(f"   === 7-DAY PERFORMANCE ===", flush=True)
-                print(f"   Trades (7d): {metrics.get('trades_last_7_days', 0)} | Win Rate (7d): {metrics.get('win_rate_7d', 0):.1f}%", flush=True)
-                print(f"   Profit (7d): ${metrics.get('profit_7d', 0):.2f}", flush=True)
+                print(f"   === {days_analyzed}-DAY PERFORMANCE ===", flush=True)
+                print(f"   Trades ({days_analyzed}d): {metrics.get('trades_last_7_days', 0)} | Win Rate ({days_analyzed}d): {metrics.get('win_rate_7d', 0):.1f}%", flush=True)
+                print(f"   Profit ({days_analyzed}d): ${metrics.get('profit_7d', 0):.2f}", flush=True)
                 print(f"   === OVERALL STATS ===", flush=True)
                 print(f"   Total Trades: {metrics['total_trades']} | Profit Factor: {profit_factor_display}", flush=True)
                 print(f"   5x+ Gem Rate: {metrics.get('gem_rate_5x_plus', 0):.1f}%", flush=True)
@@ -385,12 +387,8 @@ class PhoenixCLI:
                     if ee_analysis.get('exit_quality') == 'POOR':
                         print(f"   ⚠️ They miss {ee_analysis.get('missed_gains_percent', 0):.0f}% gains on average", flush=True)
                 
-                # Bundle detection
-                if 'bundle_analysis' in analysis and analysis['bundle_analysis'].get('is_likely_bundler'):
-                    print(f"   ⚠️ WARNING: Possible bundler detected!", flush=True)
-                
-                # 7-day distribution
-                print(f"   === 7-DAY DISTRIBUTION ===", flush=True)
+                # Distribution
+                print(f"   === DISTRIBUTION ===", flush=True)
                 print(f"   5x+: {metrics.get('distribution_500_plus_%', 0):.1f}% | "
                       f"2-5x: {metrics.get('distribution_200_500_%', 0):.1f}% | "
                       f"<2x: {metrics.get('distribution_0_200_%', 0):.1f}%", flush=True)
@@ -414,9 +412,9 @@ class PhoenixCLI:
                           if w.get('seven_day_metrics', {}).get('has_2x_last_7_days', False))
             
             if recent_5x > 0:
-                print(f"   🚀 {recent_5x} wallets hit 5x+ in last 7 days!", flush=True)
+                print(f"   🚀 {recent_5x} wallets hit 5x+ recently!", flush=True)
             if recent_2x > 0:
-                print(f"   📈 {recent_2x} wallets hit 2x+ in last 7 days!", flush=True)
+                print(f"   📈 {recent_2x} wallets hit 2x+ recently!", flush=True)
             
             # Exit quality breakdown
             good_exits = sum(1 for w in active_wallets 
@@ -427,12 +425,12 @@ class PhoenixCLI:
             print(f"   ✅ {good_exits} wallets have good exit timing (follow their sells)", flush=True)
             print(f"   ❌ {poor_exits} wallets exit too early (use fixed TPs instead)", flush=True)
     
-    def _export_active_trader_csv(self, results: Dict[str, Any], output_file: str) -> None:
-        """Export 7-day active trader analysis to CSV with enhanced strategy columns."""
+    def _export_wallet_csv(self, results: Dict[str, Any], output_file: str) -> None:
+        """Export wallet analysis to CSV with enhanced strategy columns."""
         try:
             from export_utils import export_wallet_rankings_csv
             export_wallet_rankings_csv(results, output_file)
-            logger.info(f"Exported active trader analysis to {output_file}")
+            logger.info(f"Exported wallet analysis to {output_file}")
             
         except Exception as e:
             logger.error(f"Error exporting CSV: {str(e)}")
@@ -741,7 +739,7 @@ class PhoenixCLI:
             print(f"❌ Solana RPC: Error - {str(e)}", flush=True)
         
         # Summary
-        print(f"\n📊 7-DAY ACTIVE TRADER FEATURES:", flush=True)
+        print(f"\n📊 FEATURES AVAILABLE:", flush=True)
         birdeye_ok = bool(self.config.get("birdeye_api_key"))
         helius_ok = bool(self.config.get("helius_api_key"))
         telegram_ok = bool(self.config.get("telegram_api_id") and self.config.get("telegram_api_hash"))
@@ -751,16 +749,15 @@ class PhoenixCLI:
         print(f"   💰 Wallet Analysis: {'✅ Ready' if cielo_ok else '❌ Need Cielo Finance API'}", flush=True)
         print(f"   📱 Telegram/SpyDefi: {'✅ Ready' if (birdeye_ok and telegram_ok) else '❌ Missing APIs'}", flush=True)
         print(f"   🎯 Market Cap Tracking: {'✅ Active' if birdeye_ok else '❌ Need Birdeye'}", flush=True)
-        print(f"   ⚡ Bundle Detection: {'✅ Active' if cielo_ok else '❌ Need Cielo'}", flush=True)
         print(f"   📊 Entry/Exit Quality: {'✅ Full Analysis' if (birdeye_ok and helius_ok) else '⚠️ Basic Only'}", flush=True)
         print(f"   🚀 5x+ Gem Detection: {'✅ Active' if cielo_ok else '❌ Need Cielo'}", flush=True)
-        print(f"   📈 7-Day Focus: {'✅ Active' if cielo_ok else '❌ Need Cielo'}", flush=True)
+        print(f"   📈 Recent Activity Focus: {'✅ Active' if cielo_ok else '❌ Need Cielo'}", flush=True)
         print(f"   🎯 Enhanced Strategy: {'✅ Active' if cielo_ok else '❌ Need Cielo'}", flush=True)
         
         if birdeye_ok and helius_ok and telegram_ok and cielo_ok:
-            print(f"\n🎉 ALL SYSTEMS GO! Full 7-day active trader capabilities available.", flush=True)
+            print(f"\n🎉 ALL SYSTEMS GO! Full capabilities available.", flush=True)
         else:
-            print(f"\n⚠️ Configure missing APIs to enable all active trader features.", flush=True)
+            print(f"\n⚠️ Configure missing APIs to enable all features.", flush=True)
         
         input("\nPress Enter to continue...")
     
@@ -868,6 +865,20 @@ class PhoenixCLI:
                     self.config["solana_rpc_url"] = new_rpc
                     print("✅ Custom RPC URL configured", flush=True)
         
+        # Wallet analysis configuration
+        print(f"\n📊 Wallet Analysis Settings:", flush=True)
+        current_days = self.config.get("wallet_analysis", {}).get("days_to_analyze", 7)
+        print(f"   Current default days: {current_days}", flush=True)
+        change_days = input("Change default analysis days? (y/N): ").lower().strip()
+        if change_days == 'y':
+            days_input = input("Enter default days (1-30): ").strip()
+            if days_input.isdigit():
+                days = min(max(int(days_input), 1), 30)
+                if "wallet_analysis" not in self.config:
+                    self.config["wallet_analysis"] = {}
+                self.config["wallet_analysis"]["days_to_analyze"] = days
+                print(f"✅ Default analysis period set to {days} days", flush=True)
+        
         # Save configuration
         save_config(self.config)
         print("\n✅ Configuration saved successfully!", flush=True)
@@ -890,6 +901,10 @@ class PhoenixCLI:
         print(f"\n🌐 RPC ENDPOINT:", flush=True)
         print(f"   URL: {self.config.get('solana_rpc_url', 'Default')}", flush=True)
         
+        print(f"\n📊 ANALYSIS SETTINGS:", flush=True)
+        print(f"   Default analysis period: {self.config.get('wallet_analysis', {}).get('days_to_analyze', 7)} days", flush=True)
+        print(f"   Skip prompts: {'Yes' if self.config.get('wallet_analysis', {}).get('skip_prompts', True) else 'No'}", flush=True)
+        
         print(f"\n📊 DATA SOURCES:", flush=True)
         print(f"   Telegram Channels: {len(self.config.get('sources', {}).get('telegram_groups', []))}", flush=True)
         for channel in self.config.get('sources', {}).get('telegram_groups', []):
@@ -910,27 +925,26 @@ class PhoenixCLI:
         telegram_ok = bool(self.config.get("telegram_api_id") and self.config.get("telegram_api_hash"))
         cielo_ok = bool(self.config.get("cielo_api_key"))
         
-        print(f"\n🎯 7-DAY ACTIVE TRADER FEATURES:", flush=True)
+        print(f"\n🎯 FEATURES AVAILABLE:", flush=True)
         print(f"   Token Price Analysis: {'✅ Full' if (birdeye_ok and helius_ok) else '⚠️ Limited' if birdeye_ok else '❌ Not Available'}", flush=True)
         print(f"   Wallet Analysis: {'✅ Available' if cielo_ok else '❌ Not Available'}", flush=True)
         print(f"   Entry/Exit Quality: {'✅ Full' if (birdeye_ok and helius_ok) else '⚠️ Basic' if birdeye_ok else '❌ Not Available'}", flush=True)
         print(f"   Market Cap Tracking: {'✅ Active' if birdeye_ok else '❌ Not Available'}", flush=True)
-        print(f"   Bundle Detection: {'✅ Active' if cielo_ok else '❌ Not Available'}", flush=True)
         print(f"   Enhanced Strategy: {'✅ Active' if cielo_ok else '❌ Not Available'}", flush=True)
-        print(f"   7-Day Focus: {'✅ Active' if cielo_ok else '❌ Not Available'}", flush=True)
+        print(f"   Recent Activity Focus: {'✅ Active' if cielo_ok else '❌ Not Available'}", flush=True)
         
         input("\nPress Enter to continue...")
     
     def _show_strategy_help(self):
         """Show help and strategy guidance."""
         print("\n" + "="*80, flush=True)
-        print("    📖 STRATEGY GUIDE - 7-Day Active Trader Edition", flush=True)
+        print("    📖 STRATEGY GUIDE - Active Trader Edition", flush=True)
         print("="*80, flush=True)
         
         print("\n🎯 WALLET SELECTION CRITERIA:", flush=True)
-        print("• Active in last 7 days (recent trades)", flush=True)
-        print("• Win rate 40%+ in last 7 days", flush=True)
-        print("• At least 3 trades in last week", flush=True)
+        print("• Active in analysis period (recent trades)", flush=True)
+        print("• Win rate 40%+ in recent period", flush=True)
+        print("• At least 3 trades in period", flush=True)
         print("• Hit 2x+ or 5x+ recently", flush=True)
         
         print("\n📊 ENHANCED STRATEGY RECOMMENDATIONS:", flush=True)
@@ -961,12 +975,11 @@ class PhoenixCLI:
         print("• Swing Trader: TP1=100-200% (patience pays)", flush=True)
         
         print("\n⚠️ RED FLAGS TO WATCH:", flush=True)
-        print("• Days since trade > 7 = Getting inactive", flush=True)
+        print("• Days since trade > configured period = Getting inactive", flush=True)
         print("• Exit quality = POOR = Don't follow sells", flush=True)
-        print("• Bundle warning = Verify on-chain first", flush=True)
         print("• Missed gains > 200% = They panic sell", flush=True)
         
-        print("\n📊 7-DAY DISTRIBUTION FOCUS:", flush=True)
+        print("\n📊 DISTRIBUTION FOCUS:", flush=True)
         print("Look for wallets with high % in:", flush=True)
         print("• 500%+ bucket (5x+ trades)", flush=True)
         print("• 200-500% bucket (2x-5x trades)", flush=True)
@@ -977,8 +990,11 @@ class PhoenixCLI:
         print("# Configure all APIs", flush=True)
         print("python phoenix.py configure --birdeye-api-key KEY --helius-api-key KEY --cielo-api-key KEY", flush=True)
         print("", flush=True)
-        print("# Analyze active traders (7-day default)", flush=True)
-        print("python phoenix.py wallet --days 7", flush=True)
+        print("# Analyze wallets (uses configured default days)", flush=True)
+        print("python phoenix.py wallet", flush=True)
+        print("", flush=True)
+        print("# Analyze with custom days", flush=True)
+        print("python phoenix.py wallet --days 14", flush=True)
         
         input("\nPress Enter to continue...")
     
@@ -1020,7 +1036,7 @@ class PhoenixCLI:
         
         # Analysis settings
         print(f"\n⚙️ ANALYSIS SETTINGS:", flush=True)
-        print(f"   Default period: 7 days (active traders)", flush=True)
+        print(f"   Default period: {self.config.get('wallet_analysis', {}).get('days_to_analyze', 7)} days", flush=True)
         print(f"   Focus: Recent performance & activity", flush=True)
         print(f"   Strategy: Enhanced with TP guidance", flush=True)
         
@@ -1069,6 +1085,12 @@ class PhoenixCLI:
             self.config["solana_rpc_url"] = args.rpc_url
             logger.info("Solana RPC URL configured.")
         
+        if args.analysis_days:
+            if "wallet_analysis" not in self.config:
+                self.config["wallet_analysis"] = {}
+            self.config["wallet_analysis"]["days_to_analyze"] = args.analysis_days
+            logger.info(f"Default analysis days set to {args.analysis_days}")
+        
         save_config(self.config)
         logger.info(f"Configuration saved to {CONFIG_FILE}")
     
@@ -1081,6 +1103,12 @@ class PhoenixCLI:
             return
         
         logger.info(f"Loaded {len(wallets)} wallets from {args.wallets_file}")
+        
+        # Get days to analyze
+        if args.days:
+            days_to_analyze = args.days
+        else:
+            days_to_analyze = self.config.get("wallet_analysis", {}).get("days_to_analyze", 7)
         
         # Initialize APIs
         try:
@@ -1103,7 +1131,7 @@ class PhoenixCLI:
             # Run batch analysis
             results = wallet_analyzer.batch_analyze_wallets(
                 wallets,
-                days_back=args.days,
+                days_back=days_to_analyze,
                 use_hybrid=True
             )
             
@@ -1112,7 +1140,7 @@ class PhoenixCLI:
                 output_file = ensure_output_dir(args.output)
                 if not output_file.endswith('.csv'):
                     output_file = output_file.replace('.xlsx', '.csv')
-                self._export_active_trader_csv(results, output_file)
+                self._export_wallet_csv(results, output_file)
                 
                 logger.info(f"Analysis complete. Results saved to {output_file}")
             else:

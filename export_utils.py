@@ -1,15 +1,11 @@
 """
-Export Utilities Module - Phoenix Project (7-DAY ACTIVE TRADER EDITION)
+Export Utilities Module - Phoenix Project (OPTIMIZED VERSION)
 
 Handles Excel and CSV exports for memecoin analysis results.
 UPDATES:
-- Removed redundant columns (win_rate, net_profit_usd, days_since_last_trade, suggested_slippage, suggested_gas)
-- Focus on 7-day metrics (win_rate_7d, profit_7d)
-- Active trader detection and prioritization
-- Enhanced strategy columns remain
-- Market cap filter ranges for all wallets
-- Entry/exit quality based on performance
-- Bundle detection warnings
+- Removed bundle detection columns
+- Maintained all other columns and features
+- Streamlined export process
 """
 
 import os
@@ -102,13 +98,6 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
             
             number_format = workbook.add_format({
                 'num_format': '#,##0.00',
-                'border': 1
-            })
-            
-            warning_format = workbook.add_format({
-                'bg_color': '#ff0000',
-                'font_color': 'white',
-                'bold': True,
                 'border': 1
             })
             
@@ -218,7 +207,7 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                         if profit_factor > 999.99:
                             profit_factor = 999.99
                         
-                        # Build row data (REMOVED win_rate, net_profit_usd, suggested_slippage, suggested_gas)
+                        # Build row data
                         row = {
                             'Rank': rank,
                             'Wallet': wallet['wallet_address'],
@@ -226,15 +215,15 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                             'Type': wallet['wallet_type'],
                             'Trades': metrics['total_trades'],
                             'Trades 7d': metrics.get('trades_last_7_days', 0),
-                            'Win Rate 7d': metrics.get('win_rate_7d', 0) / 100,  # Only 7-day win rate
+                            'Win Rate 7d': metrics.get('win_rate_7d', 0) / 100,
                             'Profit Factor': profit_factor,
-                            'Profit 7d': metrics.get('profit_7d', 0),  # Only 7-day profit
+                            'Profit 7d': metrics.get('profit_7d', 0),
                             'Avg ROI': metrics['avg_roi'] / 100,
                             'Max ROI': metrics['max_roi'] / 100,
                             'Gem Rate (5x+)': metrics.get('gem_rate_5x_plus', 0) / 100,
                             'Hold Time (min)': metrics.get('avg_hold_time_minutes', 0),
                             'Avg First TP %': metrics.get('avg_first_take_profit_percent', 0) / 100,
-                            'Active': 'YES' if metrics.get('active_trader', False) else 'NO',  # Active instead of days since
+                            'Active': 'YES' if metrics.get('active_trader', False) else 'NO',
                             'Strategy': strategy.get('recommendation', ''),
                             'Follow Sells': 'YES' if strategy.get('follow_sells', False) else 'NO',
                             'TP1 %': strategy.get('tp1_percent', 0) / 100,
@@ -253,12 +242,6 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                             row['Pattern'] = ee_analysis.get('pattern', '')
                             row['Missed Gains %'] = ee_analysis.get('missed_gains_percent', 0) / 100
                             row['Avg Exit ROI'] = ee_analysis.get('avg_exit_roi', 0) / 100
-                        
-                        # Add bundle warning
-                        if 'bundle_analysis' in wallet and wallet['bundle_analysis'].get('is_likely_bundler'):
-                            row['Warning'] = '⚠️ BUNDLER'
-                        else:
-                            row['Warning'] = ''
                         
                         # Add distribution data (7-day)
                         row['Dist 500%+'] = metrics.get('distribution_500_plus_%', 0) / 100
@@ -341,15 +324,6 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                                 value = wallet_df.iloc[row_num-1][col_name]
                                 wallet_sheet.write(row_num, col_idx, value, money_format)
                     
-                    # Apply warning format to bundler warnings
-                    if 'Warning' in wallet_df.columns:
-                        warning_col = wallet_df.columns.get_loc('Warning')
-                        for row_num in range(1, len(wallet_df) + 1):
-                            if wallet_df.iloc[row_num-1]['Warning']:
-                                wallet_sheet.write(row_num, warning_col, 
-                                                 wallet_df.iloc[row_num-1]['Warning'], 
-                                                 warning_format)
-                    
                     # Set column widths
                     wallet_sheet.set_column('A:A', 8)   # Rank
                     wallet_sheet.set_column('B:B', 50)  # Wallet
@@ -371,8 +345,7 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                     wallet_sheet.set_column('U:U', 30)  # TP Guidance
                     wallet_sheet.set_column('V:W', 15)  # Market Cap
                     wallet_sheet.set_column('X:AB', 15) # Entry/Exit
-                    wallet_sheet.set_column('AC:AC', 12) # Warning
-                    wallet_sheet.set_column('AD:AH', 12) # Distribution
+                    wallet_sheet.set_column('AC:AG', 12) # Distribution
             
             logger.info(f"Successfully exported 7-day active trader analysis to Excel: {output_file}")
             return True
@@ -403,14 +376,14 @@ def export_wallet_rankings_csv(wallet_data: Dict[str, Any], output_file: str) ->
         all_wallets.sort(key=lambda x: x.get('composite_score', x['metrics'].get('composite_score', 0)), reverse=True)
         
         with open(output_file, 'w', newline='', encoding='utf-8') as f:
-            # Updated fieldnames - removed redundant columns
+            # Updated fieldnames - removed bundle detection columns
             fieldnames = [
                 'rank', 'wallet_address', 'composite_score',
                 'wallet_type', 'total_trades', 'trades_last_7_days',
-                'win_rate_7d', 'profit_factor',  # Removed win_rate, kept win_rate_7d
-                'profit_7d', 'avg_roi', 'median_roi', 'max_roi',  # Removed net_profit_usd, kept profit_7d
+                'win_rate_7d', 'profit_factor',
+                'profit_7d', 'avg_roi', 'median_roi', 'max_roi',
                 'avg_hold_time_minutes', 'total_tokens_traded',
-                'active_trader',  # Removed days_since_last_trade, kept active_trader
+                'active_trader',
                 'distribution_500_plus_%', 'distribution_200_500_%',
                 'distribution_0_200_%', 'distribution_neg50_0_%',
                 'distribution_below_neg50_%',
@@ -422,9 +395,7 @@ def export_wallet_rankings_csv(wallet_data: Dict[str, Any], output_file: str) ->
                 'hold_pattern', 'strategy_recommendation',
                 'follow_sells', 'tp1_percent', 'tp2_percent',
                 'sell_strategy', 'tp_guidance',
-                'filter_market_cap_min', 'filter_market_cap_max',
-                'is_likely_bundler', 'bundle_indicators',
-                'estimated_copytraders'  # Removed suggested_slippage, suggested_gas
+                'filter_market_cap_min', 'filter_market_cap_max'
             ]
             
             writer = csv.DictWriter(f, fieldnames=fieldnames)
@@ -447,15 +418,15 @@ def export_wallet_rankings_csv(wallet_data: Dict[str, Any], output_file: str) ->
                     'wallet_type': analysis['wallet_type'],
                     'total_trades': metrics['total_trades'],
                     'trades_last_7_days': metrics.get('trades_last_7_days', 0),
-                    'win_rate_7d': round(metrics.get('win_rate_7d', 0), 2),  # Only 7-day win rate
+                    'win_rate_7d': round(metrics.get('win_rate_7d', 0), 2),
                     'profit_factor': profit_factor,
-                    'profit_7d': round(metrics.get('profit_7d', 0), 2),  # Only 7-day profit
+                    'profit_7d': round(metrics.get('profit_7d', 0), 2),
                     'avg_roi': round(metrics['avg_roi'], 2),
                     'median_roi': round(metrics.get('median_roi', 0), 2),
                     'max_roi': round(metrics['max_roi'], 2),
                     'avg_hold_time_minutes': round(metrics.get('avg_hold_time_minutes', 0), 2),
                     'total_tokens_traded': metrics['total_tokens_traded'],
-                    'active_trader': 'YES' if metrics.get('active_trader', False) else 'NO',  # Active instead of days since
+                    'active_trader': 'YES' if metrics.get('active_trader', False) else 'NO',
                     'distribution_500_plus_%': metrics.get('distribution_500_plus_%', 0),
                     'distribution_200_500_%': metrics.get('distribution_200_500_%', 0),
                     'distribution_0_200_%': metrics.get('distribution_0_200_%', 0),
@@ -474,7 +445,6 @@ def export_wallet_rankings_csv(wallet_data: Dict[str, Any], output_file: str) ->
                     'tp_guidance': strategy.get('tp_guidance', ''),
                     'filter_market_cap_min': strategy.get('filter_market_cap_min', 0),
                     'filter_market_cap_max': strategy.get('filter_market_cap_max', 0)
-                    # Removed suggested_slippage and suggested_gas
                 }
                 
                 # Add entry/exit analysis if available
@@ -495,17 +465,6 @@ def export_wallet_rankings_csv(wallet_data: Dict[str, Any], output_file: str) ->
                     row['early_exit_rate'] = 0
                     row['avg_exit_roi'] = 0
                     row['hold_pattern'] = ''
-                
-                # Add bundle detection if available
-                if 'bundle_analysis' in analysis and analysis['bundle_analysis']:
-                    bundle = analysis['bundle_analysis']
-                    row['is_likely_bundler'] = 'YES' if bundle.get('is_likely_bundler') else 'NO'
-                    row['bundle_indicators'] = bundle.get('bundle_indicators', 0)
-                    row['estimated_copytraders'] = bundle.get('estimated_copytraders', '0-5')
-                else:
-                    row['is_likely_bundler'] = 'NO'
-                    row['bundle_indicators'] = 0
-                    row['estimated_copytraders'] = 'UNKNOWN'
                 
                 writer.writerow(row)
         
@@ -658,10 +617,6 @@ def generate_memecoin_analysis_report(telegram_data: Dict[str, Any],
                         f.write(f"   Entry/Exit: {ee_analysis.get('entry_quality', 'UNKNOWN')}/{ee_analysis.get('exit_quality', 'UNKNOWN')}\n")
                         if ee_analysis.get('missed_gains_percent', 0) > 0:
                             f.write(f"   Missed Gains: {ee_analysis.get('missed_gains_percent', 0):.1f}%\n")
-                    
-                    # Bundle warning
-                    if 'bundle_analysis' in wallet and wallet['bundle_analysis'].get('is_likely_bundler'):
-                        f.write(f"   ⚠️ WARNING: Possible bundler detected!\n")
                 
                 # Key insights
                 f.write("\n\n📊 KEY INSIGHTS:\n")
@@ -682,11 +637,6 @@ def generate_memecoin_analysis_report(telegram_data: Dict[str, Any],
                                         if w.get('seven_day_metrics', {}).get('has_5x_last_7_days', False))
                     if recent_5x_count > 0:
                         f.write(f"\n🚀 {recent_5x_count} wallets hit 5x+ in the last 7 days!\n")
-                    
-                    # Bundle detection
-                    bundlers = sum(1 for w in all_wallets if 'bundle_analysis' in w and w['bundle_analysis'].get('is_likely_bundler'))
-                    if bundlers > 0:
-                        f.write(f"\n⚠️ {bundlers} potential bundlers detected - verify on-chain before copying\n")
             
             f.write("\n" + "=" * 80 + "\n")
             f.write("END OF 7-DAY ACTIVE TRADER ANALYSIS REPORT\n")
@@ -723,7 +673,7 @@ def export_distribution_analysis(wallet_data: Dict[str, Any], output_file: str) 
             fieldnames = [
                 'wallet_address', 'wallet_type', 'composite_score',
                 'total_trades', 'trades_last_7_days', 'active_trader',
-                'win_rate_7d', 'profit_7d',  # Focus on 7-day metrics
+                'win_rate_7d', 'profit_7d',
                 'distribution_sum_%',
                 'distribution_500_plus_%', 'distribution_200_500_%',
                 'distribution_0_200_%', 'distribution_neg50_0_%',

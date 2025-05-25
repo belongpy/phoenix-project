@@ -5609,3 +5609,4 @@ TypeError: '>=' not supported between instances of 'NoneType' and 'int'
 2025-05-24 21:28:19,887 - phoenix.cielo - INFO - Successfully retrieved trading stats for 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
 2025-05-24 21:28:19,887 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
 2025-05-24 21:28:19,887 - phoenix.wallet - INFO - Fetching last 150 token swaps for 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 21:35:12,002 - phoenix - INFO - Loaded 2 wallet addresses from wallets.txt
