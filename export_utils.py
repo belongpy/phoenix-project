@@ -1,11 +1,12 @@
 """
-Export Utilities Module - Phoenix Project (OPTIMIZED VERSION)
+Export Utilities Module - Phoenix Project (BINARY COPY DECISION VERSION)
 
 Handles Excel and CSV exports for memecoin analysis results.
 UPDATES:
-- Removed bundle detection columns
-- Maintained all other columns and features
-- Streamlined export process
+- Added binary copy_decision column after wallet_address
+- Removed strategy_recommendation column
+- Removed filter_market_cap_min/max columns
+- Kept avg_buy_market_cap_usd column
 """
 
 import os
@@ -133,6 +134,10 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                             'Active (traded in 7 days)',
                             'Inactive (no trades in 7 days)',
                             '',
+                            'COPY DECISIONS',
+                            'Copy YES',
+                            'Copy NO',
+                            '',
                             'WALLET TYPES',
                             'Snipers (<1 min)',
                             'Flippers (1-10 min)',
@@ -164,6 +169,18 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                                             'swing_traders', 'position_traders', 'consistent', 'mixed', 'unknown']
                                 for w in wallet_data.get(cat, []) 
                                 if not w.get('metrics', {}).get('active_trader', False)),
+                            '',
+                            '',
+                            sum(1 for cat in ['snipers', 'flippers', 'scalpers', 'gem_hunters', 
+                                            'swing_traders', 'position_traders', 'consistent', 'mixed']
+                                for w in wallet_data.get(cat, []) 
+                                if w.get('composite_score', w['metrics'].get('composite_score', 0)) >= 60 
+                                and w.get('metrics', {}).get('active_trader', False)),
+                            sum(1 for cat in ['snipers', 'flippers', 'scalpers', 'gem_hunters', 
+                                            'swing_traders', 'position_traders', 'consistent', 'mixed', 'unknown']
+                                for w in wallet_data.get(cat, []) 
+                                if w.get('composite_score', w['metrics'].get('composite_score', 0)) < 60 
+                                or not w.get('metrics', {}).get('active_trader', False)),
                             '',
                             '',
                             len(wallet_data.get('snipers', [])),
@@ -202,6 +219,13 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                         composite_score = wallet.get('composite_score', metrics.get('composite_score', 0))
                         strategy = wallet.get('strategy', {})
                         
+                        # Determine binary copy decision
+                        copy_decision = "YES" if (
+                            composite_score >= 60 and 
+                            metrics.get('active_trader', False) and
+                            metrics.get('trades_last_7_days', 0) > 0
+                        ) else "NO"
+                        
                         # Cap profit factor at 999.99
                         profit_factor = metrics.get('profit_factor', 0)
                         if profit_factor > 999.99:
@@ -211,6 +235,7 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                         row = {
                             'Rank': rank,
                             'Wallet': wallet['wallet_address'],
+                            'Copy Decision': copy_decision,
                             'Score': composite_score,
                             'Type': wallet['wallet_type'],
                             'Trades': metrics['total_trades'],
@@ -224,14 +249,12 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                             'Hold Time (min)': metrics.get('avg_hold_time_minutes', 0),
                             'Avg First TP %': metrics.get('avg_first_take_profit_percent', 0) / 100,
                             'Active': 'YES' if metrics.get('active_trader', False) else 'NO',
-                            'Strategy': strategy.get('recommendation', ''),
                             'Follow Sells': 'YES' if strategy.get('follow_sells', False) else 'NO',
                             'TP1 %': strategy.get('tp1_percent', 0) / 100,
                             'TP2 %': strategy.get('tp2_percent', 0) / 100,
                             'Sell Strategy': strategy.get('sell_strategy', ''),
                             'TP Guidance': strategy.get('tp_guidance', ''),
-                            'MC Min': strategy.get('filter_market_cap_min', 0),
-                            'MC Max': strategy.get('filter_market_cap_max', 0)
+                            'Avg MCap Buy': metrics.get('avg_buy_market_cap_usd', 0)
                         }
                         
                         # Add entry/exit analysis if available
@@ -263,14 +286,14 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                         wallet_sheet.write(0, col_num, value, header_format)
                     
                     # Apply conditional formatting for scores
-                    wallet_sheet.conditional_format('C2:C{}'.format(len(wallet_df) + 1), {
+                    wallet_sheet.conditional_format('D2:D{}'.format(len(wallet_df) + 1), {
                         'type': 'cell',
                         'criteria': '>=',
                         'value': 81,
                         'format': score_excellent_format
                     })
                     
-                    wallet_sheet.conditional_format('C2:C{}'.format(len(wallet_df) + 1), {
+                    wallet_sheet.conditional_format('D2:D{}'.format(len(wallet_df) + 1), {
                         'type': 'cell',
                         'criteria': 'between',
                         'minimum': 61,
@@ -278,7 +301,7 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                         'format': score_good_format
                     })
                     
-                    wallet_sheet.conditional_format('C2:C{}'.format(len(wallet_df) + 1), {
+                    wallet_sheet.conditional_format('D2:D{}'.format(len(wallet_df) + 1), {
                         'type': 'cell',
                         'criteria': 'between',
                         'minimum': 41,
@@ -286,7 +309,7 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                         'format': score_average_format
                     })
                     
-                    wallet_sheet.conditional_format('C2:C{}'.format(len(wallet_df) + 1), {
+                    wallet_sheet.conditional_format('D2:D{}'.format(len(wallet_df) + 1), {
                         'type': 'cell',
                         'criteria': 'between',
                         'minimum': 21,
@@ -294,7 +317,7 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                         'format': score_poor_format
                     })
                     
-                    wallet_sheet.conditional_format('C2:C{}'.format(len(wallet_df) + 1), {
+                    wallet_sheet.conditional_format('D2:D{}'.format(len(wallet_df) + 1), {
                         'type': 'cell',
                         'criteria': '<=',
                         'value': 20.99,
@@ -316,7 +339,7 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                                 wallet_sheet.write(row_num, col_idx, value, percent_format)
                     
                     # Apply money format to profit and market cap columns
-                    money_cols = ['Profit 7d', 'MC Min', 'MC Max']
+                    money_cols = ['Profit 7d', 'Avg MCap Buy']
                     for row_num in range(1, len(wallet_df) + 1):
                         for col_name in money_cols:
                             if col_name in wallet_df.columns:
@@ -327,25 +350,25 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                     # Set column widths
                     wallet_sheet.set_column('A:A', 8)   # Rank
                     wallet_sheet.set_column('B:B', 50)  # Wallet
-                    wallet_sheet.set_column('C:C', 10)  # Score
-                    wallet_sheet.set_column('D:D', 15)  # Type
-                    wallet_sheet.set_column('E:F', 10)  # Trades
-                    wallet_sheet.set_column('G:G', 12)  # Win Rate 7d
-                    wallet_sheet.set_column('H:H', 15)  # Profit Factor
-                    wallet_sheet.set_column('I:I', 15)  # Profit 7d
-                    wallet_sheet.set_column('J:K', 12)  # ROI columns
-                    wallet_sheet.set_column('L:L', 15)  # Gem Rate
-                    wallet_sheet.set_column('M:M', 15)  # Hold Time
-                    wallet_sheet.set_column('N:N', 15)  # First TP
-                    wallet_sheet.set_column('O:O', 10)  # Active
-                    wallet_sheet.set_column('P:P', 20)  # Strategy
+                    wallet_sheet.set_column('C:C', 12)  # Copy Decision
+                    wallet_sheet.set_column('D:D', 10)  # Score
+                    wallet_sheet.set_column('E:E', 15)  # Type
+                    wallet_sheet.set_column('F:G', 10)  # Trades
+                    wallet_sheet.set_column('H:H', 12)  # Win Rate 7d
+                    wallet_sheet.set_column('I:I', 15)  # Profit Factor
+                    wallet_sheet.set_column('J:J', 15)  # Profit 7d
+                    wallet_sheet.set_column('K:L', 12)  # ROI columns
+                    wallet_sheet.set_column('M:M', 15)  # Gem Rate
+                    wallet_sheet.set_column('N:N', 15)  # Hold Time
+                    wallet_sheet.set_column('O:O', 15)  # First TP
+                    wallet_sheet.set_column('P:P', 10)  # Active
                     wallet_sheet.set_column('Q:Q', 12)  # Follow Sells
                     wallet_sheet.set_column('R:S', 10)  # TPs
                     wallet_sheet.set_column('T:T', 15)  # Sell Strategy
                     wallet_sheet.set_column('U:U', 30)  # TP Guidance
-                    wallet_sheet.set_column('V:W', 15)  # Market Cap
-                    wallet_sheet.set_column('X:AB', 15) # Entry/Exit
-                    wallet_sheet.set_column('AC:AG', 12) # Distribution
+                    wallet_sheet.set_column('V:V', 15)  # Avg MCap Buy
+                    wallet_sheet.set_column('W:AA', 15) # Entry/Exit
+                    wallet_sheet.set_column('AB:AF', 12) # Distribution
             
             logger.info(f"Successfully exported 7-day active trader analysis to Excel: {output_file}")
             return True
@@ -356,7 +379,7 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
 
 def export_wallet_rankings_csv(wallet_data: Dict[str, Any], output_file: str) -> bool:
     """
-    Export 7-day focused wallet rankings to CSV with enhanced strategy guidance.
+    Export 7-day focused wallet rankings to CSV with binary copy decision.
     
     Args:
         wallet_data: Wallet analysis results
@@ -376,9 +399,9 @@ def export_wallet_rankings_csv(wallet_data: Dict[str, Any], output_file: str) ->
         all_wallets.sort(key=lambda x: x.get('composite_score', x['metrics'].get('composite_score', 0)), reverse=True)
         
         with open(output_file, 'w', newline='', encoding='utf-8') as f:
-            # Updated fieldnames - removed bundle detection columns
+            # Updated fieldnames - added copy_decision after wallet_address, removed strategy_recommendation and market cap filters
             fieldnames = [
-                'rank', 'wallet_address', 'composite_score',
+                'rank', 'wallet_address', 'copy_decision', 'composite_score',
                 'wallet_type', 'total_trades', 'trades_last_7_days',
                 'win_rate_7d', 'profit_factor',
                 'profit_7d', 'avg_roi', 'median_roi', 'max_roi',
@@ -392,10 +415,9 @@ def export_wallet_rankings_csv(wallet_data: Dict[str, Any], output_file: str) ->
                 'avg_first_take_profit_percent',
                 'entry_exit_pattern', 'entry_quality', 'exit_quality',
                 'missed_gains_percent', 'early_exit_rate', 'avg_exit_roi',
-                'hold_pattern', 'strategy_recommendation',
+                'hold_pattern',
                 'follow_sells', 'tp1_percent', 'tp2_percent',
-                'sell_strategy', 'tp_guidance',
-                'filter_market_cap_min', 'filter_market_cap_max'
+                'sell_strategy', 'tp_guidance'
             ]
             
             writer = csv.DictWriter(f, fieldnames=fieldnames)
@@ -406,6 +428,13 @@ def export_wallet_rankings_csv(wallet_data: Dict[str, Any], output_file: str) ->
                 score = analysis.get('composite_score', metrics.get('composite_score', 0))
                 strategy = analysis.get('strategy', {})
                 
+                # Binary copy decision based on score >= 60, active trader, and recent trades
+                copy_decision = "YES" if (
+                    score >= 60 and 
+                    metrics.get('active_trader', False) and
+                    metrics.get('trades_last_7_days', 0) > 0
+                ) else "NO"
+                
                 # Cap profit factor at 999.99
                 profit_factor = metrics.get('profit_factor', 0)
                 if profit_factor > 999.99:
@@ -414,6 +443,7 @@ def export_wallet_rankings_csv(wallet_data: Dict[str, Any], output_file: str) ->
                 row = {
                     'rank': rank,
                     'wallet_address': analysis['wallet_address'],
+                    'copy_decision': copy_decision,
                     'composite_score': round(score, 1),
                     'wallet_type': analysis['wallet_type'],
                     'total_trades': metrics['total_trades'],
@@ -437,14 +467,11 @@ def export_wallet_rankings_csv(wallet_data: Dict[str, Any], output_file: str) ->
                     'avg_buy_market_cap_usd': metrics.get('avg_buy_market_cap_usd', 0),
                     'avg_buy_amount_usd': metrics.get('avg_buy_amount_usd', 0),
                     'avg_first_take_profit_percent': metrics.get('avg_first_take_profit_percent', 0),
-                    'strategy_recommendation': strategy.get('recommendation', ''),
                     'follow_sells': 'YES' if strategy.get('follow_sells', False) else 'NO',
                     'tp1_percent': strategy.get('tp1_percent', 0),
                     'tp2_percent': strategy.get('tp2_percent', 0),
                     'sell_strategy': strategy.get('sell_strategy', ''),
-                    'tp_guidance': strategy.get('tp_guidance', ''),
-                    'filter_market_cap_min': strategy.get('filter_market_cap_min', 0),
-                    'filter_market_cap_max': strategy.get('filter_market_cap_max', 0)
+                    'tp_guidance': strategy.get('tp_guidance', '')
                 }
                 
                 # Add entry/exit analysis if available
@@ -525,9 +552,12 @@ def generate_memecoin_analysis_report(telegram_data: Dict[str, Any],
                 f.write(f"Successfully analyzed: {wallet_data.get('analyzed_wallets', 0)}\n")
                 f.write(f"Failed analysis: {wallet_data.get('failed_wallets', 0)}\n\n")
                 
-                # Count active traders
+                # Count active traders and copy decisions
                 active_count = 0
                 inactive_count = 0
+                copy_yes_count = 0
+                copy_no_count = 0
+                
                 for category in ['snipers', 'flippers', 'scalpers', 'gem_hunters', 
                                'swing_traders', 'position_traders', 'consistent', 'mixed', 'unknown']:
                     for wallet in wallet_data.get(category, []):
@@ -535,9 +565,22 @@ def generate_memecoin_analysis_report(telegram_data: Dict[str, Any],
                             active_count += 1
                         else:
                             inactive_count += 1
+                        
+                        # Calculate copy decision
+                        score = wallet.get('composite_score', wallet.get('metrics', {}).get('composite_score', 0))
+                        if (score >= 60 and 
+                            wallet.get('metrics', {}).get('active_trader', False) and
+                            wallet.get('metrics', {}).get('trades_last_7_days', 0) > 0):
+                            copy_yes_count += 1
+                        else:
+                            copy_no_count += 1
                 
                 f.write(f"🟢 Active traders (7-day): {active_count}\n")
                 f.write(f"🔴 Inactive traders: {inactive_count}\n\n")
+                
+                f.write("COPY DECISIONS:\n")
+                f.write(f"✅ Copy YES: {copy_yes_count}\n")
+                f.write(f"❌ Copy NO: {copy_no_count}\n\n")
                 
                 f.write("WALLET TYPE BREAKDOWN:\n")
                 f.write(f"🎯 Snipers (<1 min): {len(wallet_data.get('snipers', []))}\n")
@@ -567,6 +610,13 @@ def generate_memecoin_analysis_report(telegram_data: Dict[str, Any],
                     score = wallet.get('composite_score', metrics.get('composite_score', 0))
                     strategy = wallet.get('strategy', {})
                     
+                    # Calculate copy decision
+                    copy_decision = "YES" if (
+                        score >= 60 and 
+                        metrics.get('active_trader', False) and
+                        metrics.get('trades_last_7_days', 0) > 0
+                    ) else "NO"
+                    
                     # Cap profit factor
                     profit_factor = metrics['profit_factor']
                     if profit_factor > 999.99:
@@ -575,6 +625,7 @@ def generate_memecoin_analysis_report(telegram_data: Dict[str, Any],
                         profit_factor_display = f"{profit_factor:.2f}x"
                     
                     f.write(f"\n{i}. {wallet['wallet_address'][:8]}...{wallet['wallet_address'][-4:]}\n")
+                    f.write(f"   Copy Decision: {copy_decision}\n")
                     f.write(f"   Score: {score:.1f}/100\n")
                     f.write(f"   Type: {wallet['wallet_type']}\n")
                     f.write(f"   7-day trades: {metrics.get('trades_last_7_days', 0)}\n")
@@ -585,28 +636,9 @@ def generate_memecoin_analysis_report(telegram_data: Dict[str, Any],
                     f.write(f"   Gem Rate (5x+): {metrics.get('gem_rate_5x_plus', 0):.1f}%\n")
                     f.write(f"   Avg First TP: {metrics.get('avg_first_take_profit_percent', 0):.1f}%\n")
                     f.write(f"   Avg Hold Time: {metrics.get('avg_hold_time_minutes', 0):.1f} minutes\n")
+                    f.write(f"   Avg Buy Market Cap: ${metrics.get('avg_buy_market_cap_usd', 0):,.0f}\n")
                     
-                    # Market cap range
-                    mc_min = strategy.get('filter_market_cap_min', 0)
-                    mc_max = strategy.get('filter_market_cap_max', 0)
-                    if mc_min >= 1000000:
-                        mc_min_str = f"${mc_min/1000000:.1f}M"
-                    elif mc_min >= 1000:
-                        mc_min_str = f"${mc_min/1000:.0f}K"
-                    else:
-                        mc_min_str = f"${mc_min:.0f}"
-                    
-                    if mc_max >= 1000000:
-                        mc_max_str = f"${mc_max/1000000:.1f}M"
-                    elif mc_max >= 1000:
-                        mc_max_str = f"${mc_max/1000:.0f}K"
-                    else:
-                        mc_max_str = f"${mc_max:.0f}"
-                    
-                    f.write(f"   Market Cap Range: {mc_min_str} - {mc_max_str}\n")
-                    
-                    # Enhanced strategy info
-                    f.write(f"   Strategy: {strategy.get('recommendation', '')}\n")
+                    # Strategy info
                     f.write(f"   Follow Sells: {'YES' if strategy.get('follow_sells', False) else 'NO'}\n")
                     f.write(f"   TP1: {strategy.get('tp1_percent', 0)}% | TP2: {strategy.get('tp2_percent', 0)}%\n")
                     f.write(f"   Guidance: {strategy.get('tp_guidance', '')}\n")
@@ -672,6 +704,7 @@ def export_distribution_analysis(wallet_data: Dict[str, Any], output_file: str) 
         with open(output_file, 'w', newline='', encoding='utf-8') as f:
             fieldnames = [
                 'wallet_address', 'wallet_type', 'composite_score',
+                'copy_decision',
                 'total_trades', 'trades_last_7_days', 'active_trader',
                 'win_rate_7d', 'profit_7d',
                 'distribution_sum_%',
@@ -679,7 +712,8 @@ def export_distribution_analysis(wallet_data: Dict[str, Any], output_file: str) 
                 'distribution_0_200_%', 'distribution_neg50_0_%',
                 'distribution_below_neg50_%',
                 'gem_rate_5x_plus_%', 'distribution_quality',
-                'has_5x_last_7_days', 'has_2x_last_7_days'
+                'has_5x_last_7_days', 'has_2x_last_7_days',
+                'avg_buy_market_cap_usd'
             ]
             
             writer = csv.DictWriter(f, fieldnames=fieldnames)
@@ -688,6 +722,14 @@ def export_distribution_analysis(wallet_data: Dict[str, Any], output_file: str) 
             for wallet in all_wallets:
                 metrics = wallet['metrics']
                 seven_day = wallet.get('seven_day_metrics', {})
+                score = wallet.get('composite_score', metrics.get('composite_score', 0))
+                
+                # Calculate copy decision
+                copy_decision = "YES" if (
+                    score >= 60 and 
+                    metrics.get('active_trader', False) and
+                    metrics.get('trades_last_7_days', 0) > 0
+                ) else "NO"
                 
                 # Calculate distribution sum to verify it equals 100%
                 dist_sum = (
@@ -709,7 +751,8 @@ def export_distribution_analysis(wallet_data: Dict[str, Any], output_file: str) 
                 row = {
                     'wallet_address': wallet['wallet_address'],
                     'wallet_type': wallet['wallet_type'],
-                    'composite_score': wallet.get('composite_score', metrics.get('composite_score', 0)),
+                    'composite_score': score,
+                    'copy_decision': copy_decision,
                     'total_trades': metrics['total_trades'],
                     'trades_last_7_days': metrics.get('trades_last_7_days', 0),
                     'active_trader': 'YES' if metrics.get('active_trader', False) else 'NO',
@@ -724,7 +767,8 @@ def export_distribution_analysis(wallet_data: Dict[str, Any], output_file: str) 
                     'gem_rate_5x_plus_%': metrics.get('gem_rate_5x_plus', 0),
                     'distribution_quality': dist_quality,
                     'has_5x_last_7_days': 'YES' if seven_day.get('has_5x_last_7_days', False) else 'NO',
-                    'has_2x_last_7_days': 'YES' if seven_day.get('has_2x_last_7_days', False) else 'NO'
+                    'has_2x_last_7_days': 'YES' if seven_day.get('has_2x_last_7_days', False) else 'NO',
+                    'avg_buy_market_cap_usd': metrics.get('avg_buy_market_cap_usd', 0)
                 }
                 
                 writer.writerow(row)
