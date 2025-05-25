@@ -5753,3 +5753,11 @@ TypeError: '>=' not supported between instances of 'NoneType' and 'int'
 2025-05-24 22:36:58,502 - phoenix.helius - ERROR - Enhanced transaction API error: 400
 2025-05-24 22:36:58,502 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 1, Birdeye: 0, Helius: 1, RPC: 3
 2025-05-24 22:36:58,502 - phoenix.wallet - INFO -   └─ Score: 15/100, Type: flipper
+2025-05-24 22:36:59,517 - phoenix.wallet - INFO - Analyzing wallet 2/2: 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 22:36:59,519 - phoenix.wallet - INFO - 🔍 Analyzing wallet 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX (7-day active trader focus)
+2025-05-24 22:36:59,520 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-24 22:36:59,522 - phoenix.cielo - INFO - Fetching trading stats for wallet 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 22:37:00,299 - phoenix.cielo - INFO - Successfully retrieved trading stats for 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 22:37:00,300 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-24 22:37:00,301 - phoenix.wallet - INFO - Fetching last 100 token swaps for 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 22:37:00,411 - phoenix.wallet - INFO - Filtered to 100 recent signatures
