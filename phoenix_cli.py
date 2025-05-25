@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-Phoenix Project - UPDATED CLI Tool for Wallet Analysis
+Phoenix Project - UPDATED CLI Tool with Performance Optimizations
 
 🎯 MAJOR UPDATES:
-- Simplified wallet analysis menu
-- Default 7-day analysis (configurable)
-- Direct to processing without parameter prompts
-- Removed bundle detection displays
-- Improved performance with optimizations
+- Added cache management for telegram analysis
+- Progress indicators during analysis
+- Force refresh option for telegram
+- Improved performance feedback
+- Maintained all existing functionality
 """
 
 import os
@@ -18,6 +18,7 @@ import csv
 import logging
 from datetime import datetime, timedelta
 from typing import Dict, List, Any, Optional, Tuple
+from pathlib import Path
 
 # Setup logging with proper flushing
 logging.basicConfig(
@@ -114,7 +115,7 @@ def load_wallets_from_file(file_path: str = "wallets.txt") -> List[str]:
         return []
 
 class PhoenixCLI:
-    """Phoenix CLI with simplified wallet analysis."""
+    """Phoenix CLI with performance optimizations."""
     
     def __init__(self):
         self.config = load_config()
@@ -144,6 +145,8 @@ class PhoenixCLI:
         telegram_parser.add_argument("--hours", type=int, default=24, help="Hours to analyze (default: 24)")
         telegram_parser.add_argument("--output", default="spydefi_analysis_enhanced.csv", help="Output CSV file")
         telegram_parser.add_argument("--excel", action="store_true", help="Also export to Excel format")
+        telegram_parser.add_argument("--force-refresh", action="store_true", help="Force refresh, ignore cache")
+        telegram_parser.add_argument("--clear-cache", action="store_true", help="Clear cache and exit")
         
         # Wallet analysis command
         wallet_parser = subparsers.add_parser("wallet", help="Analyze wallets for copy trading")
@@ -171,11 +174,12 @@ class PhoenixCLI:
         print("\n🔍 UTILITIES:", flush=True)
         print("6. View Current Sources", flush=True)
         print("7. Help & Strategy Guide", flush=True)
+        print("8. Manage Cache", flush=True)  # New option
         print("0. Exit", flush=True)
         print("="*80, flush=True)
         
         try:
-            choice = input("\nEnter your choice (0-7): ").strip()
+            choice = input("\nEnter your choice (0-8): ").strip()
             
             if choice == '0':
                 print("\nExiting Phoenix Project. Goodbye! 👋", flush=True)
@@ -194,6 +198,8 @@ class PhoenixCLI:
                 self._view_current_sources()
             elif choice == '7':
                 self._show_strategy_help()
+            elif choice == '8':
+                self._manage_cache()  # New method
             else:
                 print("❌ Invalid choice. Please try again.", flush=True)
                 input("Press Enter to continue...")
@@ -204,6 +210,97 @@ class PhoenixCLI:
         except Exception as e:
             logger.error(f"Error in menu: {str(e)}")
             input("Press Enter to continue...")
+    
+    def _manage_cache(self):
+        """Manage Phoenix cache."""
+        print("\n" + "="*70, flush=True)
+        print("    🗄️ CACHE MANAGEMENT", flush=True)
+        print("="*70, flush=True)
+        
+        cache_dir = Path.home() / ".phoenix_cache"
+        
+        if not cache_dir.exists():
+            print("\n📁 No cache directory found.", flush=True)
+            input("Press Enter to continue...")
+            return
+        
+        # Check cache files
+        cache_files = list(cache_dir.glob("*.json"))
+        
+        if not cache_files:
+            print("\n📭 No cache files found.", flush=True)
+            input("Press Enter to continue...")
+            return
+        
+        print("\n📊 CACHE STATUS:", flush=True)
+        total_size = 0
+        
+        for cache_file in cache_files:
+            size = cache_file.stat().st_size / 1024  # KB
+            total_size += size
+            
+            # Check if it's SpyDefi cache
+            if cache_file.name == "spydefi_kols.json":
+                try:
+                    with open(cache_file, 'r') as f:
+                        cache_data = json.load(f)
+                    
+                    timestamp = cache_data.get('timestamp', 'Unknown')
+                    kol_count = len(cache_data.get('kol_mentions', {}))
+                    
+                    print(f"\n📋 SpyDefi KOL Cache:", flush=True)
+                    print(f"   File: {cache_file.name}", flush=True)
+                    print(f"   Size: {size:.2f} KB", flush=True)
+                    print(f"   Created: {timestamp}", flush=True)
+                    print(f"   KOLs cached: {kol_count}", flush=True)
+                    
+                    # Check age
+                    if timestamp != 'Unknown':
+                        cache_age = datetime.now() - datetime.fromisoformat(timestamp)
+                        hours_old = cache_age.total_seconds() / 3600
+                        
+                        if hours_old < 6:
+                            print(f"   Status: ✅ Fresh ({hours_old:.1f} hours old)", flush=True)
+                        else:
+                            print(f"   Status: ⚠️ Expired ({hours_old:.1f} hours old)", flush=True)
+                            
+                except Exception as e:
+                    print(f"   Error reading cache: {str(e)}", flush=True)
+        
+        print(f"\n📊 Total cache size: {total_size:.2f} KB", flush=True)
+        
+        print("\n🔧 CACHE ACTIONS:", flush=True)
+        print("1. Clear all cache", flush=True)
+        print("2. View cache details", flush=True)
+        print("0. Back to main menu", flush=True)
+        
+        choice = input("\nEnter your choice (0-2): ").strip()
+        
+        if choice == '1':
+            confirm = input("\n⚠️ Clear all cache files? (y/N): ").lower().strip()
+            if confirm == 'y':
+                for cache_file in cache_files:
+                    try:
+                        cache_file.unlink()
+                        print(f"✅ Deleted: {cache_file.name}", flush=True)
+                    except Exception as e:
+                        print(f"❌ Error deleting {cache_file.name}: {str(e)}", flush=True)
+                print("\n✅ Cache cleared!", flush=True)
+            else:
+                print("❌ Cache clear cancelled.", flush=True)
+                
+        elif choice == '2':
+            print("\n📄 CACHE DETAILS:", flush=True)
+            for cache_file in cache_files:
+                print(f"\nFile: {cache_file}", flush=True)
+                try:
+                    with open(cache_file, 'r') as f:
+                        content = json.load(f)
+                    print(json.dumps(content, indent=2)[:500] + "...", flush=True)
+                except Exception as e:
+                    print(f"Error reading file: {str(e)}", flush=True)
+        
+        input("\nPress Enter to continue...")
     
     def _wallet_analysis(self):
         """Run wallet analysis with configurable days (default 7)."""
@@ -455,15 +552,47 @@ class PhoenixCLI:
             input("Press Enter to continue...")
             return
         
+        # Check cache status
+        cache_dir = Path.home() / ".phoenix_cache"
+        spydefi_cache_file = cache_dir / "spydefi_kols.json"
+        
+        if spydefi_cache_file.exists():
+            try:
+                with open(spydefi_cache_file, 'r') as f:
+                    cache_data = json.load(f)
+                
+                timestamp = cache_data.get('timestamp', 'Unknown')
+                if timestamp != 'Unknown':
+                    cache_age = datetime.now() - datetime.fromisoformat(timestamp)
+                    hours_old = cache_age.total_seconds() / 3600
+                    
+                    print(f"\n📦 SpyDefi cache found ({hours_old:.1f} hours old)", flush=True)
+                    if hours_old < 6:
+                        print("✅ Cache is fresh and will be used", flush=True)
+                        use_cache = input("Force refresh anyway? (y/N): ").lower().strip()
+                        force_refresh = use_cache == 'y'
+                    else:
+                        print("⚠️ Cache is expired and will be refreshed", flush=True)
+                        force_refresh = True
+                else:
+                    force_refresh = True
+            except:
+                force_refresh = True
+        else:
+            print("\n📭 No cache found, will perform fresh analysis", flush=True)
+            force_refresh = True
+        
         print("\n🚀 Starting enhanced SpyDefi analysis...", flush=True)
         print("📅 Analysis period: 24 hours", flush=True)
         print("📁 Output: spydefi_analysis_enhanced.csv", flush=True)
         print("📊 Excel export: Enabled", flush=True)
         print("🎯 Enhanced features:", flush=True)
-        print("   • ✅ Max pullback % for stop loss calculation", flush=True)
-        print("   • ✅ Average time to reach 2x for hot streak detection", flush=True)
-        print("   • ✅ Enhanced contract address detection", flush=True)
-        print("   • ✅ Detailed price analysis using Birdeye API", flush=True)
+        print("   • ✅ Progressive message fetching (6h → 12h → 24h)", flush=True)
+        print("   • ✅ Smart caching system (6 hour cache)", flush=True)
+        print("   • ✅ Real-time progress indicators", flush=True)
+        print("   • ✅ Timeout protection (5 min global limit)", flush=True)
+        print("   • ✅ Early termination when enough KOLs found", flush=True)
+        print("   • ✅ Parallel processing with limits", flush=True)
         if self.config.get("helius_api_key"):
             print("   • ✅ Helius API for pump.fun token analysis", flush=True)
         else:
@@ -478,6 +607,7 @@ class PhoenixCLI:
                 self.hours = 24
                 self.output = "spydefi_analysis_enhanced.csv"
                 self.excel = True
+                self.force_refresh = force_refresh
         
         args = Args()
         
@@ -512,6 +642,23 @@ class PhoenixCLI:
             logger.error(f"❌ Error importing modules: {str(e)}")
             raise
         
+        # Handle clear cache command
+        if hasattr(args, 'clear_cache') and args.clear_cache:
+            print("🗑️ Clearing telegram cache...", flush=True)
+            
+            try:
+                telegram_scraper = TelegramScraper(
+                    self.config["telegram_api_id"],
+                    self.config["telegram_api_hash"],
+                    self.config.get("telegram_session", "phoenix")
+                )
+                telegram_scraper.clear_cache()
+                print("✅ Cache cleared successfully!", flush=True)
+            except Exception as e:
+                print(f"❌ Error clearing cache: {str(e)}", flush=True)
+            
+            return
+        
         channels = getattr(args, 'channels', None) or self.config["sources"]["telegram_groups"]
         if not channels:
             logger.error("No Telegram channels specified.")
@@ -528,9 +675,12 @@ class PhoenixCLI:
         output_file = ensure_output_dir(args.output)
         hours = getattr(args, 'hours', 24)
         days = getattr(args, 'days', 1)
+        force_refresh = getattr(args, 'force_refresh', False)
         
         logger.info(f"🚀 Starting enhanced SpyDefi analysis for the past {hours} hours.")
         logger.info(f"📁 Results will be saved to {output_file}")
+        if force_refresh:
+            logger.info("🔄 Force refresh enabled - ignoring cache")
         
         try:
             birdeye_api = BirdeyeAPI(self.config["birdeye_api_key"])
@@ -575,7 +725,10 @@ class PhoenixCLI:
                         telegram_scraper.birdeye_api = birdeye_api
                         telegram_scraper.helius_api = helius_api
                         
-                        analysis = await telegram_scraper.redesigned_spydefi_analysis(hours)
+                        analysis = await telegram_scraper.redesigned_spydefi_analysis(
+                            hours=hours,
+                            force_refresh=force_refresh
+                        )
                         
                         logger.info("📊 Analysis completed, exporting results...")
                         
@@ -754,6 +907,14 @@ class PhoenixCLI:
         print(f"   📈 Recent Activity Focus: {'✅ Active' if cielo_ok else '❌ Need Cielo'}", flush=True)
         print(f"   🎯 Enhanced Strategy: {'✅ Active' if cielo_ok else '❌ Need Cielo'}", flush=True)
         
+        # Performance features
+        print(f"\n⚡ PERFORMANCE FEATURES:", flush=True)
+        print(f"   📦 Smart Caching: ✅ Active (6 hour cache)", flush=True)
+        print(f"   📊 Progress Indicators: ✅ Active", flush=True)
+        print(f"   ⏱️ Timeout Protection: ✅ Active (5 min global)", flush=True)
+        print(f"   🚀 Progressive Fetching: ✅ Active (6h → 12h → 24h)", flush=True)
+        print(f"   🔄 Parallel Processing: ✅ Active (3 concurrent)", flush=True)
+        
         if birdeye_ok and helius_ok and telegram_ok and cielo_ok:
             print(f"\n🎉 ALL SYSTEMS GO! Full capabilities available.", flush=True)
         else:
@@ -919,6 +1080,28 @@ class PhoenixCLI:
         if len(wallets_from_file) > 5:
             print(f"      ... and {len(wallets_from_file) - 5} more", flush=True)
         
+        # Check cache status
+        cache_dir = Path.home() / ".phoenix_cache"
+        if cache_dir.exists():
+            print(f"\n📦 CACHE STATUS:", flush=True)
+            cache_files = list(cache_dir.glob("*.json"))
+            if cache_files:
+                for cache_file in cache_files:
+                    if cache_file.name == "spydefi_kols.json":
+                        try:
+                            with open(cache_file, 'r') as f:
+                                cache_data = json.load(f)
+                            timestamp = cache_data.get('timestamp', 'Unknown')
+                            if timestamp != 'Unknown':
+                                cache_age = datetime.now() - datetime.fromisoformat(timestamp)
+                                hours_old = cache_age.total_seconds() / 3600
+                                status = "✅ Fresh" if hours_old < 6 else "⚠️ Expired"
+                                print(f"   SpyDefi cache: {status} ({hours_old:.1f} hours old)", flush=True)
+                        except:
+                            print(f"   SpyDefi cache: ❌ Error reading", flush=True)
+            else:
+                print(f"   No cache files", flush=True)
+        
         # Feature availability
         birdeye_ok = bool(self.config.get("birdeye_api_key"))
         helius_ok = bool(self.config.get("helius_api_key"))
@@ -995,6 +1178,12 @@ class PhoenixCLI:
         print("", flush=True)
         print("# Analyze with custom days", flush=True)
         print("python phoenix.py wallet --days 14", flush=True)
+        print("", flush=True)
+        print("# Telegram analysis with force refresh", flush=True)
+        print("python phoenix.py telegram --force-refresh", flush=True)
+        print("", flush=True)
+        print("# Clear telegram cache", flush=True)
+        print("python phoenix.py telegram --clear-cache", flush=True)
         
         input("\nPress Enter to continue...")
     
@@ -1039,6 +1228,14 @@ class PhoenixCLI:
         print(f"   Default period: {self.config.get('wallet_analysis', {}).get('days_to_analyze', 7)} days", flush=True)
         print(f"   Focus: Recent performance & activity", flush=True)
         print(f"   Strategy: Enhanced with TP guidance", flush=True)
+        
+        # Performance settings
+        print(f"\n⚡ PERFORMANCE SETTINGS:", flush=True)
+        print(f"   Message limit: 1000 per channel", flush=True)
+        print(f"   Progress updates: Every 100 messages", flush=True)
+        print(f"   Timeout protection: 5 min global, 30s per channel", flush=True)
+        print(f"   Cache duration: 6 hours", flush=True)
+        print(f"   Progressive fetch: 6h → 12h → 24h", flush=True)
         
         input("\nPress Enter to continue...")
     

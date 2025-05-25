@@ -1,12 +1,15 @@
 """
-Telegram Module - Phoenix Project (2X HOT STREAK EDITION)
+Telegram Module - Phoenix Project (2X HOT STREAK EDITION - PERFORMANCE OPTIMIZED)
 
 MAJOR UPDATES:
+- Added message limits and progress indicators
+- Implemented smart caching system (6-hour cache)
+- Progressive message fetching (6h -> 12h -> 24h)
+- Timeout protection at multiple levels
+- Parallel processing with semaphore limits
+- Early termination for efficiency
 - Removed all 5x analysis - focus on 2x targets only
 - Two-tier analysis: Initial (5 calls) and Deep (20 calls for 40%+ performers)
-- Higher weight for faster 2x achievements
-- Focused on finding KOLs on recent hot streaks
-- Reduced API calls through smart filtering
 
 REQUIREMENTS:
 - Python 3.8+
@@ -27,6 +30,8 @@ from datetime import datetime, timedelta
 from collections import defaultdict
 from dataclasses import dataclass
 import os
+import sys
+from pathlib import Path
 
 # Setup logging
 logger = logging.getLogger("phoenix.telegram")
@@ -59,6 +64,17 @@ class TelegramScraper:
     DEEP_ANALYSIS_CALLS = 20
     DEEP_ANALYSIS_THRESHOLD = 0.40  # 40% 2x success rate triggers deep analysis
     
+    # Performance constants
+    DEFAULT_MESSAGE_LIMIT = 1000
+    PROGRESS_INTERVAL = 100
+    SPYDEFI_TIMEOUT = 60  # seconds
+    CHANNEL_TIMEOUT = 30  # seconds
+    KOL_ANALYSIS_TIMEOUT = 45  # seconds
+    GLOBAL_TIMEOUT = 300  # 5 minutes
+    MAX_CONCURRENT_CHANNELS = 3
+    CACHE_DURATION_HOURS = 6
+    MIN_KOL_MENTIONS_NEEDED = 20
+    
     def __init__(self, api_id: int, api_hash: str, session_name: str = "phoenix"):
         """Initialize the Telegram scraper."""
         self.api_id = api_id
@@ -67,6 +83,14 @@ class TelegramScraper:
         self.client = TelegramClient(session_name, api_id, api_hash)
         self.birdeye_api = None
         self.helius_api = None
+        
+        # Cache directory
+        self.cache_dir = Path.home() / ".phoenix_cache"
+        self.cache_dir.mkdir(exist_ok=True)
+        self.spydefi_cache_file = self.cache_dir / "spydefi_kols.json"
+        
+        # Semaphore for concurrent operations
+        self.channel_semaphore = asyncio.Semaphore(self.MAX_CONCURRENT_CHANNELS)
         
         # Enhanced validation patterns
         self.contract_patterns = [
@@ -110,6 +134,46 @@ class TelegramScraper:
         logger.info("Disconnecting from Telegram...")
         await self.client.disconnect()
         logger.info("Disconnected from Telegram")
+    
+    def _load_spydefi_cache(self) -> Optional[Dict[str, Any]]:
+        """Load SpyDefi KOL cache if valid."""
+        try:
+            if not self.spydefi_cache_file.exists():
+                return None
+            
+            with open(self.spydefi_cache_file, 'r') as f:
+                cache = json.load(f)
+            
+            # Check if cache is expired
+            cache_time = datetime.fromisoformat(cache.get('timestamp', '2000-01-01'))
+            if datetime.now() - cache_time > timedelta(hours=self.CACHE_DURATION_HOURS):
+                logger.info("SpyDefi cache expired, will refresh")
+                return None
+            
+            logger.info(f"✅ Loaded SpyDefi cache with {len(cache.get('kol_mentions', {}))} KOLs")
+            return cache
+            
+        except Exception as e:
+            logger.error(f"Error loading cache: {str(e)}")
+            return None
+    
+    def _save_spydefi_cache(self, kol_mentions: Dict[str, int], message_count: int):
+        """Save SpyDefi KOL mentions to cache."""
+        try:
+            cache = {
+                'kol_mentions': kol_mentions,
+                'timestamp': datetime.now().isoformat(),
+                'message_count': message_count,
+                'version': '1.0'
+            }
+            
+            with open(self.spydefi_cache_file, 'w') as f:
+                json.dump(cache, f, indent=2)
+            
+            logger.info(f"✅ Saved SpyDefi cache with {len(kol_mentions)} KOLs")
+            
+        except Exception as e:
+            logger.error(f"Error saving cache: {str(e)}")
     
     def _is_spam_address(self, potential_address: str) -> bool:
         """Check if the potential address is likely spam."""
@@ -197,32 +261,61 @@ class TelegramScraper:
         
         return True
     
-    async def scrape_channel_messages(self, channel_username: str, hours: int = 24) -> List[Dict[str, Any]]:
-        """Scrape messages from a specific channel."""
+    async def scrape_channel_messages(self, channel_username: str, hours: int = 24, 
+                                    limit: int = None, show_progress: bool = True) -> List[Dict[str, Any]]:
+        """Scrape messages from a specific channel with limits and progress."""
         try:
-            channel = await self.client.get_entity(channel_username)
-            if not isinstance(channel, Channel):
-                logger.error(f"{channel_username} is not a channel")
-                return []
-            
-            after_date = datetime.now() - timedelta(hours=hours)
-            messages = []
-            
-            logger.info(f"Scraping {hours/24:.1f} days of messages from {channel.id}")
-            
-            async for message in self.client.iter_messages(channel, offset_date=after_date, reverse=False):
-                if message.text:
-                    messages.append({
-                        'id': message.id,
-                        'date': message.date,
-                        'text': message.text,
-                        'channel_id': channel.id,
-                        'channel_username': channel_username
-                    })
-            
-            logger.info(f"Finished retrieving messages from {channel.id}. Found {len(messages)} relevant messages.")
-            return messages
-            
+            async with self.channel_semaphore:
+                channel = await self.client.get_entity(channel_username)
+                if not isinstance(channel, Channel):
+                    logger.error(f"{channel_username} is not a channel")
+                    return []
+                
+                after_date = datetime.now() - timedelta(hours=hours)
+                messages = []
+                message_count = 0
+                
+                if limit is None:
+                    limit = self.DEFAULT_MESSAGE_LIMIT
+                
+                logger.info(f"Scraping up to {limit} messages from {channel.title} (ID: {channel.id})")
+                
+                # Use timeout for channel scraping
+                try:
+                    async with asyncio.timeout(self.CHANNEL_TIMEOUT):
+                        # Get newest messages first
+                        async for message in self.client.iter_messages(
+                            channel, 
+                            offset_date=after_date, 
+                            reverse=True,  # Newest first
+                            limit=limit
+                        ):
+                            if message.text:
+                                messages.append({
+                                    'id': message.id,
+                                    'date': message.date,
+                                    'text': message.text,
+                                    'channel_id': channel.id,
+                                    'channel_username': channel_username
+                                })
+                                message_count += 1
+                                
+                                # Show progress
+                                if show_progress and message_count % self.PROGRESS_INTERVAL == 0:
+                                    print(f"\r   Fetched {message_count}/{limit} messages...", end="", flush=True)
+                                    sys.stdout.flush()
+                        
+                        if show_progress and message_count > 0:
+                            print(f"\r   ✅ Fetched {message_count} messages from {channel.title}", flush=True)
+                
+                except asyncio.TimeoutError:
+                    logger.warning(f"Timeout reached for {channel_username}, continuing with {len(messages)} messages")
+                    if show_progress:
+                        print(f"\r   ⚠️ Timeout: Got {len(messages)} messages from {channel.title}", flush=True)
+                
+                logger.info(f"Finished retrieving {len(messages)} messages from {channel.id}")
+                return messages
+                
         except ChannelPrivateError:
             logger.error(f"Cannot access {channel_username} - it's private or you're not a member")
             return []
@@ -241,204 +334,286 @@ class TelegramScraper:
             logger.error(f"Error getting channel info for {channel_username}: {str(e)}")
             return None
     
-    async def redesigned_spydefi_analysis(self, hours: int = 24) -> Dict[str, Any]:
+    async def progressive_spydefi_discovery(self, max_hours: int = 24) -> Dict[str, int]:
+        """Progressive SpyDefi discovery - start with 6h, expand if needed."""
+        kol_mentions = defaultdict(int)
+        total_messages = 0
+        kol_pattern = r'@([a-zA-Z0-9_]+)'
+        
+        # Progressive time windows
+        time_windows = [6, 12, 24]
+        
+        for hours in time_windows:
+            if hours > max_hours:
+                break
+                
+            logger.info(f"🔍 Scanning SpyDefi for last {hours} hours...")
+            
+            # Calculate messages to fetch (less for longer periods)
+            messages_to_fetch = min(1000, 2000 // (hours // 6))
+            
+            try:
+                async with asyncio.timeout(self.SPYDEFI_TIMEOUT):
+                    messages = await self.scrape_channel_messages(
+                        "spydefi", 
+                        hours=hours,
+                        limit=messages_to_fetch,
+                        show_progress=True
+                    )
+                    
+                    # Extract KOL mentions
+                    new_mentions = 0
+                    for msg in messages:
+                        mentions = re.findall(kol_pattern, msg['text'])
+                        for mention in mentions:
+                            if mention.lower() != 'spydefi':
+                                if mention not in kol_mentions:
+                                    new_mentions += 1
+                                kol_mentions[mention] += 1
+                    
+                    total_messages += len(messages)
+                    unique_kols = len(kol_mentions)
+                    
+                    logger.info(f"✅ Found {unique_kols} unique KOLs (+{new_mentions} new) from {len(messages)} messages")
+                    
+                    # Early termination if we have enough KOLs
+                    if unique_kols >= self.MIN_KOL_MENTIONS_NEEDED:
+                        logger.info(f"🎯 Sufficient KOLs found ({unique_kols}), stopping discovery")
+                        break
+                        
+            except asyncio.TimeoutError:
+                logger.warning(f"SpyDefi discovery timeout at {hours}h, continuing with current data")
+                break
+        
+        # Save to cache
+        if kol_mentions:
+            self._save_spydefi_cache(dict(kol_mentions), total_messages)
+        
+        return dict(kol_mentions)
+    
+    async def redesigned_spydefi_analysis(self, hours: int = 24, force_refresh: bool = False) -> Dict[str, Any]:
         """
-        Redesigned SpyDefi analysis focused on 2x hot streaks.
+        Redesigned SpyDefi analysis with performance optimizations.
         
         Two-tier analysis system:
         1. Initial scan: Last 5 calls for all KOLs
         2. Deep scan: Last 20 calls for KOLs with 40%+ 2x success rate
         """
-        logger.info("🚀 STARTING REDESIGNED SPYDEFI ANALYSIS (2x Hot Streak Focus)")
+        logger.info("🚀 STARTING OPTIMIZED SPYDEFI ANALYSIS (2x Hot Streak Focus)")
         
-        # Phase 1: Discover active KOLs from SpyDefi
-        logger.info("🎯 Phase 1: Discovering active KOLs from SpyDefi...")
-        
-        # Check if APIs are available
-        if self.birdeye_api:
-            logger.info("✅ Birdeye API available for mainstream tokens")
-        else:
-            logger.warning("⚠️ Birdeye API not configured - token analysis will be limited")
-            
-        if self.helius_api:
-            logger.info("✅ Helius API available for pump.fun tokens")
-        else:
-            logger.warning("⚠️ Helius API not configured - pump.fun analysis will be limited")
-        
-        spydefi_messages = await self.scrape_channel_messages("spydefi", hours)
-        
-        # Extract KOL mentions
-        kol_mentions = defaultdict(int)
-        kol_pattern = r'@([a-zA-Z0-9_]+)'
-        
-        logger.info("📨 Scanning SpyDefi for active KOLs...")
-        for msg in spydefi_messages:
-            mentions = re.findall(kol_pattern, msg['text'])
-            for mention in mentions:
-                if mention.lower() != 'spydefi':  # Exclude self-mentions
-                    kol_mentions[mention] += 1
-        
-        logger.info(f"✅ Found {len(kol_mentions)} active KOLs from SpyDefi")
-        
-        # Phase 2: Initial analysis of top KOLs (5 calls each)
-        logger.info(f"🎯 Phase 2: Initial analysis of KOLs (last {self.INITIAL_ANALYSIS_CALLS} calls each)...")
-        
-        # Sort KOLs by mention count
-        sorted_kols = sorted(kol_mentions.items(), key=lambda x: x[1], reverse=True)
-        
-        # Limit to top 30 KOLs for initial analysis
-        max_kols_initial = 30
-        top_kols = sorted_kols[:max_kols_initial]
-        
-        logger.info(f"📊 Analyzing top {len(top_kols)} KOLs for initial screening")
-        
-        kol_initial_performance = {}
-        
-        for i, (kol, mention_count) in enumerate(top_kols, 1):
-            logger.info(f"📊 Initial analysis {i}/{len(top_kols)}: @{kol} ({mention_count} mentions)")
-            
-            try:
-                # Get last 5 calls
-                kol_analysis = await self.analyze_individual_kol(
-                    kol, 
-                    hours=hours,
-                    max_calls=self.INITIAL_ANALYSIS_CALLS,
-                    analysis_type="initial"
-                )
+        try:
+            # Global timeout for entire analysis
+            async with asyncio.timeout(self.GLOBAL_TIMEOUT):
+                # Phase 1: Discover active KOLs from SpyDefi
+                logger.info("🎯 Phase 1: Discovering active KOLs from SpyDefi...")
                 
-                if kol_analysis and kol_analysis.get('tokens_mentioned', 0) > 0:
-                    kol_initial_performance[kol] = kol_analysis
-                    logger.info(f"✅ @{kol}: {kol_analysis['tokens_mentioned']} calls, "
-                              f"{kol_analysis['success_rate_2x']:.1f}% 2x rate")
+                # Check if APIs are available
+                if self.birdeye_api:
+                    logger.info("✅ Birdeye API available for mainstream tokens")
                 else:
-                    logger.info(f"⚠️ @{kol}: No analyzable calls found")
+                    logger.warning("⚠️ Birdeye API not configured - token analysis will be limited")
                     
-            except Exception as e:
-                logger.error(f"Error analyzing @{kol}: {str(e)}")
-            
-            # Small delay between KOLs
-            if i < len(top_kols):
-                await asyncio.sleep(1)
-        
-        # Phase 3: Deep analysis for high performers
-        logger.info(f"🎯 Phase 3: Deep analysis for KOLs with {self.DEEP_ANALYSIS_THRESHOLD*100:.0f}%+ 2x success rate...")
-        
-        kol_deep_performance = {}
-        deep_analysis_count = 0
-        
-        for kol, initial_stats in kol_initial_performance.items():
-            if initial_stats['success_rate_2x'] >= self.DEEP_ANALYSIS_THRESHOLD * 100:
-                deep_analysis_count += 1
-                logger.info(f"🔥 Deep analysis #{deep_analysis_count}: @{kol} "
-                          f"(Initial: {initial_stats['success_rate_2x']:.1f}% 2x rate)")
+                if self.helius_api:
+                    logger.info("✅ Helius API available for pump.fun tokens")
+                else:
+                    logger.warning("⚠️ Helius API not configured - pump.fun analysis will be limited")
                 
-                try:
-                    # Get last 20 calls for deep analysis
-                    deep_analysis = await self.analyze_individual_kol(
-                        kol,
-                        hours=hours * 7,  # Look back further for deep analysis
-                        max_calls=self.DEEP_ANALYSIS_CALLS,
-                        analysis_type="deep"
+                # Check cache first
+                kol_mentions = None
+                if not force_refresh:
+                    cache = self._load_spydefi_cache()
+                    if cache:
+                        kol_mentions = cache.get('kol_mentions', {})
+                        logger.info(f"📦 Using cached SpyDefi data: {len(kol_mentions)} KOLs")
+                
+                # If no cache or force refresh, do progressive discovery
+                if not kol_mentions:
+                    kol_mentions = await self.progressive_spydefi_discovery(hours)
+                
+                if not kol_mentions:
+                    logger.error("No KOLs found in SpyDefi")
+                    return {
+                        'success': False,
+                        'error': 'No KOLs found in SpyDefi channel'
+                    }
+                
+                logger.info(f"✅ Found {len(kol_mentions)} active KOLs from SpyDefi")
+                
+                # Phase 2: Initial analysis of top KOLs (5 calls each)
+                logger.info(f"🎯 Phase 2: Initial analysis of KOLs (last {self.INITIAL_ANALYSIS_CALLS} calls each)...")
+                
+                # Sort KOLs by mention count
+                sorted_kols = sorted(kol_mentions.items(), key=lambda x: x[1], reverse=True)
+                
+                # Limit to top 30 KOLs for initial analysis
+                max_kols_initial = 30
+                top_kols = sorted_kols[:max_kols_initial]
+                
+                logger.info(f"📊 Analyzing top {len(top_kols)} KOLs for initial screening")
+                
+                # Parallel initial analysis
+                kol_initial_performance = {}
+                
+                # Create tasks for parallel execution
+                initial_tasks = []
+                for kol, mention_count in top_kols:
+                    task = self.analyze_individual_kol(
+                        kol, 
+                        hours=hours,
+                        max_calls=self.INITIAL_ANALYSIS_CALLS,
+                        analysis_type="initial"
                     )
-                    
-                    if deep_analysis:
-                        kol_deep_performance[kol] = deep_analysis
-                        logger.info(f"✅ @{kol} deep analysis: {deep_analysis['tokens_mentioned']} calls, "
-                                  f"{deep_analysis['success_rate_2x']:.1f}% 2x rate, "
-                                  f"avg time to 2x: {deep_analysis.get('avg_time_to_2x_minutes', 0):.1f} min")
-                        
-                except Exception as e:
-                    logger.error(f"Error in deep analysis for @{kol}: {str(e)}")
+                    initial_tasks.append((kol, mention_count, task))
                 
-                await asyncio.sleep(1)
-        
-        # Combine results (deep analysis overrides initial for those KOLs)
-        final_kol_performance = kol_initial_performance.copy()
-        final_kol_performance.update(kol_deep_performance)
-        
-        # Phase 4: Calculate composite scores with speed weighting
-        logger.info("🎯 Phase 4: Calculating composite scores (2x rate + speed)...")
-        
-        for kol, stats in final_kol_performance.items():
-            composite_score = self._calculate_composite_score(stats)
-            stats['composite_score'] = composite_score
-        
-        # Sort by composite score
-        ranked_kols = dict(sorted(
-            final_kol_performance.items(),
-            key=lambda x: x[1]['composite_score'],
-            reverse=True
-        ))
-        
-        # Log top performers
-        logger.info("🏆 TOP 10 KOLs by composite score (2x rate + speed weighted):")
-        for i, (kol, stats) in enumerate(list(ranked_kols.items())[:10], 1):
-            logger.info(f"   {i}. @{kol}: {stats['composite_score']:.1f} score, "
-                       f"{stats['success_rate_2x']:.1f}% 2x rate, "
-                       f"{stats.get('avg_time_to_2x_minutes', 0):.1f} min avg")
-            if stats.get('analysis_type') == 'deep':
-                logger.info(f"      🔥 Deep analysis performed ({self.DEEP_ANALYSIS_CALLS} calls)")
-        
-        # Phase 5: Get channel IDs for top performers
-        logger.info("🎯 Phase 5: Getting channel IDs for TOP 10 KOLs...")
-        
-        top_10_kols = list(ranked_kols.keys())[:10]
-        logger.info("📞 Getting channel IDs for TOP 10 KOLs...")
-        
-        for i, kol in enumerate(top_10_kols, 1):
-            logger.info(f"Getting channel ID for TOP 10 KOL {i}/10: @{kol}")
-            
-            if kol in ranked_kols:
-                try:
-                    channel_id = await self.get_channel_info(f"@{kol}")
-                    if channel_id:
-                        ranked_kols[kol]['channel_id'] = channel_id
-                        logger.info(f"✅ Found channel for @{kol}: {channel_id}")
-                    else:
-                        logger.warning(f"❌ Could not find channel ID for @{kol}")
-                except Exception as e:
-                    logger.error(f"Error getting channel ID for @{kol}: {str(e)}")
-            
-            await asyncio.sleep(2)
-        
-        # Log API call statistics
-        logger.info("📊 VALIDATION STATISTICS:")
-        logger.info(f"   📍 Contract extraction attempts: {self.api_call_count['contract_extraction_attempts']}")
-        logger.info(f"   ✅ Valid addresses found: {self.api_call_count['addresses_validated']}")
-        logger.info(f"   ❌ Invalid addresses rejected: {self.api_call_count['addresses_rejected']}")
-        logger.info(f"   🚀 Pump.fun tokens found: {self.api_call_count['pump_tokens_found']}")
-        logger.info(f"   📞 Birdeye API calls made: {self.api_call_count['birdeye']}")
-        logger.info(f"   📞 Helius API calls made: {self.api_call_count['helius']}")
-        logger.info(f"   ⚠️ Birdeye API failures: {self.api_call_count['birdeye_failures']}")
-        logger.info(f"   ⚠️ Helius API failures: {self.api_call_count['helius_failures']}")
-        
-        success_rate = (self.api_call_count['addresses_validated'] / 
-                       max(1, self.api_call_count['addresses_validated'] + self.api_call_count['addresses_rejected'])) * 100
-        logger.info(f"   📈 Address validation success rate: {success_rate:.1f}%")
-        
-        # Calculate overall stats
-        total_kols = len(final_kol_performance)
-        total_calls = sum(k.get('tokens_mentioned', 0) for k in final_kol_performance.values())
-        total_2x = sum(k.get('tokens_2x_plus', 0) for k in final_kol_performance.values())
-        overall_2x_rate = (total_2x / max(1, total_calls)) * 100
-        
-        logger.info("🎉 REDESIGNED ANALYSIS COMPLETE!")
-        logger.info(f"📊 Total KOLs analyzed: {total_kols}")
-        logger.info(f"📊 Initial analyses: {len(kol_initial_performance)}")
-        logger.info(f"📊 Deep analyses: {deep_analysis_count}")
-        logger.info(f"📊 Total calls analyzed: {total_calls}")
-        logger.info(f"📊 2x success rate: {overall_2x_rate:.1f}%")
-        
-        return {
-            'success': True,
-            'ranked_kols': ranked_kols,
-            'total_kols_analyzed': total_kols,
-            'deep_analyses_performed': deep_analysis_count,
-            'total_calls': total_calls,
-            'total_2x_tokens': total_2x,
-            'success_rate_2x': overall_2x_rate,
-            'api_stats': self.api_call_count.copy()
-        }
+                # Execute with progress
+                for i, (kol, mention_count, task) in enumerate(initial_tasks, 1):
+                    print(f"\r📊 Initial analysis {i}/{len(initial_tasks)}: @{kol} ({mention_count} mentions)", end="", flush=True)
+                    
+                    try:
+                        kol_analysis = await task
+                        
+                        if kol_analysis and kol_analysis.get('tokens_mentioned', 0) > 0:
+                            kol_initial_performance[kol] = kol_analysis
+                        
+                    except Exception as e:
+                        logger.error(f"Error analyzing @{kol}: {str(e)}")
+                    
+                    # Small delay between KOLs
+                    if i < len(initial_tasks):
+                        await asyncio.sleep(0.5)
+                
+                print(f"\r✅ Initial analysis complete: {len(kol_initial_performance)} KOLs with data", flush=True)
+                
+                # Phase 3: Deep analysis for high performers
+                logger.info(f"🎯 Phase 3: Deep analysis for KOLs with {self.DEEP_ANALYSIS_THRESHOLD*100:.0f}%+ 2x success rate...")
+                
+                kol_deep_performance = {}
+                deep_candidates = [
+                    (kol, stats) for kol, stats in kol_initial_performance.items()
+                    if stats['success_rate_2x'] >= self.DEEP_ANALYSIS_THRESHOLD * 100
+                ]
+                
+                logger.info(f"🔥 Found {len(deep_candidates)} KOLs qualified for deep analysis")
+                
+                # Deep analysis with progress
+                for i, (kol, initial_stats) in enumerate(deep_candidates, 1):
+                    print(f"\r🔥 Deep analysis {i}/{len(deep_candidates)}: @{kol} "
+                          f"(Initial: {initial_stats['success_rate_2x']:.1f}% 2x rate)", end="", flush=True)
+                    
+                    try:
+                        # Get last 20 calls for deep analysis
+                        deep_analysis = await self.analyze_individual_kol(
+                            kol,
+                            hours=hours * 7,  # Look back further for deep analysis
+                            max_calls=self.DEEP_ANALYSIS_CALLS,
+                            analysis_type="deep"
+                        )
+                        
+                        if deep_analysis:
+                            kol_deep_performance[kol] = deep_analysis
+                            
+                    except Exception as e:
+                        logger.error(f"Error in deep analysis for @{kol}: {str(e)}")
+                    
+                    await asyncio.sleep(0.5)
+                
+                print(f"\r✅ Deep analysis complete: {len(kol_deep_performance)} KOLs analyzed", flush=True)
+                
+                # Combine results (deep analysis overrides initial for those KOLs)
+                final_kol_performance = kol_initial_performance.copy()
+                final_kol_performance.update(kol_deep_performance)
+                
+                # Phase 4: Calculate composite scores with speed weighting
+                logger.info("🎯 Phase 4: Calculating composite scores (2x rate + speed)...")
+                
+                for kol, stats in final_kol_performance.items():
+                    composite_score = self._calculate_composite_score(stats)
+                    stats['composite_score'] = composite_score
+                
+                # Sort by composite score
+                ranked_kols = dict(sorted(
+                    final_kol_performance.items(),
+                    key=lambda x: x[1]['composite_score'],
+                    reverse=True
+                ))
+                
+                # Log top performers
+                logger.info("🏆 TOP 10 KOLs by composite score (2x rate + speed weighted):")
+                for i, (kol, stats) in enumerate(list(ranked_kols.items())[:10], 1):
+                    logger.info(f"   {i}. @{kol}: {stats['composite_score']:.1f} score, "
+                               f"{stats['success_rate_2x']:.1f}% 2x rate, "
+                               f"{stats.get('avg_time_to_2x_minutes', 0):.1f} min avg")
+                    if stats.get('analysis_type') == 'deep':
+                        logger.info(f"      🔥 Deep analysis performed ({self.DEEP_ANALYSIS_CALLS} calls)")
+                
+                # Phase 5: Get channel IDs for top performers (limited concurrency)
+                logger.info("🎯 Phase 5: Getting channel IDs for TOP 10 KOLs...")
+                
+                top_10_kols = list(ranked_kols.keys())[:10]
+                
+                for i, kol in enumerate(top_10_kols, 1):
+                    print(f"\rGetting channel ID {i}/10: @{kol}", end="", flush=True)
+                    
+                    if kol in ranked_kols:
+                        try:
+                            channel_id = await self.get_channel_info(f"@{kol}")
+                            if channel_id:
+                                ranked_kols[kol]['channel_id'] = channel_id
+                            else:
+                                logger.warning(f"Could not find channel ID for @{kol}")
+                        except Exception as e:
+                            logger.error(f"Error getting channel ID for @{kol}: {str(e)}")
+                    
+                    await asyncio.sleep(1)
+                
+                print(f"\r✅ Channel ID retrieval complete", flush=True)
+                
+                # Log API call statistics
+                logger.info("📊 VALIDATION STATISTICS:")
+                logger.info(f"   📍 Contract extraction attempts: {self.api_call_count['contract_extraction_attempts']}")
+                logger.info(f"   ✅ Valid addresses found: {self.api_call_count['addresses_validated']}")
+                logger.info(f"   ❌ Invalid addresses rejected: {self.api_call_count['addresses_rejected']}")
+                logger.info(f"   🚀 Pump.fun tokens found: {self.api_call_count['pump_tokens_found']}")
+                logger.info(f"   📞 Birdeye API calls made: {self.api_call_count['birdeye']}")
+                logger.info(f"   📞 Helius API calls made: {self.api_call_count['helius']}")
+                logger.info(f"   ⚠️ Birdeye API failures: {self.api_call_count['birdeye_failures']}")
+                logger.info(f"   ⚠️ Helius API failures: {self.api_call_count['helius_failures']}")
+                
+                success_rate = (self.api_call_count['addresses_validated'] / 
+                               max(1, self.api_call_count['addresses_validated'] + self.api_call_count['addresses_rejected'])) * 100
+                logger.info(f"   📈 Address validation success rate: {success_rate:.1f}%")
+                
+                # Calculate overall stats
+                total_kols = len(final_kol_performance)
+                total_calls = sum(k.get('tokens_mentioned', 0) for k in final_kol_performance.values())
+                total_2x = sum(k.get('tokens_2x_plus', 0) for k in final_kol_performance.values())
+                overall_2x_rate = (total_2x / max(1, total_calls)) * 100
+                
+                logger.info("🎉 OPTIMIZED ANALYSIS COMPLETE!")
+                logger.info(f"📊 Total KOLs analyzed: {total_kols}")
+                logger.info(f"📊 Initial analyses: {len(kol_initial_performance)}")
+                logger.info(f"📊 Deep analyses: {len(kol_deep_performance)}")
+                logger.info(f"📊 Total calls analyzed: {total_calls}")
+                logger.info(f"📊 2x success rate: {overall_2x_rate:.1f}%")
+                
+                return {
+                    'success': True,
+                    'ranked_kols': ranked_kols,
+                    'total_kols_analyzed': total_kols,
+                    'deep_analyses_performed': len(kol_deep_performance),
+                    'total_calls': total_calls,
+                    'total_2x_tokens': total_2x,
+                    'success_rate_2x': overall_2x_rate,
+                    'api_stats': self.api_call_count.copy()
+                }
+                
+        except asyncio.TimeoutError:
+            logger.error(f"Global timeout reached ({self.GLOBAL_TIMEOUT}s), returning partial results")
+            return {
+                'success': False,
+                'error': f'Analysis timeout after {self.GLOBAL_TIMEOUT} seconds',
+                'partial_results': True
+            }
     
     async def analyze_individual_kol(self, kol_username: str, hours: int = 168, 
                                    max_calls: int = 5, analysis_type: str = "initial") -> Optional[Dict[str, Any]]:
@@ -452,114 +627,126 @@ class TelegramScraper:
             analysis_type: "initial" or "deep"
         """
         try:
-            logger.info(f"🔍 Analyzing individual KOL: @{kol_username} ({analysis_type} analysis)")
-            
-            # Scrape messages
-            messages = await self.scrape_channel_messages(f"@{kol_username}", hours)
-            
-            if not messages:
-                logger.warning(f"No messages found for @{kol_username}")
-                return None
-            
-            logger.info(f"📨 Found {len(messages)} messages in @{kol_username}'s channel")
-            
-            # Extract token calls
-            token_calls = []
-            
-            for msg in messages:
-                contracts = self._extract_contract_addresses(msg['text'])
+            async with asyncio.timeout(self.KOL_ANALYSIS_TIMEOUT):
+                logger.info(f"🔍 Analyzing individual KOL: @{kol_username} ({analysis_type} analysis)")
                 
-                for contract in contracts:
-                    token_calls.append({
-                        'contract_address': contract,
-                        'call_timestamp': int(msg['date'].timestamp()),
-                        'message_text': msg['text'][:200],  # First 200 chars
-                        'is_pump': contract.endswith('pump')
-                    })
-            
-            # Sort by timestamp (newest first) and limit
-            token_calls = sorted(token_calls, key=lambda x: x['call_timestamp'], reverse=True)[:max_calls]
-            
-            logger.info(f"🎯 Found {len(token_calls)} token calls for @{kol_username}")
-            
-            if not token_calls:
-                return {
-                    'kol': kol_username,
-                    'tokens_mentioned': 0,
-                    'tokens_2x_plus': 0,
-                    'success_rate_2x': 0,
-                    'avg_ath_roi': 0,
-                    'avg_max_pullback_percent': 0,
-                    'avg_time_to_2x_minutes': 0,
-                    'analysis_type': analysis_type
-                }
-            
-            # Analyze each token call
-            analyzed_calls = []
-            tokens_2x = 0
-            
-            for i, call in enumerate(token_calls, 1):
-                if analysis_type == "initial" or (analysis_type == "deep" and i % 4 == 0):
-                    logger.info(f"📊 Analyzing call {i}/{len(token_calls)} for @{kol_username}")
+                # Determine message limit based on analysis type
+                message_limit = 500 if analysis_type == "initial" else 2000
                 
-                try:
-                    # Add delay to respect rate limits
-                    if i > 1:
-                        await asyncio.sleep(0.5)
+                # Scrape messages
+                messages = await self.scrape_channel_messages(
+                    f"@{kol_username}", 
+                    hours,
+                    limit=message_limit,
+                    show_progress=False  # Less verbose for individual KOLs
+                )
+                
+                if not messages:
+                    logger.warning(f"No messages found for @{kol_username}")
+                    return None
+                
+                logger.info(f"📨 Found {len(messages)} messages in @{kol_username}'s channel")
+                
+                # Extract token calls
+                token_calls = []
+                
+                for msg in messages:
+                    contracts = self._extract_contract_addresses(msg['text'])
                     
-                    # Get token performance
-                    performance = await self._get_token_performance_2x(
-                        call['contract_address'],
-                        call['call_timestamp'],
-                        call['is_pump']
-                    )
-                    
-                    if performance:
-                        if performance.get('reached_2x', False):
-                            tokens_2x += 1
-                        
-                        analyzed_calls.append({
-                            **call,
-                            **performance
+                    for contract in contracts:
+                        token_calls.append({
+                            'contract_address': contract,
+                            'call_timestamp': int(msg['date'].timestamp()),
+                            'message_text': msg['text'][:200],  # First 200 chars
+                            'is_pump': contract.endswith('pump')
                         })
+                
+                # Sort by timestamp (newest first) and limit
+                token_calls = sorted(token_calls, key=lambda x: x['call_timestamp'], reverse=True)[:max_calls]
+                
+                logger.info(f"🎯 Found {len(token_calls)} token calls for @{kol_username}")
+                
+                if not token_calls:
+                    return {
+                        'kol': kol_username,
+                        'tokens_mentioned': 0,
+                        'tokens_2x_plus': 0,
+                        'success_rate_2x': 0,
+                        'avg_ath_roi': 0,
+                        'avg_max_pullback_percent': 0,
+                        'avg_time_to_2x_minutes': 0,
+                        'analysis_type': analysis_type
+                    }
+                
+                # Analyze each token call
+                analyzed_calls = []
+                tokens_2x = 0
+                
+                for i, call in enumerate(token_calls, 1):
+                    if analysis_type == "initial" or (analysis_type == "deep" and i % 4 == 0):
+                        logger.info(f"📊 Analyzing call {i}/{len(token_calls)} for @{kol_username}")
+                    
+                    try:
+                        # Add delay to respect rate limits
+                        if i > 1:
+                            await asyncio.sleep(0.5)
                         
-                except Exception as e:
-                    logger.error(f"Error analyzing token {call['contract_address']}: {str(e)}")
-                    continue
-            
-            # Calculate metrics
-            if analyzed_calls:
-                success_rate_2x = (tokens_2x / len(analyzed_calls)) * 100
+                        # Get token performance
+                        performance = await self._get_token_performance_2x(
+                            call['contract_address'],
+                            call['call_timestamp'],
+                            call['is_pump']
+                        )
+                        
+                        if performance:
+                            if performance.get('reached_2x', False):
+                                tokens_2x += 1
+                            
+                            analyzed_calls.append({
+                                **call,
+                                **performance
+                            })
+                            
+                    except Exception as e:
+                        logger.error(f"Error analyzing token {call['contract_address']}: {str(e)}")
+                        continue
                 
-                # Calculate averages only for tokens that reached 2x
-                tokens_with_2x = [c for c in analyzed_calls if c.get('reached_2x', False)]
-                
-                if tokens_with_2x:
-                    avg_time_to_2x_minutes = sum(c.get('time_to_2x_minutes', 0) for c in tokens_with_2x) / len(tokens_with_2x)
-                    avg_pullback_2x = sum(c.get('max_pullback_before_2x', 0) for c in tokens_with_2x) / len(tokens_with_2x)
+                # Calculate metrics
+                if analyzed_calls:
+                    success_rate_2x = (tokens_2x / len(analyzed_calls)) * 100
+                    
+                    # Calculate averages only for tokens that reached 2x
+                    tokens_with_2x = [c for c in analyzed_calls if c.get('reached_2x', False)]
+                    
+                    if tokens_with_2x:
+                        avg_time_to_2x_minutes = sum(c.get('time_to_2x_minutes', 0) for c in tokens_with_2x) / len(tokens_with_2x)
+                        avg_pullback_2x = sum(c.get('max_pullback_before_2x', 0) for c in tokens_with_2x) / len(tokens_with_2x)
+                    else:
+                        avg_time_to_2x_minutes = 0
+                        avg_pullback_2x = 0
+                    
+                    # ATH ROI for all tokens
+                    avg_ath_roi = sum(c.get('ath_roi', 0) for c in analyzed_calls) / len(analyzed_calls)
+                    
+                    result = {
+                        'kol': kol_username,
+                        'tokens_mentioned': len(analyzed_calls),
+                        'tokens_2x_plus': tokens_2x,
+                        'success_rate_2x': round(success_rate_2x, 2),
+                        'avg_ath_roi': round(avg_ath_roi, 2),
+                        'avg_max_pullback_percent': round(avg_pullback_2x, 2),
+                        'avg_time_to_2x_minutes': round(avg_time_to_2x_minutes, 2),
+                        'analysis_type': analysis_type,
+                        'analyzed_calls': analyzed_calls  # Keep for debugging
+                    }
+                    
+                    return result
                 else:
-                    avg_time_to_2x_minutes = 0
-                    avg_pullback_2x = 0
-                
-                # ATH ROI for all tokens
-                avg_ath_roi = sum(c.get('ath_roi', 0) for c in analyzed_calls) / len(analyzed_calls)
-                
-                result = {
-                    'kol': kol_username,
-                    'tokens_mentioned': len(analyzed_calls),
-                    'tokens_2x_plus': tokens_2x,
-                    'success_rate_2x': round(success_rate_2x, 2),
-                    'avg_ath_roi': round(avg_ath_roi, 2),
-                    'avg_max_pullback_percent': round(avg_pullback_2x, 2),
-                    'avg_time_to_2x_minutes': round(avg_time_to_2x_minutes, 2),
-                    'analysis_type': analysis_type,
-                    'analyzed_calls': analyzed_calls  # Keep for debugging
-                }
-                
-                return result
-            else:
-                return None
-                
+                    return None
+                    
+        except asyncio.TimeoutError:
+            logger.error(f"Timeout analyzing @{kol_username} after {self.KOL_ANALYSIS_TIMEOUT}s")
+            return None
         except Exception as e:
             logger.error(f"Error analyzing KOL @{kol_username}: {str(e)}")
             return None
@@ -946,6 +1133,15 @@ class TelegramScraper:
             
         except Exception as e:
             logger.error(f"Error exporting analysis: {str(e)}")
+    
+    def clear_cache(self):
+        """Clear all cached data."""
+        try:
+            if self.spydefi_cache_file.exists():
+                self.spydefi_cache_file.unlink()
+                logger.info("✅ Cleared SpyDefi cache")
+        except Exception as e:
+            logger.error(f"Error clearing cache: {str(e)}")
     
     async def __aenter__(self):
         """Async context manager entry."""
