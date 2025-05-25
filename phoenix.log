@@ -5610,3 +5610,55 @@ TypeError: '>=' not supported between instances of 'NoneType' and 'int'
 2025-05-24 21:28:19,887 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
 2025-05-24 21:28:19,887 - phoenix.wallet - INFO - Fetching last 150 token swaps for 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
 2025-05-24 21:35:12,002 - phoenix - INFO - Loaded 2 wallet addresses from wallets.txt
+2025-05-24 22:08:11,544 - phoenix - INFO - Loaded 2 wallet addresses from wallets.txt
+2025-05-24 22:08:11,956 - phoenix.api_manager - INFO - Birdeye API initialized for mainstream token analysis
+2025-05-24 22:08:11,956 - phoenix.api_manager - INFO - Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-24 22:08:11,956 - phoenix.api_manager - INFO - Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-24 22:08:11,956 - phoenix.cielo - INFO - Checking Cielo Finance API connectivity...
+2025-05-24 22:08:12,169 - phoenix.cielo - INFO - ✅ Cielo Finance API is accessible (got expected error response)
+2025-05-24 22:08:12,177 - phoenix.wallet - INFO - ✅ Cielo Finance API connection verified
+2025-05-24 22:08:12,177 - phoenix.wallet - INFO - Batch analyzing 2 wallets (7-day active trader focus)
+2025-05-24 22:08:12,177 - phoenix.wallet - INFO - Analyzing wallet 1/2: Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 22:08:12,177 - phoenix.wallet - INFO - 🔍 Analyzing wallet Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ (7-day active trader focus)
+2025-05-24 22:08:12,177 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-24 22:08:12,177 - phoenix.cielo - INFO - Fetching trading stats for wallet Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 22:08:13,763 - phoenix.cielo - INFO - Successfully retrieved trading stats for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 22:08:13,763 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-24 22:08:13,763 - phoenix.wallet - INFO - Fetching last 100 token swaps for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 22:08:13,888 - phoenix.wallet - INFO - Filtered to 13 recent signatures
+2025-05-24 22:08:13,888 - phoenix.wallet - ERROR - Batch RPC error: 'list' object has no attribute 'post'
+2025-05-24 22:08:14,399 - phoenix.wallet - ERROR - Batch RPC error: 'list' object has no attribute 'post'
+2025-05-24 22:08:14,399 - phoenix.wallet - INFO - Pairing buy/sell transactions for 0 tokens
+2025-05-24 22:08:14,399 - phoenix.wallet - INFO - Found 0 swaps (0 paired)
+2025-05-24 22:08:14,399 - phoenix.wallet - INFO - No trades in last 7 days - marking as inactive
+2025-05-24 22:08:14,399 - phoenix.wallet - INFO -   └─ Score: 0/100, Type: inactive
+2025-05-24 22:08:15,401 - phoenix.wallet - INFO - Analyzing wallet 2/2: 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 22:08:15,401 - phoenix.wallet - INFO - 🔍 Analyzing wallet 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX (7-day active trader focus)
+2025-05-24 22:08:15,401 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-24 22:08:15,401 - phoenix.cielo - INFO - Fetching trading stats for wallet 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 22:08:16,919 - phoenix.cielo - INFO - Successfully retrieved trading stats for 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 22:08:16,919 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-24 22:08:16,935 - phoenix.wallet - INFO - Fetching last 100 token swaps for 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 22:08:17,044 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-24 22:08:17,044 - phoenix.wallet - ERROR - Batch RPC error: 'list' object has no attribute 'post'
+2025-05-24 22:08:17,552 - phoenix.wallet - ERROR - Batch RPC error: 'list' object has no attribute 'post'
+2025-05-24 22:08:18,055 - phoenix.wallet - ERROR - Batch RPC error: 'list' object has no attribute 'post'
+2025-05-24 22:08:18,558 - phoenix.wallet - ERROR - Batch RPC error: 'list' object has no attribute 'post'
+2025-05-24 22:08:19,060 - phoenix.wallet - ERROR - Batch RPC error: 'list' object has no attribute 'post'
+2025-05-24 22:08:19,563 - phoenix.wallet - ERROR - Batch RPC error: 'list' object has no attribute 'post'
+2025-05-24 22:08:20,066 - phoenix.wallet - ERROR - Batch RPC error: 'list' object has no attribute 'post'
+2025-05-24 22:08:20,568 - phoenix.wallet - ERROR - Batch RPC error: 'list' object has no attribute 'post'
+2025-05-24 22:08:21,071 - phoenix.wallet - ERROR - Batch RPC error: 'list' object has no attribute 'post'
+2025-05-24 22:08:21,574 - phoenix.wallet - ERROR - Batch RPC error: 'list' object has no attribute 'post'
+2025-05-24 22:08:21,576 - phoenix.wallet - INFO - Pairing buy/sell transactions for 0 tokens
+2025-05-24 22:08:21,576 - phoenix.wallet - INFO - Found 0 swaps (0 paired)
+2025-05-24 22:08:21,576 - phoenix.wallet - INFO - No trades in last 7 days - marking as inactive
+2025-05-24 22:08:21,576 - phoenix.wallet - INFO -   └─ Score: 0/100, Type: inactive
+2025-05-24 22:08:21,576 - phoenix.wallet - INFO - 📊 FINAL API CALL STATISTICS:
+2025-05-24 22:08:21,576 - phoenix.wallet - INFO -    Cielo: 2 calls
+2025-05-24 22:08:21,576 - phoenix.wallet - INFO -    Birdeye: 0 calls
+2025-05-24 22:08:21,576 - phoenix.wallet - INFO -    Helius: 0 calls
+2025-05-24 22:08:21,576 - phoenix.wallet - INFO -    RPC: 14 calls
+2025-05-24 22:08:21,576 - phoenix.wallet - INFO -    Total API calls: 16
+2025-05-24 22:08:21,861 - phoenix.export - INFO - Successfully exported 7-day active trader rankings to CSV: C:\Users\Administrator\Desktop\phoenix-project\outputs\wallet_analysis_20250524_220821.csv
+2025-05-24 22:08:21,861 - phoenix - INFO - Exported wallet analysis to C:\Users\Administrator\Desktop\phoenix-project\outputs\wallet_analysis_20250524_220821.csv
