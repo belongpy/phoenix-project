@@ -5734,3 +5734,22 @@ TypeError: '>=' not supported between instances of 'NoneType' and 'int'
 2025-05-24 22:36:49,947 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
 2025-05-24 22:36:49,947 - phoenix.wallet - INFO - Fetching last 100 token swaps for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
 2025-05-24 22:36:50,052 - phoenix.wallet - INFO - Filtered to 13 recent signatures
+2025-05-24 22:36:55,199 - phoenix.wallet - INFO - Pairing buy/sell transactions for 1 tokens
+2025-05-24 22:36:55,200 - phoenix.wallet - INFO - Found 1 swaps (1 paired)
+2025-05-24 22:36:55,200 - phoenix.wallet - INFO - 📊 Wallet tier: INITIAL - Scanning 5 recent trades
+2025-05-24 22:36:55,200 - phoenix.wallet - INFO -    7-day trades: 1
+2025-05-24 22:36:55,201 - phoenix.wallet - INFO -    7-day win rate: 0.0%
+2025-05-24 22:36:55,201 - phoenix.wallet - INFO -    7-day profit: $0.00
+2025-05-24 22:36:55,201 - phoenix.wallet - INFO -    Days since last trade: 4
+2025-05-24 22:36:55,724 - phoenix.helius - ERROR - Enhanced transaction API error: 400
+2025-05-24 22:36:56,126 - phoenix.helius - ERROR - Enhanced transaction API error: 400
+2025-05-24 22:36:56,284 - phoenix.helius - ERROR - Enhanced transaction API error: 400
+2025-05-24 22:36:56,429 - phoenix.helius - ERROR - Enhanced transaction API error: 400
+2025-05-24 22:36:56,594 - phoenix.helius - ERROR - Enhanced transaction API error: 400
+2025-05-24 22:36:56,761 - phoenix.helius - ERROR - Enhanced transaction API error: 400
+2025-05-24 22:36:57,122 - phoenix.helius - ERROR - Enhanced transaction API error: 400
+2025-05-24 22:36:57,543 - phoenix.helius - ERROR - Enhanced transaction API error: 400
+2025-05-24 22:36:58,086 - phoenix.helius - ERROR - Enhanced transaction API error: 400
+2025-05-24 22:36:58,502 - phoenix.helius - ERROR - Enhanced transaction API error: 400
+2025-05-24 22:36:58,502 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 1, Birdeye: 0, Helius: 1, RPC: 3
+2025-05-24 22:36:58,502 - phoenix.wallet - INFO -   └─ Score: 15/100, Type: flipper
