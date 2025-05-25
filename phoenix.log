@@ -7019,3 +7019,1067 @@ TypeError: '>=' not supported between instances of 'NoneType' and 'int'
 2025-05-25 08:30:09,944 - phoenix.telegram - INFO - ✅ Birdeye API available for mainstream tokens
 2025-05-25 08:30:09,944 - phoenix.telegram - INFO - ✅ Helius API available for pump.fun tokens
 2025-05-25 08:30:10,103 - phoenix.telegram - INFO - Scraping 1.0 days of messages from 1960616143
+2025-05-25 08:43:21,886 - phoenix - INFO - Loaded 72 wallet addresses from wallets.txt
+2025-05-25 08:43:22,294 - phoenix.api_manager - INFO - Birdeye API initialized for mainstream token analysis
+2025-05-25 08:43:22,294 - phoenix.api_manager - INFO - Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-25 08:43:22,294 - phoenix.api_manager - INFO - Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-25 08:43:22,294 - phoenix.cielo - INFO - Checking Cielo Finance API connectivity...
+2025-05-25 08:43:22,513 - phoenix.cielo - INFO - ✅ Cielo Finance API is accessible (got expected error response)
+2025-05-25 08:43:22,513 - phoenix.wallet - INFO - ✅ Cielo Finance API connection verified
+2025-05-25 08:43:22,513 - phoenix.wallet - INFO - Batch analyzing 72 wallets (7-day active trader focus)
+2025-05-25 08:43:22,513 - phoenix.wallet - INFO - Analyzing wallet 1/72: 2NVajNn3bByXLATDXWMUUQJdgGVt2bjrLq4MR2K2RUAo
+2025-05-25 08:43:22,513 - phoenix.wallet - INFO - 🔍 Analyzing wallet 2NVajNn3bByXLATDXWMUUQJdgGVt2bjrLq4MR2K2RUAo (7-day active trader focus)
+2025-05-25 08:43:22,513 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:43:22,513 - phoenix.cielo - INFO - Fetching trading stats for wallet 2NVajNn3bByXLATDXWMUUQJdgGVt2bjrLq4MR2K2RUAo
+2025-05-25 08:43:24,493 - phoenix.cielo - INFO - Successfully retrieved trading stats for 2NVajNn3bByXLATDXWMUUQJdgGVt2bjrLq4MR2K2RUAo
+2025-05-25 08:43:24,493 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:43:24,509 - phoenix.wallet - INFO - Fetching last 100 token swaps for 2NVajNn3bByXLATDXWMUUQJdgGVt2bjrLq4MR2K2RUAo
+2025-05-25 08:43:24,636 - phoenix.wallet - INFO - Filtered to 70 recent signatures
+2025-05-25 08:44:21,265 - phoenix.wallet - INFO - Pairing buy/sell transactions for 3 tokens
+2025-05-25 08:44:21,265 - phoenix.wallet - INFO - Found 20 swaps (6 paired)
+2025-05-25 08:44:21,265 - phoenix.wallet - INFO - 📊 Wallet tier: STANDARD - Scanning 10 recent trades
+2025-05-25 08:44:21,265 - phoenix.wallet - INFO -    7-day trades: 20
+2025-05-25 08:44:21,265 - phoenix.wallet - INFO -    7-day win rate: 15.0%
+2025-05-25 08:44:21,265 - phoenix.wallet - INFO -    7-day profit: $-55.96
+2025-05-25 08:44:21,265 - phoenix.wallet - INFO -    Days since last trade: 1
+2025-05-25 08:44:21,265 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 1, Birdeye: 0, Helius: 0, RPC: 8
+2025-05-25 08:44:21,265 - phoenix.wallet - INFO -   └─ Score: 50/100, Type: flipper
+2025-05-25 08:44:22,277 - phoenix.wallet - INFO - Analyzing wallet 2/72: 39qK2kBpB7jTXLnX49puveVmCuDuWS2TMPJHhieXiXoz
+2025-05-25 08:44:22,280 - phoenix.wallet - INFO - 🔍 Analyzing wallet 39qK2kBpB7jTXLnX49puveVmCuDuWS2TMPJHhieXiXoz (7-day active trader focus)
+2025-05-25 08:44:22,280 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:44:22,280 - phoenix.cielo - INFO - Fetching trading stats for wallet 39qK2kBpB7jTXLnX49puveVmCuDuWS2TMPJHhieXiXoz
+2025-05-25 08:44:24,093 - phoenix.cielo - INFO - Successfully retrieved trading stats for 39qK2kBpB7jTXLnX49puveVmCuDuWS2TMPJHhieXiXoz
+2025-05-25 08:44:24,093 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:44:24,094 - phoenix.wallet - INFO - Fetching last 100 token swaps for 39qK2kBpB7jTXLnX49puveVmCuDuWS2TMPJHhieXiXoz
+2025-05-25 08:44:24,202 - phoenix.wallet - INFO - Filtered to 29 recent signatures
+2025-05-25 08:44:35,651 - phoenix.wallet - INFO - Pairing buy/sell transactions for 3 tokens
+2025-05-25 08:44:35,651 - phoenix.wallet - INFO - Found 5 swaps (3 paired)
+2025-05-25 08:44:35,651 - phoenix.wallet - INFO - 📊 Wallet tier: STANDARD - Scanning 10 recent trades
+2025-05-25 08:44:35,651 - phoenix.wallet - INFO -    7-day trades: 5
+2025-05-25 08:44:35,651 - phoenix.wallet - INFO -    7-day win rate: 40.0%
+2025-05-25 08:44:35,651 - phoenix.wallet - INFO -    7-day profit: $11.90
+2025-05-25 08:44:35,651 - phoenix.wallet - INFO -    Days since last trade: 1
+2025-05-25 08:44:35,651 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 2, Birdeye: 0, Helius: 0, RPC: 12
+2025-05-25 08:44:35,651 - phoenix.wallet - INFO -   └─ Score: 55/100, Type: flipper
+2025-05-25 08:44:36,668 - phoenix.wallet - INFO - Analyzing wallet 3/72: 3PStK1ZEADrQXF6JaCL8UMpUSNKuo2B527f55SYDBKUc
+2025-05-25 08:44:36,668 - phoenix.wallet - INFO - 🔍 Analyzing wallet 3PStK1ZEADrQXF6JaCL8UMpUSNKuo2B527f55SYDBKUc (7-day active trader focus)
+2025-05-25 08:44:36,668 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:44:36,668 - phoenix.cielo - INFO - Fetching trading stats for wallet 3PStK1ZEADrQXF6JaCL8UMpUSNKuo2B527f55SYDBKUc
+2025-05-25 08:44:38,256 - phoenix.cielo - INFO - Successfully retrieved trading stats for 3PStK1ZEADrQXF6JaCL8UMpUSNKuo2B527f55SYDBKUc
+2025-05-25 08:44:38,256 - phoenix.wallet - INFO - No trading history found - skipping detailed analysis
+2025-05-25 08:44:38,256 - phoenix.wallet - INFO -   └─ Score: 0/100, Type: no_trades
+2025-05-25 08:44:39,263 - phoenix.wallet - INFO - Analyzing wallet 4/72: 5ufmNbZypNFbVQ2pHqCBRPr5YS61ba7KXd8DyQLxJm2d
+2025-05-25 08:44:39,263 - phoenix.wallet - INFO - 🔍 Analyzing wallet 5ufmNbZypNFbVQ2pHqCBRPr5YS61ba7KXd8DyQLxJm2d (7-day active trader focus)
+2025-05-25 08:44:39,264 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:44:39,264 - phoenix.cielo - INFO - Fetching trading stats for wallet 5ufmNbZypNFbVQ2pHqCBRPr5YS61ba7KXd8DyQLxJm2d
+2025-05-25 08:44:40,533 - phoenix.cielo - INFO - Successfully retrieved trading stats for 5ufmNbZypNFbVQ2pHqCBRPr5YS61ba7KXd8DyQLxJm2d
+2025-05-25 08:44:40,533 - phoenix.wallet - INFO - No trading history found - skipping detailed analysis
+2025-05-25 08:44:40,533 - phoenix.wallet - INFO -   └─ Score: 0/100, Type: no_trades
+2025-05-25 08:44:41,543 - phoenix.wallet - INFO - Analyzing wallet 5/72: G3EXNkRgTTE6kjfZksrnJBLS9w8SCvZ914voUY5BCu2r
+2025-05-25 08:44:41,543 - phoenix.wallet - INFO - 🔍 Analyzing wallet G3EXNkRgTTE6kjfZksrnJBLS9w8SCvZ914voUY5BCu2r (7-day active trader focus)
+2025-05-25 08:44:41,545 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:44:41,545 - phoenix.cielo - INFO - Fetching trading stats for wallet G3EXNkRgTTE6kjfZksrnJBLS9w8SCvZ914voUY5BCu2r
+2025-05-25 08:44:43,303 - phoenix.cielo - INFO - Successfully retrieved trading stats for G3EXNkRgTTE6kjfZksrnJBLS9w8SCvZ914voUY5BCu2r
+2025-05-25 08:44:43,303 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:44:43,303 - phoenix.wallet - INFO - Fetching last 100 token swaps for G3EXNkRgTTE6kjfZksrnJBLS9w8SCvZ914voUY5BCu2r
+2025-05-25 08:44:43,408 - phoenix.wallet - INFO - Filtered to 58 recent signatures
+2025-05-25 08:45:05,728 - phoenix.wallet - INFO - Pairing buy/sell transactions for 8 tokens
+2025-05-25 08:45:05,728 - phoenix.wallet - INFO - Found 17 swaps (7 paired)
+2025-05-25 08:45:05,728 - phoenix.wallet - INFO - 📊 Wallet tier: INITIAL - Scanning 5 recent trades
+2025-05-25 08:45:05,728 - phoenix.wallet - INFO -    7-day trades: 17
+2025-05-25 08:45:05,728 - phoenix.wallet - INFO -    7-day win rate: 11.8%
+2025-05-25 08:45:05,728 - phoenix.wallet - INFO -    7-day profit: $4.20
+2025-05-25 08:45:05,728 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 08:45:05,728 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 5, Birdeye: 0, Helius: 0, RPC: 19
+2025-05-25 08:45:05,728 - phoenix.wallet - INFO -   └─ Score: 40/100, Type: swing_trader
+2025-05-25 08:45:06,742 - phoenix.wallet - INFO - Analyzing wallet 6/72: 4ttdAaibDqJTM4ZJsBsVdtgZaV1KTpvmpHEL7VrpXMb2
+2025-05-25 08:45:06,742 - phoenix.wallet - INFO - 🔍 Analyzing wallet 4ttdAaibDqJTM4ZJsBsVdtgZaV1KTpvmpHEL7VrpXMb2 (7-day active trader focus)
+2025-05-25 08:45:06,745 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:45:06,745 - phoenix.cielo - INFO - Fetching trading stats for wallet 4ttdAaibDqJTM4ZJsBsVdtgZaV1KTpvmpHEL7VrpXMb2
+2025-05-25 08:45:09,308 - phoenix.cielo - INFO - Successfully retrieved trading stats for 4ttdAaibDqJTM4ZJsBsVdtgZaV1KTpvmpHEL7VrpXMb2
+2025-05-25 08:45:09,308 - phoenix.wallet - INFO - No trading history found - skipping detailed analysis
+2025-05-25 08:45:09,308 - phoenix.wallet - INFO -   └─ Score: 0/100, Type: no_trades
+2025-05-25 08:45:10,314 - phoenix.wallet - INFO - Analyzing wallet 7/72: 6GwoZBfSWMbvV5DZedzXAgSGYmE7Cpp2R23CgWc1rrwj
+2025-05-25 08:45:10,314 - phoenix.wallet - INFO - 🔍 Analyzing wallet 6GwoZBfSWMbvV5DZedzXAgSGYmE7Cpp2R23CgWc1rrwj (7-day active trader focus)
+2025-05-25 08:45:10,314 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:45:10,314 - phoenix.cielo - INFO - Fetching trading stats for wallet 6GwoZBfSWMbvV5DZedzXAgSGYmE7Cpp2R23CgWc1rrwj
+2025-05-25 08:45:12,932 - phoenix.cielo - INFO - Successfully retrieved trading stats for 6GwoZBfSWMbvV5DZedzXAgSGYmE7Cpp2R23CgWc1rrwj
+2025-05-25 08:45:12,932 - phoenix.wallet - INFO - No trading history found - skipping detailed analysis
+2025-05-25 08:45:12,932 - phoenix.wallet - INFO -   └─ Score: 0/100, Type: no_trades
+2025-05-25 08:45:13,944 - phoenix.wallet - INFO - Analyzing wallet 8/72: 6q6xRFCGpCVkTCvDCYDqjbegAeyoryBzwiUyg3C3cNn7
+2025-05-25 08:45:13,944 - phoenix.wallet - INFO - 🔍 Analyzing wallet 6q6xRFCGpCVkTCvDCYDqjbegAeyoryBzwiUyg3C3cNn7 (7-day active trader focus)
+2025-05-25 08:45:13,944 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:45:13,944 - phoenix.cielo - INFO - Fetching trading stats for wallet 6q6xRFCGpCVkTCvDCYDqjbegAeyoryBzwiUyg3C3cNn7
+2025-05-25 08:45:15,989 - phoenix.cielo - INFO - Successfully retrieved trading stats for 6q6xRFCGpCVkTCvDCYDqjbegAeyoryBzwiUyg3C3cNn7
+2025-05-25 08:45:15,989 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:45:15,989 - phoenix.wallet - INFO - Fetching last 100 token swaps for 6q6xRFCGpCVkTCvDCYDqjbegAeyoryBzwiUyg3C3cNn7
+2025-05-25 08:45:16,100 - phoenix.wallet - INFO - Filtered to 77 recent signatures
+2025-05-25 08:45:47,771 - phoenix.wallet - INFO - Pairing buy/sell transactions for 10 tokens
+2025-05-25 08:45:47,771 - phoenix.wallet - INFO - Found 18 swaps (12 paired)
+2025-05-25 08:45:47,771 - phoenix.wallet - INFO - 📊 Wallet tier: INITIAL - Scanning 5 recent trades
+2025-05-25 08:45:47,771 - phoenix.wallet - INFO -    7-day trades: 18
+2025-05-25 08:45:47,771 - phoenix.wallet - INFO -    7-day win rate: 16.7%
+2025-05-25 08:45:47,771 - phoenix.wallet - INFO -    7-day profit: $-1328.39
+2025-05-25 08:45:47,771 - phoenix.wallet - INFO -    Days since last trade: 1
+2025-05-25 08:45:47,786 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 8, Birdeye: 0, Helius: 0, RPC: 28
+2025-05-25 08:45:47,786 - phoenix.wallet - INFO -   └─ Score: 35/100, Type: flipper
+2025-05-25 08:45:48,792 - phoenix.wallet - INFO - Analyzing wallet 9/72: AXPD9xMB6nKEvP5pvhb81c7EeqFxLQcYAptxFfcSQ3Me
+2025-05-25 08:45:48,795 - phoenix.wallet - INFO - 🔍 Analyzing wallet AXPD9xMB6nKEvP5pvhb81c7EeqFxLQcYAptxFfcSQ3Me (7-day active trader focus)
+2025-05-25 08:45:48,795 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:45:48,795 - phoenix.cielo - INFO - Fetching trading stats for wallet AXPD9xMB6nKEvP5pvhb81c7EeqFxLQcYAptxFfcSQ3Me
+2025-05-25 08:45:50,254 - phoenix.cielo - INFO - Successfully retrieved trading stats for AXPD9xMB6nKEvP5pvhb81c7EeqFxLQcYAptxFfcSQ3Me
+2025-05-25 08:45:50,254 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:45:50,256 - phoenix.wallet - INFO - Fetching last 100 token swaps for AXPD9xMB6nKEvP5pvhb81c7EeqFxLQcYAptxFfcSQ3Me
+2025-05-25 08:45:50,389 - phoenix.wallet - INFO - Filtered to 50 recent signatures
+2025-05-25 08:45:56,269 - phoenix.wallet - INFO - Pairing buy/sell transactions for 4 tokens
+2025-05-25 08:45:56,269 - phoenix.wallet - INFO - Found 13 swaps (5 paired)
+2025-05-25 08:45:56,269 - phoenix.wallet - INFO - 📊 Wallet tier: INITIAL - Scanning 5 recent trades
+2025-05-25 08:45:56,269 - phoenix.wallet - INFO -    7-day trades: 13
+2025-05-25 08:45:56,269 - phoenix.wallet - INFO -    7-day win rate: 38.5%
+2025-05-25 08:45:56,269 - phoenix.wallet - INFO -    7-day profit: $340.11
+2025-05-25 08:45:56,269 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 08:45:56,269 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 9, Birdeye: 0, Helius: 1, RPC: 34
+2025-05-25 08:45:56,269 - phoenix.wallet - INFO -   └─ Score: 45/100, Type: swing_trader
+2025-05-25 08:45:57,278 - phoenix.wallet - INFO - Analyzing wallet 10/72: GJLxzKb5JW6PQ7tfCuC7zEdD69AtqWAQ8RVPCGR5gLxF
+2025-05-25 08:45:57,278 - phoenix.wallet - INFO - 🔍 Analyzing wallet GJLxzKb5JW6PQ7tfCuC7zEdD69AtqWAQ8RVPCGR5gLxF (7-day active trader focus)
+2025-05-25 08:45:57,278 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:45:57,278 - phoenix.cielo - INFO - Fetching trading stats for wallet GJLxzKb5JW6PQ7tfCuC7zEdD69AtqWAQ8RVPCGR5gLxF
+2025-05-25 08:45:58,875 - phoenix.cielo - INFO - Successfully retrieved trading stats for GJLxzKb5JW6PQ7tfCuC7zEdD69AtqWAQ8RVPCGR5gLxF
+2025-05-25 08:45:58,875 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:45:58,889 - phoenix.wallet - INFO - Fetching last 100 token swaps for GJLxzKb5JW6PQ7tfCuC7zEdD69AtqWAQ8RVPCGR5gLxF
+2025-05-25 08:45:59,003 - phoenix.wallet - INFO - Filtered to 98 recent signatures
+2025-05-25 08:46:48,205 - phoenix.wallet - INFO - Pairing buy/sell transactions for 10 tokens
+2025-05-25 08:46:48,205 - phoenix.wallet - INFO - Found 27 swaps (9 paired)
+2025-05-25 08:46:48,205 - phoenix.wallet - INFO - 📊 Wallet tier: DEEP - Scanning 20 recent trades
+2025-05-25 08:46:48,205 - phoenix.wallet - INFO -    7-day trades: 27
+2025-05-25 08:46:48,205 - phoenix.wallet - INFO -    7-day win rate: 18.5%
+2025-05-25 08:46:48,205 - phoenix.wallet - INFO -    7-day profit: $13781.09
+2025-05-25 08:46:48,205 - phoenix.wallet - INFO -    Days since last trade: 1
+2025-05-25 08:46:48,460 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 10, Birdeye: 5, Helius: 2, RPC: 45
+2025-05-25 08:46:48,460 - phoenix.wallet - INFO -   └─ Score: 90/100, Type: position_trader
+2025-05-25 08:46:49,472 - phoenix.wallet - INFO - Analyzing wallet 11/72: bY84jnYD5wVjBEDpFR8pXZSRvaBjgWTV8pR31DWXFp2
+2025-05-25 08:46:49,473 - phoenix.wallet - INFO - 🔍 Analyzing wallet bY84jnYD5wVjBEDpFR8pXZSRvaBjgWTV8pR31DWXFp2 (7-day active trader focus)
+2025-05-25 08:46:49,473 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:46:49,473 - phoenix.cielo - INFO - Fetching trading stats for wallet bY84jnYD5wVjBEDpFR8pXZSRvaBjgWTV8pR31DWXFp2
+2025-05-25 08:46:51,339 - phoenix.cielo - INFO - Successfully retrieved trading stats for bY84jnYD5wVjBEDpFR8pXZSRvaBjgWTV8pR31DWXFp2
+2025-05-25 08:46:51,339 - phoenix.wallet - INFO - No trading history found - skipping detailed analysis
+2025-05-25 08:46:51,339 - phoenix.wallet - INFO -   └─ Score: 0/100, Type: no_trades
+2025-05-25 08:46:52,342 - phoenix.wallet - INFO - Analyzing wallet 12/72: 5BrAE5Fc24xo1o9Nr2iy1gr1aSAGugh1e5DY6GsoV5Tu
+2025-05-25 08:46:52,342 - phoenix.wallet - INFO - 🔍 Analyzing wallet 5BrAE5Fc24xo1o9Nr2iy1gr1aSAGugh1e5DY6GsoV5Tu (7-day active trader focus)
+2025-05-25 08:46:52,342 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:46:52,342 - phoenix.cielo - INFO - Fetching trading stats for wallet 5BrAE5Fc24xo1o9Nr2iy1gr1aSAGugh1e5DY6GsoV5Tu
+2025-05-25 08:46:53,888 - phoenix.cielo - INFO - Successfully retrieved trading stats for 5BrAE5Fc24xo1o9Nr2iy1gr1aSAGugh1e5DY6GsoV5Tu
+2025-05-25 08:46:53,888 - phoenix.wallet - INFO - No trading history found - skipping detailed analysis
+2025-05-25 08:46:53,888 - phoenix.wallet - INFO -   └─ Score: 0/100, Type: no_trades
+2025-05-25 08:46:54,894 - phoenix.wallet - INFO - Analyzing wallet 13/72: 7DN69tKi6qdqWfnP6ZM48fht3WmgAeuPpY3CUWPA85k6
+2025-05-25 08:46:54,895 - phoenix.wallet - INFO - 🔍 Analyzing wallet 7DN69tKi6qdqWfnP6ZM48fht3WmgAeuPpY3CUWPA85k6 (7-day active trader focus)
+2025-05-25 08:46:54,895 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:46:54,895 - phoenix.cielo - INFO - Fetching trading stats for wallet 7DN69tKi6qdqWfnP6ZM48fht3WmgAeuPpY3CUWPA85k6
+2025-05-25 08:46:56,763 - phoenix.cielo - INFO - Successfully retrieved trading stats for 7DN69tKi6qdqWfnP6ZM48fht3WmgAeuPpY3CUWPA85k6
+2025-05-25 08:46:56,763 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:46:56,763 - phoenix.wallet - INFO - Fetching last 100 token swaps for 7DN69tKi6qdqWfnP6ZM48fht3WmgAeuPpY3CUWPA85k6
+2025-05-25 08:46:56,952 - phoenix.wallet - INFO - Filtered to 38 recent signatures
+2025-05-25 08:47:19,545 - phoenix.wallet - INFO - Pairing buy/sell transactions for 3 tokens
+2025-05-25 08:47:19,545 - phoenix.wallet - INFO - Found 19 swaps (3 paired)
+2025-05-25 08:47:19,546 - phoenix.wallet - INFO - 📊 Wallet tier: STANDARD - Scanning 10 recent trades
+2025-05-25 08:47:19,546 - phoenix.wallet - INFO -    7-day trades: 19
+2025-05-25 08:47:19,546 - phoenix.wallet - INFO -    7-day win rate: 5.3%
+2025-05-25 08:47:19,546 - phoenix.wallet - INFO -    7-day profit: $-36.59
+2025-05-25 08:47:19,546 - phoenix.wallet - INFO -    Days since last trade: 1
+2025-05-25 08:47:19,546 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 13, Birdeye: 5, Helius: 2, RPC: 50
+2025-05-25 08:47:19,546 - phoenix.wallet - INFO -   └─ Score: 50/100, Type: flipper
+2025-05-25 08:47:20,552 - phoenix.wallet - INFO - Analyzing wallet 14/72: CigAnCsjn97zhQE6c4m2G1arDLnR1m7AdAFxxcLGQopB
+2025-05-25 08:47:20,552 - phoenix.wallet - INFO - 🔍 Analyzing wallet CigAnCsjn97zhQE6c4m2G1arDLnR1m7AdAFxxcLGQopB (7-day active trader focus)
+2025-05-25 08:47:20,556 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:47:20,556 - phoenix.cielo - INFO - Fetching trading stats for wallet CigAnCsjn97zhQE6c4m2G1arDLnR1m7AdAFxxcLGQopB
+2025-05-25 08:47:23,436 - phoenix.cielo - INFO - Successfully retrieved trading stats for CigAnCsjn97zhQE6c4m2G1arDLnR1m7AdAFxxcLGQopB
+2025-05-25 08:47:23,436 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:47:23,438 - phoenix.wallet - INFO - Fetching last 100 token swaps for CigAnCsjn97zhQE6c4m2G1arDLnR1m7AdAFxxcLGQopB
+2025-05-25 08:47:23,546 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 08:48:10,246 - phoenix.wallet - INFO - Pairing buy/sell transactions for 17 tokens
+2025-05-25 08:48:10,246 - phoenix.wallet - INFO - Found 31 swaps (19 paired)
+2025-05-25 08:48:10,246 - phoenix.wallet - INFO - 📊 Wallet tier: DEEP - Scanning 20 recent trades
+2025-05-25 08:48:10,246 - phoenix.wallet - INFO -    7-day trades: 31
+2025-05-25 08:48:10,246 - phoenix.wallet - INFO -    7-day win rate: 45.2%
+2025-05-25 08:48:10,246 - phoenix.wallet - INFO -    7-day profit: $-3317.34
+2025-05-25 08:48:10,246 - phoenix.wallet - INFO -    Days since last trade: 2
+2025-05-25 08:48:10,262 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 14, Birdeye: 5, Helius: 13, RPC: 61
+2025-05-25 08:48:10,262 - phoenix.wallet - INFO -   └─ Score: 75/100, Type: position_trader
+2025-05-25 08:48:11,264 - phoenix.wallet - INFO - Analyzing wallet 15/72: FHMsWM4dXiY2B58qPGgx7Wq3brsiYXMyV2U7VXZNuGpj
+2025-05-25 08:48:11,264 - phoenix.wallet - INFO - 🔍 Analyzing wallet FHMsWM4dXiY2B58qPGgx7Wq3brsiYXMyV2U7VXZNuGpj (7-day active trader focus)
+2025-05-25 08:48:11,264 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:48:11,264 - phoenix.cielo - INFO - Fetching trading stats for wallet FHMsWM4dXiY2B58qPGgx7Wq3brsiYXMyV2U7VXZNuGpj
+2025-05-25 08:48:12,502 - phoenix.cielo - INFO - Successfully retrieved trading stats for FHMsWM4dXiY2B58qPGgx7Wq3brsiYXMyV2U7VXZNuGpj
+2025-05-25 08:48:12,502 - phoenix.wallet - INFO - No trading history found - skipping detailed analysis
+2025-05-25 08:48:12,504 - phoenix.wallet - INFO -   └─ Score: 0/100, Type: no_trades
+2025-05-25 08:48:13,506 - phoenix.wallet - INFO - Analyzing wallet 16/72: 2fKChUkaU6mJxgdvgR51KNMvFxs8Cc852aezvv3Xxmr4
+2025-05-25 08:48:13,507 - phoenix.wallet - INFO - 🔍 Analyzing wallet 2fKChUkaU6mJxgdvgR51KNMvFxs8Cc852aezvv3Xxmr4 (7-day active trader focus)
+2025-05-25 08:48:13,507 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:48:13,507 - phoenix.cielo - INFO - Fetching trading stats for wallet 2fKChUkaU6mJxgdvgR51KNMvFxs8Cc852aezvv3Xxmr4
+2025-05-25 08:48:14,638 - phoenix.cielo - INFO - Successfully retrieved trading stats for 2fKChUkaU6mJxgdvgR51KNMvFxs8Cc852aezvv3Xxmr4
+2025-05-25 08:48:14,638 - phoenix.wallet - INFO - No trading history found - skipping detailed analysis
+2025-05-25 08:48:14,638 - phoenix.wallet - INFO -   └─ Score: 0/100, Type: no_trades
+2025-05-25 08:48:15,653 - phoenix.wallet - INFO - Analyzing wallet 17/72: 2k3k7UEBPEWJUMrQCkL3MaAZ4fZ5ZBJLQKzF1MqwqZxh
+2025-05-25 08:48:15,653 - phoenix.wallet - INFO - 🔍 Analyzing wallet 2k3k7UEBPEWJUMrQCkL3MaAZ4fZ5ZBJLQKzF1MqwqZxh (7-day active trader focus)
+2025-05-25 08:48:15,657 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:48:15,657 - phoenix.cielo - INFO - Fetching trading stats for wallet 2k3k7UEBPEWJUMrQCkL3MaAZ4fZ5ZBJLQKzF1MqwqZxh
+2025-05-25 08:48:17,388 - phoenix.cielo - INFO - Successfully retrieved trading stats for 2k3k7UEBPEWJUMrQCkL3MaAZ4fZ5ZBJLQKzF1MqwqZxh
+2025-05-25 08:48:17,388 - phoenix.wallet - INFO - No trading history found - skipping detailed analysis
+2025-05-25 08:48:17,388 - phoenix.wallet - INFO -   └─ Score: 0/100, Type: no_trades
+2025-05-25 08:48:18,398 - phoenix.wallet - INFO - Analyzing wallet 18/72: 3mM27bdT91G7NsrpnuBa7c2YnJ9QNLf7BP3hy8tZmcyz
+2025-05-25 08:48:18,398 - phoenix.wallet - INFO - 🔍 Analyzing wallet 3mM27bdT91G7NsrpnuBa7c2YnJ9QNLf7BP3hy8tZmcyz (7-day active trader focus)
+2025-05-25 08:48:18,398 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:48:18,398 - phoenix.cielo - INFO - Fetching trading stats for wallet 3mM27bdT91G7NsrpnuBa7c2YnJ9QNLf7BP3hy8tZmcyz
+2025-05-25 08:48:19,763 - phoenix.cielo - INFO - Successfully retrieved trading stats for 3mM27bdT91G7NsrpnuBa7c2YnJ9QNLf7BP3hy8tZmcyz
+2025-05-25 08:48:19,763 - phoenix.wallet - INFO - No trading history found - skipping detailed analysis
+2025-05-25 08:48:19,763 - phoenix.wallet - INFO -   └─ Score: 0/100, Type: no_trades
+2025-05-25 08:48:20,767 - phoenix.wallet - INFO - Analyzing wallet 19/72: 6kzG4Bw1SvJgndaLZ5GSfUbWf515TshKRQC7LJ9wjSCd
+2025-05-25 08:48:20,767 - phoenix.wallet - INFO - 🔍 Analyzing wallet 6kzG4Bw1SvJgndaLZ5GSfUbWf515TshKRQC7LJ9wjSCd (7-day active trader focus)
+2025-05-25 08:48:20,767 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:48:20,767 - phoenix.cielo - INFO - Fetching trading stats for wallet 6kzG4Bw1SvJgndaLZ5GSfUbWf515TshKRQC7LJ9wjSCd
+2025-05-25 08:48:21,296 - phoenix.cielo - INFO - Successfully retrieved trading stats for 6kzG4Bw1SvJgndaLZ5GSfUbWf515TshKRQC7LJ9wjSCd
+2025-05-25 08:48:21,296 - phoenix.wallet - INFO - No trading history found - skipping detailed analysis
+2025-05-25 08:48:21,296 - phoenix.wallet - INFO -   └─ Score: 0/100, Type: no_trades
+2025-05-25 08:48:22,311 - phoenix.wallet - INFO - Analyzing wallet 20/72: 8Jj37RyY6rQGyv6y9qwoSTXDXKpArdSZrhxiWVFYpcC1
+2025-05-25 08:48:22,312 - phoenix.wallet - INFO - 🔍 Analyzing wallet 8Jj37RyY6rQGyv6y9qwoSTXDXKpArdSZrhxiWVFYpcC1 (7-day active trader focus)
+2025-05-25 08:48:22,312 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:48:22,312 - phoenix.cielo - INFO - Fetching trading stats for wallet 8Jj37RyY6rQGyv6y9qwoSTXDXKpArdSZrhxiWVFYpcC1
+2025-05-25 08:48:23,824 - phoenix.cielo - INFO - Successfully retrieved trading stats for 8Jj37RyY6rQGyv6y9qwoSTXDXKpArdSZrhxiWVFYpcC1
+2025-05-25 08:48:23,824 - phoenix.wallet - INFO - No trading history found - skipping detailed analysis
+2025-05-25 08:48:23,825 - phoenix.wallet - INFO -   └─ Score: 0/100, Type: no_trades
+2025-05-25 08:48:24,827 - phoenix.wallet - INFO - Analyzing wallet 21/72: 9VXjMBgvrmLZy9NckKuuWuRRpHm21DQ3XHLi6B2EtVWY
+2025-05-25 08:48:24,829 - phoenix.wallet - INFO - 🔍 Analyzing wallet 9VXjMBgvrmLZy9NckKuuWuRRpHm21DQ3XHLi6B2EtVWY (7-day active trader focus)
+2025-05-25 08:48:24,829 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:48:24,829 - phoenix.cielo - INFO - Fetching trading stats for wallet 9VXjMBgvrmLZy9NckKuuWuRRpHm21DQ3XHLi6B2EtVWY
+2025-05-25 08:48:26,716 - phoenix.cielo - INFO - Successfully retrieved trading stats for 9VXjMBgvrmLZy9NckKuuWuRRpHm21DQ3XHLi6B2EtVWY
+2025-05-25 08:48:26,716 - phoenix.wallet - INFO - No trading history found - skipping detailed analysis
+2025-05-25 08:48:26,731 - phoenix.wallet - INFO -   └─ Score: 0/100, Type: no_trades
+2025-05-25 08:48:27,733 - phoenix.wallet - INFO - Analyzing wallet 22/72: BXJpCEtuLu7d967P7Da4jnfhJ76V6v7B6imaNWLVTDKQ
+2025-05-25 08:48:27,736 - phoenix.wallet - INFO - 🔍 Analyzing wallet BXJpCEtuLu7d967P7Da4jnfhJ76V6v7B6imaNWLVTDKQ (7-day active trader focus)
+2025-05-25 08:48:27,736 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:48:27,736 - phoenix.cielo - INFO - Fetching trading stats for wallet BXJpCEtuLu7d967P7Da4jnfhJ76V6v7B6imaNWLVTDKQ
+2025-05-25 08:48:29,250 - phoenix.cielo - INFO - Successfully retrieved trading stats for BXJpCEtuLu7d967P7Da4jnfhJ76V6v7B6imaNWLVTDKQ
+2025-05-25 08:48:29,250 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:48:29,251 - phoenix.wallet - INFO - Fetching last 100 token swaps for BXJpCEtuLu7d967P7Da4jnfhJ76V6v7B6imaNWLVTDKQ
+2025-05-25 08:48:29,362 - phoenix.wallet - INFO - Filtered to 65 recent signatures
+2025-05-25 08:48:52,767 - phoenix.wallet - INFO - Pairing buy/sell transactions for 4 tokens
+2025-05-25 08:48:52,767 - phoenix.wallet - INFO - Found 14 swaps (5 paired)
+2025-05-25 08:48:52,767 - phoenix.wallet - INFO - 📊 Wallet tier: INITIAL - Scanning 5 recent trades
+2025-05-25 08:48:52,767 - phoenix.wallet - INFO -    7-day trades: 14
+2025-05-25 08:48:52,767 - phoenix.wallet - INFO -    7-day win rate: 7.1%
+2025-05-25 08:48:52,767 - phoenix.wallet - INFO -    7-day profit: $-219.61
+2025-05-25 08:48:52,767 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 08:48:52,767 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 22, Birdeye: 5, Helius: 13, RPC: 69
+2025-05-25 08:48:52,767 - phoenix.wallet - INFO -   └─ Score: 35/100, Type: swing_trader
+2025-05-25 08:48:53,776 - phoenix.wallet - INFO - Analyzing wallet 23/72: DvbqrDXrY8u7coMsTYq8RVsUWoNuUMQFUb3B8g2nHcUs
+2025-05-25 08:48:53,776 - phoenix.wallet - INFO - 🔍 Analyzing wallet DvbqrDXrY8u7coMsTYq8RVsUWoNuUMQFUb3B8g2nHcUs (7-day active trader focus)
+2025-05-25 08:48:53,776 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:48:53,776 - phoenix.cielo - INFO - Fetching trading stats for wallet DvbqrDXrY8u7coMsTYq8RVsUWoNuUMQFUb3B8g2nHcUs
+2025-05-25 08:48:55,703 - phoenix.cielo - INFO - Successfully retrieved trading stats for DvbqrDXrY8u7coMsTYq8RVsUWoNuUMQFUb3B8g2nHcUs
+2025-05-25 08:48:55,703 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:48:55,703 - phoenix.wallet - INFO - Fetching last 100 token swaps for DvbqrDXrY8u7coMsTYq8RVsUWoNuUMQFUb3B8g2nHcUs
+2025-05-25 08:48:55,830 - phoenix.wallet - INFO - Filtered to 69 recent signatures
+2025-05-25 08:49:19,888 - phoenix.wallet - INFO - Pairing buy/sell transactions for 16 tokens
+2025-05-25 08:49:19,888 - phoenix.wallet - INFO - Found 22 swaps (21 paired)
+2025-05-25 08:49:19,888 - phoenix.wallet - INFO - 📊 Wallet tier: DEEP - Scanning 20 recent trades
+2025-05-25 08:49:19,888 - phoenix.wallet - INFO -    7-day trades: 22
+2025-05-25 08:49:19,888 - phoenix.wallet - INFO -    7-day win rate: 31.8%
+2025-05-25 08:49:19,888 - phoenix.wallet - INFO -    7-day profit: $2678.83
+2025-05-25 08:49:19,888 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 08:49:19,901 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 23, Birdeye: 5, Helius: 13, RPC: 77
+2025-05-25 08:49:19,901 - phoenix.wallet - INFO -   └─ Score: 85/100, Type: flipper
+2025-05-25 08:49:20,906 - phoenix.wallet - INFO - Analyzing wallet 24/72: ERqA5TF1Fty7KqB7G4YwAE2HxF6tpsdKG2C2tBhnCA2i
+2025-05-25 08:49:20,907 - phoenix.wallet - INFO - 🔍 Analyzing wallet ERqA5TF1Fty7KqB7G4YwAE2HxF6tpsdKG2C2tBhnCA2i (7-day active trader focus)
+2025-05-25 08:49:20,907 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:49:20,907 - phoenix.cielo - INFO - Fetching trading stats for wallet ERqA5TF1Fty7KqB7G4YwAE2HxF6tpsdKG2C2tBhnCA2i
+2025-05-25 08:49:22,797 - phoenix.cielo - INFO - Successfully retrieved trading stats for ERqA5TF1Fty7KqB7G4YwAE2HxF6tpsdKG2C2tBhnCA2i
+2025-05-25 08:49:22,797 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:49:22,812 - phoenix.wallet - INFO - Fetching last 100 token swaps for ERqA5TF1Fty7KqB7G4YwAE2HxF6tpsdKG2C2tBhnCA2i
+2025-05-25 08:49:22,906 - phoenix.wallet - INFO - Filtered to 73 recent signatures
+2025-05-25 08:49:46,405 - phoenix.wallet - INFO - Pairing buy/sell transactions for 11 tokens
+2025-05-25 08:49:46,405 - phoenix.wallet - INFO - Found 14 swaps (13 paired)
+2025-05-25 08:49:46,405 - phoenix.wallet - INFO - 📊 Wallet tier: DEEP - Scanning 20 recent trades
+2025-05-25 08:49:46,405 - phoenix.wallet - INFO -    7-day trades: 14
+2025-05-25 08:49:46,405 - phoenix.wallet - INFO -    7-day win rate: 50.0%
+2025-05-25 08:49:46,405 - phoenix.wallet - INFO -    7-day profit: $1913.51
+2025-05-25 08:49:46,405 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 08:49:46,405 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 24, Birdeye: 5, Helius: 14, RPC: 86
+2025-05-25 08:49:46,421 - phoenix.wallet - INFO -   └─ Score: 70/100, Type: gem_hunter
+2025-05-25 08:49:47,426 - phoenix.wallet - INFO - Analyzing wallet 25/72: EvNvewyT3gmTLdFqAJVSJRHrxLQA6fBCKeCJpk4mxN3h
+2025-05-25 08:49:47,430 - phoenix.wallet - INFO - 🔍 Analyzing wallet EvNvewyT3gmTLdFqAJVSJRHrxLQA6fBCKeCJpk4mxN3h (7-day active trader focus)
+2025-05-25 08:49:47,430 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:49:47,430 - phoenix.cielo - INFO - Fetching trading stats for wallet EvNvewyT3gmTLdFqAJVSJRHrxLQA6fBCKeCJpk4mxN3h
+2025-05-25 08:49:48,862 - phoenix.cielo - INFO - Successfully retrieved trading stats for EvNvewyT3gmTLdFqAJVSJRHrxLQA6fBCKeCJpk4mxN3h
+2025-05-25 08:49:48,862 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:49:48,862 - phoenix.wallet - INFO - Fetching last 100 token swaps for EvNvewyT3gmTLdFqAJVSJRHrxLQA6fBCKeCJpk4mxN3h
+2025-05-25 08:49:48,973 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 08:50:21,043 - phoenix.wallet - INFO - Pairing buy/sell transactions for 14 tokens
+2025-05-25 08:50:21,043 - phoenix.wallet - INFO - Found 26 swaps (17 paired)
+2025-05-25 08:50:21,043 - phoenix.wallet - INFO - 📊 Wallet tier: DEEP - Scanning 20 recent trades
+2025-05-25 08:50:21,043 - phoenix.wallet - INFO -    7-day trades: 26
+2025-05-25 08:50:21,043 - phoenix.wallet - INFO -    7-day win rate: 50.0%
+2025-05-25 08:50:21,043 - phoenix.wallet - INFO -    7-day profit: $520.10
+2025-05-25 08:50:21,046 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 08:50:21,266 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 25, Birdeye: 7, Helius: 18, RPC: 97
+2025-05-25 08:50:21,266 - phoenix.wallet - INFO -   └─ Score: 100/100, Type: swing_trader
+2025-05-25 08:50:22,278 - phoenix.wallet - INFO - Analyzing wallet 26/72: Hw2WAAwDQTm1U18owUkR5FBg92mVYWjU4ygAfDyiL3hu
+2025-05-25 08:50:22,278 - phoenix.wallet - INFO - 🔍 Analyzing wallet Hw2WAAwDQTm1U18owUkR5FBg92mVYWjU4ygAfDyiL3hu (7-day active trader focus)
+2025-05-25 08:50:22,278 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:50:22,278 - phoenix.cielo - INFO - Fetching trading stats for wallet Hw2WAAwDQTm1U18owUkR5FBg92mVYWjU4ygAfDyiL3hu
+2025-05-25 08:50:24,228 - phoenix.cielo - INFO - Successfully retrieved trading stats for Hw2WAAwDQTm1U18owUkR5FBg92mVYWjU4ygAfDyiL3hu
+2025-05-25 08:50:24,228 - phoenix.wallet - INFO - No trading history found - skipping detailed analysis
+2025-05-25 08:50:24,228 - phoenix.wallet - INFO -   └─ Score: 0/100, Type: no_trades
+2025-05-25 08:50:25,244 - phoenix.wallet - INFO - Analyzing wallet 27/72: 3jjcLMgZYvTc8xDLwshX4rCdcLphczQw8WZXbDVDuz7D
+2025-05-25 08:50:25,244 - phoenix.wallet - INFO - 🔍 Analyzing wallet 3jjcLMgZYvTc8xDLwshX4rCdcLphczQw8WZXbDVDuz7D (7-day active trader focus)
+2025-05-25 08:50:25,244 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:50:25,244 - phoenix.cielo - INFO - Fetching trading stats for wallet 3jjcLMgZYvTc8xDLwshX4rCdcLphczQw8WZXbDVDuz7D
+2025-05-25 08:50:26,845 - phoenix.cielo - INFO - Successfully retrieved trading stats for 3jjcLMgZYvTc8xDLwshX4rCdcLphczQw8WZXbDVDuz7D
+2025-05-25 08:50:26,845 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:50:26,848 - phoenix.wallet - INFO - Fetching last 100 token swaps for 3jjcLMgZYvTc8xDLwshX4rCdcLphczQw8WZXbDVDuz7D
+2025-05-25 08:50:26,953 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 08:51:08,327 - phoenix.wallet - INFO - Pairing buy/sell transactions for 20 tokens
+2025-05-25 08:51:08,327 - phoenix.wallet - INFO - Found 34 swaps (20 paired)
+2025-05-25 08:51:08,328 - phoenix.wallet - INFO - 📊 Wallet tier: STANDARD - Scanning 10 recent trades
+2025-05-25 08:51:08,328 - phoenix.wallet - INFO -    7-day trades: 34
+2025-05-25 08:51:08,328 - phoenix.wallet - INFO -    7-day win rate: 41.2%
+2025-05-25 08:51:08,328 - phoenix.wallet - INFO -    7-day profit: $85.53
+2025-05-25 08:51:08,328 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 08:51:08,328 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 27, Birdeye: 7, Helius: 18, RPC: 108
+2025-05-25 08:51:08,328 - phoenix.wallet - INFO -   └─ Score: 60/100, Type: scalper
+2025-05-25 08:51:09,335 - phoenix.wallet - INFO - Analyzing wallet 28/72: 958y29rC1XFMbXYzkEZ1SKQH3uEAYZvCRPDq1gUtBGGc
+2025-05-25 08:51:09,335 - phoenix.wallet - INFO - 🔍 Analyzing wallet 958y29rC1XFMbXYzkEZ1SKQH3uEAYZvCRPDq1gUtBGGc (7-day active trader focus)
+2025-05-25 08:51:09,335 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:51:09,335 - phoenix.cielo - INFO - Fetching trading stats for wallet 958y29rC1XFMbXYzkEZ1SKQH3uEAYZvCRPDq1gUtBGGc
+2025-05-25 08:51:11,168 - phoenix.cielo - INFO - Successfully retrieved trading stats for 958y29rC1XFMbXYzkEZ1SKQH3uEAYZvCRPDq1gUtBGGc
+2025-05-25 08:51:11,168 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:51:11,169 - phoenix.wallet - INFO - Fetching last 100 token swaps for 958y29rC1XFMbXYzkEZ1SKQH3uEAYZvCRPDq1gUtBGGc
+2025-05-25 08:51:11,279 - phoenix.wallet - INFO - Filtered to 92 recent signatures
+2025-05-25 08:51:56,167 - phoenix.wallet - INFO - Pairing buy/sell transactions for 12 tokens
+2025-05-25 08:51:56,167 - phoenix.wallet - INFO - Found 17 swaps (14 paired)
+2025-05-25 08:51:56,167 - phoenix.wallet - INFO - 📊 Wallet tier: DEEP - Scanning 20 recent trades
+2025-05-25 08:51:56,167 - phoenix.wallet - INFO -    7-day trades: 17
+2025-05-25 08:51:56,167 - phoenix.wallet - INFO -    7-day win rate: 41.2%
+2025-05-25 08:51:56,167 - phoenix.wallet - INFO -    7-day profit: $7512.63
+2025-05-25 08:51:56,167 - phoenix.wallet - INFO -    Days since last trade: 1
+2025-05-25 08:51:56,172 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 28, Birdeye: 7, Helius: 18, RPC: 119
+2025-05-25 08:51:56,172 - phoenix.wallet - INFO -   └─ Score: 65/100, Type: swing_trader
+2025-05-25 08:51:57,175 - phoenix.wallet - INFO - Analyzing wallet 29/72: 9ChiFzCv2jo25AP3jBZoFFGR8HGHMzuMQMF7ZEm1vbQ2
+2025-05-25 08:51:57,175 - phoenix.wallet - INFO - 🔍 Analyzing wallet 9ChiFzCv2jo25AP3jBZoFFGR8HGHMzuMQMF7ZEm1vbQ2 (7-day active trader focus)
+2025-05-25 08:51:57,175 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:51:57,175 - phoenix.cielo - INFO - Fetching trading stats for wallet 9ChiFzCv2jo25AP3jBZoFFGR8HGHMzuMQMF7ZEm1vbQ2
+2025-05-25 08:51:59,066 - phoenix.cielo - INFO - Successfully retrieved trading stats for 9ChiFzCv2jo25AP3jBZoFFGR8HGHMzuMQMF7ZEm1vbQ2
+2025-05-25 08:51:59,066 - phoenix.wallet - INFO - No trading history found - skipping detailed analysis
+2025-05-25 08:51:59,071 - phoenix.wallet - INFO -   └─ Score: 0/100, Type: no_trades
+2025-05-25 08:52:00,073 - phoenix.wallet - INFO - Analyzing wallet 30/72: D4zwkUJF4FbmnRgtL6nphhunrMZdoFtBJ39Nsf2cNoZy
+2025-05-25 08:52:00,073 - phoenix.wallet - INFO - 🔍 Analyzing wallet D4zwkUJF4FbmnRgtL6nphhunrMZdoFtBJ39Nsf2cNoZy (7-day active trader focus)
+2025-05-25 08:52:00,073 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:52:00,078 - phoenix.cielo - INFO - Fetching trading stats for wallet D4zwkUJF4FbmnRgtL6nphhunrMZdoFtBJ39Nsf2cNoZy
+2025-05-25 08:52:01,454 - phoenix.cielo - INFO - Successfully retrieved trading stats for D4zwkUJF4FbmnRgtL6nphhunrMZdoFtBJ39Nsf2cNoZy
+2025-05-25 08:52:01,454 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:52:01,454 - phoenix.wallet - INFO - Fetching last 100 token swaps for D4zwkUJF4FbmnRgtL6nphhunrMZdoFtBJ39Nsf2cNoZy
+2025-05-25 08:52:01,563 - phoenix.wallet - INFO - Filtered to 80 recent signatures
+2025-05-25 08:52:35,196 - phoenix.wallet - INFO - Pairing buy/sell transactions for 5 tokens
+2025-05-25 08:52:35,196 - phoenix.wallet - INFO - Found 39 swaps (5 paired)
+2025-05-25 08:52:35,196 - phoenix.wallet - INFO - 📊 Wallet tier: INITIAL - Scanning 5 recent trades
+2025-05-25 08:52:35,196 - phoenix.wallet - INFO -    7-day trades: 39
+2025-05-25 08:52:35,196 - phoenix.wallet - INFO -    7-day win rate: 0.0%
+2025-05-25 08:52:35,196 - phoenix.wallet - INFO -    7-day profit: $-1298.06
+2025-05-25 08:52:35,196 - phoenix.wallet - INFO -    Days since last trade: 1
+2025-05-25 08:52:35,196 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 30, Birdeye: 7, Helius: 18, RPC: 128
+2025-05-25 08:52:35,196 - phoenix.wallet - INFO -   └─ Score: 30/100, Type: sniper
+2025-05-25 08:52:36,212 - phoenix.wallet - INFO - Analyzing wallet 31/72: 58hPGvxwBvEP9rMQuowBh46UEjsZsXNrwpYUNGhSzSwK
+2025-05-25 08:52:36,213 - phoenix.wallet - INFO - 🔍 Analyzing wallet 58hPGvxwBvEP9rMQuowBh46UEjsZsXNrwpYUNGhSzSwK (7-day active trader focus)
+2025-05-25 08:52:36,213 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:52:36,213 - phoenix.cielo - INFO - Fetching trading stats for wallet 58hPGvxwBvEP9rMQuowBh46UEjsZsXNrwpYUNGhSzSwK
+2025-05-25 08:52:37,158 - phoenix.cielo - INFO - Successfully retrieved trading stats for 58hPGvxwBvEP9rMQuowBh46UEjsZsXNrwpYUNGhSzSwK
+2025-05-25 08:52:37,158 - phoenix.wallet - INFO - No trading history found - skipping detailed analysis
+2025-05-25 08:52:37,164 - phoenix.wallet - INFO -   └─ Score: 0/100, Type: no_trades
+2025-05-25 08:52:38,166 - phoenix.wallet - INFO - Analyzing wallet 32/72: 7SUWcThMM97iHbsLSbZQgDbzWxFTBeyWksB5mHWHNFnN
+2025-05-25 08:52:38,167 - phoenix.wallet - INFO - 🔍 Analyzing wallet 7SUWcThMM97iHbsLSbZQgDbzWxFTBeyWksB5mHWHNFnN (7-day active trader focus)
+2025-05-25 08:52:38,171 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:52:38,171 - phoenix.cielo - INFO - Fetching trading stats for wallet 7SUWcThMM97iHbsLSbZQgDbzWxFTBeyWksB5mHWHNFnN
+2025-05-25 08:52:39,367 - phoenix.cielo - INFO - Successfully retrieved trading stats for 7SUWcThMM97iHbsLSbZQgDbzWxFTBeyWksB5mHWHNFnN
+2025-05-25 08:52:39,382 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:52:39,382 - phoenix.wallet - INFO - Fetching last 100 token swaps for 7SUWcThMM97iHbsLSbZQgDbzWxFTBeyWksB5mHWHNFnN
+2025-05-25 08:52:39,516 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 08:53:06,456 - phoenix.wallet - INFO - Pairing buy/sell transactions for 22 tokens
+2025-05-25 08:53:06,456 - phoenix.wallet - INFO - Found 42 swaps (21 paired)
+2025-05-25 08:53:06,456 - phoenix.wallet - INFO - 📊 Wallet tier: DEEP - Scanning 20 recent trades
+2025-05-25 08:53:06,456 - phoenix.wallet - INFO -    7-day trades: 42
+2025-05-25 08:53:06,456 - phoenix.wallet - INFO -    7-day win rate: 31.0%
+2025-05-25 08:53:06,456 - phoenix.wallet - INFO -    7-day profit: $304.14
+2025-05-25 08:53:06,456 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 08:53:06,694 - phoenix.birdeye - WARNING - No price history available for 6CSY5Z7k4MJTyfwBLkSKABLm7d6oZJSRJWWxZeaNmoon
+2025-05-25 08:53:06,694 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 32, Birdeye: 10, Helius: 21, RPC: 139
+2025-05-25 08:53:06,694 - phoenix.wallet - INFO -   └─ Score: 75/100, Type: swing_trader
+2025-05-25 08:53:07,700 - phoenix.wallet - INFO - Analyzing wallet 33/72: 9asvyWEWKcyTiG9tYAneiSbi3S2BUfJCmK9gWRaJGYwk
+2025-05-25 08:53:07,700 - phoenix.wallet - INFO - 🔍 Analyzing wallet 9asvyWEWKcyTiG9tYAneiSbi3S2BUfJCmK9gWRaJGYwk (7-day active trader focus)
+2025-05-25 08:53:07,704 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:53:07,704 - phoenix.cielo - INFO - Fetching trading stats for wallet 9asvyWEWKcyTiG9tYAneiSbi3S2BUfJCmK9gWRaJGYwk
+2025-05-25 08:53:08,810 - phoenix.cielo - INFO - Successfully retrieved trading stats for 9asvyWEWKcyTiG9tYAneiSbi3S2BUfJCmK9gWRaJGYwk
+2025-05-25 08:53:08,810 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:53:08,810 - phoenix.wallet - INFO - Fetching last 100 token swaps for 9asvyWEWKcyTiG9tYAneiSbi3S2BUfJCmK9gWRaJGYwk
+2025-05-25 08:53:08,923 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 08:53:34,767 - phoenix.wallet - INFO - Pairing buy/sell transactions for 11 tokens
+2025-05-25 08:53:34,767 - phoenix.wallet - INFO - Found 22 swaps (9 paired)
+2025-05-25 08:53:34,767 - phoenix.wallet - INFO - 📊 Wallet tier: STANDARD - Scanning 10 recent trades
+2025-05-25 08:53:34,767 - phoenix.wallet - INFO -    7-day trades: 22
+2025-05-25 08:53:34,767 - phoenix.wallet - INFO -    7-day win rate: 36.4%
+2025-05-25 08:53:34,767 - phoenix.wallet - INFO -    7-day profit: $1194.06
+2025-05-25 08:53:34,767 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 08:53:34,767 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 33, Birdeye: 10, Helius: 25, RPC: 150
+2025-05-25 08:53:34,767 - phoenix.wallet - INFO -   └─ Score: 65/100, Type: swing_trader
+2025-05-25 08:53:35,777 - phoenix.wallet - INFO - Analyzing wallet 34/72: ZzCQ4aHgduuKip1SrRToguPWDAkHqgwPPjmhS2i3777
+2025-05-25 08:53:35,777 - phoenix.wallet - INFO - 🔍 Analyzing wallet ZzCQ4aHgduuKip1SrRToguPWDAkHqgwPPjmhS2i3777 (7-day active trader focus)
+2025-05-25 08:53:35,777 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:53:35,777 - phoenix.cielo - INFO - Fetching trading stats for wallet ZzCQ4aHgduuKip1SrRToguPWDAkHqgwPPjmhS2i3777
+2025-05-25 08:53:36,813 - phoenix.cielo - INFO - Successfully retrieved trading stats for ZzCQ4aHgduuKip1SrRToguPWDAkHqgwPPjmhS2i3777
+2025-05-25 08:53:36,813 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:53:36,829 - phoenix.wallet - INFO - Fetching last 100 token swaps for ZzCQ4aHgduuKip1SrRToguPWDAkHqgwPPjmhS2i3777
+2025-05-25 08:53:36,938 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 08:53:45,455 - phoenix.wallet - INFO - Pairing buy/sell transactions for 39 tokens
+2025-05-25 08:53:45,455 - phoenix.wallet - INFO - Found 49 swaps (1 paired)
+2025-05-25 08:53:45,455 - phoenix.wallet - INFO - 📊 Wallet tier: STANDARD - Scanning 10 recent trades
+2025-05-25 08:53:45,455 - phoenix.wallet - INFO -    7-day trades: 49
+2025-05-25 08:53:45,455 - phoenix.wallet - INFO -    7-day win rate: 2.0%
+2025-05-25 08:53:45,455 - phoenix.wallet - INFO -    7-day profit: $309.98
+2025-05-25 08:53:45,455 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 08:53:45,650 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 34, Birdeye: 13, Helius: 31, RPC: 161
+2025-05-25 08:53:45,650 - phoenix.wallet - INFO -   └─ Score: 55/100, Type: swing_trader
+2025-05-25 08:53:46,655 - phoenix.wallet - INFO - Analyzing wallet 35/72: 76AHzR3zZLKuLfk4gnHZzNgWzG6mt9Gp78jPsCpCGw6m
+2025-05-25 08:53:46,658 - phoenix.wallet - INFO - 🔍 Analyzing wallet 76AHzR3zZLKuLfk4gnHZzNgWzG6mt9Gp78jPsCpCGw6m (7-day active trader focus)
+2025-05-25 08:53:46,658 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:53:46,658 - phoenix.cielo - INFO - Fetching trading stats for wallet 76AHzR3zZLKuLfk4gnHZzNgWzG6mt9Gp78jPsCpCGw6m
+2025-05-25 08:53:48,690 - phoenix.cielo - INFO - Successfully retrieved trading stats for 76AHzR3zZLKuLfk4gnHZzNgWzG6mt9Gp78jPsCpCGw6m
+2025-05-25 08:53:48,690 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:53:48,699 - phoenix.wallet - INFO - Fetching last 100 token swaps for 76AHzR3zZLKuLfk4gnHZzNgWzG6mt9Gp78jPsCpCGw6m
+2025-05-25 08:53:48,833 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 08:54:03,768 - phoenix.wallet - INFO - Pairing buy/sell transactions for 20 tokens
+2025-05-25 08:54:03,768 - phoenix.wallet - INFO - Found 31 swaps (18 paired)
+2025-05-25 08:54:03,768 - phoenix.wallet - INFO - 📊 Wallet tier: STANDARD - Scanning 10 recent trades
+2025-05-25 08:54:03,768 - phoenix.wallet - INFO -    7-day trades: 31
+2025-05-25 08:54:03,768 - phoenix.wallet - INFO -    7-day win rate: 22.6%
+2025-05-25 08:54:03,768 - phoenix.wallet - INFO -    7-day profit: $3617.03
+2025-05-25 08:54:03,768 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 08:54:03,943 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 35, Birdeye: 14, Helius: 31, RPC: 172
+2025-05-25 08:54:03,943 - phoenix.wallet - INFO -   └─ Score: 60/100, Type: flipper
+2025-05-25 08:54:04,955 - phoenix.wallet - INFO - Analyzing wallet 36/72: 8s1gqbH6ki55qJHv8umMYLreHXHR2UZfePyX9dS4gREw
+2025-05-25 08:54:04,955 - phoenix.wallet - INFO - 🔍 Analyzing wallet 8s1gqbH6ki55qJHv8umMYLreHXHR2UZfePyX9dS4gREw (7-day active trader focus)
+2025-05-25 08:54:04,958 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:54:04,958 - phoenix.cielo - INFO - Fetching trading stats for wallet 8s1gqbH6ki55qJHv8umMYLreHXHR2UZfePyX9dS4gREw
+2025-05-25 08:54:06,029 - phoenix.cielo - INFO - Successfully retrieved trading stats for 8s1gqbH6ki55qJHv8umMYLreHXHR2UZfePyX9dS4gREw
+2025-05-25 08:54:06,029 - phoenix.wallet - INFO - No trading history found - skipping detailed analysis
+2025-05-25 08:54:06,029 - phoenix.wallet - INFO -   └─ Score: 0/100, Type: no_trades
+2025-05-25 08:54:07,041 - phoenix.wallet - INFO - Analyzing wallet 37/72: DAQYLZqg9D4bwNQW7bgeW1x7QzgWLSfDgrTteRCtPCP5
+2025-05-25 08:54:07,042 - phoenix.wallet - INFO - 🔍 Analyzing wallet DAQYLZqg9D4bwNQW7bgeW1x7QzgWLSfDgrTteRCtPCP5 (7-day active trader focus)
+2025-05-25 08:54:07,042 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:54:07,042 - phoenix.cielo - INFO - Fetching trading stats for wallet DAQYLZqg9D4bwNQW7bgeW1x7QzgWLSfDgrTteRCtPCP5
+2025-05-25 08:54:08,873 - phoenix.cielo - INFO - Successfully retrieved trading stats for DAQYLZqg9D4bwNQW7bgeW1x7QzgWLSfDgrTteRCtPCP5
+2025-05-25 08:54:08,873 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:54:08,873 - phoenix.wallet - INFO - Fetching last 100 token swaps for DAQYLZqg9D4bwNQW7bgeW1x7QzgWLSfDgrTteRCtPCP5
+2025-05-25 08:54:09,001 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 08:54:21,688 - phoenix.wallet - INFO - Pairing buy/sell transactions for 13 tokens
+2025-05-25 08:54:21,688 - phoenix.wallet - INFO - Found 34 swaps (20 paired)
+2025-05-25 08:54:21,688 - phoenix.wallet - INFO - 📊 Wallet tier: DEEP - Scanning 20 recent trades
+2025-05-25 08:54:21,688 - phoenix.wallet - INFO -    7-day trades: 34
+2025-05-25 08:54:21,688 - phoenix.wallet - INFO -    7-day win rate: 35.3%
+2025-05-25 08:54:21,688 - phoenix.wallet - INFO -    7-day profit: $728.09
+2025-05-25 08:54:21,688 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 08:54:21,861 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 37, Birdeye: 15, Helius: 36, RPC: 183
+2025-05-25 08:54:21,861 - phoenix.wallet - INFO -   └─ Score: 75/100, Type: swing_trader
+2025-05-25 08:54:22,873 - phoenix.wallet - INFO - Analyzing wallet 38/72: EiGjwgAWG89bDMEWGVMAQJ7jKv7tV8hrxp4waCoiB1De
+2025-05-25 08:54:22,873 - phoenix.wallet - INFO - 🔍 Analyzing wallet EiGjwgAWG89bDMEWGVMAQJ7jKv7tV8hrxp4waCoiB1De (7-day active trader focus)
+2025-05-25 08:54:22,873 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:54:22,873 - phoenix.cielo - INFO - Fetching trading stats for wallet EiGjwgAWG89bDMEWGVMAQJ7jKv7tV8hrxp4waCoiB1De
+2025-05-25 08:54:24,800 - phoenix.cielo - INFO - Successfully retrieved trading stats for EiGjwgAWG89bDMEWGVMAQJ7jKv7tV8hrxp4waCoiB1De
+2025-05-25 08:54:24,800 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:54:24,800 - phoenix.wallet - INFO - Fetching last 100 token swaps for EiGjwgAWG89bDMEWGVMAQJ7jKv7tV8hrxp4waCoiB1De
+2025-05-25 08:54:24,926 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 08:54:34,172 - phoenix.wallet - INFO - Pairing buy/sell transactions for 24 tokens
+2025-05-25 08:54:34,172 - phoenix.wallet - INFO - Found 43 swaps (29 paired)
+2025-05-25 08:54:34,172 - phoenix.wallet - INFO - 📊 Wallet tier: DEEP - Scanning 20 recent trades
+2025-05-25 08:54:34,172 - phoenix.wallet - INFO -    7-day trades: 43
+2025-05-25 08:54:34,172 - phoenix.wallet - INFO -    7-day win rate: 23.3%
+2025-05-25 08:54:34,172 - phoenix.wallet - INFO -    7-day profit: $-296.83
+2025-05-25 08:54:34,172 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 08:54:34,345 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 38, Birdeye: 17, Helius: 36, RPC: 194
+2025-05-25 08:54:34,345 - phoenix.wallet - INFO -   └─ Score: 60/100, Type: flipper
+2025-05-25 08:54:35,360 - phoenix.wallet - INFO - Analyzing wallet 39/72: GTDNzc8pwGWJDV1jYyifticoz4ZbAb9srdBo8m9px1sW
+2025-05-25 08:54:35,360 - phoenix.wallet - INFO - 🔍 Analyzing wallet GTDNzc8pwGWJDV1jYyifticoz4ZbAb9srdBo8m9px1sW (7-day active trader focus)
+2025-05-25 08:54:35,360 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:54:35,360 - phoenix.cielo - INFO - Fetching trading stats for wallet GTDNzc8pwGWJDV1jYyifticoz4ZbAb9srdBo8m9px1sW
+2025-05-25 08:54:36,719 - phoenix.cielo - INFO - Successfully retrieved trading stats for GTDNzc8pwGWJDV1jYyifticoz4ZbAb9srdBo8m9px1sW
+2025-05-25 08:54:36,719 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:54:36,719 - phoenix.wallet - INFO - Fetching last 100 token swaps for GTDNzc8pwGWJDV1jYyifticoz4ZbAb9srdBo8m9px1sW
+2025-05-25 08:54:36,860 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 08:54:49,266 - phoenix.wallet - INFO - Pairing buy/sell transactions for 23 tokens
+2025-05-25 08:54:49,266 - phoenix.wallet - INFO - Found 46 swaps (25 paired)
+2025-05-25 08:54:49,266 - phoenix.wallet - INFO - 📊 Wallet tier: INITIAL - Scanning 5 recent trades
+2025-05-25 08:54:49,266 - phoenix.wallet - INFO -    7-day trades: 46
+2025-05-25 08:54:49,266 - phoenix.wallet - INFO -    7-day win rate: 19.6%
+2025-05-25 08:54:49,266 - phoenix.wallet - INFO -    7-day profit: $-293.97
+2025-05-25 08:54:49,266 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 08:54:49,282 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 39, Birdeye: 17, Helius: 37, RPC: 205
+2025-05-25 08:54:49,282 - phoenix.wallet - INFO -   └─ Score: 35/100, Type: swing_trader
+2025-05-25 08:54:50,286 - phoenix.wallet - INFO - Analyzing wallet 40/72: 3mqXBsoiFPzS2oAqCqgho7GQQ9JKsy2LAKemh2dRkaXz
+2025-05-25 08:54:50,286 - phoenix.wallet - INFO - 🔍 Analyzing wallet 3mqXBsoiFPzS2oAqCqgho7GQQ9JKsy2LAKemh2dRkaXz (7-day active trader focus)
+2025-05-25 08:54:50,286 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:54:50,286 - phoenix.cielo - INFO - Fetching trading stats for wallet 3mqXBsoiFPzS2oAqCqgho7GQQ9JKsy2LAKemh2dRkaXz
+2025-05-25 08:54:51,706 - phoenix.cielo - INFO - Successfully retrieved trading stats for 3mqXBsoiFPzS2oAqCqgho7GQQ9JKsy2LAKemh2dRkaXz
+2025-05-25 08:54:51,706 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:54:51,706 - phoenix.wallet - INFO - Fetching last 100 token swaps for 3mqXBsoiFPzS2oAqCqgho7GQQ9JKsy2LAKemh2dRkaXz
+2025-05-25 08:54:51,829 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 08:55:11,602 - phoenix.wallet - INFO - Pairing buy/sell transactions for 25 tokens
+2025-05-25 08:55:11,602 - phoenix.wallet - INFO - Found 31 swaps (22 paired)
+2025-05-25 08:55:11,602 - phoenix.wallet - INFO - 📊 Wallet tier: DEEP - Scanning 20 recent trades
+2025-05-25 08:55:11,602 - phoenix.wallet - INFO -    7-day trades: 31
+2025-05-25 08:55:11,602 - phoenix.wallet - INFO -    7-day win rate: 25.8%
+2025-05-25 08:55:11,602 - phoenix.wallet - INFO -    7-day profit: $132.28
+2025-05-25 08:55:11,602 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 08:55:11,602 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 40, Birdeye: 17, Helius: 44, RPC: 216
+2025-05-25 08:55:11,602 - phoenix.wallet - INFO -   └─ Score: 65/100, Type: swing_trader
+2025-05-25 08:55:12,614 - phoenix.wallet - INFO - Analyzing wallet 41/72: 8cAb93o9zCB13T97dU83i6pV13p4aMxKFEiysQUKY9vs
+2025-05-25 08:55:12,614 - phoenix.wallet - INFO - 🔍 Analyzing wallet 8cAb93o9zCB13T97dU83i6pV13p4aMxKFEiysQUKY9vs (7-day active trader focus)
+2025-05-25 08:55:12,614 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:55:12,614 - phoenix.cielo - INFO - Fetching trading stats for wallet 8cAb93o9zCB13T97dU83i6pV13p4aMxKFEiysQUKY9vs
+2025-05-25 08:55:13,904 - phoenix.cielo - INFO - Successfully retrieved trading stats for 8cAb93o9zCB13T97dU83i6pV13p4aMxKFEiysQUKY9vs
+2025-05-25 08:55:13,904 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:55:13,904 - phoenix.wallet - INFO - Fetching last 100 token swaps for 8cAb93o9zCB13T97dU83i6pV13p4aMxKFEiysQUKY9vs
+2025-05-25 08:55:14,032 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 08:55:46,397 - phoenix.wallet - INFO - Pairing buy/sell transactions for 27 tokens
+2025-05-25 08:55:46,397 - phoenix.wallet - INFO - Found 33 swaps (29 paired)
+2025-05-25 08:55:46,397 - phoenix.wallet - INFO - 📊 Wallet tier: STANDARD - Scanning 10 recent trades
+2025-05-25 08:55:46,397 - phoenix.wallet - INFO -    7-day trades: 33
+2025-05-25 08:55:46,397 - phoenix.wallet - INFO -    7-day win rate: 48.5%
+2025-05-25 08:55:46,397 - phoenix.wallet - INFO -    7-day profit: $1640.06
+2025-05-25 08:55:46,397 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 08:55:46,413 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 41, Birdeye: 17, Helius: 44, RPC: 227
+2025-05-25 08:55:46,413 - phoenix.wallet - INFO -   └─ Score: 70/100, Type: sniper
+2025-05-25 08:55:47,416 - phoenix.wallet - INFO - Analyzing wallet 42/72: F5eXbaF1k3WyMb2TfM9iSs3ufJASWzXBSRKZzJ5uEi66
+2025-05-25 08:55:47,416 - phoenix.wallet - INFO - 🔍 Analyzing wallet F5eXbaF1k3WyMb2TfM9iSs3ufJASWzXBSRKZzJ5uEi66 (7-day active trader focus)
+2025-05-25 08:55:47,416 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:55:47,416 - phoenix.cielo - INFO - Fetching trading stats for wallet F5eXbaF1k3WyMb2TfM9iSs3ufJASWzXBSRKZzJ5uEi66
+2025-05-25 08:55:48,874 - phoenix.cielo - INFO - Successfully retrieved trading stats for F5eXbaF1k3WyMb2TfM9iSs3ufJASWzXBSRKZzJ5uEi66
+2025-05-25 08:55:48,874 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:55:48,874 - phoenix.wallet - INFO - Fetching last 100 token swaps for F5eXbaF1k3WyMb2TfM9iSs3ufJASWzXBSRKZzJ5uEi66
+2025-05-25 08:55:48,986 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 08:56:10,473 - phoenix.wallet - INFO - Pairing buy/sell transactions for 21 tokens
+2025-05-25 08:56:10,475 - phoenix.wallet - INFO - Found 45 swaps (23 paired)
+2025-05-25 08:56:10,476 - phoenix.wallet - INFO - 📊 Wallet tier: INITIAL - Scanning 5 recent trades
+2025-05-25 08:56:10,476 - phoenix.wallet - INFO -    7-day trades: 45
+2025-05-25 08:56:10,477 - phoenix.wallet - INFO -    7-day win rate: 20.0%
+2025-05-25 08:56:10,477 - phoenix.wallet - INFO -    7-day profit: $-510.29
+2025-05-25 08:56:10,477 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 08:56:10,480 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 42, Birdeye: 17, Helius: 47, RPC: 238
+2025-05-25 08:56:10,480 - phoenix.wallet - INFO -   └─ Score: 35/100, Type: swing_trader
+2025-05-25 08:56:11,482 - phoenix.wallet - INFO - Analyzing wallet 43/72: F4Szxi3fXSW8phjrwf5yU9TMTNBYw96apWV7euskPpih
+2025-05-25 08:56:11,484 - phoenix.wallet - INFO - 🔍 Analyzing wallet F4Szxi3fXSW8phjrwf5yU9TMTNBYw96apWV7euskPpih (7-day active trader focus)
+2025-05-25 08:56:11,487 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:56:11,488 - phoenix.cielo - INFO - Fetching trading stats for wallet F4Szxi3fXSW8phjrwf5yU9TMTNBYw96apWV7euskPpih
+2025-05-25 08:56:30,963 - phoenix.cielo - WARNING - Server error 500. Retrying...
+2025-05-25 08:56:33,661 - phoenix.cielo - INFO - Successfully retrieved trading stats for F4Szxi3fXSW8phjrwf5yU9TMTNBYw96apWV7euskPpih
+2025-05-25 08:56:33,661 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:56:33,673 - phoenix.wallet - INFO - Fetching last 100 token swaps for F4Szxi3fXSW8phjrwf5yU9TMTNBYw96apWV7euskPpih
+2025-05-25 08:56:33,788 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 08:57:02,133 - phoenix.wallet - INFO - Pairing buy/sell transactions for 22 tokens
+2025-05-25 08:57:02,133 - phoenix.wallet - INFO - Found 32 swaps (15 paired)
+2025-05-25 08:57:02,133 - phoenix.wallet - INFO - 📊 Wallet tier: INITIAL - Scanning 5 recent trades
+2025-05-25 08:57:02,133 - phoenix.wallet - INFO -    7-day trades: 32
+2025-05-25 08:57:02,133 - phoenix.wallet - INFO -    7-day win rate: 0.0%
+2025-05-25 08:57:02,133 - phoenix.wallet - INFO -    7-day profit: $-1378.50
+2025-05-25 08:57:02,133 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 08:57:02,133 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 43, Birdeye: 17, Helius: 47, RPC: 249
+2025-05-25 08:57:02,133 - phoenix.wallet - INFO -   └─ Score: 30/100, Type: flipper
+2025-05-25 08:57:03,142 - phoenix.wallet - INFO - Analyzing wallet 44/72: EnpykGLKAkDqG2WYCEbq4JU4pe4UisEF3fGXHfcu6m1Q
+2025-05-25 08:57:03,144 - phoenix.wallet - INFO - 🔍 Analyzing wallet EnpykGLKAkDqG2WYCEbq4JU4pe4UisEF3fGXHfcu6m1Q (7-day active trader focus)
+2025-05-25 08:57:03,144 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:57:03,144 - phoenix.cielo - INFO - Fetching trading stats for wallet EnpykGLKAkDqG2WYCEbq4JU4pe4UisEF3fGXHfcu6m1Q
+2025-05-25 08:57:05,341 - phoenix.cielo - INFO - Successfully retrieved trading stats for EnpykGLKAkDqG2WYCEbq4JU4pe4UisEF3fGXHfcu6m1Q
+2025-05-25 08:57:05,341 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:57:05,341 - phoenix.wallet - INFO - Fetching last 100 token swaps for EnpykGLKAkDqG2WYCEbq4JU4pe4UisEF3fGXHfcu6m1Q
+2025-05-25 08:57:05,456 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 08:57:17,287 - phoenix.wallet - INFO - Pairing buy/sell transactions for 3 tokens
+2025-05-25 08:57:17,287 - phoenix.wallet - INFO - Found 4 swaps (1 paired)
+2025-05-25 08:57:17,287 - phoenix.wallet - INFO - 📊 Wallet tier: DEEP - Scanning 20 recent trades
+2025-05-25 08:57:17,287 - phoenix.wallet - INFO -    7-day trades: 4
+2025-05-25 08:57:17,287 - phoenix.wallet - INFO -    7-day win rate: 25.0%
+2025-05-25 08:57:17,287 - phoenix.wallet - INFO -    7-day profit: $148.67
+2025-05-25 08:57:17,287 - phoenix.wallet - INFO -    Days since last trade: 1
+2025-05-25 08:57:17,493 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 44, Birdeye: 18, Helius: 47, RPC: 260
+2025-05-25 08:57:17,493 - phoenix.wallet - INFO -   └─ Score: 70/100, Type: gem_hunter
+2025-05-25 08:57:18,499 - phoenix.wallet - INFO - Analyzing wallet 45/72: 7AcFM3sAvxdWT3r3n9WC26Uizm5wMLofjaJyXvqNFFXJ
+2025-05-25 08:57:18,499 - phoenix.wallet - INFO - 🔍 Analyzing wallet 7AcFM3sAvxdWT3r3n9WC26Uizm5wMLofjaJyXvqNFFXJ (7-day active trader focus)
+2025-05-25 08:57:18,499 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:57:18,499 - phoenix.cielo - INFO - Fetching trading stats for wallet 7AcFM3sAvxdWT3r3n9WC26Uizm5wMLofjaJyXvqNFFXJ
+2025-05-25 08:57:20,102 - phoenix.cielo - INFO - Successfully retrieved trading stats for 7AcFM3sAvxdWT3r3n9WC26Uizm5wMLofjaJyXvqNFFXJ
+2025-05-25 08:57:20,102 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:57:20,102 - phoenix.wallet - INFO - Fetching last 100 token swaps for 7AcFM3sAvxdWT3r3n9WC26Uizm5wMLofjaJyXvqNFFXJ
+2025-05-25 08:57:20,219 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 08:57:56,520 - phoenix.wallet - INFO - Pairing buy/sell transactions for 14 tokens
+2025-05-25 08:57:56,520 - phoenix.wallet - INFO - Found 34 swaps (13 paired)
+2025-05-25 08:57:56,520 - phoenix.wallet - INFO - 📊 Wallet tier: INITIAL - Scanning 5 recent trades
+2025-05-25 08:57:56,520 - phoenix.wallet - INFO -    7-day trades: 34
+2025-05-25 08:57:56,520 - phoenix.wallet - INFO -    7-day win rate: 23.5%
+2025-05-25 08:57:56,520 - phoenix.wallet - INFO -    7-day profit: $272.16
+2025-05-25 08:57:56,520 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 08:57:56,520 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 45, Birdeye: 18, Helius: 47, RPC: 271
+2025-05-25 08:57:56,520 - phoenix.wallet - INFO -   └─ Score: 40/100, Type: flipper
+2025-05-25 08:57:57,536 - phoenix.wallet - INFO - Analyzing wallet 46/72: BoAzZBspYHufpfZBLAb1XymZdQ9tVY8bp5XQF25haLpF
+2025-05-25 08:57:57,536 - phoenix.wallet - INFO - 🔍 Analyzing wallet BoAzZBspYHufpfZBLAb1XymZdQ9tVY8bp5XQF25haLpF (7-day active trader focus)
+2025-05-25 08:57:57,536 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:57:57,536 - phoenix.cielo - INFO - Fetching trading stats for wallet BoAzZBspYHufpfZBLAb1XymZdQ9tVY8bp5XQF25haLpF
+2025-05-25 08:57:59,017 - phoenix.cielo - INFO - Successfully retrieved trading stats for BoAzZBspYHufpfZBLAb1XymZdQ9tVY8bp5XQF25haLpF
+2025-05-25 08:57:59,017 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:57:59,017 - phoenix.wallet - INFO - Fetching last 100 token swaps for BoAzZBspYHufpfZBLAb1XymZdQ9tVY8bp5XQF25haLpF
+2025-05-25 08:57:59,112 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 08:58:31,523 - phoenix.wallet - INFO - Pairing buy/sell transactions for 23 tokens
+2025-05-25 08:58:31,523 - phoenix.wallet - INFO - Found 31 swaps (22 paired)
+2025-05-25 08:58:31,523 - phoenix.wallet - INFO - 📊 Wallet tier: DEEP - Scanning 20 recent trades
+2025-05-25 08:58:31,523 - phoenix.wallet - INFO -    7-day trades: 31
+2025-05-25 08:58:31,523 - phoenix.wallet - INFO -    7-day win rate: 51.6%
+2025-05-25 08:58:31,523 - phoenix.wallet - INFO -    7-day profit: $-43.26
+2025-05-25 08:58:31,523 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 08:58:31,714 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 46, Birdeye: 19, Helius: 48, RPC: 282
+2025-05-25 08:58:31,714 - phoenix.wallet - INFO -   └─ Score: 45/100, Type: swing_trader
+2025-05-25 08:58:32,717 - phoenix.wallet - INFO - Analyzing wallet 47/72: CTwS3D8p7bnzGmpdcQgavJ4om5564AY6AMfhgFb1rXcA
+2025-05-25 08:58:32,717 - phoenix.wallet - INFO - 🔍 Analyzing wallet CTwS3D8p7bnzGmpdcQgavJ4om5564AY6AMfhgFb1rXcA (7-day active trader focus)
+2025-05-25 08:58:32,717 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:58:32,722 - phoenix.cielo - INFO - Fetching trading stats for wallet CTwS3D8p7bnzGmpdcQgavJ4om5564AY6AMfhgFb1rXcA
+2025-05-25 08:58:34,707 - phoenix.cielo - INFO - Successfully retrieved trading stats for CTwS3D8p7bnzGmpdcQgavJ4om5564AY6AMfhgFb1rXcA
+2025-05-25 08:58:34,707 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:58:34,707 - phoenix.wallet - INFO - Fetching last 100 token swaps for CTwS3D8p7bnzGmpdcQgavJ4om5564AY6AMfhgFb1rXcA
+2025-05-25 08:58:34,833 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 08:59:19,889 - phoenix.wallet - INFO - Pairing buy/sell transactions for 12 tokens
+2025-05-25 08:59:19,889 - phoenix.wallet - INFO - Found 44 swaps (15 paired)
+2025-05-25 08:59:19,889 - phoenix.wallet - INFO - 📊 Wallet tier: INITIAL - Scanning 5 recent trades
+2025-05-25 08:59:19,889 - phoenix.wallet - INFO -    7-day trades: 44
+2025-05-25 08:59:19,889 - phoenix.wallet - INFO -    7-day win rate: 9.1%
+2025-05-25 08:59:19,889 - phoenix.wallet - INFO -    7-day profit: $-4183.78
+2025-05-25 08:59:19,893 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 08:59:19,896 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 47, Birdeye: 19, Helius: 48, RPC: 293
+2025-05-25 08:59:19,896 - phoenix.wallet - INFO -   └─ Score: 35/100, Type: flipper
+2025-05-25 08:59:20,898 - phoenix.wallet - INFO - Analyzing wallet 48/72: CRycVvEUWcSgFF8RfNQTGpySQmy7Q2yzsc5S3hNMLNQh
+2025-05-25 08:59:20,898 - phoenix.wallet - INFO - 🔍 Analyzing wallet CRycVvEUWcSgFF8RfNQTGpySQmy7Q2yzsc5S3hNMLNQh (7-day active trader focus)
+2025-05-25 08:59:20,898 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 08:59:20,898 - phoenix.cielo - INFO - Fetching trading stats for wallet CRycVvEUWcSgFF8RfNQTGpySQmy7Q2yzsc5S3hNMLNQh
+2025-05-25 08:59:23,004 - phoenix.cielo - INFO - Successfully retrieved trading stats for CRycVvEUWcSgFF8RfNQTGpySQmy7Q2yzsc5S3hNMLNQh
+2025-05-25 08:59:23,004 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 08:59:23,015 - phoenix.wallet - INFO - Fetching last 100 token swaps for CRycVvEUWcSgFF8RfNQTGpySQmy7Q2yzsc5S3hNMLNQh
+2025-05-25 08:59:23,115 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 09:00:10,616 - phoenix.wallet - INFO - Pairing buy/sell transactions for 16 tokens
+2025-05-25 09:00:10,616 - phoenix.wallet - INFO - Found 37 swaps (14 paired)
+2025-05-25 09:00:10,616 - phoenix.wallet - INFO - 📊 Wallet tier: STANDARD - Scanning 10 recent trades
+2025-05-25 09:00:10,616 - phoenix.wallet - INFO -    7-day trades: 37
+2025-05-25 09:00:10,616 - phoenix.wallet - INFO -    7-day win rate: 10.8%
+2025-05-25 09:00:10,616 - phoenix.wallet - INFO -    7-day profit: $-446.51
+2025-05-25 09:00:10,616 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 09:00:10,616 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 48, Birdeye: 19, Helius: 48, RPC: 304
+2025-05-25 09:00:10,616 - phoenix.wallet - INFO -   └─ Score: 50/100, Type: swing_trader
+2025-05-25 09:00:11,628 - phoenix.wallet - INFO - Analyzing wallet 49/72: CWoTR3sdUnG92pAfnVdzGMULku8voDJCaUmQ3rrPycFZ
+2025-05-25 09:00:11,629 - phoenix.wallet - INFO - 🔍 Analyzing wallet CWoTR3sdUnG92pAfnVdzGMULku8voDJCaUmQ3rrPycFZ (7-day active trader focus)
+2025-05-25 09:00:11,629 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 09:00:11,629 - phoenix.cielo - INFO - Fetching trading stats for wallet CWoTR3sdUnG92pAfnVdzGMULku8voDJCaUmQ3rrPycFZ
+2025-05-25 09:00:14,175 - phoenix.cielo - INFO - Successfully retrieved trading stats for CWoTR3sdUnG92pAfnVdzGMULku8voDJCaUmQ3rrPycFZ
+2025-05-25 09:00:14,175 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 09:00:14,175 - phoenix.wallet - INFO - Fetching last 100 token swaps for CWoTR3sdUnG92pAfnVdzGMULku8voDJCaUmQ3rrPycFZ
+2025-05-25 09:00:14,284 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 09:00:43,207 - phoenix.wallet - INFO - Pairing buy/sell transactions for 13 tokens
+2025-05-25 09:00:43,211 - phoenix.wallet - INFO - Found 47 swaps (21 paired)
+2025-05-25 09:00:43,211 - phoenix.wallet - INFO - 📊 Wallet tier: STANDARD - Scanning 10 recent trades
+2025-05-25 09:00:43,211 - phoenix.wallet - INFO -    7-day trades: 47
+2025-05-25 09:00:43,211 - phoenix.wallet - INFO -    7-day win rate: 12.8%
+2025-05-25 09:00:43,211 - phoenix.wallet - INFO -    7-day profit: $1269.36
+2025-05-25 09:00:43,211 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 09:00:43,402 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 49, Birdeye: 21, Helius: 48, RPC: 315
+2025-05-25 09:00:43,402 - phoenix.wallet - INFO -   └─ Score: 55/100, Type: swing_trader
+2025-05-25 09:00:44,404 - phoenix.wallet - INFO - Analyzing wallet 50/72: 5YAdcB8w487xQsXmtccWXg43WinNQzGsAzvHgkzFhTKx
+2025-05-25 09:00:44,404 - phoenix.wallet - INFO - 🔍 Analyzing wallet 5YAdcB8w487xQsXmtccWXg43WinNQzGsAzvHgkzFhTKx (7-day active trader focus)
+2025-05-25 09:00:44,404 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 09:00:44,404 - phoenix.cielo - INFO - Fetching trading stats for wallet 5YAdcB8w487xQsXmtccWXg43WinNQzGsAzvHgkzFhTKx
+2025-05-25 09:01:02,756 - phoenix.cielo - INFO - Successfully retrieved trading stats for 5YAdcB8w487xQsXmtccWXg43WinNQzGsAzvHgkzFhTKx
+2025-05-25 09:01:02,756 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 09:01:02,771 - phoenix.wallet - INFO - Fetching last 100 token swaps for 5YAdcB8w487xQsXmtccWXg43WinNQzGsAzvHgkzFhTKx
+2025-05-25 09:01:02,882 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 09:01:49,524 - phoenix.wallet - INFO - Pairing buy/sell transactions for 24 tokens
+2025-05-25 09:01:49,524 - phoenix.wallet - INFO - Found 35 swaps (28 paired)
+2025-05-25 09:01:49,524 - phoenix.wallet - INFO - 📊 Wallet tier: STANDARD - Scanning 10 recent trades
+2025-05-25 09:01:49,524 - phoenix.wallet - INFO -    7-day trades: 35
+2025-05-25 09:01:49,524 - phoenix.wallet - INFO -    7-day win rate: 34.3%
+2025-05-25 09:01:49,524 - phoenix.wallet - INFO -    7-day profit: $96.99
+2025-05-25 09:01:49,524 - phoenix.wallet - INFO -    Days since last trade: 1
+2025-05-25 09:01:49,706 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 50, Birdeye: 22, Helius: 49, RPC: 326
+2025-05-25 09:01:49,706 - phoenix.wallet - INFO -   └─ Score: 55/100, Type: swing_trader
+2025-05-25 09:01:50,709 - phoenix.wallet - INFO - Analyzing wallet 51/72: 5bYTrRkQg8xfLmPBVfcXtSz6z8iheCMYRqhw3UZ6jvNo
+2025-05-25 09:01:50,709 - phoenix.wallet - INFO - 🔍 Analyzing wallet 5bYTrRkQg8xfLmPBVfcXtSz6z8iheCMYRqhw3UZ6jvNo (7-day active trader focus)
+2025-05-25 09:01:50,709 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 09:01:50,709 - phoenix.cielo - INFO - Fetching trading stats for wallet 5bYTrRkQg8xfLmPBVfcXtSz6z8iheCMYRqhw3UZ6jvNo
+2025-05-25 09:01:53,216 - phoenix.cielo - INFO - Successfully retrieved trading stats for 5bYTrRkQg8xfLmPBVfcXtSz6z8iheCMYRqhw3UZ6jvNo
+2025-05-25 09:01:53,216 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 09:01:53,216 - phoenix.wallet - INFO - Fetching last 100 token swaps for 5bYTrRkQg8xfLmPBVfcXtSz6z8iheCMYRqhw3UZ6jvNo
+2025-05-25 09:01:53,343 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 09:02:32,940 - phoenix.wallet - INFO - Pairing buy/sell transactions for 12 tokens
+2025-05-25 09:02:32,940 - phoenix.wallet - INFO - Found 12 swaps (11 paired)
+2025-05-25 09:02:32,940 - phoenix.wallet - INFO - 📊 Wallet tier: DEEP - Scanning 20 recent trades
+2025-05-25 09:02:32,940 - phoenix.wallet - INFO -    7-day trades: 12
+2025-05-25 09:02:32,940 - phoenix.wallet - INFO -    7-day win rate: 33.3%
+2025-05-25 09:02:32,940 - phoenix.wallet - INFO -    7-day profit: $1519.21
+2025-05-25 09:02:32,940 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 09:02:32,940 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 51, Birdeye: 22, Helius: 49, RPC: 337
+2025-05-25 09:02:32,940 - phoenix.wallet - INFO -   └─ Score: 80/100, Type: gem_hunter
+2025-05-25 09:02:33,953 - phoenix.wallet - INFO - Analyzing wallet 52/72: 2aMufZtKNtmciqR19Mf7gkcXKsuLjE6FzjLUdTE7XTF6
+2025-05-25 09:02:33,953 - phoenix.wallet - INFO - 🔍 Analyzing wallet 2aMufZtKNtmciqR19Mf7gkcXKsuLjE6FzjLUdTE7XTF6 (7-day active trader focus)
+2025-05-25 09:02:33,957 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 09:02:33,959 - phoenix.cielo - INFO - Fetching trading stats for wallet 2aMufZtKNtmciqR19Mf7gkcXKsuLjE6FzjLUdTE7XTF6
+2025-05-25 09:02:36,191 - phoenix.cielo - INFO - Successfully retrieved trading stats for 2aMufZtKNtmciqR19Mf7gkcXKsuLjE6FzjLUdTE7XTF6
+2025-05-25 09:02:36,191 - phoenix.wallet - INFO - No trading history found - skipping detailed analysis
+2025-05-25 09:02:36,191 - phoenix.wallet - INFO -   └─ Score: 0/100, Type: no_trades
+2025-05-25 09:02:37,196 - phoenix.wallet - INFO - Analyzing wallet 53/72: 2T5NgDDidkvhJQg8AHDi74uCFwgp25pYFMRZXBaCUNBH
+2025-05-25 09:02:37,197 - phoenix.wallet - INFO - 🔍 Analyzing wallet 2T5NgDDidkvhJQg8AHDi74uCFwgp25pYFMRZXBaCUNBH (7-day active trader focus)
+2025-05-25 09:02:37,197 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 09:02:37,197 - phoenix.cielo - INFO - Fetching trading stats for wallet 2T5NgDDidkvhJQg8AHDi74uCFwgp25pYFMRZXBaCUNBH
+2025-05-25 09:02:39,199 - phoenix.cielo - INFO - Successfully retrieved trading stats for 2T5NgDDidkvhJQg8AHDi74uCFwgp25pYFMRZXBaCUNBH
+2025-05-25 09:02:39,199 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 09:02:39,199 - phoenix.wallet - INFO - Fetching last 100 token swaps for 2T5NgDDidkvhJQg8AHDi74uCFwgp25pYFMRZXBaCUNBH
+2025-05-25 09:02:39,310 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 09:02:51,302 - phoenix.wallet - INFO - Pairing buy/sell transactions for 15 tokens
+2025-05-25 09:02:51,302 - phoenix.wallet - INFO - Found 23 swaps (14 paired)
+2025-05-25 09:02:51,302 - phoenix.wallet - INFO - 📊 Wallet tier: DEEP - Scanning 20 recent trades
+2025-05-25 09:02:51,302 - phoenix.wallet - INFO -    7-day trades: 23
+2025-05-25 09:02:51,317 - phoenix.wallet - INFO -    7-day win rate: 52.2%
+2025-05-25 09:02:51,317 - phoenix.wallet - INFO -    7-day profit: $457.60
+2025-05-25 09:02:51,317 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 09:02:51,317 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 53, Birdeye: 22, Helius: 58, RPC: 348
+2025-05-25 09:02:51,317 - phoenix.wallet - INFO -   └─ Score: 50/100, Type: swing_trader
+2025-05-25 09:02:52,323 - phoenix.wallet - INFO - Analyzing wallet 54/72: 2egyyfk5Zbit7vnJC28MqKaGSBWLxxdcZj9Wxmi8fuvj
+2025-05-25 09:02:52,323 - phoenix.wallet - INFO - 🔍 Analyzing wallet 2egyyfk5Zbit7vnJC28MqKaGSBWLxxdcZj9Wxmi8fuvj (7-day active trader focus)
+2025-05-25 09:02:52,323 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 09:02:52,323 - phoenix.cielo - INFO - Fetching trading stats for wallet 2egyyfk5Zbit7vnJC28MqKaGSBWLxxdcZj9Wxmi8fuvj
+2025-05-25 09:02:54,913 - phoenix.cielo - INFO - Successfully retrieved trading stats for 2egyyfk5Zbit7vnJC28MqKaGSBWLxxdcZj9Wxmi8fuvj
+2025-05-25 09:02:54,913 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 09:02:54,921 - phoenix.wallet - INFO - Fetching last 100 token swaps for 2egyyfk5Zbit7vnJC28MqKaGSBWLxxdcZj9Wxmi8fuvj
+2025-05-25 09:02:55,024 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 09:03:16,268 - phoenix.wallet - INFO - Pairing buy/sell transactions for 18 tokens
+2025-05-25 09:03:16,268 - phoenix.wallet - INFO - Found 32 swaps (20 paired)
+2025-05-25 09:03:16,268 - phoenix.wallet - INFO - 📊 Wallet tier: STANDARD - Scanning 10 recent trades
+2025-05-25 09:03:16,268 - phoenix.wallet - INFO -    7-day trades: 32
+2025-05-25 09:03:16,268 - phoenix.wallet - INFO -    7-day win rate: 37.5%
+2025-05-25 09:03:16,268 - phoenix.wallet - INFO -    7-day profit: $4171.65
+2025-05-25 09:03:16,268 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 09:03:16,457 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 54, Birdeye: 23, Helius: 59, RPC: 359
+2025-05-25 09:03:16,457 - phoenix.wallet - INFO -   └─ Score: 65/100, Type: swing_trader
+2025-05-25 09:03:17,471 - phoenix.wallet - INFO - Analyzing wallet 55/72: HJj6rPEyHAVffLWVbErA7SSb1uUtgWzMbpwGdXLpuKyD
+2025-05-25 09:03:17,474 - phoenix.wallet - INFO - 🔍 Analyzing wallet HJj6rPEyHAVffLWVbErA7SSb1uUtgWzMbpwGdXLpuKyD (7-day active trader focus)
+2025-05-25 09:03:17,474 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 09:03:17,474 - phoenix.cielo - INFO - Fetching trading stats for wallet HJj6rPEyHAVffLWVbErA7SSb1uUtgWzMbpwGdXLpuKyD
+2025-05-25 09:03:31,785 - phoenix.cielo - INFO - Successfully retrieved trading stats for HJj6rPEyHAVffLWVbErA7SSb1uUtgWzMbpwGdXLpuKyD
+2025-05-25 09:03:31,785 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 09:03:31,785 - phoenix.wallet - INFO - Fetching last 100 token swaps for HJj6rPEyHAVffLWVbErA7SSb1uUtgWzMbpwGdXLpuKyD
+2025-05-25 09:03:31,911 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 09:04:11,964 - phoenix.wallet - INFO - Pairing buy/sell transactions for 23 tokens
+2025-05-25 09:04:11,964 - phoenix.wallet - INFO - Found 36 swaps (23 paired)
+2025-05-25 09:04:11,964 - phoenix.wallet - INFO - 📊 Wallet tier: INITIAL - Scanning 5 recent trades
+2025-05-25 09:04:11,964 - phoenix.wallet - INFO -    7-day trades: 36
+2025-05-25 09:04:11,964 - phoenix.wallet - INFO -    7-day win rate: 22.2%
+2025-05-25 09:04:11,964 - phoenix.wallet - INFO -    7-day profit: $-2534.82
+2025-05-25 09:04:11,964 - phoenix.wallet - INFO -    Days since last trade: 1
+2025-05-25 09:04:11,964 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 55, Birdeye: 23, Helius: 59, RPC: 370
+2025-05-25 09:04:11,964 - phoenix.wallet - INFO -   └─ Score: 35/100, Type: sniper
+2025-05-25 09:04:12,972 - phoenix.wallet - INFO - Analyzing wallet 56/72: HLT3jCsQFqnRHAiqDdaYcu2fEJWP8uGy8nvgqz4SBKAn
+2025-05-25 09:04:12,973 - phoenix.wallet - INFO - 🔍 Analyzing wallet HLT3jCsQFqnRHAiqDdaYcu2fEJWP8uGy8nvgqz4SBKAn (7-day active trader focus)
+2025-05-25 09:04:12,973 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 09:04:12,973 - phoenix.cielo - INFO - Fetching trading stats for wallet HLT3jCsQFqnRHAiqDdaYcu2fEJWP8uGy8nvgqz4SBKAn
+2025-05-25 09:04:19,142 - phoenix.cielo - INFO - Successfully retrieved trading stats for HLT3jCsQFqnRHAiqDdaYcu2fEJWP8uGy8nvgqz4SBKAn
+2025-05-25 09:04:19,142 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 09:04:19,142 - phoenix.wallet - INFO - Fetching last 100 token swaps for HLT3jCsQFqnRHAiqDdaYcu2fEJWP8uGy8nvgqz4SBKAn
+2025-05-25 09:04:19,254 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 09:04:55,761 - phoenix.wallet - INFO - Pairing buy/sell transactions for 10 tokens
+2025-05-25 09:04:55,761 - phoenix.wallet - INFO - Found 16 swaps (6 paired)
+2025-05-25 09:04:55,761 - phoenix.wallet - INFO - 📊 Wallet tier: STANDARD - Scanning 10 recent trades
+2025-05-25 09:04:55,761 - phoenix.wallet - INFO -    7-day trades: 16
+2025-05-25 09:04:55,761 - phoenix.wallet - INFO -    7-day win rate: 18.8%
+2025-05-25 09:04:55,761 - phoenix.wallet - INFO -    7-day profit: $157.23
+2025-05-25 09:04:55,761 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 09:04:55,965 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 56, Birdeye: 26, Helius: 59, RPC: 381
+2025-05-25 09:04:55,965 - phoenix.wallet - INFO -   └─ Score: 55/100, Type: position_trader
+2025-05-25 09:04:56,969 - phoenix.wallet - INFO - Analyzing wallet 57/72: FZVdsFTRTWwZEy6XC5GCtHNWdcAwiQtAeJ2NSpH6cQNz
+2025-05-25 09:04:56,969 - phoenix.wallet - INFO - 🔍 Analyzing wallet FZVdsFTRTWwZEy6XC5GCtHNWdcAwiQtAeJ2NSpH6cQNz (7-day active trader focus)
+2025-05-25 09:04:56,974 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 09:04:56,974 - phoenix.cielo - INFO - Fetching trading stats for wallet FZVdsFTRTWwZEy6XC5GCtHNWdcAwiQtAeJ2NSpH6cQNz
+2025-05-25 09:05:00,334 - phoenix.cielo - INFO - Successfully retrieved trading stats for FZVdsFTRTWwZEy6XC5GCtHNWdcAwiQtAeJ2NSpH6cQNz
+2025-05-25 09:05:00,334 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 09:05:00,334 - phoenix.wallet - INFO - Fetching last 100 token swaps for FZVdsFTRTWwZEy6XC5GCtHNWdcAwiQtAeJ2NSpH6cQNz
+2025-05-25 09:05:00,526 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 09:05:41,555 - phoenix.wallet - ERROR - Batch RPC error: HTTPSConnectionPool(host='twilight-maximum-snowflake.solana-mainnet.quiknode.pro', port=443): Read timed out. (read timeout=10)
+2025-05-25 09:05:41,555 - phoenix.wallet - INFO - Pairing buy/sell transactions for 19 tokens
+2025-05-25 09:05:41,555 - phoenix.wallet - INFO - Found 37 swaps (22 paired)
+2025-05-25 09:05:41,555 - phoenix.wallet - INFO - 📊 Wallet tier: STANDARD - Scanning 10 recent trades
+2025-05-25 09:05:41,555 - phoenix.wallet - INFO -    7-day trades: 37
+2025-05-25 09:05:41,555 - phoenix.wallet - INFO -    7-day win rate: 32.4%
+2025-05-25 09:05:41,555 - phoenix.wallet - INFO -    7-day profit: $-2624.94
+2025-05-25 09:05:41,555 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 09:05:41,770 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 57, Birdeye: 28, Helius: 59, RPC: 392
+2025-05-25 09:05:41,770 - phoenix.wallet - INFO -   └─ Score: 50/100, Type: swing_trader
+2025-05-25 09:05:42,778 - phoenix.wallet - INFO - Analyzing wallet 58/72: FXJusB1quQVmRcuh7JskdaGtemrpSCySrnNivK1jjDqi
+2025-05-25 09:05:42,778 - phoenix.wallet - INFO - 🔍 Analyzing wallet FXJusB1quQVmRcuh7JskdaGtemrpSCySrnNivK1jjDqi (7-day active trader focus)
+2025-05-25 09:05:42,778 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 09:05:42,778 - phoenix.cielo - INFO - Fetching trading stats for wallet FXJusB1quQVmRcuh7JskdaGtemrpSCySrnNivK1jjDqi
+2025-05-25 09:05:45,256 - phoenix.cielo - INFO - Successfully retrieved trading stats for FXJusB1quQVmRcuh7JskdaGtemrpSCySrnNivK1jjDqi
+2025-05-25 09:05:45,256 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 09:05:45,257 - phoenix.wallet - INFO - Fetching last 100 token swaps for FXJusB1quQVmRcuh7JskdaGtemrpSCySrnNivK1jjDqi
+2025-05-25 09:05:45,367 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 09:06:18,886 - phoenix.wallet - INFO - Pairing buy/sell transactions for 19 tokens
+2025-05-25 09:06:18,886 - phoenix.wallet - INFO - Found 26 swaps (20 paired)
+2025-05-25 09:06:18,886 - phoenix.wallet - INFO - 📊 Wallet tier: DEEP - Scanning 20 recent trades
+2025-05-25 09:06:18,886 - phoenix.wallet - INFO -    7-day trades: 26
+2025-05-25 09:06:18,886 - phoenix.wallet - INFO -    7-day win rate: 19.2%
+2025-05-25 09:06:18,886 - phoenix.wallet - INFO -    7-day profit: $-413.46
+2025-05-25 09:06:18,902 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 09:06:19,052 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 58, Birdeye: 29, Helius: 59, RPC: 403
+2025-05-25 09:06:19,052 - phoenix.wallet - INFO -   └─ Score: 60/100, Type: swing_trader
+2025-05-25 09:06:20,058 - phoenix.wallet - INFO - Analyzing wallet 59/72: CywtY7GwPHbQKndQWyZpw3FbvGCu9yt4wfCmMvYDGSTc
+2025-05-25 09:06:20,061 - phoenix.wallet - INFO - 🔍 Analyzing wallet CywtY7GwPHbQKndQWyZpw3FbvGCu9yt4wfCmMvYDGSTc (7-day active trader focus)
+2025-05-25 09:06:20,061 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 09:06:20,061 - phoenix.cielo - INFO - Fetching trading stats for wallet CywtY7GwPHbQKndQWyZpw3FbvGCu9yt4wfCmMvYDGSTc
+2025-05-25 09:06:23,717 - phoenix.cielo - INFO - Successfully retrieved trading stats for CywtY7GwPHbQKndQWyZpw3FbvGCu9yt4wfCmMvYDGSTc
+2025-05-25 09:06:23,717 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 09:06:23,717 - phoenix.wallet - INFO - Fetching last 100 token swaps for CywtY7GwPHbQKndQWyZpw3FbvGCu9yt4wfCmMvYDGSTc
+2025-05-25 09:06:23,833 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 09:06:39,614 - phoenix.wallet - INFO - Pairing buy/sell transactions for 17 tokens
+2025-05-25 09:06:39,614 - phoenix.wallet - INFO - Found 64 swaps (17 paired)
+2025-05-25 09:06:39,614 - phoenix.wallet - INFO - 📊 Wallet tier: DEEP - Scanning 20 recent trades
+2025-05-25 09:06:39,614 - phoenix.wallet - INFO -    7-day trades: 64
+2025-05-25 09:06:39,614 - phoenix.wallet - INFO -    7-day win rate: 18.8%
+2025-05-25 09:06:39,614 - phoenix.wallet - INFO -    7-day profit: $5637.59
+2025-05-25 09:06:39,614 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 09:06:39,614 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 59, Birdeye: 29, Helius: 70, RPC: 414
+2025-05-25 09:06:39,614 - phoenix.wallet - INFO -   └─ Score: 80/100, Type: swing_trader
+2025-05-25 09:06:40,623 - phoenix.wallet - INFO - Analyzing wallet 60/72: 4NToH83uTdokM1A2aSycUGgGqHbmZDmFsEnc9WT7qvLw
+2025-05-25 09:06:40,624 - phoenix.wallet - INFO - 🔍 Analyzing wallet 4NToH83uTdokM1A2aSycUGgGqHbmZDmFsEnc9WT7qvLw (7-day active trader focus)
+2025-05-25 09:06:40,624 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 09:06:40,624 - phoenix.cielo - INFO - Fetching trading stats for wallet 4NToH83uTdokM1A2aSycUGgGqHbmZDmFsEnc9WT7qvLw
+2025-05-25 09:06:41,901 - phoenix.cielo - INFO - Successfully retrieved trading stats for 4NToH83uTdokM1A2aSycUGgGqHbmZDmFsEnc9WT7qvLw
+2025-05-25 09:06:41,901 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 09:06:41,901 - phoenix.wallet - INFO - Fetching last 100 token swaps for 4NToH83uTdokM1A2aSycUGgGqHbmZDmFsEnc9WT7qvLw
+2025-05-25 09:06:42,005 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 09:07:08,492 - phoenix.wallet - INFO - Pairing buy/sell transactions for 21 tokens
+2025-05-25 09:07:08,492 - phoenix.wallet - INFO - Found 29 swaps (21 paired)
+2025-05-25 09:07:08,492 - phoenix.wallet - INFO - 📊 Wallet tier: STANDARD - Scanning 10 recent trades
+2025-05-25 09:07:08,492 - phoenix.wallet - INFO -    7-day trades: 29
+2025-05-25 09:07:08,492 - phoenix.wallet - INFO -    7-day win rate: 41.4%
+2025-05-25 09:07:08,492 - phoenix.wallet - INFO -    7-day profit: $665.17
+2025-05-25 09:07:08,492 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 09:07:08,683 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 60, Birdeye: 30, Helius: 72, RPC: 425
+2025-05-25 09:07:08,683 - phoenix.wallet - INFO -   └─ Score: 60/100, Type: swing_trader
+2025-05-25 09:07:09,697 - phoenix.wallet - INFO - Analyzing wallet 61/72: 4Ud55Y3yBRsgTznj3hWBS5pcmwHF5dDqC6S5EKGg9upJ
+2025-05-25 09:07:09,697 - phoenix.wallet - INFO - 🔍 Analyzing wallet 4Ud55Y3yBRsgTznj3hWBS5pcmwHF5dDqC6S5EKGg9upJ (7-day active trader focus)
+2025-05-25 09:07:09,697 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 09:07:09,697 - phoenix.cielo - INFO - Fetching trading stats for wallet 4Ud55Y3yBRsgTznj3hWBS5pcmwHF5dDqC6S5EKGg9upJ
+2025-05-25 09:07:11,962 - phoenix.cielo - INFO - Successfully retrieved trading stats for 4Ud55Y3yBRsgTznj3hWBS5pcmwHF5dDqC6S5EKGg9upJ
+2025-05-25 09:07:11,962 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 09:07:11,962 - phoenix.wallet - INFO - Fetching last 100 token swaps for 4Ud55Y3yBRsgTznj3hWBS5pcmwHF5dDqC6S5EKGg9upJ
+2025-05-25 09:07:12,057 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 09:07:25,236 - phoenix.wallet - INFO - Pairing buy/sell transactions for 20 tokens
+2025-05-25 09:07:25,236 - phoenix.wallet - INFO - Found 47 swaps (22 paired)
+2025-05-25 09:07:25,236 - phoenix.wallet - INFO - 📊 Wallet tier: STANDARD - Scanning 10 recent trades
+2025-05-25 09:07:25,236 - phoenix.wallet - INFO -    7-day trades: 47
+2025-05-25 09:07:25,236 - phoenix.wallet - INFO -    7-day win rate: 12.8%
+2025-05-25 09:07:25,236 - phoenix.wallet - INFO -    7-day profit: $-177.99
+2025-05-25 09:07:25,236 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 09:07:25,416 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 61, Birdeye: 31, Helius: 75, RPC: 436
+2025-05-25 09:07:25,416 - phoenix.wallet - INFO -   └─ Score: 45/100, Type: swing_trader
+2025-05-25 09:07:26,421 - phoenix.wallet - INFO - Analyzing wallet 62/72: DRAcXsiRBy36RKtLqB7hmcaRUG17aDXu59sqCVa4zznr
+2025-05-25 09:07:26,421 - phoenix.wallet - INFO - 🔍 Analyzing wallet DRAcXsiRBy36RKtLqB7hmcaRUG17aDXu59sqCVa4zznr (7-day active trader focus)
+2025-05-25 09:07:26,421 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 09:07:26,421 - phoenix.cielo - INFO - Fetching trading stats for wallet DRAcXsiRBy36RKtLqB7hmcaRUG17aDXu59sqCVa4zznr
+2025-05-25 09:07:27,856 - phoenix.cielo - INFO - Successfully retrieved trading stats for DRAcXsiRBy36RKtLqB7hmcaRUG17aDXu59sqCVa4zznr
+2025-05-25 09:07:27,856 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 09:07:27,856 - phoenix.wallet - INFO - Fetching last 100 token swaps for DRAcXsiRBy36RKtLqB7hmcaRUG17aDXu59sqCVa4zznr
+2025-05-25 09:07:27,983 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 09:08:12,383 - phoenix.wallet - INFO - Pairing buy/sell transactions for 13 tokens
+2025-05-25 09:08:12,383 - phoenix.wallet - INFO - Found 38 swaps (13 paired)
+2025-05-25 09:08:12,383 - phoenix.wallet - INFO - 📊 Wallet tier: STANDARD - Scanning 10 recent trades
+2025-05-25 09:08:12,383 - phoenix.wallet - INFO -    7-day trades: 38
+2025-05-25 09:08:12,383 - phoenix.wallet - INFO -    7-day win rate: 18.4%
+2025-05-25 09:08:12,383 - phoenix.wallet - INFO -    7-day profit: $384.38
+2025-05-25 09:08:12,383 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 09:08:12,383 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 62, Birdeye: 31, Helius: 78, RPC: 447
+2025-05-25 09:08:12,383 - phoenix.wallet - INFO -   └─ Score: 55/100, Type: swing_trader
+2025-05-25 09:08:13,391 - phoenix.wallet - INFO - Analyzing wallet 63/72: 6cCETbnfJtjdfnhz8ubVVp5GtHHHFRVMwc9ud3u2MGPa
+2025-05-25 09:08:13,394 - phoenix.wallet - INFO - 🔍 Analyzing wallet 6cCETbnfJtjdfnhz8ubVVp5GtHHHFRVMwc9ud3u2MGPa (7-day active trader focus)
+2025-05-25 09:08:13,394 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 09:08:13,396 - phoenix.cielo - INFO - Fetching trading stats for wallet 6cCETbnfJtjdfnhz8ubVVp5GtHHHFRVMwc9ud3u2MGPa
+2025-05-25 09:08:17,238 - phoenix.cielo - INFO - Successfully retrieved trading stats for 6cCETbnfJtjdfnhz8ubVVp5GtHHHFRVMwc9ud3u2MGPa
+2025-05-25 09:08:17,238 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 09:08:17,238 - phoenix.wallet - INFO - Fetching last 100 token swaps for 6cCETbnfJtjdfnhz8ubVVp5GtHHHFRVMwc9ud3u2MGPa
+2025-05-25 09:08:17,365 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 09:09:03,391 - phoenix.wallet - INFO - Pairing buy/sell transactions for 15 tokens
+2025-05-25 09:09:03,391 - phoenix.wallet - INFO - Found 39 swaps (14 paired)
+2025-05-25 09:09:03,391 - phoenix.wallet - INFO - 📊 Wallet tier: STANDARD - Scanning 10 recent trades
+2025-05-25 09:09:03,391 - phoenix.wallet - INFO -    7-day trades: 39
+2025-05-25 09:09:03,391 - phoenix.wallet - INFO -    7-day win rate: 15.4%
+2025-05-25 09:09:03,391 - phoenix.wallet - INFO -    7-day profit: $286.07
+2025-05-25 09:09:03,391 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 09:09:03,396 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 63, Birdeye: 31, Helius: 78, RPC: 458
+2025-05-25 09:09:03,396 - phoenix.wallet - INFO -   └─ Score: 55/100, Type: swing_trader
+2025-05-25 09:09:04,399 - phoenix.wallet - INFO - Analyzing wallet 64/72: Ax6kRBe88NErj6oCK9KBE9aG3cep2b9W5Uh1Ztmco7sU
+2025-05-25 09:09:04,402 - phoenix.wallet - INFO - 🔍 Analyzing wallet Ax6kRBe88NErj6oCK9KBE9aG3cep2b9W5Uh1Ztmco7sU (7-day active trader focus)
+2025-05-25 09:09:04,403 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 09:09:04,404 - phoenix.cielo - INFO - Fetching trading stats for wallet Ax6kRBe88NErj6oCK9KBE9aG3cep2b9W5Uh1Ztmco7sU
+2025-05-25 09:09:05,969 - phoenix.cielo - INFO - Successfully retrieved trading stats for Ax6kRBe88NErj6oCK9KBE9aG3cep2b9W5Uh1Ztmco7sU
+2025-05-25 09:09:05,969 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 09:09:05,969 - phoenix.wallet - INFO - Fetching last 100 token swaps for Ax6kRBe88NErj6oCK9KBE9aG3cep2b9W5Uh1Ztmco7sU
+2025-05-25 09:09:06,096 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 09:09:21,489 - phoenix.wallet - INFO - Pairing buy/sell transactions for 15 tokens
+2025-05-25 09:09:21,489 - phoenix.wallet - INFO - Found 32 swaps (19 paired)
+2025-05-25 09:09:21,489 - phoenix.wallet - INFO - 📊 Wallet tier: STANDARD - Scanning 10 recent trades
+2025-05-25 09:09:21,489 - phoenix.wallet - INFO -    7-day trades: 32
+2025-05-25 09:09:21,489 - phoenix.wallet - INFO -    7-day win rate: 21.9%
+2025-05-25 09:09:21,489 - phoenix.wallet - INFO -    7-day profit: $39.28
+2025-05-25 09:09:21,489 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 09:09:21,504 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 64, Birdeye: 31, Helius: 78, RPC: 469
+2025-05-25 09:09:21,504 - phoenix.wallet - INFO -   └─ Score: 55/100, Type: flipper
+2025-05-25 09:09:22,508 - phoenix.wallet - INFO - Analyzing wallet 65/72: 7obWefa4XK7KPZuLKia3zLHjGBkXwuMSRdaGNtZCcbyx
+2025-05-25 09:09:22,508 - phoenix.wallet - INFO - 🔍 Analyzing wallet 7obWefa4XK7KPZuLKia3zLHjGBkXwuMSRdaGNtZCcbyx (7-day active trader focus)
+2025-05-25 09:09:22,508 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 09:09:22,508 - phoenix.cielo - INFO - Fetching trading stats for wallet 7obWefa4XK7KPZuLKia3zLHjGBkXwuMSRdaGNtZCcbyx
+2025-05-25 09:09:23,882 - phoenix.cielo - INFO - Successfully retrieved trading stats for 7obWefa4XK7KPZuLKia3zLHjGBkXwuMSRdaGNtZCcbyx
+2025-05-25 09:09:23,882 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 09:09:23,892 - phoenix.wallet - INFO - Fetching last 100 token swaps for 7obWefa4XK7KPZuLKia3zLHjGBkXwuMSRdaGNtZCcbyx
+2025-05-25 09:09:24,009 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 09:10:10,273 - phoenix.wallet - INFO - Pairing buy/sell transactions for 19 tokens
+2025-05-25 09:10:10,273 - phoenix.wallet - INFO - Found 39 swaps (27 paired)
+2025-05-25 09:10:10,273 - phoenix.wallet - INFO - 📊 Wallet tier: STANDARD - Scanning 10 recent trades
+2025-05-25 09:10:10,273 - phoenix.wallet - INFO -    7-day trades: 39
+2025-05-25 09:10:10,273 - phoenix.wallet - INFO -    7-day win rate: 33.3%
+2025-05-25 09:10:10,273 - phoenix.wallet - INFO -    7-day profit: $-5527.89
+2025-05-25 09:10:10,273 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 09:10:10,273 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 65, Birdeye: 31, Helius: 79, RPC: 480
+2025-05-25 09:10:10,273 - phoenix.wallet - INFO -   └─ Score: 55/100, Type: swing_trader
+2025-05-25 09:10:11,289 - phoenix.wallet - INFO - Analyzing wallet 66/72: AZJntv5M1PasfmZJwzApncWHQdhJ5mFnHDAtAMBqWa4h
+2025-05-25 09:10:11,289 - phoenix.wallet - INFO - 🔍 Analyzing wallet AZJntv5M1PasfmZJwzApncWHQdhJ5mFnHDAtAMBqWa4h (7-day active trader focus)
+2025-05-25 09:10:11,289 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 09:10:11,289 - phoenix.cielo - INFO - Fetching trading stats for wallet AZJntv5M1PasfmZJwzApncWHQdhJ5mFnHDAtAMBqWa4h
+2025-05-25 09:10:12,550 - phoenix.cielo - INFO - Successfully retrieved trading stats for AZJntv5M1PasfmZJwzApncWHQdhJ5mFnHDAtAMBqWa4h
+2025-05-25 09:10:12,550 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 09:10:12,551 - phoenix.wallet - INFO - Fetching last 100 token swaps for AZJntv5M1PasfmZJwzApncWHQdhJ5mFnHDAtAMBqWa4h
+2025-05-25 09:10:12,693 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 09:11:02,427 - phoenix.wallet - INFO - Pairing buy/sell transactions for 24 tokens
+2025-05-25 09:11:02,427 - phoenix.wallet - INFO - Found 26 swaps (22 paired)
+2025-05-25 09:11:02,428 - phoenix.wallet - INFO - 📊 Wallet tier: INITIAL - Scanning 5 recent trades
+2025-05-25 09:11:02,428 - phoenix.wallet - INFO -    7-day trades: 26
+2025-05-25 09:11:02,428 - phoenix.wallet - INFO -    7-day win rate: 30.8%
+2025-05-25 09:11:02,428 - phoenix.wallet - INFO -    7-day profit: $-861.13
+2025-05-25 09:11:02,428 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 09:11:02,432 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 66, Birdeye: 31, Helius: 79, RPC: 491
+2025-05-25 09:11:02,432 - phoenix.wallet - INFO -   └─ Score: 35/100, Type: flipper
+2025-05-25 09:11:03,435 - phoenix.wallet - INFO - Analyzing wallet 67/72: BNrJjZn5kZXsd8149QVHB4BYCA4bfeYvH1EhBx91MVTf
+2025-05-25 09:11:03,435 - phoenix.wallet - INFO - 🔍 Analyzing wallet BNrJjZn5kZXsd8149QVHB4BYCA4bfeYvH1EhBx91MVTf (7-day active trader focus)
+2025-05-25 09:11:03,435 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 09:11:03,435 - phoenix.cielo - INFO - Fetching trading stats for wallet BNrJjZn5kZXsd8149QVHB4BYCA4bfeYvH1EhBx91MVTf
+2025-05-25 09:11:05,016 - phoenix.cielo - INFO - Successfully retrieved trading stats for BNrJjZn5kZXsd8149QVHB4BYCA4bfeYvH1EhBx91MVTf
+2025-05-25 09:11:05,016 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 09:11:05,016 - phoenix.wallet - INFO - Fetching last 100 token swaps for BNrJjZn5kZXsd8149QVHB4BYCA4bfeYvH1EhBx91MVTf
+2025-05-25 09:11:05,143 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 09:11:56,160 - phoenix.wallet - INFO - Pairing buy/sell transactions for 16 tokens
+2025-05-25 09:11:56,160 - phoenix.wallet - INFO - Found 38 swaps (14 paired)
+2025-05-25 09:11:56,160 - phoenix.wallet - INFO - 📊 Wallet tier: STANDARD - Scanning 10 recent trades
+2025-05-25 09:11:56,160 - phoenix.wallet - INFO -    7-day trades: 38
+2025-05-25 09:11:56,160 - phoenix.wallet - INFO -    7-day win rate: 10.5%
+2025-05-25 09:11:56,160 - phoenix.wallet - INFO -    7-day profit: $-387.77
+2025-05-25 09:11:56,160 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 09:11:56,160 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 67, Birdeye: 31, Helius: 79, RPC: 502
+2025-05-25 09:11:56,160 - phoenix.wallet - INFO -   └─ Score: 50/100, Type: swing_trader
+2025-05-25 09:11:57,172 - phoenix.wallet - INFO - Analyzing wallet 68/72: BWQPaFCn5Fp5ok2x5W69wspbsgiRXuPPUYX8Zgnm7XeQ
+2025-05-25 09:11:57,173 - phoenix.wallet - INFO - 🔍 Analyzing wallet BWQPaFCn5Fp5ok2x5W69wspbsgiRXuPPUYX8Zgnm7XeQ (7-day active trader focus)
+2025-05-25 09:11:57,173 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 09:11:57,173 - phoenix.cielo - INFO - Fetching trading stats for wallet BWQPaFCn5Fp5ok2x5W69wspbsgiRXuPPUYX8Zgnm7XeQ
+2025-05-25 09:11:58,787 - phoenix.cielo - INFO - Successfully retrieved trading stats for BWQPaFCn5Fp5ok2x5W69wspbsgiRXuPPUYX8Zgnm7XeQ
+2025-05-25 09:11:58,787 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 09:11:58,787 - phoenix.wallet - INFO - Fetching last 100 token swaps for BWQPaFCn5Fp5ok2x5W69wspbsgiRXuPPUYX8Zgnm7XeQ
+2025-05-25 09:11:58,897 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 09:12:47,785 - phoenix.wallet - INFO - Pairing buy/sell transactions for 17 tokens
+2025-05-25 09:12:47,785 - phoenix.wallet - INFO - Found 40 swaps (14 paired)
+2025-05-25 09:12:47,785 - phoenix.wallet - INFO - 📊 Wallet tier: STANDARD - Scanning 10 recent trades
+2025-05-25 09:12:47,785 - phoenix.wallet - INFO -    7-day trades: 40
+2025-05-25 09:12:47,785 - phoenix.wallet - INFO -    7-day win rate: 12.5%
+2025-05-25 09:12:47,785 - phoenix.wallet - INFO -    7-day profit: $-42.51
+2025-05-25 09:12:47,785 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 09:12:47,801 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 68, Birdeye: 31, Helius: 79, RPC: 513
+2025-05-25 09:12:47,801 - phoenix.wallet - INFO -   └─ Score: 50/100, Type: swing_trader
+2025-05-25 09:12:48,803 - phoenix.wallet - INFO - Analyzing wallet 69/72: BJAps9r2cioLACSpggzGCXbRZPSjPH4k5u87ysYfbkYZ
+2025-05-25 09:12:48,804 - phoenix.wallet - INFO - 🔍 Analyzing wallet BJAps9r2cioLACSpggzGCXbRZPSjPH4k5u87ysYfbkYZ (7-day active trader focus)
+2025-05-25 09:12:48,804 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 09:12:48,804 - phoenix.cielo - INFO - Fetching trading stats for wallet BJAps9r2cioLACSpggzGCXbRZPSjPH4k5u87ysYfbkYZ
+2025-05-25 09:12:50,138 - phoenix.cielo - INFO - Successfully retrieved trading stats for BJAps9r2cioLACSpggzGCXbRZPSjPH4k5u87ysYfbkYZ
+2025-05-25 09:12:50,138 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 09:12:50,142 - phoenix.wallet - INFO - Fetching last 100 token swaps for BJAps9r2cioLACSpggzGCXbRZPSjPH4k5u87ysYfbkYZ
+2025-05-25 09:12:50,296 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 09:13:09,333 - phoenix.wallet - ERROR - Batch RPC error: HTTPSConnectionPool(host='twilight-maximum-snowflake.solana-mainnet.quiknode.pro', port=443): Read timed out. (read timeout=10)
+2025-05-25 09:13:41,394 - phoenix.wallet - INFO - Pairing buy/sell transactions for 12 tokens
+2025-05-25 09:13:41,394 - phoenix.wallet - INFO - Found 25 swaps (14 paired)
+2025-05-25 09:13:41,394 - phoenix.wallet - INFO - 📊 Wallet tier: STANDARD - Scanning 10 recent trades
+2025-05-25 09:13:41,394 - phoenix.wallet - INFO -    7-day trades: 25
+2025-05-25 09:13:41,394 - phoenix.wallet - INFO -    7-day win rate: 28.0%
+2025-05-25 09:13:41,394 - phoenix.wallet - INFO -    7-day profit: $608.75
+2025-05-25 09:13:41,394 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 09:13:41,409 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 69, Birdeye: 31, Helius: 80, RPC: 524
+2025-05-25 09:13:41,409 - phoenix.wallet - INFO -   └─ Score: 55/100, Type: swing_trader
+2025-05-25 09:13:42,412 - phoenix.wallet - INFO - Analyzing wallet 70/72: 8EkFQQax4ANYeNYJerpuCay7CjdHnKfzzrGBGyiEcqwm
+2025-05-25 09:13:42,413 - phoenix.wallet - INFO - 🔍 Analyzing wallet 8EkFQQax4ANYeNYJerpuCay7CjdHnKfzzrGBGyiEcqwm (7-day active trader focus)
+2025-05-25 09:13:42,413 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 09:13:42,413 - phoenix.cielo - INFO - Fetching trading stats for wallet 8EkFQQax4ANYeNYJerpuCay7CjdHnKfzzrGBGyiEcqwm
+2025-05-25 09:13:43,835 - phoenix.cielo - INFO - Successfully retrieved trading stats for 8EkFQQax4ANYeNYJerpuCay7CjdHnKfzzrGBGyiEcqwm
+2025-05-25 09:13:43,835 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 09:13:43,835 - phoenix.wallet - INFO - Fetching last 100 token swaps for 8EkFQQax4ANYeNYJerpuCay7CjdHnKfzzrGBGyiEcqwm
+2025-05-25 09:13:43,946 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 09:14:28,109 - phoenix.wallet - INFO - Pairing buy/sell transactions for 17 tokens
+2025-05-25 09:14:28,109 - phoenix.wallet - INFO - Found 39 swaps (14 paired)
+2025-05-25 09:14:28,109 - phoenix.wallet - INFO - 📊 Wallet tier: STANDARD - Scanning 10 recent trades
+2025-05-25 09:14:28,109 - phoenix.wallet - INFO -    7-day trades: 39
+2025-05-25 09:14:28,109 - phoenix.wallet - INFO -    7-day win rate: 15.4%
+2025-05-25 09:14:28,109 - phoenix.wallet - INFO -    7-day profit: $903.35
+2025-05-25 09:14:28,109 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 09:14:28,109 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 70, Birdeye: 31, Helius: 80, RPC: 535
+2025-05-25 09:14:28,116 - phoenix.wallet - INFO -   └─ Score: 55/100, Type: swing_trader
+2025-05-25 09:14:29,118 - phoenix.wallet - INFO - Analyzing wallet 71/72: 4CYbatMHxaL2RjH7TWTwZoyg6HhBuzipNjMBQjJvVq2z
+2025-05-25 09:14:29,118 - phoenix.wallet - INFO - 🔍 Analyzing wallet 4CYbatMHxaL2RjH7TWTwZoyg6HhBuzipNjMBQjJvVq2z (7-day active trader focus)
+2025-05-25 09:14:29,118 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 09:14:29,122 - phoenix.cielo - INFO - Fetching trading stats for wallet 4CYbatMHxaL2RjH7TWTwZoyg6HhBuzipNjMBQjJvVq2z
+2025-05-25 09:14:30,353 - phoenix.cielo - INFO - Successfully retrieved trading stats for 4CYbatMHxaL2RjH7TWTwZoyg6HhBuzipNjMBQjJvVq2z
+2025-05-25 09:14:30,353 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 09:14:30,364 - phoenix.wallet - INFO - Fetching last 100 token swaps for 4CYbatMHxaL2RjH7TWTwZoyg6HhBuzipNjMBQjJvVq2z
+2025-05-25 09:14:30,480 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 09:14:45,969 - phoenix.wallet - INFO - Pairing buy/sell transactions for 25 tokens
+2025-05-25 09:14:45,969 - phoenix.wallet - INFO - Found 44 swaps (31 paired)
+2025-05-25 09:14:45,985 - phoenix.wallet - INFO - 📊 Wallet tier: STANDARD - Scanning 10 recent trades
+2025-05-25 09:14:45,985 - phoenix.wallet - INFO -    7-day trades: 44
+2025-05-25 09:14:45,985 - phoenix.wallet - INFO -    7-day win rate: 27.3%
+2025-05-25 09:14:45,985 - phoenix.wallet - INFO -    7-day profit: $133.82
+2025-05-25 09:14:45,985 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 09:14:45,985 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 71, Birdeye: 31, Helius: 81, RPC: 546
+2025-05-25 09:14:45,985 - phoenix.wallet - INFO -   └─ Score: 55/100, Type: swing_trader
+2025-05-25 09:14:46,990 - phoenix.wallet - INFO - Analyzing wallet 72/72: GCaR5AniyyuBhoUJxvRFHuuCWGMya5StTzjEuzm4Tupk
+2025-05-25 09:14:46,990 - phoenix.wallet - INFO - 🔍 Analyzing wallet GCaR5AniyyuBhoUJxvRFHuuCWGMya5StTzjEuzm4Tupk (7-day active trader focus)
+2025-05-25 09:14:46,990 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-25 09:14:46,990 - phoenix.cielo - INFO - Fetching trading stats for wallet GCaR5AniyyuBhoUJxvRFHuuCWGMya5StTzjEuzm4Tupk
+2025-05-25 09:14:47,852 - phoenix.cielo - INFO - Successfully retrieved trading stats for GCaR5AniyyuBhoUJxvRFHuuCWGMya5StTzjEuzm4Tupk
+2025-05-25 09:14:47,852 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-25 09:14:47,852 - phoenix.wallet - INFO - Fetching last 100 token swaps for GCaR5AniyyuBhoUJxvRFHuuCWGMya5StTzjEuzm4Tupk
+2025-05-25 09:14:47,961 - phoenix.wallet - INFO - Filtered to 100 recent signatures
+2025-05-25 09:15:25,927 - phoenix.wallet - INFO - Pairing buy/sell transactions for 18 tokens
+2025-05-25 09:15:25,927 - phoenix.wallet - INFO - Found 42 swaps (18 paired)
+2025-05-25 09:15:25,943 - phoenix.wallet - INFO - 📊 Wallet tier: DEEP - Scanning 20 recent trades
+2025-05-25 09:15:25,943 - phoenix.wallet - INFO -    7-day trades: 42
+2025-05-25 09:15:25,943 - phoenix.wallet - INFO -    7-day win rate: 19.0%
+2025-05-25 09:15:25,943 - phoenix.wallet - INFO -    7-day profit: $-4349.98
+2025-05-25 09:15:25,943 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-25 09:15:26,148 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 72, Birdeye: 36, Helius: 81, RPC: 557
+2025-05-25 09:15:26,148 - phoenix.wallet - INFO -   └─ Score: 70/100, Type: swing_trader
+2025-05-25 09:15:26,164 - phoenix.wallet - INFO - 📊 FINAL API CALL STATISTICS:
+2025-05-25 09:15:26,164 - phoenix.wallet - INFO -    Cielo: 72 calls
+2025-05-25 09:15:26,164 - phoenix.wallet - INFO -    Birdeye: 36 calls
+2025-05-25 09:15:26,164 - phoenix.wallet - INFO -    Helius: 81 calls
+2025-05-25 09:15:26,164 - phoenix.wallet - INFO -    RPC: 557 calls
+2025-05-25 09:15:26,164 - phoenix.wallet - INFO -    Total API calls: 746
+2025-05-25 09:15:26,523 - phoenix.export - INFO - Successfully exported 7-day active trader rankings to CSV: C:\Users\Administrator\Desktop\phoenix-project\outputs\wallet_analysis_20250525_091526.csv
+2025-05-25 09:15:26,523 - phoenix - INFO - Exported wallet analysis to C:\Users\Administrator\Desktop\phoenix-project\outputs\wallet_analysis_20250525_091526.csv

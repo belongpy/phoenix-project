@@ -436,10 +436,10 @@ class PhoenixCLI:
             logger.error(f"Error exporting CSV: {str(e)}")
     
     def _enhanced_telegram_analysis(self):
-        """Run enhanced Telegram analysis with 5x+ focus."""
+        """Run enhanced Telegram analysis with 2x focus."""
         print("\n" + "="*80, flush=True)
         print("    🎯 ENHANCED SPYDEFI TELEGRAM ANALYSIS", flush=True)
-        print("    📉 Max Pullback % + ⏱️ Time to 5x Analysis", flush=True)
+        print("    📉 Max Pullback % + ⏱️ Time to 2x Analysis", flush=True)
         print("="*80, flush=True)
         
         # Check API configuration
@@ -461,7 +461,7 @@ class PhoenixCLI:
         print("📊 Excel export: Enabled", flush=True)
         print("🎯 Enhanced features:", flush=True)
         print("   • ✅ Max pullback % for stop loss calculation", flush=True)
-        print("   • ✅ Average time to reach 5x for gem hunting", flush=True)
+        print("   • ✅ Average time to reach 2x for hot streak detection", flush=True)
         print("   • ✅ Enhanced contract address detection", flush=True)
         print("   • ✅ Detailed price analysis using Birdeye API", flush=True)
         if self.config.get("helius_api_key"):
@@ -626,21 +626,21 @@ class PhoenixCLI:
                         enhanced_kol_data = {
                             "channel_id": performance.get('channel_id', ''),
                             "total_calls": performance.get('tokens_mentioned', 0),
-                            "success_rate": performance.get('success_rate_5x', 0),
+                            "success_rate": performance.get('success_rate_2x', 0),
                             "avg_roi": performance.get('avg_ath_roi', 0),
                             "avg_max_roi": performance.get('avg_ath_roi', 0),
                             "composite_score": performance.get('composite_score', 0),
                             "avg_max_pullback_percent": performance.get('avg_max_pullback_percent', 0),
-                            "avg_time_to_5x_formatted": performance.get('avg_time_to_5x_formatted', 'N/A'),
+                            "avg_time_to_2x_formatted": performance.get('avg_time_to_2x_formatted', 'N/A'),
                             "detailed_analysis_count": performance.get('detailed_analysis_count', 0),
                             "pump_tokens_analyzed": performance.get('pump_tokens_analyzed', 0),
-                            "pump_success_rate_5x": performance.get('pump_success_rate_5x', 0),
+                            "pump_success_rate_2x": performance.get('pump_success_rate_2x', 0),
                             "strategy": {
                                 "recommendation": "ENHANCED_ANALYSIS",
                                 "entry_type": "IMMEDIATE",
                                 "take_profit_1": 100,
-                                "take_profit_2": 300,
-                                "take_profit_3": 500,
+                                "take_profit_2": 200,
+                                "take_profit_3": 300,
                                 "stop_loss": -(performance.get('avg_max_pullback_percent', 25) + 10)
                             }
                         }
