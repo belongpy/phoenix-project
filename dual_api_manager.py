@@ -11,9 +11,15 @@ UPDATES:
 - Added Helius API integration
 - Smart routing based on token type
 - Enhanced transaction parsing
+
+FIXES IMPLEMENTED:
+- Better error handling for API failures
+- Improved logging with progress feedback
+- Validation of API responses
 """
 
 import logging
+import sys
 from typing import Dict, List, Any, Optional
 from datetime import datetime, timedelta
 
@@ -41,8 +47,10 @@ class DualAPIManager:
             from birdeye_api import BirdeyeAPI
             self.birdeye_api = BirdeyeAPI(birdeye_api_key)
             logger.info("Birdeye API initialized for mainstream token analysis")
+            print("✅ Birdeye API initialized", flush=True)
         except Exception as e:
             logger.error(f"Failed to initialize Birdeye API: {str(e)}")
+            print(f"❌ Failed to initialize Birdeye API: {str(e)}", flush=True)
             raise ValueError("Birdeye API is required for token analysis")
         
         # Initialize Helius API (for pump.fun tokens and enhanced parsing)
@@ -51,11 +59,15 @@ class DualAPIManager:
                 from helius_api import HeliusAPI
                 self.helius_api = HeliusAPI(helius_api_key)
                 logger.info("Helius API initialized for pump.fun tokens and enhanced parsing")
+                print("✅ Helius API initialized for pump.fun tokens", flush=True)
             except Exception as e:
                 logger.error(f"Failed to initialize Helius API: {str(e)}")
                 logger.warning("Pump.fun token analysis will be limited without Helius")
+                print(f"⚠️ Helius API initialization failed: {str(e)}", flush=True)
+                print("⚠️ Pump.fun token analysis will be limited", flush=True)
         else:
             logger.warning("No Helius API key provided. Pump.fun token analysis will be limited.")
+            print("⚠️ No Helius API key - pump.fun analysis limited", flush=True)
         
         # Initialize Cielo Finance API (for WALLET analysis only)
         if cielo_api_key:
@@ -63,11 +75,21 @@ class DualAPIManager:
                 from cielo_api import CieloFinanceAPI
                 self.cielo_api = CieloFinanceAPI(cielo_api_key)
                 logger.info("Cielo Finance API initialized for WALLET analysis ONLY")
+                print("✅ Cielo Finance API initialized for wallet analysis", flush=True)
             except Exception as e:
                 logger.error(f"Failed to initialize Cielo Finance API: {str(e)}")
                 logger.warning("Wallet analysis will NOT work without Cielo Finance API")
+                print(f"❌ Cielo Finance API initialization failed: {str(e)}", flush=True)
+                print("❌ Wallet analysis will NOT work", flush=True)
         else:
             logger.warning("No Cielo Finance API key provided. Wallet analysis will NOT work.")
+            print("⚠️ No Cielo Finance API key - wallet analysis disabled", flush=True)
+    
+    def _is_pump_fun_token(self, token_address: str) -> bool:
+        """Check if a token is a pump.fun token."""
+        if not token_address:
+            return False
+        return token_address.endswith("pump") or "pump" in token_address.lower()
     
     # TOKEN-related methods (use Birdeye or Helius based on token type)
     def get_token_info(self, token_address: str) -> Dict[str, Any]:
@@ -76,18 +98,31 @@ class DualAPIManager:
         Pump.fun tokens use Helius, others use Birdeye.
         """
         try:
+            # Validate token address
+            if not token_address or len(token_address) < 32:
+                return {"success": False, "error": "Invalid token address"}
+            
             # Check if it's a pump.fun token
-            if token_address.endswith("pump") and self.helius_api:
+            if self._is_pump_fun_token(token_address) and self.helius_api:
                 logger.debug(f"Using Helius for pump.fun token: {token_address}")
                 metadata = self.helius_api.get_token_metadata([token_address])
                 if metadata.get("success") and metadata.get("data"):
                     return {
                         "success": True,
-                        "data": metadata["data"][0] if metadata["data"] else {}
+                        "data": metadata["data"][0] if metadata["data"] else {},
+                        "source": "helius"
                     }
+                else:
+                    logger.warning(f"Helius failed for token {token_address}, trying Birdeye")
             
             # Default to Birdeye for all other tokens
-            return self.birdeye_api.get_token_info(token_address)
+            if self.birdeye_api:
+                result = self.birdeye_api.get_token_info(token_address)
+                if result.get("success"):
+                    result["source"] = "birdeye"
+                return result
+            else:
+                return {"success": False, "error": "No API available for token info"}
             
         except Exception as e:
             logger.error(f"Error getting token info: {str(e)}")
@@ -99,13 +134,26 @@ class DualAPIManager:
         Pump.fun tokens use Helius, others use Birdeye.
         """
         try:
+            # Validate token address
+            if not token_address or len(token_address) < 32:
+                return {"success": False, "error": "Invalid token address"}
+            
             # Check if it's a pump.fun token
-            if token_address.endswith("pump") and self.helius_api:
+            if self._is_pump_fun_token(token_address) and self.helius_api:
                 logger.debug(f"Using Helius for pump.fun token price: {token_address}")
-                return self.helius_api.get_pump_fun_token_price(token_address)
+                result = self.helius_api.get_pump_fun_token_price(token_address)
+                if result.get("success"):
+                    result["source"] = "helius"
+                return result
             
             # Default to Birdeye
-            return self.birdeye_api.get_token_price(token_address)
+            if self.birdeye_api:
+                result = self.birdeye_api.get_token_price(token_address)
+                if result.get("success"):
+                    result["source"] = "birdeye"
+                return result
+            else:
+                return {"success": False, "error": "No API available for token price"}
             
         except Exception as e:
             logger.error(f"Error getting token price: {str(e)}")
@@ -119,18 +167,36 @@ class DualAPIManager:
         Pump.fun tokens use Helius, others use Birdeye.
         """
         try:
+            # Validate token address
+            if not token_address or len(token_address) < 32:
+                return {"success": False, "error": "Invalid token address"}
+            
+            # Validate timestamps
+            if not isinstance(start_time, (int, float)) or not isinstance(end_time, (int, float)):
+                return {"success": False, "error": "Invalid timestamps"}
+            
             # Check if it's a pump.fun token
-            if token_address.endswith("pump") and self.helius_api:
+            if self._is_pump_fun_token(token_address) and self.helius_api:
                 logger.debug(f"Using Helius for pump.fun token history: {token_address}")
                 # Helius doesn't have traditional price history, so we analyze swaps
-                return self.helius_api.analyze_token_swaps(
+                result = self.helius_api.analyze_token_swaps(
                     "", # No specific wallet
                     token_address,
                     limit=100
                 )
+                if result.get("success"):
+                    result["source"] = "helius"
+                    result["is_pump_token"] = True
+                return result
             
             # Default to Birdeye
-            return self.birdeye_api.get_token_price_history(token_address, start_time, end_time, resolution)
+            if self.birdeye_api:
+                result = self.birdeye_api.get_token_price_history(token_address, start_time, end_time, resolution)
+                if result.get("success"):
+                    result["source"] = "birdeye"
+                return result
+            else:
+                return {"success": False, "error": "No API available for price history"}
             
         except Exception as e:
             logger.error(f"Error getting token price history: {str(e)}")
@@ -141,17 +207,38 @@ class DualAPIManager:
         Get enhanced parsed transactions using Helius if available.
         Falls back to basic RPC if Helius not available.
         """
-        if self.helius_api:
-            logger.debug(f"Using Helius for enhanced transactions: {wallet_address}")
-            return self.helius_api.get_enhanced_transactions(wallet_address, limit)
-        else:
-            logger.warning("Helius API not available for enhanced transactions")
-            return {"success": False, "error": "Helius API required for enhanced transactions"}
+        try:
+            if not wallet_address or len(wallet_address) < 32:
+                return {"success": False, "error": "Invalid wallet address"}
+            
+            if self.helius_api:
+                logger.debug(f"Using Helius for enhanced transactions: {wallet_address}")
+                result = self.helius_api.get_enhanced_transactions(wallet_address, limit)
+                if result.get("success"):
+                    result["source"] = "helius"
+                return result
+            else:
+                logger.warning("Helius API not available for enhanced transactions")
+                return {"success": False, "error": "Helius API required for enhanced transactions"}
+                
+        except Exception as e:
+            logger.error(f"Error getting enhanced transactions: {str(e)}")
+            return {"success": False, "error": str(e)}
     
     def get_dex_trades(self, token_address: str, limit: int = 100) -> Dict[str, Any]:
         """Get DEX trades using Birdeye API."""
         try:
-            return self.birdeye_api.get_dex_trades(token_address, limit)
+            if not token_address or len(token_address) < 32:
+                return {"success": False, "error": "Invalid token address"}
+            
+            if self.birdeye_api:
+                result = self.birdeye_api.get_dex_trades(token_address, limit)
+                if result.get("success"):
+                    result["source"] = "birdeye"
+                return result
+            else:
+                return {"success": False, "error": "Birdeye API required for DEX trades"}
+                
         except Exception as e:
             logger.error(f"Error getting DEX trades: {str(e)}")
             return {"success": False, "error": str(e)}
@@ -162,8 +249,11 @@ class DualAPIManager:
         Pump.fun tokens use Helius, others use Birdeye.
         """
         try:
+            if not token_address or len(token_address) < 32:
+                return {"success": False, "error": "Invalid token address"}
+            
             # Check if it's a pump.fun token
-            if token_address.endswith("pump") and self.helius_api:
+            if self._is_pump_fun_token(token_address) and self.helius_api:
                 logger.debug(f"Using Helius for pump.fun token performance: {token_address}")
                 # Convert datetime to timestamp
                 start_timestamp = int(start_time.timestamp())
@@ -187,7 +277,13 @@ class DualAPIManager:
                     }
             
             # Default to Birdeye
-            return self.birdeye_api.calculate_token_performance(token_address, start_time)
+            if self.birdeye_api:
+                result = self.birdeye_api.calculate_token_performance(token_address, start_time)
+                if result.get("success"):
+                    result["data_source"] = "birdeye"
+                return result
+            else:
+                return {"success": False, "error": "No API available for performance calculation"}
             
         except Exception as e:
             logger.error(f"Error calculating token performance: {str(e)}")
@@ -201,7 +297,10 @@ class DualAPIManager:
                 return "pump.fun"
             
             # Use Birdeye for platform identification
-            return self.birdeye_api.identify_platform(contract_address, token_info)
+            if self.birdeye_api:
+                return self.birdeye_api.identify_platform(contract_address, token_info)
+            else:
+                return "unknown"
             
         except Exception as e:
             logger.error(f"Error identifying platform: {str(e)}")
@@ -218,8 +317,14 @@ class DualAPIManager:
             }
         
         try:
+            if not wallet_address or len(wallet_address) < 32:
+                return {"success": False, "error": "Invalid wallet address"}
+            
             logger.debug(f"Using Cielo Finance API for wallet transactions: {wallet_address}")
-            return self.cielo_api.get_wallet_transactions(wallet_address, limit)
+            result = self.cielo_api.get_wallet_transactions(wallet_address, limit)
+            if result.get("success"):
+                result["source"] = "cielo"
+            return result
         except Exception as e:
             logger.error(f"Cielo Finance API failed for wallet transactions: {str(e)}")
             return {
@@ -237,8 +342,14 @@ class DualAPIManager:
             }
         
         try:
+            if not wallet_address or len(wallet_address) < 32:
+                return {"success": False, "error": "Invalid wallet address"}
+            
             logger.debug(f"Using Cielo Finance API for wallet tokens: {wallet_address}")
-            return self.cielo_api.get_wallet_tokens(wallet_address)
+            result = self.cielo_api.get_wallet_tokens(wallet_address)
+            if result.get("success"):
+                result["source"] = "cielo"
+            return result
         except Exception as e:
             logger.error(f"Cielo Finance API failed for wallet tokens: {str(e)}")
             return {

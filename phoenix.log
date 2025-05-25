@@ -5302,3 +5302,103 @@ RuntimeError: cannot schedule new futures after shutdown
 2025-05-24 18:51:01,945 - phoenix - INFO - 📁 Enhanced telegram analysis completed. Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv
 2025-05-24 18:51:02,320 - phoenix.export - INFO - Successfully exported enhanced analysis to Excel: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced_enhanced.xlsx
 2025-05-24 18:51:02,336 - phoenix - INFO - 📊 Enhanced Excel export completed: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced_enhanced.xlsx
+2025-05-24 19:28:05,414 - phoenix - INFO - Loaded 2 wallet addresses from wallets.txt
+2025-05-24 19:28:09,567 - phoenix.api_manager - INFO - Birdeye API initialized for mainstream token analysis
+2025-05-24 19:28:09,567 - phoenix.api_manager - INFO - Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-24 19:28:09,567 - phoenix.api_manager - INFO - Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-24 19:28:09,567 - phoenix.cielo - INFO - Checking Cielo Finance API connectivity...
+2025-05-24 19:28:09,821 - phoenix.cielo - INFO - ✅ Cielo Finance API is accessible (got expected error response)
+2025-05-24 19:28:09,821 - phoenix.wallet - INFO - ✅ Cielo Finance API connection verified
+2025-05-24 19:28:09,821 - phoenix.wallet - INFO - Batch analyzing 2 wallets (7-day active trader focus)
+2025-05-24 19:28:09,821 - phoenix.wallet - INFO - Analyzing wallet 1/2: Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 19:28:09,821 - phoenix.wallet - INFO - 🔍 Analyzing wallet Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ (7-day active trader focus)
+2025-05-24 19:28:09,821 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-24 19:28:09,821 - phoenix.cielo - INFO - Fetching trading stats for wallet Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 19:28:11,163 - phoenix.cielo - INFO - Successfully retrieved trading stats for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 19:28:11,163 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-24 19:28:11,163 - phoenix.wallet - INFO - Fetching last 100 token swaps for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 19:30:05,277 - phoenix.wallet - INFO - Found 80 swaps from 200 signatures
+2025-05-24 19:30:43,346 - phoenix.wallet - ERROR - Error in hybrid wallet analysis: '>=' not supported between instances of 'NoneType' and 'int'
+2025-05-24 19:30:43,346 - phoenix.wallet - ERROR - Full traceback: Traceback (most recent call last):
+  File "C:\Users\Administrator\Desktop\phoenix-project\wallet_module.py", line 378, in analyze_wallet_hybrid
+    seven_day_metrics = self._calculate_7day_metrics(recent_swaps_all)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Desktop\phoenix-project\wallet_module.py", line 307, in _calculate_7day_metrics
+    if swap.get('buy_timestamp', 0) >= seven_days_ago:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '>=' not supported between instances of 'NoneType' and 'int'
+
+2025-05-24 19:30:43,346 - phoenix.wallet - INFO -   └─ Score: 0/100, Type: unknown
+2025-05-24 19:30:45,358 - phoenix.wallet - INFO - Analyzing wallet 2/2: 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 19:30:45,359 - phoenix.wallet - INFO - 🔍 Analyzing wallet 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX (7-day active trader focus)
+2025-05-24 19:30:45,359 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-24 19:30:45,359 - phoenix.cielo - INFO - Fetching trading stats for wallet 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 19:30:46,639 - phoenix.cielo - INFO - Successfully retrieved trading stats for 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 19:30:46,639 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-24 19:30:46,639 - phoenix.wallet - INFO - Fetching last 100 token swaps for 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 19:32:09,784 - phoenix.wallet - INFO - Found 91 swaps from 176 signatures
+2025-05-24 19:32:09,784 - phoenix.wallet - ERROR - Error in hybrid wallet analysis: '>=' not supported between instances of 'NoneType' and 'int'
+2025-05-24 19:32:09,784 - phoenix.wallet - ERROR - Full traceback: Traceback (most recent call last):
+  File "C:\Users\Administrator\Desktop\phoenix-project\wallet_module.py", line 378, in analyze_wallet_hybrid
+    seven_day_metrics = self._calculate_7day_metrics(recent_swaps_all)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Desktop\phoenix-project\wallet_module.py", line 307, in _calculate_7day_metrics
+    if swap.get('buy_timestamp', 0) >= seven_days_ago:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '>=' not supported between instances of 'NoneType' and 'int'
+
+2025-05-24 19:32:09,784 - phoenix.wallet - INFO -   └─ Score: 0/100, Type: unknown
+2025-05-24 19:32:09,784 - phoenix.wallet - INFO - 📊 FINAL API CALL STATISTICS:
+2025-05-24 19:32:09,784 - phoenix.wallet - INFO -    Cielo: 2 calls
+2025-05-24 19:32:09,784 - phoenix.wallet - INFO -    Birdeye: 0 calls
+2025-05-24 19:32:09,784 - phoenix.wallet - INFO -    Helius: 0 calls
+2025-05-24 19:32:09,784 - phoenix.wallet - INFO -    RPC: 378 calls
+2025-05-24 19:32:09,784 - phoenix.wallet - INFO -    Total API calls: 380
+2025-05-24 19:32:10,061 - phoenix.export - INFO - Successfully exported 7-day active trader rankings to CSV: C:\Users\Administrator\Desktop\phoenix-project\outputs\active_traders_7day_20250524_193209.csv
+2025-05-24 19:32:10,061 - phoenix - INFO - Exported active trader analysis to C:\Users\Administrator\Desktop\phoenix-project\outputs\active_traders_7day_20250524_193209.csv
+2025-05-24 19:57:58,100 - phoenix - INFO - Loaded 2 wallet addresses from wallets.txt
+2025-05-24 19:58:00,193 - phoenix.api_manager - INFO - Birdeye API initialized for mainstream token analysis
+2025-05-24 19:58:00,193 - phoenix.api_manager - INFO - Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-24 19:58:00,193 - phoenix.api_manager - INFO - Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-24 19:58:00,193 - phoenix.cielo - INFO - Checking Cielo Finance API connectivity...
+2025-05-24 19:58:00,428 - phoenix.cielo - INFO - ✅ Cielo Finance API is accessible (got expected error response)
+2025-05-24 19:58:00,428 - phoenix.wallet - INFO - ✅ Cielo Finance API connection verified
+2025-05-24 19:58:00,428 - phoenix.wallet - INFO - Batch analyzing 2 wallets (7-day active trader focus)
+2025-05-24 19:58:00,428 - phoenix.wallet - INFO - Analyzing wallet 1/2: Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 19:58:00,428 - phoenix.wallet - INFO - 🔍 Analyzing wallet Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ (7-day active trader focus)
+2025-05-24 19:58:00,428 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-24 19:58:00,428 - phoenix.cielo - INFO - Fetching trading stats for wallet Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 19:58:02,203 - phoenix.cielo - INFO - Successfully retrieved trading stats for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 19:58:02,203 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-24 19:58:02,203 - phoenix.wallet - INFO - Fetching last 100 token swaps for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 20:00:14,267 - phoenix.wallet - INFO - Found 80 swaps from 200 signatures
+2025-05-24 20:00:14,267 - phoenix.wallet - INFO - 📊 Wallet tier: INITIAL - Scanning 5 recent trades
+2025-05-24 20:00:14,267 - phoenix.wallet - INFO -    7-day trades: 1
+2025-05-24 20:00:14,267 - phoenix.wallet - INFO -    7-day win rate: 0.0%
+2025-05-24 20:00:14,267 - phoenix.wallet - INFO -    7-day profit: $0.00
+2025-05-24 20:00:14,267 - phoenix.wallet - INFO -    Days since last trade: 4
+2025-05-24 20:00:16,386 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 1, Birdeye: 0, Helius: 2, RPC: 201
+2025-05-24 20:00:16,386 - phoenix.wallet - INFO -   └─ Score: 15/100, Type: consistent
+2025-05-24 20:00:18,390 - phoenix.wallet - INFO - Analyzing wallet 2/2: 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 20:00:18,390 - phoenix.wallet - INFO - 🔍 Analyzing wallet 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX (7-day active trader focus)
+2025-05-24 20:00:18,390 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-24 20:00:18,390 - phoenix.cielo - INFO - Fetching trading stats for wallet 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 20:00:20,123 - phoenix.cielo - INFO - Successfully retrieved trading stats for 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 20:00:20,123 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-24 20:00:20,123 - phoenix.wallet - INFO - Fetching last 100 token swaps for 9ipB2w61Py3526ixfD28mHJBv4AaGMTcMHtafRsAyQyX
+2025-05-24 20:01:41,284 - phoenix.wallet - INFO - Found 91 swaps from 176 signatures
+2025-05-24 20:01:41,284 - phoenix.wallet - INFO - 📊 Wallet tier: INITIAL - Scanning 5 recent trades
+2025-05-24 20:01:41,284 - phoenix.wallet - INFO -    7-day trades: 25
+2025-05-24 20:01:41,284 - phoenix.wallet - INFO -    7-day win rate: 0.0%
+2025-05-24 20:01:41,284 - phoenix.wallet - INFO -    7-day profit: $0.00
+2025-05-24 20:01:41,284 - phoenix.wallet - INFO -    Days since last trade: 0
+2025-05-24 20:01:43,381 - phoenix.wallet - INFO - 📊 API Calls - Cielo: 2, Birdeye: 0, Helius: 3, RPC: 378
+2025-05-24 20:01:43,383 - phoenix.wallet - INFO -   └─ Score: 40/100, Type: consistent
+2025-05-24 20:01:43,383 - phoenix.wallet - INFO - 📊 FINAL API CALL STATISTICS:
+2025-05-24 20:01:43,383 - phoenix.wallet - INFO -    Cielo: 2 calls
+2025-05-24 20:01:43,383 - phoenix.wallet - INFO -    Birdeye: 0 calls
+2025-05-24 20:01:43,383 - phoenix.wallet - INFO -    Helius: 3 calls
+2025-05-24 20:01:43,383 - phoenix.wallet - INFO -    RPC: 378 calls
+2025-05-24 20:01:43,383 - phoenix.wallet - INFO -    Total API calls: 383
+2025-05-24 20:01:43,712 - phoenix.export - INFO - Successfully exported 7-day active trader rankings to CSV: C:\Users\Administrator\Desktop\phoenix-project\outputs\active_traders_7day_20250524_200143.csv
+2025-05-24 20:01:43,712 - phoenix - INFO - Exported active trader analysis to C:\Users\Administrator\Desktop\phoenix-project\outputs\active_traders_7day_20250524_200143.csv

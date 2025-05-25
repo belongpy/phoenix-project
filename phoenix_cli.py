@@ -8,6 +8,12 @@ Phoenix Project - UPDATED CLI Tool for 7-Day Active Trader Analysis
 - Removed redundant columns (confidence, tier, rating)
 - Smart sell following based on exit quality
 - Active trader detection and prioritization
+
+FIXES IMPLEMENTED:
+- Improved console output buffering
+- Better progress tracking
+- Fixed screen freezing issues
+- Added real-time feedback during long operations
 """
 
 import os
@@ -19,16 +25,31 @@ import logging
 from datetime import datetime, timedelta
 from typing import Dict, List, Any, Optional, Tuple
 
-# Setup logging
+# Setup logging with proper flushing
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     handlers=[
         logging.FileHandler("phoenix.log", encoding='utf-8'),
-        logging.StreamHandler()
+        logging.StreamHandler(sys.stdout)  # Use stdout instead of default stderr
     ]
 )
 logger = logging.getLogger("phoenix")
+
+# Ensure stdout is unbuffered
+class UnbufferedStream:
+    def __init__(self, stream):
+        self.stream = stream
+    def write(self, data):
+        self.stream.write(data)
+        self.stream.flush()
+    def writelines(self, lines):
+        self.stream.writelines(lines)
+        self.stream.flush()
+    def __getattr__(self, attr):
+        return getattr(self.stream, attr)
+
+sys.stdout = UnbufferedStream(sys.stdout)
 
 # Configuration
 CONFIG_FILE = os.path.expanduser("~/.phoenix_config.json")
@@ -135,30 +156,30 @@ class PhoenixCLI:
     
     def _handle_numbered_menu(self):
         """Handle the numbered menu interface."""
-        print("\n" + "="*80)
-        print("Phoenix Project - 7-Day Active Trader Analysis Tool")
-        print("🚀 Focus on ACTIVE traders with recent wins")
-        print(f"📅 Current Date: {datetime.now().strftime('%Y-%m-%d')}")
-        print("="*80)
-        print("\nSelect an option:")
-        print("\n🔧 CONFIGURATION:")
-        print("1. Configure API Keys")
-        print("2. Check Configuration")
-        print("3. Test API Connectivity")
-        print("\n📊 TOOLS:")
-        print("4. SPYDEFI ANALYSIS")
-        print("5. 7-DAY ACTIVE WALLET ANALYSIS (Enhanced Strategies)")
-        print("\n🔍 UTILITIES:")
-        print("6. View Current Sources")
-        print("7. Help & Strategy Guide")
-        print("0. Exit")
-        print("="*80)
+        print("\n" + "="*80, flush=True)
+        print("Phoenix Project - 7-Day Active Trader Analysis Tool", flush=True)
+        print("🚀 Focus on ACTIVE traders with recent wins", flush=True)
+        print(f"📅 Current Date: {datetime.now().strftime('%Y-%m-%d')}", flush=True)
+        print("="*80, flush=True)
+        print("\nSelect an option:", flush=True)
+        print("\n🔧 CONFIGURATION:", flush=True)
+        print("1. Configure API Keys", flush=True)
+        print("2. Check Configuration", flush=True)
+        print("3. Test API Connectivity", flush=True)
+        print("\n📊 TOOLS:", flush=True)
+        print("4. SPYDEFI ANALYSIS", flush=True)
+        print("5. 7-DAY ACTIVE WALLET ANALYSIS (Enhanced Strategies)", flush=True)
+        print("\n🔍 UTILITIES:", flush=True)
+        print("6. View Current Sources", flush=True)
+        print("7. Help & Strategy Guide", flush=True)
+        print("0. Exit", flush=True)
+        print("="*80, flush=True)
         
         try:
             choice = input("\nEnter your choice (0-7): ").strip()
             
             if choice == '0':
-                print("\nExiting Phoenix Project. Goodbye! 👋")
+                print("\nExiting Phoenix Project. Goodbye! 👋", flush=True)
                 sys.exit(0)
             elif choice == '1':
                 self._interactive_configure()
@@ -175,11 +196,11 @@ class PhoenixCLI:
             elif choice == '7':
                 self._show_strategy_help()
             else:
-                print("❌ Invalid choice. Please try again.")
+                print("❌ Invalid choice. Please try again.", flush=True)
                 input("Press Enter to continue...")
                 
         except KeyboardInterrupt:
-            print("\n\nOperation cancelled by user.")
+            print("\n\nOperation cancelled by user.", flush=True)
             sys.exit(0)
         except Exception as e:
             logger.error(f"Error in menu: {str(e)}")
@@ -187,36 +208,36 @@ class PhoenixCLI:
     
     def _active_trader_wallet_analysis(self):
         """Run 7-day active trader wallet analysis with enhanced strategies."""
-        print("\n" + "="*80)
-        print("    💰 7-DAY ACTIVE TRADER ANALYSIS")
-        print("    🎯 Focus: Recent winners with smart exit strategies")
-        print("    📊 Features: Custom TPs based on trader behavior")
-        print("="*80)
+        print("\n" + "="*80, flush=True)
+        print("    💰 7-DAY ACTIVE TRADER ANALYSIS", flush=True)
+        print("    🎯 Focus: Recent winners with smart exit strategies", flush=True)
+        print("    📊 Features: Custom TPs based on trader behavior", flush=True)
+        print("="*80, flush=True)
         
         # Check API configuration
         if not self.config.get("cielo_api_key"):
-            print("\n❌ CRITICAL: Cielo Finance API key required for wallet analysis!")
-            print("Please configure your Cielo Finance API key first (Option 1).")
+            print("\n❌ CRITICAL: Cielo Finance API key required for wallet analysis!", flush=True)
+            print("Please configure your Cielo Finance API key first (Option 1).", flush=True)
             input("Press Enter to continue...")
             return
         
         if not self.config.get("helius_api_key"):
-            print("\n⚠️ WARNING: Helius API key not configured!")
-            print("Pump.fun token analysis will be limited without Helius.")
-            print("Consider adding Helius API key for complete analysis.")
+            print("\n⚠️ WARNING: Helius API key not configured!", flush=True)
+            print("Pump.fun token analysis will be limited without Helius.", flush=True)
+            print("Consider adding Helius API key for complete analysis.", flush=True)
         
         # Load wallets
         wallets = load_wallets_from_file("wallets.txt")
         if not wallets:
-            print("\n❌ No wallets found in wallets.txt")
-            print("Please add wallet addresses to wallets.txt (one per line)")
+            print("\n❌ No wallets found in wallets.txt", flush=True)
+            print("Please add wallet addresses to wallets.txt (one per line)", flush=True)
             input("Press Enter to continue...")
             return
         
-        print(f"\n📁 Found {len(wallets)} wallets in wallets.txt")
+        print(f"\n📁 Found {len(wallets)} wallets in wallets.txt", flush=True)
         
         # Get analysis parameters
-        print("\n🔧 ANALYSIS PARAMETERS:")
+        print("\n🔧 ANALYSIS PARAMETERS:", flush=True)
         
         # Days to analyze (default 7)
         days_input = input("Days to analyze (default: 7, max: 30): ").strip()
@@ -225,14 +246,14 @@ class PhoenixCLI:
         else:
             days_to_analyze = 7
         
-        print(f"\n🚀 Starting 7-day active trader analysis...")
-        print(f"📊 Parameters:")
-        print(f"   • Wallets: {len(wallets)}")
-        print(f"   • Analysis period: {days_to_analyze} days")
-        print(f"   • Focus: Active traders only (traded in last 7 days)")
-        print(f"   • Strategy: Enhanced with TP guidance")
-        print(f"   • Export format: CSV with strategy details")
-        print("\nProcessing...")
+        print(f"\n🚀 Starting 7-day active trader analysis...", flush=True)
+        print(f"📊 Parameters:", flush=True)
+        print(f"   • Wallets: {len(wallets)}", flush=True)
+        print(f"   • Analysis period: {days_to_analyze} days", flush=True)
+        print(f"   • Focus: Active traders only (traded in last 7 days)", flush=True)
+        print(f"   • Strategy: Enhanced with TP guidance", flush=True)
+        print(f"   • Export format: CSV with strategy details", flush=True)
+        print("\nProcessing...", flush=True)
         
         try:
             # Initialize APIs
@@ -267,38 +288,38 @@ class PhoenixCLI:
                 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
                 output_file = ensure_output_dir(f"active_traders_7day_{timestamp}.csv")
                 self._export_active_trader_csv(results, output_file)
-                print(f"\n📄 Exported to CSV: {output_file}")
+                print(f"\n📄 Exported to CSV: {output_file}", flush=True)
                 
-                print("\n✅ 7-day active trader analysis completed successfully!")
+                print("\n✅ 7-day active trader analysis completed successfully!", flush=True)
                 
                 # Display API call statistics
                 if "api_calls" in results:
-                    print(f"\n📊 API CALL EFFICIENCY:")
-                    print(f"   Cielo: {results['api_calls']['cielo']} calls")
-                    print(f"   Birdeye: {results['api_calls']['birdeye']} calls")
-                    print(f"   Helius: {results['api_calls']['helius']} calls")
-                    print(f"   RPC: {results['api_calls']['rpc']} calls")
-                    print(f"   Total: {sum(results['api_calls'].values())} calls")
+                    print(f"\n📊 API CALL EFFICIENCY:", flush=True)
+                    print(f"   Cielo: {results['api_calls']['cielo']} calls", flush=True)
+                    print(f"   Birdeye: {results['api_calls']['birdeye']} calls", flush=True)
+                    print(f"   Helius: {results['api_calls']['helius']} calls", flush=True)
+                    print(f"   RPC: {results['api_calls']['rpc']} calls", flush=True)
+                    print(f"   Total: {sum(results['api_calls'].values())} calls", flush=True)
             else:
-                print(f"\n❌ Analysis failed: {results.get('error', 'Unknown error')}")
+                print(f"\n❌ Analysis failed: {results.get('error', 'Unknown error')}", flush=True)
                 
         except Exception as e:
-            print(f"\n❌ Error during wallet analysis: {str(e)}")
+            print(f"\n❌ Error during wallet analysis: {str(e)}", flush=True)
             logger.error(f"Wallet analysis error: {str(e)}")
         
         input("\nPress Enter to continue...")
     
     def _display_active_trader_results(self, results: Dict[str, Any]) -> None:
         """Display 7-day active trader analysis results."""
-        print("\n" + "="*80)
-        print("    📊 7-DAY ACTIVE TRADER ANALYSIS RESULTS")
-        print("="*80)
+        print("\n" + "="*80, flush=True)
+        print("    📊 7-DAY ACTIVE TRADER ANALYSIS RESULTS", flush=True)
+        print("="*80, flush=True)
         
         # Summary statistics
-        print(f"\n📈 SUMMARY:")
-        print(f"   Total wallets: {results['total_wallets']}")
-        print(f"   Successfully analyzed: {results['analyzed_wallets']}")
-        print(f"   Failed: {results['failed_wallets']}")
+        print(f"\n📈 SUMMARY:", flush=True)
+        print(f"   Total wallets: {results['total_wallets']}", flush=True)
+        print(f"   Successfully analyzed: {results['analyzed_wallets']}", flush=True)
+        print(f"   Failed: {results['failed_wallets']}", flush=True)
         
         # Count active vs inactive
         active_count = 0
@@ -315,8 +336,8 @@ class PhoenixCLI:
                 else:
                     inactive_count += 1
         
-        print(f"\n🟢 Active traders (7-day): {active_count}")
-        print(f"🔴 Inactive traders: {inactive_count}")
+        print(f"\n🟢 Active traders (7-day): {active_count}", flush=True)
+        print(f"🔴 Inactive traders: {inactive_count}", flush=True)
         
         # Sort all wallets by score
         all_wallets.sort(key=lambda x: x.get('composite_score', x['metrics'].get('composite_score', 0)), reverse=True)
@@ -325,7 +346,7 @@ class PhoenixCLI:
         active_wallets = [w for w in all_wallets if w.get('metrics', {}).get('active_trader', False)]
         
         if active_wallets:
-            print(f"\n🏆 TOP 10 ACTIVE TRADERS (Last 7 Days):")
+            print(f"\n🏆 TOP 10 ACTIVE TRADERS (Last 7 Days):", flush=True)
             for i, analysis in enumerate(active_wallets[:10], 1):
                 wallet = analysis['wallet_address']
                 metrics = analysis['metrics']
@@ -339,52 +360,52 @@ class PhoenixCLI:
                 else:
                     profit_factor_display = f"{profit_factor:.2f}x"
                 
-                print(f"\n{i}. Wallet: {wallet[:8]}...{wallet[-4:]}")
-                print(f"   Score: {composite_score:.1f}/100")
-                print(f"   Type: {analysis['wallet_type']}")
-                print(f"   === 7-DAY PERFORMANCE ===")
-                print(f"   Trades (7d): {metrics.get('trades_last_7_days', 0)} | Win Rate (7d): {metrics.get('win_rate_7d', 0):.1f}%")
-                print(f"   Profit (7d): ${metrics.get('profit_7d', 0):.2f}")
-                print(f"   Days since trade: {metrics.get('days_since_last_trade', 999)}")
-                print(f"   === OVERALL STATS ===")
-                print(f"   Total Trades: {metrics['total_trades']} | Win Rate: {metrics['win_rate']:.1f}%")
-                print(f"   Profit Factor: {profit_factor_display} | Net Profit: ${metrics['net_profit_usd']:.2f}")
-                print(f"   5x+ Gem Rate: {metrics.get('gem_rate_5x_plus', 0):.1f}%")
-                print(f"   Avg Hold: {metrics.get('avg_hold_time_minutes', 0):.1f} min")
-                print(f"   === STRATEGY RECOMMENDATION ===")
-                print(f"   Action: {strategy.get('recommendation', 'UNKNOWN')}")
-                print(f"   Follow Sells: {'YES ✅' if strategy.get('follow_sells', False) else 'NO ❌'}")
-                print(f"   TP1: {strategy.get('tp1_percent', 0)}% | TP2: {strategy.get('tp2_percent', 0)}%")
-                print(f"   Guidance: {strategy.get('tp_guidance', 'No guidance available')}")
+                print(f"\n{i}. Wallet: {wallet[:8]}...{wallet[-4:]}", flush=True)
+                print(f"   Score: {composite_score:.1f}/100", flush=True)
+                print(f"   Type: {analysis['wallet_type']}", flush=True)
+                print(f"   === 7-DAY PERFORMANCE ===", flush=True)
+                print(f"   Trades (7d): {metrics.get('trades_last_7_days', 0)} | Win Rate (7d): {metrics.get('win_rate_7d', 0):.1f}%", flush=True)
+                print(f"   Profit (7d): ${metrics.get('profit_7d', 0):.2f}", flush=True)
+                print(f"   Days since trade: {metrics.get('days_since_last_trade', 999)}", flush=True)
+                print(f"   === OVERALL STATS ===", flush=True)
+                print(f"   Total Trades: {metrics['total_trades']} | Win Rate: {metrics['win_rate']:.1f}%", flush=True)
+                print(f"   Profit Factor: {profit_factor_display} | Net Profit: ${metrics['net_profit_usd']:.2f}", flush=True)
+                print(f"   5x+ Gem Rate: {metrics.get('gem_rate_5x_plus', 0):.1f}%", flush=True)
+                print(f"   Avg Hold: {metrics.get('avg_hold_time_minutes', 0):.1f} min", flush=True)
+                print(f"   === STRATEGY RECOMMENDATION ===", flush=True)
+                print(f"   Action: {strategy.get('recommendation', 'UNKNOWN')}", flush=True)
+                print(f"   Follow Sells: {'YES ✅' if strategy.get('follow_sells', False) else 'NO ❌'}", flush=True)
+                print(f"   TP1: {strategy.get('tp1_percent', 0)}% | TP2: {strategy.get('tp2_percent', 0)}%", flush=True)
+                print(f"   Guidance: {strategy.get('tp_guidance', 'No guidance available')}", flush=True)
                 
                 # Entry/Exit Analysis
                 if 'entry_exit_analysis' in analysis:
                     ee_analysis = analysis['entry_exit_analysis']
-                    print(f"   Entry/Exit Quality: {ee_analysis['entry_quality']}/{ee_analysis['exit_quality']}")
+                    print(f"   Entry/Exit Quality: {ee_analysis['entry_quality']}/{ee_analysis['exit_quality']}", flush=True)
                     if ee_analysis.get('exit_quality') == 'POOR':
-                        print(f"   ⚠️ They miss {ee_analysis.get('missed_gains_percent', 0):.0f}% gains on average")
+                        print(f"   ⚠️ They miss {ee_analysis.get('missed_gains_percent', 0):.0f}% gains on average", flush=True)
                 
                 # Bundle detection
                 if 'bundle_analysis' in analysis and analysis['bundle_analysis'].get('is_likely_bundler'):
-                    print(f"   ⚠️ WARNING: Possible bundler detected!")
+                    print(f"   ⚠️ WARNING: Possible bundler detected!", flush=True)
                 
                 # 7-day distribution
-                print(f"   === 7-DAY DISTRIBUTION ===")
+                print(f"   === 7-DAY DISTRIBUTION ===", flush=True)
                 print(f"   5x+: {metrics.get('distribution_500_plus_%', 0):.1f}% | "
                       f"2-5x: {metrics.get('distribution_200_500_%', 0):.1f}% | "
-                      f"<2x: {metrics.get('distribution_0_200_%', 0):.1f}%")
+                      f"<2x: {metrics.get('distribution_0_200_%', 0):.1f}%", flush=True)
         
         # Category breakdown
-        print(f"\n📂 WALLET CATEGORIES:")
-        print(f"   🎯 Snipers (< 1 min hold): {len(results.get('snipers', []))}")
-        print(f"   ⚡ Flippers (1-10 min): {len(results.get('flippers', []))}")
-        print(f"   📊 Scalpers (10-60 min): {len(results.get('scalpers', []))}")
-        print(f"   💎 5x+ Gem Hunters: {len(results.get('gem_hunters', []))}")
-        print(f"   📈 Swing Traders (1-24h): {len(results.get('swing_traders', []))}")
-        print(f"   🏆 Position Traders (24h+): {len(results.get('position_traders', []))}")
+        print(f"\n📂 WALLET CATEGORIES:", flush=True)
+        print(f"   🎯 Snipers (< 1 min hold): {len(results.get('snipers', []))}", flush=True)
+        print(f"   ⚡ Flippers (1-10 min): {len(results.get('flippers', []))}", flush=True)
+        print(f"   📊 Scalpers (10-60 min): {len(results.get('scalpers', []))}", flush=True)
+        print(f"   💎 5x+ Gem Hunters: {len(results.get('gem_hunters', []))}", flush=True)
+        print(f"   📈 Swing Traders (1-24h): {len(results.get('swing_traders', []))}", flush=True)
+        print(f"   🏆 Position Traders (24h+): {len(results.get('position_traders', []))}", flush=True)
         
         # Key insights
-        print(f"\n📊 KEY INSIGHTS:")
+        print(f"\n📊 KEY INSIGHTS:", flush=True)
         if active_wallets:
             # Count recent winners
             recent_5x = sum(1 for w in active_wallets 
@@ -393,9 +414,9 @@ class PhoenixCLI:
                           if w.get('seven_day_metrics', {}).get('has_2x_last_7_days', False))
             
             if recent_5x > 0:
-                print(f"   🚀 {recent_5x} wallets hit 5x+ in last 7 days!")
+                print(f"   🚀 {recent_5x} wallets hit 5x+ in last 7 days!", flush=True)
             if recent_2x > 0:
-                print(f"   📈 {recent_2x} wallets hit 2x+ in last 7 days!")
+                print(f"   📈 {recent_2x} wallets hit 2x+ in last 7 days!", flush=True)
             
             # Exit quality breakdown
             good_exits = sum(1 for w in active_wallets 
@@ -403,8 +424,8 @@ class PhoenixCLI:
             poor_exits = sum(1 for w in active_wallets 
                            if w.get('entry_exit_analysis', {}).get('exit_quality') == 'POOR')
             
-            print(f"   ✅ {good_exits} wallets have good exit timing (follow their sells)")
-            print(f"   ❌ {poor_exits} wallets exit too early (use fixed TPs instead)")
+            print(f"   ✅ {good_exits} wallets have good exit timing (follow their sells)", flush=True)
+            print(f"   ❌ {poor_exits} wallets exit too early (use fixed TPs instead)", flush=True)
     
     def _export_active_trader_csv(self, results: Dict[str, Any], output_file: str) -> None:
         """Export 7-day active trader analysis to CSV with enhanced strategy columns."""
@@ -418,38 +439,38 @@ class PhoenixCLI:
     
     def _enhanced_telegram_analysis(self):
         """Run enhanced Telegram analysis with 5x+ focus."""
-        print("\n" + "="*80)
-        print("    🎯 ENHANCED SPYDEFI TELEGRAM ANALYSIS")
-        print("    📉 Max Pullback % + ⏱️ Time to 5x Analysis")
-        print("="*80)
+        print("\n" + "="*80, flush=True)
+        print("    🎯 ENHANCED SPYDEFI TELEGRAM ANALYSIS", flush=True)
+        print("    📉 Max Pullback % + ⏱️ Time to 5x Analysis", flush=True)
+        print("="*80, flush=True)
         
         # Check API configuration
         if not self.config.get("birdeye_api_key"):
-            print("\n❌ CRITICAL: Birdeye API key required for enhanced analysis!")
-            print("Please configure your Birdeye API key first (Option 1).")
+            print("\n❌ CRITICAL: Birdeye API key required for enhanced analysis!", flush=True)
+            print("Please configure your Birdeye API key first (Option 1).", flush=True)
             input("Press Enter to continue...")
             return
         
         if not self.config.get("telegram_api_id") or not self.config.get("telegram_api_hash"):
-            print("\n❌ CRITICAL: Telegram API credentials required!")
-            print("Please configure your Telegram API credentials first (Option 1).")
+            print("\n❌ CRITICAL: Telegram API credentials required!", flush=True)
+            print("Please configure your Telegram API credentials first (Option 1).", flush=True)
             input("Press Enter to continue...")
             return
         
-        print("\n🚀 Starting enhanced SpyDefi analysis...")
-        print("📅 Analysis period: 24 hours")
-        print("📁 Output: spydefi_analysis_enhanced.csv")
-        print("📊 Excel export: Enabled")
-        print("🎯 Enhanced features:")
-        print("   • ✅ Max pullback % for stop loss calculation")
-        print("   • ✅ Average time to reach 5x for gem hunting")
-        print("   • ✅ Enhanced contract address detection")
-        print("   • ✅ Detailed price analysis using Birdeye API")
+        print("\n🚀 Starting enhanced SpyDefi analysis...", flush=True)
+        print("📅 Analysis period: 24 hours", flush=True)
+        print("📁 Output: spydefi_analysis_enhanced.csv", flush=True)
+        print("📊 Excel export: Enabled", flush=True)
+        print("🎯 Enhanced features:", flush=True)
+        print("   • ✅ Max pullback % for stop loss calculation", flush=True)
+        print("   • ✅ Average time to reach 5x for gem hunting", flush=True)
+        print("   • ✅ Enhanced contract address detection", flush=True)
+        print("   • ✅ Detailed price analysis using Birdeye API", flush=True)
         if self.config.get("helius_api_key"):
-            print("   • ✅ Helius API for pump.fun token analysis")
+            print("   • ✅ Helius API for pump.fun token analysis", flush=True)
         else:
-            print("   • ⚠️ Helius API not configured - pump.fun analysis limited")
-        print("\nProcessing...")
+            print("   • ⚠️ Helius API not configured - pump.fun analysis limited", flush=True)
+        print("\nProcessing...", flush=True)
         
         # Create args object with defaults
         class Args:
@@ -464,11 +485,11 @@ class PhoenixCLI:
         
         try:
             self._handle_telegram_analysis(args)
-            print("\n✅ Enhanced analysis completed successfully!")
-            print("📁 Check the outputs folder for results")
+            print("\n✅ Enhanced analysis completed successfully!", flush=True)
+            print("📁 Check the outputs folder for results", flush=True)
             
         except Exception as e:
-            print(f"\n❌ Enhanced analysis failed: {str(e)}")
+            print(f"\n❌ Enhanced analysis failed: {str(e)}", flush=True)
             logger.error(f"Enhanced telegram analysis error: {str(e)}")
         
         input("\nPress Enter to continue...")
@@ -635,76 +656,76 @@ class PhoenixCLI:
     
     def _test_api_connectivity(self):
         """Test API connectivity."""
-        print("\n" + "="*70)
-        print("    🔍 API CONNECTIVITY TEST")
-        print("="*70)
+        print("\n" + "="*70, flush=True)
+        print("    🔍 API CONNECTIVITY TEST", flush=True)
+        print("="*70, flush=True)
         
         # Test Birdeye API
         if self.config.get("birdeye_api_key"):
-            print("\n🔍 Testing Birdeye API...")
+            print("\n🔍 Testing Birdeye API...", flush=True)
             try:
                 from birdeye_api import BirdeyeAPI
                 birdeye_api = BirdeyeAPI(self.config["birdeye_api_key"])
                 test_result = birdeye_api.get_token_info("So11111111111111111111111111111111111111112")
                 if test_result.get("success"):
-                    print("✅ Birdeye API: Connected successfully")
-                    print("   🎯 Mainstream token analysis: Available")
+                    print("✅ Birdeye API: Connected successfully", flush=True)
+                    print("   🎯 Mainstream token analysis: Available", flush=True)
                 else:
-                    print("❌ Birdeye API: Connection failed")
+                    print("❌ Birdeye API: Connection failed", flush=True)
             except Exception as e:
-                print(f"❌ Birdeye API: Error - {str(e)}")
+                print(f"❌ Birdeye API: Error - {str(e)}", flush=True)
         else:
-            print("❌ Birdeye API: Not configured")
+            print("❌ Birdeye API: Not configured", flush=True)
         
         # Test Helius API
         if self.config.get("helius_api_key"):
-            print("\n🚀 Testing Helius API...")
+            print("\n🚀 Testing Helius API...", flush=True)
             try:
                 from helius_api import HeliusAPI
                 helius_api = HeliusAPI(self.config["helius_api_key"])
                 if helius_api.health_check():
-                    print("✅ Helius API: Connected successfully")
-                    print("   🎯 Pump.fun token analysis: Available")
+                    print("✅ Helius API: Connected successfully", flush=True)
+                    print("   🎯 Pump.fun token analysis: Available", flush=True)
                 else:
-                    print("❌ Helius API: Connection failed")
+                    print("❌ Helius API: Connection failed", flush=True)
             except Exception as e:
-                print(f"❌ Helius API: Error - {str(e)}")
+                print(f"❌ Helius API: Error - {str(e)}", flush=True)
         else:
-            print("⚠️ Helius API: Not configured")
-            print("   ⚠️ Pump.fun token analysis will be limited")
+            print("⚠️ Helius API: Not configured", flush=True)
+            print("   ⚠️ Pump.fun token analysis will be limited", flush=True)
         
         # Test Cielo Finance API
         if self.config.get("cielo_api_key"):
-            print("\n💰 Testing Cielo Finance API...")
+            print("\n💰 Testing Cielo Finance API...", flush=True)
             try:
                 from cielo_api import CieloFinanceAPI
                 cielo_api = CieloFinanceAPI(self.config["cielo_api_key"])
                 if cielo_api.health_check():
-                    print("✅ Cielo Finance API: Connected successfully")
-                    print("   💰 Wallet analysis: Available")
+                    print("✅ Cielo Finance API: Connected successfully", flush=True)
+                    print("   💰 Wallet analysis: Available", flush=True)
                 else:
-                    print("❌ Cielo Finance API: Connection failed")
+                    print("❌ Cielo Finance API: Connection failed", flush=True)
             except Exception as e:
-                print(f"❌ Cielo Finance API: Error - {str(e)}")
+                print(f"❌ Cielo Finance API: Error - {str(e)}", flush=True)
         else:
-            print("❌ Cielo Finance API: Not configured")
-            print("   ⚠️ CRITICAL: Wallet analysis requires Cielo Finance API")
+            print("❌ Cielo Finance API: Not configured", flush=True)
+            print("   ⚠️ CRITICAL: Wallet analysis requires Cielo Finance API", flush=True)
         
         # Test Telegram API
         if self.config.get("telegram_api_id") and self.config.get("telegram_api_hash"):
-            print("\n📱 Testing Telegram API...")
+            print("\n📱 Testing Telegram API...", flush=True)
             try:
                 from telegram_module import TelegramScraper
-                print("✅ Telegram API: Configuration appears valid")
-                print("   📊 SpyDefi analysis: Available")
+                print("✅ Telegram API: Configuration appears valid", flush=True)
+                print("   📊 SpyDefi analysis: Available", flush=True)
             except Exception as e:
-                print(f"❌ Telegram API: Error - {str(e)}")
+                print(f"❌ Telegram API: Error - {str(e)}", flush=True)
         else:
-            print("❌ Telegram API: Not configured")
+            print("❌ Telegram API: Not configured", flush=True)
         
         # Test RPC Connection
-        print(f"\n🌐 Testing Solana RPC Connection...")
-        print(f"   RPC URL: {self.config.get('solana_rpc_url', 'Default')}")
+        print(f"\n🌐 Testing Solana RPC Connection...", flush=True)
+        print(f"   RPC URL: {self.config.get('solana_rpc_url', 'Default')}", flush=True)
         try:
             import requests
             response = requests.post(
@@ -713,104 +734,104 @@ class PhoenixCLI:
                 timeout=10
             )
             if response.status_code == 200:
-                print("✅ Solana RPC: Connected successfully")
+                print("✅ Solana RPC: Connected successfully", flush=True)
             else:
-                print(f"❌ Solana RPC: HTTP {response.status_code}")
+                print(f"❌ Solana RPC: HTTP {response.status_code}", flush=True)
         except Exception as e:
-            print(f"❌ Solana RPC: Error - {str(e)}")
+            print(f"❌ Solana RPC: Error - {str(e)}", flush=True)
         
         # Summary
-        print(f"\n📊 7-DAY ACTIVE TRADER FEATURES:")
+        print(f"\n📊 7-DAY ACTIVE TRADER FEATURES:", flush=True)
         birdeye_ok = bool(self.config.get("birdeye_api_key"))
         helius_ok = bool(self.config.get("helius_api_key"))
         telegram_ok = bool(self.config.get("telegram_api_id") and self.config.get("telegram_api_hash"))
         cielo_ok = bool(self.config.get("cielo_api_key"))
         
-        print(f"   🎯 Token Price Analysis: {'✅ Full' if (birdeye_ok and helius_ok) else '⚠️ Limited' if birdeye_ok else '❌ Not Available'}")
-        print(f"   💰 Wallet Analysis: {'✅ Ready' if cielo_ok else '❌ Need Cielo Finance API'}")
-        print(f"   📱 Telegram/SpyDefi: {'✅ Ready' if (birdeye_ok and telegram_ok) else '❌ Missing APIs'}")
-        print(f"   🎯 Market Cap Tracking: {'✅ Active' if birdeye_ok else '❌ Need Birdeye'}")
-        print(f"   ⚡ Bundle Detection: {'✅ Active' if cielo_ok else '❌ Need Cielo'}")
-        print(f"   📊 Entry/Exit Quality: {'✅ Full Analysis' if (birdeye_ok and helius_ok) else '⚠️ Basic Only'}")
-        print(f"   🚀 5x+ Gem Detection: {'✅ Active' if cielo_ok else '❌ Need Cielo'}")
-        print(f"   📈 7-Day Focus: {'✅ Active' if cielo_ok else '❌ Need Cielo'}")
-        print(f"   🎯 Enhanced Strategy: {'✅ Active' if cielo_ok else '❌ Need Cielo'}")
+        print(f"   🎯 Token Price Analysis: {'✅ Full' if (birdeye_ok and helius_ok) else '⚠️ Limited' if birdeye_ok else '❌ Not Available'}", flush=True)
+        print(f"   💰 Wallet Analysis: {'✅ Ready' if cielo_ok else '❌ Need Cielo Finance API'}", flush=True)
+        print(f"   📱 Telegram/SpyDefi: {'✅ Ready' if (birdeye_ok and telegram_ok) else '❌ Missing APIs'}", flush=True)
+        print(f"   🎯 Market Cap Tracking: {'✅ Active' if birdeye_ok else '❌ Need Birdeye'}", flush=True)
+        print(f"   ⚡ Bundle Detection: {'✅ Active' if cielo_ok else '❌ Need Cielo'}", flush=True)
+        print(f"   📊 Entry/Exit Quality: {'✅ Full Analysis' if (birdeye_ok and helius_ok) else '⚠️ Basic Only'}", flush=True)
+        print(f"   🚀 5x+ Gem Detection: {'✅ Active' if cielo_ok else '❌ Need Cielo'}", flush=True)
+        print(f"   📈 7-Day Focus: {'✅ Active' if cielo_ok else '❌ Need Cielo'}", flush=True)
+        print(f"   🎯 Enhanced Strategy: {'✅ Active' if cielo_ok else '❌ Need Cielo'}", flush=True)
         
         if birdeye_ok and helius_ok and telegram_ok and cielo_ok:
-            print(f"\n🎉 ALL SYSTEMS GO! Full 7-day active trader capabilities available.")
+            print(f"\n🎉 ALL SYSTEMS GO! Full 7-day active trader capabilities available.", flush=True)
         else:
-            print(f"\n⚠️ Configure missing APIs to enable all active trader features.")
+            print(f"\n⚠️ Configure missing APIs to enable all active trader features.", flush=True)
         
         input("\nPress Enter to continue...")
     
     def _interactive_configure(self):
         """Interactive configuration setup."""
-        print("\n" + "="*70)
-        print("    🔧 CONFIGURATION SETUP")
-        print("="*70)
+        print("\n" + "="*70, flush=True)
+        print("    🔧 CONFIGURATION SETUP", flush=True)
+        print("="*70, flush=True)
         
         # Birdeye API Key
         current_birdeye = self.config.get("birdeye_api_key", "")
         if current_birdeye:
-            print(f"\n🔑 Current Birdeye API Key: {current_birdeye[:8]}...")
+            print(f"\n🔑 Current Birdeye API Key: {current_birdeye[:8]}...", flush=True)
             change_birdeye = input("Change Birdeye API key? (y/N): ").lower().strip()
             if change_birdeye == 'y':
                 new_key = input("Enter new Birdeye API key: ").strip()
                 if new_key:
                     self.config["birdeye_api_key"] = new_key
-                    print("✅ Birdeye API key updated")
+                    print("✅ Birdeye API key updated", flush=True)
         else:
-            print("\n🔑 Birdeye API Key (REQUIRED for token analysis)")
-            print("   📊 Get your key from: https://birdeye.so")
+            print("\n🔑 Birdeye API Key (REQUIRED for token analysis)", flush=True)
+            print("   📊 Get your key from: https://birdeye.so", flush=True)
             new_key = input("Enter Birdeye API key: ").strip()
             if new_key:
                 self.config["birdeye_api_key"] = new_key
-                print("✅ Birdeye API key configured")
+                print("✅ Birdeye API key configured", flush=True)
         
         # Helius API Key
         current_helius = self.config.get("helius_api_key", "")
         if current_helius:
-            print(f"\n🚀 Current Helius API Key: {current_helius[:8]}...")
+            print(f"\n🚀 Current Helius API Key: {current_helius[:8]}...", flush=True)
             change_helius = input("Change Helius API key? (y/N): ").lower().strip()
             if change_helius == 'y':
                 new_key = input("Enter new Helius API key: ").strip()
                 if new_key:
                     self.config["helius_api_key"] = new_key
-                    print("✅ Helius API key updated")
+                    print("✅ Helius API key updated", flush=True)
         else:
-            print("\n🚀 Helius API Key (RECOMMENDED for pump.fun tokens)")
-            print("   📊 Required for complete memecoin analysis")
-            print("   🔑 Get your key from: https://helius.dev")
+            print("\n🚀 Helius API Key (RECOMMENDED for pump.fun tokens)", flush=True)
+            print("   📊 Required for complete memecoin analysis", flush=True)
+            print("   🔑 Get your key from: https://helius.dev", flush=True)
             new_key = input("Enter Helius API key (or press Enter to skip): ").strip()
             if new_key:
                 self.config["helius_api_key"] = new_key
-                print("✅ Helius API key configured")
-                print("   🎯 Pump.fun token analysis: Now available")
+                print("✅ Helius API key configured", flush=True)
+                print("   🎯 Pump.fun token analysis: Now available", flush=True)
             else:
-                print("⚠️ Skipped: Pump.fun token analysis will be limited")
+                print("⚠️ Skipped: Pump.fun token analysis will be limited", flush=True)
         
         # Cielo Finance API Key
         current_cielo = self.config.get("cielo_api_key", "")
         if current_cielo:
-            print(f"\n💰 Current Cielo Finance API Key: {current_cielo[:8]}...")
+            print(f"\n💰 Current Cielo Finance API Key: {current_cielo[:8]}...", flush=True)
             change_cielo = input("Change Cielo Finance API key? (y/N): ").lower().strip()
             if change_cielo == 'y':
                 new_key = input("Enter new Cielo Finance API key: ").strip()
                 if new_key:
                     self.config["cielo_api_key"] = new_key
-                    print("✅ Cielo Finance API key updated")
+                    print("✅ Cielo Finance API key updated", flush=True)
         else:
-            print("\n💰 Cielo Finance API Key (REQUIRED for wallet analysis)")
-            print("   🔑 Get your key from: https://cielo.finance")
+            print("\n💰 Cielo Finance API Key (REQUIRED for wallet analysis)", flush=True)
+            print("   🔑 Get your key from: https://cielo.finance", flush=True)
             new_key = input("Enter Cielo Finance API key: ").strip()
             if new_key:
                 self.config["cielo_api_key"] = new_key
-                print("✅ Cielo Finance API key configured")
+                print("✅ Cielo Finance API key configured", flush=True)
         
         # Telegram API credentials
         current_tg_id = self.config.get("telegram_api_id", "")
         if current_tg_id:
-            print(f"\n📱 Current Telegram API ID: {current_tg_id}")
+            print(f"\n📱 Current Telegram API ID: {current_tg_id}", flush=True)
             change_tg = input("Change Telegram API credentials? (y/N): ").lower().strip()
             if change_tg == 'y':
                 new_id = input("Enter new Telegram API ID: ").strip()
@@ -818,70 +839,70 @@ class PhoenixCLI:
                 if new_id and new_hash:
                     self.config["telegram_api_id"] = new_id
                     self.config["telegram_api_hash"] = new_hash
-                    print("✅ Telegram API credentials updated")
+                    print("✅ Telegram API credentials updated", flush=True)
         else:
-            print("\n📱 Telegram API Credentials (Required for SpyDefi analysis)")
-            print("   🔑 Get credentials from: https://my.telegram.org")
+            print("\n📱 Telegram API Credentials (Required for SpyDefi analysis)", flush=True)
+            print("   🔑 Get credentials from: https://my.telegram.org", flush=True)
             new_id = input("Enter Telegram API ID: ").strip()
             new_hash = input("Enter Telegram API Hash: ").strip()
             if new_id and new_hash:
                 self.config["telegram_api_id"] = new_id
                 self.config["telegram_api_hash"] = new_hash
-                print("✅ Telegram API credentials configured")
+                print("✅ Telegram API credentials configured", flush=True)
         
         # RPC URL
         current_rpc = self.config.get("solana_rpc_url", "https://api.mainnet-beta.solana.com")
-        print(f"\n🌐 Current RPC URL: {current_rpc}")
+        print(f"\n🌐 Current RPC URL: {current_rpc}", flush=True)
         change_rpc = input("Change RPC URL? (y/N): ").lower().strip()
         if change_rpc == 'y':
-            print("   Options:")
-            print("   1. Default Solana RPC")
-            print("   2. Custom RPC URL (P9, QuickNode, etc.)")
+            print("   Options:", flush=True)
+            print("   1. Default Solana RPC", flush=True)
+            print("   2. Custom RPC URL (P9, QuickNode, etc.)", flush=True)
             rpc_choice = input("Choose option (1-2): ").strip()
             if rpc_choice == '1':
                 self.config["solana_rpc_url"] = "https://api.mainnet-beta.solana.com"
-                print("✅ Using default Solana RPC")
+                print("✅ Using default Solana RPC", flush=True)
             elif rpc_choice == '2':
                 new_rpc = input("Enter custom RPC URL: ").strip()
                 if new_rpc:
                     self.config["solana_rpc_url"] = new_rpc
-                    print("✅ Custom RPC URL configured")
+                    print("✅ Custom RPC URL configured", flush=True)
         
         # Save configuration
         save_config(self.config)
-        print("\n✅ Configuration saved successfully!")
+        print("\n✅ Configuration saved successfully!", flush=True)
         
         input("\nPress Enter to continue...")
     
     def _check_configuration(self):
         """Check current configuration."""
-        print("\n" + "="*70)
-        print("    📋 CURRENT CONFIGURATION")
-        print("="*70)
+        print("\n" + "="*70, flush=True)
+        print("    📋 CURRENT CONFIGURATION", flush=True)
+        print("="*70, flush=True)
         
-        print(f"\n🔑 API KEYS:")
-        print(f"   Birdeye API Key: {'✅ Configured' if self.config.get('birdeye_api_key') else '❌ Not configured'}")
-        print(f"   Helius API Key: {'✅ Configured' if self.config.get('helius_api_key') else '⚠️ Not configured (optional)'}")
-        print(f"   Cielo Finance API Key: {'✅ Configured' if self.config.get('cielo_api_key') else '❌ Not configured'}")
-        print(f"   Telegram API ID: {'✅ Configured' if self.config.get('telegram_api_id') else '❌ Not configured'}")
-        print(f"   Telegram API Hash: {'✅ Configured' if self.config.get('telegram_api_hash') else '❌ Not configured'}")
+        print(f"\n🔑 API KEYS:", flush=True)
+        print(f"   Birdeye API Key: {'✅ Configured' if self.config.get('birdeye_api_key') else '❌ Not configured'}", flush=True)
+        print(f"   Helius API Key: {'✅ Configured' if self.config.get('helius_api_key') else '⚠️ Not configured (optional)'}", flush=True)
+        print(f"   Cielo Finance API Key: {'✅ Configured' if self.config.get('cielo_api_key') else '❌ Not configured'}", flush=True)
+        print(f"   Telegram API ID: {'✅ Configured' if self.config.get('telegram_api_id') else '❌ Not configured'}", flush=True)
+        print(f"   Telegram API Hash: {'✅ Configured' if self.config.get('telegram_api_hash') else '❌ Not configured'}", flush=True)
         
-        print(f"\n🌐 RPC ENDPOINT:")
-        print(f"   URL: {self.config.get('solana_rpc_url', 'Default')}")
+        print(f"\n🌐 RPC ENDPOINT:", flush=True)
+        print(f"   URL: {self.config.get('solana_rpc_url', 'Default')}", flush=True)
         
-        print(f"\n📊 DATA SOURCES:")
-        print(f"   Telegram Channels: {len(self.config.get('sources', {}).get('telegram_groups', []))}")
+        print(f"\n📊 DATA SOURCES:", flush=True)
+        print(f"   Telegram Channels: {len(self.config.get('sources', {}).get('telegram_groups', []))}", flush=True)
         for channel in self.config.get('sources', {}).get('telegram_groups', []):
-            print(f"      - {channel}")
+            print(f"      - {channel}", flush=True)
         
         # Show wallets from file
         wallets_from_file = load_wallets_from_file("wallets.txt")
-        print(f"\n💰 WALLETS:")
-        print(f"   Wallets in wallets.txt: {len(wallets_from_file)}")
+        print(f"\n💰 WALLETS:", flush=True)
+        print(f"   Wallets in wallets.txt: {len(wallets_from_file)}", flush=True)
         for wallet in wallets_from_file[:5]:
-            print(f"      - {wallet}")
+            print(f"      - {wallet}", flush=True)
         if len(wallets_from_file) > 5:
-            print(f"      ... and {len(wallets_from_file) - 5} more")
+            print(f"      ... and {len(wallets_from_file) - 5} more", flush=True)
         
         # Feature availability
         birdeye_ok = bool(self.config.get("birdeye_api_key"))
@@ -889,119 +910,119 @@ class PhoenixCLI:
         telegram_ok = bool(self.config.get("telegram_api_id") and self.config.get("telegram_api_hash"))
         cielo_ok = bool(self.config.get("cielo_api_key"))
         
-        print(f"\n🎯 7-DAY ACTIVE TRADER FEATURES:")
-        print(f"   Token Price Analysis: {'✅ Full' if (birdeye_ok and helius_ok) else '⚠️ Limited' if birdeye_ok else '❌ Not Available'}")
-        print(f"   Wallet Analysis: {'✅ Available' if cielo_ok else '❌ Not Available'}")
-        print(f"   Entry/Exit Quality: {'✅ Full' if (birdeye_ok and helius_ok) else '⚠️ Basic' if birdeye_ok else '❌ Not Available'}")
-        print(f"   Market Cap Tracking: {'✅ Active' if birdeye_ok else '❌ Not Available'}")
-        print(f"   Bundle Detection: {'✅ Active' if cielo_ok else '❌ Not Available'}")
-        print(f"   Enhanced Strategy: {'✅ Active' if cielo_ok else '❌ Not Available'}")
-        print(f"   7-Day Focus: {'✅ Active' if cielo_ok else '❌ Not Available'}")
+        print(f"\n🎯 7-DAY ACTIVE TRADER FEATURES:", flush=True)
+        print(f"   Token Price Analysis: {'✅ Full' if (birdeye_ok and helius_ok) else '⚠️ Limited' if birdeye_ok else '❌ Not Available'}", flush=True)
+        print(f"   Wallet Analysis: {'✅ Available' if cielo_ok else '❌ Not Available'}", flush=True)
+        print(f"   Entry/Exit Quality: {'✅ Full' if (birdeye_ok and helius_ok) else '⚠️ Basic' if birdeye_ok else '❌ Not Available'}", flush=True)
+        print(f"   Market Cap Tracking: {'✅ Active' if birdeye_ok else '❌ Not Available'}", flush=True)
+        print(f"   Bundle Detection: {'✅ Active' if cielo_ok else '❌ Not Available'}", flush=True)
+        print(f"   Enhanced Strategy: {'✅ Active' if cielo_ok else '❌ Not Available'}", flush=True)
+        print(f"   7-Day Focus: {'✅ Active' if cielo_ok else '❌ Not Available'}", flush=True)
         
         input("\nPress Enter to continue...")
     
     def _show_strategy_help(self):
         """Show help and strategy guidance."""
-        print("\n" + "="*80)
-        print("    📖 STRATEGY GUIDE - 7-Day Active Trader Edition")
-        print("="*80)
+        print("\n" + "="*80, flush=True)
+        print("    📖 STRATEGY GUIDE - 7-Day Active Trader Edition", flush=True)
+        print("="*80, flush=True)
         
-        print("\n🎯 WALLET SELECTION CRITERIA:")
-        print("• Active in last 7 days (recent trades)")
-        print("• Win rate 40%+ in last 7 days")
-        print("• At least 3 trades in last week")
-        print("• Hit 2x+ or 5x+ recently")
+        print("\n🎯 WALLET SELECTION CRITERIA:", flush=True)
+        print("• Active in last 7 days (recent trades)", flush=True)
+        print("• Win rate 40%+ in last 7 days", flush=True)
+        print("• At least 3 trades in last week", flush=True)
+        print("• Hit 2x+ or 5x+ recently", flush=True)
         
-        print("\n📊 ENHANCED STRATEGY RECOMMENDATIONS:")
+        print("\n📊 ENHANCED STRATEGY RECOMMENDATIONS:", flush=True)
         
-        print("\n1️⃣ FOLLOW SELLS = YES ✅")
-        print("   When: Exit Quality = GOOD or EXCELLENT")
-        print("   Why: They capture 60-80%+ of gains consistently")
-        print("   Action: Copy their exit timing directly")
+        print("\n1️⃣ FOLLOW SELLS = YES ✅", flush=True)
+        print("   When: Exit Quality = GOOD or EXCELLENT", flush=True)
+        print("   Why: They capture 60-80%+ of gains consistently", flush=True)
+        print("   Action: Copy their exit timing directly", flush=True)
         
-        print("\n2️⃣ FOLLOW SELLS = NO ❌")
-        print("   When: Exit Quality = POOR")
-        print("   Why: They exit too early, missing gains")
-        print("   Action: Use fixed TPs instead:")
-        print("   • If they avg 30% TP but miss 100%+ → Set TP1=60%, TP2=150%")
-        print("   • If they avg 50% TP but miss 200%+ → Set TP1=100%, TP2=300%")
+        print("\n2️⃣ FOLLOW SELLS = NO ❌", flush=True)
+        print("   When: Exit Quality = POOR", flush=True)
+        print("   Why: They exit too early, missing gains", flush=True)
+        print("   Action: Use fixed TPs instead:", flush=True)
+        print("   • If they avg 30% TP but miss 100%+ → Set TP1=60%, TP2=150%", flush=True)
+        print("   • If they avg 50% TP but miss 200%+ → Set TP1=100%, TP2=300%", flush=True)
         
-        print("\n📈 SELL STRATEGIES EXPLAINED:")
-        print("• COPY_EXITS: Follow their sells exactly")
-        print("• USE_FIXED_TP: Ignore their sells, use your TPs")
-        print("• HYBRID: Consider their exits but hold longer")
-        print("• FOLLOW_GEMS: For 5x+ hunters, let winners run")
+        print("\n📈 SELL STRATEGIES EXPLAINED:", flush=True)
+        print("• COPY_EXITS: Follow their sells exactly", flush=True)
+        print("• USE_FIXED_TP: Ignore their sells, use your TPs", flush=True)
+        print("• HYBRID: Consider their exits but hold longer", flush=True)
+        print("• FOLLOW_GEMS: For 5x+ hunters, let winners run", flush=True)
         
-        print("\n💎 WALLET TYPES & TYPICAL TPs:")
-        print("• Sniper: TP1=50-100% (quick profits)")
-        print("• Flipper: TP1=30-50% (fast turnover)")
-        print("• Scalper: TP1=20-50% (consistent gains)")
-        print("• Gem Hunter: TP1=400%+ (hold for 5x+)")
-        print("• Swing Trader: TP1=100-200% (patience pays)")
+        print("\n💎 WALLET TYPES & TYPICAL TPs:", flush=True)
+        print("• Sniper: TP1=50-100% (quick profits)", flush=True)
+        print("• Flipper: TP1=30-50% (fast turnover)", flush=True)
+        print("• Scalper: TP1=20-50% (consistent gains)", flush=True)
+        print("• Gem Hunter: TP1=400%+ (hold for 5x+)", flush=True)
+        print("• Swing Trader: TP1=100-200% (patience pays)", flush=True)
         
-        print("\n⚠️ RED FLAGS TO WATCH:")
-        print("• Days since trade > 3 = Getting inactive")
-        print("• Exit quality = POOR = Don't follow sells")
-        print("• Bundle warning = Verify on-chain first")
-        print("• Missed gains > 200% = They panic sell")
+        print("\n⚠️ RED FLAGS TO WATCH:", flush=True)
+        print("• Days since trade > 3 = Getting inactive", flush=True)
+        print("• Exit quality = POOR = Don't follow sells", flush=True)
+        print("• Bundle warning = Verify on-chain first", flush=True)
+        print("• Missed gains > 200% = They panic sell", flush=True)
         
-        print("\n📊 7-DAY DISTRIBUTION FOCUS:")
-        print("Look for wallets with high % in:")
-        print("• 500%+ bucket (5x+ trades)")
-        print("• 200-500% bucket (2x-5x trades)")
-        print("And low % in:")
-        print("• Below -50% bucket (catastrophic losses)")
+        print("\n📊 7-DAY DISTRIBUTION FOCUS:", flush=True)
+        print("Look for wallets with high % in:", flush=True)
+        print("• 500%+ bucket (5x+ trades)", flush=True)
+        print("• 200-500% bucket (2x-5x trades)", flush=True)
+        print("And low % in:", flush=True)
+        print("• Below -50% bucket (catastrophic losses)", flush=True)
         
-        print("\n🔧 COMMAND LINE USAGE:")
-        print("# Configure all APIs")
-        print("python phoenix.py configure --birdeye-api-key KEY --helius-api-key KEY --cielo-api-key KEY")
-        print()
-        print("# Analyze active traders (7-day default)")
-        print("python phoenix.py wallet --days 7")
+        print("\n🔧 COMMAND LINE USAGE:", flush=True)
+        print("# Configure all APIs", flush=True)
+        print("python phoenix.py configure --birdeye-api-key KEY --helius-api-key KEY --cielo-api-key KEY", flush=True)
+        print("", flush=True)
+        print("# Analyze active traders (7-day default)", flush=True)
+        print("python phoenix.py wallet --days 7", flush=True)
         
         input("\nPress Enter to continue...")
     
     def _view_current_sources(self):
         """View current data sources."""
-        print("\n" + "="*70)
-        print("    📂 CURRENT DATA SOURCES")
-        print("="*70)
+        print("\n" + "="*70, flush=True)
+        print("    📂 CURRENT DATA SOURCES", flush=True)
+        print("="*70, flush=True)
         
         # Telegram channels
         channels = self.config.get('sources', {}).get('telegram_groups', [])
-        print(f"\n📱 TELEGRAM CHANNELS ({len(channels)}):")
+        print(f"\n📱 TELEGRAM CHANNELS ({len(channels)}):", flush=True)
         if channels:
             for i, channel in enumerate(channels, 1):
-                print(f"   {i}. {channel}")
+                print(f"   {i}. {channel}", flush=True)
         else:
-            print("   No channels configured")
+            print("   No channels configured", flush=True)
         
         # Wallets file
         wallets = load_wallets_from_file("wallets.txt")
-        print(f"\n💰 WALLETS FROM FILE ({len(wallets)}):")
+        print(f"\n💰 WALLETS FROM FILE ({len(wallets)}):", flush=True)
         if wallets:
             # Count active wallets (would need actual analysis to be accurate)
-            print(f"   Total wallets: {len(wallets)}")
+            print(f"   Total wallets: {len(wallets)}", flush=True)
             for i, wallet in enumerate(wallets[:10], 1):
-                print(f"   {i}. {wallet[:8]}...{wallet[-4:]}")
+                print(f"   {i}. {wallet[:8]}...{wallet[-4:]}", flush=True)
             if len(wallets) > 10:
-                print(f"   ... and {len(wallets) - 10} more wallets")
-            print("\n   Note: Run analysis to see active/inactive breakdown")
+                print(f"   ... and {len(wallets) - 10} more wallets", flush=True)
+            print("\n   Note: Run analysis to see active/inactive breakdown", flush=True)
         else:
-            print("   No wallets found in wallets.txt")
+            print("   No wallets found in wallets.txt", flush=True)
         
         # API Status
-        print(f"\n🔌 API STATUS:")
-        print(f"   Birdeye: {'✅ Configured' if self.config.get('birdeye_api_key') else '❌ Not configured'}")
-        print(f"   Helius: {'✅ Configured' if self.config.get('helius_api_key') else '⚠️ Not configured'}")
-        print(f"   Cielo: {'✅ Configured' if self.config.get('cielo_api_key') else '❌ Not configured'}")
-        print(f"   Telegram: {'✅ Configured' if self.config.get('telegram_api_id') else '❌ Not configured'}")
+        print(f"\n🔌 API STATUS:", flush=True)
+        print(f"   Birdeye: {'✅ Configured' if self.config.get('birdeye_api_key') else '❌ Not configured'}", flush=True)
+        print(f"   Helius: {'✅ Configured' if self.config.get('helius_api_key') else '⚠️ Not configured'}", flush=True)
+        print(f"   Cielo: {'✅ Configured' if self.config.get('cielo_api_key') else '❌ Not configured'}", flush=True)
+        print(f"   Telegram: {'✅ Configured' if self.config.get('telegram_api_id') else '❌ Not configured'}", flush=True)
         
         # Analysis settings
-        print(f"\n⚙️ ANALYSIS SETTINGS:")
-        print(f"   Default period: 7 days (active traders)")
-        print(f"   Focus: Recent performance & activity")
-        print(f"   Strategy: Enhanced with TP guidance")
+        print(f"\n⚙️ ANALYSIS SETTINGS:", flush=True)
+        print(f"   Default period: 7 days (active traders)", flush=True)
+        print(f"   Focus: Recent performance & activity", flush=True)
+        print(f"   Strategy: Enhanced with TP guidance", flush=True)
         
         input("\nPress Enter to continue...")
     

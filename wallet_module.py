@@ -7,6 +7,14 @@ MAJOR UPDATES:
 - Removed redundant confidence/tier/rating fields
 - Active trader detection and scoring
 - Smart sell following based on exit quality
+
+FIXES IMPLEMENTED:
+- Fixed NoneType comparison error in timestamp handling
+- Added progress indicators for long operations
+- Improved error handling in swap extraction
+- Added timeout handling for RPC calls
+- Validate swap data before processing
+- Improved console output with progress tracking
 """
 
 import csv
@@ -16,6 +24,7 @@ import numpy as np
 import requests
 import json
 import time
+import sys
 from typing import Dict, List, Any, Optional, Tuple
 from datetime import datetime, timedelta
 from collections import defaultdict, Counter
@@ -24,6 +33,30 @@ import threading
 from functools import lru_cache
 
 logger = logging.getLogger("phoenix.wallet")
+
+# Progress indicator for console
+class ProgressIndicator:
+    """Simple progress indicator for console output."""
+    def __init__(self, total: int, prefix: str = "Progress"):
+        self.total = total
+        self.current = 0
+        self.prefix = prefix
+        self.last_update = 0
+        
+    def update(self, increment: int = 1):
+        """Update progress and display."""
+        self.current += increment
+        current_time = time.time()
+        
+        # Update every 0.5 seconds or when complete
+        if current_time - self.last_update > 0.5 or self.current >= self.total:
+            percentage = (self.current / self.total * 100) if self.total > 0 else 0
+            print(f"\r{self.prefix}: {self.current}/{self.total} ({percentage:.1f}%)", end="", flush=True)
+            sys.stdout.flush()  # Force flush
+            self.last_update = current_time
+            
+            if self.current >= self.total:
+                print()  # New line when complete
 
 class CieloFinanceAPIError(Exception):
     """Custom exception for Cielo Finance API errors."""
@@ -57,6 +90,10 @@ class WalletAnalyzer:
     
     # 7-day focus constant
     DAYS_TO_ANALYZE = 7
+    
+    # RPC timeout settings
+    RPC_TIMEOUT = 45  # Increased timeout
+    RPC_MAX_RETRIES = 3
     
     def __init__(self, cielo_api: Any, birdeye_api: Any = None, helius_api: Any = None, 
                  rpc_url: str = "https://api.mainnet-beta.solana.com"):
@@ -151,8 +188,11 @@ class WalletAnalyzer:
         with self._cache_lock:
             self._rpc_cache[cache_key] = (data, time.time())
     
-    def _make_rpc_call(self, method: str, params: List[Any], retry_count: int = 3) -> Dict[str, Any]:
+    def _make_rpc_call(self, method: str, params: List[Any], retry_count: int = None) -> Dict[str, Any]:
         """Make direct RPC call to Solana node with caching and rate limiting."""
+        if retry_count is None:
+            retry_count = self.RPC_MAX_RETRIES
+            
         cache_key = self._get_cache_key(method, params)
         cached_result = self._get_from_cache(cache_key)
         if cached_result is not None:
@@ -176,7 +216,7 @@ class WalletAnalyzer:
                     self.rpc_url,
                     json=payload,
                     headers={"Content-Type": "application/json"},
-                    timeout=30
+                    timeout=self.RPC_TIMEOUT
                 )
                 
                 if response.status_code == 429:
@@ -262,9 +302,12 @@ class WalletAnalyzer:
         else:
             return {}
     
-    def _batch_get_transactions(self, signatures: List[str]) -> List[Dict[str, Any]]:
-        """Get multiple transactions in a more efficient way."""
+    def _batch_get_transactions(self, signatures: List[str], show_progress: bool = True) -> List[Dict[str, Any]]:
+        """Get multiple transactions in a more efficient way with progress tracking."""
         transactions = []
+        
+        if show_progress:
+            progress = ProgressIndicator(len(signatures), "Fetching transactions")
         
         for i, signature in enumerate(signatures):
             if i > 0 and i % 10 == 0:
@@ -274,6 +317,9 @@ class WalletAnalyzer:
             tx = self._get_transaction(signature)
             if tx:
                 transactions.append(tx)
+            
+            if show_progress:
+                progress.update()
                 
         return transactions
     
@@ -298,13 +344,17 @@ class WalletAnalyzer:
             return self.INITIAL_SCAN_TOKENS, "INITIAL"
     
     def _calculate_7day_metrics(self, recent_swaps: List[Dict[str, Any]]) -> Dict[str, Any]:
-        """Calculate metrics from last 7 days of trading."""
+        """Calculate metrics from last 7 days of trading with fixed timestamp handling."""
         seven_days_ago = int((datetime.now() - timedelta(days=7)).timestamp())
         
-        # Filter swaps to last 7 days
+        # Filter swaps to last 7 days - FIXED: Handle None timestamps
         recent_trades = []
         for swap in recent_swaps:
-            if swap.get('buy_timestamp', 0) >= seven_days_ago:
+            buy_timestamp = swap.get('buy_timestamp')
+            # Convert None to 0 or skip
+            if buy_timestamp is None:
+                continue
+            if isinstance(buy_timestamp, (int, float)) and buy_timestamp >= seven_days_ago:
                 recent_trades.append(swap)
         
         if not recent_trades:
@@ -314,7 +364,8 @@ class WalletAnalyzer:
                 "profit_7d": 0,
                 "has_5x_last_7_days": False,
                 "has_2x_last_7_days": False,
-                "active_trader": False
+                "active_trader": False,
+                "days_since_last_trade": 999
             }
         
         # Calculate 7-day metrics
@@ -337,16 +388,41 @@ class WalletAnalyzer:
         if not trades:
             return 999
         
-        latest_timestamp = max(t.get('buy_timestamp', 0) for t in trades)
+        latest_timestamp = 0
+        for t in trades:
+            buy_ts = t.get('buy_timestamp')
+            if buy_ts and isinstance(buy_ts, (int, float)):
+                latest_timestamp = max(latest_timestamp, buy_ts)
+        
         if latest_timestamp == 0:
             return 999
         
         days_ago = (datetime.now().timestamp() - latest_timestamp) / 86400
         return int(days_ago)
     
+    def _validate_swap_data(self, swap: Dict[str, Any]) -> bool:
+        """Validate swap data before processing."""
+        # Check required fields
+        required_fields = ['token_mint', 'type']
+        for field in required_fields:
+            if field not in swap:
+                return False
+        
+        # Check timestamp validity
+        buy_timestamp = swap.get('buy_timestamp')
+        if swap.get('type') == 'buy':
+            if not buy_timestamp or not isinstance(buy_timestamp, (int, float)):
+                return False
+            # Sanity check - not in future, not too old
+            current_time = int(datetime.now().timestamp())
+            if buy_timestamp > current_time or buy_timestamp < (current_time - 365 * 86400):
+                return False
+        
+        return True
+    
     def analyze_wallet_hybrid(self, wallet_address: str, days_back: int = 7) -> Dict[str, Any]:
         """
-        UPDATED hybrid wallet analysis with 7-day focus.
+        UPDATED hybrid wallet analysis with 7-day focus and better error handling.
         
         Args:
             wallet_address (str): Wallet address
@@ -356,10 +432,12 @@ class WalletAnalyzer:
             Dict[str, Any]: Wallet analysis results
         """
         logger.info(f"🔍 Analyzing wallet {wallet_address} (7-day active trader focus)")
+        print(f"\n📊 Starting analysis for {wallet_address[:8]}...{wallet_address[-4:]}", flush=True)
         
         try:
             # Step 1: Get aggregated stats from Cielo Finance (still useful for overall picture)
             logger.info(f"📊 Fetching Cielo Finance aggregated stats...")
+            print("   • Fetching wallet stats from Cielo Finance...", flush=True)
             self.api_call_stats["cielo"] += 1
             cielo_stats = self.cielo_api.get_wallet_trading_stats(wallet_address)
             
@@ -372,7 +450,22 @@ class WalletAnalyzer:
             
             # Step 2: Get recent token swaps (last 7 days for tier determination)
             logger.info(f"📈 Getting last 7 days of trading activity...")
+            print("   • Fetching recent trades (this may take a moment)...", flush=True)
             recent_swaps_all = self._get_recent_token_swaps_rpc(wallet_address, limit=100)
+            
+            # Validate swaps
+            valid_swaps = []
+            invalid_count = 0
+            for swap in recent_swaps_all:
+                if self._validate_swap_data(swap):
+                    valid_swaps.append(swap)
+                else:
+                    invalid_count += 1
+            
+            if invalid_count > 0:
+                logger.warning(f"Filtered out {invalid_count} invalid swaps")
+            
+            recent_swaps_all = valid_swaps
             
             # Calculate 7-day metrics for tier determination
             seven_day_metrics = self._calculate_7day_metrics(recent_swaps_all)
@@ -386,13 +479,17 @@ class WalletAnalyzer:
             logger.info(f"   7-day profit: ${seven_day_metrics['profit_7d']:.2f}")
             logger.info(f"   Days since last trade: {seven_day_metrics['days_since_last_trade']}")
             
+            print(f"   • Wallet tier: {tier} ({seven_day_metrics['trades_last_7_days']} trades in 7 days)", flush=True)
+            
             # Get only the swaps we need for detailed analysis
             recent_swaps = recent_swaps_all[:scan_limit]
             
             # Step 4: Analyze token performance with market cap data
+            print(f"   • Analyzing {len(recent_swaps)} trades in detail...", flush=True)
             analyzed_trades = []
             
             if recent_swaps:
+                progress = ProgressIndicator(len(recent_swaps), "   Analyzing trades")
                 for i, swap in enumerate(recent_swaps):
                     if i > 0:
                         time.sleep(0.5)
@@ -400,7 +497,7 @@ class WalletAnalyzer:
                     # Enhanced analysis with market cap
                     token_analysis = self._analyze_token_with_market_cap(
                         swap['token_mint'],
-                        swap['buy_timestamp'],
+                        swap.get('buy_timestamp'),
                         swap.get('sell_timestamp'),
                         swap
                     )
@@ -410,8 +507,11 @@ class WalletAnalyzer:
                             **swap,
                             **token_analysis
                         })
+                    
+                    progress.update()
             
             # Step 5: Calculate enhanced metrics with 7-day focus
+            print("   • Calculating performance metrics...", flush=True)
             enhanced_metrics = self._calculate_enhanced_memecoin_metrics_7day(
                 aggregated_metrics, 
                 analyzed_trades,
@@ -440,6 +540,8 @@ class WalletAnalyzer:
                        f"Helius: {self.api_call_stats['helius']}, "
                        f"RPC: {self.api_call_stats['rpc']}")
             
+            print(f"   ✅ Analysis complete! Score: {composite_score}/100, Type: {wallet_type}", flush=True)
+            
             return {
                 "success": True,
                 "wallet_address": wallet_address,
@@ -463,6 +565,8 @@ class WalletAnalyzer:
             logger.error(f"Error in hybrid wallet analysis: {str(e)}")
             import traceback
             logger.error(f"Full traceback: {traceback.format_exc()}")
+            
+            print(f"   ❌ Analysis failed: {str(e)}", flush=True)
             
             empty_metrics = self._get_empty_metrics()
             return {
@@ -490,6 +594,14 @@ class WalletAnalyzer:
                                      swap_data: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """Analyze token with market cap data."""
         try:
+            # Skip if no valid buy timestamp
+            if not buy_timestamp or not isinstance(buy_timestamp, (int, float)):
+                return {
+                    "success": False,
+                    "error": "Invalid buy timestamp",
+                    "token_address": token_mint
+                }
+            
             # Get token info including market cap
             token_info = {}
             market_cap_at_buy = 0
@@ -540,7 +652,7 @@ class WalletAnalyzer:
                         entry_timing = "POOR"
                     
                     # Analyze exit timing if sold
-                    if sell_timestamp:
+                    if sell_timestamp and isinstance(sell_timestamp, (int, float)):
                         roi_at_exit = roi_percent
                         capture_ratio = roi_at_exit / max_roi_percent if max_roi_percent > 0 else 0
                         
@@ -558,7 +670,7 @@ class WalletAnalyzer:
             # Calculate hold time
             hold_time_seconds = 0
             hold_time_minutes = 0
-            if buy_timestamp and sell_timestamp:
+            if buy_timestamp and sell_timestamp and isinstance(sell_timestamp, (int, float)):
                 hold_time_seconds = sell_timestamp - buy_timestamp
                 hold_time_minutes = hold_time_seconds / 60
             
@@ -597,11 +709,15 @@ class WalletAnalyzer:
                                        swap_data: Optional[Dict[str, Any]]) -> Dict[str, Any]:
         """Get price history with multiple fallback options."""
         try:
+            # Skip if no valid timestamps
+            if not buy_timestamp or not isinstance(buy_timestamp, (int, float)):
+                return {}
+                
             # Try Birdeye first
             if self.birdeye_api and not token_mint.endswith("pump"):
                 self.api_call_stats["birdeye"] += 1
                 current_time = int(datetime.now().timestamp())
-                end_time = sell_timestamp if sell_timestamp else current_time
+                end_time = sell_timestamp if sell_timestamp and isinstance(sell_timestamp, (int, float)) else current_time
                 
                 history = self.birdeye_api.get_token_price_history(
                     token_mint,
@@ -653,7 +769,11 @@ class WalletAnalyzer:
             
             # Filter trades to last 7 days for distribution calculation
             seven_days_ago = int((datetime.now() - timedelta(days=7)).timestamp())
-            recent_trades = [t for t in analyzed_trades if t.get('buy_timestamp', 0) >= seven_days_ago]
+            recent_trades = []
+            for t in analyzed_trades:
+                buy_ts = t.get('buy_timestamp')
+                if buy_ts and isinstance(buy_ts, (int, float)) and buy_ts >= seven_days_ago:
+                    recent_trades.append(t)
             
             # Calculate 7-day distribution
             if recent_trades:
@@ -1061,7 +1181,7 @@ class WalletAnalyzer:
             }
         
         # Only analyze completed trades
-        completed = [t for t in trades if t.get("sell_timestamp")]
+        completed = [t for t in trades if t.get("sell_timestamp") and isinstance(t.get("sell_timestamp"), (int, float))]
         
         if not completed:
             return {
@@ -1244,7 +1364,14 @@ class WalletAnalyzer:
                     bundle_indicators += 1
             
             # 2. Check for rapid succession trades
-            buy_timestamps = sorted([s.get("buy_timestamp", 0) for s in recent_swaps if s.get("buy_timestamp")])
+            buy_timestamps = []
+            for s in recent_swaps:
+                if s.get("type") == "buy" and s.get("buy_timestamp"):
+                    ts = s.get("buy_timestamp")
+                    if isinstance(ts, (int, float)):
+                        buy_timestamps.append(ts)
+            
+            buy_timestamps.sort()
             rapid_buys = 0
             for i in range(1, len(buy_timestamps)):
                 if buy_timestamps[i] - buy_timestamps[i-1] < 5:
@@ -1254,7 +1381,14 @@ class WalletAnalyzer:
                 bundle_indicators += 1
             
             # 3. Check for similar sell patterns
-            sell_timestamps = sorted([s.get("sell_timestamp", 0) for s in recent_swaps if s.get("sell_timestamp")])
+            sell_timestamps = []
+            for s in recent_swaps:
+                if s.get("type") == "sell" and s.get("sell_timestamp"):
+                    ts = s.get("sell_timestamp")
+                    if isinstance(ts, (int, float)):
+                        sell_timestamps.append(ts)
+            
+            sell_timestamps.sort()
             rapid_sells = 0
             for i in range(1, len(sell_timestamps)):
                 if sell_timestamps[i] - sell_timestamps[i-1] < 10:
@@ -1280,7 +1414,7 @@ class WalletAnalyzer:
                 "bundle_indicators": bundle_indicators,
                 "rapid_succession_buys": rapid_buys,
                 "rapid_succession_sells": rapid_sells,
-                "buy_amount_consistency": "HIGH" if amount_variance < 0.1 else "LOW",
+                "buy_amount_consistency": "HIGH" if amount_variance < 0.1 else "LOW" if buy_amounts else "UNKNOWN",
                 "estimated_copytraders": estimated_copytraders,
                 "warning": "⚠️ Possible bundler - verify on-chain" if is_likely_bundler else ""
             }
@@ -1437,9 +1571,10 @@ class WalletAnalyzer:
         }
     
     def _get_recent_token_swaps_rpc(self, wallet_address: str, limit: int = 100) -> List[Dict[str, Any]]:
-        """Get recent token swaps using RPC calls with better rate limiting."""
+        """Get recent token swaps using RPC calls with better rate limiting and progress tracking."""
         try:
             logger.info(f"Fetching last {limit} token swaps for {wallet_address}")
+            print(f"\n   Fetching transaction signatures...", flush=True)
             
             signatures = self._get_signatures_for_address(wallet_address, limit=min(limit * 2, 200))
             
@@ -1447,6 +1582,7 @@ class WalletAnalyzer:
                 logger.warning(f"No transactions found for {wallet_address}")
                 return []
             
+            print(f"   Found {len(signatures)} signatures, analyzing transactions...", flush=True)
             swaps = []
             sig_infos = []
             
@@ -1458,7 +1594,10 @@ class WalletAnalyzer:
                 if signature:
                     sig_infos.append(sig_info)
             
+            # Process in batches with progress tracking
             batch_size = 10
+            progress = ProgressIndicator(len(sig_infos), "   Processing transactions")
+            
             for i in range(0, len(sig_infos), batch_size):
                 batch = sig_infos[i:i + batch_size]
                 batch_signatures = [s.get("signature") for s in batch if s.get("signature")]
@@ -1472,6 +1611,8 @@ class WalletAnalyzer:
                         swap_info = self._extract_token_swaps_from_transaction(tx_details, wallet_address)
                         if swap_info:
                             swaps.extend(swap_info)
+                    
+                    progress.update()
                 
                 if i + batch_size < len(sig_infos):
                     time.sleep(1)
@@ -1494,16 +1635,20 @@ class WalletAnalyzer:
             
             meta = tx_details["meta"]
             
+            # Get block time with validation
             block_time = tx_details.get("blockTime")
-            if not block_time or block_time == 0:
-                block_time = int(datetime.now().timestamp() - 86400)
-                logger.debug(f"Using fallback timestamp: {block_time}")
-            
-            # Sanity check
             current_time = int(datetime.now().timestamp())
-            if block_time > current_time:
+            
+            # Validate timestamp
+            if not block_time or not isinstance(block_time, (int, float)):
+                block_time = current_time - 86400  # Default to 1 day ago
+                logger.debug(f"Invalid blockTime, using default: {block_time}")
+            elif block_time > current_time:
                 logger.warning(f"Future timestamp detected: {block_time}, adjusting to current time")
                 block_time = current_time
+            elif block_time < (current_time - 365 * 86400):
+                logger.warning(f"Very old timestamp detected: {block_time}, skipping")
+                return []
             
             pre_balances = meta.get("preTokenBalances", [])
             post_balances = meta.get("postTokenBalances", [])
@@ -1583,7 +1728,9 @@ class WalletAnalyzer:
                         "estimated_price": estimated_price
                     }
                     
-                    swaps.append(swap_data)
+                    # Validate swap data before adding
+                    if self._validate_swap_data(swap_data):
+                        swaps.append(swap_data)
             
         except Exception as e:
             logger.error(f"Error extracting swaps from transaction: {str(e)}")
@@ -1644,6 +1791,7 @@ class WalletAnalyzer:
                             use_hybrid: bool = True) -> Dict[str, Any]:
         """Batch analyze multiple wallets with 7-day focus."""
         logger.info(f"Batch analyzing {len(wallet_addresses)} wallets (7-day active trader focus)")
+        print(f"\n🚀 Starting batch analysis of {len(wallet_addresses)} wallets...\n", flush=True)
         
         if not wallet_addresses:
             return {
@@ -1669,6 +1817,9 @@ class WalletAnalyzer:
             
             for i, wallet_address in enumerate(wallet_addresses, 1):
                 logger.info(f"Analyzing wallet {i}/{len(wallet_addresses)}: {wallet_address}")
+                print(f"\n{'='*60}", flush=True)
+                print(f"Wallet {i}/{len(wallet_addresses)}: {wallet_address}", flush=True)
+                print(f"{'='*60}", flush=True)
                 
                 try:
                     if use_hybrid:
@@ -1692,6 +1843,7 @@ class WalletAnalyzer:
                         
                 except Exception as e:
                     logger.error(f"Error analyzing wallet {wallet_address}: {str(e)}")
+                    print(f"   ❌ Analysis failed: {str(e)}", flush=True)
                     failed_analyses.append({
                         "wallet_address": wallet_address,
                         "error": str(e),
@@ -1723,12 +1875,18 @@ class WalletAnalyzer:
                 category.sort(key=lambda x: x.get("composite_score", x.get("metrics", {}).get("composite_score", 0)), reverse=True)
             
             # Log final API call statistics
+            print(f"\n{'='*60}", flush=True)
             logger.info(f"📊 FINAL API CALL STATISTICS:")
             logger.info(f"   Cielo: {self.api_call_stats['cielo']} calls")
             logger.info(f"   Birdeye: {self.api_call_stats['birdeye']} calls")
             logger.info(f"   Helius: {self.api_call_stats['helius']} calls")
             logger.info(f"   RPC: {self.api_call_stats['rpc']} calls")
             logger.info(f"   Total API calls: {sum(self.api_call_stats.values())}")
+            
+            print(f"\n✅ Batch analysis complete!", flush=True)
+            print(f"   Successful: {len(wallet_analyses)}", flush=True)
+            print(f"   Failed: {len(failed_analyses)}", flush=True)
+            print(f"   Total API calls: {sum(self.api_call_stats.values())}", flush=True)
             
             return {
                 "success": True,
