@@ -3,12 +3,11 @@
 Phoenix Project - UPDATED CLI Tool for Memecoin Analysis
 
 🎯 MAJOR UPDATES:
-- Fixed Helius API initialization for Telegram analysis
-- Tiered analysis to reduce API calls (5 initial, 20 deep for promising wallets)
-- Gem hunters now require 5x+ (500%+) trades
-- Fixed avg_hold_time_minutes display
-- Removed seconds from hold time display
-- Distribution now factors into wallet score
+- Enhanced SpyDefi analysis tracks both 2x+ AND 5x+ metrics
+- Separate pullback and time metrics for 2x and 5x milestones
+- Strategy recommendations split into separate Excel columns
+- Removed detailed_analysis_count and pump_tokens_analyzed from exports
+- Improved Excel formatting for better analysis
 """
 
 import os
@@ -138,8 +137,8 @@ class PhoenixCLI:
         """Handle the numbered menu interface."""
         print("\n" + "="*80)
         print("Phoenix Project - Solana Memecoin Analysis Tool")
-        print("🚀 Optimized for 5x+ Gem Hunting")
-        print(f"📅 Current Date: May 23, 2025")
+        print("🚀 Optimized for 2x+ and 5x+ Gem Hunting")
+        print(f"📅 Current Date: May 24, 2025")
         print("="*80)
         print("\nSelect an option:")
         print("\n🔧 CONFIGURATION:")
@@ -147,7 +146,7 @@ class PhoenixCLI:
         print("2. Check Configuration")
         print("3. Test API Connectivity")
         print("\n📊 TOOLS:")
-        print("4. SPYDEFI")
+        print("4. SPYDEFI (2x+ and 5x+ Enhanced)")
         print("5. ANALYZE WALLETS (5x+ GEM HUNTER EDITION)")
         print("\n🔍 UTILITIES:")
         print("6. View Current Sources")
@@ -789,7 +788,7 @@ class PhoenixCLI:
     def _show_help(self):
         """Show help and examples."""
         print("\n" + "="*80)
-        print("    📖 HELP & EXAMPLES - Phoenix 5x+ Gem Hunter Edition")
+        print("    📖 HELP & EXAMPLES - Phoenix 2x+ and 5x+ Gem Hunter Edition")
         print("="*80)
         
         print("\n🚀 GETTING STARTED:")
@@ -799,52 +798,51 @@ class PhoenixCLI:
         print("   - Cielo Finance API: https://cielo.finance (wallets)")
         print("   - Telegram API: https://my.telegram.org (SpyDefi)")
         
-        print("\n🎯 5x+ GEM HUNTER WALLET TYPES:")
-        print("• Sniper: Buys at launch, holds < 1 minute")
-        print("• Flipper: Quick trades, holds 1-10 minutes")
-        print("• Scalper: Holds 10-60 minutes, takes 20-50% profits")
-        print("• Gem Hunter: Targets 5x+ gains (500%+) - NEW CRITERIA!")
-        print("• Swing Trader: Holds 1-24 hours")
-        print("• Position Trader: Holds 24+ hours")
+        print("\n🎯 ENHANCED SPYDEFI ANALYSIS:")
+        print("• Now tracks BOTH 2x+ and 5x+ performance")
+        print("• Separate pullback metrics for 2x and 5x milestones")
+        print("• Time-to-2x and time-to-5x metrics")
+        print("• Pump.fun token success rates for both 2x and 5x")
+        print("• Strategy recommendations split into separate columns in Excel")
         
         print("\n💯 KEY METRICS EXPLAINED:")
-        print("• Composite Score: 0-100 with distribution factored in")
-        print("• 5x+ Gem Rate: % of trades that hit 500%+ (5x)")
-        print("• Avg First TP: Average profit % at first exit")
-        print("• Entry/Exit Quality: Based on timing relative to price moves")
-        print("• Market Cap Filter: Optimal range for copying trades")
+        print("• Composite Score: 0-100 with both 2x and 5x performance factored")
+        print("• 2x Success Rate: % of calls that hit 200%+ (2x)")
+        print("• 5x Success Rate: % of calls that hit 500%+ (5x)")
+        print("• Avg Max Pullback 2x: Average pullback AFTER hitting 2x")
+        print("• Avg Max Pullback 5x: Average pullback AFTER hitting 5x")
+        print("• Avg Time to 2x: Average time to reach 2x gains")
+        print("• Avg Time to 5x: Average time to reach 5x gains")
         
-        print("\n📊 DISTRIBUTION SCORING (NEW):")
-        print("Distribution now affects composite score:")
-        print("• High 5x+ rate (10%+) = bonus points")
-        print("• Good 2x-5x rate = bonus points")
-        print("• Low catastrophic losses = bonus points")
-        print("• Distribution must sum to 100%")
+        print("\n📊 EXCEL EXPORT COLUMNS:")
+        print("• channel_id: Telegram channel ID for the KOL")
+        print("• total_calls: Total number of token calls analyzed")
+        print("• success_rate: 2x success rate percentage")
+        print("• avg_roi: Average return on investment")
+        print("• avg_max_roi: Average maximum ROI achieved")
+        print("• confidence_level: Composite score (reliability)")
+        print("• avg_max_pullback_percent: Overall pullback")
+        print("• avg_max_pullback_percent_2x: Pullback after 2x")
+        print("• avg_max_pullback_percent_5x: Pullback after 5x")
+        print("• avg_time_to_2x_formatted: Time to reach 2x")
+        print("• avg_time_to_5x_formatted: Time to reach 5x")
+        print("• pump_success_rate_2x: 2x rate for pump.fun tokens")
+        print("• pump_success_rate_5x: 5x rate for pump.fun tokens")
         
-        print("\n⚙️ TIERED ANALYSIS (NEW):")
-        print("Reduces API calls through smart scanning:")
-        print("• Initial scan: 5 tokens per wallet")
-        print("• Deep scan: 20 tokens for promising wallets")
-        print("• Promising = Score 50+ or Win rate 40%+")
-        
-        print("\n⚠️ BUNDLE DETECTION:")
-        print("Wallets flagged as potential bundlers show:")
-        print("• Consistent buy amounts")
-        print("• Rapid succession trades")
-        print("• Similar sell patterns")
-        
-        print("\n📂 OUTPUT FILES:")
-        print("wallet_analysis_5x_gem_[timestamp].csv includes:")
-        print("• All metrics with 5x+ gem rate")
-        print("• Market cap filters for each wallet")
-        print("• Entry/exit quality assessment")
-        print("• Distribution percentages")
-        print("• Bundle detection warnings")
-        print("• Analysis tier (INITIAL/DEEP)")
+        print("\n⚙️ STRATEGY COLUMNS (SEPARATED):")
+        print("• recommendation: Main strategy recommendation")
+        print("• entry_type: Type of entry (IMMEDIATE, etc)")
+        print("• take_profit_1: First take profit level (%)")
+        print("• take_profit_2: Second take profit level (%)")
+        print("• take_profit_3: Third take profit level (%)")
+        print("• stop_loss: Recommended stop loss level (%)")
         
         print("\n🔧 COMMAND LINE USAGE:")
         print("# Configure all APIs")
         print("python phoenix.py configure --birdeye-api-key KEY --helius-api-key KEY --cielo-api-key KEY")
+        print()
+        print("# Analyze SpyDefi (2x+ and 5x+ enhanced)")
+        print("python phoenix.py telegram --hours 24 --excel")
         print()
         print("# Analyze wallets (5x+ gem hunter edition)")
         print("python phoenix.py wallet --days 30")
@@ -852,10 +850,11 @@ class PhoenixCLI:
         input("\nPress Enter to continue...")
     
     def _fixed_enhanced_telegram_analysis(self):
-        """Run FIXED enhanced Telegram analysis with proper pullback % and time-to-2x metrics."""
+        """Run FIXED enhanced Telegram analysis with proper pullback % and time-to-2x/5x metrics."""
         print("\n" + "="*80)
-        print("    🎯 ENHANCED SPYDEFI TELEGRAM ANALYSIS (5x+ FOCUS)")
-        print("    📉 Max Pullback % + ⏱️ Time to 5x Analysis")
+        print("    🎯 ENHANCED SPYDEFI TELEGRAM ANALYSIS (2x+ AND 5x+ FOCUS)")
+        print("    📉 Separate Pullback % for 2x and 5x milestones")
+        print("    ⏱️ Time to 2x AND Time to 5x Analysis")
         print("="*80)
         
         # Check API configuration first
@@ -876,8 +875,11 @@ class PhoenixCLI:
         print("📁 Output: spydefi_analysis_enhanced.csv")
         print("📊 Excel export: Enabled")
         print("🎯 Enhanced features:")
-        print("   • ✅ Max pullback % for stop loss calculation")
-        print("   • ✅ Average time to reach 5x for gem hunting")
+        print("   • ✅ Tracking BOTH 2x+ and 5x+ success rates")
+        print("   • ✅ Separate pullback % for 2x and 5x milestones")
+        print("   • ✅ Average time to reach 2x AND 5x")
+        print("   • ✅ Pump.fun success rates for both 2x and 5x")
+        print("   • ✅ Strategy split into separate Excel columns")
         print("   • ✅ Enhanced contract address detection")
         print("   • ✅ Detailed price analysis using Birdeye API")
         if self.config.get("helius_api_key"):
@@ -909,7 +911,7 @@ class PhoenixCLI:
         input("\nPress Enter to continue...")
     
     def _handle_fixed_enhanced_telegram_analysis(self, args) -> None:
-        """Handle the FIXED enhanced telegram analysis command."""
+        """Handle the FIXED enhanced telegram analysis command with new columns."""
         import asyncio
         
         try:
@@ -1011,13 +1013,13 @@ class PhoenixCLI:
                 telegram_analyses = asyncio.run(run_fixed_enhanced_spydefi_analysis())
                 
                 if telegram_analyses.get('success'):
-                    enhanced_count = sum(kol.get('detailed_analysis_count', 0) for kol in telegram_analyses.get('ranked_kols', {}).values())
+                    enhanced_count = sum(1 for kol in telegram_analyses.get('ranked_kols', {}).values() if kol.get('time_to_2x_data_available', False))
                     total_count = telegram_analyses.get('total_calls', 0)
                     pump_count = telegram_analyses.get('total_pump_tokens', 0)
                     
                     if enhanced_count > 0:
                         logger.info(f"✅ Enhanced SpyDefi analysis completed successfully!")
-                        logger.info(f"🎯 Enhanced analysis coverage: {enhanced_count}/{total_count} tokens ({(enhanced_count/total_count*100):.1f}%)")
+                        logger.info(f"🎯 Enhanced analysis coverage: {enhanced_count} KOLs with time-to-2x/5x data")
                         if pump_count > 0:
                             logger.info(f"🚀 Pump.fun tokens analyzed: {pump_count}")
                 else:
@@ -1029,7 +1031,7 @@ class PhoenixCLI:
         
         logger.info(f"📁 Enhanced telegram analysis completed. Results saved to {output_file}")
         
-        # Enhanced Excel export
+        # Enhanced Excel export with new columns and separated strategy
         if hasattr(args, 'excel') and args.excel:
             try:
                 from export_utils import export_to_excel
@@ -1039,28 +1041,40 @@ class PhoenixCLI:
                     enhanced_telegram_data = {"ranked_kols": []}
                     
                     for kol, performance in telegram_analyses['ranked_kols'].items():
+                        # Calculate stop loss based on average pullback
+                        avg_pullback = performance.get('avg_max_pullback_percent', 25)
+                        stop_loss = -(avg_pullback + 10)  # Add 10% buffer
+                        
                         enhanced_kol_data = {
                             "channel_id": performance.get('channel_id', ''),
                             "total_calls": performance.get('tokens_mentioned', 0),
-                            "success_rate": performance.get('success_rate_5x', 0),
+                            "success_rate": performance.get('success_rate_2x', 0),  # 2x success rate
+                            "success_rate_5x": performance.get('success_rate_5x', 0),  # 5x success rate
                             "avg_roi": performance.get('avg_ath_roi', 0),
                             "avg_max_roi": performance.get('avg_ath_roi', 0),
                             "confidence_level": performance.get('composite_score', 0),
                             "avg_max_pullback_percent": performance.get('avg_max_pullback_percent', 0),
+                            "avg_max_pullback_percent_2x": performance.get('avg_max_pullback_percent_2x', 0),
+                            "avg_max_pullback_percent_5x": performance.get('avg_max_pullback_percent_5x', 0),
+                            "avg_time_to_2x_formatted": performance.get('avg_time_to_2x_formatted', 'N/A'),
                             "avg_time_to_5x_formatted": performance.get('avg_time_to_5x_formatted', 'N/A'),
-                            "detailed_analysis_count": performance.get('detailed_analysis_count', 0),
-                            "pump_tokens_analyzed": performance.get('pump_tokens_analyzed', 0),
+                            "pump_success_rate_2x": performance.get('pump_success_rate_2x', 0),
                             "pump_success_rate_5x": performance.get('pump_success_rate_5x', 0),
-                            "strategy": {
-                                "recommendation": "ENHANCED_ANALYSIS",
-                                "entry_type": "IMMEDIATE",
-                                "take_profit_1": 100,
-                                "take_profit_2": 300,
-                                "take_profit_3": 500,
-                                "stop_loss": -(performance.get('avg_max_pullback_percent', 25) + 10)
-                            }
+                            # Strategy fields separated
+                            "recommendation": "ENHANCED_ANALYSIS",
+                            "entry_type": "IMMEDIATE",
+                            "take_profit_1": 100,  # 2x
+                            "take_profit_2": 300,  # 4x
+                            "take_profit_3": 500,  # 6x
+                            "stop_loss": stop_loss
                         }
                         enhanced_telegram_data["ranked_kols"].append(enhanced_kol_data)
+                    
+                    # Add summary stats
+                    enhanced_telegram_data["total_kols_analyzed"] = telegram_analyses.get('total_kols_analyzed', 0)
+                    enhanced_telegram_data["total_calls"] = telegram_analyses.get('total_calls', 0)
+                    enhanced_telegram_data["success_rate_2x"] = telegram_analyses.get('success_rate_2x', 0)
+                    enhanced_telegram_data["success_rate_5x"] = telegram_analyses.get('success_rate_5x', 0)
                     
                     export_to_excel(enhanced_telegram_data, {}, excel_file)
                     logger.info(f"📊 Enhanced Excel export completed: {excel_file}")
