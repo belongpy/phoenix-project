@@ -3430,3 +3430,72 @@ RuntimeError: cannot schedule new futures after shutdown
 2025-05-24 02:38:23,478 - phoenix.helius - ERROR - API request failed after 3 attempts: 404 Client Error: Not Found for url: https://api.helius.xyz/v0/tokens/E5dpauhuRdWLKWQfbTPaHRGdJJyfGu7sjoRj8kabpump/transactions?limit=100&type=SWAP&api-key=a6fdbc80-e49e-427c-a554-f27ae9949e5c
 2025-05-24 02:38:23,478 - phoenix.helius - INFO - Pump.fun token swap analysis requested - returning limited data
 2025-05-24 02:38:23,478 - phoenix.helius - ERROR - Error getting Jupiter price: HTTPSConnectionPool(host='price.jup.ag', port=443): Max retries exceeded with url: /v4/price?ids=E5dpauhuRdWLKWQfbTPaHRGdJJyfGu7sjoRj8kabpump (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001FFC3E98D40>: Failed to resolve 'price.jup.ag' ([Errno 11001] getaddrinfo failed)"))
+2025-05-24 16:57:30,654 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-24 16:57:30,654 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-24 16:57:31,281 - phoenix - INFO - ✅ Imported telegram module
+2025-05-24 16:57:31,297 - phoenix - INFO - 🚀 Starting enhanced SpyDefi analysis for the past 24 hours.
+2025-05-24 16:57:31,297 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv
+2025-05-24 16:57:31,297 - phoenix - INFO - ✅ Birdeye API initialized successfully
+2025-05-24 16:57:31,297 - phoenix.helius - INFO - Helius API initialized for enhanced transaction parsing
+2025-05-24 16:57:31,297 - phoenix - INFO - ✅ Helius API initialized successfully for pump.fun tokens
+2025-05-24 16:57:31,297 - phoenix - INFO - ✅ Telegram scraper initialized successfully
+2025-05-24 16:57:31,297 - phoenix - INFO - 🎯 SpyDefi channel detected. Running enhanced analysis...
+2025-05-24 16:57:31,297 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-24 16:57:31,297 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-24 16:57:31,406 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-24 16:57:32,205 - phoenix.telegram - INFO - Connected to Telegram
+2025-05-24 16:57:32,205 - phoenix - INFO - 📞 Connected to Telegram
+2025-05-24 16:57:32,205 - phoenix.telegram - INFO - 🚀 STARTING REDESIGNED SPYDEFI ANALYSIS (5x+ Gem Focus)
+2025-05-24 16:57:32,205 - phoenix.telegram - INFO - 🎯 Phase 1: Discovering active KOLs from SpyDefi...
+2025-05-24 16:57:32,220 - phoenix.telegram - INFO - ✅ Birdeye API available for mainstream tokens
+2025-05-24 16:57:32,220 - phoenix.telegram - INFO - ✅ Helius API available for pump.fun tokens
+2025-05-24 16:57:32,348 - phoenix.telegram - INFO - 📨 Scanning SpyDefi for active KOLs...
+2025-05-24 16:57:33,703 - phoenix.telegram - INFO - 📊 Processed 500 SpyDefi messages
+2025-05-24 16:57:33,703 - phoenix.telegram - INFO - 🔍 Found 156 unique KOLs
+2025-05-24 16:57:33,719 - phoenix.telegram - INFO - ✅ Found 156 active KOLs from SpyDefi
+2025-05-24 16:57:33,719 - phoenix.telegram - INFO - 🎯 Phase 2: Analyzing individual KOL channels (24 hours each)...
+2025-05-24 16:57:33,719 - phoenix.telegram - INFO - 📊 Found 156 total KOLs, filtering to 25 (top 25 with 3+ mentions)
+2025-05-24 16:57:33,719 - phoenix.telegram - INFO - 📊 Analyzing KOL 1/25: @hulkgemscalls_real (21 mentions)
+2025-05-24 16:57:33,719 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @hulkgemscalls_real
+2025-05-24 16:57:33,844 - phoenix.telegram - INFO - Scraping 1 days of messages from 2353208529
+2025-05-24 16:57:34,299 - phoenix.telegram - INFO - Finished retrieving messages from 2353208529. Found 36 relevant messages.
+2025-05-24 16:57:34,299 - phoenix.telegram - INFO - 📨 Found 36 messages in @hulkgemscalls_real's channel
+2025-05-24 16:57:34,299 - phoenix.telegram - INFO - 🎯 Found 34 token calls for @hulkgemscalls_real
+2025-05-24 16:57:34,299 - phoenix.telegram - INFO - 📊 Analyzing call 2/34 for @hulkgemscalls_real
+2025-05-24 16:57:37,376 - phoenix.helius - ERROR - API request failed after 3 attempts: 404 Client Error: Not Found for url: https://api.helius.xyz/v1/get_assets_batch?api-key=a6fdbc80-e49e-427c-a554-f27ae9949e5c
+2025-05-24 16:57:37,376 - phoenix.helius - ERROR - Failed to get token metadata: 404 Client Error: Not Found for url: https://api.helius.xyz/v1/get_assets_batch?api-key=a6fdbc80-e49e-427c-a554-f27ae9949e5c
+2025-05-24 16:57:40,407 - phoenix.helius - ERROR - API request failed after 3 attempts: 404 Client Error: Not Found for url: https://api.helius.xyz/v0/tokens/d2v5QPZzreHR8V7i4fiyA2QfXfbhEdjFmUoexJkpump/transactions?limit=100&type=SWAP&api-key=a6fdbc80-e49e-427c-a554-f27ae9949e5c
+2025-05-24 16:57:40,407 - phoenix.helius - INFO - Pump.fun token swap analysis requested - returning limited data
+2025-05-24 16:57:40,423 - phoenix.helius - ERROR - Error getting Jupiter price: HTTPSConnectionPool(host='price.jup.ag', port=443): Max retries exceeded with url: /v4/price?ids=d2v5QPZzreHR8V7i4fiyA2QfXfbhEdjFmUoexJkpump (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002580F581AC0>: Failed to resolve 'price.jup.ag' ([Errno 11001] getaddrinfo failed)"))
+2025-05-24 16:57:43,456 - phoenix.helius - ERROR - API request failed after 3 attempts: 404 Client Error: Not Found for url: https://api.helius.xyz/v0/tokens/d2v5QPZzreHR8V7i4fiyA2QfXfbhEdjFmUoexJkpump/transactions?limit=20&type=SWAP&api-key=a6fdbc80-e49e-427c-a554-f27ae9949e5c
+2025-05-24 16:57:43,964 - phoenix.telegram - INFO - 📊 Analyzing call 6/34 for @hulkgemscalls_real
+2025-05-24 16:57:46,994 - phoenix.helius - ERROR - API request failed after 3 attempts: 404 Client Error: Not Found for url: https://api.helius.xyz/v1/get_assets_batch?api-key=a6fdbc80-e49e-427c-a554-f27ae9949e5c
+2025-05-24 16:57:46,994 - phoenix.helius - ERROR - Failed to get token metadata: 404 Client Error: Not Found for url: https://api.helius.xyz/v1/get_assets_batch?api-key=a6fdbc80-e49e-427c-a554-f27ae9949e5c
+2025-05-24 16:57:50,036 - phoenix.helius - ERROR - API request failed after 3 attempts: 404 Client Error: Not Found for url: https://api.helius.xyz/v0/tokens/F3Yjfhq6XHWz44Ee9CLkKCxE6g6VqXTmrsiSCXaGpump/transactions?limit=100&type=SWAP&api-key=a6fdbc80-e49e-427c-a554-f27ae9949e5c
+2025-05-24 16:57:50,036 - phoenix.helius - INFO - Pump.fun token swap analysis requested - returning limited data
+2025-05-24 16:57:50,047 - phoenix.helius - ERROR - Error getting Jupiter price: HTTPSConnectionPool(host='price.jup.ag', port=443): Max retries exceeded with url: /v4/price?ids=F3Yjfhq6XHWz44Ee9CLkKCxE6g6VqXTmrsiSCXaGpump (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002580F561850>: Failed to resolve 'price.jup.ag' ([Errno 11001] getaddrinfo failed)"))
+2025-05-24 16:57:53,083 - phoenix.helius - ERROR - API request failed after 3 attempts: 404 Client Error: Not Found for url: https://api.helius.xyz/v0/tokens/F3Yjfhq6XHWz44Ee9CLkKCxE6g6VqXTmrsiSCXaGpump/transactions?limit=20&type=SWAP&api-key=a6fdbc80-e49e-427c-a554-f27ae9949e5c
+2025-05-24 16:57:53,596 - phoenix.telegram - INFO - 📊 Analyzing call 10/34 for @hulkgemscalls_real
+2025-05-24 16:57:56,632 - phoenix.helius - ERROR - API request failed after 3 attempts: 404 Client Error: Not Found for url: https://api.helius.xyz/v1/get_assets_batch?api-key=a6fdbc80-e49e-427c-a554-f27ae9949e5c
+2025-05-24 16:57:56,632 - phoenix.helius - ERROR - Failed to get token metadata: 404 Client Error: Not Found for url: https://api.helius.xyz/v1/get_assets_batch?api-key=a6fdbc80-e49e-427c-a554-f27ae9949e5c
+2025-05-24 16:57:59,676 - phoenix.helius - ERROR - API request failed after 3 attempts: 404 Client Error: Not Found for url: https://api.helius.xyz/v0/tokens/7YQTmcMRVxhAyRwDQCa6wQDwCphnyJALWcKkbDXBpump/transactions?limit=100&type=SWAP&api-key=a6fdbc80-e49e-427c-a554-f27ae9949e5c
+2025-05-24 16:57:59,676 - phoenix.helius - INFO - Pump.fun token swap analysis requested - returning limited data
+2025-05-24 16:57:59,676 - phoenix.helius - ERROR - Error getting Jupiter price: HTTPSConnectionPool(host='price.jup.ag', port=443): Max retries exceeded with url: /v4/price?ids=7YQTmcMRVxhAyRwDQCa6wQDwCphnyJALWcKkbDXBpump (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002580F5607A0>: Failed to resolve 'price.jup.ag' ([Errno 11001] getaddrinfo failed)"))
+2025-05-24 16:58:02,718 - phoenix.helius - ERROR - API request failed after 3 attempts: 404 Client Error: Not Found for url: https://api.helius.xyz/v0/tokens/7YQTmcMRVxhAyRwDQCa6wQDwCphnyJALWcKkbDXBpump/transactions?limit=20&type=SWAP&api-key=a6fdbc80-e49e-427c-a554-f27ae9949e5c
+2025-05-24 16:58:03,220 - phoenix.telegram - INFO - 📊 Analyzing call 13/34 for @hulkgemscalls_real
+2025-05-24 16:58:06,253 - phoenix.helius - ERROR - API request failed after 3 attempts: 404 Client Error: Not Found for url: https://api.helius.xyz/v1/get_assets_batch?api-key=a6fdbc80-e49e-427c-a554-f27ae9949e5c
+2025-05-24 16:58:06,253 - phoenix.helius - ERROR - Failed to get token metadata: 404 Client Error: Not Found for url: https://api.helius.xyz/v1/get_assets_batch?api-key=a6fdbc80-e49e-427c-a554-f27ae9949e5c
+2025-05-24 16:58:09,300 - phoenix.helius - ERROR - API request failed after 3 attempts: 404 Client Error: Not Found for url: https://api.helius.xyz/v0/tokens/7YeUWE5o9Gaz78E8EtRnuU2mPgHCQ3X6rZXTb1s2pump/transactions?limit=100&type=SWAP&api-key=a6fdbc80-e49e-427c-a554-f27ae9949e5c
+2025-05-24 16:58:09,300 - phoenix.helius - INFO - Pump.fun token swap analysis requested - returning limited data
+2025-05-24 16:58:09,300 - phoenix.helius - ERROR - Error getting Jupiter price: HTTPSConnectionPool(host='price.jup.ag', port=443): Max retries exceeded with url: /v4/price?ids=7YeUWE5o9Gaz78E8EtRnuU2mPgHCQ3X6rZXTb1s2pump (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002580F560B60>: Failed to resolve 'price.jup.ag' ([Errno 11001] getaddrinfo failed)"))
+2025-05-24 16:58:12,334 - phoenix.helius - ERROR - API request failed after 3 attempts: 404 Client Error: Not Found for url: https://api.helius.xyz/v0/tokens/7YeUWE5o9Gaz78E8EtRnuU2mPgHCQ3X6rZXTb1s2pump/transactions?limit=20&type=SWAP&api-key=a6fdbc80-e49e-427c-a554-f27ae9949e5c
+2025-05-24 16:58:12,845 - phoenix.telegram - INFO - 📊 Analyzing call 15/34 for @hulkgemscalls_real
+2025-05-24 16:58:15,891 - phoenix.helius - ERROR - API request failed after 3 attempts: 404 Client Error: Not Found for url: https://api.helius.xyz/v1/get_assets_batch?api-key=a6fdbc80-e49e-427c-a554-f27ae9949e5c
+2025-05-24 16:58:15,891 - phoenix.helius - ERROR - Failed to get token metadata: 404 Client Error: Not Found for url: https://api.helius.xyz/v1/get_assets_batch?api-key=a6fdbc80-e49e-427c-a554-f27ae9949e5c
+2025-05-24 16:58:18,930 - phoenix.helius - ERROR - API request failed after 3 attempts: 404 Client Error: Not Found for url: https://api.helius.xyz/v0/tokens/J5o2gP6kowB2esWAXu6N4Ai4Thr2QeB1TCnq7n73pump/transactions?limit=100&type=SWAP&api-key=a6fdbc80-e49e-427c-a554-f27ae9949e5c
+2025-05-24 16:58:18,930 - phoenix.helius - INFO - Pump.fun token swap analysis requested - returning limited data
+2025-05-24 16:58:18,930 - phoenix.helius - ERROR - Error getting Jupiter price: HTTPSConnectionPool(host='price.jup.ag', port=443): Max retries exceeded with url: /v4/price?ids=J5o2gP6kowB2esWAXu6N4Ai4Thr2QeB1TCnq7n73pump (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002580F562840>: Failed to resolve 'price.jup.ag' ([Errno 11001] getaddrinfo failed)"))
+2025-05-24 16:58:21,977 - phoenix.helius - ERROR - API request failed after 3 attempts: 404 Client Error: Not Found for url: https://api.helius.xyz/v0/tokens/J5o2gP6kowB2esWAXu6N4Ai4Thr2QeB1TCnq7n73pump/transactions?limit=20&type=SWAP&api-key=a6fdbc80-e49e-427c-a554-f27ae9949e5c
+2025-05-24 16:58:22,486 - phoenix.telegram - INFO - 📊 Analyzing call 18/34 for @hulkgemscalls_real
+2025-05-24 16:58:25,512 - phoenix.helius - ERROR - API request failed after 3 attempts: 404 Client Error: Not Found for url: https://api.helius.xyz/v1/get_assets_batch?api-key=a6fdbc80-e49e-427c-a554-f27ae9949e5c
+2025-05-24 16:58:25,512 - phoenix.helius - ERROR - Failed to get token metadata: 404 Client Error: Not Found for url: https://api.helius.xyz/v1/get_assets_batch?api-key=a6fdbc80-e49e-427c-a554-f27ae9949e5c
