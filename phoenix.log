@@ -5718,3 +5718,19 @@ TypeError: '>=' not supported between instances of 'NoneType' and 'int'
 2025-05-24 22:21:56,533 - phoenix.wallet - INFO -    Total API calls: 22
 2025-05-24 22:21:56,813 - phoenix.export - INFO - Successfully exported 7-day active trader rankings to CSV: C:\Users\Administrator\Desktop\phoenix-project\outputs\wallet_analysis_20250524_222156.csv
 2025-05-24 22:21:56,813 - phoenix - INFO - Exported wallet analysis to C:\Users\Administrator\Desktop\phoenix-project\outputs\wallet_analysis_20250524_222156.csv
+2025-05-24 22:36:47,895 - phoenix - INFO - Loaded 2 wallet addresses from wallets.txt
+2025-05-24 22:36:48,271 - phoenix.api_manager - INFO - Birdeye API initialized for mainstream token analysis
+2025-05-24 22:36:48,271 - phoenix.api_manager - INFO - Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-24 22:36:48,287 - phoenix.api_manager - INFO - Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-24 22:36:48,287 - phoenix.cielo - INFO - Checking Cielo Finance API connectivity...
+2025-05-24 22:36:48,489 - phoenix.cielo - INFO - ✅ Cielo Finance API is accessible (got expected error response)
+2025-05-24 22:36:48,489 - phoenix.wallet - INFO - ✅ Cielo Finance API connection verified
+2025-05-24 22:36:48,489 - phoenix.wallet - INFO - Batch analyzing 2 wallets (7-day active trader focus)
+2025-05-24 22:36:48,489 - phoenix.wallet - INFO - Analyzing wallet 1/2: Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 22:36:48,489 - phoenix.wallet - INFO - 🔍 Analyzing wallet Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ (7-day active trader focus)
+2025-05-24 22:36:48,489 - phoenix.wallet - INFO - 📊 Fetching Cielo Finance aggregated stats...
+2025-05-24 22:36:48,489 - phoenix.cielo - INFO - Fetching trading stats for wallet Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 22:36:49,947 - phoenix.cielo - INFO - Successfully retrieved trading stats for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 22:36:49,947 - phoenix.wallet - INFO - 📈 Getting last 7 days of trading activity...
+2025-05-24 22:36:49,947 - phoenix.wallet - INFO - Fetching last 100 token swaps for Cw9LFx2isSNCkHgpTLJAT9uzDGQ88eRKY5oJChqTCkPQ
+2025-05-24 22:36:50,052 - phoenix.wallet - INFO - Filtered to 13 recent signatures
