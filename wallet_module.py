@@ -1,11 +1,12 @@
 """
-Wallet Analysis Module - Phoenix Project (3-TIER ANALYSIS EDITION)
+Wallet Analysis Module - Phoenix Project (7-DAY ACTIVE TRADER EDITION)
 
 MAJOR UPDATES:
-- 3-tier analysis system: Initial (5), Standard (10), Deep (20) tokens
-- Stricter criteria to reduce API calls (~60% initial, ~30% standard, ~10% deep)
-- Elite wallet detection for 5x+ gem hunters
-- Improved initial scoring with net profit consideration
+- 7-day recency focus for all metrics and distributions
+- Enhanced strategy recommendations with specific TP guidance
+- Removed redundant confidence/tier/rating fields
+- Active trader detection and scoring
+- Smart sell following based on exit quality
 """
 
 import csv
@@ -53,6 +54,9 @@ class WalletAnalyzer:
     INITIAL_SCAN_TOKENS = 5
     STANDARD_SCAN_TOKENS = 10
     DEEP_SCAN_TOKENS = 20
+    
+    # 7-day focus constant
+    DAYS_TO_ANALYZE = 7
     
     def __init__(self, cielo_api: Any, birdeye_api: Any = None, helius_api: Any = None, 
                  rpc_url: str = "https://api.mainnet-beta.solana.com"):
@@ -273,178 +277,117 @@ class WalletAnalyzer:
                 
         return transactions
     
-    def _determine_scan_tier(self, metrics: Dict[str, Any], initial_score: float) -> Tuple[int, str]:
-        """Determine scan depth based on wallet performance metrics."""
-        win_rate = metrics.get("win_rate", 0)
-        profit_factor = metrics.get("profit_factor", 0)
-        total_trades = metrics.get("total_trades", 0)
-        net_profit = metrics.get("net_profit_usd", 0)
+    def _determine_scan_tier_7day(self, recent_metrics: Dict[str, Any]) -> Tuple[int, str]:
+        """Determine scan depth based on 7-day performance metrics."""
+        trades_7d = recent_metrics.get("trades_last_7_days", 0)
+        win_rate_7d = recent_metrics.get("win_rate_7d", 0)
+        profit_7d = recent_metrics.get("profit_7d", 0)
+        has_5x_7d = recent_metrics.get("has_5x_last_7_days", False)
+        has_2x_7d = recent_metrics.get("has_2x_last_7_days", False)
         
-        # Check for DEEP tier (elite performers)
-        if self._is_elite_wallet(metrics, initial_score):
+        # DEEP tier (elite active traders)
+        if (trades_7d >= 5 and win_rate_7d >= 50) or has_5x_7d or profit_7d >= 5000:
             return self.DEEP_SCAN_TOKENS, "DEEP"
         
-        # Check for STANDARD tier (decent performers)
-        elif self._is_standard_wallet(metrics, initial_score):
+        # STANDARD tier (decent active traders)
+        elif (trades_7d >= 3 and win_rate_7d >= 40) or has_2x_7d:
             return self.STANDARD_SCAN_TOKENS, "STANDARD"
         
-        # Default to INITIAL tier
+        # INITIAL tier (minimal activity or poor performance)
         else:
             return self.INITIAL_SCAN_TOKENS, "INITIAL"
     
-    def _is_elite_wallet(self, metrics: Dict[str, Any], initial_score: float) -> bool:
-        """Check if wallet qualifies for deep analysis."""
-        win_rate = metrics.get("win_rate", 0)
-        profit_factor = metrics.get("profit_factor", 0)
-        total_trades = metrics.get("total_trades", 0)
-        net_profit = metrics.get("net_profit_usd", 0)
+    def _calculate_7day_metrics(self, recent_swaps: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Calculate metrics from last 7 days of trading."""
+        seven_days_ago = int((datetime.now() - timedelta(days=7)).timestamp())
         
-        # Score-based qualification
-        if initial_score >= 70:
-            return True
+        # Filter swaps to last 7 days
+        recent_trades = []
+        for swap in recent_swaps:
+            if swap.get('buy_timestamp', 0) >= seven_days_ago:
+                recent_trades.append(swap)
         
-        # High performance combo
-        if win_rate >= 65 and profit_factor >= 4.0:
-            return True
+        if not recent_trades:
+            return {
+                "trades_last_7_days": 0,
+                "win_rate_7d": 0,
+                "profit_7d": 0,
+                "has_5x_last_7_days": False,
+                "has_2x_last_7_days": False,
+                "active_trader": False
+            }
         
-        # High profit with good win rate
-        if net_profit >= 10000 and win_rate >= 60:
-            return True
+        # Calculate 7-day metrics
+        wins = sum(1 for t in recent_trades if t.get('roi_percent', 0) > 0)
+        total_profit = sum(t.get('pnl_usd', 0) for t in recent_trades)
+        max_roi = max((t.get('roi_percent', 0) for t in recent_trades), default=0)
         
-        # Exceptional gem hunter
-        roi_dist = metrics.get("roi_distribution", {})
-        trades_5x_plus = roi_dist.get("roi_above_500", 0)
-        if total_trades >= 30 and trades_5x_plus >= total_trades * 0.1:  # 10%+ are 5x
-            return True
-        
-        # Check for exceptional ROI distribution
-        high_roi_trades = roi_dist.get("roi_above_500", 0) + roi_dist.get("roi_200_to_500", 0)
-        if total_trades >= 20 and high_roi_trades >= total_trades * 0.2:  # 20%+ are 2x+
-            return True
-        
-        return False
+        return {
+            "trades_last_7_days": len(recent_trades),
+            "win_rate_7d": (wins / len(recent_trades) * 100) if recent_trades else 0,
+            "profit_7d": total_profit,
+            "has_5x_last_7_days": max_roi >= 400,
+            "has_2x_last_7_days": max_roi >= 100,
+            "active_trader": len(recent_trades) >= 3,
+            "days_since_last_trade": self._days_since_last_trade(recent_trades)
+        }
     
-    def _is_standard_wallet(self, metrics: Dict[str, Any], initial_score: float) -> bool:
-        """Check if wallet qualifies for standard analysis."""
-        win_rate = metrics.get("win_rate", 0)
-        profit_factor = metrics.get("profit_factor", 0)
-        total_trades = metrics.get("total_trades", 0)
-        net_profit = metrics.get("net_profit_usd", 0)
+    def _days_since_last_trade(self, trades: List[Dict[str, Any]]) -> int:
+        """Calculate days since last trade."""
+        if not trades:
+            return 999
         
-        # Must meet ALL criteria for standard tier
-        return (
-            win_rate >= 55 and win_rate < 65 and
-            profit_factor >= 2.0 and profit_factor < 4.0 and
-            total_trades >= 20 and
-            net_profit >= 1000 and
-            initial_score >= 50 and initial_score < 70
-        )
+        latest_timestamp = max(t.get('buy_timestamp', 0) for t in trades)
+        if latest_timestamp == 0:
+            return 999
+        
+        days_ago = (datetime.now().timestamp() - latest_timestamp) / 86400
+        return int(days_ago)
     
-    def _calculate_initial_score(self, metrics: Dict[str, Any]) -> float:
-        """Calculate initial score with stricter thresholds."""
-        win_rate = metrics.get("win_rate", 0)
-        profit_factor = metrics.get("profit_factor", 0)
-        total_trades = metrics.get("total_trades", 0)
-        net_profit = metrics.get("net_profit_usd", 0)
-        
-        score = 0
-        
-        # Win rate scoring (0-25 points)
-        if win_rate >= 70:
-            score += 25
-        elif win_rate >= 65:
-            score += 20
-        elif win_rate >= 60:
-            score += 15
-        elif win_rate >= 55:
-            score += 10
-        elif win_rate >= 50:
-            score += 5
-        
-        # Profit factor scoring (0-25 points)
-        if profit_factor >= 5.0:
-            score += 25
-        elif profit_factor >= 4.0:
-            score += 20
-        elif profit_factor >= 3.0:
-            score += 15
-        elif profit_factor >= 2.0:
-            score += 10
-        elif profit_factor >= 1.5:
-            score += 5
-        
-        # Trade count scoring (0-20 points)
-        if total_trades >= 100:
-            score += 20
-        elif total_trades >= 50:
-            score += 15
-        elif total_trades >= 30:
-            score += 10
-        elif total_trades >= 20:
-            score += 5
-        
-        # Net profit scoring (0-20 points)
-        if net_profit >= 20000:
-            score += 20
-        elif net_profit >= 10000:
-            score += 15
-        elif net_profit >= 5000:
-            score += 10
-        elif net_profit >= 2000:
-            score += 5
-        
-        # Bonus points for exceptional combinations (0-10 points)
-        if win_rate >= 60 and profit_factor >= 3.0 and net_profit >= 5000:
-            score += 10
-        elif win_rate >= 55 and profit_factor >= 2.5 and net_profit >= 2000:
-            score += 5
-        
-        return min(score, 100)  # Cap at 100
-    
-    def analyze_wallet_hybrid(self, wallet_address: str, days_back: int = 30) -> Dict[str, Any]:
+    def analyze_wallet_hybrid(self, wallet_address: str, days_back: int = 7) -> Dict[str, Any]:
         """
-        UPDATED hybrid wallet analysis with 3-tier scanning system.
+        UPDATED hybrid wallet analysis with 7-day focus.
         
         Args:
             wallet_address (str): Wallet address
-            days_back (int): Number of days to analyze (for RPC calls)
+            days_back (int): Number of days to analyze (default 7)
             
         Returns:
             Dict[str, Any]: Wallet analysis results
         """
-        logger.info(f"🔍 Analyzing wallet {wallet_address} (3-tier memecoin analysis)")
+        logger.info(f"🔍 Analyzing wallet {wallet_address} (7-day active trader focus)")
         
         try:
-            # Step 1: Get aggregated stats from Cielo Finance
+            # Step 1: Get aggregated stats from Cielo Finance (still useful for overall picture)
             logger.info(f"📊 Fetching Cielo Finance aggregated stats...")
             self.api_call_stats["cielo"] += 1
             cielo_stats = self.cielo_api.get_wallet_trading_stats(wallet_address)
             
-            if cielo_stats and cielo_stats.get("success", True) and "data" in cielo_stats:
-                data = cielo_stats.get("data", {})
-                if isinstance(data, dict):
-                    logger.debug(f"Cielo response data keys: {list(data.keys())[:20]}")
-            
             if not cielo_stats or not cielo_stats.get("success", True):
                 logger.warning(f"❌ No Cielo Finance data available for {wallet_address}")
-                logger.info("Attempting RPC-only analysis as fallback...")
                 aggregated_metrics = self._get_empty_cielo_metrics()
             else:
                 stats_data = cielo_stats.get("data", {})
                 aggregated_metrics = self._extract_aggregated_metrics_from_cielo(stats_data)
             
-            # Step 2: Calculate initial score and determine scan tier
-            initial_score = self._calculate_initial_score(aggregated_metrics)
-            scan_limit, tier = self._determine_scan_tier(aggregated_metrics, initial_score)
+            # Step 2: Get recent token swaps (last 7 days for tier determination)
+            logger.info(f"📈 Getting last 7 days of trading activity...")
+            recent_swaps_all = self._get_recent_token_swaps_rpc(wallet_address, limit=100)
+            
+            # Calculate 7-day metrics for tier determination
+            seven_day_metrics = self._calculate_7day_metrics(recent_swaps_all)
+            
+            # Step 3: Determine scan tier based on 7-day activity
+            scan_limit, tier = self._determine_scan_tier_7day(seven_day_metrics)
             
             logger.info(f"📊 Wallet tier: {tier} - Scanning {scan_limit} recent trades")
-            logger.info(f"   Score: {initial_score}/100")
-            logger.info(f"   Win Rate: {aggregated_metrics.get('win_rate', 0):.1f}%")
-            logger.info(f"   Profit Factor: {aggregated_metrics.get('profit_factor', 0):.2f}")
-            logger.info(f"   Net Profit: ${aggregated_metrics.get('net_profit_usd', 0):.2f}")
+            logger.info(f"   7-day trades: {seven_day_metrics['trades_last_7_days']}")
+            logger.info(f"   7-day win rate: {seven_day_metrics['win_rate_7d']:.1f}%")
+            logger.info(f"   7-day profit: ${seven_day_metrics['profit_7d']:.2f}")
+            logger.info(f"   Days since last trade: {seven_day_metrics['days_since_last_trade']}")
             
-            # Step 3: Get recent token swaps based on tier
-            recent_swaps = self._get_recent_token_swaps_rpc(wallet_address, limit=scan_limit)
+            # Get only the swaps we need for detailed analysis
+            recent_swaps = recent_swaps_all[:scan_limit]
             
             # Step 4: Analyze token performance with market cap data
             analyzed_trades = []
@@ -468,23 +411,24 @@ class WalletAnalyzer:
                             **token_analysis
                         })
             
-            # Step 5: Calculate enhanced metrics
-            enhanced_metrics = self._calculate_enhanced_memecoin_metrics(
+            # Step 5: Calculate enhanced metrics with 7-day focus
+            enhanced_metrics = self._calculate_enhanced_memecoin_metrics_7day(
                 aggregated_metrics, 
-                analyzed_trades
+                analyzed_trades,
+                seven_day_metrics
             )
             
-            # Step 6: Calculate composite score with distribution factored in
-            composite_score = self._calculate_memecoin_composite_score_with_distribution(enhanced_metrics)
+            # Step 6: Calculate composite score with 7-day activity weighting
+            composite_score = self._calculate_memecoin_composite_score_7day(enhanced_metrics, seven_day_metrics)
             enhanced_metrics["composite_score"] = composite_score
             
-            # Step 7: Determine wallet type based on hold patterns (5x+ for gem hunters)
+            # Step 7: Determine wallet type based on hold patterns
             wallet_type = self._determine_memecoin_wallet_type_5x(enhanced_metrics)
             
-            # Step 8: Generate memecoin-specific strategy
-            strategy = self._generate_memecoin_strategy(wallet_type, enhanced_metrics)
+            # Step 8: Generate enhanced strategy with sell guidance
+            strategy = self._generate_enhanced_memecoin_strategy(wallet_type, enhanced_metrics, analyzed_trades)
             
-            # Step 9: Analyze entry/exit behavior with proper calculations
+            # Step 9: Analyze entry/exit behavior
             entry_exit_analysis = self._analyze_memecoin_entry_exit(analyzed_trades, enhanced_metrics)
             
             # Step 10: Detect bundle and copytrader activity
@@ -496,17 +440,10 @@ class WalletAnalyzer:
                        f"Helius: {self.api_call_stats['helius']}, "
                        f"RPC: {self.api_call_stats['rpc']}")
             
-            logger.debug(f"Final analysis for {wallet_address}:")
-            logger.debug(f"  - wallet_type: {wallet_type}")
-            logger.debug(f"  - composite_score: {composite_score}")
-            logger.debug(f"  - gem_rate_5x_plus: {enhanced_metrics.get('gem_rate_5x_plus', 0):.1f}%")
-            logger.debug(f"  - tokens_scanned: {len(analyzed_trades)}/{scan_limit}")
-            logger.debug(f"  - analysis_tier: {tier}")
-            
             return {
                 "success": True,
                 "wallet_address": wallet_address,
-                "analysis_period_days": "ALL_TIME (Cielo) + Recent (RPC)",
+                "analysis_period_days": days_back,
                 "wallet_type": wallet_type,
                 "composite_score": composite_score,
                 "metrics": enhanced_metrics,
@@ -517,9 +454,9 @@ class WalletAnalyzer:
                 "api_source": "Cielo Finance + RPC + Birdeye/Helius",
                 "cielo_data": aggregated_metrics,
                 "recent_trades_analyzed": len(analyzed_trades),
-                "analysis_tier": tier,
                 "tokens_scanned": len(analyzed_trades),
-                "api_calls": self.api_call_stats.copy()
+                "api_calls": self.api_call_stats.copy(),
+                "seven_day_metrics": seven_day_metrics
             }
             
         except Exception as e:
@@ -538,9 +475,11 @@ class WalletAnalyzer:
                 "metrics": empty_metrics,
                 "strategy": {
                     "recommendation": "DO_NOT_COPY",
-                    "avg_first_take_profit": 0,
-                    "confidence": "VERY_LOW",
-                    "notes": "Analysis failed",
+                    "follow_sells": False,
+                    "tp1_percent": 0,
+                    "tp2_percent": 0,
+                    "sell_strategy": "NONE",
+                    "tp_guidance": "Analysis failed",
                     "filter_market_cap_min": 0,
                     "filter_market_cap_max": 0
                 }
@@ -563,11 +502,9 @@ class WalletAnalyzer:
                     market_cap_at_buy = token_info.get("mc", 0) or token_info.get("marketCap", 0)
             elif self.helius_api and token_mint.endswith("pump"):
                 self.api_call_stats["helius"] += 1
-                # For pump.fun tokens, estimate market cap
                 metadata = self.helius_api.get_token_metadata([token_mint])
                 if metadata.get("success") and metadata.get("data"):
                     token_info = metadata["data"][0] if metadata["data"] else {}
-                    # Pump.fun tokens often start at ~$5-10K market cap
                     market_cap_at_buy = 10000  # Default for pump tokens
             
             # Get price history for performance analysis
@@ -625,6 +562,13 @@ class WalletAnalyzer:
                 hold_time_seconds = sell_timestamp - buy_timestamp
                 hold_time_minutes = hold_time_seconds / 60
             
+            # Calculate PnL if available
+            pnl_usd = 0
+            if swap_data:
+                buy_amount = swap_data.get('sol_amount', 0) * 150  # Estimate USD
+                if sell_timestamp and roi_percent > -100:
+                    pnl_usd = buy_amount * (roi_percent / 100)
+            
             return {
                 "success": True,
                 "token_address": token_mint,
@@ -636,7 +580,8 @@ class WalletAnalyzer:
                 "exit_timing": exit_timing,
                 "hold_time_seconds": hold_time_seconds,
                 "hold_time_minutes": hold_time_minutes,
-                "price_data": price_history
+                "price_data": price_history,
+                "pnl_usd": pnl_usd
             }
             
         except Exception as e:
@@ -698,100 +643,81 @@ class WalletAnalyzer:
             logger.error(f"Error getting price history: {str(e)}")
             return {}
     
-    def _calculate_enhanced_memecoin_metrics(self, cielo_metrics: Dict[str, Any], 
-                                           analyzed_trades: List[Dict[str, Any]]) -> Dict[str, Any]:
-        """Calculate enhanced metrics specific to memecoin trading."""
+    def _calculate_enhanced_memecoin_metrics_7day(self, cielo_metrics: Dict[str, Any], 
+                                                 analyzed_trades: List[Dict[str, Any]],
+                                                 seven_day_metrics: Dict[str, Any]) -> Dict[str, Any]:
+        """Calculate enhanced metrics with 7-day focus."""
         try:
             # Start with base metrics
             metrics = cielo_metrics.copy() if cielo_metrics else self._get_empty_cielo_metrics()
             
-            # Calculate distribution that sums to 100%
-            total_trades = metrics.get("total_trades", 0)
-            if total_trades > 0:
-                distribution = self._calculate_proper_distribution(metrics, analyzed_trades)
+            # Filter trades to last 7 days for distribution calculation
+            seven_days_ago = int((datetime.now() - timedelta(days=7)).timestamp())
+            recent_trades = [t for t in analyzed_trades if t.get('buy_timestamp', 0) >= seven_days_ago]
+            
+            # Calculate 7-day distribution
+            if recent_trades:
+                distribution = self._calculate_7day_distribution(recent_trades)
                 metrics.update(distribution)
+            else:
+                # No recent trades - set all to 0
+                metrics.update({
+                    "distribution_500_plus_%": 0,
+                    "distribution_200_500_%": 0,
+                    "distribution_0_200_%": 0,
+                    "distribution_neg50_0_%": 0,
+                    "distribution_below_neg50_%": 0
+                })
             
-            # Calculate gem rate for 5x+ trades (not 2x)
-            gem_5x_count = 0
-            gem_2x_count = 0
-            for trade in analyzed_trades:
-                max_roi = trade.get("max_roi_percent", 0)
-                if max_roi >= 400:  # 5x (500%)
-                    gem_5x_count += 1
-                if max_roi >= 100:  # 2x
-                    gem_2x_count += 1
+            # Calculate gem rates from recent trades
+            gem_5x_count = sum(1 for t in recent_trades if t.get("max_roi_percent", 0) >= 400)
+            gem_2x_count = sum(1 for t in recent_trades if t.get("max_roi_percent", 0) >= 100)
             
-            gem_rate_5x = (gem_5x_count / len(analyzed_trades) * 100) if analyzed_trades else 0
-            gem_rate_2x = (gem_2x_count / len(analyzed_trades) * 100) if analyzed_trades else 0
+            gem_rate_5x = (gem_5x_count / len(recent_trades) * 100) if recent_trades else 0
+            gem_rate_2x = (gem_2x_count / len(recent_trades) * 100) if recent_trades else 0
             
             metrics["gem_rate_5x_plus"] = round(gem_rate_5x, 2)
-            metrics["gem_rate_2x_plus"] = round(gem_rate_2x, 2)  # Keep for backward compatibility
+            metrics["gem_rate_2x_plus"] = round(gem_rate_2x, 2)
             
-            # Calculate average hold times (ONLY MINUTES, NO SECONDS)
-            hold_times_minutes = []
-            for trade in analyzed_trades:
-                if trade.get("hold_time_minutes", 0) > 0:
-                    hold_times_minutes.append(trade["hold_time_minutes"])
+            # Update metrics with 7-day data
+            metrics.update({
+                "trades_last_7_days": seven_day_metrics['trades_last_7_days'],
+                "win_rate_7d": seven_day_metrics['win_rate_7d'],
+                "profit_7d": seven_day_metrics['profit_7d'],
+                "active_trader": seven_day_metrics['active_trader'],
+                "days_since_last_trade": seven_day_metrics['days_since_last_trade']
+            })
+            
+            # Calculate average hold times from recent trades only
+            hold_times_minutes = [t["hold_time_minutes"] for t in recent_trades 
+                                 if t.get("hold_time_minutes", 0) > 0]
             
             avg_hold_minutes = np.mean(hold_times_minutes) if hold_times_minutes else 0
-            
-            # Also check if Cielo provided hold time in seconds
-            if avg_hold_minutes == 0 and metrics.get("avg_hold_time", 0) > 0:
-                # Convert hours to minutes
-                avg_hold_minutes = metrics.get("avg_hold_time", 0) * 60
-            elif avg_hold_minutes == 0 and "average_holding_time_sec" in cielo_metrics:
-                # Convert seconds to minutes
-                avg_hold_minutes = cielo_metrics.get("average_holding_time_sec", 0) / 60
-            
             metrics["avg_hold_time_minutes"] = round(avg_hold_minutes, 2)
             metrics["avg_hold_time_hours"] = round(avg_hold_minutes / 60, 2)
-            # Remove seconds - we don't need them
-            metrics.pop("avg_hold_time_seconds", None)
             
-            # Calculate market cap metrics
-            market_caps = [t.get("market_cap_at_buy", 0) for t in analyzed_trades if t.get("market_cap_at_buy", 0) > 0]
+            # Calculate market cap metrics from recent trades
+            market_caps = [t.get("market_cap_at_buy", 0) for t in recent_trades 
+                          if t.get("market_cap_at_buy", 0) > 0]
             if market_caps:
                 metrics["avg_buy_market_cap_usd"] = round(np.mean(market_caps), 2)
                 metrics["median_buy_market_cap_usd"] = round(np.median(market_caps), 2)
-            else:
-                metrics["avg_buy_market_cap_usd"] = 0
-                metrics["median_buy_market_cap_usd"] = 0
             
-            # Calculate proper avg_first_take_profit_percent
-            first_profits = []
-            for trade in analyzed_trades:
-                if trade.get("roi_percent", 0) > 0:
-                    # This is their exit ROI, which is their first (and often only) take profit
-                    first_profits.append(trade["roi_percent"])
+            # Calculate avg_first_take_profit_percent from actual exits
+            exit_profits = [t["roi_percent"] for t in recent_trades 
+                           if t.get("sell_timestamp") and t.get("roi_percent", 0) > 0]
             
-            if first_profits:
-                metrics["avg_first_take_profit_percent"] = round(np.mean(first_profits), 1)
-                metrics["median_first_take_profit_percent"] = round(np.median(first_profits), 1)
+            if exit_profits:
+                metrics["avg_first_take_profit_percent"] = round(np.mean(exit_profits), 1)
+                metrics["median_first_take_profit_percent"] = round(np.median(exit_profits), 1)
             else:
                 metrics["avg_first_take_profit_percent"] = 0
                 metrics["median_first_take_profit_percent"] = 0
             
             # Calculate average buy amount
-            buy_amounts = [t.get("sol_amount", 0) * 150 for t in analyzed_trades]  # Estimate USD
+            buy_amounts = [t.get("sol_amount", 0) * 150 for t in recent_trades]
             if buy_amounts:
                 metrics["avg_buy_amount_usd"] = round(np.mean(buy_amounts), 2)
-            
-            # Fix median_roi if missing
-            if "median_roi" not in metrics or metrics["median_roi"] == 0:
-                roi_values = [t.get("roi_percent", 0) for t in analyzed_trades]
-                if roi_values:
-                    metrics["median_roi"] = round(np.median(roi_values), 2)
-            
-            # Ensure all required fields are present
-            required_fields = [
-                "total_trades", "win_rate", "profit_factor", "net_profit_usd",
-                "avg_roi", "median_roi", "max_roi", "avg_hold_time_minutes",
-                "total_tokens_traded"
-            ]
-            
-            for field in required_fields:
-                if field not in metrics:
-                    metrics[field] = 0
             
             return metrics
             
@@ -799,13 +725,8 @@ class WalletAnalyzer:
             logger.error(f"Error calculating enhanced metrics: {str(e)}")
             return cielo_metrics or self._get_empty_metrics()
     
-    def _calculate_proper_distribution(self, metrics: Dict[str, Any], 
-                                     analyzed_trades: List[Dict[str, Any]]) -> Dict[str, Any]:
-        """Calculate ROI distribution that sums to 100%."""
-        # Use existing distribution if available
-        roi_dist = metrics.get("roi_distribution", {})
-        
-        # Define buckets
+    def _calculate_7day_distribution(self, recent_trades: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Calculate ROI distribution for last 7 days only."""
         buckets = {
             "distribution_500_plus_%": 0,      # 500%+ (5x+)
             "distribution_200_500_%": 0,       # 200-500% (2x-5x)
@@ -814,131 +735,100 @@ class WalletAnalyzer:
             "distribution_below_neg50_%": 0    # Below -50%
         }
         
-        total_trades = metrics.get("total_trades", 0)
+        if not recent_trades:
+            return buckets
         
-        if total_trades > 0:
-            # Try to use Cielo distribution first
-            if roi_dist:
-                total_in_dist = sum([
-                    roi_dist.get("roi_above_500", 0),
-                    roi_dist.get("roi_200_to_500", 0),
-                    roi_dist.get("roi_0_to_200", 0),
-                    roi_dist.get("roi_neg50_to_0", 0),
-                    roi_dist.get("roi_below_neg50", 0)
-                ])
-                
-                if total_in_dist > 0:
-                    # Convert to percentages that sum to 100%
-                    buckets["distribution_500_plus_%"] = round(roi_dist.get("roi_above_500", 0) / total_trades * 100, 1)
-                    buckets["distribution_200_500_%"] = round(roi_dist.get("roi_200_to_500", 0) / total_trades * 100, 1)
-                    buckets["distribution_0_200_%"] = round(roi_dist.get("roi_0_to_200", 0) / total_trades * 100, 1)
-                    buckets["distribution_neg50_0_%"] = round(roi_dist.get("roi_neg50_to_0", 0) / total_trades * 100, 1)
-                    buckets["distribution_below_neg50_%"] = round(roi_dist.get("roi_below_neg50", 0) / total_trades * 100, 1)
-            
-            # If no distribution or doesn't sum properly, calculate from analyzed trades
-            total_percent = sum(buckets.values())
-            if abs(total_percent - 100) > 1:  # Allow 1% tolerance
-                # Recalculate from analyzed trades
-                for trade in analyzed_trades:
-                    roi = trade.get("roi_percent", 0)
-                    if roi >= 500:
-                        buckets["distribution_500_plus_%"] += 1
-                    elif roi >= 200:
-                        buckets["distribution_200_500_%"] += 1
-                    elif roi >= 0:
-                        buckets["distribution_0_200_%"] += 1
-                    elif roi >= -50:
-                        buckets["distribution_neg50_0_%"] += 1
-                    else:
-                        buckets["distribution_below_neg50_%"] += 1
-                
-                # Convert counts to percentages
-                trade_count = sum(buckets.values())
-                if trade_count > 0:
-                    for key in buckets:
-                        buckets[key] = round(buckets[key] / trade_count * 100, 1)
-                
-                # Ensure it sums to 100%
-                total = sum(buckets.values())
-                if total > 0 and total != 100:
-                    # Adjust the largest bucket
-                    largest_bucket = max(buckets, key=buckets.get)
-                    buckets[largest_bucket] += (100 - total)
+        # Count trades in each bucket
+        for trade in recent_trades:
+            roi = trade.get("roi_percent", 0)
+            if roi >= 500:
+                buckets["distribution_500_plus_%"] += 1
+            elif roi >= 200:
+                buckets["distribution_200_500_%"] += 1
+            elif roi >= 0:
+                buckets["distribution_0_200_%"] += 1
+            elif roi >= -50:
+                buckets["distribution_neg50_0_%"] += 1
+            else:
+                buckets["distribution_below_neg50_%"] += 1
+        
+        # Convert to percentages
+        total = len(recent_trades)
+        for key in buckets:
+            buckets[key] = round(buckets[key] / total * 100, 1)
+        
+        # Ensure it sums to 100%
+        total_percent = sum(buckets.values())
+        if total_percent > 0 and abs(total_percent - 100) > 1:
+            # Adjust the largest bucket
+            largest_bucket = max(buckets, key=buckets.get)
+            buckets[largest_bucket] += (100 - total_percent)
+            buckets[largest_bucket] = round(buckets[largest_bucket], 1)
         
         return buckets
     
-    def _calculate_memecoin_composite_score_with_distribution(self, metrics: Dict[str, Any]) -> float:
-        """Calculate composite score optimized for memecoin trading WITH distribution factored in."""
+    def _calculate_memecoin_composite_score_7day(self, metrics: Dict[str, Any], 
+                                                seven_day_metrics: Dict[str, Any]) -> float:
+        """Calculate composite score with heavy 7-day activity weighting."""
         try:
-            total_trades = metrics.get("total_trades", 0)
-            win_rate = metrics.get("win_rate", 0)
-            profit_factor = metrics.get("profit_factor", 0)
-            gem_rate_5x = metrics.get("gem_rate_5x_plus", 0)
-            net_profit = metrics.get("net_profit_usd", 0)
-            avg_first_tp = metrics.get("avg_first_take_profit_percent", 0)
-            
-            # Activity score (max 10 points) - reduced importance
-            if total_trades >= 50:
+            # Base activity score from 7-day trades
+            trades_7d = seven_day_metrics.get("trades_last_7_days", 0)
+            if trades_7d >= 10:
+                activity_score = 20
+            elif trades_7d >= 5:
+                activity_score = 15
+            elif trades_7d >= 3:
                 activity_score = 10
-            elif total_trades >= 20:
-                activity_score = 8
-            elif total_trades >= 10:
+            elif trades_7d >= 1:
                 activity_score = 5
-            elif total_trades >= 5:
-                activity_score = 3
             else:
                 activity_score = 0
             
-            # Win rate score (max 15 points)
-            if win_rate >= 60:
+            # Recency bonus (penalize inactive traders)
+            days_since_trade = seven_day_metrics.get("days_since_last_trade", 999)
+            if days_since_trade <= 1:
+                recency_bonus = 10
+            elif days_since_trade <= 3:
+                recency_bonus = 5
+            elif days_since_trade <= 7:
+                recency_bonus = 0
+            else:
+                recency_bonus = -20  # Heavy penalty for inactive
+            
+            # 7-day win rate score
+            win_rate_7d = seven_day_metrics.get("win_rate_7d", 0)
+            if win_rate_7d >= 60:
                 winrate_score = 15
-            elif win_rate >= 45:
+            elif win_rate_7d >= 45:
                 winrate_score = 10
-            elif win_rate >= 30:
+            elif win_rate_7d >= 30:
                 winrate_score = 5
             else:
                 winrate_score = 0
             
-            # Gem finding score for 5x+ (max 25 points) - critical for memecoins
-            if gem_rate_5x >= 30:  # 30%+ trades hit 5x
-                gem_score = 25
-            elif gem_rate_5x >= 20:
-                gem_score = 20
-            elif gem_rate_5x >= 10:
+            # 7-day gem finding (5x+ emphasis)
+            if seven_day_metrics.get("has_5x_last_7_days", False):
+                gem_score = 30  # Big bonus for recent 5x
+            elif seven_day_metrics.get("has_2x_last_7_days", False):
                 gem_score = 15
-            elif gem_rate_5x >= 5:
-                gem_score = 10
-            elif gem_rate_5x >= 2:
-                gem_score = 5
             else:
                 gem_score = 0
             
-            # Profit factor score (max 15 points)
-            if profit_factor >= 2.0:
-                pf_score = 15
-            elif profit_factor >= 1.5:
-                pf_score = 10
-            elif profit_factor >= 1.0:
-                pf_score = 5
-            else:
-                pf_score = 0
-            
-            # Net profit score (max 15 points)
-            if net_profit >= 10000:
+            # 7-day profit score
+            profit_7d = seven_day_metrics.get("profit_7d", 0)
+            if profit_7d >= 10000:
+                profit_score = 20
+            elif profit_7d >= 5000:
                 profit_score = 15
-            elif net_profit >= 5000:
+            elif profit_7d >= 1000:
                 profit_score = 10
-            elif net_profit >= 1000:
+            elif profit_7d >= 0:
                 profit_score = 5
-            elif net_profit >= 0:
-                profit_score = 2
             else:
                 profit_score = 0
             
-            # NEW: Distribution quality score (max 20 points)
-            # Favor wallets with high % in 500%+ bucket
+            # Distribution quality (from 7-day trades)
             dist_500_plus = metrics.get("distribution_500_plus_%", 0)
-            dist_200_500 = metrics.get("distribution_200_500_%", 0)
             dist_below_neg50 = metrics.get("distribution_below_neg50_%", 0)
             
             dist_score = 0
@@ -947,36 +837,25 @@ class WalletAnalyzer:
             elif dist_500_plus >= 5:
                 dist_score += 5
             
-            if dist_200_500 >= 10:  # Good 2x-5x rate
+            if dist_below_neg50 <= 10:  # Low catastrophic losses
                 dist_score += 5
-            
-            if dist_below_neg50 <= 10:  # Low catastrophic loss rate
-                dist_score += 5
-            elif dist_below_neg50 <= 20:
-                dist_score += 2
             
             # Calculate total
             total_score = (
                 activity_score +
+                recency_bonus +
                 winrate_score +
                 gem_score +
-                pf_score +
                 profit_score +
                 dist_score
             )
             
-            # Apply multipliers for exceptional performance
-            if gem_rate_5x >= 20 and win_rate >= 50:
-                total_score *= 1.3  # Excellent 5x gem finder
-            elif avg_first_tp >= 100 and avg_first_tp <= 200:
-                total_score *= 1.1  # Good profit taking for 2x-3x
+            # Apply multipliers for exceptional recent performance
+            if seven_day_metrics.get("has_5x_last_7_days") and win_rate_7d >= 50:
+                total_score *= 1.3
             
             # Cap at 100
-            total_score = min(100, total_score)
-            
-            # Ensure minimum score if they have trades
-            if total_trades > 0:
-                total_score = max(10, total_score)
+            total_score = min(100, max(0, total_score))
             
             return round(total_score, 1)
             
@@ -1009,9 +888,9 @@ class WalletAnalyzer:
                 if avg_first_tp >= 20 and avg_first_tp <= 50:
                     return "scalper"
                 else:
-                    return "flipper"  # Default to flipper if profit pattern doesn't match
+                    return "flipper"
             
-            # Gem Hunter: Holds for 5x+ gains (not 2x)
+            # Gem Hunter: Holds for 5x+ gains
             elif gem_rate_5x >= 15:  # 15%+ of trades reach 5x
                 return "gem_hunter"
             
@@ -1033,8 +912,9 @@ class WalletAnalyzer:
             logger.error(f"Error determining wallet type: {str(e)}")
             return "unknown"
     
-    def _generate_memecoin_strategy(self, wallet_type: str, metrics: Dict[str, Any]) -> Dict[str, Any]:
-        """Generate memecoin-specific trading strategy."""
+    def _generate_enhanced_memecoin_strategy(self, wallet_type: str, metrics: Dict[str, Any], 
+                                           analyzed_trades: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Generate enhanced strategy with specific sell guidance."""
         try:
             composite_score = metrics.get("composite_score", 0)
             avg_first_tp = metrics.get("avg_first_take_profit_percent", 0)
@@ -1042,9 +922,36 @@ class WalletAnalyzer:
             gem_rate_5x = metrics.get("gem_rate_5x_plus", 0)
             win_rate = metrics.get("win_rate", 0)
             
-            # Determine market cap filter range
+            # Analyze exit behavior from recent trades
+            exit_analysis = self._analyze_exit_behavior(analyzed_trades)
+            
+            # Determine if we should follow their sells
+            follow_sells = exit_analysis['exit_quality'] in ["GOOD", "EXCELLENT"]
+            
+            # Calculate optimal TPs based on their behavior
+            if follow_sells:
+                # They're good at exits, follow their pattern
+                tp1 = avg_first_tp if avg_first_tp > 0 else 50
+                tp2 = tp1 * 2
+                sell_strategy = "COPY_EXITS"
+                tp_guidance = f"Follow their exits - they capture {exit_analysis['avg_capture_ratio']:.0f}% of gains"
+            else:
+                # They exit poorly, set better targets
+                if exit_analysis['avg_missed_gains'] > 100:
+                    # They leave huge gains on table
+                    tp1 = max(avg_first_tp * 2, 100)
+                    tp2 = tp1 * 2.5
+                    sell_strategy = "USE_FIXED_TP"
+                    tp_guidance = f"They exit too early at {avg_first_tp:.0f}% avg - hold for bigger gains"
+                else:
+                    # Moderate improvement needed
+                    tp1 = max(avg_first_tp * 1.5, 50)
+                    tp2 = tp1 * 2
+                    sell_strategy = "HYBRID"
+                    tp_guidance = f"Consider their exits but hold longer - they miss {exit_analysis['avg_missed_gains']:.0f}% gains"
+            
+            # Market cap filter range
             if avg_market_cap > 0:
-                # Set range based on their typical buying pattern
                 if avg_market_cap < 50000:
                     filter_min = 5000
                     filter_max = 100000
@@ -1058,7 +965,6 @@ class WalletAnalyzer:
                     filter_min = 1000000
                     filter_max = 50000000
             else:
-                # Default range for unknown
                 filter_min = 50000
                 filter_max = 5000000
             
@@ -1066,68 +972,57 @@ class WalletAnalyzer:
             if wallet_type == "sniper":
                 strategy = {
                     "recommendation": "COPY_SNIPER",
-                    "avg_first_take_profit": avg_first_tp if avg_first_tp > 0 else 50,
-                    "confidence": "HIGH" if composite_score >= 60 else "MEDIUM",
+                    "follow_sells": follow_sells,
+                    "tp1_percent": min(tp1, 100),  # Snipers often take quick profits
+                    "tp2_percent": min(tp2, 200),
+                    "sell_strategy": sell_strategy,
+                    "tp_guidance": tp_guidance,
                     "notes": f"Sniper with {gem_rate_5x:.1f}% 5x rate. Quick entries/exits.",
                     "filter_market_cap_min": filter_min,
                     "filter_market_cap_max": filter_max,
-                    "suggested_slippage": 25,  # High slippage for sniping
+                    "suggested_slippage": 25,
                     "suggested_gas": "high"
                 }
             
             elif wallet_type == "flipper":
                 strategy = {
                     "recommendation": "COPY_FLIPPER",
-                    "avg_first_take_profit": avg_first_tp if avg_first_tp > 0 else 30,
-                    "confidence": "HIGH" if composite_score >= 60 else "MEDIUM",
-                    "notes": f"Flipper with {win_rate:.1f}% win rate. Exit at {avg_first_tp:.1f}%.",
+                    "follow_sells": follow_sells,
+                    "tp1_percent": tp1,
+                    "tp2_percent": tp2,
+                    "sell_strategy": sell_strategy,
+                    "tp_guidance": tp_guidance,
+                    "notes": f"Flipper with {win_rate:.1f}% win rate.",
                     "filter_market_cap_min": filter_min,
                     "filter_market_cap_max": filter_max,
                     "suggested_slippage": 20,
                     "suggested_gas": "high"
                 }
             
-            elif wallet_type == "scalper":
-                strategy = {
-                    "recommendation": "COPY_SCALPER",
-                    "avg_first_take_profit": avg_first_tp if avg_first_tp > 0 else 35,
-                    "confidence": "HIGH" if composite_score >= 60 else "MEDIUM",
-                    "notes": f"Scalper taking {avg_first_tp:.1f}% profits. Consistent wins.",
-                    "filter_market_cap_min": filter_min,
-                    "filter_market_cap_max": filter_max,
-                    "suggested_slippage": 15,
-                    "suggested_gas": "medium"
-                }
-            
             elif wallet_type == "gem_hunter":
+                # Gem hunters should hold longer
                 strategy = {
                     "recommendation": "COPY_GEM_HUNTER",
-                    "avg_first_take_profit": 400,  # Hold for 5x minimum
-                    "confidence": "VERY_HIGH" if composite_score >= 70 else "HIGH",
-                    "notes": f"5x+ Gem hunter with {gem_rate_5x:.1f}% success finding 5x+. Hold for moonshots.",
+                    "follow_sells": True,  # Usually good at holding
+                    "tp1_percent": max(400, tp1),  # At least 5x
+                    "tp2_percent": max(800, tp2),  # Target 10x
+                    "sell_strategy": "FOLLOW_GEMS",
+                    "tp_guidance": f"5x+ hunter with {gem_rate_5x:.1f}% success - hold for moonshots",
+                    "notes": f"Elite gem hunter. Let winners run.",
                     "filter_market_cap_min": filter_min,
                     "filter_market_cap_max": filter_max,
                     "suggested_slippage": 15,
                     "suggested_gas": "medium"
-                }
-            
-            elif wallet_type in ["swing_trader", "position_trader"]:
-                strategy = {
-                    "recommendation": "COPY_POSITION",
-                    "avg_first_take_profit": avg_first_tp if avg_first_tp > 0 else 100,
-                    "confidence": "HIGH" if composite_score >= 60 else "MEDIUM",
-                    "notes": f"Position trader. Consider holding for bigger gains.",
-                    "filter_market_cap_min": filter_min,
-                    "filter_market_cap_max": filter_max,
-                    "suggested_slippage": 10,
-                    "suggested_gas": "low"
                 }
             
             else:
                 strategy = {
-                    "recommendation": "CAUTIOUS" if composite_score < 40 else "COPY_SELECTIVE",
-                    "avg_first_take_profit": avg_first_tp if avg_first_tp > 0 else 30,
-                    "confidence": "LOW" if composite_score < 40 else "MEDIUM",
+                    "recommendation": "SELECTIVE_COPY" if composite_score >= 40 else "CAUTIOUS",
+                    "follow_sells": follow_sells,
+                    "tp1_percent": tp1,
+                    "tp2_percent": tp2,
+                    "sell_strategy": sell_strategy,
+                    "tp_guidance": tp_guidance,
                     "notes": f"Mixed results. Score: {composite_score:.1f}/100.",
                     "filter_market_cap_min": filter_min,
                     "filter_market_cap_max": filter_max,
@@ -1135,21 +1030,10 @@ class WalletAnalyzer:
                     "suggested_gas": "medium"
                 }
             
-            # Adjust confidence based on score
-            if composite_score >= 80:
-                strategy["confidence"] = "VERY_HIGH"
-            elif composite_score >= 60:
-                strategy["confidence"] = "HIGH"
-            elif composite_score >= 40:
-                strategy["confidence"] = "MEDIUM"
-            elif composite_score >= 20:
-                strategy["confidence"] = "LOW"
-            else:
-                strategy["confidence"] = "VERY_LOW"
-            
-            # Add warning for low activity
-            if metrics.get("total_trades", 0) < 10:
-                strategy["notes"] += " ⚠️ Low trade count - less reliable."
+            # Add warning for inactive traders
+            days_inactive = metrics.get("days_since_last_trade", 0)
+            if days_inactive > 3:
+                strategy["notes"] += f" ⚠️ Inactive {days_inactive} days."
             
             return strategy
             
@@ -1157,12 +1041,67 @@ class WalletAnalyzer:
             logger.error(f"Error generating strategy: {str(e)}")
             return {
                 "recommendation": "DO_NOT_COPY",
-                "avg_first_take_profit": 0,
-                "confidence": "VERY_LOW",
-                "notes": "Error during strategy generation",
+                "follow_sells": False,
+                "tp1_percent": 0,
+                "tp2_percent": 0,
+                "sell_strategy": "NONE",
+                "tp_guidance": "Error during strategy generation",
                 "filter_market_cap_min": 0,
                 "filter_market_cap_max": 0
             }
+    
+    def _analyze_exit_behavior(self, trades: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Analyze exit behavior to determine if we should follow sells."""
+        if not trades:
+            return {
+                "exit_quality": "UNKNOWN",
+                "avg_capture_ratio": 0,
+                "avg_missed_gains": 0,
+                "should_follow": False
+            }
+        
+        # Only analyze completed trades
+        completed = [t for t in trades if t.get("sell_timestamp")]
+        
+        if not completed:
+            return {
+                "exit_quality": "NO_DATA",
+                "avg_capture_ratio": 0,
+                "avg_missed_gains": 0,
+                "should_follow": False
+            }
+        
+        capture_ratios = []
+        missed_gains = []
+        
+        for trade in completed:
+            exit_roi = trade.get("roi_percent", 0)
+            max_roi = trade.get("max_roi_percent", 0)
+            
+            if max_roi > 0:
+                capture_ratio = (exit_roi / max_roi * 100) if max_roi else 0
+                capture_ratios.append(capture_ratio)
+                missed_gains.append(max_roi - exit_roi)
+        
+        avg_capture = np.mean(capture_ratios) if capture_ratios else 0
+        avg_missed = np.mean(missed_gains) if missed_gains else 0
+        
+        # Determine quality
+        if avg_capture >= 80:
+            quality = "EXCELLENT"
+        elif avg_capture >= 60:
+            quality = "GOOD"
+        elif avg_capture >= 40:
+            quality = "AVERAGE"
+        else:
+            quality = "POOR"
+        
+        return {
+            "exit_quality": quality,
+            "avg_capture_ratio": avg_capture,
+            "avg_missed_gains": avg_missed,
+            "should_follow": quality in ["GOOD", "EXCELLENT"]
+        }
     
     def _analyze_memecoin_entry_exit(self, analyzed_trades: List[Dict[str, Any]], 
                                    metrics: Dict[str, Any]) -> Dict[str, Any]:
@@ -1212,7 +1151,7 @@ class WalletAnalyzer:
                     # Track exit ROIs
                     exit_rois.append(exit_roi)
                     
-                    # Check for early exit (sold before reaching potential)
+                    # Check for early exit
                     if exit_roi < 50 and max_roi > 100:
                         early_exits += 1
                     
@@ -1236,26 +1175,17 @@ class WalletAnalyzer:
             entry_quality = "GOOD" if avg_entry_score >= 60 else "POOR"
             exit_quality = "GOOD" if avg_exit_score >= 60 else "POOR"
             
-            # Adjust based on actual performance
-            composite_score = metrics.get("composite_score", 0)
-            if composite_score >= 70:
-                # High performing wallet should have at least average quality
-                if entry_quality == "POOR":
-                    entry_quality = "AVERAGE"
-                if exit_quality == "POOR" and avg_missed_gains < 50:
-                    exit_quality = "AVERAGE"
-            
             # Calculate early exit rate
             trades_with_exit = len([t for t in analyzed_trades if t.get("exit_timing") != "HOLDING"])
             early_exit_rate = (early_exits / trades_with_exit * 100) if trades_with_exit > 0 else 0
             
             # Determine pattern
             if avg_missed_gains > 200:
-                pattern = "LEAVES_MONEY"  # Exits way too early
+                pattern = "LEAVES_MONEY"
             elif early_exit_rate > 50:
                 pattern = "EARLY_SELLER"
             elif avg_exit_roi > 100:
-                pattern = "DIAMOND_HANDS"  # Holds for big gains
+                pattern = "DIAMOND_HANDS"
             elif avg_exit_roi > 50:
                 pattern = "BALANCED"
             else:
@@ -1306,28 +1236,28 @@ class WalletAnalyzer:
             # Check for bundle indicators
             bundle_indicators = 0
             
-            # 1. Check for consistent buy amounts (bundles often use fixed amounts)
+            # 1. Check for consistent buy amounts
             buy_amounts = [s.get("sol_amount", 0) for s in recent_swaps if s.get("type") == "buy"]
             if buy_amounts:
                 amount_variance = np.std(buy_amounts) / np.mean(buy_amounts) if np.mean(buy_amounts) > 0 else 1
-                if amount_variance < 0.1:  # Very consistent amounts
+                if amount_variance < 0.1:
                     bundle_indicators += 1
             
-            # 2. Check for rapid succession trades (multiple buys within seconds)
+            # 2. Check for rapid succession trades
             buy_timestamps = sorted([s.get("buy_timestamp", 0) for s in recent_swaps if s.get("buy_timestamp")])
             rapid_buys = 0
             for i in range(1, len(buy_timestamps)):
-                if buy_timestamps[i] - buy_timestamps[i-1] < 5:  # Within 5 seconds
+                if buy_timestamps[i] - buy_timestamps[i-1] < 5:
                     rapid_buys += 1
             
             if rapid_buys >= 3:
                 bundle_indicators += 1
             
-            # 3. Check for similar sell patterns (dumps at similar times)
+            # 3. Check for similar sell patterns
             sell_timestamps = sorted([s.get("sell_timestamp", 0) for s in recent_swaps if s.get("sell_timestamp")])
             rapid_sells = 0
             for i in range(1, len(sell_timestamps)):
-                if sell_timestamps[i] - sell_timestamps[i-1] < 10:  # Within 10 seconds
+                if sell_timestamps[i] - sell_timestamps[i-1] < 10:
                     rapid_sells += 1
             
             if rapid_sells >= 3:
@@ -1336,11 +1266,10 @@ class WalletAnalyzer:
             # Determine if likely bundler
             is_likely_bundler = bundle_indicators >= 2
             
-            # Estimate copytraders (this would need on-chain analysis for accuracy)
-            # For now, we'll use heuristics
+            # Estimate copytraders
             avg_profit = np.mean([t.get("roi_percent", 0) for t in analyzed_trades])
             if avg_profit > 50 and len(analyzed_trades) > 20:
-                estimated_copytraders = "10+"  # Successful traders usually have followers
+                estimated_copytraders = "10+"
             elif avg_profit > 20 and len(analyzed_trades) > 10:
                 estimated_copytraders = "5-10"
             else:
@@ -1386,26 +1315,22 @@ class WalletAnalyzer:
                 avg_hold_time_minutes = stats_data.get("average_holding_time_sec", 0) / 60
             
             # Calculate profit factor
-            # Get profit and loss data
             total_profits = 0
             total_losses = 0
             
             # Try to get from roi distribution
             roi_dist = stats_data.get("roi_distribution", {})
             if roi_dist:
-                # Positive ROI trades contribute to profits
                 profitable_trades = (
                     roi_dist.get("roi_above_500", 0) +
                     roi_dist.get("roi_200_to_500", 0) +
                     roi_dist.get("roi_0_to_200", 0)
                 )
-                # Negative ROI trades contribute to losses
                 loss_trades = (
                     roi_dist.get("roi_neg50_to_0", 0) +
                     roi_dist.get("roi_below_neg50", 0)
                 )
                 
-                # Estimate based on PnL and trade counts
                 if total_pnl_usd > 0 and profitable_trades > 0:
                     avg_profit_per_trade = total_pnl_usd / profitable_trades
                     total_profits = avg_profit_per_trade * profitable_trades
@@ -1413,7 +1338,6 @@ class WalletAnalyzer:
                     total_profits = total_sell_amount_usd - total_buy_amount_usd
                 
                 if loss_trades > 0:
-                    # Assume average loss is proportional to total trades
                     avg_loss_estimate = abs(total_pnl_usd) / total_trades if total_trades > 0 else 100
                     total_losses = avg_loss_estimate * loss_trades
             
@@ -1421,7 +1345,7 @@ class WalletAnalyzer:
             if total_profits == 0 and total_losses == 0:
                 if total_pnl_usd > 0:
                     total_profits = total_pnl_usd
-                    total_losses = 1  # Avoid division by zero
+                    total_losses = 1
                 else:
                     total_profits = 1
                     total_losses = abs(total_pnl_usd) if total_pnl_usd < 0 else 1
@@ -1444,7 +1368,7 @@ class WalletAnalyzer:
                 "total_volume": total_buy_amount_usd + total_sell_amount_usd,
                 "best_trade": 0,
                 "worst_trade": 0,
-                "avg_hold_time": avg_hold_time_minutes / 60,  # Convert to hours
+                "avg_hold_time": avg_hold_time_minutes / 60,
                 "avg_hold_time_minutes": round(avg_hold_time_minutes, 2),
                 "tokens_traded": stats_data.get("buy_count", 0),
                 "total_tokens_traded": stats_data.get("buy_count", 0),
@@ -1481,11 +1405,6 @@ class WalletAnalyzer:
             else:
                 metrics["worst_trade"] = 0
             
-            logger.debug(f"Extracted Cielo metrics: trades={metrics['total_trades']}, "
-                        f"win_rate={metrics['win_rate']}, pnl={metrics['total_pnl_usd']}, "
-                        f"profit_factor={metrics['profit_factor']}, "
-                        f"avg_hold_time_minutes={metrics['avg_hold_time_minutes']}")
-            
             return metrics
             
         except Exception as e:
@@ -1517,12 +1436,12 @@ class WalletAnalyzer:
             "median_roi": 0
         }
     
-    def _get_recent_token_swaps_rpc(self, wallet_address: str, limit: int = 20) -> List[Dict[str, Any]]:
+    def _get_recent_token_swaps_rpc(self, wallet_address: str, limit: int = 100) -> List[Dict[str, Any]]:
         """Get recent token swaps using RPC calls with better rate limiting."""
         try:
             logger.info(f"Fetching last {limit} token swaps for {wallet_address}")
             
-            signatures = self._get_signatures_for_address(wallet_address, limit=100)  # Get more to filter
+            signatures = self._get_signatures_for_address(wallet_address, limit=min(limit * 2, 200))
             
             if not signatures:
                 logger.warning(f"No transactions found for {wallet_address}")
@@ -1577,11 +1496,10 @@ class WalletAnalyzer:
             
             block_time = tx_details.get("blockTime")
             if not block_time or block_time == 0:
-                # Use current time minus 1 day as fallback
                 block_time = int(datetime.now().timestamp() - 86400)
                 logger.debug(f"Using fallback timestamp: {block_time}")
             
-            # Sanity check - if timestamp is in the future, adjust it
+            # Sanity check
             current_time = int(datetime.now().timestamp())
             if block_time > current_time:
                 logger.warning(f"Future timestamp detected: {block_time}, adjusting to current time")
@@ -1590,7 +1508,6 @@ class WalletAnalyzer:
             pre_balances = meta.get("preTokenBalances", [])
             post_balances = meta.get("postTokenBalances", [])
             
-            # Also track SOL balance changes for price calculation
             pre_sol = meta.get("preBalances", [])
             post_sol = meta.get("postBalances", [])
             
@@ -1636,7 +1553,7 @@ class WalletAnalyzer:
             # Calculate SOL change
             sol_change = 0
             if wallet_index >= 0 and wallet_index < len(pre_sol) and wallet_index < len(post_sol):
-                sol_change = (post_sol[wallet_index] - pre_sol[wallet_index]) / 1e9  # Convert lamports to SOL
+                sol_change = (post_sol[wallet_index] - pre_sol[wallet_index]) / 1e9
             
             # Process token changes
             for mint, changes in token_changes.items():
@@ -1644,16 +1561,13 @@ class WalletAnalyzer:
                 decimals = changes["decimals"]
                 
                 if diff != 0:
-                    # Convert to UI amount
                     ui_amount = abs(diff) / (10 ** decimals)
                     
-                    # Estimate price if this is a swap
+                    # Estimate price
                     estimated_price = 0
                     if diff > 0 and sol_change < 0:
-                        # Bought tokens with SOL
                         estimated_price = abs(sol_change) / ui_amount
                     elif diff < 0 and sol_change > 0:
-                        # Sold tokens for SOL
                         estimated_price = sol_change / ui_amount
                     
                     swap_data = {
@@ -1716,15 +1630,20 @@ class WalletAnalyzer:
             "gem_rate_5x_plus": 0,
             "avg_buy_market_cap_usd": 0,
             "avg_buy_amount_usd": 0,
-            "avg_first_take_profit_percent": 0
+            "avg_first_take_profit_percent": 0,
+            "trades_last_7_days": 0,
+            "win_rate_7d": 0,
+            "profit_7d": 0,
+            "active_trader": False,
+            "days_since_last_trade": 999
         }
     
     def batch_analyze_wallets(self, wallet_addresses: List[str], 
-                            days_back: int = 30,
+                            days_back: int = 7,
                             min_winrate: float = 30.0,
                             use_hybrid: bool = True) -> Dict[str, Any]:
-        """Batch analyze multiple wallets with 3-tier scanning."""
-        logger.info(f"Batch analyzing {len(wallet_addresses)} wallets with 3-tier memecoin analysis")
+        """Batch analyze multiple wallets with 7-day focus."""
+        logger.info(f"Batch analyzing {len(wallet_addresses)} wallets (7-day active trader focus)")
         
         if not wallet_addresses:
             return {
@@ -1760,9 +1679,7 @@ class WalletAnalyzer:
                     if "metrics" in analysis:
                         wallet_analyses.append(analysis)
                         score = analysis.get("composite_score", analysis.get("metrics", {}).get("composite_score", 0))
-                        tier = analysis.get("analysis_tier", "INITIAL")
-                        tier_counts[tier] = tier_counts.get(tier, 0) + 1
-                        logger.info(f"  └─ Score: {score}/100, Type: {analysis.get('wallet_type', 'unknown')}, Tier: {tier}")
+                        logger.info(f"  └─ Score: {score}/100, Type: {analysis.get('wallet_type', 'unknown')}")
                     else:
                         failed_analyses.append({
                             "wallet_address": wallet_address,
@@ -1805,13 +1722,6 @@ class WalletAnalyzer:
                            position_traders, consistent, mixed, unknown]:
                 category.sort(key=lambda x: x.get("composite_score", x.get("metrics", {}).get("composite_score", 0)), reverse=True)
             
-            # Calculate tier distribution percentages
-            total_analyzed = len(wallet_analyses)
-            tier_percentages = {
-                tier: (count / total_analyzed * 100) if total_analyzed > 0 else 0
-                for tier, count in tier_counts.items()
-            }
-            
             # Log final API call statistics
             logger.info(f"📊 FINAL API CALL STATISTICS:")
             logger.info(f"   Cielo: {self.api_call_stats['cielo']} calls")
@@ -1819,10 +1729,6 @@ class WalletAnalyzer:
             logger.info(f"   Helius: {self.api_call_stats['helius']} calls")
             logger.info(f"   RPC: {self.api_call_stats['rpc']} calls")
             logger.info(f"   Total API calls: {sum(self.api_call_stats.values())}")
-            logger.info(f"📊 TIER DISTRIBUTION:")
-            logger.info(f"   INITIAL (5 tokens): {tier_counts['INITIAL']} wallets ({tier_percentages['INITIAL']:.1f}%)")
-            logger.info(f"   STANDARD (10 tokens): {tier_counts['STANDARD']} wallets ({tier_percentages['STANDARD']:.1f}%)")
-            logger.info(f"   DEEP (20 tokens): {tier_counts['DEEP']} wallets ({tier_percentages['DEEP']:.1f}%)")
             
             return {
                 "success": True,
@@ -1841,9 +1747,7 @@ class WalletAnalyzer:
                 "unknown": unknown,
                 "failed_analyses": failed_analyses,
                 "api_source": "Hybrid (Cielo + RPC + Birdeye/Helius)" if use_hybrid else "Cielo Finance + RPC",
-                "api_calls": self.api_call_stats.copy(),
-                "tier_distribution": tier_counts,
-                "tier_percentages": tier_percentages
+                "api_calls": self.api_call_stats.copy()
             }
             
         except Exception as e:

@@ -1,13 +1,15 @@
 """
-Export Utilities Module - Phoenix Project (ENHANCED 2x+ AND 5x+ EDITION)
+Export Utilities Module - Phoenix Project (7-DAY ACTIVE TRADER EDITION)
 
-Handles Excel and CSV exports for enhanced SpyDefi analysis results.
+Handles Excel and CSV exports for memecoin analysis results.
 UPDATES:
-- Separate columns for strategy components (recommendation, entry_type, TP levels, SL)
-- Tracks both 2x+ and 5x+ metrics
-- Separate pullback percentages for 2x and 5x milestones
-- Removed detailed_analysis_count and pump_tokens_analyzed from exports
-- Enhanced formatting for better readability
+- Removed redundant columns (confidence, analysis_tier, score_rating)
+- Added enhanced strategy columns (follow_sells, tp1%, tp2%, sell_strategy)
+- 7-day focus metrics included
+- Proper distribution percentages that sum to 100%
+- Market cap filter ranges for all wallets
+- Entry/exit quality based on performance
+- Bundle detection warnings
 """
 
 import os
@@ -29,10 +31,10 @@ except ImportError:
 def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any], 
                    output_file: str) -> bool:
     """
-    Export combined analysis results to Excel with enhanced formatting.
+    Export combined analysis results to Excel with 7-day focus formatting.
     
     Args:
-        telegram_data: Telegram analysis results with 2x+ and 5x+ metrics
+        telegram_data: Telegram analysis results
         wallet_data: Wallet analysis results
         output_file: Output Excel file path
         
@@ -93,11 +95,6 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                 'border': 1
             })
             
-            percent_int_format = workbook.add_format({
-                'num_format': '0%',
-                'border': 1
-            })
-            
             money_format = workbook.add_format({
                 'num_format': '$#,##0.00',
                 'border': 1
@@ -108,11 +105,6 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                 'border': 1
             })
             
-            time_format = workbook.add_format({
-                'border': 1,
-                'align': 'center'
-            })
-            
             warning_format = workbook.add_format({
                 'bg_color': '#ff0000',
                 'font_color': 'white',
@@ -120,185 +112,92 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                 'border': 1
             })
             
-            # Export Enhanced Telegram data if available
+            # Export Telegram data if available
             if telegram_data and "ranked_kols" in telegram_data:
-                # Prepare data for DataFrame
-                telegram_rows = []
-                for kol_data in telegram_data["ranked_kols"]:
-                    row = {
-                        'Channel ID': kol_data.get('channel_id', ''),
-                        'Total Calls': kol_data.get('total_calls', 0),
-                        '2x Success Rate': kol_data.get('success_rate', 0) / 100,  # Convert to decimal for %
-                        '5x Success Rate': kol_data.get('success_rate_5x', 0) / 100,
-                        'Avg ROI': kol_data.get('avg_roi', 0),
-                        'Avg Max ROI': kol_data.get('avg_max_roi', 0),
-                        'Confidence Level': kol_data.get('confidence_level', 0),
-                        'Avg Max Pullback %': kol_data.get('avg_max_pullback_percent', 0),
-                        'Avg Pullback After 2x %': kol_data.get('avg_max_pullback_percent_2x', 0),
-                        'Avg Pullback After 5x %': kol_data.get('avg_max_pullback_percent_5x', 0),
-                        'Avg Time to 2x': kol_data.get('avg_time_to_2x_formatted', 'N/A'),
-                        'Avg Time to 5x': kol_data.get('avg_time_to_5x_formatted', 'N/A'),
-                        'Pump 2x Success Rate': kol_data.get('pump_success_rate_2x', 0) / 100,
-                        'Pump 5x Success Rate': kol_data.get('pump_success_rate_5x', 0) / 100,
-                        'Recommendation': kol_data.get('recommendation', 'ENHANCED_ANALYSIS'),
-                        'Entry Type': kol_data.get('entry_type', 'IMMEDIATE'),
-                        'Take Profit 1 %': kol_data.get('take_profit_1', 100),
-                        'Take Profit 2 %': kol_data.get('take_profit_2', 300),
-                        'Take Profit 3 %': kol_data.get('take_profit_3', 500),
-                        'Stop Loss %': kol_data.get('stop_loss', -35)
-                    }
-                    telegram_rows.append(row)
-                
-                telegram_df = pd.DataFrame(telegram_rows)
-                telegram_df.to_excel(writer, sheet_name='SpyDefi KOLs', index=False)
+                telegram_df = pd.DataFrame(telegram_data["ranked_kols"])
+                telegram_df.to_excel(writer, sheet_name='Telegram KOLs', index=False)
                 
                 # Format Telegram sheet
-                telegram_sheet = writer.sheets['SpyDefi KOLs']
+                telegram_sheet = writer.sheets['Telegram KOLs']
                 
                 # Apply header format
                 for col_num, value in enumerate(telegram_df.columns.values):
                     telegram_sheet.write(0, col_num, value, header_format)
                 
-                # Apply conditional formatting for confidence scores
-                confidence_col = telegram_df.columns.get_loc('Confidence Level')
-                telegram_sheet.conditional_format(1, confidence_col, len(telegram_df), confidence_col, {
-                    'type': 'cell',
-                    'criteria': '>=',
-                    'value': 300,
-                    'format': score_excellent_format
-                })
-                
-                telegram_sheet.conditional_format(1, confidence_col, len(telegram_df), confidence_col, {
-                    'type': 'cell',
-                    'criteria': 'between',
-                    'minimum': 200,
-                    'maximum': 299.99,
-                    'format': score_good_format
-                })
-                
-                telegram_sheet.conditional_format(1, confidence_col, len(telegram_df), confidence_col, {
-                    'type': 'cell',
-                    'criteria': 'between',
-                    'minimum': 100,
-                    'maximum': 199.99,
-                    'format': score_average_format
-                })
-                
-                telegram_sheet.conditional_format(1, confidence_col, len(telegram_df), confidence_col, {
-                    'type': 'cell',
-                    'criteria': 'between',
-                    'minimum': 50,
-                    'maximum': 99.99,
-                    'format': score_poor_format
-                })
-                
-                telegram_sheet.conditional_format(1, confidence_col, len(telegram_df), confidence_col, {
-                    'type': 'cell',
-                    'criteria': '<',
-                    'value': 50,
-                    'format': score_very_poor_format
-                })
-                
-                # Apply percentage format to percentage columns
-                percent_cols = ['2x Success Rate', '5x Success Rate', 'Pump 2x Success Rate', 'Pump 5x Success Rate']
-                for col_name in percent_cols:
-                    if col_name in telegram_df.columns:
-                        col_idx = telegram_df.columns.get_loc(col_name)
-                        for row_num in range(1, len(telegram_df) + 1):
-                            value = telegram_df.iloc[row_num-1][col_name]
-                            telegram_sheet.write(row_num, col_idx, value, percent_format)
-                
-                # Apply number format to ROI and numeric columns
-                number_cols = ['Avg ROI', 'Avg Max ROI', 'Avg Max Pullback %', 
-                              'Avg Pullback After 2x %', 'Avg Pullback After 5x %']
-                for col_name in number_cols:
-                    if col_name in telegram_df.columns:
-                        col_idx = telegram_df.columns.get_loc(col_name)
-                        for row_num in range(1, len(telegram_df) + 1):
-                            value = telegram_df.iloc[row_num-1][col_name]
-                            telegram_sheet.write(row_num, col_idx, value, number_format)
-                
-                # Apply percent integer format to TP and SL columns
-                tp_sl_cols = ['Take Profit 1 %', 'Take Profit 2 %', 'Take Profit 3 %', 'Stop Loss %']
-                for col_name in tp_sl_cols:
-                    if col_name in telegram_df.columns:
-                        col_idx = telegram_df.columns.get_loc(col_name)
-                        for row_num in range(1, len(telegram_df) + 1):
-                            value = telegram_df.iloc[row_num-1][col_name]
-                            telegram_sheet.write(row_num, col_idx, value, number_format)
-                
                 # Set column widths
-                telegram_sheet.set_column('A:A', 15)   # Channel ID
-                telegram_sheet.set_column('B:B', 12)   # Total calls
-                telegram_sheet.set_column('C:D', 15)   # Success rates
-                telegram_sheet.set_column('E:F', 12)   # ROI columns
-                telegram_sheet.set_column('G:G', 15)   # Confidence
-                telegram_sheet.set_column('H:J', 18)   # Pullback columns
-                telegram_sheet.set_column('K:L', 15)   # Time columns
-                telegram_sheet.set_column('M:N', 18)   # Pump success rates
-                telegram_sheet.set_column('O:O', 20)   # Recommendation
-                telegram_sheet.set_column('P:P', 12)   # Entry Type
-                telegram_sheet.set_column('Q:S', 15)   # TP columns
-                telegram_sheet.set_column('T:T', 12)   # Stop Loss
-                
-                # Add summary sheet
-                summary_data = {
-                    'Metric': [
-                        'Total KOLs Analyzed',
-                        'Total Calls Analyzed',
-                        'Overall 2x Success Rate',
-                        'Overall 5x Success Rate',
-                        '',
-                        'TOP PERFORMERS',
-                        'KOLs with 50%+ 2x Rate',
-                        'KOLs with 30%+ 5x Rate',
-                        'KOLs with <30% Pullback',
-                        '',
-                        'TIME METRICS',
-                        'Fastest Avg Time to 2x',
-                        'Fastest Avg Time to 5x',
-                        '',
-                        'PUMP.FUN METRICS',
-                        'KOLs with Pump Data',
-                        'Best Pump 2x Rate',
-                        'Best Pump 5x Rate'
-                    ],
-                    'Value': [
-                        telegram_data.get('total_kols_analyzed', len(telegram_rows)),
-                        telegram_data.get('total_calls', sum(row['Total Calls'] for row in telegram_rows)),
-                        f"{telegram_data.get('success_rate_2x', 0):.2f}%",
-                        f"{telegram_data.get('success_rate_5x', 0):.2f}%",
-                        '',
-                        '',
-                        sum(1 for row in telegram_rows if row['2x Success Rate'] >= 0.5),
-                        sum(1 for row in telegram_rows if row['5x Success Rate'] >= 0.3),
-                        sum(1 for row in telegram_rows if row['Avg Max Pullback %'] < 30),
-                        '',
-                        '',
-                        min((row['Avg Time to 2x'] for row in telegram_rows if row['Avg Time to 2x'] != 'N/A'), default='N/A'),
-                        min((row['Avg Time to 5x'] for row in telegram_rows if row['Avg Time to 5x'] != 'N/A'), default='N/A'),
-                        '',
-                        '',
-                        sum(1 for row in telegram_rows if row['Pump 2x Success Rate'] > 0),
-                        f"{max((row['Pump 2x Success Rate'] * 100 for row in telegram_rows), default=0):.1f}%",
-                        f"{max((row['Pump 5x Success Rate'] * 100 for row in telegram_rows), default=0):.1f}%"
-                    ]
-                }
-                
-                summary_df = pd.DataFrame(summary_data)
-                summary_df.to_excel(writer, sheet_name='Summary', index=False)
-                
-                # Format summary sheet
-                summary_sheet = writer.sheets['Summary']
-                for col_num, value in enumerate(summary_df.columns.values):
-                    summary_sheet.write(0, col_num, value, header_format)
-                
-                summary_sheet.set_column('A:A', 30)
-                summary_sheet.set_column('B:B', 20)
+                telegram_sheet.set_column('A:A', 20)  # Channel ID
+                telegram_sheet.set_column('B:B', 15)  # Total calls
+                telegram_sheet.set_column('C:E', 15)  # Success rates
+                telegram_sheet.set_column('F:G', 20)  # Metrics
             
             # Export Wallet data if available
             if wallet_data:
-                # Create wallet analysis sheet similar to memecoin edition
+                # Create summary sheet for 7-day active traders
+                if "total_wallets" in wallet_data:
+                    summary_data = {
+                        'Metric': [
+                            'Total Wallets',
+                            'Successfully Analyzed',
+                            'Failed Analysis',
+                            '',
+                            '7-DAY ACTIVE TRADERS',
+                            'Active (traded in 7 days)',
+                            'Inactive (no trades in 7 days)',
+                            '',
+                            'WALLET TYPES',
+                            'Snipers (<1 min)',
+                            'Flippers (1-10 min)',
+                            'Scalpers (10-60 min)',
+                            'Gem Hunters (5x+ focus)',
+                            'Swing Traders (1-24h)',
+                            'Position Traders (24h+)',
+                            'Consistent',
+                            'Mixed',
+                            'Unknown',
+                            '',
+                            'MARKET CAP INSIGHTS',
+                            'Ultra Low Cap ($5K-$50K)',
+                            'Low Cap ($50K-$500K)',
+                            'Mid Cap ($500K-$5M)',
+                            'High Cap ($5M+)'
+                        ],
+                        'Value': [
+                            wallet_data.get('total_wallets', 0),
+                            wallet_data.get('analyzed_wallets', 0),
+                            wallet_data.get('failed_wallets', 0),
+                            '',
+                            '',
+                            sum(1 for cat in ['snipers', 'flippers', 'scalpers', 'gem_hunters', 
+                                            'swing_traders', 'position_traders', 'consistent', 'mixed']
+                                for w in wallet_data.get(cat, []) 
+                                if w.get('metrics', {}).get('active_trader', False)),
+                            sum(1 for cat in ['snipers', 'flippers', 'scalpers', 'gem_hunters', 
+                                            'swing_traders', 'position_traders', 'consistent', 'mixed', 'unknown']
+                                for w in wallet_data.get(cat, []) 
+                                if not w.get('metrics', {}).get('active_trader', False)),
+                            '',
+                            '',
+                            len(wallet_data.get('snipers', [])),
+                            len(wallet_data.get('flippers', [])),
+                            len(wallet_data.get('scalpers', [])),
+                            len(wallet_data.get('gem_hunters', [])),
+                            len(wallet_data.get('swing_traders', [])),
+                            len(wallet_data.get('position_traders', [])),
+                            len(wallet_data.get('consistent', [])),
+                            len(wallet_data.get('mixed', [])),
+                            len(wallet_data.get('unknown', [])),
+                            '',
+                            '',
+                            'Most common for new launches',
+                            'Sweet spot for most traders',
+                            'Safer but lower multiples',
+                            'Established tokens'
+                        ]
+                    }
+                    summary_df = pd.DataFrame(summary_data)
+                    summary_df.to_excel(writer, sheet_name='Summary', index=False)
+                
+                # Create detailed wallet analysis sheet
                 all_wallets = []
                 for category in ['snipers', 'flippers', 'scalpers', 'gem_hunters', 
                                'swing_traders', 'position_traders', 'consistent', 'mixed', 'unknown']:
@@ -314,18 +213,6 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                         composite_score = wallet.get('composite_score', metrics.get('composite_score', 0))
                         strategy = wallet.get('strategy', {})
                         
-                        # Determine rating
-                        if composite_score >= 81:
-                            rating = "EXCELLENT"
-                        elif composite_score >= 61:
-                            rating = "GOOD"
-                        elif composite_score >= 41:
-                            rating = "AVERAGE"
-                        elif composite_score >= 21:
-                            rating = "POOR"
-                        else:
-                            rating = "VERY POOR"
-                        
                         # Cap profit factor at 999.99
                         profit_factor = metrics.get('profit_factor', 0)
                         if profit_factor > 999.99:
@@ -336,19 +223,26 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                             'Rank': rank,
                             'Wallet': wallet['wallet_address'],
                             'Score': composite_score,
-                            'Rating': rating,
                             'Type': wallet['wallet_type'],
                             'Trades': metrics['total_trades'],
-                            'Win Rate': metrics['win_rate'] / 100,  # For percentage formatting
+                            'Trades 7d': metrics.get('trades_last_7_days', 0),
+                            'Win Rate': metrics['win_rate'] / 100,
+                            'Win Rate 7d': metrics.get('win_rate_7d', 0) / 100,
                             'Profit Factor': profit_factor,
                             'Net Profit': metrics['net_profit_usd'],
+                            'Profit 7d': metrics.get('profit_7d', 0),
                             'Avg ROI': metrics['avg_roi'] / 100,
                             'Max ROI': metrics['max_roi'] / 100,
-                            'Gem Rate (2x+)': metrics.get('gem_rate_2x_plus', 0) / 100,
                             'Gem Rate (5x+)': metrics.get('gem_rate_5x_plus', 0) / 100,
                             'Hold Time (min)': metrics.get('avg_hold_time_minutes', 0),
                             'Avg First TP %': metrics.get('avg_first_take_profit_percent', 0) / 100,
+                            'Days Since Trade': metrics.get('days_since_last_trade', 999),
                             'Strategy': strategy.get('recommendation', ''),
+                            'Follow Sells': 'YES' if strategy.get('follow_sells', False) else 'NO',
+                            'TP1 %': strategy.get('tp1_percent', 0) / 100,
+                            'TP2 %': strategy.get('tp2_percent', 0) / 100,
+                            'Sell Strategy': strategy.get('sell_strategy', ''),
+                            'TP Guidance': strategy.get('tp_guidance', ''),
                             'MC Min': strategy.get('filter_market_cap_min', 0),
                             'MC Max': strategy.get('filter_market_cap_max', 0)
                         }
@@ -368,7 +262,7 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                         else:
                             row['Warning'] = ''
                         
-                        # Add distribution data
+                        # Add distribution data (7-day)
                         row['Dist 500%+'] = metrics.get('distribution_500_plus_%', 0) / 100
                         row['Dist 200-500%'] = metrics.get('distribution_200_500_%', 0) / 100
                         row['Dist 0-200%'] = metrics.get('distribution_0_200_%', 0) / 100
@@ -378,10 +272,10 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                         wallet_rows.append(row)
                     
                     wallet_df = pd.DataFrame(wallet_rows)
-                    wallet_df.to_excel(writer, sheet_name='Wallet Analysis', index=False)
+                    wallet_df.to_excel(writer, sheet_name='Active Traders', index=False)
                     
                     # Format wallet sheet
-                    wallet_sheet = writer.sheets['Wallet Analysis']
+                    wallet_sheet = writer.sheets['Active Traders']
                     
                     # Apply header format
                     for col_num, value in enumerate(wallet_df.columns.values):
@@ -427,8 +321,9 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                     })
                     
                     # Apply percentage format to percentage columns
-                    percent_cols = ['Win Rate', 'Avg ROI', 'Max ROI', 'Gem Rate (2x+)', 'Gem Rate (5x+)',
+                    percent_cols = ['Win Rate', 'Win Rate 7d', 'Avg ROI', 'Max ROI', 'Gem Rate (5x+)', 
                                    'Avg First TP %', 'Missed Gains %', 'Avg Exit ROI',
+                                   'TP1 %', 'TP2 %',
                                    'Dist 500%+', 'Dist 200-500%', 'Dist 0-200%', 
                                    'Dist -50-0%', 'Dist <-50%']
                     
@@ -440,7 +335,7 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                                 wallet_sheet.write(row_num, col_idx, value, percent_format)
                     
                     # Apply money format to profit and market cap columns
-                    money_cols = ['Net Profit', 'MC Min', 'MC Max']
+                    money_cols = ['Net Profit', 'Profit 7d', 'MC Min', 'MC Max']
                     for row_num in range(1, len(wallet_df) + 1):
                         for col_name in money_cols:
                             if col_name in wallet_df.columns:
@@ -461,20 +356,27 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                     wallet_sheet.set_column('A:A', 8)   # Rank
                     wallet_sheet.set_column('B:B', 50)  # Wallet
                     wallet_sheet.set_column('C:C', 10)  # Score
-                    wallet_sheet.set_column('D:D', 12)  # Rating
-                    wallet_sheet.set_column('E:E', 15)  # Type
-                    wallet_sheet.set_column('F:F', 10)  # Trades
-                    wallet_sheet.set_column('G:G', 12)  # Win Rate
-                    wallet_sheet.set_column('H:H', 15)  # Profit Factor
-                    wallet_sheet.set_column('I:I', 15)  # Net Profit
-                    wallet_sheet.set_column('J:K', 12)  # ROI columns
-                    wallet_sheet.set_column('L:M', 15)  # Gem Rate columns
-                    wallet_sheet.set_column('N:N', 15)  # Hold Time
-                    wallet_sheet.set_column('O:O', 15)  # First TP
-                    wallet_sheet.set_column('P:P', 20)  # Strategy
-                    wallet_sheet.set_column('Q:R', 15)  # Market Cap filters
+                    wallet_sheet.set_column('D:D', 15)  # Type
+                    wallet_sheet.set_column('E:F', 10)  # Trades
+                    wallet_sheet.set_column('G:H', 12)  # Win Rates
+                    wallet_sheet.set_column('I:I', 15)  # Profit Factor
+                    wallet_sheet.set_column('J:K', 15)  # Profits
+                    wallet_sheet.set_column('L:M', 12)  # ROI columns
+                    wallet_sheet.set_column('N:N', 15)  # Gem Rate
+                    wallet_sheet.set_column('O:O', 15)  # Hold Time
+                    wallet_sheet.set_column('P:P', 15)  # First TP
+                    wallet_sheet.set_column('Q:Q', 15)  # Days Since
+                    wallet_sheet.set_column('R:R', 20)  # Strategy
+                    wallet_sheet.set_column('S:S', 12)  # Follow Sells
+                    wallet_sheet.set_column('T:U', 10)  # TPs
+                    wallet_sheet.set_column('V:V', 15)  # Sell Strategy
+                    wallet_sheet.set_column('W:W', 30)  # TP Guidance
+                    wallet_sheet.set_column('X:Y', 15)  # Market Cap
+                    wallet_sheet.set_column('Z:AD', 15) # Entry/Exit
+                    wallet_sheet.set_column('AE:AE', 12) # Warning
+                    wallet_sheet.set_column('AF:AJ', 12) # Distribution
             
-            logger.info(f"Successfully exported enhanced analysis to Excel: {output_file}")
+            logger.info(f"Successfully exported 7-day active trader analysis to Excel: {output_file}")
             return True
             
     except Exception as e:
@@ -483,7 +385,7 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
 
 def export_wallet_rankings_csv(wallet_data: Dict[str, Any], output_file: str) -> bool:
     """
-    Export memecoin wallet rankings to CSV with all metrics.
+    Export 7-day focused wallet rankings to CSV with enhanced strategy guidance.
     
     Args:
         wallet_data: Wallet analysis results
@@ -504,20 +406,23 @@ def export_wallet_rankings_csv(wallet_data: Dict[str, Any], output_file: str) ->
         
         with open(output_file, 'w', newline='', encoding='utf-8') as f:
             fieldnames = [
-                'rank', 'wallet_address', 'composite_score', 'score_rating',
-                'wallet_type', 'total_trades', 'win_rate', 'profit_factor',
-                'net_profit_usd', 'avg_roi', 'median_roi', 'max_roi',
-                'avg_hold_time_minutes', 'avg_hold_time_seconds',
-                'total_tokens_traded',
+                'rank', 'wallet_address', 'composite_score',
+                'wallet_type', 'total_trades', 'trades_last_7_days',
+                'win_rate', 'win_rate_7d', 'profit_factor',
+                'net_profit_usd', 'profit_7d', 'avg_roi', 'median_roi', 'max_roi',
+                'avg_hold_time_minutes', 'total_tokens_traded',
+                'days_since_last_trade', 'active_trader',
                 'distribution_500_plus_%', 'distribution_200_500_%',
                 'distribution_0_200_%', 'distribution_neg50_0_%',
                 'distribution_below_neg50_%',
-                'gem_rate_2x_plus_%', 'gem_rate_5x_plus_%',
-                'avg_buy_market_cap_usd',
-                'avg_buy_amount_usd', 'avg_first_take_profit_percent',
+                'gem_rate_5x_plus_%', 'gem_rate_2x_plus_%',
+                'avg_buy_market_cap_usd', 'avg_buy_amount_usd',
+                'avg_first_take_profit_percent',
                 'entry_exit_pattern', 'entry_quality', 'exit_quality',
                 'missed_gains_percent', 'early_exit_rate', 'avg_exit_roi',
-                'hold_pattern', 'strategy_recommendation', 'confidence',
+                'hold_pattern', 'strategy_recommendation',
+                'follow_sells', 'tp1_percent', 'tp2_percent',
+                'sell_strategy', 'tp_guidance',
                 'filter_market_cap_min', 'filter_market_cap_max',
                 'is_likely_bundler', 'bundle_indicators',
                 'estimated_copytraders', 'suggested_slippage', 'suggested_gas'
@@ -531,18 +436,6 @@ def export_wallet_rankings_csv(wallet_data: Dict[str, Any], output_file: str) ->
                 score = analysis.get('composite_score', metrics.get('composite_score', 0))
                 strategy = analysis.get('strategy', {})
                 
-                # Determine score rating
-                if score >= 81:
-                    rating = "EXCELLENT"
-                elif score >= 61:
-                    rating = "GOOD"
-                elif score >= 41:
-                    rating = "AVERAGE"
-                elif score >= 21:
-                    rating = "POOR"
-                else:
-                    rating = "VERY POOR"
-                
                 # Cap profit factor at 999.99
                 profit_factor = metrics.get('profit_factor', 0)
                 if profit_factor > 999.99:
@@ -552,30 +445,37 @@ def export_wallet_rankings_csv(wallet_data: Dict[str, Any], output_file: str) ->
                     'rank': rank,
                     'wallet_address': analysis['wallet_address'],
                     'composite_score': round(score, 1),
-                    'score_rating': rating,
                     'wallet_type': analysis['wallet_type'],
                     'total_trades': metrics['total_trades'],
+                    'trades_last_7_days': metrics.get('trades_last_7_days', 0),
                     'win_rate': round(metrics['win_rate'], 2),
+                    'win_rate_7d': round(metrics.get('win_rate_7d', 0), 2),
                     'profit_factor': profit_factor,
                     'net_profit_usd': round(metrics['net_profit_usd'], 2),
+                    'profit_7d': round(metrics.get('profit_7d', 0), 2),
                     'avg_roi': round(metrics['avg_roi'], 2),
                     'median_roi': round(metrics.get('median_roi', 0), 2),
                     'max_roi': round(metrics['max_roi'], 2),
                     'avg_hold_time_minutes': round(metrics.get('avg_hold_time_minutes', 0), 2),
-                    'avg_hold_time_seconds': round(metrics.get('avg_hold_time_seconds', 0), 2),
                     'total_tokens_traded': metrics['total_tokens_traded'],
+                    'days_since_last_trade': metrics.get('days_since_last_trade', 999),
+                    'active_trader': 'YES' if metrics.get('active_trader', False) else 'NO',
                     'distribution_500_plus_%': metrics.get('distribution_500_plus_%', 0),
                     'distribution_200_500_%': metrics.get('distribution_200_500_%', 0),
                     'distribution_0_200_%': metrics.get('distribution_0_200_%', 0),
                     'distribution_neg50_0_%': metrics.get('distribution_neg50_0_%', 0),
                     'distribution_below_neg50_%': metrics.get('distribution_below_neg50_%', 0),
-                    'gem_rate_2x_plus_%': metrics.get('gem_rate_2x_plus', 0),
                     'gem_rate_5x_plus_%': metrics.get('gem_rate_5x_plus', 0),
+                    'gem_rate_2x_plus_%': metrics.get('gem_rate_2x_plus', 0),
                     'avg_buy_market_cap_usd': metrics.get('avg_buy_market_cap_usd', 0),
                     'avg_buy_amount_usd': metrics.get('avg_buy_amount_usd', 0),
                     'avg_first_take_profit_percent': metrics.get('avg_first_take_profit_percent', 0),
                     'strategy_recommendation': strategy.get('recommendation', ''),
-                    'confidence': strategy.get('confidence', ''),
+                    'follow_sells': 'YES' if strategy.get('follow_sells', False) else 'NO',
+                    'tp1_percent': strategy.get('tp1_percent', 0),
+                    'tp2_percent': strategy.get('tp2_percent', 0),
+                    'sell_strategy': strategy.get('sell_strategy', ''),
+                    'tp_guidance': strategy.get('tp_guidance', ''),
                     'filter_market_cap_min': strategy.get('filter_market_cap_min', 0),
                     'filter_market_cap_max': strategy.get('filter_market_cap_max', 0),
                     'suggested_slippage': strategy.get('suggested_slippage', 15),
@@ -614,7 +514,7 @@ def export_wallet_rankings_csv(wallet_data: Dict[str, Any], output_file: str) ->
                 
                 writer.writerow(row)
         
-        logger.info(f"Successfully exported memecoin wallet rankings to CSV: {output_file}")
+        logger.info(f"Successfully exported 7-day active trader rankings to CSV: {output_file}")
         return True
         
     except Exception as e:
@@ -625,7 +525,7 @@ def generate_memecoin_analysis_report(telegram_data: Dict[str, Any],
                                     wallet_data: Dict[str, Any], 
                                     output_file: str) -> bool:
     """
-    Generate a comprehensive memecoin analysis report.
+    Generate a comprehensive 7-day active trader analysis report.
     
     Args:
         telegram_data: Telegram analysis results
@@ -638,44 +538,52 @@ def generate_memecoin_analysis_report(telegram_data: Dict[str, Any],
     try:
         with open(output_file, 'w', encoding='utf-8') as f:
             f.write("=" * 80 + "\n")
-            f.write("PHOENIX PROJECT - ENHANCED MEMECOIN ANALYSIS REPORT\n")
+            f.write("PHOENIX PROJECT - 7-DAY ACTIVE TRADER ANALYSIS REPORT\n")
             f.write(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
             f.write("=" * 80 + "\n\n")
             
-            # Enhanced Telegram Analysis Section
+            # Telegram Analysis Section
             if telegram_data and "ranked_kols" in telegram_data:
-                f.write("📱 ENHANCED TELEGRAM ANALYSIS (SPYDEFI) - 2x+ AND 5x+ TRACKING\n")
+                f.write("📱 TELEGRAM ANALYSIS (SPYDEFI)\n")
                 f.write("-" * 40 + "\n")
                 f.write(f"Total KOLs analyzed: {telegram_data.get('total_kols_analyzed', 0)}\n")
                 f.write(f"Total calls analyzed: {telegram_data.get('total_calls', 0)}\n")
                 f.write(f"2x success rate: {telegram_data.get('success_rate_2x', 0):.2f}%\n")
                 f.write(f"5x success rate: {telegram_data.get('success_rate_5x', 0):.2f}%\n\n")
                 
-                f.write("Top 5 KOLs (by composite score):\n")
-                ranked_kols = telegram_data.get('ranked_kols', [])
-                for i, kol_data in enumerate(ranked_kols[:5], 1):
-                    channel_id = kol_data.get('channel_id', 'Unknown')
-                    f.write(f"{i}. Channel ID: {channel_id}\n")
-                    f.write(f"   Composite Score: {kol_data.get('confidence_level', 0):.1f}\n")
-                    f.write(f"   Success Rate (2x): {kol_data.get('success_rate', 0):.1f}%\n")
-                    f.write(f"   Success Rate (5x): {kol_data.get('success_rate_5x', 0):.1f}%\n")
-                    f.write(f"   Avg Max Pullback: {kol_data.get('avg_max_pullback_percent', 0):.1f}%\n")
-                    f.write(f"   Avg Pullback After 2x: {kol_data.get('avg_max_pullback_percent_2x', 0):.1f}%\n")
-                    f.write(f"   Avg Pullback After 5x: {kol_data.get('avg_max_pullback_percent_5x', 0):.1f}%\n")
-                    f.write(f"   Avg Time to 2x: {kol_data.get('avg_time_to_2x_formatted', 'N/A')}\n")
-                    f.write(f"   Avg Time to 5x: {kol_data.get('avg_time_to_5x_formatted', 'N/A')}\n")
-                    if kol_data.get('pump_success_rate_2x', 0) > 0:
-                        f.write(f"   Pump.fun 2x Rate: {kol_data.get('pump_success_rate_2x', 0):.1f}%\n")
-                        f.write(f"   Pump.fun 5x Rate: {kol_data.get('pump_success_rate_5x', 0):.1f}%\n")
+                f.write("Top 5 KOLs:\n")
+                ranked_kols = telegram_data.get('ranked_kols', {})
+                for i, (kol, data) in enumerate(list(ranked_kols.items())[:5], 1):
+                    f.write(f"{i}. @{kol}\n")
+                    f.write(f"   Composite Score: {data.get('composite_score', 0):.1f}\n")
+                    f.write(f"   Success Rate (5x): {data.get('success_rate_5x', 0):.1f}%\n")
+                    if data.get('avg_max_pullback_percent', 0) > 0:
+                        f.write(f"   Avg Pullback: {data.get('avg_max_pullback_percent', 0):.1f}%\n")
+                    if data.get('avg_time_to_5x_formatted', 'N/A') != 'N/A':
+                        f.write(f"   Avg Time to 5x: {data.get('avg_time_to_5x_formatted', 'N/A')}\n")
                     f.write("\n")
             
             # Wallet Analysis Section
             if wallet_data and wallet_data.get('success'):
-                f.write("\n💰 MEMECOIN WALLET ANALYSIS\n")
+                f.write("\n💰 7-DAY ACTIVE TRADER WALLET ANALYSIS\n")
                 f.write("-" * 40 + "\n")
                 f.write(f"Total wallets: {wallet_data.get('total_wallets', 0)}\n")
                 f.write(f"Successfully analyzed: {wallet_data.get('analyzed_wallets', 0)}\n")
                 f.write(f"Failed analysis: {wallet_data.get('failed_wallets', 0)}\n\n")
+                
+                # Count active traders
+                active_count = 0
+                inactive_count = 0
+                for category in ['snipers', 'flippers', 'scalpers', 'gem_hunters', 
+                               'swing_traders', 'position_traders', 'consistent', 'mixed', 'unknown']:
+                    for wallet in wallet_data.get(category, []):
+                        if wallet.get('metrics', {}).get('active_trader', False):
+                            active_count += 1
+                        else:
+                            inactive_count += 1
+                
+                f.write(f"🟢 Active traders (7-day): {active_count}\n")
+                f.write(f"🔴 Inactive traders: {inactive_count}\n\n")
                 
                 f.write("WALLET TYPE BREAKDOWN:\n")
                 f.write(f"🎯 Snipers (<1 min): {len(wallet_data.get('snipers', []))}\n")
@@ -696,23 +604,14 @@ def generate_memecoin_analysis_report(telegram_data: Dict[str, Any],
                 
                 all_wallets.sort(key=lambda x: x.get('composite_score', x['metrics'].get('composite_score', 0)), reverse=True)
                 
-                f.write("🏆 TOP 10 MEMECOIN TRADERS:\n")
-                for i, wallet in enumerate(all_wallets[:10], 1):
+                # Filter for active traders only in top 10
+                active_wallets = [w for w in all_wallets if w.get('metrics', {}).get('active_trader', False)]
+                
+                f.write("🏆 TOP 10 ACTIVE TRADERS (7-DAY):\n")
+                for i, wallet in enumerate(active_wallets[:10], 1):
                     metrics = wallet['metrics']
                     score = wallet.get('composite_score', metrics.get('composite_score', 0))
                     strategy = wallet.get('strategy', {})
-                    
-                    # Rating
-                    if score >= 81:
-                        rating = "🟣 EXCELLENT"
-                    elif score >= 61:
-                        rating = "🟢 GOOD"
-                    elif score >= 41:
-                        rating = "🟡 AVERAGE"
-                    elif score >= 21:
-                        rating = "🟠 POOR"
-                    else:
-                        rating = "🔴 VERY POOR"
                     
                     # Cap profit factor
                     profit_factor = metrics['profit_factor']
@@ -722,13 +621,13 @@ def generate_memecoin_analysis_report(telegram_data: Dict[str, Any],
                         profit_factor_display = f"{profit_factor:.2f}x"
                     
                     f.write(f"\n{i}. {wallet['wallet_address'][:8]}...{wallet['wallet_address'][-4:]}\n")
-                    f.write(f"   Score: {score:.1f}/100 {rating}\n")
+                    f.write(f"   Score: {score:.1f}/100\n")
                     f.write(f"   Type: {wallet['wallet_type']}\n")
-                    f.write(f"   Win Rate: {metrics['win_rate']:.1f}%\n")
+                    f.write(f"   7-day trades: {metrics.get('trades_last_7_days', 0)}\n")
+                    f.write(f"   7-day win rate: {metrics.get('win_rate_7d', 0):.1f}%\n")
+                    f.write(f"   7-day profit: ${metrics.get('profit_7d', 0):.2f}\n")
                     f.write(f"   Profit Factor: {profit_factor_display}\n")
-                    f.write(f"   Net Profit: ${metrics['net_profit_usd']:.2f}\n")
                     f.write(f"   Total Trades: {metrics['total_trades']}\n")
-                    f.write(f"   Gem Rate (2x+): {metrics.get('gem_rate_2x_plus', 0):.1f}%\n")
                     f.write(f"   Gem Rate (5x+): {metrics.get('gem_rate_5x_plus', 0):.1f}%\n")
                     f.write(f"   Avg First TP: {metrics.get('avg_first_take_profit_percent', 0):.1f}%\n")
                     f.write(f"   Avg Hold Time: {metrics.get('avg_hold_time_minutes', 0):.1f} minutes\n")
@@ -752,43 +651,42 @@ def generate_memecoin_analysis_report(telegram_data: Dict[str, Any],
                     
                     f.write(f"   Market Cap Range: {mc_min_str} - {mc_max_str}\n")
                     
+                    # Enhanced strategy info
+                    f.write(f"   Strategy: {strategy.get('recommendation', '')}\n")
+                    f.write(f"   Follow Sells: {'YES' if strategy.get('follow_sells', False) else 'NO'}\n")
+                    f.write(f"   TP1: {strategy.get('tp1_percent', 0)}% | TP2: {strategy.get('tp2_percent', 0)}%\n")
+                    f.write(f"   Guidance: {strategy.get('tp_guidance', '')}\n")
+                    
                     # Entry/exit analysis
                     if 'entry_exit_analysis' in wallet and wallet['entry_exit_analysis']:
                         ee_analysis = wallet['entry_exit_analysis']
                         f.write(f"   Entry/Exit: {ee_analysis.get('entry_quality', 'UNKNOWN')}/{ee_analysis.get('exit_quality', 'UNKNOWN')}\n")
-                        f.write(f"   Pattern: {ee_analysis.get('pattern', 'UNKNOWN')}\n")
                         if ee_analysis.get('missed_gains_percent', 0) > 0:
                             f.write(f"   Missed Gains: {ee_analysis.get('missed_gains_percent', 0):.1f}%\n")
                     
                     # Bundle warning
                     if 'bundle_analysis' in wallet and wallet['bundle_analysis'].get('is_likely_bundler'):
                         f.write(f"   ⚠️ WARNING: Possible bundler detected!\n")
-                    
-                    f.write(f"   Strategy: {strategy.get('recommendation', '')} ({strategy.get('confidence', '')})\n")
                 
                 # Key insights
                 f.write("\n\n📊 KEY INSIGHTS:\n")
                 f.write("-" * 40 + "\n")
                 
-                # Calculate averages
-                if all_wallets:
-                    avg_win_rate = sum(w['metrics']['win_rate'] for w in all_wallets) / len(all_wallets)
-                    avg_gem_rate_2x = sum(w['metrics'].get('gem_rate_2x_plus', 0) for w in all_wallets) / len(all_wallets)
-                    avg_gem_rate_5x = sum(w['metrics'].get('gem_rate_5x_plus', 0) for w in all_wallets) / len(all_wallets)
-                    avg_hold_time = sum(w['metrics'].get('avg_hold_time_minutes', 0) for w in all_wallets) / len(all_wallets)
+                # Calculate averages for active traders only
+                if active_wallets:
+                    avg_7d_trades = sum(w['metrics'].get('trades_last_7_days', 0) for w in active_wallets) / len(active_wallets)
+                    avg_7d_win_rate = sum(w['metrics'].get('win_rate_7d', 0) for w in active_wallets) / len(active_wallets)
+                    avg_gem_rate = sum(w['metrics'].get('gem_rate_5x_plus', 0) for w in active_wallets) / len(active_wallets)
                     
-                    f.write(f"Average Win Rate: {avg_win_rate:.1f}%\n")
-                    f.write(f"Average Gem Rate (2x+): {avg_gem_rate_2x:.1f}%\n")
-                    f.write(f"Average Gem Rate (5x+): {avg_gem_rate_5x:.1f}%\n")
-                    f.write(f"Average Hold Time: {avg_hold_time:.1f} minutes\n")
+                    f.write(f"Average 7-day trades: {avg_7d_trades:.1f}\n")
+                    f.write(f"Average 7-day win rate: {avg_7d_win_rate:.1f}%\n")
+                    f.write(f"Average Gem Rate (5x+): {avg_gem_rate:.1f}%\n")
                     
-                    # Distribution of wallet types
-                    total_analyzed = wallet_data['analyzed_wallets']
-                    if total_analyzed > 0:
-                        gem_hunters = len(wallet_data.get('gem_hunters', []))
-                        flippers = len(wallet_data.get('flippers', []))
-                        f.write(f"\n{(gem_hunters/total_analyzed*100):.1f}% are gem hunters (5x+ focused)\n")
-                        f.write(f"{(flippers/total_analyzed*100):.1f}% are quick flippers (exit within 10 min)\n")
+                    # Who hit 5x in last 7 days
+                    recent_5x_count = sum(1 for w in active_wallets 
+                                        if w.get('seven_day_metrics', {}).get('has_5x_last_7_days', False))
+                    if recent_5x_count > 0:
+                        f.write(f"\n🚀 {recent_5x_count} wallets hit 5x+ in the last 7 days!\n")
                     
                     # Bundle detection
                     bundlers = sum(1 for w in all_wallets if 'bundle_analysis' in w and w['bundle_analysis'].get('is_likely_bundler'))
@@ -796,18 +694,18 @@ def generate_memecoin_analysis_report(telegram_data: Dict[str, Any],
                         f.write(f"\n⚠️ {bundlers} potential bundlers detected - verify on-chain before copying\n")
             
             f.write("\n" + "=" * 80 + "\n")
-            f.write("END OF ENHANCED MEMECOIN ANALYSIS REPORT\n")
+            f.write("END OF 7-DAY ACTIVE TRADER ANALYSIS REPORT\n")
             
-        logger.info(f"Successfully generated enhanced memecoin analysis report: {output_file}")
+        logger.info(f"Successfully generated 7-day active trader report: {output_file}")
         return True
         
     except Exception as e:
-        logger.error(f"Error generating memecoin analysis report: {str(e)}")
+        logger.error(f"Error generating analysis report: {str(e)}")
         return False
 
 def export_distribution_analysis(wallet_data: Dict[str, Any], output_file: str) -> bool:
     """
-    Export detailed distribution analysis for memecoin wallets.
+    Export detailed 7-day distribution analysis for active traders.
     
     Args:
         wallet_data: Wallet analysis results
@@ -829,12 +727,13 @@ def export_distribution_analysis(wallet_data: Dict[str, Any], output_file: str) 
         with open(output_file, 'w', newline='', encoding='utf-8') as f:
             fieldnames = [
                 'wallet_address', 'wallet_type', 'composite_score',
-                'total_trades', 'distribution_sum_%',
+                'total_trades', 'trades_last_7_days', 'active_trader',
+                'days_since_last_trade', 'distribution_sum_%',
                 'distribution_500_plus_%', 'distribution_200_500_%',
                 'distribution_0_200_%', 'distribution_neg50_0_%',
                 'distribution_below_neg50_%',
-                'gem_rate_2x_plus_%', 'gem_rate_5x_plus_%', 
-                'distribution_quality'
+                'gem_rate_5x_plus_%', 'distribution_quality',
+                'has_5x_last_7_days', 'has_2x_last_7_days'
             ]
             
             writer = csv.DictWriter(f, fieldnames=fieldnames)
@@ -842,6 +741,7 @@ def export_distribution_analysis(wallet_data: Dict[str, Any], output_file: str) 
             
             for wallet in all_wallets:
                 metrics = wallet['metrics']
+                seven_day = wallet.get('seven_day_metrics', {})
                 
                 # Calculate distribution sum to verify it equals 100%
                 dist_sum = (
@@ -865,20 +765,24 @@ def export_distribution_analysis(wallet_data: Dict[str, Any], output_file: str) 
                     'wallet_type': wallet['wallet_type'],
                     'composite_score': wallet.get('composite_score', metrics.get('composite_score', 0)),
                     'total_trades': metrics['total_trades'],
+                    'trades_last_7_days': metrics.get('trades_last_7_days', 0),
+                    'active_trader': 'YES' if metrics.get('active_trader', False) else 'NO',
+                    'days_since_last_trade': metrics.get('days_since_last_trade', 999),
                     'distribution_sum_%': round(dist_sum, 1),
                     'distribution_500_plus_%': metrics.get('distribution_500_plus_%', 0),
                     'distribution_200_500_%': metrics.get('distribution_200_500_%', 0),
                     'distribution_0_200_%': metrics.get('distribution_0_200_%', 0),
                     'distribution_neg50_0_%': metrics.get('distribution_neg50_0_%', 0),
                     'distribution_below_neg50_%': metrics.get('distribution_below_neg50_%', 0),
-                    'gem_rate_2x_plus_%': metrics.get('gem_rate_2x_plus', 0),
                     'gem_rate_5x_plus_%': metrics.get('gem_rate_5x_plus', 0),
-                    'distribution_quality': dist_quality
+                    'distribution_quality': dist_quality,
+                    'has_5x_last_7_days': 'YES' if seven_day.get('has_5x_last_7_days', False) else 'NO',
+                    'has_2x_last_7_days': 'YES' if seven_day.get('has_2x_last_7_days', False) else 'NO'
                 }
                 
                 writer.writerow(row)
         
-        logger.info(f"Successfully exported distribution analysis to CSV: {output_file}")
+        logger.info(f"Successfully exported 7-day distribution analysis to CSV: {output_file}")
         return True
         
     except Exception as e:

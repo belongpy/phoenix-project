@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-Phoenix Project - UPDATED CLI Tool for Memecoin Analysis
+Phoenix Project - UPDATED CLI Tool for 7-Day Active Trader Analysis
 
 🎯 MAJOR UPDATES:
-- Enhanced SpyDefi analysis tracks both 2x+ AND 5x+ metrics
-- Separate pullback and time metrics for 2x and 5x milestones
-- Strategy recommendations split into separate Excel columns
-- Removed detailed_analysis_count and pump_tokens_analyzed from exports
-- Improved Excel formatting for better analysis
+- 7-day recency focus for all wallet analysis
+- Enhanced strategy recommendations with TP guidance
+- Removed redundant columns (confidence, tier, rating)
+- Smart sell following based on exit quality
+- Active trader detection and prioritization
 """
 
 import os
@@ -50,7 +50,7 @@ def load_config() -> Dict[str, Any]:
             "telegram_groups": ["spydefi"],
             "wallets": []
         },
-        "analysis_period_days": 1
+        "analysis_period_days": 7  # Changed default to 7 days
     }
 
 def ensure_output_dir(output_path: str) -> str:
@@ -95,7 +95,7 @@ def load_wallets_from_file(file_path: str = "wallets.txt") -> List[str]:
         return []
 
 class PhoenixCLI:
-    """Phoenix CLI with memecoin-focused analysis."""
+    """Phoenix CLI with 7-day active trader focus."""
     
     def __init__(self):
         self.config = load_config()
@@ -104,7 +104,7 @@ class PhoenixCLI:
     def _create_parser(self) -> argparse.ArgumentParser:
         """Create and configure the argument parser."""
         parser = argparse.ArgumentParser(
-            description="Phoenix Project - Solana Memecoin Analysis Tool",
+            description="Phoenix Project - 7-Day Active Solana Trader Analysis Tool",
             formatter_class=argparse.RawDescriptionHelpFormatter
         )
         
@@ -125,20 +125,20 @@ class PhoenixCLI:
         telegram_parser.add_argument("--output", default="spydefi_analysis_enhanced.csv", help="Output CSV file")
         telegram_parser.add_argument("--excel", action="store_true", help="Also export to Excel format")
         
-        # Wallet analysis command
-        wallet_parser = subparsers.add_parser("wallet", help="Analyze wallets for copy trading")
+        # Wallet analysis command with 7-day default
+        wallet_parser = subparsers.add_parser("wallet", help="Analyze wallets for copy trading (7-day focus)")
         wallet_parser.add_argument("--wallets-file", default="wallets.txt", help="File containing wallet addresses")
-        wallet_parser.add_argument("--days", type=int, default=30, help="Number of days to analyze")
-        wallet_parser.add_argument("--output", default="wallet_analysis.xlsx", help="Output file")
+        wallet_parser.add_argument("--days", type=int, default=7, help="Number of days to analyze (default: 7)")
+        wallet_parser.add_argument("--output", default="wallet_analysis_7day.csv", help="Output file")
         
         return parser
     
     def _handle_numbered_menu(self):
         """Handle the numbered menu interface."""
         print("\n" + "="*80)
-        print("Phoenix Project - Solana Memecoin Analysis Tool")
-        print("🚀 Optimized for 2x+ and 5x+ Gem Hunting")
-        print(f"📅 Current Date: May 24, 2025")
+        print("Phoenix Project - 7-Day Active Trader Analysis Tool")
+        print("🚀 Focus on ACTIVE traders with recent wins")
+        print(f"📅 Current Date: {datetime.now().strftime('%Y-%m-%d')}")
         print("="*80)
         print("\nSelect an option:")
         print("\n🔧 CONFIGURATION:")
@@ -146,11 +146,11 @@ class PhoenixCLI:
         print("2. Check Configuration")
         print("3. Test API Connectivity")
         print("\n📊 TOOLS:")
-        print("4. SPYDEFI (2x+ and 5x+ Enhanced)")
-        print("5. ANALYZE WALLETS (5x+ GEM HUNTER EDITION)")
+        print("4. SPYDEFI ANALYSIS")
+        print("5. 7-DAY ACTIVE WALLET ANALYSIS (Enhanced Strategies)")
         print("\n🔍 UTILITIES:")
         print("6. View Current Sources")
-        print("7. Help & Examples")
+        print("7. Help & Strategy Guide")
         print("0. Exit")
         print("="*80)
         
@@ -167,13 +167,13 @@ class PhoenixCLI:
             elif choice == '3':
                 self._test_api_connectivity()
             elif choice == '4':
-                self._fixed_enhanced_telegram_analysis()
+                self._enhanced_telegram_analysis()
             elif choice == '5':
-                self._memecoin_wallet_analysis()
+                self._active_trader_wallet_analysis()
             elif choice == '6':
                 self._view_current_sources()
             elif choice == '7':
-                self._show_help()
+                self._show_strategy_help()
             else:
                 print("❌ Invalid choice. Please try again.")
                 input("Press Enter to continue...")
@@ -185,12 +185,12 @@ class PhoenixCLI:
             logger.error(f"Error in menu: {str(e)}")
             input("Press Enter to continue...")
     
-    def _memecoin_wallet_analysis(self):
-        """Run memecoin-focused wallet analysis with all improvements."""
+    def _active_trader_wallet_analysis(self):
+        """Run 7-day active trader wallet analysis with enhanced strategies."""
         print("\n" + "="*80)
-        print("    💰 MEMECOIN WALLET ANALYSIS - 5x+ GEM HUNTER EDITION")
-        print("    🎯 Tiered Analysis: 5 tokens initial, 20 for promising wallets")
-        print("    📊 Features: Distribution-weighted scoring & Fixed hold times")
+        print("    💰 7-DAY ACTIVE TRADER ANALYSIS")
+        print("    🎯 Focus: Recent winners with smart exit strategies")
+        print("    📊 Features: Custom TPs based on trader behavior")
         print("="*80)
         
         # Check API configuration
@@ -218,19 +218,20 @@ class PhoenixCLI:
         # Get analysis parameters
         print("\n🔧 ANALYSIS PARAMETERS:")
         
-        # Days to analyze
-        days_input = input("Days to analyze (default: 30): ").strip()
-        days_to_analyze = int(days_input) if days_input.isdigit() else 30
+        # Days to analyze (default 7)
+        days_input = input("Days to analyze (default: 7, max: 30): ").strip()
+        if days_input.isdigit():
+            days_to_analyze = min(int(days_input), 30)
+        else:
+            days_to_analyze = 7
         
-        print(f"\n🚀 Starting tiered memecoin wallet analysis...")
+        print(f"\n🚀 Starting 7-day active trader analysis...")
         print(f"📊 Parameters:")
         print(f"   • Wallets: {len(wallets)}")
         print(f"   • Analysis period: {days_to_analyze} days")
-        print(f"   • Initial scan: 5 tokens per wallet")
-        print(f"   • Deep scan: 20 tokens for promising wallets (score 50+)")
-        print(f"   • Gem detection: 5x+ trades (500%+)")
-        print(f"   • Distribution factored into score")
-        print(f"   • Export format: CSV (5x+ gem hunter edition)")
+        print(f"   • Focus: Active traders only (traded in last 7 days)")
+        print(f"   • Strategy: Enhanced with TP guidance")
+        print(f"   • Export format: CSV with strategy details")
         print("\nProcessing...")
         
         try:
@@ -260,15 +261,15 @@ class PhoenixCLI:
             )
             
             if results.get("success"):
-                self._display_memecoin_wallet_results(results)
+                self._display_active_trader_results(results)
                 
-                # Export to CSV with memecoin focus
+                # Export to CSV with enhanced format
                 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-                output_file = ensure_output_dir(f"wallet_analysis_5x_gem_{timestamp}.csv")
-                self._export_memecoin_wallet_csv(results, output_file)
+                output_file = ensure_output_dir(f"active_traders_7day_{timestamp}.csv")
+                self._export_active_trader_csv(results, output_file)
                 print(f"\n📄 Exported to CSV: {output_file}")
                 
-                print("\n✅ 5x+ gem hunter analysis completed successfully!")
+                print("\n✅ 7-day active trader analysis completed successfully!")
                 
                 # Display API call statistics
                 if "api_calls" in results:
@@ -278,8 +279,6 @@ class PhoenixCLI:
                     print(f"   Helius: {results['api_calls']['helius']} calls")
                     print(f"   RPC: {results['api_calls']['rpc']} calls")
                     print(f"   Total: {sum(results['api_calls'].values())} calls")
-                    print(f"   Deep analyses: {results.get('deep_analyses', 0)}")
-                    print(f"   Initial analyses: {results.get('initial_analyses', 0)}")
             else:
                 print(f"\n❌ Analysis failed: {results.get('error', 'Unknown error')}")
                 
@@ -289,10 +288,10 @@ class PhoenixCLI:
         
         input("\nPress Enter to continue...")
     
-    def _display_memecoin_wallet_results(self, results: Dict[str, Any]) -> None:
-        """Display memecoin-focused wallet analysis results."""
+    def _display_active_trader_results(self, results: Dict[str, Any]) -> None:
+        """Display 7-day active trader analysis results."""
         print("\n" + "="*80)
-        print("    📊 5x+ GEM HUNTER ANALYSIS RESULTS")
+        print("    📊 7-DAY ACTIVE TRADER ANALYSIS RESULTS")
         print("="*80)
         
         # Summary statistics
@@ -301,39 +300,33 @@ class PhoenixCLI:
         print(f"   Successfully analyzed: {results['analyzed_wallets']}")
         print(f"   Failed: {results['failed_wallets']}")
         
-        # Helper function to format composite score with emoji
-        def format_score(score: float) -> str:
-            if score >= 81:
-                return f"{score:.1f}/100 🟣 EXCELLENT"
-            elif score >= 61:
-                return f"{score:.1f}/100 🟢 GOOD"
-            elif score >= 41:
-                return f"{score:.1f}/100 🟡 AVERAGE"
-            elif score >= 21:
-                return f"{score:.1f}/100 🟠 POOR"
-            else:
-                return f"{score:.1f}/100 🔴 VERY POOR"
-        
-        # Format market cap
-        def format_market_cap(mc: float) -> str:
-            if mc >= 1000000:
-                return f"${mc/1000000:.1f}M"
-            elif mc >= 1000:
-                return f"${mc/1000:.0f}K"
-            else:
-                return f"${mc:.0f}"
-        
-        # Combine all wallets and sort by score
+        # Count active vs inactive
+        active_count = 0
+        inactive_count = 0
         all_wallets = []
+        
         for category in ['snipers', 'flippers', 'scalpers', 'gem_hunters', 'swing_traders',
                         'position_traders', 'consistent', 'mixed', 'unknown']:
-            all_wallets.extend(results.get(category, []))
+            category_wallets = results.get(category, [])
+            all_wallets.extend(category_wallets)
+            for wallet in category_wallets:
+                if wallet.get('metrics', {}).get('active_trader', False):
+                    active_count += 1
+                else:
+                    inactive_count += 1
         
+        print(f"\n🟢 Active traders (7-day): {active_count}")
+        print(f"🔴 Inactive traders: {inactive_count}")
+        
+        # Sort all wallets by score
         all_wallets.sort(key=lambda x: x.get('composite_score', x['metrics'].get('composite_score', 0)), reverse=True)
         
-        if all_wallets:
-            print(f"\n🏆 TOP 10 5x+ GEM HUNTERS:")
-            for i, analysis in enumerate(all_wallets[:10], 1):
+        # Get only active traders
+        active_wallets = [w for w in all_wallets if w.get('metrics', {}).get('active_trader', False)]
+        
+        if active_wallets:
+            print(f"\n🏆 TOP 10 ACTIVE TRADERS (Last 7 Days):")
+            for i, analysis in enumerate(active_wallets[:10], 1):
                 wallet = analysis['wallet_address']
                 metrics = analysis['metrics']
                 composite_score = analysis.get('composite_score', metrics.get('composite_score', 0))
@@ -347,39 +340,39 @@ class PhoenixCLI:
                     profit_factor_display = f"{profit_factor:.2f}x"
                 
                 print(f"\n{i}. Wallet: {wallet[:8]}...{wallet[-4:]}")
-                print(f"   Score: {format_score(composite_score)}")
-                print(f"   Type: {analysis['wallet_type']} | Win Rate: {metrics['win_rate']:.1f}%")
-                print(f"   Profit Factor: {profit_factor_display} | Total Trades: {metrics['total_trades']}")
-                print(f"   Net Profit: ${metrics['net_profit_usd']:.2f} | Avg ROI: {metrics['avg_roi']:.1f}%")
+                print(f"   Score: {composite_score:.1f}/100")
+                print(f"   Type: {analysis['wallet_type']}")
+                print(f"   === 7-DAY PERFORMANCE ===")
+                print(f"   Trades (7d): {metrics.get('trades_last_7_days', 0)} | Win Rate (7d): {metrics.get('win_rate_7d', 0):.1f}%")
+                print(f"   Profit (7d): ${metrics.get('profit_7d', 0):.2f}")
+                print(f"   Days since trade: {metrics.get('days_since_last_trade', 999)}")
+                print(f"   === OVERALL STATS ===")
+                print(f"   Total Trades: {metrics['total_trades']} | Win Rate: {metrics['win_rate']:.1f}%")
+                print(f"   Profit Factor: {profit_factor_display} | Net Profit: ${metrics['net_profit_usd']:.2f}")
                 print(f"   5x+ Gem Rate: {metrics.get('gem_rate_5x_plus', 0):.1f}%")
-                print(f"   2x+ Rate: {metrics.get('gem_rate_2x_plus', 0):.1f}%")
-                print(f"   Avg First TP: {metrics.get('avg_first_take_profit_percent', 0):.1f}%")
-                print(f"   Avg Hold: {metrics.get('avg_hold_time_minutes', 0):.1f} minutes")
-                print(f"   Market Cap Range: {format_market_cap(strategy.get('filter_market_cap_min', 0))} - {format_market_cap(strategy.get('filter_market_cap_max', 0))}")
-                
-                # Distribution breakdown
-                print(f"   Distribution: 5x+: {metrics.get('distribution_500_plus_%', 0):.1f}% | "
-                      f"2-5x: {metrics.get('distribution_200_500_%', 0):.1f}% | "
-                      f"<2x: {metrics.get('distribution_0_200_%', 0):.1f}%")
+                print(f"   Avg Hold: {metrics.get('avg_hold_time_minutes', 0):.1f} min")
+                print(f"   === STRATEGY RECOMMENDATION ===")
+                print(f"   Action: {strategy.get('recommendation', 'UNKNOWN')}")
+                print(f"   Follow Sells: {'YES ✅' if strategy.get('follow_sells', False) else 'NO ❌'}")
+                print(f"   TP1: {strategy.get('tp1_percent', 0)}% | TP2: {strategy.get('tp2_percent', 0)}%")
+                print(f"   Guidance: {strategy.get('tp_guidance', 'No guidance available')}")
                 
                 # Entry/Exit Analysis
                 if 'entry_exit_analysis' in analysis:
                     ee_analysis = analysis['entry_exit_analysis']
-                    print(f"   Entry/Exit: {ee_analysis['entry_quality']}/{ee_analysis['exit_quality']} | Pattern: {ee_analysis['pattern']}")
-                    if ee_analysis['missed_gains_percent'] > 0:
-                        print(f"   Missed Gains: {ee_analysis['missed_gains_percent']:.1f}% | Early Exit Rate: {ee_analysis['early_exit_rate']:.1f}%")
+                    print(f"   Entry/Exit Quality: {ee_analysis['entry_quality']}/{ee_analysis['exit_quality']}")
+                    if ee_analysis.get('exit_quality') == 'POOR':
+                        print(f"   ⚠️ They miss {ee_analysis.get('missed_gains_percent', 0):.0f}% gains on average")
                 
                 # Bundle detection
                 if 'bundle_analysis' in analysis and analysis['bundle_analysis'].get('is_likely_bundler'):
                     print(f"   ⚠️ WARNING: Possible bundler detected!")
                 
-                # Strategy recommendation
-                print(f"   Strategy: {strategy['recommendation']} ({strategy.get('confidence', 'MEDIUM')})")
-                
-                # Analysis tier
-                tier = analysis.get('analysis_tier', 'INITIAL')
-                tokens_scanned = analysis.get('tokens_scanned', 0)
-                print(f"   Analysis Tier: {tier} ({tokens_scanned} tokens scanned)")
+                # 7-day distribution
+                print(f"   === 7-DAY DISTRIBUTION ===")
+                print(f"   5x+: {metrics.get('distribution_500_plus_%', 0):.1f}% | "
+                      f"2-5x: {metrics.get('distribution_200_500_%', 0):.1f}% | "
+                      f"<2x: {metrics.get('distribution_0_200_%', 0):.1f}%")
         
         # Category breakdown
         print(f"\n📂 WALLET CATEGORIES:")
@@ -389,134 +382,256 @@ class PhoenixCLI:
         print(f"   💎 5x+ Gem Hunters: {len(results.get('gem_hunters', []))}")
         print(f"   📈 Swing Traders (1-24h): {len(results.get('swing_traders', []))}")
         print(f"   🏆 Position Traders (24h+): {len(results.get('position_traders', []))}")
-        print(f"   ✅ Consistent: {len(results.get('consistent', []))}")
-        print(f"   🔀 Mixed: {len(results.get('mixed', []))}")
-        print(f"   ❓ Unknown: {len(results.get('unknown', []))}")
         
-        # Distribution insights
+        # Key insights
         print(f"\n📊 KEY INSIGHTS:")
-        total_analyzed = results['analyzed_wallets']
-        if total_analyzed > 0:
-            gem_hunters = len(results.get('gem_hunters', []))
-            flippers = len(results.get('flippers', []))
-            print(f"   • {(gem_hunters/total_analyzed*100):.1f}% are 5x+ gem hunters")
-            print(f"   • {(flippers/total_analyzed*100):.1f}% are quick flippers (exit within 10 min)")
-            print(f"   • Distribution now factors into wallet scoring")
-            print(f"   • Most common market cap range: $50K - $500K")
+        if active_wallets:
+            # Count recent winners
+            recent_5x = sum(1 for w in active_wallets 
+                          if w.get('seven_day_metrics', {}).get('has_5x_last_7_days', False))
+            recent_2x = sum(1 for w in active_wallets 
+                          if w.get('seven_day_metrics', {}).get('has_2x_last_7_days', False))
+            
+            if recent_5x > 0:
+                print(f"   🚀 {recent_5x} wallets hit 5x+ in last 7 days!")
+            if recent_2x > 0:
+                print(f"   📈 {recent_2x} wallets hit 2x+ in last 7 days!")
+            
+            # Exit quality breakdown
+            good_exits = sum(1 for w in active_wallets 
+                           if w.get('entry_exit_analysis', {}).get('exit_quality') in ['GOOD', 'EXCELLENT'])
+            poor_exits = sum(1 for w in active_wallets 
+                           if w.get('entry_exit_analysis', {}).get('exit_quality') == 'POOR')
+            
+            print(f"   ✅ {good_exits} wallets have good exit timing (follow their sells)")
+            print(f"   ❌ {poor_exits} wallets exit too early (use fixed TPs instead)")
     
-    def _export_memecoin_wallet_csv(self, results: Dict[str, Any], output_file: str) -> None:
-        """Export memecoin wallet analysis results to CSV."""
+    def _export_active_trader_csv(self, results: Dict[str, Any], output_file: str) -> None:
+        """Export 7-day active trader analysis to CSV with enhanced strategy columns."""
         try:
-            all_wallets = []
-            for category in ['snipers', 'flippers', 'scalpers', 'gem_hunters', 'swing_traders',
-                           'position_traders', 'consistent', 'mixed', 'unknown']:
-                all_wallets.extend(results.get(category, []))
-            
-            # Sort by composite score
-            all_wallets.sort(key=lambda x: x.get('composite_score', x['metrics'].get('composite_score', 0)), reverse=True)
-            
-            with open(output_file, 'w', newline='', encoding='utf-8') as f:
-                fieldnames = [
-                    'rank', 'wallet_address', 'composite_score', 'score_rating',
-                    'wallet_type', 'total_trades', 'win_rate', 'profit_factor',
-                    'net_profit_usd', 'avg_roi', 'median_roi', 'max_roi',
-                    'avg_hold_time_minutes', 'total_tokens_traded',
-                    'distribution_500_plus_%', 'distribution_200_500_%',
-                    'distribution_0_200_%', 'distribution_neg50_0_%',
-                    'distribution_below_neg50_%',
-                    'gem_rate_5x_plus_%', 'gem_rate_2x_plus_%',
-                    'avg_buy_market_cap_usd',
-                    'avg_buy_amount_usd', 'avg_first_take_profit_percent',
-                    'entry_exit_pattern', 'entry_quality', 'exit_quality',
-                    'missed_gains_percent', 'early_exit_rate', 'avg_exit_roi',
-                    'hold_pattern', 'strategy_recommendation', 'confidence',
-                    'filter_market_cap_min', 'filter_market_cap_max',
-                    'analysis_tier', 'tokens_scanned'
-                ]
-                
-                writer = csv.DictWriter(f, fieldnames=fieldnames)
-                writer.writeheader()
-                
-                for rank, analysis in enumerate(all_wallets, 1):
-                    metrics = analysis['metrics']
-                    score = analysis.get('composite_score', metrics.get('composite_score', 0))
-                    strategy = analysis.get('strategy', {})
-                    
-                    # Determine score rating
-                    if score >= 81:
-                        rating = "EXCELLENT"
-                    elif score >= 61:
-                        rating = "GOOD"
-                    elif score >= 41:
-                        rating = "AVERAGE"
-                    elif score >= 21:
-                        rating = "POOR"
-                    else:
-                        rating = "VERY POOR"
-                    
-                    # Cap profit factor at 999.99
-                    profit_factor = metrics.get('profit_factor', 0)
-                    if profit_factor > 999.99:
-                        profit_factor = 999.99
-                    
-                    row = {
-                        'rank': rank,
-                        'wallet_address': analysis['wallet_address'],
-                        'composite_score': round(score, 1),
-                        'score_rating': rating,
-                        'wallet_type': analysis['wallet_type'],
-                        'total_trades': metrics['total_trades'],
-                        'win_rate': round(metrics['win_rate'], 2),
-                        'profit_factor': profit_factor,
-                        'net_profit_usd': round(metrics['net_profit_usd'], 2),
-                        'avg_roi': round(metrics['avg_roi'], 2),
-                        'median_roi': round(metrics.get('median_roi', 0), 2),
-                        'max_roi': round(metrics['max_roi'], 2),
-                        'avg_hold_time_minutes': round(metrics.get('avg_hold_time_minutes', 0), 2),
-                        'total_tokens_traded': metrics['total_tokens_traded'],
-                        'distribution_500_plus_%': metrics.get('distribution_500_plus_%', 0),
-                        'distribution_200_500_%': metrics.get('distribution_200_500_%', 0),
-                        'distribution_0_200_%': metrics.get('distribution_0_200_%', 0),
-                        'distribution_neg50_0_%': metrics.get('distribution_neg50_0_%', 0),
-                        'distribution_below_neg50_%': metrics.get('distribution_below_neg50_%', 0),
-                        'gem_rate_5x_plus_%': metrics.get('gem_rate_5x_plus', 0),
-                        'gem_rate_2x_plus_%': metrics.get('gem_rate_2x_plus', 0),
-                        'avg_buy_market_cap_usd': metrics.get('avg_buy_market_cap_usd', 0),
-                        'avg_buy_amount_usd': metrics.get('avg_buy_amount_usd', 0),
-                        'avg_first_take_profit_percent': metrics.get('avg_first_take_profit_percent', 0),
-                        'strategy_recommendation': strategy.get('recommendation', ''),
-                        'confidence': strategy.get('confidence', ''),
-                        'filter_market_cap_min': strategy.get('filter_market_cap_min', 0),
-                        'filter_market_cap_max': strategy.get('filter_market_cap_max', 0),
-                        'analysis_tier': analysis.get('analysis_tier', 'INITIAL'),
-                        'tokens_scanned': analysis.get('tokens_scanned', 0)
-                    }
-                    
-                    # Add entry/exit analysis if available
-                    if 'entry_exit_analysis' in analysis:
-                        ee_analysis = analysis['entry_exit_analysis']
-                        row['entry_exit_pattern'] = ee_analysis.get('pattern', '')
-                        row['entry_quality'] = ee_analysis.get('entry_quality', '')
-                        row['exit_quality'] = ee_analysis.get('exit_quality', '')
-                        row['missed_gains_percent'] = ee_analysis.get('missed_gains_percent', 0)
-                        row['early_exit_rate'] = ee_analysis.get('early_exit_rate', 0)
-                        row['avg_exit_roi'] = ee_analysis.get('avg_exit_roi', 0)
-                        row['hold_pattern'] = ee_analysis.get('hold_pattern', '')
-                    else:
-                        row['entry_exit_pattern'] = ''
-                        row['entry_quality'] = ''
-                        row['exit_quality'] = ''
-                        row['missed_gains_percent'] = 0
-                        row['early_exit_rate'] = 0
-                        row['avg_exit_roi'] = 0
-                        row['hold_pattern'] = ''
-                    
-                    writer.writerow(row)
-            
-            logger.info(f"Exported 5x+ gem hunter analysis to {output_file}")
+            from export_utils import export_wallet_rankings_csv
+            export_wallet_rankings_csv(results, output_file)
+            logger.info(f"Exported active trader analysis to {output_file}")
             
         except Exception as e:
             logger.error(f"Error exporting CSV: {str(e)}")
+    
+    def _enhanced_telegram_analysis(self):
+        """Run enhanced Telegram analysis with 5x+ focus."""
+        print("\n" + "="*80)
+        print("    🎯 ENHANCED SPYDEFI TELEGRAM ANALYSIS")
+        print("    📉 Max Pullback % + ⏱️ Time to 5x Analysis")
+        print("="*80)
+        
+        # Check API configuration
+        if not self.config.get("birdeye_api_key"):
+            print("\n❌ CRITICAL: Birdeye API key required for enhanced analysis!")
+            print("Please configure your Birdeye API key first (Option 1).")
+            input("Press Enter to continue...")
+            return
+        
+        if not self.config.get("telegram_api_id") or not self.config.get("telegram_api_hash"):
+            print("\n❌ CRITICAL: Telegram API credentials required!")
+            print("Please configure your Telegram API credentials first (Option 1).")
+            input("Press Enter to continue...")
+            return
+        
+        print("\n🚀 Starting enhanced SpyDefi analysis...")
+        print("📅 Analysis period: 24 hours")
+        print("📁 Output: spydefi_analysis_enhanced.csv")
+        print("📊 Excel export: Enabled")
+        print("🎯 Enhanced features:")
+        print("   • ✅ Max pullback % for stop loss calculation")
+        print("   • ✅ Average time to reach 5x for gem hunting")
+        print("   • ✅ Enhanced contract address detection")
+        print("   • ✅ Detailed price analysis using Birdeye API")
+        if self.config.get("helius_api_key"):
+            print("   • ✅ Helius API for pump.fun token analysis")
+        else:
+            print("   • ⚠️ Helius API not configured - pump.fun analysis limited")
+        print("\nProcessing...")
+        
+        # Create args object with defaults
+        class Args:
+            def __init__(self):
+                self.channels = ["spydefi"]
+                self.days = 1  # 24 hours
+                self.hours = 24
+                self.output = "spydefi_analysis_enhanced.csv"
+                self.excel = True
+        
+        args = Args()
+        
+        try:
+            self._handle_telegram_analysis(args)
+            print("\n✅ Enhanced analysis completed successfully!")
+            print("📁 Check the outputs folder for results")
+            
+        except Exception as e:
+            print(f"\n❌ Enhanced analysis failed: {str(e)}")
+            logger.error(f"Enhanced telegram analysis error: {str(e)}")
+        
+        input("\nPress Enter to continue...")
+    
+    def _handle_telegram_analysis(self, args) -> None:
+        """Handle the enhanced telegram analysis command."""
+        import asyncio
+        
+        try:
+            import importlib
+            import sys
+            
+            if 'telegram_module' in sys.modules:
+                del sys.modules['telegram_module']
+            
+            from telegram_module import TelegramScraper
+            from birdeye_api import BirdeyeAPI
+            
+            logger.info("✅ Imported telegram module")
+            
+        except Exception as e:
+            logger.error(f"❌ Error importing modules: {str(e)}")
+            raise
+        
+        channels = getattr(args, 'channels', None) or self.config["sources"]["telegram_groups"]
+        if not channels:
+            logger.error("No Telegram channels specified.")
+            return
+        
+        if not self.config.get("birdeye_api_key"):
+            logger.error("🎯 CRITICAL: Birdeye API key required for enhanced analysis!")
+            return
+            
+        if not self.config.get("telegram_api_id") or not self.config.get("telegram_api_hash"):
+            logger.error("📱 CRITICAL: Telegram API credentials required!")
+            return
+        
+        output_file = ensure_output_dir(args.output)
+        hours = getattr(args, 'hours', 24)
+        days = getattr(args, 'days', 1)
+        
+        logger.info(f"🚀 Starting enhanced SpyDefi analysis for the past {hours} hours.")
+        logger.info(f"📁 Results will be saved to {output_file}")
+        
+        try:
+            birdeye_api = BirdeyeAPI(self.config["birdeye_api_key"])
+            logger.info("✅ Birdeye API initialized successfully")
+        except Exception as e:
+            logger.error(f"❌ Failed to initialize Birdeye API: {str(e)}")
+            raise
+        
+        # Initialize Helius API if configured
+        helius_api = None
+        if self.config.get("helius_api_key"):
+            try:
+                from helius_api import HeliusAPI
+                helius_api = HeliusAPI(self.config["helius_api_key"])
+                logger.info("✅ Helius API initialized successfully for pump.fun tokens")
+            except Exception as e:
+                logger.error(f"❌ Failed to initialize Helius API: {str(e)}")
+                logger.warning("Pump.fun token analysis will be limited")
+        
+        try:
+            telegram_scraper = TelegramScraper(
+                self.config["telegram_api_id"],
+                self.config["telegram_api_hash"],
+                self.config.get("telegram_session", "phoenix")
+            )
+            logger.info("✅ Telegram scraper initialized successfully")
+        except Exception as e:
+            logger.error(f"❌ Failed to initialize Telegram scraper: {str(e)}")
+            raise
+        
+        telegram_analyses = {"ranked_kols": []}
+        
+        if any(ch.lower() == "spydefi" for ch in channels):
+            logger.info("🎯 SpyDefi channel detected. Running enhanced analysis...")
+            
+            try:
+                async def run_enhanced_spydefi_analysis():
+                    try:
+                        await telegram_scraper.connect()
+                        logger.info("📞 Connected to Telegram")
+                        
+                        telegram_scraper.birdeye_api = birdeye_api
+                        telegram_scraper.helius_api = helius_api
+                        
+                        analysis = await telegram_scraper.redesigned_spydefi_analysis(hours)
+                        
+                        logger.info("📊 Analysis completed, exporting results...")
+                        
+                        await telegram_scraper.export_spydefi_analysis(analysis, output_file)
+                        
+                        return analysis
+                        
+                    except Exception as e:
+                        logger.error(f"❌ Error in analysis: {str(e)}")
+                        import traceback
+                        logger.error(f"❌ Analysis traceback: {traceback.format_exc()}")
+                        raise
+                    finally:
+                        await telegram_scraper.disconnect()
+                        logger.info("📞 Disconnected from Telegram")
+                
+                telegram_analyses = asyncio.run(run_enhanced_spydefi_analysis())
+                
+                if telegram_analyses.get('success'):
+                    enhanced_count = sum(kol.get('detailed_analysis_count', 0) for kol in telegram_analyses.get('ranked_kols', {}).values())
+                    total_count = telegram_analyses.get('total_calls', 0)
+                    pump_count = telegram_analyses.get('total_pump_tokens', 0)
+                    
+                    if enhanced_count > 0:
+                        logger.info(f"✅ Enhanced SpyDefi analysis completed successfully!")
+                        logger.info(f"🎯 Enhanced analysis coverage: {enhanced_count}/{total_count} tokens ({(enhanced_count/total_count*100):.1f}%)")
+                        if pump_count > 0:
+                            logger.info(f"🚀 Pump.fun tokens analyzed: {pump_count}")
+                else:
+                    logger.error(f"❌ Analysis failed: {telegram_analyses.get('error', 'Unknown error')}")
+                
+            except Exception as e:
+                logger.error(f"❌ Error in enhanced SpyDefi analysis: {str(e)}")
+                return
+        
+        logger.info(f"📁 Enhanced telegram analysis completed. Results saved to {output_file}")
+        
+        # Enhanced Excel export
+        if hasattr(args, 'excel') and args.excel:
+            try:
+                from export_utils import export_to_excel
+                excel_file = output_file.replace(".csv", "_enhanced.xlsx")
+                
+                if isinstance(telegram_analyses, dict) and telegram_analyses.get('ranked_kols'):
+                    enhanced_telegram_data = {"ranked_kols": []}
+                    
+                    for kol, performance in telegram_analyses['ranked_kols'].items():
+                        enhanced_kol_data = {
+                            "channel_id": performance.get('channel_id', ''),
+                            "total_calls": performance.get('tokens_mentioned', 0),
+                            "success_rate": performance.get('success_rate_5x', 0),
+                            "avg_roi": performance.get('avg_ath_roi', 0),
+                            "avg_max_roi": performance.get('avg_ath_roi', 0),
+                            "composite_score": performance.get('composite_score', 0),
+                            "avg_max_pullback_percent": performance.get('avg_max_pullback_percent', 0),
+                            "avg_time_to_5x_formatted": performance.get('avg_time_to_5x_formatted', 'N/A'),
+                            "detailed_analysis_count": performance.get('detailed_analysis_count', 0),
+                            "pump_tokens_analyzed": performance.get('pump_tokens_analyzed', 0),
+                            "pump_success_rate_5x": performance.get('pump_success_rate_5x', 0),
+                            "strategy": {
+                                "recommendation": "ENHANCED_ANALYSIS",
+                                "entry_type": "IMMEDIATE",
+                                "take_profit_1": 100,
+                                "take_profit_2": 300,
+                                "take_profit_3": 500,
+                                "stop_loss": -(performance.get('avg_max_pullback_percent', 25) + 10)
+                            }
+                        }
+                        enhanced_telegram_data["ranked_kols"].append(enhanced_kol_data)
+                    
+                    export_to_excel(enhanced_telegram_data, {}, excel_file)
+                    logger.info(f"📊 Enhanced Excel export completed: {excel_file}")
+                    
+            except Exception as e:
+                logger.error(f"❌ Error in Excel export: {str(e)}")
     
     def _test_api_connectivity(self):
         """Test API connectivity."""
@@ -605,7 +720,7 @@ class PhoenixCLI:
             print(f"❌ Solana RPC: Error - {str(e)}")
         
         # Summary
-        print(f"\n📊 5x+ GEM HUNTER FEATURES:")
+        print(f"\n📊 7-DAY ACTIVE TRADER FEATURES:")
         birdeye_ok = bool(self.config.get("birdeye_api_key"))
         helius_ok = bool(self.config.get("helius_api_key"))
         telegram_ok = bool(self.config.get("telegram_api_id") and self.config.get("telegram_api_hash"))
@@ -618,12 +733,13 @@ class PhoenixCLI:
         print(f"   ⚡ Bundle Detection: {'✅ Active' if cielo_ok else '❌ Need Cielo'}")
         print(f"   📊 Entry/Exit Quality: {'✅ Full Analysis' if (birdeye_ok and helius_ok) else '⚠️ Basic Only'}")
         print(f"   🚀 5x+ Gem Detection: {'✅ Active' if cielo_ok else '❌ Need Cielo'}")
-        print(f"   ⚙️ Tiered Analysis: {'✅ Active (API efficiency)' if cielo_ok else '❌ Need Cielo'}")
+        print(f"   📈 7-Day Focus: {'✅ Active' if cielo_ok else '❌ Need Cielo'}")
+        print(f"   🎯 Enhanced Strategy: {'✅ Active' if cielo_ok else '❌ Need Cielo'}")
         
         if birdeye_ok and helius_ok and telegram_ok and cielo_ok:
-            print(f"\n🎉 ALL SYSTEMS GO! Full 5x+ gem hunter capabilities available.")
+            print(f"\n🎉 ALL SYSTEMS GO! Full 7-day active trader capabilities available.")
         else:
-            print(f"\n⚠️ Configure missing APIs to enable all 5x+ gem hunter features.")
+            print(f"\n⚠️ Configure missing APIs to enable all active trader features.")
         
         input("\nPress Enter to continue...")
     
@@ -773,314 +889,77 @@ class PhoenixCLI:
         telegram_ok = bool(self.config.get("telegram_api_id") and self.config.get("telegram_api_hash"))
         cielo_ok = bool(self.config.get("cielo_api_key"))
         
-        print(f"\n🎯 5x+ GEM HUNTER FEATURES:")
+        print(f"\n🎯 7-DAY ACTIVE TRADER FEATURES:")
         print(f"   Token Price Analysis: {'✅ Full' if (birdeye_ok and helius_ok) else '⚠️ Limited' if birdeye_ok else '❌ Not Available'}")
         print(f"   Wallet Analysis: {'✅ Available' if cielo_ok else '❌ Not Available'}")
         print(f"   Entry/Exit Quality: {'✅ Full' if (birdeye_ok and helius_ok) else '⚠️ Basic' if birdeye_ok else '❌ Not Available'}")
         print(f"   Market Cap Tracking: {'✅ Active' if birdeye_ok else '❌ Not Available'}")
         print(f"   Bundle Detection: {'✅ Active' if cielo_ok else '❌ Not Available'}")
-        print(f"   First TP Analysis: {'✅ Active' if cielo_ok else '❌ Not Available'}")
-        print(f"   5x+ Gem Detection: {'✅ Active' if cielo_ok else '❌ Not Available'}")
-        print(f"   Tiered Analysis: {'✅ Active' if cielo_ok else '❌ Not Available'}")
+        print(f"   Enhanced Strategy: {'✅ Active' if cielo_ok else '❌ Not Available'}")
+        print(f"   7-Day Focus: {'✅ Active' if cielo_ok else '❌ Not Available'}")
         
         input("\nPress Enter to continue...")
     
-    def _show_help(self):
-        """Show help and examples."""
+    def _show_strategy_help(self):
+        """Show help and strategy guidance."""
         print("\n" + "="*80)
-        print("    📖 HELP & EXAMPLES - Phoenix 2x+ and 5x+ Gem Hunter Edition")
+        print("    📖 STRATEGY GUIDE - 7-Day Active Trader Edition")
         print("="*80)
         
-        print("\n🚀 GETTING STARTED:")
-        print("1. Configure API keys (Option 1)")
-        print("   - Birdeye API: https://birdeye.so (mainstream tokens)")
-        print("   - Helius API: https://helius.dev (pump.fun tokens)")
-        print("   - Cielo Finance API: https://cielo.finance (wallets)")
-        print("   - Telegram API: https://my.telegram.org (SpyDefi)")
+        print("\n🎯 WALLET SELECTION CRITERIA:")
+        print("• Active in last 7 days (recent trades)")
+        print("• Win rate 40%+ in last 7 days")
+        print("• At least 3 trades in last week")
+        print("• Hit 2x+ or 5x+ recently")
         
-        print("\n🎯 ENHANCED SPYDEFI ANALYSIS:")
-        print("• Now tracks BOTH 2x+ and 5x+ performance")
-        print("• Separate pullback metrics for 2x and 5x milestones")
-        print("• Time-to-2x and time-to-5x metrics")
-        print("• Pump.fun token success rates for both 2x and 5x")
-        print("• Strategy recommendations split into separate columns in Excel")
+        print("\n📊 ENHANCED STRATEGY RECOMMENDATIONS:")
         
-        print("\n💯 KEY METRICS EXPLAINED:")
-        print("• Composite Score: 0-100 with both 2x and 5x performance factored")
-        print("• 2x Success Rate: % of calls that hit 200%+ (2x)")
-        print("• 5x Success Rate: % of calls that hit 500%+ (5x)")
-        print("• Avg Max Pullback 2x: Average pullback AFTER hitting 2x")
-        print("• Avg Max Pullback 5x: Average pullback AFTER hitting 5x")
-        print("• Avg Time to 2x: Average time to reach 2x gains")
-        print("• Avg Time to 5x: Average time to reach 5x gains")
+        print("\n1️⃣ FOLLOW SELLS = YES ✅")
+        print("   When: Exit Quality = GOOD or EXCELLENT")
+        print("   Why: They capture 60-80%+ of gains consistently")
+        print("   Action: Copy their exit timing directly")
         
-        print("\n📊 EXCEL EXPORT COLUMNS:")
-        print("• channel_id: Telegram channel ID for the KOL")
-        print("• total_calls: Total number of token calls analyzed")
-        print("• success_rate: 2x success rate percentage")
-        print("• avg_roi: Average return on investment")
-        print("• avg_max_roi: Average maximum ROI achieved")
-        print("• confidence_level: Composite score (reliability)")
-        print("• avg_max_pullback_percent: Overall pullback")
-        print("• avg_max_pullback_percent_2x: Pullback after 2x")
-        print("• avg_max_pullback_percent_5x: Pullback after 5x")
-        print("• avg_time_to_2x_formatted: Time to reach 2x")
-        print("• avg_time_to_5x_formatted: Time to reach 5x")
-        print("• pump_success_rate_2x: 2x rate for pump.fun tokens")
-        print("• pump_success_rate_5x: 5x rate for pump.fun tokens")
+        print("\n2️⃣ FOLLOW SELLS = NO ❌")
+        print("   When: Exit Quality = POOR")
+        print("   Why: They exit too early, missing gains")
+        print("   Action: Use fixed TPs instead:")
+        print("   • If they avg 30% TP but miss 100%+ → Set TP1=60%, TP2=150%")
+        print("   • If they avg 50% TP but miss 200%+ → Set TP1=100%, TP2=300%")
         
-        print("\n⚙️ STRATEGY COLUMNS (SEPARATED):")
-        print("• recommendation: Main strategy recommendation")
-        print("• entry_type: Type of entry (IMMEDIATE, etc)")
-        print("• take_profit_1: First take profit level (%)")
-        print("• take_profit_2: Second take profit level (%)")
-        print("• take_profit_3: Third take profit level (%)")
-        print("• stop_loss: Recommended stop loss level (%)")
+        print("\n📈 SELL STRATEGIES EXPLAINED:")
+        print("• COPY_EXITS: Follow their sells exactly")
+        print("• USE_FIXED_TP: Ignore their sells, use your TPs")
+        print("• HYBRID: Consider their exits but hold longer")
+        print("• FOLLOW_GEMS: For 5x+ hunters, let winners run")
+        
+        print("\n💎 WALLET TYPES & TYPICAL TPs:")
+        print("• Sniper: TP1=50-100% (quick profits)")
+        print("• Flipper: TP1=30-50% (fast turnover)")
+        print("• Scalper: TP1=20-50% (consistent gains)")
+        print("• Gem Hunter: TP1=400%+ (hold for 5x+)")
+        print("• Swing Trader: TP1=100-200% (patience pays)")
+        
+        print("\n⚠️ RED FLAGS TO WATCH:")
+        print("• Days since trade > 3 = Getting inactive")
+        print("• Exit quality = POOR = Don't follow sells")
+        print("• Bundle warning = Verify on-chain first")
+        print("• Missed gains > 200% = They panic sell")
+        
+        print("\n📊 7-DAY DISTRIBUTION FOCUS:")
+        print("Look for wallets with high % in:")
+        print("• 500%+ bucket (5x+ trades)")
+        print("• 200-500% bucket (2x-5x trades)")
+        print("And low % in:")
+        print("• Below -50% bucket (catastrophic losses)")
         
         print("\n🔧 COMMAND LINE USAGE:")
         print("# Configure all APIs")
         print("python phoenix.py configure --birdeye-api-key KEY --helius-api-key KEY --cielo-api-key KEY")
         print()
-        print("# Analyze SpyDefi (2x+ and 5x+ enhanced)")
-        print("python phoenix.py telegram --hours 24 --excel")
-        print()
-        print("# Analyze wallets (5x+ gem hunter edition)")
-        print("python phoenix.py wallet --days 30")
+        print("# Analyze active traders (7-day default)")
+        print("python phoenix.py wallet --days 7")
         
         input("\nPress Enter to continue...")
-    
-    def _fixed_enhanced_telegram_analysis(self):
-        """Run FIXED enhanced Telegram analysis with proper pullback % and time-to-2x/5x metrics."""
-        print("\n" + "="*80)
-        print("    🎯 ENHANCED SPYDEFI TELEGRAM ANALYSIS (2x+ AND 5x+ FOCUS)")
-        print("    📉 Separate Pullback % for 2x and 5x milestones")
-        print("    ⏱️ Time to 2x AND Time to 5x Analysis")
-        print("="*80)
-        
-        # Check API configuration first
-        if not self.config.get("birdeye_api_key"):
-            print("\n❌ CRITICAL: Birdeye API key required for enhanced analysis!")
-            print("Please configure your Birdeye API key first (Option 1).")
-            input("Press Enter to continue...")
-            return
-        
-        if not self.config.get("telegram_api_id") or not self.config.get("telegram_api_hash"):
-            print("\n❌ CRITICAL: Telegram API credentials required!")
-            print("Please configure your Telegram API credentials first (Option 1).")
-            input("Press Enter to continue...")
-            return
-        
-        print("\n🚀 Starting enhanced SpyDefi analysis...")
-        print("📅 Analysis period: 24 hours")
-        print("📁 Output: spydefi_analysis_enhanced.csv")
-        print("📊 Excel export: Enabled")
-        print("🎯 Enhanced features:")
-        print("   • ✅ Tracking BOTH 2x+ and 5x+ success rates")
-        print("   • ✅ Separate pullback % for 2x and 5x milestones")
-        print("   • ✅ Average time to reach 2x AND 5x")
-        print("   • ✅ Pump.fun success rates for both 2x and 5x")
-        print("   • ✅ Strategy split into separate Excel columns")
-        print("   • ✅ Enhanced contract address detection")
-        print("   • ✅ Detailed price analysis using Birdeye API")
-        if self.config.get("helius_api_key"):
-            print("   • ✅ Helius API for pump.fun token analysis")
-        else:
-            print("   • ⚠️ Helius API not configured - pump.fun analysis limited")
-        print("\nProcessing...")
-        
-        # Create args object with defaults
-        class Args:
-            def __init__(self):
-                self.channels = ["spydefi"]
-                self.days = 1  # 24 hours
-                self.hours = 24
-                self.output = "spydefi_analysis_enhanced.csv"
-                self.excel = True
-        
-        args = Args()
-        
-        try:
-            self._handle_fixed_enhanced_telegram_analysis(args)
-            print("\n✅ Enhanced analysis completed successfully!")
-            print("📁 Check the outputs folder for results")
-            
-        except Exception as e:
-            print(f"\n❌ Enhanced analysis failed: {str(e)}")
-            logger.error(f"Enhanced telegram analysis error: {str(e)}")
-        
-        input("\nPress Enter to continue...")
-    
-    def _handle_fixed_enhanced_telegram_analysis(self, args) -> None:
-        """Handle the FIXED enhanced telegram analysis command with new columns."""
-        import asyncio
-        
-        try:
-            import importlib
-            import sys
-            
-            if 'telegram_module' in sys.modules:
-                del sys.modules['telegram_module']
-            
-            from telegram_module import TelegramScraper
-            from birdeye_api import BirdeyeAPI
-            
-            logger.info("✅ Imported telegram module")
-            
-        except Exception as e:
-            logger.error(f"❌ Error importing modules: {str(e)}")
-            raise
-        
-        channels = getattr(args, 'channels', None) or self.config["sources"]["telegram_groups"]
-        if not channels:
-            logger.error("No Telegram channels specified.")
-            return
-        
-        if not self.config.get("birdeye_api_key"):
-            logger.error("🎯 CRITICAL: Birdeye API key required for enhanced analysis!")
-            return
-            
-        if not self.config.get("telegram_api_id") or not self.config.get("telegram_api_hash"):
-            logger.error("📱 CRITICAL: Telegram API credentials required!")
-            return
-        
-        output_file = ensure_output_dir(args.output)
-        hours = getattr(args, 'hours', 24)
-        days = getattr(args, 'days', 1)
-        
-        logger.info(f"🚀 Starting enhanced SpyDefi analysis for the past {hours} hours.")
-        logger.info(f"📁 Results will be saved to {output_file}")
-        
-        try:
-            birdeye_api = BirdeyeAPI(self.config["birdeye_api_key"])
-            logger.info("✅ Birdeye API initialized successfully")
-        except Exception as e:
-            logger.error(f"❌ Failed to initialize Birdeye API: {str(e)}")
-            raise
-        
-        # Initialize Helius API if configured
-        helius_api = None
-        if self.config.get("helius_api_key"):
-            try:
-                from helius_api import HeliusAPI
-                helius_api = HeliusAPI(self.config["helius_api_key"])
-                logger.info("✅ Helius API initialized successfully for pump.fun tokens")
-            except Exception as e:
-                logger.error(f"❌ Failed to initialize Helius API: {str(e)}")
-                logger.warning("Pump.fun token analysis will be limited")
-        
-        try:
-            telegram_scraper = TelegramScraper(
-                self.config["telegram_api_id"],
-                self.config["telegram_api_hash"],
-                self.config.get("telegram_session", "phoenix")
-            )
-            logger.info("✅ Telegram scraper initialized successfully")
-        except Exception as e:
-            logger.error(f"❌ Failed to initialize Telegram scraper: {str(e)}")
-            raise
-        
-        telegram_analyses = {"ranked_kols": []}
-        
-        if any(ch.lower() == "spydefi" for ch in channels):
-            logger.info("🎯 SpyDefi channel detected. Running enhanced analysis...")
-            
-            try:
-                async def run_fixed_enhanced_spydefi_analysis():
-                    try:
-                        await telegram_scraper.connect()
-                        logger.info("📞 Connected to Telegram")
-                        
-                        telegram_scraper.birdeye_api = birdeye_api
-                        telegram_scraper.helius_api = helius_api  # Pass Helius API
-                        
-                        analysis = await telegram_scraper.redesigned_spydefi_analysis(hours)
-                        
-                        logger.info("📊 Analysis completed, exporting results...")
-                        
-                        await telegram_scraper.export_spydefi_analysis(analysis, output_file)
-                        
-                        return analysis
-                        
-                    except Exception as e:
-                        logger.error(f"❌ Error in analysis: {str(e)}")
-                        import traceback
-                        logger.error(f"❌ Analysis traceback: {traceback.format_exc()}")
-                        raise
-                    finally:
-                        await telegram_scraper.disconnect()
-                        logger.info("📞 Disconnected from Telegram")
-                
-                telegram_analyses = asyncio.run(run_fixed_enhanced_spydefi_analysis())
-                
-                if telegram_analyses.get('success'):
-                    enhanced_count = sum(1 for kol in telegram_analyses.get('ranked_kols', {}).values() if kol.get('time_to_2x_data_available', False))
-                    total_count = telegram_analyses.get('total_calls', 0)
-                    pump_count = telegram_analyses.get('total_pump_tokens', 0)
-                    
-                    if enhanced_count > 0:
-                        logger.info(f"✅ Enhanced SpyDefi analysis completed successfully!")
-                        logger.info(f"🎯 Enhanced analysis coverage: {enhanced_count} KOLs with time-to-2x/5x data")
-                        if pump_count > 0:
-                            logger.info(f"🚀 Pump.fun tokens analyzed: {pump_count}")
-                else:
-                    logger.error(f"❌ Analysis failed: {telegram_analyses.get('error', 'Unknown error')}")
-                
-            except Exception as e:
-                logger.error(f"❌ Error in enhanced SpyDefi analysis: {str(e)}")
-                return
-        
-        logger.info(f"📁 Enhanced telegram analysis completed. Results saved to {output_file}")
-        
-        # Enhanced Excel export with new columns and separated strategy
-        if hasattr(args, 'excel') and args.excel:
-            try:
-                from export_utils import export_to_excel
-                excel_file = output_file.replace(".csv", "_enhanced.xlsx")
-                
-                if isinstance(telegram_analyses, dict) and telegram_analyses.get('ranked_kols'):
-                    enhanced_telegram_data = {"ranked_kols": []}
-                    
-                    for kol, performance in telegram_analyses['ranked_kols'].items():
-                        # Calculate stop loss based on average pullback
-                        avg_pullback = performance.get('avg_max_pullback_percent', 25)
-                        stop_loss = -(avg_pullback + 10)  # Add 10% buffer
-                        
-                        enhanced_kol_data = {
-                            "channel_id": performance.get('channel_id', ''),
-                            "total_calls": performance.get('tokens_mentioned', 0),
-                            "success_rate": performance.get('success_rate_2x', 0),  # 2x success rate
-                            "success_rate_5x": performance.get('success_rate_5x', 0),  # 5x success rate
-                            "avg_roi": performance.get('avg_ath_roi', 0),
-                            "avg_max_roi": performance.get('avg_ath_roi', 0),
-                            "confidence_level": performance.get('composite_score', 0),
-                            "avg_max_pullback_percent": performance.get('avg_max_pullback_percent', 0),
-                            "avg_max_pullback_percent_2x": performance.get('avg_max_pullback_percent_2x', 0),
-                            "avg_max_pullback_percent_5x": performance.get('avg_max_pullback_percent_5x', 0),
-                            "avg_time_to_2x_formatted": performance.get('avg_time_to_2x_formatted', 'N/A'),
-                            "avg_time_to_5x_formatted": performance.get('avg_time_to_5x_formatted', 'N/A'),
-                            "pump_success_rate_2x": performance.get('pump_success_rate_2x', 0),
-                            "pump_success_rate_5x": performance.get('pump_success_rate_5x', 0),
-                            # Strategy fields separated
-                            "recommendation": "ENHANCED_ANALYSIS",
-                            "entry_type": "IMMEDIATE",
-                            "take_profit_1": 100,  # 2x
-                            "take_profit_2": 300,  # 4x
-                            "take_profit_3": 500,  # 6x
-                            "stop_loss": stop_loss
-                        }
-                        enhanced_telegram_data["ranked_kols"].append(enhanced_kol_data)
-                    
-                    # Add summary stats
-                    enhanced_telegram_data["total_kols_analyzed"] = telegram_analyses.get('total_kols_analyzed', 0)
-                    enhanced_telegram_data["total_calls"] = telegram_analyses.get('total_calls', 0)
-                    enhanced_telegram_data["success_rate_2x"] = telegram_analyses.get('success_rate_2x', 0)
-                    enhanced_telegram_data["success_rate_5x"] = telegram_analyses.get('success_rate_5x', 0)
-                    
-                    export_to_excel(enhanced_telegram_data, {}, excel_file)
-                    logger.info(f"📊 Enhanced Excel export completed: {excel_file}")
-                    
-            except Exception as e:
-                logger.error(f"❌ Error in Excel export: {str(e)}")
     
     def _view_current_sources(self):
         """View current data sources."""
@@ -1101,10 +980,13 @@ class PhoenixCLI:
         wallets = load_wallets_from_file("wallets.txt")
         print(f"\n💰 WALLETS FROM FILE ({len(wallets)}):")
         if wallets:
+            # Count active wallets (would need actual analysis to be accurate)
+            print(f"   Total wallets: {len(wallets)}")
             for i, wallet in enumerate(wallets[:10], 1):
                 print(f"   {i}. {wallet[:8]}...{wallet[-4:]}")
             if len(wallets) > 10:
                 print(f"   ... and {len(wallets) - 10} more wallets")
+            print("\n   Note: Run analysis to see active/inactive breakdown")
         else:
             print("   No wallets found in wallets.txt")
         
@@ -1114,6 +996,12 @@ class PhoenixCLI:
         print(f"   Helius: {'✅ Configured' if self.config.get('helius_api_key') else '⚠️ Not configured'}")
         print(f"   Cielo: {'✅ Configured' if self.config.get('cielo_api_key') else '❌ Not configured'}")
         print(f"   Telegram: {'✅ Configured' if self.config.get('telegram_api_id') else '❌ Not configured'}")
+        
+        # Analysis settings
+        print(f"\n⚙️ ANALYSIS SETTINGS:")
+        print(f"   Default period: 7 days (active traders)")
+        print(f"   Focus: Recent performance & activity")
+        print(f"   Strategy: Enhanced with TP guidance")
         
         input("\nPress Enter to continue...")
     
@@ -1130,7 +1018,7 @@ class PhoenixCLI:
             if args.command == "configure":
                 self._handle_configure(args)
             elif args.command == "telegram":
-                self._handle_fixed_enhanced_telegram_analysis(args)
+                self._handle_telegram_analysis(args)
             elif args.command == "wallet":
                 self._handle_wallet_analysis(args)
     
@@ -1203,7 +1091,7 @@ class PhoenixCLI:
                 output_file = ensure_output_dir(args.output)
                 if not output_file.endswith('.csv'):
                     output_file = output_file.replace('.xlsx', '.csv')
-                self._export_memecoin_wallet_csv(results, output_file)
+                self._export_active_trader_csv(results, output_file)
                 
                 logger.info(f"Analysis complete. Results saved to {output_file}")
             else:
