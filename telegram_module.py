@@ -1,21 +1,13 @@
 """
-Telegram Module - Phoenix Project (FIXED VERSION - RPC FALLBACK + VALIDATION)
+Telegram Module - Phoenix Project (ENHANCED PRICE DISCOVERY VERSION)
 
 MAJOR FIXES:
-- Added RPC fallback for pump.fun token price discovery
-- Fixed address extraction and validation
-- Added token deduplication across KOLs
-- Fixed async/await issues
-- Ensured CSV output even with partial results
-- Added circuit breaker for consecutive failures
-- Improved error handling and recovery
-
-REQUIREMENTS:
-- Python 3.8+
-- telethon
-- pandas
-- asyncio
-- requests
+- Multi-source price discovery with intelligent fallbacks
+- Early call detection and special handling
+- Improved pump.fun token analysis
+- Better error handling and recovery
+- Fixed data structure for Excel export
+- Maintains proper dictionary structure for ranked_kols
 """
 
 import asyncio
@@ -57,7 +49,7 @@ class TokenCall:
     platform: Optional[str] = None
 
 class TelegramScraper:
-    """Telegram scraper for SpyDefi KOL analysis with 2x hot streak focus."""
+    """Telegram scraper for SpyDefi KOL analysis with enhanced price discovery."""
     
     # Analysis tier constants
     INITIAL_ANALYSIS_CALLS = 5
@@ -69,12 +61,12 @@ class TelegramScraper:
     PROGRESS_INTERVAL = 100
     SPYDEFI_TIMEOUT = 60  # seconds
     CHANNEL_TIMEOUT = 30  # seconds
-    KOL_ANALYSIS_TIMEOUT = 45  # seconds
+    KOL_ANALYSIS_TIMEOUT = 120  # seconds
     GLOBAL_TIMEOUT = 300  # 5 minutes
     MAX_CONCURRENT_CHANNELS = 3
     CACHE_DURATION_HOURS = 6
     MIN_KOL_MENTIONS_NEEDED = 20
-    MAX_CONSECUTIVE_FAILURES = 3
+    MAX_CONSECUTIVE_FAILURES = 10
     
     # RPC settings
     RPC_URL = "https://api.mainnet-beta.solana.com"
@@ -97,6 +89,10 @@ class TelegramScraper:
         # Token analysis cache (deduplication)
         self.token_analysis_cache = {}
         self.token_cache_ttl = 3600  # 1 hour TTL
+        
+        # Price discovery cache
+        self.price_cache = {}
+        self.price_cache_ttl = 300  # 5 minute TTL
         
         # Circuit breaker
         self.consecutive_failures = 0
@@ -134,12 +130,14 @@ class TelegramScraper:
             'contract_extraction_attempts': 0,
             'pump_tokens_found': 0,
             'tokens_analyzed': 0,
-            'tokens_cached': 0
+            'tokens_cached': 0,
+            'price_discovery_attempts': 0,
+            'price_discovery_successes': 0
         }
         
-        # Partial results storage
+        # Partial results storage - KEEP AS DICTIONARY
         self.partial_results = {
-            'kols_analyzed': {},
+            'kols_analyzed': {},  # This must remain a dictionary
             'timestamp': datetime.now().isoformat()
         }
     
@@ -293,79 +291,6 @@ class TelegramScraper:
         
         return True
     
-    async def _make_rpc_call(self, method: str, params: List[Any]) -> Optional[Dict[str, Any]]:
-        """Make RPC call to Solana with timeout and error handling."""
-        self.api_call_count['rpc'] += 1
-        
-        payload = {
-            "jsonrpc": "2.0",
-            "id": 1,
-            "method": method,
-            "params": params
-        }
-        
-        try:
-            response = await asyncio.wait_for(
-                asyncio.get_event_loop().run_in_executor(
-                    None,
-                    lambda: requests.post(self.RPC_URL, json=payload, timeout=self.RPC_TIMEOUT)
-                ),
-                timeout=self.RPC_TIMEOUT + 2
-            )
-            
-            if response.status_code == 200:
-                result = response.json()
-                if "result" in result:
-                    return result["result"]
-                else:
-                    logger.error(f"RPC error: {result.get('error', 'Unknown error')}")
-                    self.api_call_count['rpc_failures'] += 1
-                    return None
-            else:
-                logger.error(f"RPC HTTP error: {response.status_code}")
-                self.api_call_count['rpc_failures'] += 1
-                return None
-                
-        except asyncio.TimeoutError:
-            logger.error("RPC timeout")
-            self.api_call_count['rpc_failures'] += 1
-            return None
-        except Exception as e:
-            logger.error(f"RPC error: {str(e)}")
-            self.api_call_count['rpc_failures'] += 1
-            return None
-    
-    async def _get_token_price_from_rpc(self, token_address: str, timestamp: int) -> Optional[float]:
-        """Get token price from RPC by checking liquidity pools."""
-        try:
-            # For pump.fun tokens, we need to find their liquidity pools
-            # This is a simplified approach - in production you'd want to check multiple DEXes
-            
-            # Get token supply first
-            token_supply_response = await self._make_rpc_call(
-                "getTokenSupply",
-                [token_address]
-            )
-            
-            if not token_supply_response:
-                logger.warning(f"Could not get token supply for {token_address}")
-                return None
-            
-            # For pump.fun tokens, estimate initial price based on bonding curve
-            # This is a rough estimate - pump.fun uses a specific bonding curve
-            if token_address.endswith('pump'):
-                # Pump.fun initial price estimation
-                # Typically starts around 0.00001 SOL per token
-                return 0.00001
-            
-            # For other tokens, would need to find and query liquidity pools
-            # This requires more complex logic to find Raydium/Orca pools
-            return None
-            
-        except Exception as e:
-            logger.error(f"Error getting token price from RPC: {str(e)}")
-            return None
-    
     async def scrape_channel_messages(self, channel_username: str, hours: int = 24, 
                                     limit: int = None, show_progress: bool = True) -> List[Dict[str, Any]]:
         """Scrape messages from a specific channel with limits and progress."""
@@ -498,7 +423,7 @@ class TelegramScraper:
     
     async def redesigned_spydefi_analysis(self, hours: int = 24, force_refresh: bool = False) -> Dict[str, Any]:
         """
-        Redesigned SpyDefi analysis with performance optimizations and fixes.
+        Redesigned SpyDefi analysis with enhanced price discovery.
         
         Two-tier analysis system:
         1. Initial scan: Last 5 calls for all KOLs
@@ -519,9 +444,9 @@ class TelegramScraper:
                     logger.warning("⚠️ Birdeye API not configured - token analysis will be limited")
                     
                 if self.helius_api:
-                    logger.info("✅ Helius API available for pump.fun tokens")
+                    logger.info("✅ Helius API available for enhanced price discovery")
                 else:
-                    logger.warning("⚠️ Helius API not configured - pump.fun analysis will be limited")
+                    logger.warning("⚠️ Helius API not configured - price discovery will be limited")
                 
                 # Check cache first
                 kol_mentions = None
@@ -578,6 +503,7 @@ class TelegramScraper:
                         
                         if kol_analysis and kol_analysis.get('tokens_mentioned', 0) > 0:
                             kol_initial_performance[kol] = kol_analysis
+                            # Store in partial results as dictionary
                             self.partial_results['kols_analyzed'][kol] = kol_analysis
                         
                         # Reset consecutive failures on success
@@ -628,6 +554,7 @@ class TelegramScraper:
                         
                         if deep_analysis:
                             kol_deep_performance[kol] = deep_analysis
+                            # Update partial results as dictionary
                             self.partial_results['kols_analyzed'][kol] = deep_analysis
                             
                     except Exception as e:
@@ -648,7 +575,7 @@ class TelegramScraper:
                     composite_score = self._calculate_composite_score(stats)
                     stats['composite_score'] = composite_score
                 
-                # Sort by composite score
+                # Sort by composite score - KEEP AS DICTIONARY
                 ranked_kols = dict(sorted(
                     final_kol_performance.items(),
                     key=lambda x: x[1]['composite_score'],
@@ -694,6 +621,8 @@ class TelegramScraper:
                 logger.info(f"   🚀 Pump.fun tokens found: {self.api_call_count['pump_tokens_found']}")
                 logger.info(f"   📊 Tokens analyzed: {self.api_call_count['tokens_analyzed']}")
                 logger.info(f"   💾 Tokens cached: {self.api_call_count['tokens_cached']}")
+                logger.info(f"   🔍 Price discovery attempts: {self.api_call_count['price_discovery_attempts']}")
+                logger.info(f"   ✅ Price discovery successes: {self.api_call_count['price_discovery_successes']}")
                 logger.info(f"   📞 Birdeye API calls made: {self.api_call_count['birdeye']}")
                 logger.info(f"   📞 Helius API calls made: {self.api_call_count['helius']}")
                 logger.info(f"   📞 RPC calls made: {self.api_call_count['rpc']}")
@@ -720,7 +649,7 @@ class TelegramScraper:
                 
                 return {
                     'success': True,
-                    'ranked_kols': ranked_kols,
+                    'ranked_kols': ranked_kols,  # This is a dictionary
                     'total_kols_analyzed': total_kols,
                     'deep_analyses_performed': len(kol_deep_performance),
                     'total_calls': total_calls,
@@ -738,7 +667,7 @@ class TelegramScraper:
         return {
             'success': False,
             'error': error,
-            'ranked_kols': self.partial_results.get('kols_analyzed', {}),
+            'ranked_kols': self.partial_results.get('kols_analyzed', {}),  # Dictionary
             'total_kols_analyzed': len(self.partial_results.get('kols_analyzed', {})),
             'deep_analyses_performed': 0,
             'total_calls': 0,
@@ -757,7 +686,7 @@ class TelegramScraper:
             if 'composite_score' not in stats:
                 stats['composite_score'] = self._calculate_composite_score(stats)
         
-        # Sort by composite score
+        # Sort by composite score - KEEP AS DICTIONARY
         ranked_kols = dict(sorted(
             kols.items(),
             key=lambda x: x[1].get('composite_score', 0),
@@ -770,7 +699,7 @@ class TelegramScraper:
         
         return {
             'success': True,
-            'ranked_kols': ranked_kols,
+            'ranked_kols': ranked_kols,  # Dictionary
             'total_kols_analyzed': len(kols),
             'deep_analyses_performed': sum(1 for k in kols.values() if k.get('analysis_type') == 'deep'),
             'total_calls': total_calls,
@@ -945,10 +874,12 @@ class TelegramScraper:
     async def _get_token_performance_2x(self, contract_address: str, call_timestamp: int, 
                                        is_pump: bool = False) -> Optional[Dict[str, Any]]:
         """
-        Get token performance focusing on 2x achievement with RPC fallback.
+        Get token performance with multi-source price discovery.
         Track performance for 2-3 days after call to catch 2x movements.
         """
         try:
+            self.api_call_count['price_discovery_attempts'] += 1
+            
             # Determine tracking window (2-3 days)
             current_time = int(datetime.now().timestamp())
             time_since_call = current_time - call_timestamp
@@ -957,48 +888,23 @@ class TelegramScraper:
             # Use appropriate end time
             end_timestamp = min(current_time, call_timestamp + max_track_time)
             
-            # Try appropriate API first
-            if is_pump and self.helius_api:
-                performance = await self._analyze_pump_token_2x(
-                    contract_address,
-                    call_timestamp,
-                    end_timestamp
-                )
-                
-                # If Helius fails, try RPC fallback
-                if not performance or not performance.get('price_points_analyzed', 0):
-                    logger.info(f"Helius failed for {contract_address}, trying RPC fallback")
-                    performance = await self._analyze_token_with_rpc_fallback(
-                        contract_address,
-                        call_timestamp,
-                        end_timestamp,
-                        is_pump=True
-                    )
-            elif self.birdeye_api:
-                performance = await self._analyze_regular_token_2x(
-                    contract_address,
-                    call_timestamp,
-                    end_timestamp
-                )
-                
-                # If Birdeye fails, try RPC fallback
-                if not performance:
-                    logger.info(f"Birdeye failed for {contract_address}, trying RPC fallback")
-                    performance = await self._analyze_token_with_rpc_fallback(
-                        contract_address,
-                        call_timestamp,
-                        end_timestamp,
-                        is_pump=False
-                    )
-            else:
-                # No API available, use RPC fallback directly
-                logger.warning(f"No API available for token {contract_address}, using RPC fallback")
-                performance = await self._analyze_token_with_rpc_fallback(
-                    contract_address,
-                    call_timestamp,
-                    end_timestamp,
-                    is_pump=is_pump
-                )
+            # Multi-source price discovery
+            price_data = await self._multi_source_price_discovery(
+                contract_address,
+                call_timestamp,
+                end_timestamp,
+                is_pump
+            )
+            
+            if not price_data:
+                logger.warning(f"No price data available for {contract_address}")
+                return None
+            
+            # Analyze price performance
+            performance = self._analyze_price_performance(price_data, call_timestamp)
+            
+            if performance:
+                self.api_call_count['price_discovery_successes'] += 1
             
             return performance
             
@@ -1006,249 +912,304 @@ class TelegramScraper:
             logger.error(f"Error getting token performance: {str(e)}")
             return None
     
-    async def _analyze_token_with_rpc_fallback(self, contract_address: str, 
-                                              start_timestamp: int, end_timestamp: int,
-                                              is_pump: bool = False) -> Optional[Dict[str, Any]]:
-        """Analyze token using RPC fallback when APIs fail."""
-        try:
-            # Try to get initial price from RPC
-            initial_price = await self._get_token_price_from_rpc(contract_address, start_timestamp)
-            
-            if not initial_price:
-                # Use conservative estimates for pump tokens
-                if is_pump:
-                    initial_price = 0.00001  # Typical pump.fun starting price
-                else:
-                    logger.warning(f"Could not determine initial price for {contract_address}")
-                    return None
-            
-            # For pump.fun tokens, estimate performance based on typical patterns
-            if is_pump:
-                # Pump.fun tokens typically either pump quickly or dump
-                # Conservative estimate: 15% reach 2x within 3 days
-                time_window_hours = (end_timestamp - start_timestamp) / 3600
+    async def _multi_source_price_discovery(self, contract_address: str, 
+                                          start_timestamp: int, end_timestamp: int,
+                                          is_pump: bool = False) -> Optional[Dict[str, Any]]:
+        """
+        Multi-source price discovery with intelligent fallbacks.
+        
+        Priority order:
+        1. Birdeye price history (for established tokens)
+        2. Helius enhanced transactions (for DEX swaps)
+        3. Pump.fun bonding curve (for pump tokens)
+        4. First available price as baseline
+        """
+        price_data = {
+            'initial_price': None,
+            'current_price': None,
+            'max_price': None,
+            'min_price': None,
+            'price_points': [],
+            'source': None,
+            'confidence': 'low',
+            'is_baseline': False,
+            'is_early_call': False
+        }
+        
+        # Check cache first
+        cache_key = f"{contract_address}_{start_timestamp}_{end_timestamp}"
+        if cache_key in self.price_cache:
+            cache_data, cache_time = self.price_cache.get(cache_key)
+            if time.time() - cache_time < self.price_cache_ttl:
+                logger.debug(f"Using cached price data for {contract_address}")
+                return cache_data
+        
+        # Source 1: Try Birdeye first (most reliable for established tokens)
+        if self.birdeye_api and not is_pump:
+            try:
+                self.api_call_count['birdeye'] += 1
+                history = self.birdeye_api.get_token_price_history(
+                    contract_address,
+                    start_timestamp,
+                    end_timestamp,
+                    "15m"
+                )
                 
-                if time_window_hours < 6:
-                    # Very short window - assume no 2x
-                    return {
-                        'reached_2x': False,
-                        'ath_roi': 50,  # Assume modest gain
-                        'time_to_2x_minutes': 0,
-                        'max_pullback_before_2x': 0,
-                        'price_points_analyzed': 0,
-                        'is_pump_token': True,
-                        'data_source': 'rpc_estimate'
-                    }
+                if history.get("success") and history.get("data", {}).get("items"):
+                    prices = history["data"]["items"]
+                    price_data = self._process_price_history(prices, start_timestamp)
+                    price_data['source'] = 'birdeye'
+                    price_data['confidence'] = 'high'
+                    
+                    # Cache and return
+                    self.price_cache[cache_key] = (price_data, time.time())
+                    return price_data
                 else:
-                    # Longer window - some chance of 2x
-                    # This is a rough estimate based on pump token behavior
-                    return {
-                        'reached_2x': False,  # Conservative
-                        'ath_roi': 80,  # Assume decent gain
-                        'time_to_2x_minutes': 0,
-                        'max_pullback_before_2x': 0,
-                        'price_points_analyzed': 0,
-                        'is_pump_token': True,
-                        'data_source': 'rpc_estimate'
-                    }
-            else:
-                # For regular tokens, return conservative estimate
-                return {
-                    'reached_2x': False,
-                    'ath_roi': 30,  # Conservative estimate
-                    'time_to_2x_minutes': 0,
-                    'max_pullback_before_2x': 0,
-                    'price_points_analyzed': 0,
-                    'is_pump_token': False,
-                    'data_source': 'rpc_estimate'
-                }
+                    self.api_call_count['birdeye_failures'] += 1
+                    
+            except Exception as e:
+                logger.error(f"Birdeye price discovery failed: {str(e)}")
+                self.api_call_count['birdeye_failures'] += 1
+        
+        # Source 2: Try Helius enhanced transactions
+        if self.helius_api:
+            try:
+                self.api_call_count['helius'] += 1
+                
+                # For pump tokens, use specialized method
+                if is_pump:
+                    pump_price = self.helius_api.get_pump_fun_token_price(
+                        contract_address,
+                        start_timestamp
+                    )
+                    
+                    if pump_price.get("success") and pump_price.get("data"):
+                        price_info = pump_price["data"]
+                        if isinstance(price_info, dict):
+                            price_data['initial_price'] = price_info.get("price", 0)
+                            price_data['source'] = price_info.get("source", "pump_fun")
+                            price_data['confidence'] = price_info.get("confidence", "medium")
+                            price_data['is_baseline'] = price_info.get("is_baseline", False)
+                            
+                            # Get current price
+                            current_price = self.helius_api.get_pump_fun_token_price(contract_address)
+                            if current_price.get("success") and current_price.get("data"):
+                                price_data['current_price'] = current_price["data"].get("price", price_data['initial_price'])
+                            
+                            # Cache and return
+                            self.price_cache[cache_key] = (price_data, time.time())
+                            return price_data
+                else:
+                    # For regular tokens, analyze swaps
+                    swap_data = self.helius_api.analyze_token_swaps("", contract_address, 100)
+                    
+                    if swap_data.get("success") and swap_data.get("data"):
+                        swaps = swap_data["data"]
+                        price_data = self._process_swap_data(swaps, start_timestamp)
+                        price_data['source'] = 'helius_swaps'
+                        price_data['confidence'] = 'medium'
+                        
+                        if price_data['initial_price']:
+                            # Cache and return
+                            self.price_cache[cache_key] = (price_data, time.time())
+                            return price_data
+                
+            except Exception as e:
+                logger.error(f"Helius price discovery failed: {str(e)}")
+                self.api_call_count['helius_failures'] += 1
+        
+        # Source 3: Early call detection - use conservative estimates
+        token_age_at_call = self._estimate_token_age(contract_address, start_timestamp)
+        if token_age_at_call and token_age_at_call < 3600:  # Less than 1 hour old
+            logger.info(f"Early call detected for {contract_address} - token was {token_age_at_call/60:.1f} minutes old")
+            price_data['is_early_call'] = True
+            price_data['initial_price'] = 0.000001 if is_pump else 0.00001
+            price_data['source'] = 'early_call_estimate'
+            price_data['confidence'] = 'low'
+            price_data['is_baseline'] = True
             
-        except Exception as e:
-            logger.error(f"Error in RPC fallback analysis: {str(e)}")
+            # Try to get current price from any source
+            if self.birdeye_api:
+                try:
+                    current = self.birdeye_api.get_token_price(contract_address)
+                    if current.get("success") and current.get("data"):
+                        price_data['current_price'] = current["data"].get("value", price_data['initial_price'])
+                except:
+                    pass
+            
+            # Cache and return
+            self.price_cache[cache_key] = (price_data, time.time())
+            return price_data
+        
+        # Source 4: Fallback - use baseline price
+        logger.warning(f"Using baseline price for {contract_address}")
+        price_data['initial_price'] = 0.000001 if is_pump else 0.00001
+        price_data['current_price'] = price_data['initial_price']
+        price_data['source'] = 'baseline_fallback'
+        price_data['confidence'] = 'low'
+        price_data['is_baseline'] = True
+        
+        # Cache and return
+        self.price_cache[cache_key] = (price_data, time.time())
+        return price_data
+    
+    def _process_price_history(self, prices: List[Dict], start_timestamp: int) -> Dict[str, Any]:
+        """Process price history data into standardized format."""
+        if not prices:
+            return None
+        
+        # Sort by timestamp
+        sorted_prices = sorted(prices, key=lambda x: x.get("unixTime", 0))
+        
+        # Extract price values
+        price_values = [p.get("value", 0) for p in sorted_prices if p.get("value", 0) > 0]
+        
+        if not price_values:
+            return None
+        
+        # Find initial price (closest to start_timestamp)
+        initial_price = None
+        for price_point in sorted_prices:
+            if price_point.get("unixTime", 0) >= start_timestamp:
+                initial_price = price_point.get("value", 0)
+                break
+        
+        if not initial_price:
+            initial_price = sorted_prices[0].get("value", 0)
+        
+        return {
+            'initial_price': initial_price,
+            'current_price': price_values[-1],
+            'max_price': max(price_values),
+            'min_price': min(price_values),
+            'price_points': sorted_prices,
+            'price_count': len(price_values)
+        }
+    
+    def _process_swap_data(self, swaps: List[Dict], start_timestamp: int) -> Dict[str, Any]:
+        """Process swap data into price information."""
+        if not swaps:
+            return None
+        
+        # Sort by timestamp
+        sorted_swaps = sorted(swaps, key=lambda x: x.get("timestamp", 0))
+        
+        # Find initial price
+        initial_price = None
+        for swap in sorted_swaps:
+            if swap.get("timestamp", 0) >= start_timestamp and swap.get("price", 0) > 0:
+                initial_price = swap.get("price", 0)
+                break
+        
+        if not initial_price and sorted_swaps:
+            initial_price = sorted_swaps[0].get("price", 0)
+        
+        # Extract prices
+        prices = [s.get("price", 0) for s in sorted_swaps if s.get("price", 0) > 0]
+        
+        if not prices:
+            return None
+        
+        return {
+            'initial_price': initial_price,
+            'current_price': prices[-1],
+            'max_price': max(prices),
+            'min_price': min(prices),
+            'price_points': sorted_swaps,
+            'swap_count': len(prices)
+        }
+    
+    def _estimate_token_age(self, contract_address: str, timestamp: int) -> Optional[float]:
+        """Estimate how old a token was at the time of call."""
+        try:
+            # This would require getting token creation time
+            # For now, return None (would need implementation)
+            return None
+        except:
             return None
     
-    async def _analyze_regular_token_2x(self, contract_address: str, 
-                                       start_timestamp: int, end_timestamp: int) -> Optional[Dict[str, Any]]:
-        """Analyze regular token for 2x achievement using Birdeye."""
+    def _analyze_price_performance(self, price_data: Dict[str, Any], 
+                                  call_timestamp: int) -> Optional[Dict[str, Any]]:
+        """Analyze price performance to determine 2x achievement."""
+        if not price_data or not price_data.get('initial_price'):
+            return None
+        
+        initial_price = price_data['initial_price']
+        
+        # HOTFIX: Ensure all price values are not None before calculations
+        if initial_price is None or initial_price <= 0:
+            return None
+            
+        current_price = price_data.get('current_price', initial_price)
+        max_price = price_data.get('max_price', current_price)
+        min_price = price_data.get('min_price', initial_price)
+        
+        # Ensure no None values
+        if current_price is None:
+            current_price = initial_price
+        if max_price is None:
+            max_price = current_price
+        if min_price is None:
+            min_price = initial_price
+        
+        # Calculate metrics with None checks
         try:
-            self.api_call_count['birdeye'] += 1
-            
-            # Get price history
-            history = self.birdeye_api.get_token_price_history(
-                contract_address,
-                start_timestamp,
-                end_timestamp,
-                "15m"  # 15 minute intervals
-            )
-            
-            if not history.get("success") or not history.get("data", {}).get("items"):
-                logger.warning(f"No price history available for {contract_address}")
-                self.api_call_count['birdeye_failures'] += 1
-                return None
-            
-            prices = history["data"]["items"]
-            if not prices:
-                return None
-            
-            # Extract price data
-            initial_price = prices[0].get("value", 0)
-            if initial_price <= 0:
-                return None
-            
-            # Track metrics
-            ath_price = initial_price
-            ath_roi = 0
-            reached_2x = False
-            time_to_2x_minutes = 0
-            max_pullback_before_2x = 0
-            current_peak = initial_price
-            
-            for price_point in prices:
-                price = price_point.get("value", 0)
-                timestamp = price_point.get("unixTime", 0)
+            current_roi = ((current_price / initial_price) - 1) * 100 if initial_price > 0 else 0
+            ath_roi = ((max_price / initial_price) - 1) * 100 if initial_price > 0 else 0
+            max_drawdown = ((min_price / initial_price) - 1) * 100 if initial_price > 0 else -100
+        except (TypeError, ZeroDivisionError) as e:
+            logger.error(f"Error calculating price metrics: {str(e)}")
+            return None
+        
+        # Check if reached 2x
+        reached_2x = ath_roi >= 100
+        time_to_2x_minutes = 0
+        max_pullback_before_2x = 0
+        
+        # If we have detailed price points, calculate time to 2x
+        if reached_2x and price_data.get('price_points'):
+            for point in price_data['price_points']:
+                price = point.get('price', point.get('value', 0))
+                timestamp = point.get('timestamp', point.get('unixTime', 0))
                 
-                if price <= 0:
+                if price and timestamp and price > 0 and ((price / initial_price) >= 2):
+                    time_to_2x_minutes = (timestamp - call_timestamp) / 60
+                    break
+        
+        # Calculate max pullback before 2x (if reached)
+        if reached_2x and price_data.get('price_points'):
+            current_peak = initial_price
+            for point in price_data['price_points']:
+                price = point.get('price', point.get('value', 0))
+                if not price or price <= 0:
                     continue
                 
-                # Calculate ROI
-                roi = ((price / initial_price) - 1) * 100
-                
-                # Track ATH
-                if price > ath_price:
-                    ath_price = price
-                    ath_roi = roi
-                
-                # Track pullback from recent peak
-                if price > current_peak:
-                    current_peak = price
-                else:
-                    pullback = ((current_peak - price) / current_peak) * 100
-                    if not reached_2x and pullback > max_pullback_before_2x:
-                        max_pullback_before_2x = pullback
-                
-                # Check if reached 2x
-                if not reached_2x and roi >= 100:
-                    reached_2x = True
-                    time_to_2x_minutes = (timestamp - start_timestamp) / 60
-            
-            return {
-                'reached_2x': reached_2x,
-                'ath_roi': ath_roi,
-                'time_to_2x_minutes': time_to_2x_minutes if reached_2x else 0,
-                'max_pullback_before_2x': max_pullback_before_2x if reached_2x else 0,
-                'price_points_analyzed': len(prices),
-                'data_source': 'birdeye'
-            }
-            
-        except Exception as e:
-            logger.error(f"Error analyzing regular token: {str(e)}")
-            self.api_call_count['birdeye_failures'] += 1
-            return None
-    
-    async def _analyze_pump_token_2x(self, contract_address: str, 
-                                    start_timestamp: int, end_timestamp: int) -> Optional[Dict[str, Any]]:
-        """Analyze pump.fun token for 2x achievement using Helius."""
-        try:
-            self.api_call_count['helius'] += 1
-            
-            logger.info(f"Analyzing pump.fun token swaps for {contract_address}")
-            
-            # Use Helius to analyze token swaps
-            swap_analysis = self.helius_api.analyze_token_swaps(
-                wallet_address="",  # Empty to get all swaps
-                token_address=contract_address,
-                limit=100
-            )
-            
-            if not swap_analysis.get("success") or not swap_analysis.get("data"):
-                logger.warning(f"No swap data available for pump token {contract_address}")
-                self.api_call_count['helius_failures'] += 1
-                return None
-            
-            swaps = swap_analysis["data"]
-            if not swaps:
-                return None
-            
-            # Filter swaps within our time window
-            relevant_swaps = []
-            for swap in swaps:
-                swap_time = swap.get("timestamp", 0)
-                if start_timestamp <= swap_time <= end_timestamp:
-                    relevant_swaps.append(swap)
-            
-            if not relevant_swaps:
-                return None
-            
-            # Calculate prices from swaps
-            price_history = []
-            for swap in relevant_swaps:
-                sol_amount = swap.get("sol_amount", 0)
-                token_amount = swap.get("token_amount", 0)
-                
-                if sol_amount > 0 and token_amount > 0:
-                    price = sol_amount / token_amount
-                    price_history.append({
-                        'timestamp': swap.get("timestamp", 0),
-                        'price': price,
-                        'type': swap.get("type", "unknown")
-                    })
-            
-            if not price_history:
-                # No valid price data from swaps
-                self.api_call_count['helius_failures'] += 1
-                return None
-            
-            # Sort by timestamp
-            price_history.sort(key=lambda x: x['timestamp'])
-            
-            # Analyze price movement
-            initial_price = price_history[0]['price']
-            ath_price = initial_price
-            ath_roi = 0
-            reached_2x = False
-            time_to_2x_minutes = 0
-            max_pullback_before_2x = 0
-            current_peak = initial_price
-            
-            for point in price_history:
-                price = point['price']
-                timestamp = point['timestamp']
-                
-                # Calculate ROI
-                roi = ((price / initial_price) - 1) * 100
-                
-                # Track ATH
-                if price > ath_price:
-                    ath_price = price
-                    ath_roi = roi
-                
-                # Track pullback
-                if price > current_peak:
-                    current_peak = price
-                else:
-                    pullback = ((current_peak - price) / current_peak) * 100
-                    if not reached_2x and pullback > max_pullback_before_2x:
-                        max_pullback_before_2x = pullback
-                
-                # Check if reached 2x
-                if not reached_2x and roi >= 100:
-                    reached_2x = True
-                    time_to_2x_minutes = (timestamp - start_timestamp) / 60
-            
-            return {
-                'reached_2x': reached_2x,
-                'ath_roi': ath_roi,
-                'time_to_2x_minutes': time_to_2x_minutes if reached_2x else 0,
-                'max_pullback_before_2x': max_pullback_before_2x if reached_2x else 0,
-                'price_points_analyzed': len(price_history),
-                'is_pump_token': True,
-                'data_source': 'helius'
-            }
-            
-        except Exception as e:
-            logger.error(f"Error analyzing pump token: {str(e)}")
-            self.api_call_count['helius_failures'] += 1
-            return None
+                try:
+                    roi = ((price / initial_price) - 1) * 100
+                    
+                    if roi >= 100:  # Reached 2x
+                        break
+                    
+                    if price > current_peak:
+                        current_peak = price
+                    else:
+                        pullback = ((current_peak - price) / current_peak) * 100 if current_peak > 0 else 0
+                        max_pullback_before_2x = max(max_pullback_before_2x, pullback)
+                except (TypeError, ZeroDivisionError):
+                    continue
+        
+        return {
+            'reached_2x': reached_2x,
+            'ath_roi': ath_roi,
+            'current_roi': current_roi,
+            'time_to_2x_minutes': time_to_2x_minutes if reached_2x else 0,
+            'max_pullback_before_2x': max_pullback_before_2x if reached_2x else 0,
+            'max_drawdown_percent': abs(max_drawdown),
+            'price_source': price_data.get('source', 'unknown'),
+            'confidence': price_data.get('confidence', 'low'),
+            'is_baseline': price_data.get('is_baseline', False),
+            'is_early_call': price_data.get('is_early_call', False)
+        }
     
     def _calculate_composite_score(self, kol_stats: Dict[str, Any]) -> float:
         """
@@ -1385,7 +1346,8 @@ class TelegramScraper:
                 f.write(f"Helius Failures: {api_stats.get('helius_failures', 0)}\n")
                 f.write(f"RPC Failures: {api_stats.get('rpc_failures', 0)}\n")
                 f.write(f"Tokens Analyzed: {api_stats.get('tokens_analyzed', 0)}\n")
-                f.write(f"Tokens Cached: {api_stats.get('tokens_cached', 0)}\n\n")
+                f.write(f"Tokens Cached: {api_stats.get('tokens_cached', 0)}\n")
+                f.write(f"Price Discovery Success Rate: {api_stats.get('price_discovery_successes', 0)}/{api_stats.get('price_discovery_attempts', 0)}\n\n")
                 
                 # Top performers
                 f.write("TOP 10 KOLS (2X HOT STREAKS):\n")
@@ -1423,9 +1385,10 @@ class TelegramScraper:
                 self.spydefi_cache_file.unlink()
                 logger.info("✅ Cleared SpyDefi cache")
             
-            # Clear in-memory token cache
+            # Clear in-memory caches
             self.token_analysis_cache.clear()
-            logger.info("✅ Cleared token analysis cache")
+            self.price_cache.clear()
+            logger.info("✅ Cleared token and price analysis caches")
             
         except Exception as e:
             logger.error(f"Error clearing cache: {str(e)}")

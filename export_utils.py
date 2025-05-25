@@ -1,12 +1,12 @@
 """
-Export Utilities Module - Phoenix Project (2X HOT STREAK VERSION)
+Export Utilities Module - Phoenix Project (FIXED EXCEL EXPORT VERSION)
 
 Handles Excel and CSV exports for memecoin analysis results.
-UPDATES:
-- Updated telegram export for 2x-focused analysis
-- Removed 5x columns from telegram exports
-- Added avg_time_to_2x_minutes to telegram exports
-- Maintained all wallet analysis functionality
+FIXES:
+- Fixed 'list' object has no attribute 'items' error
+- Ensures telegram_data['ranked_kols'] is always treated as dictionary
+- Maintains compatibility with wallet_module
+- All existing functionality preserved
 """
 
 import os
@@ -106,84 +106,105 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
             if telegram_data and "ranked_kols" in telegram_data:
                 # Prepare telegram data for export
                 telegram_rows = []
-                for kol, performance in telegram_data["ranked_kols"].items():
-                    row = {
-                        'KOL': f"@{kol}",
-                        'Channel ID': performance.get('channel_id', ''),
-                        'Calls Analyzed': performance.get('tokens_mentioned', 0),
-                        '2x Success Rate %': performance.get('success_rate_2x', 0),
-                        'Avg ATH ROI %': performance.get('avg_ath_roi', 0),
-                        'Composite Score': performance.get('composite_score', 0),
-                        'Avg Max Pullback %': performance.get('avg_max_pullback_percent', 0),
-                        'Avg Time to 2x (min)': performance.get('avg_time_to_2x_minutes', 0),
-                        'Analysis Type': performance.get('analysis_type', 'initial')
-                    }
-                    telegram_rows.append(row)
+                
+                # Handle both dictionary and list formats for ranked_kols
+                ranked_kols = telegram_data["ranked_kols"]
+                
+                # FIX: Check if ranked_kols is a list (the error case)
+                if isinstance(ranked_kols, list):
+                    logger.warning("ranked_kols is a list, converting to dictionary format")
+                    # Convert list to dictionary if needed
+                    # Assuming each item in list has 'kol' key
+                    temp_dict = {}
+                    for item in ranked_kols:
+                        if isinstance(item, dict) and 'kol' in item:
+                            kol_name = item['kol']
+                            temp_dict[kol_name] = item
+                    ranked_kols = temp_dict
+                
+                # Now process as dictionary
+                if isinstance(ranked_kols, dict):
+                    for kol, performance in ranked_kols.items():
+                        # Handle case where performance might be nested
+                        if isinstance(performance, dict):
+                            row = {
+                                'KOL': f"@{kol}",
+                                'Channel ID': performance.get('channel_id', ''),
+                                'Calls Analyzed': performance.get('tokens_mentioned', 0),
+                                '2x Success Rate %': performance.get('success_rate_2x', 0),
+                                'Avg ATH ROI %': performance.get('avg_ath_roi', 0),
+                                'Composite Score': performance.get('composite_score', 0),
+                                'Avg Max Pullback %': performance.get('avg_max_pullback_percent', 0),
+                                'Avg Time to 2x (min)': performance.get('avg_time_to_2x_minutes', 0),
+                                'Analysis Type': performance.get('analysis_type', 'initial')
+                            }
+                            telegram_rows.append(row)
                 
                 # Sort by composite score
                 telegram_rows.sort(key=lambda x: x['Composite Score'], reverse=True)
                 
-                telegram_df = pd.DataFrame(telegram_rows)
-                telegram_df.to_excel(writer, sheet_name='Telegram KOLs', index=False)
-                
-                # Format Telegram sheet
-                telegram_sheet = writer.sheets['Telegram KOLs']
-                
-                # Apply header format
-                for col_num, value in enumerate(telegram_df.columns.values):
-                    telegram_sheet.write(0, col_num, value, header_format)
-                
-                # Apply conditional formatting for composite scores
-                telegram_sheet.conditional_format('F2:F{}'.format(len(telegram_df) + 1), {
-                    'type': 'cell',
-                    'criteria': '>=',
-                    'value': 81,
-                    'format': score_excellent_format
-                })
-                
-                telegram_sheet.conditional_format('F2:F{}'.format(len(telegram_df) + 1), {
-                    'type': 'cell',
-                    'criteria': 'between',
-                    'minimum': 61,
-                    'maximum': 80.99,
-                    'format': score_good_format
-                })
-                
-                telegram_sheet.conditional_format('F2:F{}'.format(len(telegram_df) + 1), {
-                    'type': 'cell',
-                    'criteria': 'between',
-                    'minimum': 41,
-                    'maximum': 60.99,
-                    'format': score_average_format
-                })
-                
-                telegram_sheet.conditional_format('F2:F{}'.format(len(telegram_df) + 1), {
-                    'type': 'cell',
-                    'criteria': 'between',
-                    'minimum': 21,
-                    'maximum': 40.99,
-                    'format': score_poor_format
-                })
-                
-                telegram_sheet.conditional_format('F2:F{}'.format(len(telegram_df) + 1), {
-                    'type': 'cell',
-                    'criteria': '<=',
-                    'value': 20.99,
-                    'format': score_very_poor_format
-                })
-                
-                # Set column widths
-                telegram_sheet.set_column('A:A', 20)  # KOL
-                telegram_sheet.set_column('B:B', 15)  # Channel ID
-                telegram_sheet.set_column('C:C', 15)  # Calls Analyzed
-                telegram_sheet.set_column('D:D', 18)  # 2x Success Rate
-                telegram_sheet.set_column('E:E', 15)  # Avg ATH ROI
-                telegram_sheet.set_column('F:F', 15)  # Composite Score
-                telegram_sheet.set_column('G:G', 18)  # Avg Max Pullback
-                telegram_sheet.set_column('H:H', 20)  # Avg Time to 2x
-                telegram_sheet.set_column('I:I', 15)  # Analysis Type
+                if telegram_rows:
+                    telegram_df = pd.DataFrame(telegram_rows)
+                    telegram_df.to_excel(writer, sheet_name='Telegram KOLs', index=False)
+                    
+                    # Format Telegram sheet
+                    telegram_sheet = writer.sheets['Telegram KOLs']
+                    
+                    # Apply header format
+                    for col_num, value in enumerate(telegram_df.columns.values):
+                        telegram_sheet.write(0, col_num, value, header_format)
+                    
+                    # Apply conditional formatting for composite scores
+                    telegram_sheet.conditional_format('F2:F{}'.format(len(telegram_df) + 1), {
+                        'type': 'cell',
+                        'criteria': '>=',
+                        'value': 81,
+                        'format': score_excellent_format
+                    })
+                    
+                    telegram_sheet.conditional_format('F2:F{}'.format(len(telegram_df) + 1), {
+                        'type': 'cell',
+                        'criteria': 'between',
+                        'minimum': 61,
+                        'maximum': 80.99,
+                        'format': score_good_format
+                    })
+                    
+                    telegram_sheet.conditional_format('F2:F{}'.format(len(telegram_df) + 1), {
+                        'type': 'cell',
+                        'criteria': 'between',
+                        'minimum': 41,
+                        'maximum': 60.99,
+                        'format': score_average_format
+                    })
+                    
+                    telegram_sheet.conditional_format('F2:F{}'.format(len(telegram_df) + 1), {
+                        'type': 'cell',
+                        'criteria': 'between',
+                        'minimum': 21,
+                        'maximum': 40.99,
+                        'format': score_poor_format
+                    })
+                    
+                    telegram_sheet.conditional_format('F2:F{}'.format(len(telegram_df) + 1), {
+                        'type': 'cell',
+                        'criteria': '<=',
+                        'value': 20.99,
+                        'format': score_very_poor_format
+                    })
+                    
+                    # Set column widths
+                    telegram_sheet.set_column('A:A', 20)  # KOL
+                    telegram_sheet.set_column('B:B', 15)  # Channel ID
+                    telegram_sheet.set_column('C:C', 15)  # Calls Analyzed
+                    telegram_sheet.set_column('D:D', 18)  # 2x Success Rate
+                    telegram_sheet.set_column('E:E', 15)  # Avg ATH ROI
+                    telegram_sheet.set_column('F:F', 15)  # Composite Score
+                    telegram_sheet.set_column('G:G', 18)  # Avg Max Pullback
+                    telegram_sheet.set_column('H:H', 20)  # Avg Time to 2x
+                    telegram_sheet.set_column('I:I', 15)  # Analysis Type
             
-            # Export Wallet data if available (unchanged)
+            # Export Wallet data if available (unchanged - preserved for wallet_module compatibility)
             if wallet_data:
                 # Create summary sheet for 7-day active traders
                 if "total_wallets" in wallet_data:
@@ -597,15 +618,27 @@ def generate_memecoin_analysis_report(telegram_data: Dict[str, Any],
                 
                 f.write("Top 5 KOLs (2x Hot Streaks):\n")
                 ranked_kols = telegram_data.get('ranked_kols', {})
-                for i, (kol, data) in enumerate(list(ranked_kols.items())[:5], 1):
-                    f.write(f"{i}. @{kol}\n")
-                    f.write(f"   Composite Score: {data.get('composite_score', 0):.1f}\n")
-                    f.write(f"   2x Success Rate: {data.get('success_rate_2x', 0):.1f}%\n")
-                    f.write(f"   Avg Time to 2x: {data.get('avg_time_to_2x_minutes', 0):.1f} minutes\n")
-                    f.write(f"   Avg ATH ROI: {data.get('avg_ath_roi', 0):.1f}%\n")
-                    f.write(f"   Avg Max Pullback: {data.get('avg_max_pullback_percent', 0):.1f}%\n")
-                    f.write(f"   Analysis Type: {data.get('analysis_type', 'initial')}\n")
-                    f.write("\n")
+                
+                # Handle both dictionary and list formats
+                if isinstance(ranked_kols, list):
+                    # Convert list to dictionary format
+                    temp_dict = {}
+                    for item in ranked_kols:
+                        if isinstance(item, dict) and 'kol' in item:
+                            kol_name = item['kol']
+                            temp_dict[kol_name] = item
+                    ranked_kols = temp_dict
+                
+                if isinstance(ranked_kols, dict):
+                    for i, (kol, data) in enumerate(list(ranked_kols.items())[:5], 1):
+                        f.write(f"{i}. @{kol}\n")
+                        f.write(f"   Composite Score: {data.get('composite_score', 0):.1f}\n")
+                        f.write(f"   2x Success Rate: {data.get('success_rate_2x', 0):.1f}%\n")
+                        f.write(f"   Avg Time to 2x: {data.get('avg_time_to_2x_minutes', 0):.1f} minutes\n")
+                        f.write(f"   Avg ATH ROI: {data.get('avg_ath_roi', 0):.1f}%\n")
+                        f.write(f"   Avg Max Pullback: {data.get('avg_max_pullback_percent', 0):.1f}%\n")
+                        f.write(f"   Analysis Type: {data.get('analysis_type', 'initial')}\n")
+                        f.write("\n")
             
             # Wallet Analysis Section (unchanged)
             if wallet_data and wallet_data.get('success'):

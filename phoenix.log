@@ -8908,3 +8908,526 @@ TypeError: '>=' not supported between instances of 'NoneType' and 'int'
 2025-05-25 10:18:58,794 - phoenix.telegram - INFO - Helius failed for DMDqFzhVMbVQNLVnhV8pgdJcArkcVyzq4MrJ2d8Npump, trying RPC fallback
 2025-05-25 10:18:58,810 - phoenix.telegram - ERROR - RPC HTTP error: 429
 2025-05-25 10:18:58,810 - phoenix.telegram - WARNING - Could not get token supply for DMDqFzhVMbVQNLVnhV8pgdJcArkcVyzq4MrJ2d8Npump
+2025-05-25 10:19:18,339 - phoenix.telegram - INFO - Finished retrieving 27 messages from 1541757109
+2025-05-25 10:19:18,339 - phoenix.telegram - INFO - 📨 Found 27 messages in @bidaopd's channel
+2025-05-25 10:19:18,341 - phoenix.telegram - INFO - 🎯 Found 1 unique token calls for @bidaopd
+2025-05-25 10:19:18,341 - phoenix.telegram - INFO - 📊 Analyzing call 1/1 for @bidaopd
+2025-05-25 10:19:18,342 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 8a5NY9MAdY3NjKsgPUYfqoZcmGKdZkotrjWgZM1dpump
+2025-05-25 10:19:18,342 - phoenix.helius - INFO - Analyzing swaps for token 8a5NY9MAdY3NjKsgPUYfqoZcmGKdZkotrjWgZM1dpump
+2025-05-25 10:19:18,343 - phoenix.helius - INFO - Using pump.fun specific analysis for 8a5NY9MAdY3NjKsgPUYfqoZcmGKdZkotrjWgZM1dpump
+2025-05-25 10:19:18,343 - phoenix.telegram - WARNING - No swap data available for pump token 8a5NY9MAdY3NjKsgPUYfqoZcmGKdZkotrjWgZM1dpump
+2025-05-25 10:19:18,344 - phoenix.telegram - INFO - Helius failed for 8a5NY9MAdY3NjKsgPUYfqoZcmGKdZkotrjWgZM1dpump, trying RPC fallback
+2025-05-25 10:19:18,453 - phoenix.telegram - INFO - Finished retrieving 27 messages from 2329593730
+2025-05-25 10:19:18,453 - phoenix.telegram - INFO - 📨 Found 27 messages in @InsiderSolanaPrintors's channel
+2025-05-25 10:19:18,453 - phoenix.telegram - INFO - 🎯 Found 5 unique token calls for @InsiderSolanaPrintors
+2025-05-25 10:19:18,453 - phoenix.telegram - INFO - 📊 Analyzing call 1/5 for @InsiderSolanaPrintors
+2025-05-25 10:19:18,453 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for FB2UdY1WyaHdmfBH8cGWSTvAHBkKmuky4gunG4Hdpump
+2025-05-25 10:19:18,453 - phoenix.helius - INFO - Analyzing swaps for token FB2UdY1WyaHdmfBH8cGWSTvAHBkKmuky4gunG4Hdpump
+2025-05-25 10:19:18,453 - phoenix.helius - INFO - Using pump.fun specific analysis for FB2UdY1WyaHdmfBH8cGWSTvAHBkKmuky4gunG4Hdpump
+2025-05-25 10:19:18,453 - phoenix.telegram - WARNING - No swap data available for pump token FB2UdY1WyaHdmfBH8cGWSTvAHBkKmuky4gunG4Hdpump
+2025-05-25 10:19:18,453 - phoenix.telegram - INFO - Helius failed for FB2UdY1WyaHdmfBH8cGWSTvAHBkKmuky4gunG4Hdpump, trying RPC fallback
+2025-05-25 10:19:18,469 - phoenix.telegram - INFO - Scraping up to 500 messages from MicHioSaToShi KoLs📍 (ID: 1818702441)
+2025-05-25 10:19:18,579 - phoenix.telegram - INFO - Finished retrieving 19 messages from 1529480805
+2025-05-25 10:19:18,579 - phoenix.telegram - INFO - 📨 Found 19 messages in @PEYOSDEGENHUB's channel
+2025-05-25 10:19:18,579 - phoenix.telegram - INFO - 🎯 Found 0 unique token calls for @PEYOSDEGENHUB
+2025-05-25 10:19:18,588 - phoenix.telegram - INFO - Scraping up to 500 messages from AZ CALLS (ID: 1835256988)
+2025-05-25 10:19:18,710 - phoenix.telegram - INFO - Scraping up to 500 messages from FRENS GEMS 💎 (ID: 1975392115)
+2025-05-25 10:19:19,001 - phoenix.telegram - INFO - Finished retrieving 53 messages from 1818702441
+2025-05-25 10:19:19,001 - phoenix.telegram - INFO - 📨 Found 53 messages in @michiosuzukiofsatoshicalls's channel
+2025-05-25 10:19:19,001 - phoenix.telegram - INFO - 🎯 Found 5 unique token calls for @michiosuzukiofsatoshicalls
+2025-05-25 10:19:19,001 - phoenix.telegram - INFO - 📊 Analyzing call 1/5 for @michiosuzukiofsatoshicalls
+2025-05-25 10:19:19,168 - phoenix.telegram - INFO - 📊 Analyzing call 2/5 for @michiosuzukiofsatoshicalls
+2025-05-25 10:19:19,168 - phoenix.telegram - INFO - Finished retrieving 10 messages from 1975392115
+2025-05-25 10:19:19,168 - phoenix.telegram - INFO - 📨 Found 10 messages in @FrenzGems's channel
+2025-05-25 10:19:19,168 - phoenix.telegram - INFO - 🎯 Found 5 unique token calls for @FrenzGems
+2025-05-25 10:19:19,168 - phoenix.telegram - INFO - 📊 Analyzing call 1/5 for @FrenzGems
+2025-05-25 10:19:19,168 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for d2v5QPZzreHR8V7i4fiyA2QfXfbhEdjFmUoexJkpump
+2025-05-25 10:19:19,168 - phoenix.helius - INFO - Analyzing swaps for token d2v5QPZzreHR8V7i4fiyA2QfXfbhEdjFmUoexJkpump
+2025-05-25 10:19:19,168 - phoenix.helius - INFO - Using pump.fun specific analysis for d2v5QPZzreHR8V7i4fiyA2QfXfbhEdjFmUoexJkpump
+2025-05-25 10:19:19,168 - phoenix.telegram - WARNING - No swap data available for pump token d2v5QPZzreHR8V7i4fiyA2QfXfbhEdjFmUoexJkpump
+2025-05-25 10:19:19,168 - phoenix.telegram - INFO - Helius failed for d2v5QPZzreHR8V7i4fiyA2QfXfbhEdjFmUoexJkpump, trying RPC fallback
+2025-05-25 10:19:19,168 - phoenix.telegram - INFO - Finished retrieving 11 messages from 1835256988
+2025-05-25 10:19:19,168 - phoenix.telegram - INFO - 📨 Found 11 messages in @AZcalls's channel
+2025-05-25 10:19:19,176 - phoenix.telegram - INFO - 🎯 Found 0 unique token calls for @AZcalls
+2025-05-25 10:19:19,231 - phoenix.telegram - INFO - 📊 Analyzing call 2/5 for @InsiderSolanaPrintors
+2025-05-25 10:19:19,668 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for EwBUeMFm8Zcn79iJkDns3NdcL8t8B6Xikh9dKgZtpump
+2025-05-25 10:19:19,668 - phoenix.helius - INFO - Analyzing swaps for token EwBUeMFm8Zcn79iJkDns3NdcL8t8B6Xikh9dKgZtpump
+2025-05-25 10:19:19,669 - phoenix.helius - INFO - Using pump.fun specific analysis for EwBUeMFm8Zcn79iJkDns3NdcL8t8B6Xikh9dKgZtpump
+2025-05-25 10:19:19,669 - phoenix.telegram - WARNING - No swap data available for pump token EwBUeMFm8Zcn79iJkDns3NdcL8t8B6Xikh9dKgZtpump
+2025-05-25 10:19:19,669 - phoenix.telegram - INFO - Helius failed for EwBUeMFm8Zcn79iJkDns3NdcL8t8B6Xikh9dKgZtpump, trying RPC fallback
+2025-05-25 10:19:19,748 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 5zSpBtMvqzYKrQnop9S5jczDF9kH2XUcvxdpM54Kpump
+2025-05-25 10:19:19,748 - phoenix.helius - INFO - Analyzing swaps for token 5zSpBtMvqzYKrQnop9S5jczDF9kH2XUcvxdpM54Kpump
+2025-05-25 10:19:19,748 - phoenix.helius - INFO - Using pump.fun specific analysis for 5zSpBtMvqzYKrQnop9S5jczDF9kH2XUcvxdpM54Kpump
+2025-05-25 10:19:19,748 - phoenix.telegram - WARNING - No swap data available for pump token 5zSpBtMvqzYKrQnop9S5jczDF9kH2XUcvxdpM54Kpump
+2025-05-25 10:19:19,748 - phoenix.telegram - INFO - Helius failed for 5zSpBtMvqzYKrQnop9S5jczDF9kH2XUcvxdpM54Kpump, trying RPC fallback
+2025-05-25 10:19:19,940 - phoenix.telegram - INFO - 📊 Analyzing call 2/5 for @FrenzGems
+2025-05-25 10:19:20,426 - phoenix.telegram - INFO - 📊 Analyzing call 3/5 for @michiosuzukiofsatoshicalls
+2025-05-25 10:19:20,426 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for EYuPbgkFJGSxtNQ982v9LgjQBQSQh2HhhDHHs1Fdpump
+2025-05-25 10:19:20,426 - phoenix.helius - INFO - Analyzing swaps for token EYuPbgkFJGSxtNQ982v9LgjQBQSQh2HhhDHHs1Fdpump
+2025-05-25 10:19:20,426 - phoenix.helius - INFO - Using pump.fun specific analysis for EYuPbgkFJGSxtNQ982v9LgjQBQSQh2HhhDHHs1Fdpump
+2025-05-25 10:19:20,426 - phoenix.telegram - WARNING - No swap data available for pump token EYuPbgkFJGSxtNQ982v9LgjQBQSQh2HhhDHHs1Fdpump
+2025-05-25 10:19:20,426 - phoenix.telegram - INFO - Helius failed for EYuPbgkFJGSxtNQ982v9LgjQBQSQh2HhhDHHs1Fdpump, trying RPC fallback
+2025-05-25 10:19:20,521 - phoenix.telegram - INFO - 📊 Analyzing call 3/5 for @InsiderSolanaPrintors
+2025-05-25 10:19:21,077 - phoenix.telegram - INFO - 📊 Analyzing call 4/5 for @michiosuzukiofsatoshicalls
+2025-05-25 10:19:21,093 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 8BhDv7YjmKk948QE7w9GGJ6q21ufTzSLjEZ6Vtropump
+2025-05-25 10:19:21,093 - phoenix.helius - INFO - Analyzing swaps for token 8BhDv7YjmKk948QE7w9GGJ6q21ufTzSLjEZ6Vtropump
+2025-05-25 10:19:21,093 - phoenix.helius - INFO - Using pump.fun specific analysis for 8BhDv7YjmKk948QE7w9GGJ6q21ufTzSLjEZ6Vtropump
+2025-05-25 10:19:21,093 - phoenix.telegram - WARNING - No swap data available for pump token 8BhDv7YjmKk948QE7w9GGJ6q21ufTzSLjEZ6Vtropump
+2025-05-25 10:19:21,093 - phoenix.telegram - INFO - Helius failed for 8BhDv7YjmKk948QE7w9GGJ6q21ufTzSLjEZ6Vtropump, trying RPC fallback
+2025-05-25 10:19:21,188 - phoenix.telegram - INFO - 📊 Analyzing call 3/5 for @FrenzGems
+2025-05-25 10:19:21,595 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for CJM2CiSs5JgV7zT8hA8sR5h6ypEdQHhewFfeXdNvpump
+2025-05-25 10:19:21,595 - phoenix.helius - INFO - Analyzing swaps for token CJM2CiSs5JgV7zT8hA8sR5h6ypEdQHhewFfeXdNvpump
+2025-05-25 10:19:21,595 - phoenix.helius - INFO - Using pump.fun specific analysis for CJM2CiSs5JgV7zT8hA8sR5h6ypEdQHhewFfeXdNvpump
+2025-05-25 10:19:21,595 - phoenix.telegram - WARNING - No swap data available for pump token CJM2CiSs5JgV7zT8hA8sR5h6ypEdQHhewFfeXdNvpump
+2025-05-25 10:19:21,595 - phoenix.telegram - INFO - Helius failed for CJM2CiSs5JgV7zT8hA8sR5h6ypEdQHhewFfeXdNvpump, trying RPC fallback
+2025-05-25 10:19:21,699 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for E6yj4XZt2jBG63wQB1dMdVnvSRSqNZR2AdKnUBNhpump
+2025-05-25 10:19:21,699 - phoenix.helius - INFO - Analyzing swaps for token E6yj4XZt2jBG63wQB1dMdVnvSRSqNZR2AdKnUBNhpump
+2025-05-25 10:19:21,699 - phoenix.helius - INFO - Using pump.fun specific analysis for E6yj4XZt2jBG63wQB1dMdVnvSRSqNZR2AdKnUBNhpump
+2025-05-25 10:19:21,699 - phoenix.telegram - WARNING - No swap data available for pump token E6yj4XZt2jBG63wQB1dMdVnvSRSqNZR2AdKnUBNhpump
+2025-05-25 10:19:21,699 - phoenix.telegram - INFO - Helius failed for E6yj4XZt2jBG63wQB1dMdVnvSRSqNZR2AdKnUBNhpump, trying RPC fallback
+2025-05-25 10:19:21,842 - phoenix.telegram - INFO - 📊 Analyzing call 4/5 for @InsiderSolanaPrintors
+2025-05-25 10:19:22,511 - phoenix.birdeye - WARNING - No price history available for DLSVt5buksW2r5UAvo4xSMPwfoXpuUrQTVYuXcZuxFWB
+2025-05-25 10:19:22,513 - phoenix.telegram - WARNING - No price history available for DLSVt5buksW2r5UAvo4xSMPwfoXpuUrQTVYuXcZuxFWB
+2025-05-25 10:19:22,513 - phoenix.telegram - INFO - Birdeye failed for DLSVt5buksW2r5UAvo4xSMPwfoXpuUrQTVYuXcZuxFWB, trying RPC fallback
+2025-05-25 10:19:22,513 - phoenix.telegram - INFO - 📊 Analyzing call 5/5 for @michiosuzukiofsatoshicalls
+2025-05-25 10:19:22,513 - phoenix.telegram - INFO - 📊 Analyzing call 4/5 for @FrenzGems
+2025-05-25 10:19:23,026 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 5i4p9no2m8HpCTGaXyA4gbAoNUsJtYGuPrmH7h9opump
+2025-05-25 10:19:23,026 - phoenix.helius - INFO - Analyzing swaps for token 5i4p9no2m8HpCTGaXyA4gbAoNUsJtYGuPrmH7h9opump
+2025-05-25 10:19:23,026 - phoenix.helius - INFO - Using pump.fun specific analysis for 5i4p9no2m8HpCTGaXyA4gbAoNUsJtYGuPrmH7h9opump
+2025-05-25 10:19:23,026 - phoenix.telegram - WARNING - No swap data available for pump token 5i4p9no2m8HpCTGaXyA4gbAoNUsJtYGuPrmH7h9opump
+2025-05-25 10:19:23,026 - phoenix.telegram - INFO - Helius failed for 5i4p9no2m8HpCTGaXyA4gbAoNUsJtYGuPrmH7h9opump, trying RPC fallback
+2025-05-25 10:19:23,026 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for A58wbmXP6YisZVvLsVxy2KSeUKRPpT2rb83Gweztpump
+2025-05-25 10:19:23,026 - phoenix.helius - INFO - Analyzing swaps for token A58wbmXP6YisZVvLsVxy2KSeUKRPpT2rb83Gweztpump
+2025-05-25 10:19:23,026 - phoenix.helius - INFO - Using pump.fun specific analysis for A58wbmXP6YisZVvLsVxy2KSeUKRPpT2rb83Gweztpump
+2025-05-25 10:19:23,026 - phoenix.telegram - WARNING - No swap data available for pump token A58wbmXP6YisZVvLsVxy2KSeUKRPpT2rb83Gweztpump
+2025-05-25 10:19:23,026 - phoenix.telegram - INFO - Helius failed for A58wbmXP6YisZVvLsVxy2KSeUKRPpT2rb83Gweztpump, trying RPC fallback
+2025-05-25 10:19:23,262 - phoenix.telegram - ERROR - RPC error: {'code': -32602, 'message': 'Invalid param: not a Token mint'}
+2025-05-25 10:19:23,262 - phoenix.telegram - WARNING - Could not get token supply for DLSVt5buksW2r5UAvo4xSMPwfoXpuUrQTVYuXcZuxFWB
+2025-05-25 10:19:23,262 - phoenix.telegram - WARNING - Could not determine initial price for DLSVt5buksW2r5UAvo4xSMPwfoXpuUrQTVYuXcZuxFWB
+2025-05-25 10:19:23,262 - phoenix.telegram - INFO - 📊 Analyzing call 5/5 for @InsiderSolanaPrintors
+2025-05-25 10:19:23,771 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 8JrTmRZtTTQyYrDZ1Jzpnr7XWc1D2hV7E33WcC1Tpump
+2025-05-25 10:19:23,771 - phoenix.helius - INFO - Analyzing swaps for token 8JrTmRZtTTQyYrDZ1Jzpnr7XWc1D2hV7E33WcC1Tpump
+2025-05-25 10:19:23,771 - phoenix.helius - INFO - Using pump.fun specific analysis for 8JrTmRZtTTQyYrDZ1Jzpnr7XWc1D2hV7E33WcC1Tpump
+2025-05-25 10:19:23,771 - phoenix.telegram - WARNING - No swap data available for pump token 8JrTmRZtTTQyYrDZ1Jzpnr7XWc1D2hV7E33WcC1Tpump
+2025-05-25 10:19:23,771 - phoenix.telegram - INFO - Helius failed for 8JrTmRZtTTQyYrDZ1Jzpnr7XWc1D2hV7E33WcC1Tpump, trying RPC fallback
+2025-05-25 10:19:23,771 - phoenix.telegram - INFO - 📊 Analyzing call 5/5 for @FrenzGems
+2025-05-25 10:19:24,277 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 5BrAVENZUfV1qBhbLtEnrHBzEmqj6UgYULtyZvW8pump
+2025-05-25 10:19:24,277 - phoenix.helius - INFO - Analyzing swaps for token 5BrAVENZUfV1qBhbLtEnrHBzEmqj6UgYULtyZvW8pump
+2025-05-25 10:19:24,277 - phoenix.helius - INFO - Using pump.fun specific analysis for 5BrAVENZUfV1qBhbLtEnrHBzEmqj6UgYULtyZvW8pump
+2025-05-25 10:19:24,277 - phoenix.telegram - WARNING - No swap data available for pump token 5BrAVENZUfV1qBhbLtEnrHBzEmqj6UgYULtyZvW8pump
+2025-05-25 10:19:24,277 - phoenix.telegram - INFO - Helius failed for 5BrAVENZUfV1qBhbLtEnrHBzEmqj6UgYULtyZvW8pump, trying RPC fallback
+2025-05-25 10:19:26,573 - phoenix.telegram - INFO - 🎯 Phase 3: Deep analysis for KOLs with 40%+ 2x success rate...
+2025-05-25 10:19:26,573 - phoenix.telegram - INFO - 🔥 Found 2 KOLs qualified for deep analysis
+2025-05-25 10:19:26,574 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @RimberioGamble (deep analysis)
+2025-05-25 10:19:26,700 - phoenix.telegram - INFO - Scraping up to 2000 messages from Rimberio Gamble (ID: 1771818884)
+2025-05-25 10:19:27,012 - phoenix.telegram - INFO - Finished retrieving 32 messages from 1771818884
+2025-05-25 10:19:27,012 - phoenix.telegram - INFO - 📨 Found 32 messages in @RimberioGamble's channel
+2025-05-25 10:19:27,012 - phoenix.telegram - INFO - 🎯 Found 8 unique token calls for @RimberioGamble
+2025-05-25 10:19:28,214 - phoenix.birdeye - WARNING - No price history available for 9a56aCDDuu6q2cwH6yAv4Swmx9xHGbN84yT74stRSELe
+2025-05-25 10:19:28,214 - phoenix.telegram - WARNING - No price history available for 9a56aCDDuu6q2cwH6yAv4Swmx9xHGbN84yT74stRSELe
+2025-05-25 10:19:28,214 - phoenix.telegram - INFO - Birdeye failed for 9a56aCDDuu6q2cwH6yAv4Swmx9xHGbN84yT74stRSELe, trying RPC fallback
+2025-05-25 10:19:28,967 - phoenix.telegram - ERROR - RPC error: {'code': -32602, 'message': 'Invalid param: not a Token mint'}
+2025-05-25 10:19:28,967 - phoenix.telegram - WARNING - Could not get token supply for 9a56aCDDuu6q2cwH6yAv4Swmx9xHGbN84yT74stRSELe
+2025-05-25 10:19:28,967 - phoenix.telegram - WARNING - Could not determine initial price for 9a56aCDDuu6q2cwH6yAv4Swmx9xHGbN84yT74stRSELe
+2025-05-25 10:19:28,967 - phoenix.telegram - INFO - 📊 Analyzing call 4/8 for @RimberioGamble
+2025-05-25 10:19:29,656 - phoenix.birdeye - WARNING - No price history available for DjMPcFT2Yg8nhHvUM6dAqUtjVNgb9Ms8sCbJ2FtodxG9
+2025-05-25 10:19:29,656 - phoenix.telegram - WARNING - No price history available for DjMPcFT2Yg8nhHvUM6dAqUtjVNgb9Ms8sCbJ2FtodxG9
+2025-05-25 10:19:29,656 - phoenix.telegram - INFO - Birdeye failed for DjMPcFT2Yg8nhHvUM6dAqUtjVNgb9Ms8sCbJ2FtodxG9, trying RPC fallback
+2025-05-25 10:19:30,436 - phoenix.telegram - ERROR - RPC error: {'code': -32602, 'message': 'Invalid param: not a Token mint'}
+2025-05-25 10:19:30,436 - phoenix.telegram - WARNING - Could not get token supply for DjMPcFT2Yg8nhHvUM6dAqUtjVNgb9Ms8sCbJ2FtodxG9
+2025-05-25 10:19:30,436 - phoenix.telegram - WARNING - Could not determine initial price for DjMPcFT2Yg8nhHvUM6dAqUtjVNgb9Ms8sCbJ2FtodxG9
+2025-05-25 10:19:30,949 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for AMW7ZYiSdGkfpfFqHYtpp5feZ9wt8GdeAEsrzAxmpump
+2025-05-25 10:19:30,949 - phoenix.helius - INFO - Analyzing swaps for token AMW7ZYiSdGkfpfFqHYtpp5feZ9wt8GdeAEsrzAxmpump
+2025-05-25 10:19:30,949 - phoenix.helius - INFO - Using pump.fun specific analysis for AMW7ZYiSdGkfpfFqHYtpp5feZ9wt8GdeAEsrzAxmpump
+2025-05-25 10:19:30,949 - phoenix.telegram - WARNING - No swap data available for pump token AMW7ZYiSdGkfpfFqHYtpp5feZ9wt8GdeAEsrzAxmpump
+2025-05-25 10:19:30,949 - phoenix.telegram - INFO - Helius failed for AMW7ZYiSdGkfpfFqHYtpp5feZ9wt8GdeAEsrzAxmpump, trying RPC fallback
+2025-05-25 10:19:32,875 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 6g7SyNhUMLZ8PiX66MYZeA8UhxGXgieBjauHC8QRpump
+2025-05-25 10:19:32,875 - phoenix.helius - INFO - Analyzing swaps for token 6g7SyNhUMLZ8PiX66MYZeA8UhxGXgieBjauHC8QRpump
+2025-05-25 10:19:32,875 - phoenix.helius - INFO - Using pump.fun specific analysis for 6g7SyNhUMLZ8PiX66MYZeA8UhxGXgieBjauHC8QRpump
+2025-05-25 10:19:32,875 - phoenix.telegram - WARNING - No swap data available for pump token 6g7SyNhUMLZ8PiX66MYZeA8UhxGXgieBjauHC8QRpump
+2025-05-25 10:19:32,875 - phoenix.telegram - INFO - Helius failed for 6g7SyNhUMLZ8PiX66MYZeA8UhxGXgieBjauHC8QRpump, trying RPC fallback
+2025-05-25 10:19:33,637 - phoenix.telegram - INFO - 📊 Analyzing call 8/8 for @RimberioGamble
+2025-05-25 10:19:34,832 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @bossygambles (deep analysis)
+2025-05-25 10:19:34,960 - phoenix.telegram - INFO - Scraping up to 2000 messages from Bossy Gambles 🎲 (ID: 1608644886)
+2025-05-25 10:19:36,215 - phoenix.telegram - INFO - Finished retrieving 283 messages from 1608644886
+2025-05-25 10:19:36,215 - phoenix.telegram - INFO - 📨 Found 283 messages in @bossygambles's channel
+2025-05-25 10:19:36,230 - phoenix.telegram - INFO - 🎯 Found 16 unique token calls for @bossygambles
+2025-05-25 10:19:36,900 - phoenix.birdeye - WARNING - No price history available for FTVfrnFb48apSPKTBkB5cdTu6AiTRSX5wdV68uTrPiWu
+2025-05-25 10:19:36,900 - phoenix.telegram - WARNING - No price history available for FTVfrnFb48apSPKTBkB5cdTu6AiTRSX5wdV68uTrPiWu
+2025-05-25 10:19:36,916 - phoenix.telegram - INFO - Birdeye failed for FTVfrnFb48apSPKTBkB5cdTu6AiTRSX5wdV68uTrPiWu, trying RPC fallback
+2025-05-25 10:19:37,654 - phoenix.telegram - ERROR - RPC error: {'code': -32602, 'message': 'Invalid param: not a Token mint'}
+2025-05-25 10:19:37,654 - phoenix.telegram - WARNING - Could not get token supply for FTVfrnFb48apSPKTBkB5cdTu6AiTRSX5wdV68uTrPiWu
+2025-05-25 10:19:37,662 - phoenix.telegram - WARNING - Could not determine initial price for FTVfrnFb48apSPKTBkB5cdTu6AiTRSX5wdV68uTrPiWu
+2025-05-25 10:19:38,359 - phoenix.birdeye - WARNING - No price history available for 8zFY19ivsJ1kVE7WQCq4QBhVtj7xPaaFgvnQybTbrafd
+2025-05-25 10:19:38,359 - phoenix.telegram - WARNING - No price history available for 8zFY19ivsJ1kVE7WQCq4QBhVtj7xPaaFgvnQybTbrafd
+2025-05-25 10:19:38,359 - phoenix.telegram - INFO - Birdeye failed for 8zFY19ivsJ1kVE7WQCq4QBhVtj7xPaaFgvnQybTbrafd, trying RPC fallback
+2025-05-25 10:19:39,124 - phoenix.telegram - ERROR - RPC error: {'code': -32602, 'message': 'Invalid param: not a Token mint'}
+2025-05-25 10:19:39,124 - phoenix.telegram - WARNING - Could not get token supply for 8zFY19ivsJ1kVE7WQCq4QBhVtj7xPaaFgvnQybTbrafd
+2025-05-25 10:19:39,128 - phoenix.telegram - WARNING - Could not determine initial price for 8zFY19ivsJ1kVE7WQCq4QBhVtj7xPaaFgvnQybTbrafd
+2025-05-25 10:19:39,128 - phoenix.telegram - INFO - 📊 Analyzing call 4/16 for @bossygambles
+2025-05-25 10:19:39,791 - phoenix.birdeye - WARNING - No price history available for BKFRonHVE4coCPDbLyYnKZKnyavN4mknfYogQsDpY3Y6
+2025-05-25 10:19:39,791 - phoenix.telegram - WARNING - No price history available for BKFRonHVE4coCPDbLyYnKZKnyavN4mknfYogQsDpY3Y6
+2025-05-25 10:19:39,791 - phoenix.telegram - INFO - Birdeye failed for BKFRonHVE4coCPDbLyYnKZKnyavN4mknfYogQsDpY3Y6, trying RPC fallback
+2025-05-25 10:19:40,583 - phoenix.telegram - ERROR - RPC error: {'code': -32602, 'message': 'Invalid param: not a Token mint'}
+2025-05-25 10:19:40,583 - phoenix.telegram - WARNING - Could not get token supply for BKFRonHVE4coCPDbLyYnKZKnyavN4mknfYogQsDpY3Y6
+2025-05-25 10:19:40,598 - phoenix.telegram - WARNING - Could not determine initial price for BKFRonHVE4coCPDbLyYnKZKnyavN4mknfYogQsDpY3Y6
+2025-05-25 10:19:41,341 - phoenix.birdeye - WARNING - No price history available for Gi8s6pZarHMi3qbTeKuwjQ6vAQ9G1TTkXF2jUdK5nDpV
+2025-05-25 10:19:41,341 - phoenix.telegram - WARNING - No price history available for Gi8s6pZarHMi3qbTeKuwjQ6vAQ9G1TTkXF2jUdK5nDpV
+2025-05-25 10:19:41,347 - phoenix.telegram - INFO - Birdeye failed for Gi8s6pZarHMi3qbTeKuwjQ6vAQ9G1TTkXF2jUdK5nDpV, trying RPC fallback
+2025-05-25 10:19:42,098 - phoenix.telegram - ERROR - RPC error: {'code': -32602, 'message': 'Invalid param: not a Token mint'}
+2025-05-25 10:19:42,098 - phoenix.telegram - WARNING - Could not get token supply for Gi8s6pZarHMi3qbTeKuwjQ6vAQ9G1TTkXF2jUdK5nDpV
+2025-05-25 10:19:42,100 - phoenix.telegram - WARNING - Could not determine initial price for Gi8s6pZarHMi3qbTeKuwjQ6vAQ9G1TTkXF2jUdK5nDpV
+2025-05-25 10:19:43,454 - phoenix.birdeye - WARNING - No price history available for 9ZUEEnDnzTSFHb2VXXEMxFFpYK283TTKToaETyWqsc3c
+2025-05-25 10:19:43,454 - phoenix.telegram - WARNING - No price history available for 9ZUEEnDnzTSFHb2VXXEMxFFpYK283TTKToaETyWqsc3c
+2025-05-25 10:19:43,454 - phoenix.telegram - INFO - Birdeye failed for 9ZUEEnDnzTSFHb2VXXEMxFFpYK283TTKToaETyWqsc3c, trying RPC fallback
+2025-05-25 10:19:44,200 - phoenix.telegram - ERROR - RPC error: {'code': -32602, 'message': 'Invalid param: not a Token mint'}
+2025-05-25 10:19:44,200 - phoenix.telegram - WARNING - Could not get token supply for 9ZUEEnDnzTSFHb2VXXEMxFFpYK283TTKToaETyWqsc3c
+2025-05-25 10:19:44,200 - phoenix.telegram - WARNING - Could not determine initial price for 9ZUEEnDnzTSFHb2VXXEMxFFpYK283TTKToaETyWqsc3c
+2025-05-25 10:19:44,200 - phoenix.telegram - INFO - 📊 Analyzing call 8/16 for @bossygambles
+2025-05-25 10:19:44,709 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for 2HHgCLfKA5Rd1Fn9xAxfYzS3XoR5NnuxKDYz2EmWpump
+2025-05-25 10:19:44,709 - phoenix.helius - INFO - Analyzing swaps for token 2HHgCLfKA5Rd1Fn9xAxfYzS3XoR5NnuxKDYz2EmWpump
+2025-05-25 10:19:44,709 - phoenix.helius - INFO - Using pump.fun specific analysis for 2HHgCLfKA5Rd1Fn9xAxfYzS3XoR5NnuxKDYz2EmWpump
+2025-05-25 10:19:44,709 - phoenix.telegram - WARNING - No swap data available for pump token 2HHgCLfKA5Rd1Fn9xAxfYzS3XoR5NnuxKDYz2EmWpump
+2025-05-25 10:19:44,709 - phoenix.telegram - INFO - Helius failed for 2HHgCLfKA5Rd1Fn9xAxfYzS3XoR5NnuxKDYz2EmWpump, trying RPC fallback
+2025-05-25 10:19:47,177 - phoenix.birdeye - WARNING - No price history available for Crax2gaUFZqaVaJo4we1pw4uku8agsjGyXS6d6TgqQuC
+2025-05-25 10:19:47,178 - phoenix.telegram - WARNING - No price history available for Crax2gaUFZqaVaJo4we1pw4uku8agsjGyXS6d6TgqQuC
+2025-05-25 10:19:47,178 - phoenix.telegram - INFO - Birdeye failed for Crax2gaUFZqaVaJo4we1pw4uku8agsjGyXS6d6TgqQuC, trying RPC fallback
+2025-05-25 10:19:47,203 - phoenix.telegram - ERROR - RPC error: {'code': -32602, 'message': 'Invalid param: not a Token mint'}
+2025-05-25 10:19:47,203 - phoenix.telegram - WARNING - Could not get token supply for Crax2gaUFZqaVaJo4we1pw4uku8agsjGyXS6d6TgqQuC
+2025-05-25 10:19:47,203 - phoenix.telegram - WARNING - Could not determine initial price for Crax2gaUFZqaVaJo4we1pw4uku8agsjGyXS6d6TgqQuC
+2025-05-25 10:19:48,492 - phoenix.birdeye - WARNING - No price history available for 2vAz5qcntqxxjhnteGsCC1oTKPgB8MjYLXRS98b77aoX
+2025-05-25 10:19:48,492 - phoenix.telegram - WARNING - No price history available for 2vAz5qcntqxxjhnteGsCC1oTKPgB8MjYLXRS98b77aoX
+2025-05-25 10:19:48,508 - phoenix.telegram - INFO - Birdeye failed for 2vAz5qcntqxxjhnteGsCC1oTKPgB8MjYLXRS98b77aoX, trying RPC fallback
+2025-05-25 10:19:48,524 - phoenix.telegram - ERROR - RPC error: {'code': -32602, 'message': 'Invalid param: not a Token mint'}
+2025-05-25 10:19:48,524 - phoenix.telegram - WARNING - Could not get token supply for 2vAz5qcntqxxjhnteGsCC1oTKPgB8MjYLXRS98b77aoX
+2025-05-25 10:19:48,524 - phoenix.telegram - WARNING - Could not determine initial price for 2vAz5qcntqxxjhnteGsCC1oTKPgB8MjYLXRS98b77aoX
+2025-05-25 10:19:48,524 - phoenix.telegram - INFO - 📊 Analyzing call 12/16 for @bossygambles
+2025-05-25 10:19:49,164 - phoenix.birdeye - WARNING - No price history available for 9g9h7V13dbXnWgZ7KKPebAgQZdSQymCUnzveHCdTN3WD
+2025-05-25 10:19:49,164 - phoenix.telegram - WARNING - No price history available for 9g9h7V13dbXnWgZ7KKPebAgQZdSQymCUnzveHCdTN3WD
+2025-05-25 10:19:49,164 - phoenix.telegram - INFO - Birdeye failed for 9g9h7V13dbXnWgZ7KKPebAgQZdSQymCUnzveHCdTN3WD, trying RPC fallback
+2025-05-25 10:19:49,199 - phoenix.telegram - ERROR - RPC error: {'code': -32602, 'message': 'Invalid param: not a Token mint'}
+2025-05-25 10:19:49,199 - phoenix.telegram - WARNING - Could not get token supply for 9g9h7V13dbXnWgZ7KKPebAgQZdSQymCUnzveHCdTN3WD
+2025-05-25 10:19:49,199 - phoenix.telegram - WARNING - Could not determine initial price for 9g9h7V13dbXnWgZ7KKPebAgQZdSQymCUnzveHCdTN3WD
+2025-05-25 10:19:49,828 - phoenix.birdeye - WARNING - No price history available for CFAhsBD4XxtGkHV4bNocwNB3VihHKAzbeXkPGeihKLPY
+2025-05-25 10:19:49,828 - phoenix.telegram - WARNING - No price history available for CFAhsBD4XxtGkHV4bNocwNB3VihHKAzbeXkPGeihKLPY
+2025-05-25 10:19:49,828 - phoenix.telegram - INFO - Birdeye failed for CFAhsBD4XxtGkHV4bNocwNB3VihHKAzbeXkPGeihKLPY, trying RPC fallback
+2025-05-25 10:19:49,859 - phoenix.telegram - ERROR - RPC error: {'code': -32602, 'message': 'Invalid param: not a Token mint'}
+2025-05-25 10:19:49,859 - phoenix.telegram - WARNING - Could not get token supply for CFAhsBD4XxtGkHV4bNocwNB3VihHKAzbeXkPGeihKLPY
+2025-05-25 10:19:49,859 - phoenix.telegram - WARNING - Could not determine initial price for CFAhsBD4XxtGkHV4bNocwNB3VihHKAzbeXkPGeihKLPY
+2025-05-25 10:19:50,471 - phoenix.birdeye - WARNING - No price history available for Dvgzni5Vvh9f2yUP5Z9oL8rRidoqPbLsPFSCvCJJiEfM
+2025-05-25 10:19:50,471 - phoenix.telegram - WARNING - No price history available for Dvgzni5Vvh9f2yUP5Z9oL8rRidoqPbLsPFSCvCJJiEfM
+2025-05-25 10:19:50,474 - phoenix.telegram - INFO - Birdeye failed for Dvgzni5Vvh9f2yUP5Z9oL8rRidoqPbLsPFSCvCJJiEfM, trying RPC fallback
+2025-05-25 10:19:50,550 - phoenix.telegram - ERROR - RPC error: {'code': -32602, 'message': 'Invalid param: not a Token mint'}
+2025-05-25 10:19:50,550 - phoenix.telegram - WARNING - Could not get token supply for Dvgzni5Vvh9f2yUP5Z9oL8rRidoqPbLsPFSCvCJJiEfM
+2025-05-25 10:19:50,550 - phoenix.telegram - WARNING - Could not determine initial price for Dvgzni5Vvh9f2yUP5Z9oL8rRidoqPbLsPFSCvCJJiEfM
+2025-05-25 10:19:51,200 - phoenix.birdeye - WARNING - No price history available for 5qEkchwFCUqgzvQWiuTa79aoNQkSoc4RFVsrowoJUSF9
+2025-05-25 10:19:51,200 - phoenix.telegram - WARNING - No price history available for 5qEkchwFCUqgzvQWiuTa79aoNQkSoc4RFVsrowoJUSF9
+2025-05-25 10:19:51,200 - phoenix.telegram - INFO - Birdeye failed for 5qEkchwFCUqgzvQWiuTa79aoNQkSoc4RFVsrowoJUSF9, trying RPC fallback
+2025-05-25 10:19:51,215 - phoenix.telegram - ERROR - RPC error: {'code': -32602, 'message': 'Invalid param: not a Token mint'}
+2025-05-25 10:19:51,215 - phoenix.telegram - WARNING - Could not get token supply for 5qEkchwFCUqgzvQWiuTa79aoNQkSoc4RFVsrowoJUSF9
+2025-05-25 10:19:51,215 - phoenix.telegram - WARNING - Could not determine initial price for 5qEkchwFCUqgzvQWiuTa79aoNQkSoc4RFVsrowoJUSF9
+2025-05-25 10:19:51,215 - phoenix.telegram - INFO - 📊 Analyzing call 16/16 for @bossygambles
+2025-05-25 10:19:51,716 - phoenix.telegram - INFO - Analyzing pump.fun token swaps for EWst48ttynfMc3qKcw64TwRrKZQBH57R8JMtFUpHpump
+2025-05-25 10:19:51,716 - phoenix.helius - INFO - Analyzing swaps for token EWst48ttynfMc3qKcw64TwRrKZQBH57R8JMtFUpHpump
+2025-05-25 10:19:51,717 - phoenix.helius - INFO - Using pump.fun specific analysis for EWst48ttynfMc3qKcw64TwRrKZQBH57R8JMtFUpHpump
+2025-05-25 10:19:51,717 - phoenix.telegram - WARNING - No swap data available for pump token EWst48ttynfMc3qKcw64TwRrKZQBH57R8JMtFUpHpump
+2025-05-25 10:19:51,717 - phoenix.telegram - INFO - Helius failed for EWst48ttynfMc3qKcw64TwRrKZQBH57R8JMtFUpHpump, trying RPC fallback
+2025-05-25 10:19:52,248 - phoenix.telegram - INFO - 🎯 Phase 4: Calculating composite scores (2x rate + speed)...
+2025-05-25 10:19:52,248 - phoenix.telegram - INFO - 🏆 TOP 10 KOLs by composite score (2x rate + speed weighted):
+2025-05-25 10:19:52,248 - phoenix.telegram - INFO -    1. @RimberioGamble: 65.8 score, 33.3% 2x rate, 111.0 min avg
+2025-05-25 10:19:52,248 - phoenix.telegram - INFO -       🔥 Deep analysis performed (20 calls)
+2025-05-25 10:19:52,248 - phoenix.telegram - INFO -    2. @ChapoInsider: 62.9 score, 20.0% 2x rate, 15.8 min avg
+2025-05-25 10:19:52,248 - phoenix.telegram - INFO -    3. @bossygambles: 59.9 score, 20.0% 2x rate, 80.4 min avg
+2025-05-25 10:19:52,248 - phoenix.telegram - INFO -       🔥 Deep analysis performed (20 calls)
+2025-05-25 10:19:52,248 - phoenix.telegram - INFO -    4. @hulkgemscalls_real: 55.0 score, 20.0% 2x rate, 36.5 min avg
+2025-05-25 10:19:52,248 - phoenix.telegram - INFO -    5. @PEPE_Calls28: 54.7 score, 20.0% 2x rate, 36.7 min avg
+2025-05-25 10:19:52,248 - phoenix.telegram - INFO -    6. @Maestrosdegen: 29.0 score, 25.0% 2x rate, 232.7 min avg
+2025-05-25 10:19:52,248 - phoenix.telegram - INFO -    7. @GemsmineEth: 17.1 score, 25.0% 2x rate, 418.0 min avg
+2025-05-25 10:19:52,248 - phoenix.telegram - INFO -    8. @michiosuzukiofsatoshicalls: 16.0 score, 20.0% 2x rate, 663.4 min avg
+2025-05-25 10:19:52,248 - phoenix.telegram - INFO -    9. @DONALD_CALL: 8.2 score, 0.0% 2x rate, 0.0 min avg
+2025-05-25 10:19:52,248 - phoenix.telegram - INFO -    10. @FrenzGems: 8.2 score, 0.0% 2x rate, 0.0 min avg
+2025-05-25 10:19:52,248 - phoenix.telegram - INFO - 🎯 Phase 5: Getting channel IDs for TOP 10 KOLs...
+2025-05-25 10:20:03,565 - phoenix.telegram - INFO - 📊 VALIDATION STATISTICS:
+2025-05-25 10:20:03,565 - phoenix.telegram - INFO -    📍 Contract extraction attempts: 1243
+2025-05-25 10:20:03,565 - phoenix.telegram - INFO -    ✅ Valid addresses found: 435
+2025-05-25 10:20:03,565 - phoenix.telegram - INFO -    ❌ Invalid addresses rejected: 70
+2025-05-25 10:20:03,565 - phoenix.telegram - INFO -    🚀 Pump.fun tokens found: 575
+2025-05-25 10:20:03,565 - phoenix.telegram - INFO -    📊 Tokens analyzed: 118
+2025-05-25 10:20:03,565 - phoenix.telegram - INFO -    💾 Tokens cached: 3
+2025-05-25 10:20:03,565 - phoenix.telegram - INFO -    📞 Birdeye API calls made: 40
+2025-05-25 10:20:03,565 - phoenix.telegram - INFO -    📞 Helius API calls made: 78
+2025-05-25 10:20:03,565 - phoenix.telegram - INFO -    📞 RPC calls made: 101
+2025-05-25 10:20:03,565 - phoenix.telegram - INFO -    ⚠️ Birdeye API failures: 23
+2025-05-25 10:20:03,565 - phoenix.telegram - INFO -    ⚠️ Helius API failures: 78
+2025-05-25 10:20:03,565 - phoenix.telegram - INFO -    ⚠️ RPC failures: 51
+2025-05-25 10:20:03,565 - phoenix.telegram - INFO -    📈 Address validation success rate: 86.1%
+2025-05-25 10:20:03,565 - phoenix.telegram - INFO - 🎉 OPTIMIZED ANALYSIS COMPLETE!
+2025-05-25 10:20:03,565 - phoenix.telegram - INFO - 📊 Total KOLs analyzed: 23
+2025-05-25 10:20:03,565 - phoenix.telegram - INFO - 📊 Initial analyses: 23
+2025-05-25 10:20:03,565 - phoenix.telegram - INFO - 📊 Deep analyses: 2
+2025-05-25 10:20:03,565 - phoenix.telegram - INFO - 📊 Total calls analyzed: 95
+2025-05-25 10:20:03,565 - phoenix.telegram - INFO - 📊 2x success rate: 9.5%
+2025-05-25 10:20:03,565 - phoenix - INFO - 📊 Analysis completed, exporting results...
+2025-05-25 10:20:03,574 - phoenix.telegram - INFO - ✅ Exported 23 KOLs to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv
+2025-05-25 10:20:03,574 - phoenix.telegram - INFO - ✅ Exported summary to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced_summary.txt
+2025-05-25 10:20:03,574 - phoenix.telegram - INFO - Disconnecting from Telegram...
+2025-05-25 10:20:03,574 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-25 10:20:03,580 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-25 10:20:03,580 - phoenix.telegram - INFO - Disconnected from Telegram
+2025-05-25 10:20:03,580 - phoenix - INFO - 📞 Disconnected from Telegram
+2025-05-25 10:20:03,580 - phoenix - INFO - 📁 Enhanced telegram analysis completed. Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv
+2025-05-25 10:20:03,918 - phoenix.export - ERROR - Error exporting to Excel: 'list' object has no attribute 'items'
+2025-05-25 10:20:03,918 - phoenix - INFO - 📊 Enhanced Excel export completed: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced_enhanced.xlsx
+2025-05-25 10:52:13,710 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-25 10:52:13,710 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-25 10:52:14,065 - phoenix - INFO - ✅ Imported telegram module
+2025-05-25 10:52:14,080 - phoenix.telegram - INFO - ✅ Cleared SpyDefi cache
+2025-05-25 10:52:14,080 - phoenix.telegram - INFO - ✅ Cleared token and price analysis caches
+2025-05-25 10:52:26,209 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-25 10:52:26,209 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-25 10:52:26,522 - phoenix - INFO - ✅ Imported telegram module
+2025-05-25 10:52:26,522 - phoenix - INFO - 🚀 Starting enhanced SpyDefi analysis for the past 24 hours.
+2025-05-25 10:52:26,522 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv
+2025-05-25 10:52:26,522 - phoenix - INFO - 🔄 Force refresh enabled - ignoring cache
+2025-05-25 10:52:26,522 - phoenix - INFO - ✅ Birdeye API initialized successfully
+2025-05-25 10:52:26,522 - phoenix - INFO - ✅ Helius API initialized successfully for pump.fun tokens
+2025-05-25 10:52:26,522 - phoenix - INFO - ✅ Telegram scraper initialized successfully
+2025-05-25 10:52:26,522 - phoenix - INFO - 🎯 SpyDefi channel detected. Running enhanced analysis...
+2025-05-25 10:52:26,522 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-25 10:52:26,522 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-25 10:52:26,647 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-25 10:52:27,429 - phoenix.telegram - INFO - Connected to Telegram
+2025-05-25 10:52:27,429 - phoenix - INFO - 📞 Connected to Telegram
+2025-05-25 10:52:27,429 - phoenix.telegram - INFO - 🚀 STARTING OPTIMIZED SPYDEFI ANALYSIS (2x Hot Streak Focus)
+2025-05-25 10:52:27,429 - phoenix.telegram - INFO - 🎯 Phase 1: Discovering active KOLs from SpyDefi...
+2025-05-25 10:52:27,429 - phoenix.telegram - INFO - ✅ Birdeye API available for mainstream tokens
+2025-05-25 10:52:27,429 - phoenix.telegram - INFO - ✅ Helius API available for enhanced price discovery
+2025-05-25 10:52:27,429 - phoenix.telegram - INFO - 🔍 Scanning SpyDefi for last 6 hours...
+2025-05-25 10:52:27,569 - phoenix.telegram - INFO - Scraping up to 1000 messages from SpyDefi (ID: 1960616143)
+2025-05-25 10:52:30,944 - phoenix.telegram - INFO - Finished retrieving 888 messages from 1960616143
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - ✅ Found 196 unique KOLs (+196 new) from 888 messages
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🎯 Sufficient KOLs found (196), stopping discovery
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - ✅ Saved SpyDefi cache with 196 KOLs
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - ✅ Found 196 active KOLs from SpyDefi
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🎯 Phase 2: Initial analysis of KOLs (last 5 calls each)...
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 📊 Analyzing top 30 KOLs for initial screening
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @avrugs (initial analysis)
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @dextradegems (initial analysis)
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @RimberioGamble (initial analysis)
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @GemsmineEth (initial analysis)
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @Zen_call (initial analysis)
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @Insider_ECA (initial analysis)
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @hulkgemscalls_real (initial analysis)
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @bossygambles (initial analysis)
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @ChapoInsider (initial analysis)
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @TopCallersChannel (initial analysis)
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @Maestrosdegen (initial analysis)
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @RedBullCallz (initial analysis)
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @MarksGems (initial analysis)
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @MitchGemsGambles (initial analysis)
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @LoomRipple (initial analysis)
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @Mrbigbagcalls (initial analysis)
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @WitchLabs (initial analysis)
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @FrostScribe (initial analysis)
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @InsiderSolanaPrintors (initial analysis)
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @PEPE_Calls28 (initial analysis)
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @DONALD_CALL (initial analysis)
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @AZcalls (initial analysis)
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @chiggajogambles (initial analysis)
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @faycalldegen (initial analysis)
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @BreezeTrack (initial analysis)
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @CryptachCalls (initial analysis)
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @JuLzLabs (initial analysis)
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @baseddegengems (initial analysis)
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @bidaopd (initial analysis)
+2025-05-25 10:52:30,960 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @Cryptosparrowcall9 (initial analysis)
+2025-05-25 10:52:31,084 - phoenix.telegram - INFO - Scraping up to 500 messages from Rimberio Gamble (ID: 1771818884)
+2025-05-25 10:52:31,100 - phoenix.telegram - INFO - Scraping up to 500 messages from DeXGems (ID: 1268629886)
+2025-05-25 10:52:31,100 - phoenix.telegram - INFO - Scraping up to 500 messages from TokyoHunter Calls (ID: 1691606433)
+2025-05-25 10:52:31,381 - phoenix.telegram - INFO - Finished retrieving 22 messages from 1771818884
+2025-05-25 10:52:31,381 - phoenix.telegram - INFO - 📨 Found 22 messages in @RimberioGamble's channel
+2025-05-25 10:52:31,397 - phoenix.telegram - INFO - 🎯 Found 4 unique token calls for @RimberioGamble
+2025-05-25 10:52:31,397 - phoenix.telegram - INFO - 📊 Analyzing call 1/4 for @RimberioGamble
+2025-05-25 10:52:31,585 - phoenix.telegram - INFO - 📊 Analyzing call 2/4 for @RimberioGamble
+2025-05-25 10:52:31,585 - phoenix.telegram - INFO - Finished retrieving 41 messages from 1691606433
+2025-05-25 10:52:31,585 - phoenix.telegram - INFO - 📨 Found 41 messages in @avrugs's channel
+2025-05-25 10:52:31,585 - phoenix.telegram - INFO - 🎯 Found 5 unique token calls for @avrugs
+2025-05-25 10:52:31,585 - phoenix.telegram - INFO - 📊 Analyzing call 1/5 for @avrugs
+2025-05-25 10:52:35,034 - phoenix.telegram - ERROR - Error getting token performance: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-05-25 10:52:35,034 - phoenix.telegram - INFO - 📊 Analyzing call 2/5 for @avrugs
+2025-05-25 10:52:35,034 - phoenix.telegram - INFO - Finished retrieving 30 messages from 1268629886
+2025-05-25 10:52:35,034 - phoenix.telegram - INFO - 📨 Found 30 messages in @dextradegems's channel
+2025-05-25 10:52:35,034 - phoenix.telegram - INFO - 🎯 Found 5 unique token calls for @dextradegems
+2025-05-25 10:52:35,034 - phoenix.telegram - INFO - 📊 Analyzing call 1/5 for @dextradegems
+2025-05-25 10:52:39,864 - phoenix.telegram - ERROR - Error getting token performance: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-05-25 10:52:40,239 - phoenix.telegram - INFO - 📊 Analyzing call 2/5 for @dextradegems
+2025-05-25 10:52:57,659 - phoenix.telegram - ERROR - Error getting token performance: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-05-25 10:52:57,659 - phoenix.telegram - INFO - 📊 Analyzing call 3/4 for @RimberioGamble
+2025-05-25 10:52:57,659 - phoenix.telegram - INFO - Scraping up to 500 messages from Gems Mine(Gamble) (ID: 1500214409)
+2025-05-25 10:53:00,523 - phoenix.telegram - ERROR - Error getting token performance: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-05-25 10:53:00,523 - phoenix.telegram - INFO - 📊 Analyzing call 3/5 for @avrugs
+2025-05-25 10:53:00,681 - phoenix.telegram - INFO - 📊 Analyzing call 3/5 for @dextradegems
+2025-05-25 10:53:00,866 - phoenix.birdeye - WARNING - No price history available for 9a56aCDDuu6q2cwH6yAv4Swmx9xHGbN84yT74stRSELe
+2025-05-25 10:53:02,365 - phoenix.telegram - WARNING - Using baseline price for 9a56aCDDuu6q2cwH6yAv4Swmx9xHGbN84yT74stRSELe
+2025-05-25 10:53:02,365 - phoenix.telegram - ERROR - Error getting token performance: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-05-25 10:53:02,365 - phoenix.telegram - INFO - 📊 Analyzing call 4/4 for @RimberioGamble
+2025-05-25 10:53:06,580 - phoenix.telegram - ERROR - Error getting token performance: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-05-25 10:53:06,580 - phoenix.telegram - INFO - 📊 Analyzing call 4/5 for @avrugs
+2025-05-25 10:58:08,502 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-25 10:58:08,502 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-25 10:58:08,836 - phoenix - INFO - ✅ Imported telegram module
+2025-05-25 10:58:08,836 - phoenix - INFO - 🚀 Starting enhanced SpyDefi analysis for the past 24 hours.
+2025-05-25 10:58:08,836 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv
+2025-05-25 10:58:08,836 - phoenix - INFO - 🔄 Force refresh enabled - ignoring cache
+2025-05-25 10:58:08,836 - phoenix - INFO - ✅ Birdeye API initialized successfully
+2025-05-25 10:58:08,836 - phoenix - INFO - ✅ Helius API initialized successfully for pump.fun tokens
+2025-05-25 10:58:08,836 - phoenix - INFO - ✅ Telegram scraper initialized successfully
+2025-05-25 10:58:08,836 - phoenix - INFO - 🎯 SpyDefi channel detected. Running enhanced analysis...
+2025-05-25 10:58:08,836 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-25 10:58:08,836 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-25 10:58:08,962 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-25 10:58:09,742 - phoenix.telegram - INFO - Connected to Telegram
+2025-05-25 10:58:09,783 - phoenix - INFO - 📞 Connected to Telegram
+2025-05-25 10:58:09,783 - phoenix.telegram - INFO - 🚀 STARTING OPTIMIZED SPYDEFI ANALYSIS (2x Hot Streak Focus)
+2025-05-25 10:58:09,783 - phoenix.telegram - INFO - 🎯 Phase 1: Discovering active KOLs from SpyDefi...
+2025-05-25 10:58:09,783 - phoenix.telegram - INFO - ✅ Birdeye API available for mainstream tokens
+2025-05-25 10:58:09,783 - phoenix.telegram - INFO - ✅ Helius API available for enhanced price discovery
+2025-05-25 10:58:09,783 - phoenix.telegram - INFO - 🔍 Scanning SpyDefi for last 6 hours...
+2025-05-25 10:58:09,910 - phoenix.telegram - INFO - Scraping up to 1000 messages from SpyDefi (ID: 1960616143)
+2025-05-25 10:58:12,993 - phoenix.telegram - INFO - Finished retrieving 895 messages from 1960616143
+2025-05-25 10:58:13,007 - phoenix.telegram - INFO - ✅ Found 195 unique KOLs (+195 new) from 895 messages
+2025-05-25 10:58:13,007 - phoenix.telegram - INFO - 🎯 Sufficient KOLs found (195), stopping discovery
+2025-05-25 10:58:13,007 - phoenix.telegram - INFO - ✅ Saved SpyDefi cache with 195 KOLs
+2025-05-25 10:58:13,007 - phoenix.telegram - INFO - ✅ Found 195 active KOLs from SpyDefi
+2025-05-25 10:58:13,007 - phoenix.telegram - INFO - 🎯 Phase 2: Initial analysis of KOLs (last 5 calls each)...
+2025-05-25 10:58:13,007 - phoenix.telegram - INFO - 📊 Analyzing top 30 KOLs for initial screening
+2025-05-25 10:58:13,007 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @avrugs (initial analysis)
+2025-05-25 10:58:13,007 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @dextradegems (initial analysis)
+2025-05-25 10:58:13,007 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @RimberioGamble (initial analysis)
+2025-05-25 10:58:13,007 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @GemsmineEth (initial analysis)
+2025-05-25 10:58:13,007 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @Zen_call (initial analysis)
+2025-05-25 10:58:13,007 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @Insider_ECA (initial analysis)
+2025-05-25 10:58:13,007 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @hulkgemscalls_real (initial analysis)
+2025-05-25 10:58:13,007 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @bossygambles (initial analysis)
+2025-05-25 10:58:13,007 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @ChapoInsider (initial analysis)
+2025-05-25 10:58:13,007 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @TopCallersChannel (initial analysis)
+2025-05-25 10:58:13,007 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @Maestrosdegen (initial analysis)
+2025-05-25 10:58:13,007 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @MarksGems (initial analysis)
+2025-05-25 10:58:13,007 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @RedBullCallz (initial analysis)
+2025-05-25 10:58:13,007 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @MitchGemsGambles (initial analysis)
+2025-05-25 10:58:13,007 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @LoomRipple (initial analysis)
+2025-05-25 10:58:13,024 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @Mrbigbagcalls (initial analysis)
+2025-05-25 10:58:13,024 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @WitchLabs (initial analysis)
+2025-05-25 10:58:13,024 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @FrostScribe (initial analysis)
+2025-05-25 10:58:13,024 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @InsiderSolanaPrintors (initial analysis)
+2025-05-25 10:58:13,024 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @PEPE_Calls28 (initial analysis)
+2025-05-25 10:58:13,024 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @DONALD_CALL (initial analysis)
+2025-05-25 10:58:13,024 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @AZcalls (initial analysis)
+2025-05-25 10:58:13,024 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @chiggajogambles (initial analysis)
+2025-05-25 10:58:13,024 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @faycalldegen (initial analysis)
+2025-05-25 10:58:13,024 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @BreezeTrack (initial analysis)
+2025-05-25 10:58:13,024 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @CryptachCalls (initial analysis)
+2025-05-25 10:58:13,039 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @JuLzLabs (initial analysis)
+2025-05-25 10:58:13,039 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @baseddegengems (initial analysis)
+2025-05-25 10:58:13,039 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @bidaopd (initial analysis)
+2025-05-25 10:58:13,039 - phoenix.telegram - INFO - 🔍 Analyzing individual KOL: @Cryptosparrowcall9 (initial analysis)
+2025-05-25 10:58:13,164 - phoenix.telegram - INFO - Scraping up to 500 messages from TokyoHunter Calls (ID: 1691606433)
+2025-05-25 10:58:13,164 - phoenix.telegram - INFO - Scraping up to 500 messages from DeXGems (ID: 1268629886)
+2025-05-25 10:58:13,164 - phoenix.telegram - INFO - Scraping up to 500 messages from Rimberio Gamble (ID: 1771818884)
+2025-05-25 10:58:13,464 - phoenix.telegram - INFO - Finished retrieving 22 messages from 1771818884
+2025-05-25 10:58:13,464 - phoenix.telegram - INFO - 📨 Found 22 messages in @RimberioGamble's channel
+2025-05-25 10:58:13,464 - phoenix.telegram - INFO - 🎯 Found 4 unique token calls for @RimberioGamble
+2025-05-25 10:58:13,464 - phoenix.telegram - INFO - 📊 Analyzing call 1/4 for @RimberioGamble
+2025-05-25 10:58:13,734 - phoenix.telegram - INFO - 📊 Analyzing call 2/4 for @RimberioGamble
+2025-05-25 10:58:13,734 - phoenix.telegram - INFO - Finished retrieving 41 messages from 1691606433
+2025-05-25 10:58:13,734 - phoenix.telegram - INFO - 📨 Found 41 messages in @avrugs's channel
+2025-05-25 10:58:13,743 - phoenix.telegram - INFO - 🎯 Found 5 unique token calls for @avrugs
+2025-05-25 10:58:13,743 - phoenix.telegram - INFO - 📊 Analyzing call 1/5 for @avrugs
+2025-05-25 10:58:18,173 - phoenix.telegram - INFO - 📊 Analyzing call 2/5 for @avrugs
+2025-05-25 10:58:18,180 - phoenix.telegram - INFO - Finished retrieving 30 messages from 1268629886
+2025-05-25 10:58:18,180 - phoenix.telegram - INFO - 📨 Found 30 messages in @dextradegems's channel
+2025-05-25 10:58:18,180 - phoenix.telegram - INFO - 🎯 Found 5 unique token calls for @dextradegems
+2025-05-25 10:58:18,180 - phoenix.telegram - INFO - 📊 Analyzing call 1/5 for @dextradegems
+2025-05-25 10:58:22,067 - phoenix.telegram - INFO - 📊 Analyzing call 2/5 for @dextradegems
+2025-05-25 10:58:44,696 - phoenix.telegram - INFO - 📊 Analyzing call 3/4 for @RimberioGamble
+2025-05-25 10:58:47,835 - phoenix.telegram - INFO - 📊 Analyzing call 3/5 for @avrugs
+2025-05-25 10:58:47,993 - phoenix.telegram - INFO - 📊 Analyzing call 3/5 for @dextradegems
+2025-05-25 10:58:47,993 - phoenix.telegram - INFO - Scraping up to 500 messages from Gems Mine(Gamble) (ID: 1500214409)
+2025-05-25 10:58:48,200 - phoenix.birdeye - WARNING - No price history available for 9a56aCDDuu6q2cwH6yAv4Swmx9xHGbN84yT74stRSELe
+2025-05-25 10:58:49,838 - phoenix.telegram - WARNING - Using baseline price for 9a56aCDDuu6q2cwH6yAv4Swmx9xHGbN84yT74stRSELe
+2025-05-25 10:58:49,838 - phoenix.telegram - INFO - 📊 Analyzing call 4/4 for @RimberioGamble
+2025-05-25 10:58:53,462 - phoenix.telegram - INFO - 📊 Analyzing call 4/5 for @avrugs
+2025-05-25 10:58:57,057 - phoenix.telegram - INFO - 📊 Analyzing call 4/5 for @dextradegems
+2025-05-25 10:58:57,233 - phoenix.birdeye - WARNING - No price history available for DjMPcFT2Yg8nhHvUM6dAqUtjVNgb9Ms8sCbJ2FtodxG9
+2025-05-25 10:59:07,099 - phoenix.telegram - WARNING - Using baseline price for DjMPcFT2Yg8nhHvUM6dAqUtjVNgb9Ms8sCbJ2FtodxG9
+2025-05-25 10:59:10,418 - phoenix.telegram - INFO - 📊 Analyzing call 5/5 for @avrugs
+2025-05-25 10:59:10,434 - phoenix.telegram - ERROR - Timeout analyzing @dextradegems after 45s
+2025-05-25 10:59:10,434 - phoenix.telegram - ERROR - Timeout analyzing @Zen_call after 45s
+2025-05-25 10:59:10,434 - phoenix.telegram - ERROR - Timeout analyzing @hulkgemscalls_real after 45s
+2025-05-25 10:59:10,434 - phoenix.telegram - ERROR - Timeout analyzing @bossygambles after 45s
+2025-05-25 10:59:10,434 - phoenix.telegram - ERROR - Timeout analyzing @Insider_ECA after 45s
+2025-05-25 10:59:10,434 - phoenix.telegram - ERROR - Timeout analyzing @MitchGemsGambles after 45s
+2025-05-25 10:59:10,434 - phoenix.telegram - ERROR - Timeout analyzing @RedBullCallz after 45s
+2025-05-25 10:59:10,434 - phoenix.telegram - ERROR - Timeout analyzing @GemsmineEth after 45s
+2025-05-25 10:59:10,434 - phoenix.telegram - ERROR - Timeout analyzing @Maestrosdegen after 45s
+2025-05-25 10:59:10,434 - phoenix.telegram - ERROR - Timeout analyzing @MarksGems after 45s
+2025-05-25 10:59:10,434 - phoenix.telegram - ERROR - Timeout analyzing @LoomRipple after 45s
+2025-05-25 10:59:10,434 - phoenix.telegram - ERROR - Timeout analyzing @avrugs after 45s
+2025-05-25 10:59:10,434 - phoenix.telegram - ERROR - Timeout analyzing @ChapoInsider after 45s
+2025-05-25 10:59:10,434 - phoenix.telegram - ERROR - Timeout analyzing @TopCallersChannel after 45s
+2025-05-25 10:59:10,434 - phoenix.telegram - ERROR - Timeout analyzing @faycalldegen after 45s
+2025-05-25 10:59:10,434 - phoenix.telegram - ERROR - Timeout analyzing @chiggajogambles after 45s
+2025-05-25 10:59:10,434 - phoenix.telegram - ERROR - Timeout analyzing @DONALD_CALL after 45s
+2025-05-25 10:59:10,434 - phoenix.telegram - ERROR - Timeout analyzing @InsiderSolanaPrintors after 45s
+2025-05-25 10:59:10,434 - phoenix.telegram - ERROR - Timeout analyzing @PEPE_Calls28 after 45s
+2025-05-25 10:59:10,434 - phoenix.telegram - ERROR - Timeout analyzing @WitchLabs after 45s
+2025-05-25 10:59:10,434 - phoenix.telegram - ERROR - Timeout analyzing @FrostScribe after 45s
+2025-05-25 10:59:10,434 - phoenix.telegram - ERROR - Timeout analyzing @Mrbigbagcalls after 45s
+2025-05-25 10:59:10,434 - phoenix.telegram - ERROR - Timeout analyzing @AZcalls after 45s
+2025-05-25 10:59:10,434 - phoenix.telegram - ERROR - Timeout analyzing @CryptachCalls after 45s
+2025-05-25 10:59:10,434 - phoenix.telegram - ERROR - Timeout analyzing @JuLzLabs after 45s
+2025-05-25 10:59:10,434 - phoenix.telegram - ERROR - Timeout analyzing @BreezeTrack after 45s
+2025-05-25 10:59:10,434 - phoenix.telegram - ERROR - Timeout analyzing @Cryptosparrowcall9 after 45s
+2025-05-25 10:59:10,434 - phoenix.telegram - ERROR - Timeout analyzing @baseddegengems after 45s
+2025-05-25 10:59:10,434 - phoenix.telegram - ERROR - Timeout analyzing @bidaopd after 45s
+2025-05-25 10:59:12,993 - phoenix.telegram - WARNING - Circuit breaker triggered after 3 failures
+2025-05-25 10:59:12,993 - phoenix.telegram - INFO - 🎯 Phase 3: Deep analysis for KOLs with 40%+ 2x success rate...
+2025-05-25 10:59:12,993 - phoenix.telegram - INFO - 🔥 Found 0 KOLs qualified for deep analysis
+2025-05-25 10:59:12,993 - phoenix.telegram - INFO - 🎯 Phase 4: Calculating composite scores (2x rate + speed)...
+2025-05-25 10:59:12,993 - phoenix.telegram - INFO - 🏆 TOP 10 KOLs by composite score (2x rate + speed weighted):
+2025-05-25 10:59:12,993 - phoenix.telegram - INFO -    1. @RimberioGamble: 56.1 score, 25.0% 2x rate, 21.2 min avg
+2025-05-25 10:59:12,993 - phoenix.telegram - INFO - 🎯 Phase 5: Getting channel IDs for TOP 10 KOLs...
+2025-05-25 10:59:14,136 - phoenix.telegram - INFO - 📊 VALIDATION STATISTICS:
+2025-05-25 10:59:14,136 - phoenix.telegram - INFO -    📍 Contract extraction attempts: 93
+2025-05-25 10:59:14,136 - phoenix.telegram - INFO -    ✅ Valid addresses found: 56
+2025-05-25 10:59:14,136 - phoenix.telegram - INFO -    ❌ Invalid addresses rejected: 0
+2025-05-25 10:59:14,136 - phoenix.telegram - INFO -    🚀 Pump.fun tokens found: 116
+2025-05-25 10:59:14,136 - phoenix.telegram - INFO -    📊 Tokens analyzed: 11
+2025-05-25 10:59:14,136 - phoenix.telegram - INFO -    💾 Tokens cached: 0
+2025-05-25 10:59:14,136 - phoenix.telegram - INFO -    🔍 Price discovery attempts: 11
+2025-05-25 10:59:14,136 - phoenix.telegram - INFO -    ✅ Price discovery successes: 11
+2025-05-25 10:59:14,136 - phoenix.telegram - INFO -    📞 Birdeye API calls made: 4
+2025-05-25 10:59:14,136 - phoenix.telegram - INFO -    📞 Helius API calls made: 9
+2025-05-25 10:59:14,136 - phoenix.telegram - INFO -    📞 RPC calls made: 0
+2025-05-25 10:59:14,136 - phoenix.telegram - INFO -    ⚠️ Birdeye API failures: 2
+2025-05-25 10:59:14,136 - phoenix.telegram - INFO -    ⚠️ Helius API failures: 0
+2025-05-25 10:59:14,136 - phoenix.telegram - INFO -    ⚠️ RPC failures: 0
+2025-05-25 10:59:14,136 - phoenix.telegram - INFO -    📈 Address validation success rate: 100.0%
+2025-05-25 10:59:14,136 - phoenix.telegram - INFO - 🎉 OPTIMIZED ANALYSIS COMPLETE!
+2025-05-25 10:59:14,136 - phoenix.telegram - INFO - 📊 Total KOLs analyzed: 1
+2025-05-25 10:59:14,136 - phoenix.telegram - INFO - 📊 Initial analyses: 1
+2025-05-25 10:59:14,136 - phoenix.telegram - INFO - 📊 Deep analyses: 0
+2025-05-25 10:59:14,136 - phoenix.telegram - INFO - 📊 Total calls analyzed: 4
+2025-05-25 10:59:14,136 - phoenix.telegram - INFO - 📊 2x success rate: 25.0%
+2025-05-25 10:59:14,136 - phoenix - INFO - 📊 Analysis completed, exporting results...
+2025-05-25 10:59:14,151 - phoenix.telegram - INFO - ✅ Exported 1 KOLs to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv
+2025-05-25 10:59:14,151 - phoenix.telegram - INFO - ✅ Exported summary to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced_summary.txt
+2025-05-25 10:59:14,151 - phoenix.telegram - INFO - Disconnecting from Telegram...
+2025-05-25 10:59:14,151 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-25 10:59:14,151 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-25 10:59:14,167 - phoenix.telegram - INFO - Disconnected from Telegram
+2025-05-25 10:59:14,167 - phoenix - INFO - 📞 Disconnected from Telegram
+2025-05-25 10:59:14,167 - phoenix - INFO - 📁 Enhanced telegram analysis completed. Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv
+2025-05-25 10:59:14,500 - phoenix.export - WARNING - ranked_kols is a list, converting to dictionary format
+2025-05-25 10:59:14,500 - phoenix.export - INFO - Successfully exported analysis to Excel: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced_enhanced.xlsx
+2025-05-25 10:59:14,520 - phoenix - INFO - 📊 Enhanced Excel export completed: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced_enhanced.xlsx

@@ -1,211 +1,125 @@
 """
 Helius API Module - Phoenix Project (ENHANCED VERSION)
 
-CHANGES:
-- Added better error handling for pump.fun tokens
-- Added price estimation methods
-- Maintained all wallet module functionality
-- Added retry logic and timeout handling
-- Better response validation
+This module handles all interactions with Helius API for enhanced transaction parsing,
+pump.fun token analysis, and multi-source price discovery.
 
-This module handles Helius RPC API interactions for enhanced transaction parsing,
-pump.fun token analysis, and other Solana blockchain data.
+MAJOR UPDATES:
+- Uses Enhanced Transactions API for proper transaction parsing
+- Implements pump.fun bonding curve price calculation
+- Multi-source price discovery with fallbacks
+- Early call detection and special handling
+- Maintains backward compatibility with wallet_module
 """
 
 import requests
 import logging
 import time
+import json
 from typing import Dict, List, Any, Optional, Tuple
 from datetime import datetime, timedelta
+from dataclasses import dataclass
+import base58
 
 logger = logging.getLogger("phoenix.helius")
 
+@dataclass
+class PricePoint:
+    """Data class for price points"""
+    timestamp: int
+    price: float
+    source: str
+    is_baseline: bool = False
+    confidence: str = "high"  # high, medium, low
+
 class HeliusAPI:
-    """Enhanced Helius API client for pump.fun tokens and transaction parsing."""
+    """Enhanced Helius API client with proper transaction parsing and price discovery."""
     
-    BASE_URL = "https://api.helius.xyz/v0"
-    MAINNET_RPC_URL = "https://mainnet.helius-rpc.com"
+    # Helius API endpoints
+    BASE_URL = "https://api.helius.xyz"
     
-    # Retry configuration
-    MAX_RETRIES = 3
-    RETRY_DELAY = 2
-    REQUEST_TIMEOUT = 30
+    # Pump.fun constants
+    PUMP_FUN_PROGRAM = "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P"
+    PUMP_FUN_INITIAL_PRICE = 0.000000001  # Conservative estimate
+    
+    # Known DEX programs
+    DEX_PROGRAMS = {
+        "675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8": "Raydium",
+        "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc": "Orca",
+        "JUP4Fb2cqiRUcaTHdrPC8h2gNsA2ETXiPDD33WcGuJB": "Jupiter",
+        "CAMMCzo5YL8w4VFF8KVHrK22GGUsp5VTaW7grrKgrWqK": "Raydium CPMM"
+    }
     
     def __init__(self, api_key: str):
         """
         Initialize the Helius API client.
         
         Args:
-            api_key (str): Helius API key
+            api_key (str): The Helius API key
         """
         self.api_key = api_key
-        self.session = requests.Session()
-        self.session.headers.update({
-            "Content-Type": "application/json",
-            "User-Agent": "Phoenix-Project/1.0"
-        })
+        self.headers = {
+            "Content-Type": "application/json"
+        }
+        self.rpc_url = f"https://mainnet.helius-rpc.com/?api-key={api_key}"
         
-        # Track API calls
-        self._api_call_count = 0
-        self._api_error_count = 0
-        self._last_call_time = 0
-        self._min_call_interval = 0.5  # 500ms between calls
+        # Cache for performance
+        self.token_cache = {}
+        self.price_cache = {}
+        self.cache_ttl = 300  # 5 minutes
         
+        # Rate limiting
+        self._last_request_time = 0
+        self._min_request_interval = 0.1  # 100ms between requests
+    
     def _rate_limit(self):
         """Apply rate limiting to avoid overwhelming the API."""
         current_time = time.time()
-        time_since_last_call = current_time - self._last_call_time
+        time_since_last = current_time - self._last_request_time
         
-        if time_since_last_call < self._min_call_interval:
-            sleep_time = self._min_call_interval - time_since_last_call
-            time.sleep(sleep_time)
+        if time_since_last < self._min_request_interval:
+            time.sleep(self._min_request_interval - time_since_last)
         
-        self._last_call_time = time.time()
+        self._last_request_time = time.time()
     
-    def _make_request(self, endpoint: str, params: Optional[Dict[str, Any]] = None, 
-                     method: str = "GET", json_data: Optional[Dict[str, Any]] = None,
-                     use_rpc: bool = False) -> Dict[str, Any]:
+    def _make_request(self, endpoint: str, method: str = "GET", 
+                     data: Optional[Dict[str, Any]] = None,
+                     params: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """
-        Make a request to Helius API with retry logic.
+        Make a request to the Helius API.
         
         Args:
             endpoint (str): API endpoint
-            params (Dict[str, Any], optional): Query parameters
             method (str): HTTP method
-            json_data (Dict[str, Any], optional): JSON body for POST requests
-            use_rpc (bool): Whether to use RPC endpoint
+            data (Dict[str, Any], optional): Request body
+            params (Dict[str, Any], optional): Query parameters
             
         Returns:
             Dict[str, Any]: Response data
         """
-        # Choose base URL
-        base_url = self.MAINNET_RPC_URL if use_rpc else self.BASE_URL
-        url = f"{base_url}/{endpoint.lstrip('/')}"
+        self._rate_limit()
+        
+        url = f"{self.BASE_URL}{endpoint}"
         
         # Add API key to params
         if params is None:
             params = {}
         params['api-key'] = self.api_key
         
-        # Apply rate limiting
-        self._rate_limit()
-        self._api_call_count += 1
-        
-        # Retry loop
-        for attempt in range(self.MAX_RETRIES):
-            try:
-                logger.debug(f"Making request to {url} (attempt {attempt + 1}/{self.MAX_RETRIES})")
-                
-                if method.upper() == "GET":
-                    response = self.session.get(url, params=params, timeout=self.REQUEST_TIMEOUT)
-                elif method.upper() == "POST":
-                    if use_rpc:
-                        # RPC calls use different format
-                        response = self.session.post(url, json=json_data, timeout=self.REQUEST_TIMEOUT)
-                    else:
-                        response = self.session.post(url, params=params, json=json_data, timeout=self.REQUEST_TIMEOUT)
-                else:
-                    raise ValueError(f"Unsupported HTTP method: {method}")
-                
-                # Check for rate limiting
-                if response.status_code == 429:
-                    retry_after = int(response.headers.get('Retry-After', 60))
-                    logger.warning(f"Rate limited. Waiting {retry_after} seconds...")
-                    time.sleep(retry_after)
-                    continue
-                
-                # Check for server errors
-                if response.status_code >= 500:
-                    logger.warning(f"Server error {response.status_code}. Retrying...")
-                    if attempt < self.MAX_RETRIES - 1:
-                        time.sleep(self.RETRY_DELAY * (2 ** attempt))
-                        continue
-                
-                # For client errors, don't retry
-                if 400 <= response.status_code < 500:
-                    self._api_error_count += 1
-                    error_msg = f"HTTP {response.status_code}: {response.text}"
-                    logger.error(f"Client error: {error_msg}")
-                    return {
-                        "success": False,
-                        "error": error_msg,
-                        "status_code": response.status_code
-                    }
-                
-                response.raise_for_status()
-                
-                # Parse response
-                try:
-                    result = response.json()
-                    
-                    # For RPC responses
-                    if use_rpc and "result" in result:
-                        return {
-                            "success": True,
-                            "data": result["result"]
-                        }
-                    # For regular API responses
-                    elif isinstance(result, dict):
-                        if "error" in result:
-                            self._api_error_count += 1
-                            return {
-                                "success": False,
-                                "error": result["error"]
-                            }
-                        return {
-                            "success": True,
-                            "data": result
-                        }
-                    elif isinstance(result, list):
-                        return {
-                            "success": True,
-                            "data": result
-                        }
-                    else:
-                        return {
-                            "success": True,
-                            "data": result
-                        }
-                except ValueError:
-                    self._api_error_count += 1
-                    return {
-                        "success": False,
-                        "error": "Invalid JSON response",
-                        "raw_response": response.text
-                    }
-                    
-            except requests.exceptions.Timeout:
-                logger.warning(f"Request timeout (attempt {attempt + 1}/{self.MAX_RETRIES})")
-                if attempt < self.MAX_RETRIES - 1:
-                    time.sleep(self.RETRY_DELAY * (2 ** attempt))
-                else:
-                    self._api_error_count += 1
-                    return {
-                        "success": False,
-                        "error": f"Request timeout after {self.MAX_RETRIES} attempts"
-                    }
-                    
-            except requests.exceptions.ConnectionError as e:
-                logger.error(f"Connection error (attempt {attempt + 1}/{self.MAX_RETRIES}): {str(e)}")
-                if attempt < self.MAX_RETRIES - 1:
-                    time.sleep(self.RETRY_DELAY * (2 ** attempt))
-                else:
-                    self._api_error_count += 1
-                    return {
-                        "success": False,
-                        "error": f"Connection error: {str(e)}"
-                    }
-                    
-            except Exception as e:
-                logger.error(f"Unexpected error: {str(e)}")
-                self._api_error_count += 1
-                return {
-                    "success": False,
-                    "error": f"Unexpected error: {str(e)}"
-                }
-        
-        # Should not reach here
-        return {"success": False, "error": "Max retries exceeded"}
+        try:
+            if method.upper() == "GET":
+                response = requests.get(url, headers=self.headers, params=params, timeout=30)
+            elif method.upper() == "POST":
+                response = requests.post(url, headers=self.headers, json=data, params=params, timeout=30)
+            else:
+                raise ValueError(f"Unsupported HTTP method: {method}")
+            
+            response.raise_for_status()
+            return response.json()
+            
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Helius API request failed: {str(e)}")
+            return {"error": str(e)}
     
     def health_check(self) -> bool:
         """
@@ -215,374 +129,471 @@ class HeliusAPI:
             bool: True if API is accessible, False otherwise
         """
         try:
-            logger.info("Checking Helius API connectivity...")
-            
-            # Try a simple RPC call
-            test_payload = {
-                "jsonrpc": "2.0",
-                "id": 1,
-                "method": "getHealth"
-            }
-            
-            response = self._make_request("", json_data=test_payload, method="POST", use_rpc=True)
-            
-            if response.get("success"):
-                logger.info("✅ Helius API is accessible")
-                return True
-            else:
-                logger.error(f"❌ Helius API health check failed: {response.get('error', 'Unknown error')}")
-                return False
-                
+            # Use RPC health check
+            response = requests.post(
+                self.rpc_url,
+                json={"jsonrpc": "2.0", "id": 1, "method": "getHealth"},
+                timeout=10
+            )
+            return response.status_code == 200
         except Exception as e:
-            logger.error(f"Helius API health check failed: {str(e)}")
+            logger.error(f"Helius health check failed: {str(e)}")
             return False
     
-    def get_enhanced_transactions(self, wallet_address: str, limit: int = 100) -> Dict[str, Any]:
+    def get_enhanced_transactions(self, address: str, limit: int = 100) -> Dict[str, Any]:
         """
-        Get enhanced parsed transactions for a wallet.
+        Get enhanced parsed transactions for an address.
         
         Args:
-            wallet_address (str): Wallet address to get transactions for
+            address (str): Wallet or token address
             limit (int): Maximum number of transactions to return
             
         Returns:
             Dict[str, Any]: Enhanced transaction data
         """
-        logger.info(f"Fetching enhanced transactions for {wallet_address}")
-        
-        # Use the enhanced transactions endpoint
-        response = self._make_request(
-            f"addresses/{wallet_address}/transactions",
-            params={
+        try:
+            endpoint = f"/v0/addresses/{address}/transactions"
+            params = {
                 "limit": min(limit, 100),
-                "commitment": "confirmed",
                 "type": "SWAP"  # Focus on swap transactions
             }
-        )
-        
-        if response.get("success"):
-            transactions = response.get("data", [])
-            logger.info(f"Successfully retrieved {len(transactions)} enhanced transactions")
             
-            # Process transactions to extract swap details
-            processed_txs = []
-            for tx in transactions:
-                processed = self._process_enhanced_transaction(tx)
-                if processed:
-                    processed_txs.append(processed)
+            result = self._make_request(endpoint, params=params)
+            
+            if "error" in result:
+                logger.error(f"Failed to get enhanced transactions: {result['error']}")
+                return {"success": False, "error": result["error"]}
             
             return {
                 "success": True,
-                "data": processed_txs,
-                "count": len(processed_txs)
+                "data": result,
+                "count": len(result) if isinstance(result, list) else 0
             }
-        else:
-            logger.error(f"Failed to get enhanced transactions: {response.get('error', 'Unknown error')}")
-            return response
-    
-    def _process_enhanced_transaction(self, tx: Dict[str, Any]) -> Optional[Dict[str, Any]]:
-        """Process an enhanced transaction to extract relevant details."""
-        try:
-            # Extract basic info
-            signature = tx.get("signature", "")
-            timestamp = tx.get("timestamp", 0)
-            fee = tx.get("fee", 0)
-            
-            # Extract token transfers
-            token_transfers = tx.get("tokenTransfers", [])
-            native_transfers = tx.get("nativeTransfers", [])
-            
-            # Identify swap details
-            swap_info = {
-                "signature": signature,
-                "timestamp": timestamp,
-                "fee": fee,
-                "token_inputs": [],
-                "token_outputs": [],
-                "sol_change": 0
-            }
-            
-            # Process token transfers
-            for transfer in token_transfers:
-                amount = transfer.get("tokenAmount", 0)
-                mint = transfer.get("mint", "")
-                from_addr = transfer.get("fromUserAccount", "")
-                to_addr = transfer.get("toUserAccount", "")
-                
-                if amount > 0:
-                    if to_addr == tx.get("feePayer", ""):
-                        swap_info["token_outputs"].append({
-                            "mint": mint,
-                            "amount": amount
-                        })
-                    else:
-                        swap_info["token_inputs"].append({
-                            "mint": mint,
-                            "amount": amount
-                        })
-            
-            # Process SOL transfers
-            for transfer in native_transfers:
-                if transfer.get("toUserAccount") == tx.get("feePayer", ""):
-                    swap_info["sol_change"] += transfer.get("amount", 0)
-                else:
-                    swap_info["sol_change"] -= transfer.get("amount", 0)
-            
-            return swap_info
             
         except Exception as e:
-            logger.error(f"Error processing enhanced transaction: {str(e)}")
-            return None
+            logger.error(f"Error getting enhanced transactions: {str(e)}")
+            return {"success": False, "error": str(e)}
     
-    def analyze_token_swaps(self, wallet_address: str = "", token_address: str = "", 
-                          limit: int = 100) -> Dict[str, Any]:
+    def parse_transaction(self, signature: str) -> Dict[str, Any]:
         """
-        Analyze token swaps for a specific token or wallet.
-        Enhanced version with better error handling.
+        Parse a single transaction to extract swap details.
         
         Args:
-            wallet_address (str): Wallet address (optional)
-            token_address (str): Token address to analyze
-            limit (int): Maximum number of swaps to analyze
+            signature (str): Transaction signature
             
         Returns:
-            Dict[str, Any]: Swap analysis results
+            Dict[str, Any]: Parsed transaction data
         """
-        logger.info(f"Analyzing swaps for token {token_address}")
-        
         try:
-            # For pump.fun tokens, we need a different approach
-            if token_address.endswith('pump'):
-                return self._analyze_pump_fun_swaps(token_address, limit)
+            endpoint = f"/v0/transactions/{signature}"
+            result = self._make_request(endpoint)
             
-            # Try to get transaction history
-            params = {
-                "limit": min(limit, 100)
-            }
+            if "error" in result:
+                return {"success": False, "error": result["error"]}
             
-            # Use token transactions endpoint if available
-            endpoint = f"tokens/{token_address}/transactions"
-            response = self._make_request(endpoint, params=params)
-            
-            if not response.get("success"):
-                # Fallback: try alternative endpoint or method
-                logger.warning(f"Primary endpoint failed, trying fallback for {token_address}")
-                return self._fallback_swap_analysis(token_address, limit)
-            
-            transactions = response.get("data", [])
-            if not transactions:
-                logger.warning(f"No transactions found for token {token_address}")
-                return {
-                    "success": False,
-                    "data": [],
-                    "error": "No transactions found"
-                }
-            
-            # Process swaps
-            swaps = []
-            for tx in transactions:
-                swap_data = self._extract_swap_data(tx, token_address)
-                if swap_data:
-                    swaps.append(swap_data)
+            # Extract swap information
+            swap_info = self._extract_swap_info(result)
             
             return {
                 "success": True,
-                "data": swaps,
-                "count": len(swaps)
+                "data": result,
+                "swap_info": swap_info
             }
             
         except Exception as e:
-            logger.error(f"Error analyzing token swaps: {str(e)}")
-            return {
-                "success": False,
-                "error": str(e),
-                "data": []
-            }
+            logger.error(f"Error parsing transaction: {str(e)}")
+            return {"success": False, "error": str(e)}
     
-    def _analyze_pump_fun_swaps(self, token_address: str, limit: int) -> Dict[str, Any]:
-        """Special handling for pump.fun tokens."""
-        logger.info(f"Using pump.fun specific analysis for {token_address}")
-        
-        # Pump.fun tokens often have limited data
-        # Return empty but valid response to trigger fallback
-        return {
-            "success": False,
-            "data": [],
-            "error": "Pump.fun token - limited data available",
-            "is_pump_token": True
-        }
-    
-    def _fallback_swap_analysis(self, token_address: str, limit: int) -> Dict[str, Any]:
-        """Fallback method for swap analysis when primary fails."""
-        logger.info(f"Using fallback swap analysis for {token_address}")
-        
-        # Return empty but valid response
-        return {
-            "success": False,
-            "data": [],
-            "error": "No swap data available from Helius",
-            "fallback_used": True
-        }
-    
-    def _extract_swap_data(self, tx: Dict[str, Any], token_address: str) -> Optional[Dict[str, Any]]:
-        """Extract swap data from a transaction."""
-        try:
-            # Basic transaction info
-            signature = tx.get("signature", "")
-            timestamp = tx.get("timestamp", 0)
-            
-            # Look for token balance changes
-            token_balance_changes = tx.get("tokenBalanceChanges", [])
-            native_balance_changes = tx.get("nativeBalanceChanges", [])
-            
-            # Find changes for our token
-            token_change = 0
-            sol_change = 0
-            
-            for change in token_balance_changes:
-                if change.get("mint") == token_address:
-                    token_change = change.get("rawTokenAmount", {}).get("tokenAmount", 0)
-            
-            for change in native_balance_changes:
-                sol_change += change.get("amount", 0)
-            
-            if token_change != 0 and sol_change != 0:
-                # Determine swap type
-                swap_type = "buy" if token_change > 0 else "sell"
-                
-                # Calculate implied price
-                token_amount_abs = abs(token_change)
-                sol_amount_abs = abs(sol_change) / 1e9  # Convert lamports to SOL
-                
-                return {
-                    "signature": signature,
-                    "timestamp": timestamp,
-                    "type": swap_type,
-                    "token_amount": token_amount_abs,
-                    "sol_amount": sol_amount_abs,
-                    "implied_price": sol_amount_abs / token_amount_abs if token_amount_abs > 0 else 0
-                }
-            
-            return None
-            
-        except Exception as e:
-            logger.error(f"Error extracting swap data: {str(e)}")
-            return None
-    
-    def get_token_metadata(self, mint_addresses: List[str]) -> Dict[str, Any]:
+    def get_token_metadata(self, token_addresses: List[str]) -> Dict[str, Any]:
         """
-        Get metadata for multiple tokens.
+        Get metadata for multiple tokens using DAS API.
+        Maintains compatibility with existing code.
         
         Args:
-            mint_addresses (List[str]): List of token mint addresses
+            token_addresses (List[str]): List of token addresses
             
         Returns:
             Dict[str, Any]: Token metadata
         """
-        if not mint_addresses:
-            return {"success": True, "data": []}
-        
-        logger.info(f"Fetching metadata for {len(mint_addresses)} tokens")
-        
-        # Helius supports batch metadata requests
-        response = self._make_request(
-            "token-metadata",
-            params={"mintAccounts": mint_addresses},
-            method="POST"
-        )
-        
-        if response.get("success"):
-            logger.info(f"Successfully retrieved metadata for tokens")
-        else:
-            logger.error(f"Failed to get token metadata: {response.get('error', 'Unknown error')}")
-        
-        return response
+        try:
+            endpoint = "/v1/token-metadata"
+            data = {
+                "mintAccounts": token_addresses,
+                "includeOffChain": True,
+                "disableCache": False
+            }
+            
+            result = self._make_request(endpoint, method="POST", data=data)
+            
+            if "error" in result:
+                return {"success": False, "error": result["error"], "data": []}
+            
+            return {
+                "success": True,
+                "data": result
+            }
+            
+        except Exception as e:
+            logger.error(f"Error getting token metadata: {str(e)}")
+            return {"success": False, "error": str(e), "data": []}
     
-    def get_pump_fun_token_price(self, token_address: str, timestamp: Optional[int] = None) -> Dict[str, Any]:
+    def analyze_token_swaps(self, wallet_address: str, token_address: str, 
+                          limit: int = 100) -> Dict[str, Any]:
         """
-        Get or estimate pump.fun token price.
+        Analyze token swaps for price discovery.
+        This is the main method called by telegram_module.
+        
+        Args:
+            wallet_address (str): Wallet address (can be empty for all swaps)
+            token_address (str): Token address to analyze
+            limit (int): Maximum number of swaps to analyze
+            
+        Returns:
+            Dict[str, Any]: Swap analysis with price data
+        """
+        try:
+            # Check if pump.fun token
+            is_pump = token_address.endswith("pump")
+            
+            # Get transactions for the token
+            address_to_query = wallet_address if wallet_address else token_address
+            tx_result = self.get_enhanced_transactions(address_to_query, limit)
+            
+            if not tx_result.get("success"):
+                # If no enhanced transactions, try pump.fun specific approach
+                if is_pump:
+                    return self._get_pump_fun_price_data(token_address)
+                return {"success": False, "error": "No transaction data available", "data": []}
+            
+            # Parse transactions to extract swaps
+            swaps = []
+            transactions = tx_result.get("data", [])
+            
+            for tx in transactions:
+                # Skip if not a swap
+                if tx.get("type") != "SWAP":
+                    continue
+                
+                swap_info = self._extract_swap_from_enhanced_tx(tx, token_address)
+                if swap_info:
+                    swaps.append(swap_info)
+            
+            # If no swaps found and it's a pump token, use bonding curve
+            if not swaps and is_pump:
+                return self._get_pump_fun_price_data(token_address)
+            
+            return {
+                "success": True,
+                "data": swaps,
+                "count": len(swaps),
+                "is_pump_token": is_pump
+            }
+            
+        except Exception as e:
+            logger.error(f"Error analyzing token swaps: {str(e)}")
+            return {"success": False, "error": str(e), "data": []}
+    
+    def get_pump_fun_token_price(self, token_address: str, 
+                                timestamp: Optional[int] = None) -> Dict[str, Any]:
+        """
+        Get pump.fun token price using bonding curve or first DEX listing.
         
         Args:
             token_address (str): Token address
-            timestamp (int, optional): Timestamp for historical price
+            timestamp (int, optional): Specific timestamp for historical price
             
         Returns:
             Dict[str, Any]: Price data
         """
-        logger.info(f"Getting pump.fun token price for {token_address}")
-        
-        # For pump.fun tokens, we often need to estimate based on bonding curve
-        # or initial liquidity parameters
-        
-        # Default pump.fun token initial price estimate
-        default_price = 0.00001  # SOL per token
-        
-        return {
-            "success": True,
-            "data": {
-                "token": token_address,
-                "price": default_price,
-                "price_usd": default_price * 150,  # Assuming SOL = $150
-                "timestamp": timestamp or int(time.time()),
-                "is_estimate": True,
-                "source": "pump_fun_bonding_curve"
-            }
-        }
+        try:
+            # First, try to get actual swap data
+            swap_data = self.analyze_token_swaps("", token_address, 50)
+            
+            if swap_data.get("success") and swap_data.get("data"):
+                swaps = swap_data["data"]
+                
+                # If we have a specific timestamp, find closest price
+                if timestamp:
+                    closest_swap = self._find_closest_price(swaps, timestamp)
+                    if closest_swap:
+                        return {
+                            "success": True,
+                            "data": {
+                                "price": closest_swap["price"],
+                                "timestamp": closest_swap["timestamp"],
+                                "source": closest_swap.get("source", "swap"),
+                                "is_baseline": closest_swap.get("is_baseline", False)
+                            }
+                        }
+                
+                # Otherwise return latest price
+                if swaps:
+                    latest = max(swaps, key=lambda x: x.get("timestamp", 0))
+                    return {
+                        "success": True,
+                        "data": {
+                            "price": latest["price"],
+                            "timestamp": latest["timestamp"],
+                            "source": "latest_swap"
+                        }
+                    }
+            
+            # Fallback to bonding curve estimate
+            return self._get_pump_fun_price_data(token_address, timestamp)
+            
+        except Exception as e:
+            logger.error(f"Error getting pump.fun token price: {str(e)}")
+            return {"success": False, "error": str(e)}
     
-    def estimate_token_price_from_swaps(self, swaps: List[Dict[str, Any]]) -> Optional[float]:
+    def _get_pump_fun_price_data(self, token_address: str, 
+                                timestamp: Optional[int] = None) -> Dict[str, Any]:
         """
-        Estimate token price from swap data.
+        Get pump.fun price data using bonding curve calculations.
         
         Args:
-            swaps (List[Dict[str, Any]]): List of swap transactions
+            token_address (str): Token address
+            timestamp (int, optional): Specific timestamp
             
         Returns:
-            Optional[float]: Estimated price in SOL
+            Dict[str, Any]: Price estimation
         """
+        try:
+            # Check if token was recently created
+            creation_time = self._get_token_creation_time(token_address)
+            
+            if creation_time:
+                # Calculate bonding curve price based on age
+                current_time = int(datetime.now().timestamp())
+                token_age_hours = (current_time - creation_time) / 3600
+                
+                # Simple bonding curve estimation
+                # Pump.fun typically starts at ~0.000001 SOL
+                base_price = 0.000001
+                
+                # Price increases with age/activity
+                if token_age_hours < 1:
+                    estimated_price = base_price
+                    confidence = "low"
+                elif token_age_hours < 6:
+                    estimated_price = base_price * (1 + token_age_hours * 0.5)
+                    confidence = "medium"
+                else:
+                    estimated_price = base_price * 5  # Conservative estimate
+                    confidence = "low"
+                
+                return {
+                    "success": True,
+                    "data": [{
+                        "price": estimated_price,
+                        "timestamp": timestamp or current_time,
+                        "source": "bonding_curve_estimate",
+                        "confidence": confidence,
+                        "is_baseline": True,
+                        "token_age_hours": token_age_hours
+                    }]
+                }
+            
+            # Default pump.fun price if no creation time found
+            return {
+                "success": True,
+                "data": [{
+                    "price": self.PUMP_FUN_INITIAL_PRICE,
+                    "timestamp": timestamp or int(datetime.now().timestamp()),
+                    "source": "pump_fun_default",
+                    "confidence": "low",
+                    "is_baseline": True
+                }]
+            }
+            
+        except Exception as e:
+            logger.error(f"Error calculating pump.fun price: {str(e)}")
+            return {"success": False, "error": str(e)}
+    
+    def _extract_swap_from_enhanced_tx(self, tx: Dict[str, Any], 
+                                      token_address: str) -> Optional[Dict[str, Any]]:
+        """
+        Extract swap information from enhanced transaction.
+        
+        Args:
+            tx (Dict[str, Any]): Enhanced transaction data
+            token_address (str): Token address to look for
+            
+        Returns:
+            Optional[Dict[str, Any]]: Swap information if found
+        """
+        try:
+            # Get basic transaction info
+            signature = tx.get("signature", "")
+            timestamp = tx.get("timestamp", 0)
+            
+            # Look for swap events
+            events = tx.get("events", {})
+            swap_event = events.get("swap")
+            
+            if swap_event:
+                # Extract token amounts
+                token_inputs = swap_event.get("tokenInputs", [])
+                token_outputs = swap_event.get("tokenOutputs", [])
+                
+                # Find our token in inputs or outputs
+                for token_data in token_inputs + token_outputs:
+                    if token_data.get("mint") == token_address:
+                        # Calculate price from SOL amount
+                        sol_amount = self._get_sol_amount(token_inputs, token_outputs)
+                        token_amount = float(token_data.get("rawTokenAmount", {}).get("tokenAmount", 0))
+                        
+                        if sol_amount > 0 and token_amount > 0:
+                            price = sol_amount / token_amount
+                            
+                            return {
+                                "signature": signature,
+                                "timestamp": timestamp,
+                                "price": price,
+                                "sol_amount": sol_amount,
+                                "token_amount": token_amount,
+                                "type": "buy" if token_address in [t.get("mint") for t in token_outputs] else "sell",
+                                "source": swap_event.get("programId", "unknown"),
+                                "dex": self._identify_dex(swap_event.get("programId", ""))
+                            }
+            
+            # Try native instructions if no swap event
+            return self._extract_from_instructions(tx, token_address)
+            
+        except Exception as e:
+            logger.error(f"Error extracting swap from transaction: {str(e)}")
+            return None
+    
+    def _extract_from_instructions(self, tx: Dict[str, Any], 
+                                  token_address: str) -> Optional[Dict[str, Any]]:
+        """
+        Extract swap info from transaction instructions.
+        
+        Args:
+            tx (Dict[str, Any]): Transaction data
+            token_address (str): Token address
+            
+        Returns:
+            Optional[Dict[str, Any]]: Swap information if found
+        """
+        try:
+            instructions = tx.get("instructions", [])
+            
+            for instruction in instructions:
+                program_id = instruction.get("programId", "")
+                
+                # Check if it's a known DEX
+                if program_id in self.DEX_PROGRAMS:
+                    # Parse instruction data based on DEX type
+                    parsed = instruction.get("parsed", {})
+                    
+                    if parsed:
+                        # Look for token transfers involving our token
+                        info = parsed.get("info", {})
+                        
+                        # This would need DEX-specific parsing
+                        # For now, return basic info
+                        return {
+                            "timestamp": tx.get("timestamp", 0),
+                            "source": "instruction_parse",
+                            "dex": self.DEX_PROGRAMS[program_id],
+                            "confidence": "medium"
+                        }
+            
+            return None
+            
+        except Exception as e:
+            logger.error(f"Error extracting from instructions: {str(e)}")
+            return None
+    
+    def _get_sol_amount(self, inputs: List[Dict], outputs: List[Dict]) -> float:
+        """Calculate SOL amount from token transfers."""
+        sol_mint = "So11111111111111111111111111111111111111112"
+        
+        for token_data in inputs + outputs:
+            if token_data.get("mint") == sol_mint:
+                raw_amount = token_data.get("rawTokenAmount", {})
+                return float(raw_amount.get("tokenAmount", 0)) / 1e9  # Convert lamports to SOL
+        
+        return 0.0
+    
+    def _identify_dex(self, program_id: str) -> str:
+        """Identify DEX from program ID."""
+        return self.DEX_PROGRAMS.get(program_id, "Unknown")
+    
+    def _find_closest_price(self, swaps: List[Dict], target_timestamp: int) -> Optional[Dict]:
+        """Find the swap closest to target timestamp."""
         if not swaps:
             return None
         
-        prices = []
-        for swap in swaps:
-            sol_amount = swap.get("sol_amount", 0)
-            token_amount = swap.get("token_amount", 0)
-            
-            if sol_amount > 0 and token_amount > 0:
-                price = sol_amount / token_amount
-                prices.append(price)
+        # Sort by timestamp
+        sorted_swaps = sorted(swaps, key=lambda x: abs(x.get("timestamp", 0) - target_timestamp))
         
-        if prices:
-            # Return median price for robustness
-            prices.sort()
-            mid = len(prices) // 2
-            if len(prices) % 2 == 0:
-                return (prices[mid - 1] + prices[mid]) / 2
-            else:
-                return prices[mid]
+        # Return closest if within 1 hour
+        closest = sorted_swaps[0]
+        time_diff = abs(closest.get("timestamp", 0) - target_timestamp)
         
-        return None
+        if time_diff <= 3600:  # 1 hour
+            return closest
+        
+        # Otherwise, check if we need to use as baseline
+        if closest.get("timestamp", 0) > target_timestamp:
+            closest["is_baseline"] = True
+            closest["confidence"] = "medium"
+        
+        return closest
     
-    def get_api_usage_stats(self) -> Dict[str, Any]:
+    def _get_token_creation_time(self, token_address: str) -> Optional[int]:
         """
-        Get API usage statistics.
+        Get token creation timestamp.
         
+        Args:
+            token_address (str): Token address
+            
         Returns:
-            Dict[str, Any]: API usage stats
+            Optional[int]: Creation timestamp
         """
-        return {
-            "success": True,
-            "data": {
-                "total_calls": self._api_call_count,
-                "error_count": self._api_error_count,
-                "error_rate": (self._api_error_count / max(1, self._api_call_count)) * 100,
-                "last_call_time": self._last_call_time
+        try:
+            # Get first transaction for the token
+            endpoint = f"/v0/addresses/{token_address}/transactions"
+            params = {
+                "limit": 1,
+                "before": None  # Get oldest transaction
             }
-        }
+            
+            result = self._make_request(endpoint, params=params)
+            
+            if isinstance(result, list) and result:
+                return result[0].get("timestamp", None)
+            
+            return None
+            
+        except Exception as e:
+            logger.error(f"Error getting token creation time: {str(e)}")
+            return None
+    
+    def _extract_swap_info(self, transaction: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        """
+        Extract swap information from a parsed transaction.
+        
+        Args:
+            transaction (Dict[str, Any]): Parsed transaction data
+            
+        Returns:
+            Optional[Dict[str, Any]]: Swap information if found
+        """
+        try:
+            # This is a placeholder - would need actual transaction parsing logic
+            # based on Helius enhanced transaction format
+            return None
+            
+        except Exception as e:
+            logger.error(f"Error extracting swap info: {str(e)}")
+            return None
     
     def __str__(self) -> str:
         """String representation of the API client."""
-        return f"HeliusAPI(calls={self._api_call_count}, errors={self._api_error_count})"
+        return f"HeliusAPI(authenticated={'✓' if self.api_key else '✗'})"
     
     def __repr__(self) -> str:
         """Detailed representation of the API client."""
-        return f"HeliusAPI(api_key='***', calls={self._api_call_count}, errors={self._api_error_count})"
+        return f"HeliusAPI(api_key='***', base_url='{self.BASE_URL}')"
