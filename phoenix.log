@@ -10095,3 +10095,51 @@ TypeError: '>=' not supported between instances of 'NoneType' and 'int'
 2025-05-25 17:07:22,201 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
 2025-05-25 17:07:22,201 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
 2025-05-25 17:20:06,237 - phoenix - INFO - Loaded 72 wallet addresses from wallets.txt
+2025-05-25 17:22:33,176 - phoenix - INFO - Loaded 72 wallet addresses from wallets.txt
+2025-05-25 17:22:41,644 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-25 17:22:41,644 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-25 17:22:41,972 - phoenix - INFO - ✅ Imported telegram module
+2025-05-25 17:22:41,972 - phoenix - INFO - 🚀 Starting two-tier hotstreak analysis
+2025-05-25 17:22:41,972 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv
+2025-05-25 17:22:41,972 - phoenix - INFO - ✅ Birdeye API initialized successfully
+2025-05-25 17:22:41,972 - phoenix - INFO - ✅ Helius API initialized successfully for pump.fun tokens
+2025-05-25 17:22:41,972 - phoenix.telegram - INFO - RPC URL configured: http://cce3ed699d4aeb004e634221f36e87a3.p9nodes.io
+2025-05-25 17:22:41,972 - phoenix - INFO - ✅ Telegram scraper initialized successfully
+2025-05-25 17:22:41,972 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-25 17:22:41,972 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-25 17:22:42,097 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-25 17:22:42,880 - phoenix.telegram - INFO - ✅ Connected to Telegram
+2025-05-25 17:22:42,880 - phoenix - INFO - 📞 Connected to Telegram
+2025-05-25 17:22:42,880 - phoenix.telegram - INFO - 🚀 STARTING TWO-TIER HOTSTREAK ANALYSIS
+2025-05-25 17:22:42,880 - phoenix.telegram - INFO - 📍 Step 1: Discovering KOLs from SpyDefi...
+2025-05-25 17:22:42,880 - phoenix.telegram - INFO - ✅ Using SpyDefi cache: 238 KOLs (1.4h old)
+2025-05-25 17:22:42,880 - phoenix.telegram - INFO - ✅ Found 238 KOLs from SpyDefi
+2025-05-25 17:22:42,880 - phoenix.telegram - INFO - 🔍 TIER 1: Quick filtering promising KOLs...
+2025-05-25 17:22:43,519 - phoenix.birdeye - INFO - Token BZqiNFc3f91NQGZFaYbeUR8WbbQ77KuFU3APrJXWpump is a pump.fun token, limited price history available
+2025-05-25 17:22:44,724 - phoenix.birdeye - INFO - Token BZqiNFc3f91NQGZFaYbeUR8WbbQ77KuFU3APrJXWpump is a pump.fun token, limited price history available
+2025-05-25 17:22:45,926 - phoenix.birdeye - INFO - Token BZqiNFc3f91NQGZFaYbeUR8WbbQ77KuFU3APrJXWpump is a pump.fun token, limited price history available
+2025-05-25 17:22:47,127 - phoenix.birdeye - INFO - Token BZqiNFc3f91NQGZFaYbeUR8WbbQ77KuFU3APrJXWpump is a pump.fun token, limited price history available
+2025-05-25 17:22:48,328 - phoenix.birdeye - INFO - Token 5Sc32PCX7mZ5YJnkhq6LS6acwfLxRMkwT2XWjY7gpump is a pump.fun token, limited price history available
+2025-05-25 17:22:49,544 - phoenix.birdeye - INFO - Token 7sLWvvfwL93WLSvbugRVvpddn82WosFDUrh2KAMspump is a pump.fun token, limited price history available
+2025-05-25 17:22:51,957 - phoenix.birdeye - INFO - Token 3xppG9kV9Y4TGxfAwU2vwW7HhZvKfQnpGMBJv1jipump is a pump.fun token, limited price history available
+2025-05-25 17:22:53,158 - phoenix.birdeye - INFO - Token GTGUTdfZsxP94LXiLSjL9E7CT2wevxEF7gBZkFeYpump is a pump.fun token, limited price history available
+2025-05-25 17:22:54,359 - phoenix.birdeye - INFO - Token CGQzLofhtcLHR4uyGF2SVBEGiBiuw1s6fV6sZdWkpump is a pump.fun token, limited price history available
+2025-05-25 17:22:55,560 - phoenix.birdeye - INFO - Token 9TKNPiPfDkF8gxnAVFcDpUd9DCW8HRpPfi7T5wyspump is a pump.fun token, limited price history available
+2025-05-25 17:22:56,761 - phoenix.birdeye - INFO - Token 9TKNPiPfDkF8gxnAVFcDpUd9DCW8HRpPfi7T5wyspump is a pump.fun token, limited price history available
+2025-05-25 17:22:57,962 - phoenix.birdeye - INFO - Token 9TKNPiPfDkF8gxnAVFcDpUd9DCW8HRpPfi7T5wyspump is a pump.fun token, limited price history available
+2025-05-25 17:22:59,163 - phoenix.birdeye - INFO - Token 9TKNPiPfDkF8gxnAVFcDpUd9DCW8HRpPfi7T5wyspump is a pump.fun token, limited price history available
+2025-05-25 17:23:00,364 - phoenix.birdeye - INFO - Token 9TKNPiPfDkF8gxnAVFcDpUd9DCW8HRpPfi7T5wyspump is a pump.fun token, limited price history available
+2025-05-25 17:23:03,816 - phoenix.birdeye - INFO - Token F4EoRbP7x7RNkKELcmv2y9Ym6mRHUzYtqgeR8p8fpump is a pump.fun token, limited price history available
+2025-05-25 17:23:06,226 - phoenix.birdeye - INFO - Token CbV6rtCiKvaDWfKGqAQPr8opM75LxpbxdnW7PSnpump is a pump.fun token, limited price history available
+2025-05-25 17:23:07,427 - phoenix.birdeye - INFO - Token 62WEX95bKEEMkG8EvVzrNQfWwPeMgQ7Jyot3vD6wpump is a pump.fun token, limited price history available
+2025-05-25 17:23:08,628 - phoenix.birdeye - INFO - Token F4EoRbP7x7RNkKELcmv2y9Ym6mRHUzYtqgeR8p8fpump is a pump.fun token, limited price history available
+2025-05-25 17:23:09,840 - phoenix.birdeye - INFO - Token BZqiNFc3f91NQGZFaYbeUR8WbbQ77KuFU3APrJXWpump is a pump.fun token, limited price history available
+2025-05-25 17:23:11,196 - phoenix.birdeye - WARNING - No price history available for BnLt5zg4SewdWYFfdKGiiq1F1u5Yt3ypVnt1oB6fZcA5
+2025-05-25 17:23:12,251 - phoenix.birdeye - INFO - Token 5dKqXPhWNhTxSUEt4m2278p4qWD9h5WgZtQ3dXVtpump is a pump.fun token, limited price history available
+2025-05-25 17:23:13,452 - phoenix.birdeye - INFO - Token BB6Aq35bopqCU7QFp1UkPKhj71VNv3o5aaJdMwVmpump is a pump.fun token, limited price history available
+2025-05-25 17:23:14,652 - phoenix.birdeye - INFO - Token BZqiNFc3f91NQGZFaYbeUR8WbbQ77KuFU3APrJXWpump is a pump.fun token, limited price history available
+2025-05-25 17:23:15,854 - phoenix.birdeye - INFO - Token Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump is a pump.fun token, limited price history available
+2025-05-25 17:23:17,054 - phoenix.birdeye - INFO - Token Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump is a pump.fun token, limited price history available
+2025-05-25 17:23:18,255 - phoenix.birdeye - INFO - Token Bmivfdqqbua26hHKJsmBuq89Rhk21Yr7CzpiJYwCpump is a pump.fun token, limited price history available
+2025-05-25 17:23:19,458 - phoenix.birdeye - INFO - Token G4PLXS424HxKWoehEUzyLsR8QhHSTVuLgFbHUh8spump is a pump.fun token, limited price history available
+2025-05-25 17:23:20,659 - phoenix.birdeye - INFO - Token G4PLXS424HxKWoehEUzyLsR8QhHSTVuLgFbHUh8spump is a pump.fun token, limited price history available
