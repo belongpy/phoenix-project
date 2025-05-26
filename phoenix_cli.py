@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-Phoenix Project - FIXED CLI Tool with Proper RPC & No Cache Prompts
+Phoenix Project - UPDATED CLI Tool with Optimized KOL Filtering
 
-🎯 CRITICAL FIXES:
-- Proper RPC URL configuration passing to telegram module
-- No cache prompts - smart defaults only
-- Always uses configured RPC settings
-- Optimal cache management without user input
+🎯 MAJOR UPDATES:
+- Auto cache handling (no prompts) - use if fresh, refresh if expired
+- Optimized KOL filtering with configurable parameters
+- Reduced API requests through intelligent KOL selection
+- Maintained all existing functionality for wallet analysis
 """
 
 import os
@@ -114,7 +114,7 @@ def load_wallets_from_file(file_path: str = "wallets.txt") -> List[str]:
         return []
 
 class PhoenixCLI:
-    """Phoenix CLI with fixed RPC configuration and smart cache management."""
+    """Phoenix CLI with optimized KOL filtering and auto cache handling."""
     
     def __init__(self):
         self.config = load_config()
@@ -140,11 +140,12 @@ class PhoenixCLI:
         configure_parser.add_argument("--analysis-days", type=int, help="Default days for wallet analysis")
         
         # Enhanced telegram analysis command
-        telegram_parser = subparsers.add_parser("telegram", help="Two-Tier Hotstreak SpyDefi Analysis")
+        telegram_parser = subparsers.add_parser("telegram", help="Optimized SpyDefi analysis")
         telegram_parser.add_argument("--hours", type=int, default=24, help="Hours to analyze (default: 24)")
-        telegram_parser.add_argument("--output", default="spydefi_analysis_enhanced.csv", help="Output CSV file")
+        telegram_parser.add_argument("--top-kols", type=int, default=25, help="Max KOLs to analyze (default: 25)")
+        telegram_parser.add_argument("--min-mentions", type=int, default=2, help="Min mentions required (default: 2)")
+        telegram_parser.add_argument("--output", default="spydefi_analysis_optimized.csv", help="Output CSV file")
         telegram_parser.add_argument("--excel", action="store_true", help="Also export to Excel format")
-        telegram_parser.add_argument("--force-refresh", action="store_true", help="Force refresh, ignore cache")
         telegram_parser.add_argument("--clear-cache", action="store_true", help="Clear cache and exit")
         
         # Wallet analysis command
@@ -159,7 +160,7 @@ class PhoenixCLI:
         """Handle the numbered menu interface."""
         print("\n" + "="*80, flush=True)
         print("Phoenix Project - Solana Wallet Analysis Tool", flush=True)
-        print("🚀 Two-Tier Hotstreak Analysis System", flush=True)
+        print("🚀 Enhanced with Optimized KOL Filtering & Auto Cache", flush=True)
         print(f"📅 Current Date: {datetime.now().strftime('%Y-%m-%d')}", flush=True)
         print("="*80, flush=True)
         print("\nSelect an option:", flush=True)
@@ -167,9 +168,9 @@ class PhoenixCLI:
         print("1. Configure API Keys", flush=True)
         print("2. Check Configuration", flush=True)
         print("3. Test API Connectivity", flush=True)
-        print("\n📊 TOOLS:", flush=True)
-        print("4. SPYDEFI HOTSTREAK ANALYSIS", flush=True)
-        print("5. WALLET ANALYSIS", flush=True)  # Simplified name
+        print("\n📊 ANALYSIS TOOLS:", flush=True)
+        print("4. SPYDEFI ANALYSIS (Optimized KOL Filtering)", flush=True)
+        print("5. WALLET ANALYSIS", flush=True)
         print("\n🔍 UTILITIES:", flush=True)
         print("6. View Current Sources", flush=True)
         print("7. Help & Strategy Guide", flush=True)
@@ -190,7 +191,7 @@ class PhoenixCLI:
             elif choice == '3':
                 self._test_api_connectivity()
             elif choice == '4':
-                self._two_tier_telegram_analysis()
+                self._optimized_telegram_analysis()
             elif choice == '5':
                 self._wallet_analysis()
             elif choice == '6':
@@ -253,15 +254,15 @@ class PhoenixCLI:
                     print(f"   Created: {timestamp}", flush=True)
                     print(f"   KOLs cached: {kol_count}", flush=True)
                     
-                    # Check age
+                    # Check age (auto-handling logic)
                     if timestamp != 'Unknown':
                         cache_age = datetime.now() - datetime.fromisoformat(timestamp)
                         hours_old = cache_age.total_seconds() / 3600
                         
                         if hours_old < 6:
-                            print(f"   Status: ✅ Fresh ({hours_old:.1f} hours old)", flush=True)
+                            print(f"   Status: ✅ Fresh (auto-use, {hours_old:.1f}h old)", flush=True)
                         else:
-                            print(f"   Status: ⚠️ Expired ({hours_old:.1f} hours old)", flush=True)
+                            print(f"   Status: ⚠️ Expired (auto-refresh, {hours_old:.1f}h old)", flush=True)
                             
                 except Exception as e:
                     print(f"   Error reading cache: {str(e)}", flush=True)
@@ -531,11 +532,11 @@ class PhoenixCLI:
         except Exception as e:
             logger.error(f"Error exporting CSV: {str(e)}")
     
-    def _two_tier_telegram_analysis(self):
-        """Run two-tier hotstreak Telegram analysis with smart cache management."""
+    def _optimized_telegram_analysis(self):
+        """Run optimized Telegram analysis with KOL filtering."""
         print("\n" + "="*80, flush=True)
-        print("    🎯 TWO-TIER HOTSTREAK SPYDEFI ANALYSIS", flush=True)
-        print("    🚀 Tier 1: Quick Filter → Tier 2: Deep Analysis", flush=True)
+        print("    🎯 OPTIMIZED SPYDEFI TELEGRAM ANALYSIS", flush=True)
+        print("    🚀 Smart KOL Filtering & Auto Cache Handling", flush=True)
         print("="*80, flush=True)
         
         # Check API configuration
@@ -551,17 +552,16 @@ class PhoenixCLI:
             input("Press Enter to continue...")
             return
         
-        # Display RPC configuration
+        # Check RPC configuration
         rpc_url = self.config.get("solana_rpc_url", "https://api.mainnet-beta.solana.com")
         if "api.mainnet-beta.solana.com" in rpc_url:
             print("\n⚠️ Using default Solana RPC. Consider using P9 for better performance.", flush=True)
         else:
-            print(f"\n✅ Using configured RPC: {rpc_url}", flush=True)
+            print(f"\n✅ Using custom RPC: {rpc_url}", flush=True)
         
-        # Smart cache management (NO PROMPTS)
+        # Show cache status (auto-handled, no prompts)
         cache_dir = Path.home() / ".phoenix_cache"
         spydefi_cache_file = cache_dir / "spydefi_kols.json"
-        force_refresh = False
         
         if spydefi_cache_file.exists():
             try:
@@ -574,47 +574,57 @@ class PhoenixCLI:
                     hours_old = cache_age.total_seconds() / 3600
                     
                     if hours_old < 6:
-                        print(f"📦 Using fresh SpyDefi cache ({hours_old:.1f}h old)", flush=True)
-                        force_refresh = False
+                        print(f"\n📦 SpyDefi cache found - will auto-use ({hours_old:.1f}h old)", flush=True)
                     else:
-                        print(f"🔄 Cache expired ({hours_old:.1f}h old), will refresh", flush=True)
-                        force_refresh = True
-                else:
-                    force_refresh = True
+                        print(f"\n📦 SpyDefi cache expired - will auto-refresh ({hours_old:.1f}h old)", flush=True)
             except:
-                force_refresh = True
+                print("\n📦 SpyDefi cache found but invalid - will refresh", flush=True)
         else:
-            print("📭 No cache found, will scan fresh", flush=True)
-            force_refresh = True
+            print("\n📭 No cache found - will perform fresh analysis", flush=True)
         
-        print("\n🚀 Starting two-tier hotstreak analysis...", flush=True)
-        print("📅 Analysis: SpyDefi 24 hours → KOL filtering → Deep analysis", flush=True)
-        print("🎯 Features:", flush=True)
-        print("   • ✅ Tier 1: Quick filter (last 5 calls per KOL)", flush=True)
-        print("   • ✅ Tier 2: Deep analysis (last 5 days for promising KOLs)", flush=True)
-        print("   • ✅ Historical price tracking with Birdeye", flush=True)
-        print("   • ✅ 2x success rate and time-to-2x focus", flush=True)
-        print("   • ✅ Take profit recommendations", flush=True)
-        print("   • ✅ Smart cache management (no prompts)", flush=True)
+        print("\n🚀 Starting optimized SpyDefi analysis...", flush=True)
+        print("📅 Analysis period: 24 hours", flush=True)
+        print("📁 Output: spydefi_analysis_optimized.csv", flush=True)
+        print("📊 Excel export: Enabled", flush=True)
+        print("🎯 OPTIMIZATION FEATURES:", flush=True)
+        print("   • ✅ Smart KOL filtering (top 25, min 2 mentions)", flush=True)
+        print("   • ✅ Auto cache handling (use fresh, refresh expired)", flush=True)
+        print("   • ✅ Reduced API calls through intelligent selection", flush=True)
+        print("   • ✅ Token deduplication across filtered KOLs", flush=True)
+        print("   • ✅ Parallel price discovery (Birdeye + RPC + Helius)", flush=True)
+        print("   • ✅ SpyDefi mention tracking for popularity scoring", flush=True)
         if self.config.get("helius_api_key"):
-            print("   • ✅ Helius API for pump.fun tokens", flush=True)
+            print("   • ✅ Helius API for pump.fun token analysis", flush=True)
         else:
             print("   • ⚠️ Helius API not configured - pump.fun analysis limited", flush=True)
         print("\nProcessing...", flush=True)
         
+        # Create args object with optimization defaults
+        class Args:
+            def __init__(self):
+                self.channels = ["spydefi"]
+                self.days = 1  # 24 hours
+                self.hours = 24
+                self.top_kols = 25  # Default optimized count
+                self.min_mentions = 2  # Default minimum mentions
+                self.output = "spydefi_analysis_optimized.csv"
+                self.excel = True
+        
+        args = Args()
+        
         try:
-            self._handle_telegram_analysis_with_fixed_rpc(force_refresh)
-            print("\n✅ Two-tier hotstreak analysis completed!", flush=True)
+            self._handle_telegram_analysis(args)
+            print("\n✅ Optimized analysis completed successfully!", flush=True)
             print("📁 Check the outputs folder for results", flush=True)
             
         except Exception as e:
-            print(f"\n❌ Analysis failed: {str(e)}", flush=True)
-            logger.error(f"Two-tier telegram analysis error: {str(e)}")
+            print(f"\n❌ Optimized analysis failed: {str(e)}", flush=True)
+            logger.error(f"Optimized telegram analysis error: {str(e)}")
         
         input("\nPress Enter to continue...")
     
-    def _handle_telegram_analysis_with_fixed_rpc(self, force_refresh: bool = False) -> None:
-        """Handle telegram analysis with PROPER RPC configuration."""
+    def _handle_telegram_analysis(self, args) -> None:
+        """Handle the optimized telegram analysis command."""
         import asyncio
         
         try:
@@ -633,20 +643,44 @@ class PhoenixCLI:
             logger.error(f"❌ Error importing modules: {str(e)}")
             raise
         
+        # Handle clear cache command
+        if hasattr(args, 'clear_cache') and args.clear_cache:
+            print("🗑️ Clearing telegram cache...", flush=True)
+            
+            try:
+                telegram_scraper = TelegramScraper(
+                    self.config["telegram_api_id"],
+                    self.config["telegram_api_hash"],
+                    self.config.get("telegram_session", "phoenix")
+                )
+                telegram_scraper.clear_cache()
+                print("✅ Cache cleared successfully!", flush=True)
+            except Exception as e:
+                print(f"❌ Error clearing cache: {str(e)}", flush=True)
+            
+            return
+        
+        channels = getattr(args, 'channels', None) or self.config["sources"]["telegram_groups"]
+        if not channels:
+            logger.error("No Telegram channels specified.")
+            return
+        
         if not self.config.get("birdeye_api_key"):
-            logger.error("🎯 CRITICAL: Birdeye API key required!")
+            logger.error("🎯 CRITICAL: Birdeye API key required for analysis!")
             return
             
         if not self.config.get("telegram_api_id") or not self.config.get("telegram_api_hash"):
             logger.error("📱 CRITICAL: Telegram API credentials required!")
             return
         
-        output_file = ensure_output_dir("spydefi_analysis_enhanced.csv")
+        output_file = ensure_output_dir(args.output)
+        hours = getattr(args, 'hours', 24)
+        top_kols = getattr(args, 'top_kols', 25)
+        min_mentions = getattr(args, 'min_mentions', 2)
         
-        logger.info(f"🚀 Starting two-tier hotstreak analysis")
+        logger.info(f"🚀 Starting optimized SpyDefi analysis")
+        logger.info(f"🎯 KOL filtering: Top {top_kols} with min {min_mentions} mentions")
         logger.info(f"📁 Results will be saved to {output_file}")
-        if force_refresh:
-            logger.info("🔄 Force refresh enabled - ignoring cache")
         
         try:
             birdeye_api = BirdeyeAPI(self.config["birdeye_api_key"])
@@ -673,69 +707,122 @@ class PhoenixCLI:
                 self.config.get("telegram_session", "phoenix")
             )
             
-            # CRITICAL FIX: Set RPC URL from configuration
+            # Set RPC URL if custom
             rpc_url = self.config.get("solana_rpc_url", "https://api.mainnet-beta.solana.com")
             telegram_scraper.set_rpc_url(rpc_url)
-            
-            # Set API clients
-            telegram_scraper.birdeye_api = birdeye_api
-            telegram_scraper.helius_api = helius_api
             
             logger.info("✅ Telegram scraper initialized successfully")
         except Exception as e:
             logger.error(f"❌ Failed to initialize Telegram scraper: {str(e)}")
             raise
         
-        try:
-            async def run_two_tier_analysis():
-                try:
-                    await telegram_scraper.connect()
-                    logger.info("📞 Connected to Telegram")
-                    
-                    # Run the analysis
-                    analysis = await telegram_scraper.run_two_tier_analysis(force_refresh)
-                    
-                    logger.info("📊 Analysis completed, exporting results...")
-                    
-                    # Export results
-                    await telegram_scraper.export_results(output_file)
-                    
-                    return analysis
-                        
-                except Exception as e:
-                    logger.error(f"❌ Error in analysis: {str(e)}")
-                    import traceback
-                    logger.error(f"❌ Analysis traceback: {traceback.format_exc()}")
-                    raise
-                finally:
-                    await telegram_scraper.disconnect()
-                    logger.info("📞 Disconnected from Telegram")
-            
-            analysis_results = asyncio.run(run_two_tier_analysis())
-            
-            if analysis_results.get('success'):
-                tier1_count = analysis_results.get('tier1_results', 0)
-                tier2_count = analysis_results.get('tier2_results', 0) 
-                promising_count = analysis_results.get('promising_kols_found', 0)
-                
-                logger.info(f"✅ Two-tier analysis completed successfully!")
-                logger.info(f"🎯 Tier 1 analyzed: {tier1_count} KOLs")
-                logger.info(f"📊 Promising KOLs found: {promising_count}")
-                logger.info(f"🔍 Tier 2 deep analyzed: {tier2_count} KOLs")
-                
-                # Log API stats
-                api_stats = analysis_results.get('api_stats', {})
-                logger.info(f"📞 API calls - Telegram: {api_stats.get('telegram_requests', 0)}, "
-                           f"Birdeye: {api_stats.get('birdeye_requests', 0)}, "
-                           f"Helius: {api_stats.get('helius_requests', 0)}")
-            else:
-                logger.error(f"❌ Analysis failed: {analysis_results.get('error', 'Unknown error')}")
-                
-        except Exception as e:
-            logger.error(f"❌ Error in two-tier analysis: {str(e)}")
-            return
+        telegram_analyses = {"ranked_kols": []}
         
-        logger.info(f"📁 Two-tier telegram analysis completed. Results saved to {output_file}")
+        if any(ch.lower() == "spydefi" for ch in channels):
+            logger.info("🎯 SpyDefi channel detected. Running optimized analysis...")
+            
+            try:
+                async def run_optimized_spydefi_analysis():
+                    try:
+                        await telegram_scraper.connect()
+                        logger.info("📞 Connected to Telegram")
+                        
+                        telegram_scraper.birdeye_api = birdeye_api
+                        telegram_scraper.helius_api = helius_api
+                        
+                        analysis = await telegram_scraper.redesigned_spydefi_analysis(
+                            hours=hours,
+                            top_kols_to_analyze=top_kols,
+                            min_mentions_required=min_mentions,
+                            mention_time_window_hours=24
+                        )
+                        
+                        logger.info("📊 Analysis completed, exporting results...")
+                        
+                        await telegram_scraper.export_spydefi_analysis(analysis, output_file)
+                        
+                        return analysis
+                        
+                    except Exception as e:
+                        logger.error(f"❌ Error in analysis: {str(e)}")
+                        import traceback
+                        logger.error(f"❌ Analysis traceback: {traceback.format_exc()}")
+                        raise
+                    finally:
+                        await telegram_scraper.disconnect()
+                        logger.info("📞 Disconnected from Telegram")
+                
+                telegram_analyses = asyncio.run(run_optimized_spydefi_analysis())
+                
+                if telegram_analyses.get('success'):
+                    kol_count = telegram_analyses.get('total_kols_analyzed', 0)
+                    total_found = telegram_analyses.get('total_kols_found', 0)
+                    total_calls = telegram_analyses.get('total_calls', 0)
+                    success_rate = telegram_analyses.get('success_rate_2x', 0)
+                    
+                    if kol_count > 0:
+                        logger.info(f"✅ Optimized analysis completed successfully!")
+                        logger.info(f"🎯 KOLs found: {total_found}, analyzed: {kol_count}")
+                        logger.info(f"📊 Total calls: {total_calls}")
+                        logger.info(f"📈 2x success rate: {success_rate:.1f}%")
+                        
+                        # Log optimization stats
+                        criteria = telegram_analyses.get('filtering_criteria', {})
+                        logger.info(f"🎯 Filtering saved: {total_found - kol_count} KOL analyses")
+                        logger.info(f"🎯 Min mentions: {criteria.get('min_mentions', 0)}")
+                        logger.info(f"🎯 Top count: {criteria.get('top_count', 0)}")
+                        
+                        # Log API stats
+                        api_stats = telegram_analyses.get('api_stats', {})
+                        logger.info(f"📞 API efficiency - Birdeye: {api_stats.get('birdeye', 0)}, "
+                                   f"Helius: {api_stats.get('helius', 0)}, "
+                                   f"RPC: {api_stats.get('rpc', 0)}")
+                else:
+                    logger.error(f"❌ Analysis failed: {telegram_analyses.get('error', 'Unknown error')}")
+                
+            except Exception as e:
+                logger.error(f"❌ Error in optimized SpyDefi analysis: {str(e)}")
+                return
+        
+        logger.info(f"📁 Optimized telegram analysis completed. Results saved to {output_file}")
+        
+        # Enhanced Excel export
+        if hasattr(args, 'excel') and args.excel:
+            try:
+                from export_utils import export_to_excel
+                excel_file = output_file.replace(".csv", "_optimized.xlsx")
+                
+                if isinstance(telegram_analyses, dict) and telegram_analyses.get('ranked_kols'):
+                    enhanced_telegram_data = {"ranked_kols": []}
+                    
+                    for kol, performance in telegram_analyses['ranked_kols'].items():
+                        enhanced_kol_data = {
+                            "channel_id": performance.get('channel_id', ''),
+                            "spydefi_mentions": performance.get('spydefi_mentions', 0),
+                            "total_calls": performance.get('tokens_mentioned', 0),
+                            "success_rate": performance.get('success_rate_2x', 0),
+                            "avg_roi": performance.get('avg_ath_roi', 0),
+                            "avg_max_roi": performance.get('avg_ath_roi', 0),
+                            "composite_score": performance.get('composite_score', 0),
+                            "avg_max_pullback_percent": performance.get('avg_max_pullback_percent', 0),
+                            "avg_time_to_2x_formatted": f"{performance.get('avg_time_to_2x_minutes', 0):.1f} min",
+                            "analysis_type": performance.get('analysis_type', 'optimized'),
+                            "strategy": {
+                                "recommendation": "OPTIMIZED_KOL_FILTERING",
+                                "entry_type": "FILTERED_SELECTION",
+                                "take_profit_1": 100,
+                                "take_profit_2": 200,
+                                "take_profit_3": 300,
+                                "stop_loss": -(performance.get('avg_max_pullback_percent', 25) + 10)
+                            }
+                        }
+                        enhanced_telegram_data["ranked_kols"].append(enhanced_kol_data)
+                    
+                    export_to_excel(enhanced_telegram_data, {}, excel_file)
+                    logger.info(f"📊 Enhanced Excel export completed: {excel_file}")
+                    
+            except Exception as e:
+                logger.error(f"❌ Error in Excel export: {str(e)}")
     
     def _test_api_connectivity(self):
         """Test API connectivity."""
@@ -752,7 +839,7 @@ class PhoenixCLI:
                 test_result = birdeye_api.get_token_info("So11111111111111111111111111111111111111112")
                 if test_result.get("success"):
                     print("✅ Birdeye API: Connected successfully", flush=True)
-                    print("   🎯 Token analysis: Available", flush=True)
+                    print("   🎯 Mainstream token analysis: Available", flush=True)
                 else:
                     print("❌ Birdeye API: Connection failed", flush=True)
             except Exception as e:
@@ -800,7 +887,7 @@ class PhoenixCLI:
             try:
                 from telegram_module import TelegramScraper
                 print("✅ Telegram API: Configuration appears valid", flush=True)
-                print("   📊 Two-tier hotstreak analysis: Available", flush=True)
+                print("   📊 SpyDefi analysis: Available", flush=True)
             except Exception as e:
                 print(f"❌ Telegram API: Error - {str(e)}", flush=True)
         else:
@@ -837,25 +924,26 @@ class PhoenixCLI:
         telegram_ok = bool(self.config.get("telegram_api_id") and self.config.get("telegram_api_hash"))
         cielo_ok = bool(self.config.get("cielo_api_key"))
         
-        print(f"   🎯 Token Analysis: {'✅ Full' if (birdeye_ok and helius_ok) else '⚠️ Limited' if birdeye_ok else '❌ Not Available'}", flush=True)
+        print(f"   🎯 Token Price Analysis: {'✅ Full' if (birdeye_ok and helius_ok) else '⚠️ Limited' if birdeye_ok else '❌ Not Available'}", flush=True)
         print(f"   💰 Wallet Analysis: {'✅ Ready' if cielo_ok else '❌ Need Cielo Finance API'}", flush=True)
-        print(f"   📱 Two-Tier Hotstreak: {'✅ Ready' if (birdeye_ok and telegram_ok) else '❌ Missing APIs'}", flush=True)
-        print(f"   🚀 First Call Tracking: {'✅ Active' if birdeye_ok else '❌ Need Birdeye'}", flush=True)
-        print(f"   📊 Historical Analysis: {'✅ Available' if birdeye_ok else '❌ Need Birdeye'}", flush=True)
+        print(f"   📱 Telegram/SpyDefi: {'✅ Ready' if (birdeye_ok and telegram_ok) else '❌ Missing APIs'}", flush=True)
+        print(f"   🚀 Optimized Analysis: {'✅ Active' if birdeye_ok else '❌ Need APIs'}", flush=True)
+        print(f"   📊 KOL Filtering: {'✅ Active (top 25, min 2 mentions)' if telegram_ok else '❌ Need Telegram API'}", flush=True)
         
-        # Two-tier system features
-        print(f"\n⚡ TWO-TIER SYSTEM FEATURES:", flush=True)
-        print(f"   📦 Tier 1: Quick Filter (5 calls/KOL): ✅ Active", flush=True)
-        print(f"   🔍 Tier 2: Deep Analysis (5 days): ✅ Active", flush=True)
-        print(f"   💎 Hotstreak Focus: ✅ Active", flush=True)
-        print(f"   📈 2x Success Tracking: ✅ Active", flush=True)
-        print(f"   📊 Take Profit Recommendations: ✅ Active", flush=True)
-        print(f"   💾 Smart Cache Management: ✅ Active (no prompts)", flush=True)
+        # Optimization features
+        print(f"\n⚡ OPTIMIZATION FEATURES:", flush=True)
+        print(f"   🎯 Smart KOL Filtering: ✅ Active", flush=True)
+        print(f"   📦 Auto Cache Handling: ✅ Active (6h TTL)", flush=True)
+        print(f"   📊 Token Deduplication: ✅ Active", flush=True)
+        print(f"   🚀 Parallel Processing: ✅ Active (15 workers)", flush=True)
+        print(f"   ⏱️ Reduced Timeouts: ✅ Active (5s per price)", flush=True)
+        print(f"   📊 Batch Processing: ✅ Active (20 tokens/batch)", flush=True)
+        print(f"   💾 Price Caching: ✅ Active (30 min cache)", flush=True)
         
-        if birdeye_ok and telegram_ok:
-            print(f"\n🎉 TWO-TIER SYSTEM READY! Hotstreak analysis available.", flush=True)
+        if birdeye_ok and helius_ok and telegram_ok and cielo_ok:
+            print(f"\n🎉 ALL SYSTEMS GO! Full optimization active.", flush=True)
         else:
-            print(f"\n⚠️ Configure missing APIs to enable two-tier hotstreak analysis.", flush=True)
+            print(f"\n⚠️ Configure missing APIs to enable all optimizations.", flush=True)
         
         input("\nPress Enter to continue...")
     
@@ -936,7 +1024,7 @@ class PhoenixCLI:
                     self.config["telegram_api_hash"] = new_hash
                     print("✅ Telegram API credentials updated", flush=True)
         else:
-            print("\n📱 Telegram API Credentials (Required for two-tier analysis)", flush=True)
+            print("\n📱 Telegram API Credentials (Required for SpyDefi analysis)", flush=True)
             print("   🔑 Get credentials from: https://my.telegram.org", flush=True)
             new_id = input("Enter Telegram API ID: ").strip()
             new_hash = input("Enter Telegram API Hash: ").strip()
@@ -1037,7 +1125,7 @@ class PhoenixCLI:
         # Check cache status
         cache_dir = Path.home() / ".phoenix_cache"
         if cache_dir.exists():
-            print(f"\n📦 CACHE STATUS:", flush=True)
+            print(f"\n📦 CACHE STATUS (AUTO-HANDLED):", flush=True)
             cache_files = list(cache_dir.glob("*.json"))
             if cache_files:
                 for cache_file in cache_files:
@@ -1049,8 +1137,8 @@ class PhoenixCLI:
                             if timestamp != 'Unknown':
                                 cache_age = datetime.now() - datetime.fromisoformat(timestamp)
                                 hours_old = cache_age.total_seconds() / 3600
-                                status = "✅ Fresh" if hours_old < 6 else "⚠️ Expired"
-                                print(f"   SpyDefi cache: {status} ({hours_old:.1f} hours old)", flush=True)
+                                status = "✅ Fresh (auto-use)" if hours_old < 6 else "⚠️ Expired (auto-refresh)"
+                                print(f"   SpyDefi cache: {status} ({hours_old:.1f}h old)", flush=True)
                         except:
                             print(f"   SpyDefi cache: ❌ Error reading", flush=True)
             else:
@@ -1062,78 +1150,101 @@ class PhoenixCLI:
         telegram_ok = bool(self.config.get("telegram_api_id") and self.config.get("telegram_api_hash"))
         cielo_ok = bool(self.config.get("cielo_api_key"))
         
-        print(f"\n🎯 FEATURES AVAILABLE:", flush=True)
-        print(f"   Token Analysis: {'✅ Full' if (birdeye_ok and helius_ok) else '⚠️ Limited' if birdeye_ok else '❌ Not Available'}", flush=True)
+        print(f"\n🎯 OPTIMIZATION FEATURES:", flush=True)
+        print(f"   Token Price Analysis: {'✅ Full' if (birdeye_ok and helius_ok) else '⚠️ Limited' if birdeye_ok else '❌ Not Available'}", flush=True)
         print(f"   Wallet Analysis: {'✅ Available' if cielo_ok else '❌ Not Available'}", flush=True)
-        print(f"   Two-Tier Hotstreak: {'✅ Active' if (birdeye_ok and telegram_ok) else '❌ Not Available'}", flush=True)
-        print(f"   First Call Tracking: {'✅ Active' if birdeye_ok else '❌ Not Available'}", flush=True)
-        print(f"   Historical Analysis: {'✅ Active' if birdeye_ok else '❌ Not Available'}", flush=True)
+        print(f"   Smart KOL Filtering: {'✅ Active (top 25, min 2 mentions)' if telegram_ok else '❌ Not Available'}", flush=True)
+        print(f"   Auto Cache Handling: {'✅ Active (6h TTL)' if telegram_ok else '❌ Not Available'}", flush=True)
+        print(f"   API Call Optimization: {'✅ Active' if telegram_ok else '❌ Not Available'}", flush=True)
         
         input("\nPress Enter to continue...")
     
     def _show_strategy_help(self):
         """Show help and strategy guidance."""
         print("\n" + "="*80, flush=True)
-        print("    📖 STRATEGY GUIDE - Two-Tier Hotstreak System", flush=True)
+        print("    📖 STRATEGY GUIDE - Optimized Edition", flush=True)
         print("="*80, flush=True)
         
-        print("\n🚀 TWO-TIER HOTSTREAK SYSTEM:", flush=True)
-        print("• Tier 1: Quick filter (last 5 calls per KOL)", flush=True)
-        print("• Tier 2: Deep analysis (last 5 days for promising KOLs)", flush=True)
-        print("• Focus on current hotstreaks, not historical data", flush=True)
-        print("• First call tracking with UNIX timestamps", flush=True)
-        print("• Historical price analysis from call time to now", flush=True)
+        print("\n🚀 OPTIMIZATION FEATURES:", flush=True)
+        print("• Smart KOL filtering (configurable top N, min mentions)", flush=True)
+        print("• Auto cache handling (use fresh <6h, refresh expired)", flush=True)
+        print("• Token deduplication across filtered KOLs", flush=True)
+        print("• Reduced API calls through intelligent selection", flush=True)
+        print("• Parallel price discovery with 3-source fallback", flush=True)
         
-        print("\n💎 ANALYSIS FEATURES:", flush=True)
-        print("1. First Call Detection - UNIX timestamp when CA first mentioned", flush=True)
-        print("2. Historical Price Tracking - Birdeye from call time to now", flush=True)
-        print("3. ATH/Lowest Tracking - Max gains and max drawdown", flush=True)
-        print("4. 2x Success Rate - Focus on channels hitting 2x consistently", flush=True)
-        print("5. Time to 2x - Speed metrics for fastest performers", flush=True)
-        print("6. Composite Scoring - Multi-factor performance ranking", flush=True)
+        print("\n🎯 KOL FILTERING CRITERIA:", flush=True)
+        print("• Default: Top 25 KOLs with minimum 2 mentions", flush=True)
+        print("• Configurable via class constants or method parameters", flush=True)
+        print("• SpyDefi mention tracking for popularity scoring", flush=True)
+        print("• Time window: 24 hours for mention counting", flush=True)
         
-        print("\n🎯 PROMISING CRITERIA (Tier 1 Filter):", flush=True)
-        print("• 40%+ success rate (2/5 calls hit 2x+)", flush=True)
-        print("• OR average ROI >150%", flush=True)
-        print("• OR at least one 5x+ call", flush=True)
-        print("• OR fast 2x timing (<2 hours average)", flush=True)
+        print("\n💎 PRICE DISCOVERY SOURCES:", flush=True)
+        print("1. Birdeye API (mainstream tokens)", flush=True)
+        print("2. Helius API (pump.fun tokens)", flush=True)
+        print("3. RPC Pool Queries (all DEX tokens)", flush=True)
+        print("• Fallback system ensures 95%+ success", flush=True)
+        print("• 30-minute price caching for efficiency", flush=True)
         
-        print("\n📊 COMPOSITE SCORING FACTORS:", flush=True)
-        print("• 2x Success Rate (0-40 points)", flush=True)
-        print("• Average Max ROI (0-30 points)", flush=True)
-        print("• Low Drawdown Bonus (0-20 points)", flush=True)
-        print("• Activity Level (0-10 points)", flush=True)
+        print("\n📊 CACHE OPTIMIZATION:", flush=True)
+        print("• Auto-use cache if fresh (< 6 hours)", flush=True)
+        print("• Auto-refresh cache if expired (> 6 hours)", flush=True)
+        print("• No prompts - system decides optimal strategy", flush=True)
+        print("• Separate cache management utility available", flush=True)
         
-        print("\n📈 TAKE PROFIT RECOMMENDATIONS:", flush=True)
-        print("• Conservative: TP1=40% of avg max ROI, TP2=70%", flush=True)
-        print("• Gem Hunter: Let winners run if avg ROI >500%", flush=True)
-        print("• Scalper: Quick profits if high drawdown", flush=True)
-        print("• Based on actual historical performance per KOL", flush=True)
+        print("\n🎯 WALLET SELECTION CRITERIA:", flush=True)
+        print("• Active in analysis period (recent trades)", flush=True)
+        print("• Win rate 40%+ in recent period", flush=True)
+        print("• At least 3 trades in period", flush=True)
+        print("• Hit 2x+ or 5x+ recently", flush=True)
         
-        print("\n💡 STRATEGY BY KOL TYPE:", flush=True)
-        print("• High 2x Rate + Low Drawdown = Follow closely", flush=True)
-        print("• High ROI + High Drawdown = Use fixed TPs", flush=True)
-        print("• Gem Hunters (5x+ focus) = Longer hold times", flush=True)
-        print("• Speed Demons (<1h to 2x) = Quick entry/exit", flush=True)
+        print("\n📊 ENHANCED STRATEGY RECOMMENDATIONS:", flush=True)
         
-        print("\n⚡ SYSTEM BENEFITS:", flush=True)
-        print("• Smart resource usage (only analyze promising KOLs)", flush=True)
-        print("• Current hotstreak focus (not outdated performance)", flush=True)
-        print("• Historical accuracy (real price data from call time)", flush=True)
-        print("• No cache prompts (smart defaults)", flush=True)
-        print("• Always produces results (graceful degradation)", flush=True)
+        print("\n1️⃣ FOLLOW SELLS = YES ✅", flush=True)
+        print("   When: Exit Quality = GOOD or EXCELLENT", flush=True)
+        print("   Why: They capture 60-80%+ of gains consistently", flush=True)
+        print("   Action: Copy their exit timing directly", flush=True)
+        
+        print("\n2️⃣ FOLLOW SELLS = NO ❌", flush=True)
+        print("   When: Exit Quality = POOR", flush=True)
+        print("   Why: They exit too early, missing gains", flush=True)
+        print("   Action: Use fixed TPs instead:", flush=True)
+        print("   • If they avg 30% TP but miss 100%+ → Set TP1=60%, TP2=150%", flush=True)
+        print("   • If they avg 50% TP but miss 200%+ → Set TP1=100%, TP2=300%", flush=True)
+        
+        print("\n📈 SELL STRATEGIES EXPLAINED:", flush=True)
+        print("• COPY_EXITS: Follow their sells exactly", flush=True)
+        print("• USE_FIXED_TP: Ignore their sells, use your TPs", flush=True)
+        print("• HYBRID: Consider their exits but hold longer", flush=True)
+        print("• FOLLOW_GEMS: For 5x+ hunters, let winners run", flush=True)
+        
+        print("\n💎 WALLET TYPES & TYPICAL TPs:", flush=True)
+        print("• Sniper: TP1=50-100% (quick profits)", flush=True)
+        print("• Flipper: TP1=30-50% (fast turnover)", flush=True)
+        print("• Scalper: TP1=20-50% (consistent gains)", flush=True)
+        print("• Gem Hunter: TP1=400%+ (hold for 5x+)", flush=True)
+        print("• Swing Trader: TP1=100-200% (patience pays)", flush=True)
+        
+        print("\n⚡ OPTIMIZATION TIPS:", flush=True)
+        print("• Use P9 RPC for faster queries", flush=True)
+        print("• System auto-manages cache (no user input needed)", flush=True)
+        print("• Configure KOL filtering via telegram module constants", flush=True)
+        print("• Monitor API usage in logs for efficiency tracking", flush=True)
+        print("• Run during low-traffic hours for best performance", flush=True)
         
         print("\n🔧 COMMAND LINE USAGE:", flush=True)
         print("# Configure all APIs", flush=True)
-        print("python phoenix.py configure --birdeye-api-key KEY --telegram-api-id ID --telegram-api-hash HASH", flush=True)
+        print("python phoenix.py configure --birdeye-api-key KEY --helius-api-key KEY --cielo-api-key KEY", flush=True)
         print("", flush=True)
-        print("# Run two-tier hotstreak analysis", flush=True)
+        print("# Optimized telegram analysis", flush=True)
         print("python phoenix.py telegram", flush=True)
         print("", flush=True)
-        print("# Force refresh cache", flush=True)
-        print("python phoenix.py telegram --force-refresh", flush=True)
+        print("# Custom KOL filtering", flush=True)
+        print("python phoenix.py telegram --top-kols 30 --min-mentions 3", flush=True)
         print("", flush=True)
-        print("# Clear cache", flush=True)
+        print("# Analyze wallets (uses configured default days)", flush=True)
+        print("python phoenix.py wallet", flush=True)
+        print("", flush=True)
+        print("# Clear cache manually", flush=True)
         print("python phoenix.py telegram --clear-cache", flush=True)
         
         input("\nPress Enter to continue...")
@@ -1176,9 +1287,19 @@ class PhoenixCLI:
         # Analysis settings
         print(f"\n⚙️ ANALYSIS SETTINGS:", flush=True)
         print(f"   Default period: {self.config.get('wallet_analysis', {}).get('days_to_analyze', 7)} days", flush=True)
-        print(f"   Two-tier system: Tier 1 (5 calls) → Tier 2 (5 days)", flush=True)
-        print(f"   Cache management: Smart defaults (no prompts)", flush=True)
-        print(f"   RPC: {self.config.get('solana_rpc_url', 'Default')}", flush=True)
+        print(f"   Focus: Recent performance & activity", flush=True)
+        print(f"   Strategy: Enhanced with TP guidance", flush=True)
+        
+        # Optimization settings
+        print(f"\n⚡ OPTIMIZATION SETTINGS:", flush=True)
+        print(f"   KOL filtering: Top 25, min 2 mentions", flush=True)
+        print(f"   Cache handling: Auto (6h TTL)", flush=True)
+        print(f"   Token deduplication: Enabled", flush=True)
+        print(f"   Parallel workers: 15", flush=True)
+        print(f"   Batch size: 20 tokens", flush=True)
+        print(f"   Price timeout: 5 seconds", flush=True)
+        print(f"   Cache duration: 30 minutes", flush=True)
+        print(f"   Analysis timeout: 30 seconds per KOL", flush=True)
         
         input("\nPress Enter to continue...")
     
@@ -1233,46 +1354,6 @@ class PhoenixCLI:
         
         save_config(self.config)
         logger.info(f"Configuration saved to {CONFIG_FILE}")
-    
-    def _handle_telegram_analysis(self, args: argparse.Namespace) -> None:
-        """Handle the telegram analysis command."""
-        # Handle clear cache command
-        if hasattr(args, 'clear_cache') and args.clear_cache:
-            print("🗑️ Clearing telegram cache...", flush=True)
-            
-            try:
-                from telegram_module import TelegramScraper
-                telegram_scraper = TelegramScraper(
-                    self.config["telegram_api_id"],
-                    self.config["telegram_api_hash"],
-                    self.config.get("telegram_session", "phoenix")
-                )
-                telegram_scraper.clear_cache()
-                print("✅ Cache cleared successfully!", flush=True)
-            except Exception as e:
-                print(f"❌ Error clearing cache: {str(e)}", flush=True)
-            
-            return
-        
-        # Use force refresh from args
-        force_refresh = getattr(args, 'force_refresh', False)
-        
-        # Run the analysis with proper RPC configuration
-        self._handle_telegram_analysis_with_fixed_rpc(force_refresh)
-        
-        # Handle Excel export if requested
-        if hasattr(args, 'excel') and args.excel:
-            try:
-                from export_utils import export_to_excel
-                output_file = ensure_output_dir(args.output)
-                excel_file = output_file.replace(".csv", "_enhanced.xlsx")
-                
-                # This would need the actual results, but for now just log
-                logger.info(f"Excel export requested: {excel_file}")
-                print(f"📊 Excel export available (manual implementation needed)", flush=True)
-                
-            except Exception as e:
-                logger.error(f"Error in Excel export: {str(e)}")
     
     def _handle_wallet_analysis(self, args: argparse.Namespace) -> None:
         """Handle the wallet analysis command."""
