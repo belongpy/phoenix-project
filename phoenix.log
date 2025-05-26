@@ -10148,3 +10148,37 @@ TypeError: '>=' not supported between instances of 'NoneType' and 'int'
 2025-05-25 17:23:24,262 - phoenix.birdeye - INFO - Token DjfNgq972J3BxmZT5Vm7u4WGEqjHPuGa9YcBzz3bpump is a pump.fun token, limited price history available
 2025-05-25 17:23:25,462 - phoenix.birdeye - INFO - Token 9TKNPiPfDkF8gxnAVFcDpUd9DCW8HRpPfi7T5wyspump is a pump.fun token, limited price history available
 2025-05-25 17:23:26,663 - phoenix.birdeye - INFO - Token EGCmkZahCseqqSf2ws6o6aWfyGt4cfuvkD8h6tdfpump is a pump.fun token, limited price history available
+2025-05-25 17:23:27,864 - phoenix.birdeye - INFO - Token 3wPpcd5MGThuXPBLEfCrKDtji1AJHiZrf9UUoAAjpump is a pump.fun token, limited price history available
+2025-05-25 17:23:29,065 - phoenix.birdeye - INFO - Token 9TKNPiPfDkF8gxnAVFcDpUd9DCW8HRpPfi7T5wyspump is a pump.fun token, limited price history available
+2025-05-25 17:23:30,265 - phoenix.birdeye - INFO - Token 9TKNPiPfDkF8gxnAVFcDpUd9DCW8HRpPfi7T5wyspump is a pump.fun token, limited price history available
+2025-05-25 17:23:31,466 - phoenix.birdeye - INFO - Token BZqiNFc3f91NQGZFaYbeUR8WbbQ77KuFU3APrJXWpump is a pump.fun token, limited price history available
+2025-05-25 17:23:32,667 - phoenix.birdeye - INFO - Token BZqiNFc3f91NQGZFaYbeUR8WbbQ77KuFU3APrJXWpump is a pump.fun token, limited price history available
+2025-05-25 17:23:33,868 - phoenix.birdeye - INFO - Token BZqiNFc3f91NQGZFaYbeUR8WbbQ77KuFU3APrJXWpump is a pump.fun token, limited price history available
+2025-05-25 17:23:35,068 - phoenix.birdeye - INFO - Token BZqiNFc3f91NQGZFaYbeUR8WbbQ77KuFU3APrJXWpump is a pump.fun token, limited price history available
+2025-05-25 17:23:36,269 - phoenix.birdeye - INFO - Token 5GoDzmnC2dQQtNzRY6eP369qxjG1f6HZnK7aHMK8pump is a pump.fun token, limited price history available
+2025-05-25 17:23:40,070 - phoenix.birdeye - WARNING - No price history available for FTVfrnFb48apSPKTBkB5cdTu6AiTRSX5wdV68uTrPiWu
+2025-05-25 17:23:42,462 - phoenix.birdeye - WARNING - No price history available for 9ZUEEnDnzTSFHb2VXXEMxFFpYK283TTKToaETyWqsc3c
+2025-05-25 17:23:44,995 - phoenix.birdeye - INFO - Token 7UsqdrPT7eFRf2uqEuFrv1bZREzsLN7FCVyQxmowpump is a pump.fun token, limited price history available
+2025-05-25 17:23:46,195 - phoenix.birdeye - INFO - Token EguvRFUPNtmk5Ke9RndmRxuJrHd1DtXu54LoaVt8pump is a pump.fun token, limited price history available
+2025-05-25 17:23:47,396 - phoenix.birdeye - INFO - Token 54hmvvMr4cwucxHefs7PRvKsCcydchXbqWPHvzA9pump is a pump.fun token, limited price history available
+2025-05-25 17:25:13,270 - phoenix.birdeye - WARNING - No price history available for 64Fd3qKF5WKKYkm2cjEoqdTgMsxiknfwL8HwazGoGHdB
+2025-05-25 17:25:14,265 - phoenix.birdeye - INFO - Token 4BNCcsJkBcP9cMRaEmPSVhJFMf5sTzLEV4okAZ1zpump is a pump.fun token, limited price history available
+2025-05-25 17:25:15,630 - phoenix.birdeye - WARNING - No price history available for 5DZKjPqgd86jmzoeWPrmMRqb2A1ZAVEYzRXa4fxR7zkX
+2025-05-25 17:25:16,823 - phoenix.birdeye - WARNING - No price history available for DpdsZEYcMyamzVHFiqic3rnQUTswZeQjrYRaVyNjhXgJ
+2025-05-25 17:25:17,876 - phoenix.birdeye - INFO - Token 2F9XvEBsdcd8exmfwBpHkusXTJLE2xw1si7PCYWRpump is a pump.fun token, limited price history available
+2025-05-25 17:25:19,077 - phoenix.birdeye - INFO - Token 5eycqvLdZGfPUFcwsk6pzWJDkq9yAGYXxDP5jJTWpump is a pump.fun token, limited price history available
+2025-05-25 17:25:20,453 - phoenix.birdeye - WARNING - No price history available for A39mxDwRRd9mSugHPhU3cNoqeCk3NB25YJRp78s2KZhK
+2025-05-25 17:25:21,479 - phoenix.birdeye - INFO - Token 3xppG9kV9Y4TGxfAwU2vwW7HhZvKfQnpGMBJv1jipump is a pump.fun token, limited price history available
+2025-05-25 17:25:22,680 - phoenix.birdeye - INFO - Token F241tyRL8a46MxCrpTYk32hN3pNm6UAdHB8fHddZpump is a pump.fun token, limited price history available
+2025-05-25 17:25:23,881 - phoenix.birdeye - INFO - Token BZqiNFc3f91NQGZFaYbeUR8WbbQ77KuFU3APrJXWpump is a pump.fun token, limited price history available
+2025-05-25 17:25:25,082 - phoenix.birdeye - INFO - Token BZqiNFc3f91NQGZFaYbeUR8WbbQ77KuFU3APrJXWpump is a pump.fun token, limited price history available
+2025-05-25 17:25:26,283 - phoenix.birdeye - INFO - Token EfeNyyh1kppvqBnurSXTLaCurfwufXGRaggmH5Fkpump is a pump.fun token, limited price history available
+2025-05-25 17:25:27,493 - phoenix.birdeye - INFO - Token HmjCoarLh5duURfJ333DwfFiPyTCgFT35pRSAoP8pump is a pump.fun token, limited price history available
+2025-05-25 17:25:32,486 - phoenix.birdeye - WARNING - No price history available for 21nz1iVYspbz1Y3rvCQyerD8TaHbaKmno4zxuRpA7Bcp
+2025-05-25 17:25:34,991 - phoenix.birdeye - INFO - Token C8Z5ZnYnsmfpreHh5MrdZPMXjUQY5YzzswADP1Vrpump is a pump.fun token, limited price history available
+2025-05-25 17:25:36,195 - phoenix.birdeye - INFO - Token C8Z5ZnYnsmfpreHh5MrdZPMXjUQY5YzzswADP1Vrpump is a pump.fun token, limited price history available
+2025-05-25 17:25:37,396 - phoenix.birdeye - INFO - Token 9aftyGLYap69vn8fpHUnH9iPbgpF8g9VxZjNRbRcpump is a pump.fun token, limited price history available
+2025-05-25 17:25:38,597 - phoenix.birdeye - INFO - Token GDe3Tnig7vh89Lzs4HTJvBWajsQfrb3hdLCd2f1hpump is a pump.fun token, limited price history available
+2025-05-25 17:25:39,799 - phoenix.birdeye - INFO - Token G4PLXS424HxKWoehEUzyLsR8QhHSTVuLgFbHUh8spump is a pump.fun token, limited price history available
+2025-05-25 17:25:42,201 - phoenix.birdeye - INFO - Token A4Sc71GqWFEa64ySNKhK184gDvxaj1Va5ui87QCTpump is a pump.fun token, limited price history available
+2025-05-25 17:25:43,402 - phoenix.birdeye - INFO - Token A4Sc71GqWFEa64ySNKhK184gDvxaj1Va5ui87QCTpump is a pump.fun token, limited price history available
