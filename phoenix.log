@@ -10587,3 +10587,6 @@ TypeError: '>=' not supported between instances of 'NoneType' and 'int'
 2025-05-25 19:47:00,754 - phoenix.telegram - INFO - Collecting tokens from @InsiderSolanaPrintors (10 mentions)
 2025-05-25 19:47:00,881 - phoenix.telegram - INFO - Scraping up to 500 messages from $SOLANA PRINTERS (ID: 2329593730)
 2025-05-25 19:47:01,515 - phoenix.telegram - INFO - Finished retrieving 87 messages from 2329593730
+2025-05-25 19:47:03,518 - phoenix.telegram - INFO - Collecting tokens from @WitchLabs (10 mentions)
+2025-05-25 19:47:03,644 - phoenix.telegram - INFO - Scraping up to 500 messages from WitchLabs (ID: 2251415846)
+2025-05-25 19:47:04,032 - phoenix.telegram - INFO - Finished retrieving 26 messages from 2251415846
