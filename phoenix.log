@@ -9891,3 +9891,207 @@ TypeError: '>=' not supported between instances of 'NoneType' and 'int'
 2025-05-25 11:57:03,292 - phoenix - INFO - 📞 Disconnected from Telegram
 2025-05-25 11:57:03,292 - phoenix - ERROR - ❌ Analysis failed: Analysis timeout - partial results not available
 2025-05-25 11:57:03,292 - phoenix - INFO - 📁 Enhanced telegram analysis completed. Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv
+2025-05-25 16:01:22,743 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-25 16:01:22,743 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-25 16:01:23,036 - phoenix - INFO - ✅ Imported telegram module
+2025-05-25 16:01:23,036 - phoenix - INFO - 🚀 Starting enhanced SpyDefi analysis for the past 24 hours.
+2025-05-25 16:01:23,036 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv
+2025-05-25 16:01:23,052 - phoenix - INFO - 🔄 Force refresh enabled - ignoring cache
+2025-05-25 16:01:23,052 - phoenix - INFO - ✅ Birdeye API initialized successfully
+2025-05-25 16:01:23,052 - phoenix - INFO - ✅ Helius API initialized successfully for pump.fun tokens
+2025-05-25 16:01:23,052 - phoenix.telegram - INFO - RPC URL updated to: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-25 16:01:23,052 - phoenix - INFO - ✅ Telegram scraper initialized successfully
+2025-05-25 16:01:23,052 - phoenix - INFO - 🎯 SpyDefi channel detected. Running smart parallel analysis...
+2025-05-25 16:01:23,056 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-25 16:01:23,056 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-25 16:01:23,162 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-25 16:01:23,963 - phoenix.telegram - INFO - Connected to Telegram
+2025-05-25 16:01:23,963 - phoenix - INFO - 📞 Connected to Telegram
+2025-05-25 16:01:23,972 - phoenix.telegram - INFO - 🚀 STARTING SMART PARALLEL SPYDEFI ANALYSIS
+2025-05-25 16:01:23,972 - phoenix.telegram - INFO - 🎯 Phase 1: Discovering active KOLs from SpyDefi...
+2025-05-25 16:01:23,972 - phoenix.telegram - INFO - 🔍 Scanning SpyDefi for last 6 hours...
+2025-05-25 16:01:24,099 - phoenix.telegram - INFO - Scraping up to 1000 messages from SpyDefi (ID: 1960616143)
+2025-05-25 16:01:27,587 - phoenix.telegram - INFO - Finished retrieving 1000 messages from 1960616143
+2025-05-25 16:01:27,587 - phoenix.telegram - INFO - ✅ Found 238 unique KOLs (+238 new) from 1000 messages
+2025-05-25 16:01:27,587 - phoenix.telegram - INFO - 🎯 Sufficient KOLs found (238), stopping discovery
+2025-05-25 16:01:27,587 - phoenix.telegram - INFO - ✅ Saved SpyDefi cache with 238 KOLs
+2025-05-25 16:01:27,587 - phoenix.telegram - INFO - ✅ Found 238 active KOLs from SpyDefi
+2025-05-25 16:01:27,587 - phoenix.telegram - INFO - 📦 Phase 1: Collecting all tokens from all KOLs...
+2025-05-25 16:01:27,587 - phoenix.telegram - INFO - Collecting tokens from @PEPE_Calls28 (28 mentions)
+2025-05-25 16:01:27,712 - phoenix.telegram - INFO - Scraping up to 500 messages from PEPE CALLS (ID: 2017857449)
+2025-05-25 16:01:28,633 - phoenix.telegram - INFO - Finished retrieving 154 messages from 2017857449
+2025-05-25 16:01:30,647 - phoenix.telegram - INFO - Collecting tokens from @Zen_call (23 mentions)
+2025-05-25 16:01:30,790 - phoenix.telegram - INFO - Scraping up to 500 messages from OxyZen Calls (ID: 2177594166)
+2025-05-25 16:01:32,283 - phoenix.telegram - INFO - Finished retrieving 264 messages from 2177594166
+2025-05-25 16:01:34,307 - phoenix.telegram - INFO - Collecting tokens from @hulkgemscalls_real (19 mentions)
+2025-05-25 16:01:34,434 - phoenix.telegram - INFO - Scraping up to 500 messages from TUBOR DEGEN CALLS (ID: 2353208529)
+2025-05-25 16:01:35,306 - phoenix.telegram - INFO - Finished retrieving 165 messages from 2353208529
+2025-05-25 16:01:37,322 - phoenix.telegram - INFO - Collecting tokens from @grok (19 mentions)
+2025-05-25 16:01:37,588 - phoenix.telegram - INFO - Scraping up to 500 messages from 海外超级AI (ID: 2457957663)
+2025-05-25 16:01:38,926 - phoenix.telegram - INFO - Finished retrieving 497 messages from 2457957663
+2025-05-25 16:01:40,948 - phoenix.telegram - INFO - Collecting tokens from @Cryptosparrowcall9 (18 mentions)
+2025-05-25 16:01:41,068 - phoenix.telegram - INFO - Scraping up to 500 messages from 𝐂𝐫𝐲𝐩𝐭𝐨𝐬𝐩𝐚𝐫𝐫𝐨𝐰 𝐜𝐚𝐥𝐥 (ID: 2008608467)
+2025-05-25 16:01:42,244 - phoenix.telegram - INFO - Finished retrieving 255 messages from 2008608467
+2025-05-25 16:01:44,247 - phoenix.telegram - INFO - Processed 5 KOLs, waiting before next batch...
+2025-05-25 16:01:49,255 - phoenix.telegram - INFO - Collecting tokens from @TopCallersChannel (17 mentions)
+2025-05-25 16:01:49,383 - phoenix.telegram - INFO - Scraping up to 500 messages from Top Callers-Channel 🤖 (ID: 1915321527)
+2025-05-25 16:01:50,914 - phoenix.telegram - INFO - Finished retrieving 325 messages from 1915321527
+2025-05-25 16:01:52,929 - phoenix.telegram - INFO - Collecting tokens from @GemsmineEth (16 mentions)
+2025-05-25 16:01:53,056 - phoenix.telegram - INFO - Scraping up to 500 messages from Gems Mine(Gamble) (ID: 1500214409)
+2025-05-25 16:01:53,852 - phoenix.telegram - INFO - Finished retrieving 134 messages from 1500214409
+2025-05-25 16:01:55,864 - phoenix.telegram - INFO - Collecting tokens from @Thanos_Call (16 mentions)
+2025-05-25 16:01:55,990 - phoenix.telegram - INFO - Scraping up to 500 messages from THANOS GEMS CALLS (ID: 2192337225)
+2025-05-25 16:01:56,778 - phoenix.telegram - INFO - Finished retrieving 146 messages from 2192337225
+2025-05-25 16:01:58,786 - phoenix.telegram - INFO - Collecting tokens from @MarksGems (15 mentions)
+2025-05-25 16:01:58,913 - phoenix.telegram - INFO - Scraping up to 500 messages from Marks Gems 💎 (ID: 1508785153)
+2025-05-25 16:02:00,666 - phoenix.telegram - INFO - Finished retrieving 475 messages from 1508785153
+2025-05-25 16:02:02,675 - phoenix.telegram - INFO - Collecting tokens from @TOXICgambols (14 mentions)
+2025-05-25 16:02:02,803 - phoenix.telegram - INFO - Scraping up to 500 messages from Toxic Plays (ID: 2486901730)
+2025-05-25 16:02:03,248 - phoenix.telegram - INFO - Finished retrieving 68 messages from 2486901730
+2025-05-25 16:02:05,261 - phoenix.telegram - INFO - Processed 10 KOLs, waiting before next batch...
+2025-05-25 16:02:10,263 - phoenix.telegram - INFO - Collecting tokens from @bossygambles (12 mentions)
+2025-05-25 16:02:10,391 - phoenix.telegram - INFO - Scraping up to 500 messages from Bossy Gambles 🎲 (ID: 1608644886)
+2025-05-25 16:02:11,781 - phoenix.telegram - INFO - Finished retrieving 287 messages from 1608644886
+2025-05-25 16:02:13,807 - phoenix.telegram - INFO - Collecting tokens from @SirWilliams_Call (12 mentions)
+2025-05-25 16:02:13,935 - phoenix.telegram - INFO - Scraping up to 500 messages from Sir_Williams Call (ID: 2279724969)
+2025-05-25 16:02:15,354 - phoenix.telegram - INFO - Finished retrieving 258 messages from 2279724969
+2025-05-25 16:02:17,378 - phoenix.telegram - INFO - Collecting tokens from @baseddegengems (12 mentions)
+2025-05-25 16:02:17,507 - phoenix.telegram - INFO - Scraping up to 500 messages from BASED DEGEN GEMS (ID: 1992057930)
+2025-05-25 16:02:18,465 - phoenix.telegram - INFO - Finished retrieving 151 messages from 1992057930
+2025-05-25 16:02:20,493 - phoenix.telegram - INFO - Collecting tokens from @Mrbigbagcalls (11 mentions)
+2025-05-25 16:02:20,619 - phoenix.telegram - INFO - Scraping up to 500 messages from Mr BigBag Calls (ID: 2051055592)
+2025-05-25 16:02:21,823 - phoenix.telegram - INFO - Finished retrieving 270 messages from 2051055592
+2025-05-25 16:02:23,841 - phoenix.telegram - INFO - Collecting tokens from @Maestrosdegen (11 mentions)
+2025-05-25 16:02:23,985 - phoenix.telegram - INFO - Scraping up to 500 messages from Maestros Gamble Degen Apes (ID: 1810124798)
+2025-05-25 16:02:25,534 - phoenix.telegram - INFO - Finished retrieving 305 messages from 1810124798
+2025-05-25 16:02:27,548 - phoenix.telegram - INFO - Processed 15 KOLs, waiting before next batch...
+2025-05-25 16:02:32,554 - phoenix.telegram - INFO - Collecting tokens from @ChapoInsider (11 mentions)
+2025-05-25 16:02:32,681 - phoenix.telegram - INFO - Scraping up to 500 messages from ChapoTheCrypto (ID: 2300385026)
+2025-05-25 16:02:34,010 - phoenix.telegram - INFO - Finished retrieving 337 messages from 2300385026
+2025-05-25 16:02:36,020 - phoenix.telegram - INFO - Collecting tokens from @onchainalphatrench (11 mentions)
+2025-05-25 16:02:36,150 - phoenix.telegram - INFO - Scraping up to 500 messages from Onchain Alpha Trench (ID: 2097131181)
+2025-05-25 16:02:36,494 - phoenix.telegram - INFO - Finished retrieving 41 messages from 2097131181
+2025-05-25 16:02:38,496 - phoenix.telegram - INFO - Collecting tokens from @InsiderSolanaPrintors (10 mentions)
+2025-05-25 16:02:38,630 - phoenix.telegram - INFO - Scraping up to 500 messages from $SOLANA PRINTERS (ID: 2329593730)
+2025-05-25 16:02:39,258 - phoenix.telegram - INFO - Finished retrieving 87 messages from 2329593730
+2025-05-25 16:02:41,269 - phoenix.telegram - INFO - Collecting tokens from @WitchLabs (10 mentions)
+2025-05-25 16:02:41,397 - phoenix.telegram - INFO - Scraping up to 500 messages from WitchLabs (ID: 2251415846)
+2025-05-25 16:02:41,747 - phoenix.telegram - INFO - Finished retrieving 26 messages from 2251415846
+2025-05-25 16:02:43,749 - phoenix.telegram - INFO - Collecting tokens from @maybac_whales (9 mentions)
+2025-05-25 16:02:43,875 - phoenix.telegram - INFO - Scraping up to 500 messages from ᗰᗩYᗷᗩᑕᕼ 鲸鱼 💮 (ID: 1951877828)
+2025-05-25 16:02:44,320 - phoenix.telegram - INFO - Finished retrieving 67 messages from 1951877828
+2025-05-25 16:02:46,321 - phoenix.telegram - INFO - Processed 20 KOLs, waiting before next batch...
+2025-05-25 16:02:51,334 - phoenix.telegram - INFO - Collecting tokens from @mattfuriecalls1 (9 mentions)
+2025-05-25 16:02:51,463 - phoenix.telegram - INFO - Scraping up to 500 messages from Matt Furie calls (ID: 1571857694)
+2025-05-25 16:02:51,869 - phoenix.telegram - INFO - Finished retrieving 64 messages from 1571857694
+2025-05-25 16:02:53,881 - phoenix.telegram - INFO - Collecting tokens from @MitchGemsGambles (8 mentions)
+2025-05-25 16:02:53,994 - phoenix.telegram - INFO - Scraping up to 500 messages from Mitch 🎲 Gambles (ID: 2015715777)
+2025-05-25 16:02:55,463 - phoenix.telegram - INFO - Finished retrieving 187 messages from 2015715777
+2025-05-25 16:02:57,468 - phoenix.telegram - INFO - Collecting tokens from @chiggajogambles (8 mentions)
+2025-05-25 16:02:57,595 - phoenix.telegram - INFO - Scraping up to 500 messages from Chigga's Gambles 赌博日记 (ID: 1927494975)
+2025-05-25 16:02:59,194 - phoenix.telegram - INFO - Finished retrieving 351 messages from 1927494975
+2025-05-25 16:03:01,201 - phoenix.telegram - INFO - Collecting tokens from @GM_Degencalls (8 mentions)
+2025-05-25 16:03:01,314 - phoenix.telegram - INFO - Scraping up to 500 messages from GM Degen Calls (ID: 2144494116)
+2025-05-25 16:03:02,062 - phoenix.telegram - INFO - Finished retrieving 132 messages from 2144494116
+2025-05-25 16:03:04,089 - phoenix.telegram - INFO - Collecting tokens from @joesgems3 (8 mentions)
+2025-05-25 16:03:04,217 - phoenix.telegram - INFO - Scraping up to 500 messages from ⚔️ Joe’s Gems ⚔️ (ID: 1855309696)
+2025-05-25 16:03:04,774 - phoenix.telegram - INFO - Finished retrieving 104 messages from 1855309696
+2025-05-25 16:03:06,791 - phoenix.telegram - INFO - Processed 25 KOLs, waiting before next batch...
+2025-05-25 16:03:11,792 - phoenix.telegram - INFO - Collecting tokens from @dextradegems (7 mentions)
+2025-05-25 16:03:11,917 - phoenix.telegram - INFO - Scraping up to 500 messages from DeXGems (ID: 1268629886)
+2025-05-25 16:03:12,704 - phoenix.telegram - INFO - Finished retrieving 145 messages from 1268629886
+2025-05-25 16:03:14,714 - phoenix.telegram - INFO - Collecting tokens from @WmafiaGems (7 mentions)
+2025-05-25 16:03:14,841 - phoenix.telegram - INFO - Scraping up to 500 messages from Wmafia Gems (ID: 2084699256)
+2025-05-25 16:03:15,254 - phoenix.telegram - INFO - Finished retrieving 51 messages from 2084699256
+2025-05-25 16:03:17,256 - phoenix.telegram - INFO - Collecting tokens from @Milagrosdegencalls (7 mentions)
+2025-05-25 16:03:17,383 - phoenix.telegram - INFO - Scraping up to 500 messages from Milagros Degen Calls (real) (ID: 2178826499)
+2025-05-25 16:03:18,189 - phoenix.telegram - INFO - Finished retrieving 119 messages from 2178826499
+2025-05-25 16:03:20,194 - phoenix.telegram - INFO - Collecting tokens from @RimberioGamble (7 mentions)
+2025-05-25 16:03:20,315 - phoenix.telegram - INFO - Scraping up to 500 messages from Rimberio Gamble (ID: 1771818884)
+2025-05-25 16:03:20,634 - phoenix.telegram - INFO - Finished retrieving 34 messages from 1771818884
+2025-05-25 16:03:22,639 - phoenix.telegram - INFO - Collecting tokens from @Insider_ECA (7 mentions)
+2025-05-25 16:03:22,768 - phoenix.telegram - INFO - Scraping up to 500 messages from Bobby Degen Calls (ID: 1851567457)
+2025-05-25 16:03:23,542 - phoenix.telegram - INFO - Finished retrieving 129 messages from 1851567457
+2025-05-25 16:03:25,557 - phoenix.telegram - INFO - Processed 30 KOLs, waiting before next batch...
+2025-05-25 16:03:30,568 - phoenix.telegram - INFO - ✅ Collected 1366 unique tokens from 1366 calls
+2025-05-25 16:03:30,568 - phoenix.telegram - INFO - 💎 Phase 2: Analyzing tokens in parallel batches...
+2025-05-25 16:03:30,568 - phoenix.telegram - INFO - Processing batch 1/69
+2025-05-25 16:03:35,599 - phoenix.telegram - ERROR - RPC error: HTTPSConnectionPool(host='twilight-maximum-snowflake.solana-mainnet.quiknode.pro', port=443): Read timed out. (read timeout=5)
+2025-05-25 16:03:36,128 - phoenix.telegram - ERROR - RPC error: HTTPSConnectionPool(host='twilight-maximum-snowflake.solana-mainnet.quiknode.pro', port=443): Read timed out. (read timeout=5)
+2025-05-25 16:03:41,531 - phoenix.telegram - ERROR - RPC error: HTTPSConnectionPool(host='twilight-maximum-snowflake.solana-mainnet.quiknode.pro', port=443): Read timed out. (read timeout=5)
+2025-05-25 16:03:50,950 - phoenix.telegram - ERROR - RPC error: HTTPSConnectionPool(host='twilight-maximum-snowflake.solana-mainnet.quiknode.pro', port=443): Read timed out. (read timeout=5)
+2025-05-25 16:03:52,568 - phoenix.telegram - ERROR - RPC error: HTTPSConnectionPool(host='twilight-maximum-snowflake.solana-mainnet.quiknode.pro', port=443): Read timed out. (read timeout=5)
+2025-05-25 16:03:58,135 - phoenix.telegram - ERROR - RPC error: HTTPSConnectionPool(host='twilight-maximum-snowflake.solana-mainnet.quiknode.pro', port=443): Read timed out. (read timeout=5)
+2025-05-25 16:04:00,476 - phoenix.telegram - ERROR - RPC error: HTTPSConnectionPool(host='twilight-maximum-snowflake.solana-mainnet.quiknode.pro', port=443): Read timed out. (read timeout=5)
+2025-05-25 16:04:01,512 - phoenix.telegram - ERROR - Global timeout reached (300s)
+2025-05-25 16:04:01,524 - phoenix - INFO - 📊 Analysis completed, exporting results...
+2025-05-25 16:04:01,524 - phoenix.telegram - WARNING - No KOL data to export
+2025-05-25 16:04:01,524 - phoenix.telegram - INFO - Disconnecting from Telegram...
+2025-05-25 16:04:01,526 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-25 16:04:01,527 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-25 16:04:01,527 - phoenix.telegram - INFO - Disconnected from Telegram
+2025-05-25 16:04:01,527 - phoenix - INFO - 📞 Disconnected from Telegram
+2025-05-25 16:04:01,527 - phoenix - ERROR - ❌ Analysis failed: Analysis timeout - partial results not available
+2025-05-25 16:04:01,527 - phoenix - INFO - 📁 Enhanced telegram analysis completed. Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv
+2025-05-25 16:50:17,273 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-25 16:50:17,273 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-25 16:50:17,634 - phoenix - INFO - ✅ Imported telegram module
+2025-05-25 16:50:17,634 - phoenix - INFO - 🚀 Starting enhanced SpyDefi analysis for the past 24 hours.
+2025-05-25 16:50:17,634 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv
+2025-05-25 16:50:17,634 - phoenix - INFO - ✅ Birdeye API initialized successfully
+2025-05-25 16:50:17,634 - phoenix - INFO - ✅ Helius API initialized successfully for pump.fun tokens
+2025-05-25 16:50:17,634 - phoenix.telegram - INFO - RPC URL configured: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-25 16:50:17,649 - phoenix - INFO - ✅ Telegram scraper initialized successfully
+2025-05-25 16:50:17,649 - phoenix - INFO - 🎯 SpyDefi channel detected. Running smart parallel analysis...
+2025-05-25 16:50:17,649 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-25 16:50:17,649 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-25 16:50:17,759 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-25 16:50:18,540 - phoenix.telegram - INFO - ✅ Connected to Telegram
+2025-05-25 16:50:18,540 - phoenix - INFO - 📞 Connected to Telegram
+2025-05-25 16:50:18,548 - phoenix.telegram - INFO - 🚀 STARTING TWO-TIER HOTSTREAK ANALYSIS
+2025-05-25 16:50:18,548 - phoenix.telegram - INFO - 📍 Step 1: Discovering KOLs from SpyDefi...
+2025-05-25 16:50:18,548 - phoenix.telegram - INFO - ✅ Using SpyDefi cache: 238 KOLs (0.8h old)
+2025-05-25 16:50:18,548 - phoenix.telegram - INFO - ✅ Found 238 KOLs from SpyDefi
+2025-05-25 16:50:18,548 - phoenix.telegram - INFO - 🔍 TIER 1: Quick filtering promising KOLs...
+2025-05-25 16:50:19,169 - phoenix.birdeye - INFO - Token BZqiNFc3f91NQGZFaYbeUR8WbbQ77KuFU3APrJXWpump is a pump.fun token, limited price history available
+2025-05-25 16:50:20,370 - phoenix.birdeye - INFO - Token BZqiNFc3f91NQGZFaYbeUR8WbbQ77KuFU3APrJXWpump is a pump.fun token, limited price history available
+2025-05-25 16:50:21,571 - phoenix.birdeye - INFO - Token BZqiNFc3f91NQGZFaYbeUR8WbbQ77KuFU3APrJXWpump is a pump.fun token, limited price history available
+2025-05-25 16:50:22,771 - phoenix.birdeye - INFO - Token BZqiNFc3f91NQGZFaYbeUR8WbbQ77KuFU3APrJXWpump is a pump.fun token, limited price history available
+2025-05-25 16:50:30,587 - phoenix.birdeye - INFO - Token 5Sc32PCX7mZ5YJnkhq6LS6acwfLxRMkwT2XWjY7gpump is a pump.fun token, limited price history available
+2025-05-25 16:50:31,790 - phoenix.birdeye - INFO - Token 7sLWvvfwL93WLSvbugRVvpddn82WosFDUrh2KAMspump is a pump.fun token, limited price history available
+2025-05-25 16:50:34,200 - phoenix.birdeye - INFO - Token 3xppG9kV9Y4TGxfAwU2vwW7HhZvKfQnpGMBJv1jipump is a pump.fun token, limited price history available
+2025-05-25 16:50:35,401 - phoenix.birdeye - INFO - Token GTGUTdfZsxP94LXiLSjL9E7CT2wevxEF7gBZkFeYpump is a pump.fun token, limited price history available
+2025-05-25 16:59:47,137 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-25 16:59:47,137 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-25 16:59:47,449 - phoenix - INFO - ✅ Imported telegram module
+2025-05-25 16:59:47,449 - phoenix - INFO - 🚀 Starting two-tier hotstreak analysis
+2025-05-25 16:59:47,449 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_analysis_enhanced.csv
+2025-05-25 16:59:47,449 - phoenix - INFO - ✅ Birdeye API initialized successfully
+2025-05-25 16:59:47,449 - phoenix - INFO - ✅ Helius API initialized successfully for pump.fun tokens
+2025-05-25 16:59:47,449 - phoenix.telegram - INFO - RPC URL configured: https://twilight-maximum-snowflake.solana-mainnet.quiknode.pro/a9ff653ab4552d4b7b3158d89e3e4614b1f1ef20/
+2025-05-25 16:59:47,449 - phoenix - INFO - ✅ Telegram scraper initialized successfully
+2025-05-25 16:59:47,465 - phoenix.telegram - INFO - Connecting to Telegram...
+2025-05-25 16:59:47,465 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-25 16:59:47,575 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-25 16:59:48,348 - phoenix.telegram - INFO - ✅ Connected to Telegram
+2025-05-25 16:59:48,348 - phoenix - INFO - 📞 Connected to Telegram
+2025-05-25 16:59:48,356 - phoenix.telegram - INFO - 🚀 STARTING TWO-TIER HOTSTREAK ANALYSIS
+2025-05-25 16:59:48,356 - phoenix.telegram - INFO - 📍 Step 1: Discovering KOLs from SpyDefi...
+2025-05-25 16:59:48,356 - phoenix.telegram - INFO - ✅ Using SpyDefi cache: 238 KOLs (1.0h old)
+2025-05-25 16:59:48,356 - phoenix.telegram - INFO - ✅ Found 238 KOLs from SpyDefi
+2025-05-25 16:59:48,356 - phoenix.telegram - INFO - 🔍 TIER 1: Quick filtering promising KOLs...
+2025-05-25 16:59:48,965 - phoenix.birdeye - INFO - Token BZqiNFc3f91NQGZFaYbeUR8WbbQ77KuFU3APrJXWpump is a pump.fun token, limited price history available
+2025-05-25 16:59:50,167 - phoenix.birdeye - INFO - Token BZqiNFc3f91NQGZFaYbeUR8WbbQ77KuFU3APrJXWpump is a pump.fun token, limited price history available
+2025-05-25 16:59:51,368 - phoenix.birdeye - INFO - Token BZqiNFc3f91NQGZFaYbeUR8WbbQ77KuFU3APrJXWpump is a pump.fun token, limited price history available
+2025-05-25 16:59:52,569 - phoenix.birdeye - INFO - Token BZqiNFc3f91NQGZFaYbeUR8WbbQ77KuFU3APrJXWpump is a pump.fun token, limited price history available
+2025-05-25 16:59:53,770 - phoenix.birdeye - INFO - Token 5Sc32PCX7mZ5YJnkhq6LS6acwfLxRMkwT2XWjY7gpump is a pump.fun token, limited price history available
+2025-05-25 16:59:54,978 - phoenix.birdeye - INFO - Token 7sLWvvfwL93WLSvbugRVvpddn82WosFDUrh2KAMspump is a pump.fun token, limited price history available
+2025-05-25 16:59:58,693 - phoenix.birdeye - INFO - Token 3xppG9kV9Y4TGxfAwU2vwW7HhZvKfQnpGMBJv1jipump is a pump.fun token, limited price history available
+2025-05-25 16:59:59,894 - phoenix.birdeye - INFO - Token GTGUTdfZsxP94LXiLSjL9E7CT2wevxEF7gBZkFeYpump is a pump.fun token, limited price history available
+2025-05-25 17:06:00,659 - phoenix - INFO - Loaded 72 wallet addresses from wallets.txt
+2025-05-25 17:07:21,925 - phoenix.birdeye - WARNING - Invalid token address format: So11111111111111111111111111111111111111112
+2025-05-25 17:07:21,957 - phoenix.cielo - INFO - Checking Cielo Finance API connectivity...
+2025-05-25 17:07:22,170 - phoenix.cielo - INFO - ✅ Cielo Finance API is accessible (got expected error response)
+2025-05-25 17:07:22,201 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-25 17:07:22,201 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-25 17:20:06,237 - phoenix - INFO - Loaded 72 wallet addresses from wallets.txt
