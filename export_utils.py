@@ -1,12 +1,13 @@
 """
-Export Utilities Module - Phoenix Project (FIXED EXCEL EXPORT VERSION)
+Export Utilities Module - Phoenix Project (COMPREHENSIVE ANALYSIS VERSION)
 
-Handles Excel and CSV exports for memecoin analysis results.
-FIXES:
-- Fixed 'list' object has no attribute 'items' error
-- Ensures telegram_data['ranked_kols'] is always treated as dictionary
-- Maintains compatibility with wallet_module
-- All existing functionality preserved
+Handles Excel and CSV exports for comprehensive memecoin analysis results.
+UPDATES:
+- Enhanced support for comprehensive KOL analysis (top 50 + 72h)
+- Added 5x success rate tracking
+- SpyDefi mention weighting support
+- Enhanced composite scoring display
+- Maintains full compatibility with wallet_module
 """
 
 import os
@@ -28,10 +29,10 @@ except ImportError:
 def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any], 
                    output_file: str) -> bool:
     """
-    Export combined analysis results to Excel with 7-day focus formatting.
+    Export comprehensive analysis results to Excel with enhanced formatting.
     
     Args:
-        telegram_data: Telegram analysis results
+        telegram_data: Comprehensive telegram analysis results
         wallet_data: Wallet analysis results
         output_file: Output Excel file path
         
@@ -102,9 +103,9 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                 'border': 1
             })
             
-            # Export Telegram data if available (2x-focused)
+            # Export Comprehensive Telegram data if available
             if telegram_data and "ranked_kols" in telegram_data:
-                # Prepare telegram data for export
+                # Prepare comprehensive telegram data for export
                 telegram_rows = []
                 
                 # Handle both dictionary and list formats for ranked_kols
@@ -114,7 +115,6 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                 if isinstance(ranked_kols, list):
                     logger.warning("ranked_kols is a list, converting to dictionary format")
                     # Convert list to dictionary if needed
-                    # Assuming each item in list has 'kol' key
                     temp_dict = {}
                     for item in ranked_kols:
                         if isinstance(item, dict) and 'kol' in item:
@@ -122,7 +122,7 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                             temp_dict[kol_name] = item
                     ranked_kols = temp_dict
                 
-                # Now process as dictionary
+                # Process comprehensive KOL data
                 if isinstance(ranked_kols, dict):
                     for kol, performance in ranked_kols.items():
                         # Handle case where performance might be nested
@@ -130,13 +130,19 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                             row = {
                                 'KOL': f"@{kol}",
                                 'Channel ID': performance.get('channel_id', ''),
-                                'Calls Analyzed': performance.get('tokens_mentioned', 0),
+                                'SpyDefi Mentions': performance.get('spydefi_mentions', 0),
+                                'Tokens Analyzed': performance.get('tokens_mentioned', 0),
                                 '2x Success Rate %': performance.get('success_rate_2x', 0),
+                                '5x Success Rate %': performance.get('success_rate_5x', 0),
+                                '2x Tokens': performance.get('tokens_2x_plus', 0),
+                                '5x Tokens': performance.get('tokens_5x_plus', 0),
                                 'Avg ATH ROI %': performance.get('avg_ath_roi', 0),
+                                'Max ROI %': performance.get('max_roi', 0),
                                 'Composite Score': performance.get('composite_score', 0),
                                 'Avg Max Pullback %': performance.get('avg_max_pullback_percent', 0),
                                 'Avg Time to 2x (min)': performance.get('avg_time_to_2x_minutes', 0),
-                                'Analysis Type': performance.get('analysis_type', 'initial')
+                                'Analysis Type': performance.get('analysis_type', 'comprehensive'),
+                                'Analysis Hours': performance.get('analysis_hours', 72)
                             }
                             telegram_rows.append(row)
                 
@@ -145,24 +151,25 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                 
                 if telegram_rows:
                     telegram_df = pd.DataFrame(telegram_rows)
-                    telegram_df.to_excel(writer, sheet_name='Telegram KOLs', index=False)
+                    telegram_df.to_excel(writer, sheet_name='Comprehensive KOLs', index=False)
                     
                     # Format Telegram sheet
-                    telegram_sheet = writer.sheets['Telegram KOLs']
+                    telegram_sheet = writer.sheets['Comprehensive KOLs']
                     
                     # Apply header format
                     for col_num, value in enumerate(telegram_df.columns.values):
                         telegram_sheet.write(0, col_num, value, header_format)
                     
                     # Apply conditional formatting for composite scores
-                    telegram_sheet.conditional_format('F2:F{}'.format(len(telegram_df) + 1), {
+                    score_col = telegram_df.columns.get_loc('Composite Score')
+                    telegram_sheet.conditional_format(f'{chr(65 + score_col)}2:{chr(65 + score_col)}{len(telegram_df) + 1}', {
                         'type': 'cell',
                         'criteria': '>=',
                         'value': 81,
                         'format': score_excellent_format
                     })
                     
-                    telegram_sheet.conditional_format('F2:F{}'.format(len(telegram_df) + 1), {
+                    telegram_sheet.conditional_format(f'{chr(65 + score_col)}2:{chr(65 + score_col)}{len(telegram_df) + 1}', {
                         'type': 'cell',
                         'criteria': 'between',
                         'minimum': 61,
@@ -170,7 +177,7 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                         'format': score_good_format
                     })
                     
-                    telegram_sheet.conditional_format('F2:F{}'.format(len(telegram_df) + 1), {
+                    telegram_sheet.conditional_format(f'{chr(65 + score_col)}2:{chr(65 + score_col)}{len(telegram_df) + 1}', {
                         'type': 'cell',
                         'criteria': 'between',
                         'minimum': 41,
@@ -178,7 +185,7 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                         'format': score_average_format
                     })
                     
-                    telegram_sheet.conditional_format('F2:F{}'.format(len(telegram_df) + 1), {
+                    telegram_sheet.conditional_format(f'{chr(65 + score_col)}2:{chr(65 + score_col)}{len(telegram_df) + 1}', {
                         'type': 'cell',
                         'criteria': 'between',
                         'minimum': 21,
@@ -186,23 +193,29 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                         'format': score_poor_format
                     })
                     
-                    telegram_sheet.conditional_format('F2:F{}'.format(len(telegram_df) + 1), {
+                    telegram_sheet.conditional_format(f'{chr(65 + score_col)}2:{chr(65 + score_col)}{len(telegram_df) + 1}', {
                         'type': 'cell',
                         'criteria': '<=',
                         'value': 20.99,
                         'format': score_very_poor_format
                     })
                     
-                    # Set column widths
+                    # Set column widths for comprehensive data
                     telegram_sheet.set_column('A:A', 20)  # KOL
                     telegram_sheet.set_column('B:B', 15)  # Channel ID
-                    telegram_sheet.set_column('C:C', 15)  # Calls Analyzed
-                    telegram_sheet.set_column('D:D', 18)  # 2x Success Rate
-                    telegram_sheet.set_column('E:E', 15)  # Avg ATH ROI
-                    telegram_sheet.set_column('F:F', 15)  # Composite Score
-                    telegram_sheet.set_column('G:G', 18)  # Avg Max Pullback
-                    telegram_sheet.set_column('H:H', 20)  # Avg Time to 2x
-                    telegram_sheet.set_column('I:I', 15)  # Analysis Type
+                    telegram_sheet.set_column('C:C', 15)  # SpyDefi Mentions
+                    telegram_sheet.set_column('D:D', 15)  # Tokens Analyzed
+                    telegram_sheet.set_column('E:E', 18)  # 2x Success Rate
+                    telegram_sheet.set_column('F:F', 18)  # 5x Success Rate
+                    telegram_sheet.set_column('G:G', 12)  # 2x Tokens
+                    telegram_sheet.set_column('H:H', 12)  # 5x Tokens
+                    telegram_sheet.set_column('I:I', 15)  # Avg ATH ROI
+                    telegram_sheet.set_column('J:J', 15)  # Max ROI
+                    telegram_sheet.set_column('K:K', 15)  # Composite Score
+                    telegram_sheet.set_column('L:L', 18)  # Avg Max Pullback
+                    telegram_sheet.set_column('M:M', 20)  # Avg Time to 2x
+                    telegram_sheet.set_column('N:N', 15)  # Analysis Type
+                    telegram_sheet.set_column('O:O', 15)  # Analysis Hours
             
             # Export Wallet data if available (unchanged - preserved for wallet_module compatibility)
             if wallet_data:
@@ -370,14 +383,15 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                         wallet_sheet.write(0, col_num, value, header_format)
                     
                     # Apply conditional formatting for scores
-                    wallet_sheet.conditional_format('D2:D{}'.format(len(wallet_df) + 1), {
+                    score_col = wallet_df.columns.get_loc('Score')
+                    wallet_sheet.conditional_format(f'{chr(65 + score_col)}2:{chr(65 + score_col)}{len(wallet_df) + 1}', {
                         'type': 'cell',
                         'criteria': '>=',
                         'value': 81,
                         'format': score_excellent_format
                     })
                     
-                    wallet_sheet.conditional_format('D2:D{}'.format(len(wallet_df) + 1), {
+                    wallet_sheet.conditional_format(f'{chr(65 + score_col)}2:{chr(65 + score_col)}{len(wallet_df) + 1}', {
                         'type': 'cell',
                         'criteria': 'between',
                         'minimum': 61,
@@ -385,7 +399,7 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                         'format': score_good_format
                     })
                     
-                    wallet_sheet.conditional_format('D2:D{}'.format(len(wallet_df) + 1), {
+                    wallet_sheet.conditional_format(f'{chr(65 + score_col)}2:{chr(65 + score_col)}{len(wallet_df) + 1}', {
                         'type': 'cell',
                         'criteria': 'between',
                         'minimum': 41,
@@ -393,7 +407,7 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                         'format': score_average_format
                     })
                     
-                    wallet_sheet.conditional_format('D2:D{}'.format(len(wallet_df) + 1), {
+                    wallet_sheet.conditional_format(f'{chr(65 + score_col)}2:{chr(65 + score_col)}{len(wallet_df) + 1}', {
                         'type': 'cell',
                         'criteria': 'between',
                         'minimum': 21,
@@ -401,7 +415,7 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                         'format': score_poor_format
                     })
                     
-                    wallet_sheet.conditional_format('D2:D{}'.format(len(wallet_df) + 1), {
+                    wallet_sheet.conditional_format(f'{chr(65 + score_col)}2:{chr(65 + score_col)}{len(wallet_df) + 1}', {
                         'type': 'cell',
                         'criteria': '<=',
                         'value': 20.99,
@@ -454,7 +468,7 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                     wallet_sheet.set_column('W:AA', 15) # Entry/Exit
                     wallet_sheet.set_column('AB:AF', 12) # Distribution
             
-            logger.info(f"Successfully exported analysis to Excel: {output_file}")
+            logger.info(f"Successfully exported comprehensive analysis to Excel: {output_file}")
             return True
             
     except Exception as e:
@@ -464,6 +478,7 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
 def export_wallet_rankings_csv(wallet_data: Dict[str, Any], output_file: str) -> bool:
     """
     Export 7-day focused wallet rankings to CSV with binary copy decision.
+    (Unchanged - maintains wallet_module compatibility)
     
     Args:
         wallet_data: Wallet analysis results
@@ -590,10 +605,10 @@ def generate_memecoin_analysis_report(telegram_data: Dict[str, Any],
                                     wallet_data: Dict[str, Any], 
                                     output_file: str) -> bool:
     """
-    Generate a comprehensive 7-day active trader analysis report.
+    Generate a comprehensive analysis report with enhanced KOL analysis.
     
     Args:
-        telegram_data: Telegram analysis results
+        telegram_data: Comprehensive telegram analysis results
         wallet_data: Wallet analysis results
         output_file: Output text file path
         
@@ -603,20 +618,24 @@ def generate_memecoin_analysis_report(telegram_data: Dict[str, Any],
     try:
         with open(output_file, 'w', encoding='utf-8') as f:
             f.write("=" * 80 + "\n")
-            f.write("PHOENIX PROJECT - 7-DAY ACTIVE TRADER ANALYSIS REPORT\n")
+            f.write("PHOENIX PROJECT - COMPREHENSIVE ANALYSIS REPORT\n")
             f.write(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
             f.write("=" * 80 + "\n\n")
             
-            # Telegram Analysis Section (2x-focused)
+            # Comprehensive Telegram Analysis Section
             if telegram_data and "ranked_kols" in telegram_data:
-                f.write("📱 TELEGRAM ANALYSIS (SPYDEFI - 2X HOT STREAK FOCUS)\n")
+                f.write("📱 COMPREHENSIVE SPYDEFI ANALYSIS\n")
                 f.write("-" * 40 + "\n")
+                f.write(f"Analysis Type: Top 50 KOLs + 72h Comprehensive\n")
+                f.write(f"SpyDefi Scan Period: {telegram_data.get('spydefi_scan_hours', 24)} hours\n")
+                f.write(f"KOL Analysis Period: {telegram_data.get('analysis_hours_per_kol', 72)} hours each\n")
                 f.write(f"Total KOLs analyzed: {telegram_data.get('total_kols_analyzed', 0)}\n")
                 f.write(f"Deep analyses performed: {telegram_data.get('deep_analyses_performed', 0)}\n")
                 f.write(f"Total calls analyzed: {telegram_data.get('total_calls', 0)}\n")
-                f.write(f"2x success rate: {telegram_data.get('success_rate_2x', 0):.2f}%\n\n")
+                f.write(f"2x success rate: {telegram_data.get('success_rate_2x', 0):.2f}%\n")
+                f.write(f"5x success rate: {telegram_data.get('success_rate_5x', 0):.2f}%\n\n")
                 
-                f.write("Top 5 KOLs (2x Hot Streaks):\n")
+                f.write("Top 10 Comprehensive KOLs:\n")
                 ranked_kols = telegram_data.get('ranked_kols', {})
                 
                 # Handle both dictionary and list formats
@@ -630,17 +649,22 @@ def generate_memecoin_analysis_report(telegram_data: Dict[str, Any],
                     ranked_kols = temp_dict
                 
                 if isinstance(ranked_kols, dict):
-                    for i, (kol, data) in enumerate(list(ranked_kols.items())[:5], 1):
+                    for i, (kol, data) in enumerate(list(ranked_kols.items())[:10], 1):
                         f.write(f"{i}. @{kol}\n")
                         f.write(f"   Composite Score: {data.get('composite_score', 0):.1f}\n")
-                        f.write(f"   2x Success Rate: {data.get('success_rate_2x', 0):.1f}%\n")
-                        f.write(f"   Avg Time to 2x: {data.get('avg_time_to_2x_minutes', 0):.1f} minutes\n")
+                        f.write(f"   SpyDefi Mentions: {data.get('spydefi_mentions', 0)}\n")
+                        f.write(f"   Tokens Analyzed: {data.get('tokens_mentioned', 0)}\n")
+                        f.write(f"   2x Success Rate: {data.get('success_rate_2x', 0):.1f}% ({data.get('tokens_2x_plus', 0)} tokens)\n")
+                        f.write(f"   5x Success Rate: {data.get('success_rate_5x', 0):.1f}% ({data.get('tokens_5x_plus', 0)} tokens)\n")
                         f.write(f"   Avg ATH ROI: {data.get('avg_ath_roi', 0):.1f}%\n")
+                        f.write(f"   Max ROI: {data.get('max_roi', 0):.1f}%\n")
+                        f.write(f"   Avg Time to 2x: {data.get('avg_time_to_2x_minutes', 0):.1f} minutes\n")
                         f.write(f"   Avg Max Pullback: {data.get('avg_max_pullback_percent', 0):.1f}%\n")
-                        f.write(f"   Analysis Type: {data.get('analysis_type', 'initial')}\n")
+                        f.write(f"   Analysis Type: {data.get('analysis_type', 'comprehensive')}\n")
+                        f.write(f"   Analysis Hours: {data.get('analysis_hours', 72)}\n")
                         f.write("\n")
             
-            # Wallet Analysis Section (unchanged)
+            # Wallet Analysis Section (unchanged for compatibility)
             if wallet_data and wallet_data.get('success'):
                 f.write("\n💰 7-DAY ACTIVE TRADER WALLET ANALYSIS\n")
                 f.write("-" * 40 + "\n")
@@ -766,19 +790,41 @@ def generate_memecoin_analysis_report(telegram_data: Dict[str, Any],
                     if recent_5x_count > 0:
                         f.write(f"\n🚀 {recent_5x_count} wallets hit 5x+ in the last 7 days!\n")
             
-            f.write("\n" + "=" * 80 + "\n")
-            f.write("END OF 7-DAY ACTIVE TRADER ANALYSIS REPORT\n")
+            # Comprehensive Analysis Summary
+            f.write("\n\n" + "=" * 80 + "\n")
+            f.write("COMPREHENSIVE ANALYSIS SUMMARY\n")
+            f.write("=" * 80 + "\n")
             
-        logger.info(f"Successfully generated 7-day active trader report: {output_file}")
+            if telegram_data:
+                f.write("\n📊 SPYDEFI COMPREHENSIVE STATS:\n")
+                f.write(f"   • Analysis Method: Top 50 KOLs + 72h per KOL\n")
+                f.write(f"   • Total KOLs Analyzed: {telegram_data.get('total_kols_analyzed', 0)}\n")
+                f.write(f"   • Total Token Calls: {telegram_data.get('total_calls', 0)}\n")
+                f.write(f"   • 2x Success Rate: {telegram_data.get('success_rate_2x', 0):.1f}%\n")
+                f.write(f"   • 5x Success Rate: {telegram_data.get('success_rate_5x', 0):.1f}%\n")
+                
+                # API usage stats
+                api_stats = telegram_data.get('api_stats', {})
+                f.write(f"\n📞 API EFFICIENCY:\n")
+                f.write(f"   • Birdeye Calls: {api_stats.get('birdeye', 0)}\n")
+                f.write(f"   • Helius Calls: {api_stats.get('helius', 0)}\n")
+                f.write(f"   • RPC Calls: {api_stats.get('rpc', 0)}\n")
+                f.write(f"   • Price Discovery Success: {api_stats.get('price_discovery_successes', 0)}/{api_stats.get('price_discovery_attempts', 0)}\n")
+            
+            f.write("\n" + "=" * 80 + "\n")
+            f.write("END OF COMPREHENSIVE ANALYSIS REPORT\n")
+            
+        logger.info(f"Successfully generated comprehensive analysis report: {output_file}")
         return True
         
     except Exception as e:
-        logger.error(f"Error generating analysis report: {str(e)}")
+        logger.error(f"Error generating comprehensive analysis report: {str(e)}")
         return False
 
 def export_distribution_analysis(wallet_data: Dict[str, Any], output_file: str) -> bool:
     """
     Export detailed 7-day distribution analysis for active traders.
+    (Unchanged - maintains wallet_module compatibility)
     
     Args:
         wallet_data: Wallet analysis results

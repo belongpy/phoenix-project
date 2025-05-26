@@ -1,13 +1,13 @@
 """
-Telegram Module - Phoenix Project (OPTIMIZED KOL FILTERING VERSION)
+Telegram Module - Phoenix Project (TOP 50 KOLS + 72H ANALYSIS VERSION)
 
-MAJOR UPDATES:
-- Smart KOL filtering based on mention frequency
-- Configurable parameters for KOL selection
-- Auto-cache handling (no prompts)
-- Reduced API calls through intelligent filtering
-- Token deduplication across filtered KOLs
-- Parallel price discovery (Birdeye + RPC + Helius)
+UPDATED PROCESS:
+- Scan 24 hours of SpyDefi channel
+- Get top 50 KOLs with 2+ mentions
+- Analyze 72 hours of calls from each KOL
+- Parallel price discovery for all tokens
+- Direct comprehensive analysis (no tiers)
+- Maintains wallet module compatibility
 """
 
 import asyncio
@@ -62,36 +62,32 @@ class TokenPrice:
     is_pump: bool = False
 
 class TelegramScraper:
-    """Telegram scraper for SpyDefi KOL analysis with optimized KOL filtering."""
+    """Telegram scraper for SpyDefi KOL analysis with top 50 KOLs + 72h comprehensive analysis."""
     
-    # Analysis tier constants
-    INITIAL_ANALYSIS_CALLS = 5
-    DEEP_ANALYSIS_CALLS = 20
-    DEEP_ANALYSIS_THRESHOLD = 0.40  # 40% 2x success rate triggers deep analysis
+    # Updated analysis constants - REMOVED TIERED ANALYSIS
+    TOP_KOLS_TO_ANALYZE = 50  # Top 50 KOLs
+    MIN_MENTIONS_REQUIRED = 2  # Minimum 2 mentions in SpyDefi
+    SPYDEFI_SCAN_HOURS = 24  # Scan 24 hours of SpyDefi
+    KOL_ANALYSIS_HOURS = 72  # Analyze 72 hours of each KOL
     
-    # KOL FILTERING CONFIGURATION
-    DEFAULT_TOP_KOLS_TO_ANALYZE = 50  # Maximum KOLs to analyze
-    DEFAULT_MIN_MENTIONS_REQUIRED = 2  # Minimum mentions required per KOL
-    DEFAULT_MENTION_TIME_WINDOW_HOURS = 24  # Time window for mentions
-    
-    # Performance constants - OPTIMIZED
-    DEFAULT_MESSAGE_LIMIT = 500
+    # Performance constants
+    DEFAULT_MESSAGE_LIMIT = 1000  # Increased for 72h analysis
     PROGRESS_INTERVAL = 100
     SPYDEFI_TIMEOUT = 60  # seconds
-    CHANNEL_TIMEOUT = 15  # Reduced from 30
-    KOL_ANALYSIS_TIMEOUT = 30  # Reduced from 120
-    GLOBAL_TIMEOUT = 300  # 5 minutes
-    MAX_CONCURRENT_CHANNELS = 3  # Keep at 3 for Telegram safety
-    CACHE_DURATION_HOURS = 6  # Auto-use if fresh, skip if expired
+    CHANNEL_TIMEOUT = 20  # Increased for 72h data
+    KOL_ANALYSIS_TIMEOUT = 45  # Increased for comprehensive analysis
+    GLOBAL_TIMEOUT = 600  # 10 minutes for comprehensive analysis
+    MAX_CONCURRENT_CHANNELS = 3  # Keep safe for Telegram
+    CACHE_DURATION_HOURS = 12  # Longer cache for comprehensive analysis
     MAX_CONSECUTIVE_FAILURES = 10
     
     # Price discovery timeouts
-    PRICE_DISCOVERY_TIMEOUT = 5  # Per method
-    BATCH_SIZE = 20  # Tokens per batch
-    MAX_PRICE_WORKERS = 15  # Parallel price workers
+    PRICE_DISCOVERY_TIMEOUT = 5
+    BATCH_SIZE = 20
+    MAX_PRICE_WORKERS = 15
     
     # RPC settings
-    RPC_TIMEOUT = 5  # Reduced from 10
+    RPC_TIMEOUT = 5
     
     # Solana program IDs
     RAYDIUM_V4 = "675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8"
@@ -106,7 +102,7 @@ class TelegramScraper:
         self.client = TelegramClient(session_name, api_id, api_hash)
         self.birdeye_api = None
         self.helius_api = None
-        self.rpc_url = "https://api.mainnet-beta.solana.com"  # Will be updated from config
+        self.rpc_url = "https://api.mainnet-beta.solana.com"
         
         # Cache directory
         self.cache_dir = Path.home() / ".phoenix_cache"
@@ -114,11 +110,11 @@ class TelegramScraper:
         self.spydefi_cache_file = self.cache_dir / "spydefi_kols.json"
         
         # Token analysis cache
-        self.token_price_cache = {}  # Simple price cache
+        self.token_price_cache = {}
         self.price_cache_ttl = 1800  # 30 minutes
         
         # Global token collection for deduplication
-        self.all_token_calls = defaultdict(list)  # token -> list of calls
+        self.all_token_calls = defaultdict(list)
         self.unique_tokens = set()
         
         # Circuit breaker
@@ -132,19 +128,19 @@ class TelegramScraper:
         
         # Enhanced validation patterns
         self.contract_patterns = [
-            r'\b[1-9A-HJ-NP-Za-km-z]{32,44}\b',  # Solana addresses
-            r'pump\.fun/([1-9A-HJ-NP-Za-km-z]{32,44})',  # pump.fun links
-            r'dexscreener\.com/solana/([1-9A-HJ-NP-Za-km-z]{32,44})',  # DexScreener links
-            r'birdeye\.so/token/([1-9A-HJ-NP-Za-km-z]{32,44})',  # Birdeye links
+            r'\b[1-9A-HJ-NP-Za-km-z]{32,44}\b',
+            r'pump\.fun/([1-9A-HJ-NP-Za-km-z]{32,44})',
+            r'dexscreener\.com/solana/([1-9A-HJ-NP-Za-km-z]{32,44})',
+            r'birdeye\.so/token/([1-9A-HJ-NP-Za-km-z]{32,44})',
         ]
         
         # Spam patterns to exclude
         self.spam_patterns = [
-            r'\.sol\b',  # Solana domains
-            r'@[a-zA-Z0-9_]+',  # Telegram handles
-            r't\.me/',  # Telegram links
-            r'twitter\.com/',  # Twitter links
-            r'x\.com/',  # X links
+            r'\.sol\b',
+            r'@[a-zA-Z0-9_]+',
+            r't\.me/',
+            r'twitter\.com/',
+            r'x\.com/',
         ]
         
         # Track API calls
@@ -163,8 +159,8 @@ class TelegramScraper:
             'price_discovery_successes': 0
         }
         
-        # Partial results storage
-        self.partial_results = {
+        # Results storage
+        self.comprehensive_results = {
             'kols_analyzed': {},
             'timestamp': datetime.now().isoformat()
         }
@@ -187,10 +183,9 @@ class TelegramScraper:
         logger.info("Disconnected from Telegram")
     
     def _load_spydefi_cache(self) -> Optional[Dict[str, Any]]:
-        """Load SpyDefi KOL cache if valid (auto-handle, no prompts)."""
+        """Load SpyDefi KOL cache if valid."""
         try:
             if not self.spydefi_cache_file.exists():
-                logger.info("No SpyDefi cache found, will perform fresh analysis")
                 return None
             
             with open(self.spydefi_cache_file, 'r') as f:
@@ -198,13 +193,11 @@ class TelegramScraper:
             
             # Check if cache is expired
             cache_time = datetime.fromisoformat(cache.get('timestamp', '2000-01-01'))
-            cache_age_hours = (datetime.now() - cache_time).total_seconds() / 3600
-            
-            if cache_age_hours > self.CACHE_DURATION_HOURS:
-                logger.info(f"SpyDefi cache expired ({cache_age_hours:.1f}h old), will refresh")
+            if datetime.now() - cache_time > timedelta(hours=self.CACHE_DURATION_HOURS):
+                logger.info("SpyDefi cache expired, will refresh")
                 return None
             
-            logger.info(f"✅ Using fresh SpyDefi cache ({cache_age_hours:.1f}h old) with {len(cache.get('kol_mentions', {}))} KOLs")
+            logger.info(f"✅ Loaded SpyDefi cache with {len(cache.get('kol_mentions', {}))} KOLs")
             return cache
             
         except Exception as e:
@@ -218,7 +211,9 @@ class TelegramScraper:
                 'kol_mentions': kol_mentions,
                 'timestamp': datetime.now().isoformat(),
                 'message_count': message_count,
-                'version': '2.0'  # Updated version for new filtering
+                'version': '2.0',
+                'scan_hours': self.SPYDEFI_SCAN_HOURS,
+                'analysis_hours': self.KOL_ANALYSIS_HOURS
             }
             
             with open(self.spydefi_cache_file, 'w') as f:
@@ -228,42 +223,6 @@ class TelegramScraper:
             
         except Exception as e:
             logger.error(f"Error saving cache: {str(e)}")
-    
-    def _filter_kols_by_mentions(self, kol_mentions: Dict[str, int], 
-                                min_mentions: int = None,
-                                top_count: int = None) -> Dict[str, int]:
-        """
-        Filter KOLs based on mention criteria.
-        
-        Args:
-            kol_mentions: Dictionary of KOL -> mention count
-            min_mentions: Minimum mentions required (default: class constant)
-            top_count: Maximum KOLs to return (default: class constant)
-            
-        Returns:
-            Dict[str, int]: Filtered KOLs
-        """
-        if min_mentions is None:
-            min_mentions = self.DEFAULT_MIN_MENTIONS_REQUIRED
-        if top_count is None:
-            top_count = self.DEFAULT_TOP_KOLS_TO_ANALYZE
-        
-        # Filter by minimum mentions
-        qualified_kols = {kol: count for kol, count in kol_mentions.items() 
-                         if count >= min_mentions}
-        
-        if not qualified_kols:
-            logger.warning(f"No KOLs found with {min_mentions}+ mentions")
-            return {}
-        
-        # Sort by mention count and take top N
-        sorted_kols = sorted(qualified_kols.items(), key=lambda x: x[1], reverse=True)
-        filtered_kols = dict(sorted_kols[:top_count])
-        
-        logger.info(f"🎯 Filtered to {len(filtered_kols)} KOLs (min {min_mentions} mentions, top {top_count})")
-        logger.info(f"   KOL mention range: {min(filtered_kols.values())}-{max(filtered_kols.values())} mentions")
-        
-        return filtered_kols
     
     def _is_spam_address(self, potential_address: str) -> bool:
         """Check if the potential address is likely spam."""
@@ -356,7 +315,7 @@ class TelegramScraper:
                 if limit is None:
                     limit = self.DEFAULT_MESSAGE_LIMIT
                 
-                logger.info(f"Scraping up to {limit} messages from {channel.title} (ID: {channel.id})")
+                logger.info(f"Scraping up to {limit} messages from {channel.title} (ID: {channel.id}) - Last {hours} hours")
                 
                 # Use timeout for channel scraping
                 try:
@@ -410,63 +369,52 @@ class TelegramScraper:
             logger.error(f"Error getting channel info for {channel_username}: {str(e)}")
             return None
     
-    async def progressive_spydefi_discovery(self, max_hours: int = 24) -> Dict[str, int]:
-        """Progressive SpyDefi discovery - optimized for mention counting."""
+    async def scan_spydefi_for_top_kols(self, hours: int = 24) -> Dict[str, int]:
+        """Scan SpyDefi channel for KOL mentions and return top performers."""
         kol_mentions = defaultdict(int)
         total_messages = 0
         kol_pattern = r'@([a-zA-Z0-9_]+)'
         
-        # Progressive time windows - optimized
-        time_windows = [6, 12, 24]
+        logger.info(f"🔍 Scanning SpyDefi for last {hours} hours to find top KOLs...")
         
-        for hours in time_windows:
-            if hours > max_hours:
-                break
+        try:
+            async with asyncio.timeout(self.SPYDEFI_TIMEOUT):
+                messages = await self.scrape_channel_messages(
+                    "spydefi", 
+                    hours=hours,
+                    limit=2000,  # Increased limit for comprehensive scan
+                    show_progress=True
+                )
                 
-            logger.info(f"🔍 Scanning SpyDefi for last {hours} hours...")
-            
-            # Calculate messages to fetch
-            messages_to_fetch = min(1000, 2000 // (hours // 6))
-            
-            try:
-                async with asyncio.timeout(self.SPYDEFI_TIMEOUT):
-                    messages = await self.scrape_channel_messages(
-                        "spydefi", 
-                        hours=hours,
-                        limit=messages_to_fetch,
-                        show_progress=True
-                    )
-                    
-                    # Extract KOL mentions
-                    new_mentions = 0
-                    for msg in messages:
-                        mentions = re.findall(kol_pattern, msg['text'])
-                        for mention in mentions:
-                            if mention.lower() != 'spydefi':
-                                if mention not in kol_mentions:
-                                    new_mentions += 1
-                                kol_mentions[mention] += 1
-                    
-                    total_messages += len(messages)
-                    unique_kols = len(kol_mentions)
-                    
-                    logger.info(f"✅ Found {unique_kols} unique KOLs (+{new_mentions} new) from {len(messages)} messages")
-                    
-                    # Early termination if we have enough qualified KOLs
-                    qualified_kols = len([k for k, v in kol_mentions.items() if v >= self.DEFAULT_MIN_MENTIONS_REQUIRED])
-                    if qualified_kols >= self.DEFAULT_TOP_KOLS_TO_ANALYZE:
-                        logger.info(f"🎯 Sufficient qualified KOLs found ({qualified_kols}), stopping discovery")
-                        break
-                        
-            except asyncio.TimeoutError:
-                logger.warning(f"SpyDefi discovery timeout at {hours}h, continuing with current data")
-                break
-        
-        # Save to cache
-        if kol_mentions:
-            self._save_spydefi_cache(dict(kol_mentions), total_messages)
-        
-        return dict(kol_mentions)
+                # Extract KOL mentions
+                for msg in messages:
+                    mentions = re.findall(kol_pattern, msg['text'])
+                    for mention in mentions:
+                        if mention.lower() != 'spydefi':
+                            kol_mentions[mention] += 1
+                
+                total_messages = len(messages)
+                
+                # Filter KOLs with minimum mentions
+                qualified_kols = {kol: count for kol, count in kol_mentions.items() 
+                                if count >= self.MIN_MENTIONS_REQUIRED}
+                
+                # Sort by mention count and take top performers
+                sorted_kols = sorted(qualified_kols.items(), key=lambda x: x[1], reverse=True)
+                top_kols = dict(sorted_kols[:self.TOP_KOLS_TO_ANALYZE])
+                
+                logger.info(f"✅ Found {len(qualified_kols)} qualified KOLs ({self.MIN_MENTIONS_REQUIRED}+ mentions)")
+                logger.info(f"🎯 Selected top {len(top_kols)} KOLs for comprehensive analysis")
+                
+                # Save to cache
+                if top_kols:
+                    self._save_spydefi_cache(top_kols, total_messages)
+                
+                return top_kols
+                
+        except asyncio.TimeoutError:
+            logger.warning(f"SpyDefi scan timeout, continuing with current data")
+            return dict(kol_mentions)
     
     def _make_rpc_call(self, method: str, params: List[Any]) -> Dict[str, Any]:
         """Make RPC call to Solana node."""
@@ -509,16 +457,14 @@ class TelegramScraper:
                     {
                         "encoding": "base64",
                         "filters": [
-                            {"memcmp": {"offset": 400, "bytes": token_address}},  # Token A
+                            {"memcmp": {"offset": 400, "bytes": token_address}},
                         ]
                     }
                 ]
             )
             
             if "result" in response and response["result"]:
-                # Parse pool data to get price
-                # This is simplified - in production you'd decode the account data
-                return 0.001  # Placeholder
+                return 0.001  # Placeholder - would need proper pool parsing
                 
             return None
             
@@ -531,7 +477,6 @@ class TelegramScraper:
         results = {}
         
         with ThreadPoolExecutor(max_workers=5) as executor:
-            # Submit all price discovery tasks
             futures = {}
             
             for token in token_batch:
@@ -547,7 +492,6 @@ class TelegramScraper:
                 # Submit price discovery tasks
                 is_pump = token.endswith('pump')
                 
-                # Try multiple sources in parallel
                 futures[executor.submit(self._get_birdeye_price, token)] = (token, 'birdeye')
                 
                 if is_pump and self.helius_api:
@@ -586,7 +530,7 @@ class TelegramScraper:
                     return TokenPrice(
                         token_address=token_address,
                         current_price=price,
-                        entry_price=price * 0.8,  # Estimate 20% below current
+                        entry_price=price * 0.8,
                         source='birdeye',
                         confidence='high',
                         is_pump=token_address.endswith('pump')
@@ -615,7 +559,7 @@ class TelegramScraper:
                     return TokenPrice(
                         token_address=token_address,
                         current_price=price,
-                        entry_price=0.000001,  # Pump tokens start very low
+                        entry_price=0.000001,
                         source='helius',
                         confidence='medium',
                         is_pump=True
@@ -637,7 +581,7 @@ class TelegramScraper:
                 return TokenPrice(
                     token_address=token_address,
                     current_price=price,
-                    entry_price=price * 0.9,  # Conservative estimate
+                    entry_price=price * 0.9,
                     source='rpc',
                     confidence='medium',
                     is_pump=token_address.endswith('pump')
@@ -647,59 +591,68 @@ class TelegramScraper:
             
         return None
     
-    async def collect_filtered_kol_tokens(self, filtered_kols: Dict[str, int], hours: int = 168) -> None:
-        """Collect tokens from filtered KOLs only (Phase 1)."""
-        logger.info(f"📦 Phase 1: Collecting tokens from {len(filtered_kols)} filtered KOLs...")
+    async def comprehensive_kol_analysis(self, kol_mentions: Dict[str, int]) -> Dict[str, Any]:
+        """Comprehensive analysis of top 50 KOLs with 72h token calls."""
+        logger.info(f"📊 Starting comprehensive analysis of {len(kol_mentions)} top KOLs...")
+        logger.info(f"🕒 Analyzing {self.KOL_ANALYSIS_HOURS} hours of calls per KOL")
         
-        # Process in batches of 5 KOLs
-        batch_size = 5
-        kol_list = list(filtered_kols.items())
+        # Phase 1: Collect all tokens from all KOLs
+        logger.info("Phase 1: Collecting all token calls from top KOLs...")
         
-        for i in range(0, len(kol_list), batch_size):
-            batch = kol_list[i:i+batch_size]
+        kol_progress = 0
+        total_kols = len(kol_mentions)
+        
+        for kol, mention_count in kol_mentions.items():
+            kol_progress += 1
+            try:
+                logger.info(f"Analyzing @{kol} ({kol_progress}/{total_kols}) - {mention_count} SpyDefi mentions")
+                
+                # Get 72 hours of messages from this KOL
+                messages = await self.scrape_channel_messages(
+                    f"@{kol}", 
+                    hours=self.KOL_ANALYSIS_HOURS,
+                    limit=self.DEFAULT_MESSAGE_LIMIT,
+                    show_progress=False
+                )
+                
+                if messages:
+                    token_calls_count = 0
+                    # Extract token calls
+                    for msg in messages:
+                        contracts = self._extract_contract_addresses(msg['text'])
+                        
+                        for contract in contracts:
+                            self.unique_tokens.add(contract)
+                            self.all_token_calls[contract].append({
+                                'kol': kol,
+                                'timestamp': int(msg['date'].timestamp()),
+                                'message': msg['text'][:200],
+                                'channel_id': msg.get('channel_id', 0)
+                            })
+                            token_calls_count += 1
+                    
+                    logger.info(f"   Found {token_calls_count} token calls from @{kol}")
+                else:
+                    logger.warning(f"   No messages found from @{kol}")
+                
+                # Delay between KOLs to respect rate limits
+                await asyncio.sleep(2)
+                
+            except Exception as e:
+                logger.error(f"Error analyzing @{kol}: {str(e)}")
+                self.consecutive_failures += 1
+                if self.consecutive_failures >= self.MAX_CONSECUTIVE_FAILURES:
+                    logger.error("Too many consecutive failures, stopping analysis")
+                    break
+                continue
             
-            # Process batch with delay
-            for kol, mention_count in batch:
-                try:
-                    logger.info(f"Collecting tokens from @{kol} ({mention_count} mentions)")
-                    
-                    messages = await self.scrape_channel_messages(
-                        f"@{kol}", 
-                        hours,
-                        limit=500,
-                        show_progress=False
-                    )
-                    
-                    if messages:
-                        # Extract token calls
-                        for msg in messages:
-                            contracts = self._extract_contract_addresses(msg['text'])
-                            
-                            for contract in contracts:
-                                self.unique_tokens.add(contract)
-                                self.all_token_calls[contract].append({
-                                    'kol': kol,
-                                    'timestamp': int(msg['date'].timestamp()),
-                                    'message': msg['text'][:200]
-                                })
-                    
-                    # Delay between KOLs
-                    await asyncio.sleep(2)
-                    
-                except Exception as e:
-                    logger.error(f"Error collecting tokens from @{kol}: {str(e)}")
-                    continue
-            
-            # Delay between batches
-            if i + batch_size < len(kol_list):
-                logger.info(f"Processed {i + batch_size}/{len(kol_list)} KOLs, waiting before next batch...")
-                await asyncio.sleep(5)
+            # Reset failure counter on success
+            self.consecutive_failures = 0
         
-        logger.info(f"✅ Collected {len(self.unique_tokens)} unique tokens from {len(self.all_token_calls)} calls")
-    
-    async def analyze_tokens_parallel(self) -> Dict[str, Any]:
-        """Analyze all collected tokens in parallel batches (Phase 2)."""
-        logger.info("💎 Phase 2: Analyzing tokens in parallel batches...")
+        logger.info(f"✅ Collected {len(self.unique_tokens)} unique tokens from {len(self.all_token_calls)} total calls")
+        
+        # Phase 2: Analyze all tokens in parallel batches
+        logger.info("Phase 2: Analyzing all tokens with parallel price discovery...")
         
         token_list = list(self.unique_tokens)
         all_prices = {}
@@ -707,7 +660,10 @@ class TelegramScraper:
         # Process in batches
         for i in range(0, len(token_list), self.BATCH_SIZE):
             batch = token_list[i:i+self.BATCH_SIZE]
-            logger.info(f"Processing batch {i//self.BATCH_SIZE + 1}/{(len(token_list) + self.BATCH_SIZE - 1)//self.BATCH_SIZE}")
+            batch_num = i//self.BATCH_SIZE + 1
+            total_batches = (len(token_list) + self.BATCH_SIZE - 1)//self.BATCH_SIZE
+            
+            logger.info(f"Processing batch {batch_num}/{total_batches} ({len(batch)} tokens)")
             
             # Get prices for batch
             batch_prices = self._get_current_price_parallel(batch)
@@ -717,146 +673,128 @@ class TelegramScraper:
             if i + self.BATCH_SIZE < len(token_list):
                 await asyncio.sleep(1)
         
-        logger.info(f"✅ Got prices for {len(all_prices)} tokens")
+        logger.info(f"✅ Got prices for {len(all_prices)}/{len(token_list)} tokens")
         self.api_call_count['price_discovery_successes'] = len(all_prices)
         self.api_call_count['price_discovery_attempts'] = len(token_list)
         
-        return all_prices
-    
-    def calculate_kol_performance(self, all_prices: Dict[str, TokenPrice], 
-                                 filtered_kols: Dict[str, int]) -> Dict[str, Any]:
-        """Calculate KOL performance based on token prices (Phase 3)."""
-        logger.info("📊 Phase 3: Calculating KOL performance...")
+        # Phase 3: Calculate comprehensive KOL performance
+        logger.info("Phase 3: Calculating comprehensive KOL performance...")
         
         kol_performance = {}
         
-        # Group calls by KOL (only for filtered KOLs)
+        # Group calls by KOL
         kol_calls = defaultdict(list)
         for token, calls in self.all_token_calls.items():
             for call in calls:
-                kol = call['kol']
-                # Only process if KOL is in filtered list
-                if kol in filtered_kols:
-                    kol_calls[kol].append({
-                        'token': token,
-                        'timestamp': call['timestamp'],
-                        'price_data': all_prices.get(token)
-                    })
+                kol_calls[call['kol']].append({
+                    'token': token,
+                    'timestamp': call['timestamp'],
+                    'price_data': all_prices.get(token),
+                    'channel_id': call.get('channel_id', 0)
+                })
         
-        # Calculate performance for each filtered KOL
-        for kol in filtered_kols.keys():
-            calls = kol_calls.get(kol, [])
-            
-            if not calls:
-                continue
-                
-            # Sort by timestamp and take most recent
+        # Calculate performance for each KOL
+        for kol, calls in kol_calls.items():
+            # Sort by timestamp (most recent first)
             calls.sort(key=lambda x: x['timestamp'], reverse=True)
-            recent_calls = calls[:self.INITIAL_ANALYSIS_CALLS]
             
+            # Analyze ALL calls (not just first 5)
             tokens_2x = 0
+            tokens_5x = 0
             total_roi = 0
             valid_calls = 0
+            max_roi = 0
+            pullbacks = []
+            time_to_2x_list = []
             
-            for call in recent_calls:
+            for call in calls:
                 if call['price_data']:
                     price_data = call['price_data']
                     roi = ((price_data.current_price / price_data.entry_price) - 1) * 100
                     
                     if roi >= 100:  # 2x
                         tokens_2x += 1
+                        # Estimate time to 2x (placeholder)
+                        time_to_2x_list.append(30)  # 30 minutes average
+                    
+                    if roi >= 400:  # 5x
+                        tokens_5x += 1
                     
                     total_roi += roi
+                    max_roi = max(max_roi, roi)
                     valid_calls += 1
+                    
+                    # Estimate pullback (placeholder)
+                    pullbacks.append(25)  # 25% average pullback
             
             if valid_calls > 0:
+                # Get channel ID for this KOL
+                channel_id = 0
+                if calls:
+                    channel_id = calls[0].get('channel_id', 0)
+                
                 kol_performance[kol] = {
                     'kol': kol,
-                    'tokens_mentioned': len(recent_calls),
+                    'channel_id': channel_id,
+                    'tokens_mentioned': len(calls),
                     'tokens_2x_plus': tokens_2x,
+                    'tokens_5x_plus': tokens_5x,
                     'success_rate_2x': (tokens_2x / valid_calls * 100) if valid_calls > 0 else 0,
+                    'success_rate_5x': (tokens_5x / valid_calls * 100) if valid_calls > 0 else 0,
                     'avg_ath_roi': total_roi / valid_calls,
-                    'analysis_type': 'initial',
-                    'avg_time_to_2x_minutes': 30,  # Placeholder
-                    'avg_max_pullback_percent': 25,  # Placeholder
-                    'spydefi_mentions': filtered_kols[kol]  # Include mention count
+                    'max_roi': max_roi,
+                    'analysis_type': 'comprehensive',
+                    'avg_time_to_2x_minutes': sum(time_to_2x_list) / len(time_to_2x_list) if time_to_2x_list else 0,
+                    'avg_max_pullback_percent': sum(pullbacks) / len(pullbacks) if pullbacks else 0,
+                    'analysis_hours': self.KOL_ANALYSIS_HOURS,
+                    'spydefi_mentions': kol_mentions.get(kol, 0)
                 }
         
         return kol_performance
     
-    async def redesigned_spydefi_analysis(self, hours: int = 24, 
-                                        top_kols_to_analyze: int = None,
-                                        min_mentions_required: int = None,
-                                        mention_time_window_hours: int = None) -> Dict[str, Any]:
+    async def redesigned_spydefi_analysis(self, hours: int = 24, force_refresh: bool = False) -> Dict[str, Any]:
         """
-        Redesigned SpyDefi analysis with optimized KOL filtering.
-        
-        Args:
-            hours: Analysis period in hours
-            top_kols_to_analyze: Max KOLs to analyze (default: class constant)
-            min_mentions_required: Min mentions per KOL (default: class constant)
-            mention_time_window_hours: Time window for mentions (default: class constant)
+        Redesigned SpyDefi analysis: Top 50 KOLs + 72h comprehensive analysis.
         """
-        logger.info("🚀 STARTING OPTIMIZED SPYDEFI ANALYSIS WITH KOL FILTERING")
-        
-        # Set defaults from class constants
-        if top_kols_to_analyze is None:
-            top_kols_to_analyze = self.DEFAULT_TOP_KOLS_TO_ANALYZE
-        if min_mentions_required is None:
-            min_mentions_required = self.DEFAULT_MIN_MENTIONS_REQUIRED
-        if mention_time_window_hours is None:
-            mention_time_window_hours = self.DEFAULT_MENTION_TIME_WINDOW_HOURS
-        
-        logger.info(f"🎯 Filter criteria: Min {min_mentions_required} mentions, Top {top_kols_to_analyze} KOLs")
+        logger.info("🚀 STARTING TOP 50 KOLS + 72H COMPREHENSIVE ANALYSIS")
+        logger.info(f"📊 Process: {self.SPYDEFI_SCAN_HOURS}h SpyDefi scan → Top {self.TOP_KOLS_TO_ANALYZE} KOLs → {self.KOL_ANALYSIS_HOURS}h analysis each")
         
         try:
             # Global timeout for entire analysis
             async with asyncio.timeout(self.GLOBAL_TIMEOUT):
-                # Phase 1: Discover and filter active KOLs from SpyDefi
-                logger.info("🎯 Phase 1: Discovering and filtering KOLs from SpyDefi...")
+                # Phase 1: Discover top KOLs from SpyDefi
+                logger.info("🎯 Phase 1: Discovering top KOLs from SpyDefi...")
                 
-                # Check cache first (auto-handle, no prompts)
-                kol_mentions = None
-                cache = self._load_spydefi_cache()
-                if cache:
-                    kol_mentions = cache.get('kol_mentions', {})
-                    logger.info(f"📦 Using cached SpyDefi data: {len(kol_mentions)} total KOLs")
+                # Check cache first
+                top_kols = None
+                if not force_refresh:
+                    cache = self._load_spydefi_cache()
+                    if cache and cache.get('version') == '2.0':
+                        top_kols = cache.get('kol_mentions', {})
+                        logger.info(f"📦 Using cached SpyDefi data: {len(top_kols)} top KOLs")
                 
-                # If no cache or expired, do progressive discovery
-                if not kol_mentions:
-                    kol_mentions = await self.progressive_spydefi_discovery(mention_time_window_hours)
+                # If no cache or force refresh, scan SpyDefi
+                if not top_kols:
+                    top_kols = await self.scan_spydefi_for_top_kols(self.SPYDEFI_SCAN_HOURS)
                 
-                if not kol_mentions:
-                    logger.error("No KOLs found in SpyDefi")
-                    return self._generate_error_result("No KOLs found in SpyDefi channel")
+                if not top_kols:
+                    logger.error("No qualified KOLs found in SpyDefi")
+                    return self._generate_error_result("No qualified KOLs found in SpyDefi channel")
                 
-                # FILTER KOLS BASED ON CRITERIA
-                filtered_kols = self._filter_kols_by_mentions(
-                    kol_mentions, 
-                    min_mentions_required, 
-                    top_kols_to_analyze
-                )
+                logger.info(f"✅ Ready to analyze {len(top_kols)} top KOLs")
                 
-                if not filtered_kols:
-                    logger.error(f"No KOLs found meeting criteria (min {min_mentions_required} mentions)")
-                    return self._generate_error_result(f"No KOLs found with {min_mentions_required}+ mentions")
+                # Phase 2: Comprehensive analysis of top KOLs
+                kol_performance = await self.comprehensive_kol_analysis(top_kols)
                 
-                logger.info(f"✅ Filtered to {len(filtered_kols)} qualified KOLs from {len(kol_mentions)} total")
+                if not kol_performance:
+                    logger.error("No KOL performance data generated")
+                    return self._generate_error_result("Failed to analyze KOL performance")
                 
-                # Phase 2: Collect tokens from filtered KOLs only
-                await self.collect_filtered_kol_tokens(filtered_kols, hours * 7)
-                
-                # Phase 3: Analyze tokens in parallel batches
-                all_prices = await self.analyze_tokens_parallel()
-                
-                # Phase 4: Calculate KOL performance (only for filtered KOLs)
-                kol_performance = self.calculate_kol_performance(all_prices, filtered_kols)
-                
-                # Phase 5: Calculate composite scores
-                logger.info("🎯 Phase 5: Calculating composite scores...")
+                # Phase 3: Calculate composite scores
+                logger.info("🎯 Phase 3: Calculating composite scores...")
                 
                 for kol, stats in kol_performance.items():
-                    composite_score = self._calculate_composite_score(stats)
+                    composite_score = self._calculate_comprehensive_composite_score(stats)
                     stats['composite_score'] = composite_score
                 
                 # Sort by composite score
@@ -866,56 +804,58 @@ class TelegramScraper:
                     reverse=True
                 ))
                 
-                # Phase 6: Get channel IDs for analyzed KOLs
-                logger.info(f"🎯 Phase 6: Getting channel IDs for {len(ranked_kols)} analyzed KOLs...")
+                # Phase 4: Get channel IDs for top 15 performers
+                logger.info("🎯 Phase 4: Getting channel IDs for top performers...")
                 
-                for i, kol in enumerate(ranked_kols.keys(), 1):
-                    print(f"\rGetting channel ID {i}/{len(ranked_kols)}: @{kol}", end="", flush=True)
+                top_performers = list(ranked_kols.keys())[:15]
+                
+                for i, kol in enumerate(top_performers, 1):
+                    print(f"\rGetting channel ID {i}/15: @{kol}", end="", flush=True)
                     
                     try:
-                        channel_id = await self.get_channel_info(f"@{kol}")
-                        if channel_id:
-                            ranked_kols[kol]['channel_id'] = channel_id
+                        if ranked_kols[kol]['channel_id'] == 0:
+                            channel_id = await self.get_channel_info(f"@{kol}")
+                            if channel_id:
+                                ranked_kols[kol]['channel_id'] = channel_id
                     except Exception as e:
                         logger.error(f"Error getting channel ID for @{kol}: {str(e)}")
                     
                     await asyncio.sleep(1)
                 
-                print(f"\r✅ Channel ID retrieval complete", flush=True)
+                print(f"\r✅ Channel ID retrieval complete for top performers", flush=True)
                 
-                # Log statistics
-                logger.info("📊 OPTIMIZED ANALYSIS STATISTICS:")
-                logger.info(f"   📍 Total KOLs found: {len(kol_mentions)}")
-                logger.info(f"   🎯 Filtered KOLs analyzed: {len(filtered_kols)}")
-                logger.info(f"   📍 Unique tokens found: {len(self.unique_tokens)}")
-                logger.info(f"   ✅ Tokens with prices: {len(all_prices)}")
-                logger.info(f"   📊 KOLs with performance data: {len(kol_performance)}")
-                logger.info(f"   📞 API SAVINGS: Analyzed {len(filtered_kols)} instead of {len(kol_mentions)} KOLs")
-                logger.info(f"   📞 Birdeye API calls: {self.api_call_count['birdeye']}")
-                logger.info(f"   📞 Helius API calls: {self.api_call_count['helius']}")
-                logger.info(f"   📞 RPC calls: {self.api_call_count['rpc']}")
-                
-                # Calculate overall stats
+                # Calculate overall statistics
                 total_calls = sum(k.get('tokens_mentioned', 0) for k in kol_performance.values())
                 total_2x = sum(k.get('tokens_2x_plus', 0) for k in kol_performance.values())
+                total_5x = sum(k.get('tokens_5x_plus', 0) for k in kol_performance.values())
                 overall_2x_rate = (total_2x / max(1, total_calls)) * 100
+                overall_5x_rate = (total_5x / max(1, total_calls)) * 100
                 
-                logger.info("🎉 OPTIMIZED ANALYSIS COMPLETE!")
+                # Log comprehensive statistics
+                logger.info("📊 COMPREHENSIVE ANALYSIS STATISTICS:")
+                logger.info(f"   🎯 Top KOLs analyzed: {len(kol_performance)}")
+                logger.info(f"   🕒 Analysis period per KOL: {self.KOL_ANALYSIS_HOURS} hours")
+                logger.info(f"   📍 Unique tokens found: {len(self.unique_tokens)}")
+                logger.info(f"   ✅ Tokens with prices: {self.api_call_count['price_discovery_successes']}")
+                logger.info(f"   📊 Total token calls: {total_calls}")
+                logger.info(f"   🎯 2x tokens: {total_2x} ({overall_2x_rate:.1f}%)")
+                logger.info(f"   💎 5x tokens: {total_5x} ({overall_5x_rate:.1f}%)")
+                logger.info(f"   📞 API calls - Birdeye: {self.api_call_count['birdeye']}, Helius: {self.api_call_count['helius']}, RPC: {self.api_call_count['rpc']}")
+                
+                logger.info("🎉 COMPREHENSIVE ANALYSIS COMPLETE!")
                 
                 return {
                     'success': True,
                     'ranked_kols': ranked_kols,
                     'total_kols_analyzed': len(kol_performance),
-                    'total_kols_found': len(kol_mentions),
-                    'filtering_criteria': {
-                        'min_mentions': min_mentions_required,
-                        'top_count': top_kols_to_analyze,
-                        'time_window_hours': mention_time_window_hours
-                    },
-                    'deep_analyses_performed': 0,  # Not using deep analysis in this version
+                    'deep_analyses_performed': len(kol_performance),  # All analyses are now "deep"
                     'total_calls': total_calls,
                     'total_2x_tokens': total_2x,
+                    'total_5x_tokens': total_5x,
                     'success_rate_2x': overall_2x_rate,
+                    'success_rate_5x': overall_5x_rate,
+                    'analysis_hours_per_kol': self.KOL_ANALYSIS_HOURS,
+                    'spydefi_scan_hours': self.SPYDEFI_SCAN_HOURS,
                     'api_stats': self.api_call_count.copy()
                 }
                 
@@ -928,43 +868,52 @@ class TelegramScraper:
             logger.error(traceback.format_exc())
             return self._generate_error_result(str(e))
     
-    def _calculate_composite_score(self, kol_stats: Dict[str, Any]) -> float:
-        """Calculate composite score with 2x weighting."""
+    def _calculate_comprehensive_composite_score(self, kol_stats: Dict[str, Any]) -> float:
+        """Calculate comprehensive composite score with enhanced weighting."""
         success_rate_2x = kol_stats.get('success_rate_2x', 0)
+        success_rate_5x = kol_stats.get('success_rate_5x', 0)
         avg_time_to_2x_minutes = kol_stats.get('avg_time_to_2x_minutes', 0)
         avg_ath_roi = kol_stats.get('avg_ath_roi', 0)
+        max_roi = kol_stats.get('max_roi', 0)
         tokens_mentioned = kol_stats.get('tokens_mentioned', 0)
-        spydefi_mentions = kol_stats.get('spydefi_mentions', 0)  # New factor
+        spydefi_mentions = kol_stats.get('spydefi_mentions', 0)
         
-        # Minimum calls threshold
-        if tokens_mentioned < 2:
+        # Minimum calls threshold - more lenient for comprehensive analysis
+        if tokens_mentioned < 3:
             return 0
         
-        # 1. Success rate score (0-35 points)
-        success_score = (success_rate_2x / 100) * 35
+        # 1. Success rate score (0-35 points) - weighted toward 2x
+        success_score = (success_rate_2x / 100) * 25 + (success_rate_5x / 100) * 10
         
-        # 2. Speed score (0-35 points)
+        # 2. Speed score (0-25 points)
         if avg_time_to_2x_minutes > 0 and success_rate_2x > 0:
             if avg_time_to_2x_minutes <= 30:
-                speed_score = 35
+                speed_score = 25
             elif avg_time_to_2x_minutes >= 360:
                 speed_score = 0
             else:
-                speed_score = 35 * (1 - (avg_time_to_2x_minutes - 30) / 330)
+                speed_score = 25 * (1 - (avg_time_to_2x_minutes - 30) / 330)
         else:
             speed_score = 0
         
-        # 3. ATH ROI score (0-15 points)
-        ath_score = min(15, (avg_ath_roi / 500) * 15)
+        # 3. ROI score (0-20 points) - enhanced for comprehensive analysis
+        avg_roi_score = min(10, (avg_ath_roi / 300) * 10)
+        max_roi_score = min(10, (max_roi / 1000) * 10)
+        roi_score = avg_roi_score + max_roi_score
         
-        # 4. Activity bonus (0-10 points)
-        activity_bonus = min(10, tokens_mentioned)
+        # 4. Activity score (0-15 points) - comprehensive analysis bonus
+        activity_score = min(10, tokens_mentioned / 2)  # Up to 10 points
+        spydefi_bonus = min(5, spydefi_mentions)  # Up to 5 points for SpyDefi mentions
         
-        # 5. SpyDefi popularity bonus (0-5 points)
-        popularity_bonus = min(5, spydefi_mentions)
+        # 5. Consistency bonus (0-5 points)
+        consistency_bonus = 0
+        if tokens_mentioned >= 10 and success_rate_2x >= 30:
+            consistency_bonus = 5
+        elif tokens_mentioned >= 5 and success_rate_2x >= 20:
+            consistency_bonus = 3
         
         # Total score
-        total_score = success_score + speed_score + ath_score + activity_bonus + popularity_bonus
+        total_score = success_score + speed_score + roi_score + activity_score + spydefi_bonus + consistency_bonus
         
         return min(100, total_score)
     
@@ -975,22 +924,24 @@ class TelegramScraper:
             'error': error,
             'ranked_kols': {},
             'total_kols_analyzed': 0,
-            'total_kols_found': 0,
-            'filtering_criteria': {},
             'deep_analyses_performed': 0,
             'total_calls': 0,
             'total_2x_tokens': 0,
+            'total_5x_tokens': 0,
             'success_rate_2x': 0,
+            'success_rate_5x': 0,
+            'analysis_hours_per_kol': self.KOL_ANALYSIS_HOURS,
+            'spydefi_scan_hours': self.SPYDEFI_SCAN_HOURS,
             'api_stats': self.api_call_count.copy()
         }
     
     def _generate_partial_results(self) -> Dict[str, Any]:
         """Generate results from partial data."""
-        # This would need implementation based on partial data collected
+        # Could implement partial results from self.comprehensive_results
         return self._generate_error_result("Analysis timeout - partial results not available")
     
-    async def export_spydefi_analysis(self, analysis_results: Dict[str, Any], output_file: str = "spydefi_analysis_2x.csv"):
-        """Export the SpyDefi analysis results to CSV with proper formatting."""
+    async def export_spydefi_analysis(self, analysis_results: Dict[str, Any], output_file: str = "spydefi_analysis_comprehensive.csv"):
+        """Export the comprehensive SpyDefi analysis results to CSV."""
         try:
             ranked_kols = analysis_results.get('ranked_kols', {})
             
@@ -1003,7 +954,7 @@ class TelegramScraper:
             if output_dir and not os.path.exists(output_dir):
                 os.makedirs(output_dir)
             
-            # Prepare CSV data
+            # Prepare CSV data with comprehensive fields
             csv_data = []
             
             for kol, data in ranked_kols.items():
@@ -1013,12 +964,16 @@ class TelegramScraper:
                     'spydefi_mentions': data.get('spydefi_mentions', 0),
                     'tokens_mentioned': data.get('tokens_mentioned', 0),
                     'tokens_2x_plus': data.get('tokens_2x_plus', 0),
+                    'tokens_5x_plus': data.get('tokens_5x_plus', 0),
                     'success_rate_2x': data.get('success_rate_2x', 0),
+                    'success_rate_5x': data.get('success_rate_5x', 0),
                     'avg_ath_roi': data.get('avg_ath_roi', 0),
+                    'max_roi': data.get('max_roi', 0),
                     'composite_score': data.get('composite_score', 0),
                     'avg_max_pullback_percent': data.get('avg_max_pullback_percent', 0),
                     'avg_time_to_2x_minutes': data.get('avg_time_to_2x_minutes', 0),
-                    'analysis_type': data.get('analysis_type', 'initial')
+                    'analysis_type': data.get('analysis_type', 'comprehensive'),
+                    'analysis_hours': data.get('analysis_hours', self.KOL_ANALYSIS_HOURS)
                 }
                 csv_data.append(row)
             
@@ -1030,56 +985,50 @@ class TelegramScraper:
                     writer.writerows(csv_data)
             
             logger.info(f"✅ Exported {len(csv_data)} KOLs to {output_file}")
-            print(f"📄 CSV export complete: {output_file}")
+            print(f"📄 Comprehensive CSV export complete: {output_file}")
             
-            # Export summary
-            summary_file = output_file.replace('.csv', '_summary.txt')
+            # Export comprehensive summary
+            summary_file = output_file.replace('.csv', '_comprehensive_summary.txt')
             with open(summary_file, 'w', encoding='utf-8') as f:
-                f.write("SPYDEFI OPTIMIZED ANALYSIS SUMMARY\n")
+                f.write("SPYDEFI COMPREHENSIVE ANALYSIS SUMMARY\n")
                 f.write("=" * 50 + "\n\n")
                 f.write(f"Analysis Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
-                f.write(f"Total KOLs Found: {analysis_results.get('total_kols_found', 0)}\n")
-                f.write(f"KOLs Analyzed: {analysis_results.get('total_kols_analyzed', 0)}\n")
-                
-                # Filtering info
-                criteria = analysis_results.get('filtering_criteria', {})
-                f.write(f"\nFILTERING CRITERIA:\n")
-                f.write(f"Min Mentions Required: {criteria.get('min_mentions', 0)}\n")
-                f.write(f"Top Count Limit: {criteria.get('top_count', 0)}\n")
-                f.write(f"Time Window: {criteria.get('time_window_hours', 0)} hours\n")
-                
-                f.write(f"\nPERFORMANCE METRICS:\n")
+                f.write(f"SpyDefi Scan Period: {analysis_results.get('spydefi_scan_hours', 24)} hours\n")
+                f.write(f"KOL Analysis Period: {analysis_results.get('analysis_hours_per_kol', 72)} hours each\n")
+                f.write(f"Total KOLs Analyzed: {analysis_results.get('total_kols_analyzed', 0)}\n")
                 f.write(f"Total Token Calls: {analysis_results.get('total_calls', 0)}\n")
                 f.write(f"2x Success Rate: {analysis_results.get('success_rate_2x', 0):.2f}%\n")
+                f.write(f"5x Success Rate: {analysis_results.get('success_rate_5x', 0):.2f}%\n")
                 
                 # API stats
                 api_stats = analysis_results.get('api_stats', {})
-                f.write(f"\nAPI EFFICIENCY:\n")
+                f.write("\nAPI STATISTICS:\n")
                 f.write(f"Birdeye Calls: {api_stats.get('birdeye', 0)}\n")
                 f.write(f"Helius Calls: {api_stats.get('helius', 0)}\n")
                 f.write(f"RPC Calls: {api_stats.get('rpc', 0)}\n")
                 f.write(f"Tokens Cached: {api_stats.get('tokens_cached', 0)}\n")
-                f.write(f"Price Discovery Success Rate: {api_stats.get('price_discovery_successes', 0)}/{api_stats.get('price_discovery_attempts', 0)}\n")
+                f.write(f"Price Discovery Success: {api_stats.get('price_discovery_successes', 0)}/{api_stats.get('price_discovery_attempts', 0)}\n")
                 
                 # Top performers
-                f.write(f"\nTOP PERFORMERS:\n")
+                f.write(f"\nTOP 15 COMPREHENSIVE PERFORMERS:\n")
                 f.write("-" * 50 + "\n")
                 
-                top_kols = list(ranked_kols.items())[:10]
+                top_kols = list(ranked_kols.items())[:15]
                 for i, (kol, data) in enumerate(top_kols, 1):
                     f.write(f"\n{i}. @{kol}\n")
-                    f.write(f"   SpyDefi Mentions: {data.get('spydefi_mentions', 0)}\n")
                     f.write(f"   Composite Score: {data.get('composite_score', 0):.1f}\n")
-                    f.write(f"   2x Success Rate: {data.get('success_rate_2x', 0):.1f}%\n")
+                    f.write(f"   SpyDefi Mentions: {data.get('spydefi_mentions', 0)}\n")
                     f.write(f"   Tokens Analyzed: {data.get('tokens_mentioned', 0)}\n")
-                    f.write(f"   2x Tokens: {data.get('tokens_2x_plus', 0)}\n")
+                    f.write(f"   2x Success: {data.get('success_rate_2x', 0):.1f}% ({data.get('tokens_2x_plus', 0)} tokens)\n")
+                    f.write(f"   5x Success: {data.get('success_rate_5x', 0):.1f}% ({data.get('tokens_5x_plus', 0)} tokens)\n")
                     f.write(f"   Avg ATH ROI: {data.get('avg_ath_roi', 0):.1f}%\n")
+                    f.write(f"   Max ROI: {data.get('max_roi', 0):.1f}%\n")
             
-            logger.info(f"✅ Exported summary to {summary_file}")
+            logger.info(f"✅ Exported comprehensive summary to {summary_file}")
             print(f"📄 Summary export complete: {summary_file}")
             
         except Exception as e:
-            logger.error(f"Error exporting analysis: {str(e)}")
+            logger.error(f"Error exporting comprehensive analysis: {str(e)}")
             print(f"❌ Export error: {str(e)}")
     
     def clear_cache(self):
@@ -1093,7 +1042,8 @@ class TelegramScraper:
             self.token_price_cache.clear()
             self.all_token_calls.clear()
             self.unique_tokens.clear()
-            logger.info("✅ Cleared price and token caches")
+            self.comprehensive_results.clear()
+            logger.info("✅ Cleared all caches")
             
         except Exception as e:
             logger.error(f"Error clearing cache: {str(e)}")
