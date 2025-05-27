@@ -11145,3 +11145,496 @@ TypeError: '>=' not supported between instances of 'NoneType' and 'int'
 2025-05-26 22:51:58,540 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
 2025-05-26 22:51:58,561 - phoenix.spydefi - INFO - ✅ Disconnected from Telegram
 2025-05-26 22:51:58,561 - phoenix - ERROR - ❌ SPYDEFI analysis failed: No KOLs found in SpyDefi scan
+2025-05-26 23:13:39,217 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-26 23:13:39,219 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-26 23:13:39,545 - phoenix - INFO - ✅ Imported SPYDEFI module
+2025-05-26 23:13:39,545 - phoenix - INFO - 🚀 Starting SPYDEFI KOL analysis
+2025-05-26 23:13:39,545 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-26 23:13:39,545 - phoenix.api_manager - INFO - ✅ Birdeye API initialized for mainstream token analysis
+2025-05-26 23:13:39,545 - phoenix.api_manager - INFO - ✅ Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-26 23:13:39,545 - phoenix.api_manager - INFO - ✅ Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-26 23:13:39,545 - phoenix - INFO - ✅ API manager initialized successfully
+2025-05-26 23:13:39,545 - phoenix.spydefi - INFO - ✅ API manager configured for SPYDEFI analysis
+2025-05-26 23:13:39,545 - phoenix.spydefi - INFO - Config updated: spydefi_scan_hours = 24
+2025-05-26 23:13:39,545 - phoenix.spydefi - INFO - Config updated: kol_analysis_days = 7
+2025-05-26 23:13:39,545 - phoenix.spydefi - INFO - Config updated: top_kols_count = 25
+2025-05-26 23:13:39,545 - phoenix.spydefi - INFO - Config updated: min_mentions = 2
+2025-05-26 23:13:39,545 - phoenix.spydefi - INFO - Config updated: max_market_cap_usd = 100000
+2025-05-26 23:13:39,560 - phoenix.spydefi - INFO - Config updated: min_subscribers = 500
+2025-05-26 23:13:39,560 - phoenix - INFO - ✅ SPYDEFI analyzer initialized successfully
+2025-05-26 23:13:39,560 - phoenix.spydefi - INFO - 🔗 Connecting to Telegram for SPYDEFI analysis...
+2025-05-26 23:13:39,560 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-26 23:13:39,670 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-26 23:13:40,451 - phoenix.spydefi - INFO - ✅ Connected to Telegram
+2025-05-26 23:13:40,451 - phoenix.spydefi - INFO - 🔄 No cache found, will perform fresh analysis
+2025-05-26 23:13:40,451 - phoenix.spydefi - INFO - 🚀 STARTING SPYDEFI COMPREHENSIVE ANALYSIS
+2025-05-26 23:13:40,451 - phoenix.spydefi - INFO - ============================================================
+2025-05-26 23:13:40,451 - phoenix.spydefi - INFO - 📋 ANALYSIS CONFIGURATION:
+2025-05-26 23:13:40,451 - phoenix.spydefi - INFO -    🕐 SpyDefi scan period: 24 hours
+2025-05-26 23:13:40,451 - phoenix.spydefi - INFO -    📅 KOL analysis period: 7 days
+2025-05-26 23:13:40,451 - phoenix.spydefi - INFO -    🎯 Top KOLs to analyze: 25
+2025-05-26 23:13:40,451 - phoenix.spydefi - INFO -    💰 Max market cap filter: $100,000
+2025-05-26 23:13:40,451 - phoenix.spydefi - INFO -    👥 Min subscribers: 500
+2025-05-26 23:13:40,451 - phoenix.spydefi - INFO -    📈 Win threshold: 50%
+2025-05-26 23:13:40,451 - phoenix.spydefi - INFO - 
+2025-05-26 23:13:40,451 - phoenix.spydefi - INFO - 🔍 Scanning SpyDefi for last 24 hours...
+2025-05-26 23:13:40,607 - phoenix.spydefi - INFO - 📥 Fetching messages from SpyDefi (ID: 1960616143)...
+2025-05-26 23:13:43,826 - phoenix.spydefi - INFO - 📊 SPYDEFI SCAN RESULTS:
+2025-05-26 23:13:43,826 - phoenix.spydefi - INFO -    Total messages: 1000
+2025-05-26 23:13:43,826 - phoenix.spydefi - INFO -    Achievement messages: 955
+2025-05-26 23:13:43,826 - phoenix.spydefi - INFO -    Solana achievements: 955
+2025-05-26 23:13:43,826 - phoenix.spydefi - INFO -    Qualified KOLs (2+ mentions): 171
+2025-05-26 23:13:43,826 - phoenix.spydefi - INFO -    Top KOLs selected: 25
+2025-05-26 23:13:43,826 - phoenix.spydefi - INFO - 🎯 Selected 25 top KOLs for analysis
+2025-05-26 23:13:43,826 - phoenix.spydefi - INFO -    1. @PEPE_Calls28 (26 mentions)
+2025-05-26 23:13:43,826 - phoenix.spydefi - INFO -    2. @Zen_call (20 mentions)
+2025-05-26 23:13:43,826 - phoenix.spydefi - INFO -    3. @hulkgemscalls_real (19 mentions)
+2025-05-26 23:13:43,826 - phoenix.spydefi - INFO -    4. @Cryptosparrowcall9 (18 mentions)
+2025-05-26 23:13:43,826 - phoenix.spydefi - INFO -    5. @grok (18 mentions)
+2025-05-26 23:13:43,826 - phoenix.spydefi - INFO -    6. @TopCallersChannel (17 mentions)
+2025-05-26 23:13:43,826 - phoenix.spydefi - INFO -    7. @Thanos_Call (16 mentions)
+2025-05-26 23:13:43,826 - phoenix.spydefi - INFO -    8. @MarksGems (16 mentions)
+2025-05-26 23:13:43,826 - phoenix.spydefi - INFO -    9. @GemsmineEth (16 mentions)
+2025-05-26 23:13:43,842 - phoenix.spydefi - INFO -    10. @baseddegengems (14 mentions)
+2025-05-26 23:13:43,967 - phoenix.spydefi - WARNING - ⚠️ Failed to analyze @InsiderSolanaPrintors (1/25)
+2025-05-26 23:13:43,967 - phoenix.spydefi - WARNING - ⚠️ Failed to analyze @baseddegengems (2/25)
+2025-05-26 23:13:43,967 - phoenix.spydefi - WARNING - ⚠️ Failed to analyze @Insider_ECA (3/25)
+2025-05-26 23:13:44,092 - phoenix.spydefi - WARNING - ⚠️ Failed to analyze @zSpiderCall (4/25)
+2025-05-26 23:13:44,092 - phoenix.spydefi - WARNING - ⚠️ Failed to analyze @WitchLabs (5/25)
+2025-05-26 23:13:44,092 - phoenix.spydefi - WARNING - ⚠️ Failed to analyze @hulkgemscalls_real (6/25)
+2025-05-26 23:13:44,217 - phoenix.spydefi - WARNING - ⚠️ Failed to analyze @TOXICgambols (7/25)
+2025-05-26 23:13:44,217 - phoenix.spydefi - WARNING - ⚠️ Failed to analyze @Cryptosparrowcall9 (8/25)
+2025-05-26 23:13:44,233 - phoenix.spydefi - WARNING - ⚠️ Failed to analyze @Mrbigbagcalls (9/25)
+2025-05-26 23:13:44,357 - phoenix.spydefi - WARNING - ⚠️ Failed to analyze @onchainalphatrench (10/25)
+2025-05-26 23:13:44,360 - phoenix.spydefi - WARNING - ⚠️ Failed to analyze @mattfuriecalls1 (11/25)
+2025-05-26 23:13:44,360 - phoenix.spydefi - WARNING - ⚠️ Failed to analyze @grok (12/25)
+2025-05-26 23:13:44,483 - phoenix.spydefi - WARNING - ⚠️ Failed to analyze @GM_Degencalls (13/25)
+2025-05-26 23:13:44,488 - phoenix.spydefi - WARNING - ⚠️ Failed to analyze @bossygambles (14/25)
+2025-05-26 23:13:44,488 - phoenix.spydefi - WARNING - ⚠️ Failed to analyze @TopCallersChannel (15/25)
+2025-05-26 23:13:44,607 - phoenix.spydefi - WARNING - ⚠️ Failed to analyze @Zen_call (16/25)
+2025-05-26 23:13:44,615 - phoenix.spydefi - WARNING - ⚠️ Failed to analyze @michacalls (17/25)
+2025-05-26 23:13:44,615 - phoenix.spydefi - WARNING - ⚠️ Failed to analyze @ChapoInsider (18/25)
+2025-05-26 23:13:44,733 - phoenix.spydefi - WARNING - ⚠️ Failed to analyze @Thanos_Call (19/25)
+2025-05-26 23:13:44,742 - phoenix.spydefi - WARNING - ⚠️ Failed to analyze @PEPE_Calls28 (20/25)
+2025-05-26 23:13:44,742 - telethon.client.users - INFO - Sleeping for 5s (0:00:05) on ResolveUsernameRequest flood wait
+2025-05-26 23:13:44,857 - telethon.client.users - INFO - Sleeping for 5s (0:00:05) on ResolveUsernameRequest flood wait
+2025-05-26 23:13:44,857 - telethon.client.users - INFO - Sleeping for 5s (0:00:05) on ResolveUsernameRequest flood wait
+2025-05-26 23:13:49,878 - phoenix.spydefi - WARNING - ⚠️ Failed to analyze @maybac_whales (21/25)
+2025-05-26 23:13:49,991 - phoenix.spydefi - WARNING - ⚠️ Failed to analyze @SirWilliams_Call (22/25)
+2025-05-26 23:13:49,991 - phoenix.spydefi - WARNING - ⚠️ Failed to analyze @MarksGems (23/25)
+2025-05-26 23:13:50,006 - phoenix.spydefi - WARNING - ⚠️ Failed to analyze @NIKOLA_CALLS (24/25)
+2025-05-26 23:13:50,118 - phoenix.spydefi - WARNING - ⚠️ Failed to analyze @GemsmineEth (25/25)
+2025-05-26 23:13:50,118 - phoenix.spydefi - INFO - 📊 Successfully analyzed 0/25 KOLs
+2025-05-26 23:13:50,118 - phoenix.spydefi - ERROR - ❌ No KOL performances calculated
+2025-05-26 23:13:50,118 - phoenix - ERROR - ❌ SPYDEFI analysis failed: No KOL performances calculated
+2025-05-26 23:13:50,118 - phoenix.spydefi - INFO - 📡 Disconnecting from Telegram...
+2025-05-26 23:13:50,118 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-26 23:13:50,118 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-26 23:13:50,139 - phoenix.spydefi - INFO - ✅ Disconnected from Telegram
+2025-05-26 23:13:50,139 - phoenix - ERROR - ❌ SPYDEFI analysis failed: No KOL performances calculated
+2025-05-26 23:14:56,025 - phoenix - INFO - Loaded 72 wallet addresses from wallets.txt
+2025-05-26 23:23:56,782 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-26 23:23:56,782 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-26 23:23:57,126 - phoenix - ERROR - ❌ Error importing modules: cannot import name 'SPYDEFIAnalyzer' from 'spydefi_module' (C:\Users\Administrator\Desktop\phoenix-project\spydefi_module.py)
+2025-05-26 23:23:57,126 - phoenix - ERROR - SPYDEFI analysis error: cannot import name 'SPYDEFIAnalyzer' from 'spydefi_module' (C:\Users\Administrator\Desktop\phoenix-project\spydefi_module.py)
+2025-05-26 23:25:52,113 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-26 23:25:52,113 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-26 23:25:52,445 - phoenix - INFO - ✅ Imported SPYDEFI module
+2025-05-26 23:25:52,445 - phoenix - INFO - 🚀 Starting SPYDEFI KOL analysis
+2025-05-26 23:25:52,445 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-26 23:25:52,674 - phoenix.api_manager - INFO - ✅ Birdeye API initialized for mainstream token analysis
+2025-05-26 23:25:52,674 - phoenix.api_manager - INFO - ✅ Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-26 23:25:52,683 - phoenix.api_manager - INFO - ✅ Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-26 23:25:52,683 - phoenix - INFO - ✅ API manager initialized successfully
+2025-05-26 23:25:52,683 - phoenix.spydefi - INFO - ✅ API manager configured for SPYDEFI analysis
+2025-05-26 23:25:52,683 - phoenix.spydefi - INFO - Config updated: spydefi_scan_hours = 24
+2025-05-26 23:25:52,683 - phoenix.spydefi - INFO - Config updated: kol_analysis_days = 7
+2025-05-26 23:25:52,683 - phoenix.spydefi - INFO - Config updated: top_kols_count = 25
+2025-05-26 23:25:52,683 - phoenix.spydefi - INFO - Config updated: min_mentions = 2
+2025-05-26 23:25:52,683 - phoenix.spydefi - INFO - Config updated: max_market_cap_usd = 100000
+2025-05-26 23:25:52,683 - phoenix.spydefi - INFO - Config updated: min_subscribers = 500
+2025-05-26 23:25:52,683 - phoenix - INFO - ✅ SPYDEFI analyzer initialized successfully
+2025-05-26 23:25:52,683 - phoenix.spydefi - INFO - 🔗 Connecting to Telegram for SPYDEFI analysis...
+2025-05-26 23:25:52,683 - phoenix.spydefi - ERROR - ❌ Failed to connect to Telegram: TelegramBaseClient.__init__() got an unexpected keyword argument 'retries'
+2025-05-26 23:25:52,683 - phoenix - ERROR - ❌ Error in SPYDEFI analysis: TelegramBaseClient.__init__() got an unexpected keyword argument 'retries'
+2025-05-26 23:25:52,683 - phoenix - ERROR - ❌ Analysis traceback: Traceback (most recent call last):
+  File "C:\Users\Administrator\Desktop\phoenix-project\phoenix_cli.py", line 517, in run_spydefi_analysis
+    async with spydefi_analyzer:
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Desktop\phoenix-project\spydefi_module.py", line 188, in __aenter__
+    await self.connect()
+  File "C:\Users\Administrator\Desktop\phoenix-project\spydefi_module.py", line 199, in connect
+    self.client = TelegramClient(
+                  ^^^^^^^^^^^^^^^
+TypeError: TelegramBaseClient.__init__() got an unexpected keyword argument 'retries'
+
+2025-05-26 23:25:52,683 - phoenix - ERROR - SPYDEFI analysis error: TelegramBaseClient.__init__() got an unexpected keyword argument 'retries'
+2025-05-26 23:27:23,911 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-26 23:27:23,911 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-26 23:27:24,268 - phoenix - INFO - ✅ Imported SPYDEFI module
+2025-05-26 23:27:24,268 - phoenix - INFO - 🚀 Starting SPYDEFI KOL analysis
+2025-05-26 23:27:24,268 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-26 23:27:24,513 - phoenix.api_manager - INFO - ✅ Birdeye API initialized for mainstream token analysis
+2025-05-26 23:27:24,518 - phoenix.api_manager - INFO - ✅ Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-26 23:27:24,518 - phoenix.api_manager - INFO - ✅ Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-26 23:27:24,518 - phoenix - INFO - ✅ API manager initialized successfully
+2025-05-26 23:27:24,518 - phoenix.spydefi - INFO - ✅ API manager configured for SPYDEFI analysis
+2025-05-26 23:27:24,518 - phoenix.spydefi - INFO - Config updated: spydefi_scan_hours = 24
+2025-05-26 23:27:24,518 - phoenix.spydefi - INFO - Config updated: kol_analysis_days = 7
+2025-05-26 23:27:24,518 - phoenix.spydefi - INFO - Config updated: top_kols_count = 25
+2025-05-26 23:27:24,518 - phoenix.spydefi - INFO - Config updated: min_mentions = 2
+2025-05-26 23:27:24,518 - phoenix.spydefi - INFO - Config updated: max_market_cap_usd = 10000000.0
+2025-05-26 23:27:24,518 - phoenix.spydefi - INFO - Config updated: min_subscribers = 500
+2025-05-26 23:27:24,518 - phoenix - INFO - ✅ SPYDEFI analyzer initialized successfully
+2025-05-26 23:27:24,518 - phoenix.spydefi - INFO - 🔗 Connecting to Telegram for SPYDEFI analysis...
+2025-05-26 23:27:24,518 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-26 23:27:24,639 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-26 23:27:25,549 - phoenix.spydefi - INFO - ✅ Connected to Telegram
+2025-05-26 23:27:25,549 - phoenix.spydefi - INFO - 📱 Authenticated as: Ben (sup_ben)
+2025-05-26 23:27:25,549 - phoenix.spydefi - INFO - 🔄 No cache found, will perform fresh analysis
+2025-05-26 23:27:25,549 - phoenix.spydefi - INFO - 🚀 STARTING SPYDEFI COMPREHENSIVE ANALYSIS
+2025-05-26 23:27:25,549 - phoenix.spydefi - INFO - ============================================================
+2025-05-26 23:27:25,549 - phoenix.spydefi - INFO - 📋 ANALYSIS CONFIGURATION:
+2025-05-26 23:27:25,549 - phoenix.spydefi - INFO -    🕐 SpyDefi scan period: 24 hours
+2025-05-26 23:27:25,549 - phoenix.spydefi - INFO -    📅 KOL analysis period: 7 days
+2025-05-26 23:27:25,549 - phoenix.spydefi - INFO -    🎯 Top KOLs to analyze: 25
+2025-05-26 23:27:25,549 - phoenix.spydefi - INFO -    💰 Max market cap filter: $10,000,000.0
+2025-05-26 23:27:25,549 - phoenix.spydefi - INFO -    👥 Min subscribers: 500
+2025-05-26 23:27:25,549 - phoenix.spydefi - INFO -    📈 Win threshold: 50%
+2025-05-26 23:27:25,549 - phoenix.spydefi - INFO - 
+2025-05-26 23:27:25,549 - phoenix.spydefi - INFO - 🔍 Scanning SpyDefi for last 24 hours...
+2025-05-26 23:27:25,674 - phoenix.spydefi - INFO - 📥 Fetching messages from SpyDefi (ID: 1960616143)...
+2025-05-26 23:27:25,971 - phoenix.spydefi - ERROR - ❌ Error scanning SpyDefi: can't compare offset-naive and offset-aware datetimes
+2025-05-26 23:27:25,971 - phoenix.spydefi - ERROR - ❌ Traceback: Traceback (most recent call last):
+  File "C:\Users\Administrator\Desktop\phoenix-project\spydefi_module.py", line 338, in scan_spydefi_for_kols
+    if message.date < cutoff_time:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: can't compare offset-naive and offset-aware datetimes
+
+2025-05-26 23:27:25,971 - phoenix.spydefi - ERROR - ❌ SPYDEFI analysis failed: can't compare offset-naive and offset-aware datetimes
+2025-05-26 23:27:25,971 - phoenix.spydefi - ERROR - ❌ Processing time: 0.4s
+2025-05-26 23:27:25,971 - phoenix.spydefi - ERROR - ❌ Traceback: Traceback (most recent call last):
+  File "C:\Users\Administrator\Desktop\phoenix-project\spydefi_module.py", line 998, in run_full_analysis
+    kol_mentions = await self.scan_spydefi_for_kols(self.config['spydefi_scan_hours'])
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Desktop\phoenix-project\spydefi_module.py", line 338, in scan_spydefi_for_kols
+    if message.date < cutoff_time:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: can't compare offset-naive and offset-aware datetimes
+
+2025-05-26 23:27:25,971 - phoenix - ERROR - ❌ SPYDEFI analysis failed: can't compare offset-naive and offset-aware datetimes
+2025-05-26 23:27:25,971 - phoenix.spydefi - INFO - 📡 Disconnecting from Telegram...
+2025-05-26 23:27:25,971 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-26 23:27:25,971 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-26 23:27:25,987 - phoenix.spydefi - INFO - ✅ Disconnected from Telegram
+2025-05-26 23:27:25,987 - phoenix - ERROR - ❌ SPYDEFI analysis failed: can't compare offset-naive and offset-aware datetimes
+2025-05-26 23:27:49,942 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-26 23:27:49,942 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-26 23:27:50,268 - phoenix - INFO - ✅ Imported SPYDEFI module
+2025-05-26 23:27:50,268 - phoenix - INFO - 🚀 Starting SPYDEFI KOL analysis
+2025-05-26 23:27:50,268 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-26 23:27:50,534 - phoenix.api_manager - INFO - ✅ Birdeye API initialized for mainstream token analysis
+2025-05-26 23:27:50,534 - phoenix.api_manager - INFO - ✅ Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-26 23:27:50,534 - phoenix.api_manager - INFO - ✅ Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-26 23:27:50,534 - phoenix - INFO - ✅ API manager initialized successfully
+2025-05-26 23:27:50,534 - phoenix.spydefi - INFO - ✅ API manager configured for SPYDEFI analysis
+2025-05-26 23:27:50,534 - phoenix.spydefi - INFO - Config updated: spydefi_scan_hours = 24
+2025-05-26 23:27:50,534 - phoenix.spydefi - INFO - Config updated: kol_analysis_days = 7
+2025-05-26 23:27:50,534 - phoenix.spydefi - INFO - Config updated: top_kols_count = 25
+2025-05-26 23:27:50,534 - phoenix.spydefi - INFO - Config updated: min_mentions = 2
+2025-05-26 23:27:50,534 - phoenix.spydefi - INFO - Config updated: max_market_cap_usd = 10000000.0
+2025-05-26 23:27:50,534 - phoenix.spydefi - INFO - Config updated: min_subscribers = 500
+2025-05-26 23:27:50,534 - phoenix - INFO - ✅ SPYDEFI analyzer initialized successfully
+2025-05-26 23:27:50,534 - phoenix.spydefi - INFO - 🔗 Connecting to Telegram for SPYDEFI analysis...
+2025-05-26 23:27:50,534 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-26 23:27:50,659 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-26 23:27:51,556 - phoenix.spydefi - INFO - ✅ Connected to Telegram
+2025-05-26 23:27:51,556 - phoenix.spydefi - INFO - 📱 Authenticated as: Ben (sup_ben)
+2025-05-26 23:27:51,556 - phoenix.spydefi - INFO - 🔄 No cache found, will perform fresh analysis
+2025-05-26 23:27:51,556 - phoenix.spydefi - INFO - 🚀 STARTING SPYDEFI COMPREHENSIVE ANALYSIS
+2025-05-26 23:27:51,556 - phoenix.spydefi - INFO - ============================================================
+2025-05-26 23:27:51,556 - phoenix.spydefi - INFO - 📋 ANALYSIS CONFIGURATION:
+2025-05-26 23:27:51,556 - phoenix.spydefi - INFO -    🕐 SpyDefi scan period: 24 hours
+2025-05-26 23:27:51,556 - phoenix.spydefi - INFO -    📅 KOL analysis period: 7 days
+2025-05-26 23:27:51,556 - phoenix.spydefi - INFO -    🎯 Top KOLs to analyze: 25
+2025-05-26 23:27:51,556 - phoenix.spydefi - INFO -    💰 Max market cap filter: $10,000,000.0
+2025-05-26 23:27:51,556 - phoenix.spydefi - INFO -    👥 Min subscribers: 500
+2025-05-26 23:27:51,556 - phoenix.spydefi - INFO -    📈 Win threshold: 50%
+2025-05-26 23:27:51,556 - phoenix.spydefi - INFO - 
+2025-05-26 23:27:51,556 - phoenix.spydefi - INFO - 🔍 Scanning SpyDefi for last 24 hours...
+2025-05-26 23:27:51,682 - phoenix.spydefi - INFO - 📥 Fetching messages from SpyDefi (ID: 1960616143)...
+2025-05-26 23:27:51,987 - phoenix.spydefi - ERROR - ❌ Error scanning SpyDefi: can't compare offset-naive and offset-aware datetimes
+2025-05-26 23:27:57,438 - phoenix.spydefi - ERROR - ❌ Traceback: Traceback (most recent call last):
+  File "C:\Users\Administrator\Desktop\phoenix-project\spydefi_module.py", line 338, in scan_spydefi_for_kols
+    if message.date < cutoff_time:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: can't compare offset-naive and offset-aware datetimes
+
+2025-05-26 23:27:57,438 - phoenix.spydefi - ERROR - ❌ SPYDEFI analysis failed: can't compare offset-naive and offset-aware datetimes
+2025-05-26 23:27:57,438 - phoenix.spydefi - ERROR - ❌ Processing time: 5.9s
+2025-05-26 23:27:57,438 - phoenix.spydefi - ERROR - ❌ Traceback: Traceback (most recent call last):
+  File "C:\Users\Administrator\Desktop\phoenix-project\spydefi_module.py", line 998, in run_full_analysis
+    kol_mentions = await self.scan_spydefi_for_kols(self.config['spydefi_scan_hours'])
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Desktop\phoenix-project\spydefi_module.py", line 338, in scan_spydefi_for_kols
+    if message.date < cutoff_time:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: can't compare offset-naive and offset-aware datetimes
+
+2025-05-26 23:27:57,454 - phoenix - ERROR - ❌ SPYDEFI analysis failed: can't compare offset-naive and offset-aware datetimes
+2025-05-26 23:27:57,454 - phoenix.spydefi - INFO - 📡 Disconnecting from Telegram...
+2025-05-26 23:27:57,454 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-26 23:27:57,456 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-26 23:27:57,470 - phoenix.spydefi - INFO - ✅ Disconnected from Telegram
+2025-05-26 23:27:57,470 - phoenix - ERROR - ❌ SPYDEFI analysis failed: can't compare offset-naive and offset-aware datetimes
+2025-05-26 23:32:39,475 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-26 23:32:39,475 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-26 23:32:39,807 - phoenix - INFO - ✅ Imported SPYDEFI module
+2025-05-26 23:32:39,807 - phoenix - INFO - 🚀 Starting SPYDEFI KOL analysis
+2025-05-26 23:32:39,823 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-26 23:32:40,061 - phoenix.api_manager - INFO - ✅ Birdeye API initialized for mainstream token analysis
+2025-05-26 23:32:40,061 - phoenix.api_manager - INFO - ✅ Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-26 23:32:40,076 - phoenix.api_manager - INFO - ✅ Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-26 23:32:40,076 - phoenix - INFO - ✅ API manager initialized successfully
+2025-05-26 23:32:40,076 - phoenix.spydefi - INFO - ✅ API manager configured for SPYDEFI analysis
+2025-05-26 23:32:40,076 - phoenix.spydefi - INFO - Config updated: spydefi_scan_hours = 24
+2025-05-26 23:32:40,076 - phoenix.spydefi - INFO - Config updated: kol_analysis_days = 7
+2025-05-26 23:32:40,076 - phoenix.spydefi - INFO - Config updated: top_kols_count = 25
+2025-05-26 23:32:40,076 - phoenix.spydefi - INFO - Config updated: min_mentions = 2
+2025-05-26 23:32:40,076 - phoenix.spydefi - INFO - Config updated: max_market_cap_usd = 10000000
+2025-05-26 23:32:40,076 - phoenix.spydefi - INFO - Config updated: min_subscribers = 500
+2025-05-26 23:32:40,076 - phoenix - INFO - ✅ SPYDEFI analyzer initialized successfully
+2025-05-26 23:32:40,076 - phoenix.spydefi - INFO - 🔗 Connecting to Telegram for SPYDEFI analysis...
+2025-05-26 23:32:40,171 - telethon.network.mtprotosender - INFO - Connecting to 149.154.167.51:443/TcpFull...
+2025-05-26 23:32:41,571 - telethon.network.mtprotosender - INFO - Connection to 149.154.167.51:443/TcpFull complete!
+2025-05-26 23:32:46,392 - telethon.client.users - INFO - Phone migrated to 1
+2025-05-26 23:32:46,408 - telethon.client.telegrambaseclient - INFO - Reconnecting to new data center 1
+2025-05-26 23:32:46,439 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.167.51:443/TcpFull...
+2025-05-26 23:32:46,439 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.167.51:443/TcpFull complete!
+2025-05-26 23:32:46,439 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-26 23:32:47,932 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-26 23:32:53,114 - phoenix.spydefi - INFO - ✅ Connected to Telegram
+2025-05-26 23:32:53,114 - phoenix.spydefi - INFO - 📱 Authenticated as: Ben (sup_ben)
+2025-05-26 23:32:53,114 - phoenix.spydefi - INFO - 🔄 No cache found, will perform fresh analysis
+2025-05-26 23:32:53,114 - phoenix.spydefi - INFO - 🚀 STARTING SPYDEFI COMPREHENSIVE ANALYSIS
+2025-05-26 23:32:53,114 - phoenix.spydefi - INFO - ============================================================
+2025-05-26 23:32:53,114 - phoenix.spydefi - INFO - 📋 ANALYSIS CONFIGURATION:
+2025-05-26 23:32:53,114 - phoenix.spydefi - INFO -    🕐 SpyDefi scan period: 24 hours
+2025-05-26 23:32:53,114 - phoenix.spydefi - INFO -    📅 KOL analysis period: 7 days
+2025-05-26 23:32:53,114 - phoenix.spydefi - INFO -    🎯 Top KOLs to analyze: 25
+2025-05-26 23:32:53,114 - phoenix.spydefi - INFO -    💰 Max market cap filter: $10,000,000
+2025-05-26 23:32:53,114 - phoenix.spydefi - INFO -    👥 Min subscribers: 500
+2025-05-26 23:32:53,114 - phoenix.spydefi - INFO -    📈 Win threshold: 50%
+2025-05-26 23:32:53,114 - phoenix.spydefi - INFO - 
+2025-05-26 23:32:53,114 - phoenix.spydefi - INFO - 🔍 Scanning SpyDefi for last 24 hours...
+2025-05-26 23:32:53,241 - phoenix.spydefi - INFO - 📥 Fetching messages from SpyDefi (ID: 1960616143)...
+2025-05-26 23:32:59,488 - phoenix.spydefi - INFO - 📊 SPYDEFI SCAN RESULTS:
+2025-05-26 23:32:59,488 - phoenix.spydefi - INFO -    Total messages: 2000
+2025-05-26 23:32:59,488 - phoenix.spydefi - INFO -    Achievement messages: 1949
+2025-05-26 23:32:59,488 - phoenix.spydefi - INFO -    Solana achievements: 140
+2025-05-26 23:32:59,488 - phoenix.spydefi - INFO -    Qualified KOLs (2+ mentions): 31
+2025-05-26 23:32:59,488 - phoenix.spydefi - INFO - 🎯 Selected 25 top KOLs for analysis
+2025-05-26 23:32:59,488 - phoenix.spydefi - INFO -    1. @spydefi_bot (140 mentions)
+2025-05-26 23:32:59,488 - phoenix.spydefi - INFO -    2. @spydefi (129 mentions)
+2025-05-26 23:32:59,488 - phoenix.spydefi - INFO -    3. @lcshibctoportal (105 mentions)
+2025-05-26 23:32:59,488 - phoenix.spydefi - INFO -    4. @spydefilite_bot (7 mentions)
+2025-05-26 23:32:59,488 - phoenix.spydefi - INFO -    5. @insidersolanaprintors (5 mentions)
+2025-05-26 23:32:59,488 - phoenix.spydefi - INFO -    6. @kariusgemscalls (5 mentions)
+2025-05-26 23:32:59,488 - phoenix.spydefi - INFO -    7. @marksgems (5 mentions)
+2025-05-26 23:32:59,488 - phoenix.spydefi - INFO -    8. @thanos_call (4 mentions)
+2025-05-26 23:32:59,488 - phoenix.spydefi - INFO -    9. @quartzeth (4 mentions)
+2025-05-26 23:32:59,488 - phoenix.spydefi - INFO -    10. @hellsinggamble (3 mentions)
+2025-05-26 23:32:59,488 - phoenix.spydefi - INFO - 📊 Analyzing @spydefi_bot (1/25) - 140 mentions
+2025-05-26 23:32:59,621 - phoenix.spydefi - INFO - ⚠️ @spydefi_bot: 0 subscribers (below minimum)
+2025-05-26 23:32:59,621 - phoenix.spydefi - INFO - 📊 Analyzing @spydefi (2/25) - 129 mentions
+2025-05-26 23:33:02,756 - phoenix.spydefi - INFO - ⚠️ @spydefi: 0 subscribers (below minimum)
+2025-05-26 23:33:02,756 - phoenix.spydefi - INFO - 📊 Analyzing @lcshibctoportal (3/25) - 105 mentions
+2025-05-26 23:33:05,891 - phoenix.spydefi - INFO - ⚠️ @lcshibctoportal: 0 subscribers (below minimum)
+2025-05-26 23:33:05,891 - phoenix.spydefi - INFO - 📊 Analyzing @spydefilite_bot (4/25) - 7 mentions
+2025-05-26 23:33:09,016 - phoenix.spydefi - INFO - ⚠️ @spydefilite_bot: 0 subscribers (below minimum)
+2025-05-26 23:33:09,016 - phoenix.spydefi - INFO - 📊 Analyzing @insidersolanaprintors (5/25) - 5 mentions
+2025-05-26 23:33:12,270 - phoenix.spydefi - INFO - ⚠️ @insidersolanaprintors: 0 subscribers (below minimum)
+2025-05-26 23:33:12,270 - phoenix.spydefi - INFO - 📊 Analyzing @kariusgemscalls (6/25) - 5 mentions
+2025-05-26 23:33:15,402 - phoenix.spydefi - INFO - ⚠️ @kariusgemscalls: 0 subscribers (below minimum)
+2025-05-26 23:33:15,402 - phoenix.spydefi - INFO - 📊 Analyzing @marksgems (7/25) - 5 mentions
+2025-05-26 23:33:18,537 - phoenix.spydefi - INFO - ⚠️ @marksgems: 0 subscribers (below minimum)
+2025-05-26 23:33:18,537 - phoenix.spydefi - INFO - 📊 Analyzing @thanos_call (8/25) - 4 mentions
+2025-05-26 23:33:21,672 - phoenix.spydefi - INFO - ⚠️ @thanos_call: 0 subscribers (below minimum)
+2025-05-26 23:33:21,672 - phoenix.spydefi - INFO - 📊 Analyzing @quartzeth (9/25) - 4 mentions
+2025-05-26 23:33:24,803 - phoenix.spydefi - INFO - ⚠️ @quartzeth: 0 subscribers (below minimum)
+2025-05-26 23:33:24,803 - phoenix.spydefi - INFO - 📊 Analyzing @hellsinggamble (10/25) - 3 mentions
+2025-05-26 23:33:27,941 - phoenix.spydefi - INFO - ⚠️ @hellsinggamble: 0 subscribers (below minimum)
+2025-05-26 23:33:27,941 - phoenix.spydefi - INFO - 📊 Analyzing @pepe_calls28 (11/25) - 3 mentions
+2025-05-26 23:33:31,083 - phoenix.spydefi - INFO - ⚠️ @pepe_calls28: 0 subscribers (below minimum)
+2025-05-26 23:33:31,083 - phoenix.spydefi - INFO - 📊 Analyzing @x666calls (12/25) - 3 mentions
+2025-05-26 23:33:34,219 - phoenix.spydefi - INFO - ⚠️ @x666calls: 0 subscribers (below minimum)
+2025-05-26 23:33:34,219 - phoenix.spydefi - INFO - 📊 Analyzing @spacemancallzsolana (13/25) - 2 mentions
+2025-05-26 23:43:16,132 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-26 23:43:16,132 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-26 23:43:16,476 - phoenix - ERROR - ❌ Error importing modules: cannot import name 'UsernameNotFoundError' from 'telethon.errors' (C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages\telethon\errors\__init__.py)
+2025-05-26 23:43:16,476 - phoenix - ERROR - SPYDEFI analysis error: cannot import name 'UsernameNotFoundError' from 'telethon.errors' (C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages\telethon\errors\__init__.py)
+2025-05-26 23:45:04,963 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-26 23:45:04,963 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-26 23:45:05,305 - phoenix - ERROR - ❌ Error importing modules: cannot import name 'SPYDEFIAnalyzer' from 'spydefi_module' (C:\Users\Administrator\Desktop\phoenix-project\spydefi_module.py)
+2025-05-26 23:45:05,305 - phoenix - ERROR - SPYDEFI analysis error: cannot import name 'SPYDEFIAnalyzer' from 'spydefi_module' (C:\Users\Administrator\Desktop\phoenix-project\spydefi_module.py)
+2025-05-26 23:50:01,621 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-26 23:50:01,621 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-26 23:50:01,994 - phoenix - ERROR - ❌ Error importing modules: cannot import name 'SPYDEFIAnalyzer' from 'spydefi_module' (C:\Users\Administrator\Desktop\phoenix-project\spydefi_module.py)
+2025-05-26 23:50:01,994 - phoenix - ERROR - SPYDEFI analysis error: cannot import name 'SPYDEFIAnalyzer' from 'spydefi_module' (C:\Users\Administrator\Desktop\phoenix-project\spydefi_module.py)
+2025-05-26 23:52:10,695 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-26 23:52:10,695 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-26 23:52:11,025 - phoenix - ERROR - ❌ Error importing modules: cannot import name 'SPYDEFIAnalyzer' from 'spydefi_module' (C:\Users\Administrator\Desktop\phoenix-project\spydefi_module.py)
+2025-05-26 23:52:11,025 - phoenix - ERROR - SPYDEFI analysis error: cannot import name 'SPYDEFIAnalyzer' from 'spydefi_module' (C:\Users\Administrator\Desktop\phoenix-project\spydefi_module.py)
+2025-05-26 23:54:10,588 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-26 23:54:10,588 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-26 23:54:10,979 - phoenix - INFO - ✅ Imported SPYDEFI module successfully
+2025-05-27 00:02:18,904 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-27 00:02:18,904 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-27 00:02:19,341 - phoenix - INFO - ✅ Imported SPYDEFI module successfully
+2025-05-27 00:02:19,341 - phoenix - INFO - 🚀 Starting SPYDEFI KOL analysis
+2025-05-27 00:02:19,354 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-27 00:02:19,607 - phoenix.api_manager - INFO - ✅ Birdeye API initialized for mainstream token analysis
+2025-05-27 00:02:19,607 - phoenix.api_manager - INFO - ✅ Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-27 00:02:19,607 - phoenix.api_manager - INFO - ✅ Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-27 00:02:19,607 - phoenix - INFO - ✅ API manager initialized successfully
+2025-05-27 00:02:19,607 - phoenix.spydefi - INFO - ✅ API manager configured for SPYDEFI analysis
+2025-05-27 00:02:19,607 - phoenix.spydefi - INFO - Config updated: spydefi_scan_hours = 24
+2025-05-27 00:02:19,607 - phoenix.spydefi - INFO - Config updated: kol_analysis_days = 7
+2025-05-27 00:02:19,607 - phoenix.spydefi - INFO - Config updated: top_kols_count = 25
+2025-05-27 00:02:19,607 - phoenix.spydefi - INFO - Config updated: min_mentions = 2
+2025-05-27 00:02:19,607 - phoenix.spydefi - INFO - Config updated: max_market_cap_usd = 10000000
+2025-05-27 00:02:19,607 - phoenix.spydefi - INFO - Config updated: min_subscribers = 500
+2025-05-27 00:02:19,607 - phoenix - INFO - ✅ SPYDEFI analyzer initialized successfully
+2025-05-27 00:02:19,607 - phoenix.spydefi - INFO - 🔗 Connecting to Telegram for SPYDEFI analysis...
+2025-05-27 00:02:19,607 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-27 00:02:19,732 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-27 00:02:20,618 - phoenix.spydefi - INFO - ✅ Connected to Telegram
+2025-05-27 00:02:20,618 - phoenix.spydefi - INFO - 📱 Authenticated as: Ben (sup_ben)
+2025-05-27 00:02:20,618 - phoenix.spydefi - INFO - 🔄 No cache found, will perform fresh analysis
+2025-05-27 00:02:20,618 - phoenix.spydefi - INFO - 🚀 STARTING SPYDEFI COMPREHENSIVE ANALYSIS
+2025-05-27 00:02:20,618 - phoenix.spydefi - INFO - ============================================================
+2025-05-27 00:02:20,618 - phoenix.spydefi - INFO - 📋 ANALYSIS CONFIGURATION:
+2025-05-27 00:02:20,618 - phoenix.spydefi - INFO -    🕐 SpyDefi scan period: 24 hours
+2025-05-27 00:02:20,633 - phoenix.spydefi - INFO -    📅 KOL analysis period: 7 days
+2025-05-27 00:02:20,633 - phoenix.spydefi - INFO -    🎯 Top KOLs to analyze: 25
+2025-05-27 00:02:20,633 - phoenix.spydefi - INFO -    💰 Max market cap filter: $10,000,000
+2025-05-27 00:02:20,633 - phoenix.spydefi - INFO -    👥 Min subscribers: 500
+2025-05-27 00:02:20,633 - phoenix.spydefi - INFO -    📈 Win threshold: 50%
+2025-05-27 00:02:20,633 - phoenix.spydefi - INFO - 
+2025-05-27 00:02:20,633 - phoenix.spydefi - INFO - 🔍 Scanning SpyDefi for last 24 hours...
+2025-05-27 00:02:20,761 - phoenix.spydefi - INFO - 📥 Fetching messages from SpyDefi (ID: 1960616143)...
+2025-05-27 08:10:15,197 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-27 08:10:15,197 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-27 08:10:15,545 - phoenix - INFO - ✅ Imported optimized SPYDEFI module
+2025-05-27 08:10:15,545 - phoenix - INFO - 🚀 Starting optimized SPYDEFI KOL analysis
+2025-05-27 08:10:15,545 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-27 08:10:15,782 - phoenix.api_manager - INFO - ✅ Birdeye API initialized for mainstream token analysis
+2025-05-27 08:10:15,782 - phoenix.api_manager - INFO - ✅ Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-27 08:10:15,782 - phoenix.api_manager - INFO - ✅ Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-27 08:10:15,782 - phoenix - INFO - ✅ API manager initialized successfully
+2025-05-27 08:10:15,798 - phoenix.spydefi - INFO - ✅ API manager configured for SPYDEFI analysis
+2025-05-27 08:10:15,798 - phoenix.spydefi - INFO - Config updated: spydefi_scan_hours = 24
+2025-05-27 08:10:15,798 - phoenix.spydefi - INFO - Config updated: kol_analysis_days = 7
+2025-05-27 08:10:15,798 - phoenix.spydefi - INFO - Config updated: top_kols_count = 25
+2025-05-27 08:10:15,798 - phoenix.spydefi - INFO - Config updated: min_mentions = 2
+2025-05-27 08:10:15,798 - phoenix.spydefi - INFO - Config updated: max_market_cap_usd = 10000000
+2025-05-27 08:10:15,798 - phoenix.spydefi - INFO - Config updated: min_subscribers = 500
+2025-05-27 08:10:15,798 - phoenix - INFO - ✅ Optimized SPYDEFI analyzer initialized successfully
+2025-05-27 08:10:15,798 - phoenix.spydefi - INFO - 🔗 Connecting to Telegram for SPYDEFI analysis...
+2025-05-27 08:10:15,798 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-27 08:10:15,917 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-27 08:10:16,812 - phoenix.spydefi - INFO - ✅ Connected to Telegram
+2025-05-27 08:10:16,812 - phoenix.spydefi - INFO - 📱 Authenticated as: Ben (sup_ben)
+2025-05-27 08:10:16,812 - phoenix.spydefi - INFO - 🚀 STARTING OPTIMIZED SPYDEFI ANALYSIS
+2025-05-27 08:10:16,812 - phoenix.spydefi - INFO - ============================================================
+2025-05-27 08:10:16,812 - phoenix.spydefi - INFO - 🔍 Scanning SpyDefi with optimized filters...
+2025-05-27 08:10:16,812 - phoenix.spydefi - INFO - 📅 Scanning from 2025-05-26 08:10:16 to 2025-05-27 08:10:16
+2025-05-27 08:10:16,938 - phoenix.spydefi - INFO - 📥 Scanning SpyDefi (ID: 1960616143)...
+2025-05-27 08:20:28,947 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-27 08:20:28,947 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-27 08:20:29,339 - phoenix - INFO - ✅ Imported optimized SPYDEFI module
+2025-05-27 08:20:29,339 - phoenix - INFO - 🚀 Starting optimized SPYDEFI KOL analysis
+2025-05-27 08:20:29,354 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-27 08:20:29,589 - phoenix.api_manager - INFO - ✅ Birdeye API initialized for mainstream token analysis
+2025-05-27 08:20:29,589 - phoenix.api_manager - INFO - ✅ Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-27 08:20:29,589 - phoenix.api_manager - INFO - ✅ Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-27 08:20:29,589 - phoenix - INFO - ✅ API manager initialized successfully
+2025-05-27 08:20:29,589 - phoenix.spydefi - INFO - ✅ API manager configured for SPYDEFI analysis
+2025-05-27 08:20:29,589 - phoenix.spydefi - INFO - Config updated: spydefi_scan_hours = 24
+2025-05-27 08:20:29,604 - phoenix.spydefi - INFO - Config updated: kol_analysis_days = 7
+2025-05-27 08:20:29,604 - phoenix.spydefi - INFO - Config updated: top_kols_count = 25
+2025-05-27 08:20:29,604 - phoenix.spydefi - INFO - Config updated: min_mentions = 2
+2025-05-27 08:20:29,604 - phoenix.spydefi - INFO - Config updated: max_market_cap_usd = 10000000
+2025-05-27 08:20:29,604 - phoenix.spydefi - INFO - Config updated: min_subscribers = 500
+2025-05-27 08:20:29,604 - phoenix - INFO - ✅ Optimized SPYDEFI analyzer initialized successfully
+2025-05-27 08:20:29,604 - phoenix.spydefi - INFO - 🔗 Connecting to Telegram for SPYDEFI analysis...
+2025-05-27 08:20:29,604 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-27 08:20:29,729 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-27 08:20:30,652 - phoenix.spydefi - INFO - ✅ Connected to Telegram
+2025-05-27 08:20:30,652 - phoenix.spydefi - INFO - 📱 Authenticated as: Ben (sup_ben)
+2025-05-27 08:20:30,652 - phoenix.spydefi - INFO - 🚀 STARTING OPTIMIZED SPYDEFI ANALYSIS
+2025-05-27 08:20:30,652 - phoenix.spydefi - INFO - ============================================================
+2025-05-27 08:20:30,652 - phoenix.spydefi - INFO - 🔍 Scanning SpyDefi with optimized filters...
+2025-05-27 08:20:30,652 - phoenix.spydefi - INFO - 📅 Scanning from 2025-05-26 08:20:30 to 2025-05-27 08:20:30
+2025-05-27 08:20:30,776 - phoenix.spydefi - INFO - 📥 Scanning SpyDefi (ID: 1960616143)...
+2025-05-27 08:20:34,122 - phoenix.spydefi - INFO - 🎯 Early termination: Found 50 KOLs (target: 50)
+2025-05-27 08:20:34,122 - phoenix.spydefi - INFO - 📊 SCAN COMPLETE:
+2025-05-27 08:20:34,122 - phoenix.spydefi - INFO -    📨 Messages processed: 356
+2025-05-27 08:20:34,122 - phoenix.spydefi - INFO -    ✅ Relevant messages: 353
+2025-05-27 08:20:34,122 - phoenix.spydefi - INFO -    👥 Raw KOL mentions: 50
+2025-05-27 08:20:34,122 - phoenix.spydefi - INFO -    🎯 KOLs meeting criteria (≥2 mentions): 20
+2025-05-27 08:20:34,122 - phoenix.spydefi - INFO -    📈 Efficiency: 99.2% relevant messages
+2025-05-27 08:20:34,122 - phoenix.spydefi - INFO - 📋 Sample KOLs found: ['Alpha caller', 'x3', 'x2', 'x6', 'x5', 'x7', 'Pump it up', 'Heavy Hitter', 'x9', 'x8']
+2025-05-27 08:20:35,024 - phoenix.spydefi - ERROR - ❌ Error analyzing x3: '<' not supported between instances of 'NoneType' and 'int'
+2025-05-27 08:20:36,433 - phoenix.spydefi - ERROR - ❌ Error analyzing x5: '<' not supported between instances of 'NoneType' and 'int'
+2025-05-27 08:20:37,339 - phoenix.spydefi - ERROR - ❌ Error analyzing x7: '<' not supported between instances of 'NoneType' and 'int'
+2025-05-27 08:20:38,803 - phoenix.spydefi - ERROR - ❌ Error analyzing Pump it up: '<' not supported between instances of 'NoneType' and 'int'
+2025-05-27 08:20:45,573 - phoenix.spydefi - ERROR - ❌ Error analyzing x15: '<' not supported between instances of 'NoneType' and 'int'
+2025-05-27 08:23:46,201 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-27 08:23:46,201 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-27 08:23:46,549 - phoenix - INFO - ✅ Imported optimized SPYDEFI module
+2025-05-27 08:23:46,549 - phoenix - INFO - 🚀 Starting optimized SPYDEFI KOL analysis
+2025-05-27 08:23:46,549 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-27 08:23:46,787 - phoenix.api_manager - INFO - ✅ Birdeye API initialized for mainstream token analysis
+2025-05-27 08:23:46,787 - phoenix.api_manager - INFO - ✅ Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-27 08:23:46,787 - phoenix.api_manager - INFO - ✅ Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-27 08:23:46,787 - phoenix - INFO - ✅ API manager initialized successfully
+2025-05-27 08:23:46,802 - phoenix.spydefi - INFO - ✅ API manager configured for SPYDEFI analysis
+2025-05-27 08:23:46,802 - phoenix.spydefi - INFO - Config updated: spydefi_scan_hours = 24
+2025-05-27 08:23:46,802 - phoenix.spydefi - INFO - Config updated: kol_analysis_days = 7
+2025-05-27 08:23:46,802 - phoenix.spydefi - INFO - Config updated: top_kols_count = 25
+2025-05-27 08:23:46,802 - phoenix.spydefi - INFO - Config updated: min_mentions = 2
+2025-05-27 08:23:46,802 - phoenix.spydefi - INFO - Config updated: max_market_cap_usd = 10000000
+2025-05-27 08:23:46,802 - phoenix.spydefi - INFO - Config updated: min_subscribers = 500
+2025-05-27 08:23:46,802 - phoenix - INFO - ✅ Optimized SPYDEFI analyzer initialized successfully
+2025-05-27 08:23:46,802 - phoenix.spydefi - INFO - 🔗 Connecting to Telegram for SPYDEFI analysis...
+2025-05-27 08:23:46,802 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-27 08:23:46,913 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-27 08:23:47,811 - phoenix.spydefi - INFO - ✅ Connected to Telegram
+2025-05-27 08:23:47,811 - phoenix.spydefi - INFO - 📱 Authenticated as: Ben (sup_ben)
+2025-05-27 08:23:47,811 - phoenix.spydefi - INFO - 🚀 STARTING OPTIMIZED SPYDEFI ANALYSIS
+2025-05-27 08:23:47,811 - phoenix.spydefi - INFO - ============================================================
+2025-05-27 08:23:47,811 - phoenix.spydefi - INFO - 🔍 Scanning SpyDefi with optimized filters...
+2025-05-27 08:23:47,811 - phoenix.spydefi - INFO - 📅 Scanning from 2025-05-26 08:23:47 to 2025-05-27 08:23:47
+2025-05-27 08:23:47,938 - phoenix.spydefi - INFO - 📥 Scanning SpyDefi (ID: 1960616143)...
+2025-05-27 08:23:51,356 - phoenix.spydefi - INFO - 🎯 Early termination: Found 50 KOLs (target: 50)
+2025-05-27 08:23:51,356 - phoenix.spydefi - INFO - 📊 SCAN COMPLETE:
+2025-05-27 08:23:51,356 - phoenix.spydefi - INFO -    📨 Messages processed: 359
+2025-05-27 08:23:51,356 - phoenix.spydefi - INFO -    ✅ Relevant messages: 355
+2025-05-27 08:23:51,356 - phoenix.spydefi - INFO -    👥 Raw KOL mentions: 50
+2025-05-27 08:23:51,356 - phoenix.spydefi - INFO -    🎯 KOLs meeting criteria (≥2 mentions): 20
+2025-05-27 08:23:51,356 - phoenix.spydefi - INFO -    📈 Efficiency: 98.9% relevant messages
+2025-05-27 08:23:51,356 - phoenix.spydefi - INFO - 📋 Sample KOLs found: ['x3', 'Pump it up', 'x4', 'Alpha caller', 'x2', 'x6', 'x5', 'x7', 'Heavy Hitter', 'x9']
+2025-05-27 08:24:05,270 - phoenix.spydefi - INFO - 💾 Cache saved: C:\Users\Administrator\.phoenix_cache\spydefi_kol_analysis.json
+2025-05-27 08:24:05,270 - phoenix.spydefi - INFO - ============================================================
+2025-05-27 08:24:05,270 - phoenix.spydefi - INFO - ✅ OPTIMIZED SPYDEFI ANALYSIS COMPLETE
+2025-05-27 08:24:05,270 - phoenix.spydefi - INFO - ⏱️ Processing time: 17.5 seconds
+2025-05-27 08:24:05,270 - phoenix.spydefi - INFO - 📊 KOLs analyzed: 0/20
+2025-05-27 08:24:05,270 - phoenix.spydefi - INFO - 📈 Overall success rate: 0.0%
+2025-05-27 08:24:05,684 - phoenix.export - WARNING - No KOL performance data to export
+2025-05-27 08:24:05,684 - phoenix.export - WARNING - No KOL performance data for TXT export
+2025-05-27 08:24:05,684 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-27 08:24:05,684 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-27 08:24:05,705 - phoenix.spydefi - INFO - 🔌 Disconnected from Telegram
+2025-05-27 08:24:05,705 - phoenix - INFO - ✅ SPYDEFI analysis completed successfully!
+2025-05-27 08:24:05,705 - phoenix - INFO - 📁 Results exported to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
