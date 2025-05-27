@@ -1,13 +1,12 @@
 """
-Export Utilities Module - Phoenix Project (COMPREHENSIVE ANALYSIS VERSION)
+Export Utilities Module - Phoenix Project (SPYDEFI + WALLET ANALYSIS VERSION)
 
-Handles Excel and CSV exports for comprehensive memecoin analysis results.
+Handles Excel and CSV exports for both SPYDEFI KOL analysis and wallet analysis results.
 UPDATES:
-- Enhanced support for comprehensive KOL analysis (top 50 + 72h)
-- Added 5x success rate tracking
-- SpyDefi mention weighting support
-- Enhanced composite scoring display
+- Added comprehensive SPYDEFI KOL analysis export functions
+- Enhanced composite scoring display and strategy classification
 - Maintains full compatibility with wallet_module
+- Added professional TXT summary generation
 """
 
 import os
@@ -26,13 +25,353 @@ except ImportError:
     EXCEL_AVAILABLE = False
     logger.warning("pandas and xlsxwriter not installed. Excel export will be limited.")
 
+def export_spydefi_to_csv(results: Dict[str, Any], output_file: str) -> bool:
+    """
+    Export SPYDEFI KOL analysis results to CSV.
+    
+    Args:
+        results: SPYDEFI analysis results
+        output_file: Output CSV file path
+        
+    Returns:
+        bool: True if successful, False otherwise
+    """
+    try:
+        kol_performances = results.get('kol_performances', {})
+        
+        if not kol_performances:
+            logger.warning("No KOL performance data to export")
+            return False
+        
+        # Ensure output directory exists
+        output_dir = os.path.dirname(output_file)
+        if output_dir and not os.path.exists(output_dir):
+            os.makedirs(output_dir)
+        
+        # Prepare CSV data
+        csv_data = []
+        
+        for kol, performance in kol_performances.items():
+            # Handle both dict and object formats
+            if isinstance(performance, dict):
+                data = performance
+            else:
+                # Convert object to dict
+                data = {
+                    'kol': performance.kol,
+                    'channel_id': performance.channel_id,
+                    'subscriber_count': performance.subscriber_count,
+                    'total_calls': performance.total_calls,
+                    'winning_calls': performance.winning_calls,
+                    'losing_calls': performance.losing_calls,
+                    'success_rate': performance.success_rate,
+                    'tokens_2x_plus': performance.tokens_2x_plus,
+                    'tokens_5x_plus': performance.tokens_5x_plus,
+                    'success_rate_2x': performance.success_rate_2x,
+                    'success_rate_5x': performance.success_rate_5x,
+                    'avg_time_to_2x_hours': performance.avg_time_to_2x_hours,
+                    'avg_max_pullback_percent': performance.avg_max_pullback_percent,
+                    'avg_unrealized_gains_percent': performance.avg_unrealized_gains_percent,
+                    'consistency_score': performance.consistency_score,
+                    'composite_score': performance.composite_score,
+                    'strategy_classification': performance.strategy_classification,
+                    'follower_tier': performance.follower_tier,
+                    'total_roi_percent': performance.total_roi_percent,
+                    'max_roi_percent': performance.max_roi_percent
+                }
+            
+            # Prepare CSV row
+            row = {
+                'rank': len(csv_data) + 1,
+                'kol': f"@{data.get('kol', kol)}",
+                'composite_score': round(data.get('composite_score', 0), 1),
+                'strategy_classification': data.get('strategy_classification', 'UNKNOWN'),
+                'follower_tier': data.get('follower_tier', 'LOW'),
+                'channel_id': data.get('channel_id', ''),
+                'subscriber_count': data.get('subscriber_count', 0),
+                'total_calls': data.get('total_calls', 0),
+                'winning_calls': data.get('winning_calls', 0),
+                'losing_calls': data.get('losing_calls', 0),
+                'success_rate_percent': round(data.get('success_rate', 0), 2),
+                'tokens_2x_plus': data.get('tokens_2x_plus', 0),
+                'tokens_5x_plus': data.get('tokens_5x_plus', 0),
+                'success_rate_2x_percent': round(data.get('success_rate_2x', 0), 2),
+                'success_rate_5x_percent': round(data.get('success_rate_5x', 0), 2),
+                'avg_time_to_2x_hours': round(data.get('avg_time_to_2x_hours', 0), 2),
+                'avg_max_pullback_percent': round(data.get('avg_max_pullback_percent', 0), 2),
+                'avg_unrealized_gains_percent': round(data.get('avg_unrealized_gains_percent', 0), 2),
+                'consistency_score': round(data.get('consistency_score', 0), 1),
+                'total_roi_percent': round(data.get('total_roi_percent', 0), 2),
+                'max_roi_percent': round(data.get('max_roi_percent', 0), 2),
+                'copy_recommendation': 'COPY' if data.get('composite_score', 0) >= 70 else 'AVOID'
+            }
+            
+            csv_data.append(row)
+        
+        # Sort by composite score
+        csv_data.sort(key=lambda x: x['composite_score'], reverse=True)
+        
+        # Update ranks
+        for i, row in enumerate(csv_data, 1):
+            row['rank'] = i
+        
+        # Write CSV
+        if csv_data:
+            with open(output_file, 'w', newline='', encoding='utf-8') as f:
+                fieldnames = [
+                    'rank', 'kol', 'composite_score', 'copy_recommendation',
+                    'strategy_classification', 'follower_tier', 'channel_id', 'subscriber_count',
+                    'total_calls', 'winning_calls', 'losing_calls', 'success_rate_percent',
+                    'tokens_2x_plus', 'tokens_5x_plus', 'success_rate_2x_percent', 'success_rate_5x_percent',
+                    'avg_time_to_2x_hours', 'avg_max_pullback_percent', 'avg_unrealized_gains_percent',
+                    'consistency_score', 'total_roi_percent', 'max_roi_percent'
+                ]
+                
+                writer = csv.DictWriter(f, fieldnames=fieldnames)
+                writer.writeheader()
+                writer.writerows(csv_data)
+        
+        logger.info(f"✅ Exported {len(csv_data)} KOLs to SPYDEFI CSV: {output_file}")
+        return True
+        
+    except Exception as e:
+        logger.error(f"❌ Error exporting SPYDEFI CSV: {str(e)}")
+        return False
+
+def export_spydefi_summary_txt(results: Dict[str, Any], output_file: str) -> bool:
+    """
+    Export SPYDEFI analysis summary to TXT file.
+    
+    Args:
+        results: SPYDEFI analysis results
+        output_file: Output TXT file path
+        
+    Returns:
+        bool: True if successful, False otherwise
+    """
+    try:
+        kol_performances = results.get('kol_performances', {})
+        metadata = results.get('metadata', {})
+        kol_mentions = results.get('kol_mentions', {})
+        
+        if not kol_performances:
+            logger.warning("No KOL performance data for TXT export")
+            return False
+        
+        # Ensure output directory exists
+        output_dir = os.path.dirname(output_file)
+        if output_dir and not os.path.exists(output_dir):
+            os.makedirs(output_dir)
+        
+        # Convert to list and sort by composite score
+        kol_list = []
+        for kol, performance in kol_performances.items():
+            if isinstance(performance, dict):
+                data = performance.copy()
+                data['kol'] = kol
+            else:
+                data = {
+                    'kol': kol,
+                    'composite_score': performance.composite_score,
+                    'strategy_classification': performance.strategy_classification,
+                    'follower_tier': performance.follower_tier,
+                    'subscriber_count': performance.subscriber_count,
+                    'total_calls': performance.total_calls,
+                    'winning_calls': performance.winning_calls,
+                    'success_rate': performance.success_rate,
+                    'tokens_2x_plus': performance.tokens_2x_plus,
+                    'tokens_5x_plus': performance.tokens_5x_plus,
+                    'success_rate_2x': performance.success_rate_2x,
+                    'success_rate_5x': performance.success_rate_5x,
+                    'avg_time_to_2x_hours': performance.avg_time_to_2x_hours,
+                    'total_roi_percent': performance.total_roi_percent,
+                    'max_roi_percent': performance.max_roi_percent
+                }
+            kol_list.append(data)
+        
+        kol_list.sort(key=lambda x: x.get('composite_score', 0), reverse=True)
+        
+        # Write comprehensive TXT summary
+        with open(output_file, 'w', encoding='utf-8') as f:
+            f.write("=" * 80 + "\n")
+            f.write("PHOENIX PROJECT - SPYDEFI KOL ANALYSIS SUMMARY\n")
+            f.write(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+            f.write("=" * 80 + "\n\n")
+            
+            # Overall Statistics
+            f.write("📊 OVERALL ANALYSIS STATISTICS\n")
+            f.write("-" * 40 + "\n")
+            f.write(f"Analysis Date: {metadata.get('timestamp', 'Unknown')}\n")
+            f.write(f"KOLs Analyzed: {len(kol_performances)}\n")
+            f.write(f"Total Calls Tracked: {metadata.get('total_calls_analyzed', 0)}\n")
+            f.write(f"Overall Success Rate: {metadata.get('overall_success_rate', 0):.2f}%\n")
+            f.write(f"Overall 2x Rate: {metadata.get('overall_2x_rate', 0):.2f}%\n")
+            f.write(f"Overall 5x Rate: {metadata.get('overall_5x_rate', 0):.2f}%\n")
+            f.write(f"Processing Time: {metadata.get('processing_time_seconds', 0):.1f} seconds\n")
+            f.write(f"API Calls Made: {metadata.get('api_calls', 0)}\n\n")
+            
+            # Configuration Used
+            config = metadata.get('config', {})
+            f.write("⚙️ ANALYSIS CONFIGURATION\n")
+            f.write("-" * 40 + "\n")
+            f.write(f"SpyDefi Scan Hours: {config.get('spydefi_scan_hours', 24)}\n")
+            f.write(f"KOL Analysis Days: {config.get('kol_analysis_days', 7)}\n")
+            f.write(f"Top KOLs Count: {config.get('top_kols_count', 25)}\n")
+            f.write(f"Min Mentions Required: {config.get('min_mentions', 2)}\n")
+            f.write(f"Max Market Cap: ${config.get('max_market_cap_usd', 100000000):,}\n")
+            f.write(f"Min Subscribers: {config.get('min_subscribers', 100):,}\n")
+            f.write(f"Win Threshold: {config.get('win_threshold_percent', 50)}%\n\n")
+            
+            # Top 10 KOLs Detailed Analysis
+            f.write("🏆 TOP 10 KOLS - DETAILED ANALYSIS\n")
+            f.write("-" * 40 + "\n")
+            
+            top_10 = kol_list[:10]
+            for i, kol_data in enumerate(top_10, 1):
+                kol = kol_data['kol']
+                spydefi_mentions = kol_mentions.get(kol, 0)
+                
+                f.write(f"\n{i}. @{kol}\n")
+                f.write(f"   🎭 SpyDefi Mentions: {spydefi_mentions}\n")
+                f.write(f"   📊 Composite Score: {kol_data.get('composite_score', 0):.1f}/100\n")
+                f.write(f"   🎯 Strategy: {kol_data.get('strategy_classification', 'UNKNOWN')}\n")
+                f.write(f"   👥 Followers: {kol_data.get('subscriber_count', 0):,} ({kol_data.get('follower_tier', 'LOW')} tier)\n")
+                f.write(f"   📞 Total Calls: {kol_data.get('total_calls', 0)}\n")
+                f.write(f"   ✅ Winning Calls: {kol_data.get('winning_calls', 0)}\n")
+                f.write(f"   📈 Success Rate: {kol_data.get('success_rate', 0):.1f}%\n")
+                f.write(f"   💎 2x Tokens: {kol_data.get('tokens_2x_plus', 0)} ({kol_data.get('success_rate_2x', 0):.1f}%)\n")
+                f.write(f"   🚀 5x Tokens: {kol_data.get('tokens_5x_plus', 0)} ({kol_data.get('success_rate_5x', 0):.1f}%)\n")
+                f.write(f"   ⏱️ Avg Time to 2x: {kol_data.get('avg_time_to_2x_hours', 0):.1f} hours\n")
+                f.write(f"   📊 Total ROI: {kol_data.get('total_roi_percent', 0):.1f}%\n")
+                f.write(f"   🎯 Max ROI: {kol_data.get('max_roi_percent', 0):.1f}%\n")
+                
+                # Copy recommendation
+                score = kol_data.get('composite_score', 0)
+                if score >= 80:
+                    f.write(f"   🟢 RECOMMENDATION: STRONG COPY (Elite Performer)\n")
+                elif score >= 70:
+                    f.write(f"   🟡 RECOMMENDATION: COPY (Good Performer)\n")
+                elif score >= 60:
+                    f.write(f"   🟠 RECOMMENDATION: MONITOR (Average Performer)\n")
+                else:
+                    f.write(f"   🔴 RECOMMENDATION: AVOID (Poor Performer)\n")
+            
+            # Strategy Breakdown
+            f.write(f"\n\n📈 STRATEGY CLASSIFICATION BREAKDOWN\n")
+            f.write("-" * 40 + "\n")
+            
+            scalp_kols = [k for k in kol_list if k.get('strategy_classification') == 'SCALP']
+            hold_kols = [k for k in kol_list if k.get('strategy_classification') == 'HOLD']
+            unknown_kols = [k for k in kol_list if k.get('strategy_classification') == 'UNKNOWN']
+            
+            f.write(f"🏃 SCALP Strategy KOLs: {len(scalp_kols)}\n")
+            if scalp_kols:
+                for kol_data in scalp_kols[:5]:  # Top 5 scalp KOLs
+                    f.write(f"   • @{kol_data['kol']} (Score: {kol_data.get('composite_score', 0):.1f}, "
+                           f"Subs: {kol_data.get('subscriber_count', 0):,})\n")
+            
+            f.write(f"\n💎 HOLD Strategy KOLs: {len(hold_kols)}\n")
+            if hold_kols:
+                for kol_data in hold_kols[:5]:  # Top 5 hold KOLs
+                    f.write(f"   • @{kol_data['kol']} (Score: {kol_data.get('composite_score', 0):.1f}, "
+                           f"5x Rate: {kol_data.get('success_rate_5x', 0):.1f}%)\n")
+            
+            if unknown_kols:
+                f.write(f"\n❓ Unknown Strategy KOLs: {len(unknown_kols)}\n")
+            
+            # Follower Tier Analysis
+            f.write(f"\n\n👥 FOLLOWER TIER ANALYSIS\n")
+            f.write("-" * 40 + "\n")
+            
+            high_tier = [k for k in kol_list if k.get('follower_tier') == 'HIGH']
+            medium_tier = [k for k in kol_list if k.get('follower_tier') == 'MEDIUM']
+            low_tier = [k for k in kol_list if k.get('follower_tier') == 'LOW']
+            
+            f.write(f"🔥 HIGH Tier (10K+ subs): {len(high_tier)} KOLs\n")
+            f.write(f"   • Best for scalping opportunities\n")
+            f.write(f"   • High volume potential\n")
+            if high_tier:
+                avg_score = sum(k.get('composite_score', 0) for k in high_tier) / len(high_tier)
+                f.write(f"   • Average Score: {avg_score:.1f}\n")
+            
+            f.write(f"\n📊 MEDIUM Tier (1K-10K subs): {len(medium_tier)} KOLs\n")
+            f.write(f"   • Balanced opportunity\n")
+            f.write(f"   • Good for both scalp and hold\n")
+            if medium_tier:
+                avg_score = sum(k.get('composite_score', 0) for k in medium_tier) / len(medium_tier)
+                f.write(f"   • Average Score: {avg_score:.1f}\n")
+            
+            f.write(f"\n🔍 LOW Tier (<1K subs): {len(low_tier)} KOLs\n")
+            f.write(f"   • Early alpha potential\n")
+            f.write(f"   • Higher risk, higher reward\n")
+            if low_tier:
+                avg_score = sum(k.get('composite_score', 0) for k in low_tier) / len(low_tier)
+                f.write(f"   • Average Score: {avg_score:.1f}\n")
+            
+            # Key Insights and Recommendations
+            f.write(f"\n\n💡 KEY INSIGHTS & RECOMMENDATIONS\n")
+            f.write("-" * 40 + "\n")
+            
+            # Best performers
+            elite_kols = [k for k in kol_list if k.get('composite_score', 0) >= 80]
+            good_kols = [k for k in kol_list if 70 <= k.get('composite_score', 0) < 80]
+            
+            f.write(f"🌟 Elite Performers (80+ score): {len(elite_kols)} KOLs\n")
+            if elite_kols:
+                f.write(f"   • Top recommendation for copy trading\n")
+                f.write(f"   • Consistent high performance\n")
+                for kol_data in elite_kols:
+                    f.write(f"   • @{kol_data['kol']} ({kol_data.get('composite_score', 0):.1f} score)\n")
+            
+            f.write(f"\n⭐ Good Performers (70-79 score): {len(good_kols)} KOLs\n")
+            if good_kols:
+                f.write(f"   • Solid copy trading candidates\n")
+                f.write(f"   • Monitor for consistency\n")
+            
+            # Gem finders
+            gem_finders = [k for k in kol_list if k.get('success_rate_5x', 0) >= 20]  # 20%+ 5x rate
+            if gem_finders:
+                f.write(f"\n💎 Top Gem Finders (20%+ 5x rate): {len(gem_finders)} KOLs\n")
+                for kol_data in gem_finders[:3]:
+                    f.write(f"   • @{kol_data['kol']} ({kol_data.get('success_rate_5x', 0):.1f}% 5x rate)\n")
+            
+            # Fast movers
+            fast_movers = [k for k in kol_list if k.get('avg_time_to_2x_hours', 0) > 0 and k.get('avg_time_to_2x_hours', 0) <= 6]
+            if fast_movers:
+                f.write(f"\n⚡ Fastest to 2x (≤6h average): {len(fast_movers)} KOLs\n")
+                for kol_data in fast_movers[:3]:
+                    f.write(f"   • @{kol_data['kol']} ({kol_data.get('avg_time_to_2x_hours', 0):.1f}h average)\n")
+            
+            # Final recommendations
+            f.write(f"\n\n🎯 FINAL COPY TRADING STRATEGY\n")
+            f.write("-" * 40 + "\n")
+            f.write(f"1. PRIMARY TARGETS: Elite performers (80+ score)\n")
+            f.write(f"2. SECONDARY TARGETS: Good performers (70-79 score)\n")
+            f.write(f"3. SCALP STRATEGY: Focus on high-follower KOLs for quick trades\n")
+            f.write(f"4. HOLD STRATEGY: Focus on gem finders for longer positions\n")
+            f.write(f"5. DIVERSIFICATION: Follow 3-5 KOLs across different tiers\n")
+            f.write(f"6. RISK MANAGEMENT: Set stop losses and take profits\n")
+            f.write(f"7. MONITORING: Track performance and adjust portfolio\n")
+            
+            f.write(f"\n" + "=" * 80 + "\n")
+            f.write("END OF SPYDEFI ANALYSIS SUMMARY\n")
+            f.write("=" * 80 + "\n")
+        
+        logger.info(f"✅ Exported SPYDEFI summary to TXT: {output_file}")
+        return True
+        
+    except Exception as e:
+        logger.error(f"❌ Error exporting SPYDEFI TXT summary: {str(e)}")
+        return False
+
 def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any], 
                    output_file: str) -> bool:
     """
     Export comprehensive analysis results to Excel with enhanced formatting.
+    Updated to handle SPYDEFI data format.
     
     Args:
-        telegram_data: Comprehensive telegram analysis results
+        telegram_data: SPYDEFI analysis results
         wallet_data: Wallet analysis results
         output_file: Output Excel file path
         
@@ -103,119 +442,112 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                 'border': 1
             })
             
-            # Export Comprehensive Telegram data if available
-            if telegram_data and "ranked_kols" in telegram_data:
-                # Prepare comprehensive telegram data for export
-                telegram_rows = []
+            # Export SPYDEFI data if available
+            if telegram_data and telegram_data.get('kol_performances'):
+                kol_performances = telegram_data['kol_performances']
                 
-                # Handle both dictionary and list formats for ranked_kols
-                ranked_kols = telegram_data["ranked_kols"]
+                # Prepare SPYDEFI data for export
+                spydefi_rows = []
                 
-                # FIX: Check if ranked_kols is a list (the error case)
-                if isinstance(ranked_kols, list):
-                    logger.warning("ranked_kols is a list, converting to dictionary format")
-                    # Convert list to dictionary if needed
-                    temp_dict = {}
-                    for item in ranked_kols:
-                        if isinstance(item, dict) and 'kol' in item:
-                            kol_name = item['kol']
-                            temp_dict[kol_name] = item
-                    ranked_kols = temp_dict
-                
-                # Process comprehensive KOL data
-                if isinstance(ranked_kols, dict):
-                    for kol, performance in ranked_kols.items():
-                        # Handle case where performance might be nested
-                        if isinstance(performance, dict):
-                            row = {
-                                'KOL': f"@{kol}",
-                                'Channel ID': performance.get('channel_id', ''),
-                                'SpyDefi Mentions': performance.get('spydefi_mentions', 0),
-                                'Tokens Analyzed': performance.get('tokens_mentioned', 0),
-                                '2x Success Rate %': performance.get('success_rate_2x', 0),
-                                '5x Success Rate %': performance.get('success_rate_5x', 0),
-                                '2x Tokens': performance.get('tokens_2x_plus', 0),
-                                '5x Tokens': performance.get('tokens_5x_plus', 0),
-                                'Avg ATH ROI %': performance.get('avg_ath_roi', 0),
-                                'Max ROI %': performance.get('max_roi', 0),
-                                'Composite Score': performance.get('composite_score', 0),
-                                'Avg Max Pullback %': performance.get('avg_max_pullback_percent', 0),
-                                'Avg Time to 2x (min)': performance.get('avg_time_to_2x_minutes', 0),
-                                'Analysis Type': performance.get('analysis_type', 'comprehensive'),
-                                'Analysis Hours': performance.get('analysis_hours', 72)
-                            }
-                            telegram_rows.append(row)
+                for kol, performance in kol_performances.items():
+                    # Handle both dictionary and object formats
+                    if isinstance(performance, dict):
+                        data = performance
+                    else:
+                        data = {
+                            'composite_score': performance.composite_score,
+                            'strategy_classification': performance.strategy_classification,
+                            'follower_tier': performance.follower_tier,
+                            'subscriber_count': performance.subscriber_count,
+                            'total_calls': performance.total_calls,
+                            'winning_calls': performance.winning_calls,
+                            'success_rate': performance.success_rate,
+                            'tokens_2x_plus': performance.tokens_2x_plus,
+                            'tokens_5x_plus': performance.tokens_5x_plus,
+                            'success_rate_2x': performance.success_rate_2x,
+                            'success_rate_5x': performance.success_rate_5x,
+                            'avg_time_to_2x_hours': performance.avg_time_to_2x_hours,
+                            'avg_max_pullback_percent': performance.avg_max_pullback_percent,
+                            'total_roi_percent': performance.total_roi_percent,
+                            'max_roi_percent': performance.max_roi_percent
+                        }
+                    
+                    row = {
+                        'KOL': f"@{kol}",
+                        'Composite Score': data.get('composite_score', 0),
+                        'Strategy': data.get('strategy_classification', 'UNKNOWN'),
+                        'Follower Tier': data.get('follower_tier', 'LOW'),
+                        'Subscribers': data.get('subscriber_count', 0),
+                        'Total Calls': data.get('total_calls', 0),
+                        'Winning Calls': data.get('winning_calls', 0),
+                        'Success Rate %': data.get('success_rate', 0),
+                        '2x Tokens': data.get('tokens_2x_plus', 0),
+                        '5x Tokens': data.get('tokens_5x_plus', 0),
+                        '2x Success Rate %': data.get('success_rate_2x', 0),
+                        '5x Success Rate %': data.get('success_rate_5x', 0),
+                        'Avg Time to 2x (h)': data.get('avg_time_to_2x_hours', 0),
+                        'Max Pullback %': data.get('avg_max_pullback_percent', 0),
+                        'Total ROI %': data.get('total_roi_percent', 0),
+                        'Max ROI %': data.get('max_roi_percent', 0),
+                        'Copy Rec': 'COPY' if data.get('composite_score', 0) >= 70 else 'AVOID'
+                    }
+                    spydefi_rows.append(row)
                 
                 # Sort by composite score
-                telegram_rows.sort(key=lambda x: x['Composite Score'], reverse=True)
+                spydefi_rows.sort(key=lambda x: x['Composite Score'], reverse=True)
                 
-                if telegram_rows:
-                    telegram_df = pd.DataFrame(telegram_rows)
-                    telegram_df.to_excel(writer, sheet_name='Comprehensive KOLs', index=False)
+                if spydefi_rows:
+                    spydefi_df = pd.DataFrame(spydefi_rows)
+                    spydefi_df.to_excel(writer, sheet_name='SPYDEFI KOLs', index=False)
                     
-                    # Format Telegram sheet
-                    telegram_sheet = writer.sheets['Comprehensive KOLs']
+                    # Format SPYDEFI sheet
+                    spydefi_sheet = writer.sheets['SPYDEFI KOLs']
                     
                     # Apply header format
-                    for col_num, value in enumerate(telegram_df.columns.values):
-                        telegram_sheet.write(0, col_num, value, header_format)
+                    for col_num, value in enumerate(spydefi_df.columns.values):
+                        spydefi_sheet.write(0, col_num, value, header_format)
                     
                     # Apply conditional formatting for composite scores
-                    score_col = telegram_df.columns.get_loc('Composite Score')
-                    telegram_sheet.conditional_format(f'{chr(65 + score_col)}2:{chr(65 + score_col)}{len(telegram_df) + 1}', {
+                    score_col = spydefi_df.columns.get_loc('Composite Score')
+                    spydefi_sheet.conditional_format(f'{chr(65 + score_col)}2:{chr(65 + score_col)}{len(spydefi_df) + 1}', {
                         'type': 'cell',
                         'criteria': '>=',
-                        'value': 81,
+                        'value': 80,
                         'format': score_excellent_format
                     })
                     
-                    telegram_sheet.conditional_format(f'{chr(65 + score_col)}2:{chr(65 + score_col)}{len(telegram_df) + 1}', {
+                    spydefi_sheet.conditional_format(f'{chr(65 + score_col)}2:{chr(65 + score_col)}{len(spydefi_df) + 1}', {
                         'type': 'cell',
                         'criteria': 'between',
-                        'minimum': 61,
-                        'maximum': 80.99,
+                        'minimum': 70,
+                        'maximum': 79.99,
                         'format': score_good_format
                     })
                     
-                    telegram_sheet.conditional_format(f'{chr(65 + score_col)}2:{chr(65 + score_col)}{len(telegram_df) + 1}', {
+                    spydefi_sheet.conditional_format(f'{chr(65 + score_col)}2:{chr(65 + score_col)}{len(spydefi_df) + 1}', {
                         'type': 'cell',
                         'criteria': 'between',
-                        'minimum': 41,
-                        'maximum': 60.99,
+                        'minimum': 60,
+                        'maximum': 69.99,
                         'format': score_average_format
                     })
                     
-                    telegram_sheet.conditional_format(f'{chr(65 + score_col)}2:{chr(65 + score_col)}{len(telegram_df) + 1}', {
+                    spydefi_sheet.conditional_format(f'{chr(65 + score_col)}2:{chr(65 + score_col)}{len(spydefi_df) + 1}', {
                         'type': 'cell',
-                        'criteria': 'between',
-                        'minimum': 21,
-                        'maximum': 40.99,
+                        'criteria': '<',
+                        'value': 60,
                         'format': score_poor_format
                     })
                     
-                    telegram_sheet.conditional_format(f'{chr(65 + score_col)}2:{chr(65 + score_col)}{len(telegram_df) + 1}', {
-                        'type': 'cell',
-                        'criteria': '<=',
-                        'value': 20.99,
-                        'format': score_very_poor_format
-                    })
-                    
-                    # Set column widths for comprehensive data
-                    telegram_sheet.set_column('A:A', 20)  # KOL
-                    telegram_sheet.set_column('B:B', 15)  # Channel ID
-                    telegram_sheet.set_column('C:C', 15)  # SpyDefi Mentions
-                    telegram_sheet.set_column('D:D', 15)  # Tokens Analyzed
-                    telegram_sheet.set_column('E:E', 18)  # 2x Success Rate
-                    telegram_sheet.set_column('F:F', 18)  # 5x Success Rate
-                    telegram_sheet.set_column('G:G', 12)  # 2x Tokens
-                    telegram_sheet.set_column('H:H', 12)  # 5x Tokens
-                    telegram_sheet.set_column('I:I', 15)  # Avg ATH ROI
-                    telegram_sheet.set_column('J:J', 15)  # Max ROI
-                    telegram_sheet.set_column('K:K', 15)  # Composite Score
-                    telegram_sheet.set_column('L:L', 18)  # Avg Max Pullback
-                    telegram_sheet.set_column('M:M', 20)  # Avg Time to 2x
-                    telegram_sheet.set_column('N:N', 15)  # Analysis Type
-                    telegram_sheet.set_column('O:O', 15)  # Analysis Hours
+                    # Set column widths
+                    spydefi_sheet.set_column('A:A', 20)  # KOL
+                    spydefi_sheet.set_column('B:B', 15)  # Composite Score
+                    spydefi_sheet.set_column('C:C', 12)  # Strategy
+                    spydefi_sheet.set_column('D:D', 12)  # Follower Tier
+                    spydefi_sheet.set_column('E:E', 12)  # Subscribers
+                    spydefi_sheet.set_column('F:K', 10)  # Calls and metrics
+                    spydefi_sheet.set_column('L:P', 12)  # Performance metrics
+                    spydefi_sheet.set_column('Q:Q', 10)  # Copy Rec
             
             # Export Wallet data if available (unchanged - preserved for wallet_module compatibility)
             if wallet_data:
@@ -244,13 +576,7 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                             'Position Traders (24h+)',
                             'Consistent',
                             'Mixed',
-                            'Unknown',
-                            '',
-                            'MARKET CAP INSIGHTS',
-                            'Ultra Low Cap ($5K-$50K)',
-                            'Low Cap ($50K-$500K)',
-                            'Mid Cap ($500K-$5M)',
-                            'High Cap ($5M+)'
+                            'Unknown'
                         ],
                         'Value': [
                             wallet_data.get('total_wallets', 0),
@@ -288,19 +614,13 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                             len(wallet_data.get('position_traders', [])),
                             len(wallet_data.get('consistent', [])),
                             len(wallet_data.get('mixed', [])),
-                            len(wallet_data.get('unknown', [])),
-                            '',
-                            '',
-                            'Most common for new launches',
-                            'Sweet spot for most traders',
-                            'Safer but lower multiples',
-                            'Established tokens'
+                            len(wallet_data.get('unknown', []))
                         ]
                     }
                     summary_df = pd.DataFrame(summary_data)
                     summary_df.to_excel(writer, sheet_name='Summary', index=False)
                 
-                # Create detailed wallet analysis sheet
+                # Create detailed wallet analysis sheet (abbreviated for space)
                 all_wallets = []
                 for category in ['snipers', 'flippers', 'scalpers', 'gem_hunters', 
                                'swing_traders', 'position_traders', 'consistent', 'mixed', 'unknown']:
@@ -311,10 +631,9 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                     all_wallets.sort(key=lambda x: x.get('composite_score', x['metrics'].get('composite_score', 0)), reverse=True)
                     
                     wallet_rows = []
-                    for rank, wallet in enumerate(all_wallets, 1):
+                    for rank, wallet in enumerate(all_wallets[:100], 1):  # Top 100 only for Excel
                         metrics = wallet['metrics']
                         composite_score = wallet.get('composite_score', metrics.get('composite_score', 0))
-                        strategy = wallet.get('strategy', {})
                         
                         # Determine binary copy decision
                         copy_decision = "YES" if (
@@ -323,150 +642,26 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                             metrics.get('trades_last_7_days', 0) > 0
                         ) else "NO"
                         
-                        # Cap profit factor at 999.99
-                        profit_factor = metrics.get('profit_factor', 0)
-                        if profit_factor > 999.99:
-                            profit_factor = 999.99
-                        
-                        # Build row data
+                        # Build row data (abbreviated)
                         row = {
                             'Rank': rank,
                             'Wallet': wallet['wallet_address'],
                             'Copy Decision': copy_decision,
                             'Score': composite_score,
                             'Type': wallet['wallet_type'],
-                            'Trades': metrics['total_trades'],
                             'Trades 7d': metrics.get('trades_last_7_days', 0),
                             'Win Rate 7d': metrics.get('win_rate_7d', 0) / 100,
-                            'Profit Factor': profit_factor,
                             'Profit 7d': metrics.get('profit_7d', 0),
-                            'Avg ROI': metrics['avg_roi'] / 100,
+                            'Success Rate': metrics['avg_roi'] / 100,
                             'Max ROI': metrics['max_roi'] / 100,
-                            'Gem Rate (5x+)': metrics.get('gem_rate_5x_plus', 0) / 100,
-                            'Hold Time (min)': metrics.get('avg_hold_time_minutes', 0),
-                            'Avg First TP %': metrics.get('avg_first_take_profit_percent', 0) / 100,
-                            'Active': 'YES' if metrics.get('active_trader', False) else 'NO',
-                            'Follow Sells': 'YES' if strategy.get('follow_sells', False) else 'NO',
-                            'TP1 %': strategy.get('tp1_percent', 0) / 100,
-                            'TP2 %': strategy.get('tp2_percent', 0) / 100,
-                            'Sell Strategy': strategy.get('sell_strategy', ''),
-                            'TP Guidance': strategy.get('tp_guidance', ''),
-                            'Avg MCap Buy': metrics.get('avg_buy_market_cap_usd', 0)
+                            'Active': 'YES' if metrics.get('active_trader', False) else 'NO'
                         }
-                        
-                        # Add entry/exit analysis if available
-                        if 'entry_exit_analysis' in wallet and wallet['entry_exit_analysis']:
-                            ee_analysis = wallet['entry_exit_analysis']
-                            row['Entry Quality'] = ee_analysis.get('entry_quality', '')
-                            row['Exit Quality'] = ee_analysis.get('exit_quality', '')
-                            row['Pattern'] = ee_analysis.get('pattern', '')
-                            row['Missed Gains %'] = ee_analysis.get('missed_gains_percent', 0) / 100
-                            row['Avg Exit ROI'] = ee_analysis.get('avg_exit_roi', 0) / 100
-                        
-                        # Add distribution data (7-day)
-                        row['Dist 500%+'] = metrics.get('distribution_500_plus_%', 0) / 100
-                        row['Dist 200-500%'] = metrics.get('distribution_200_500_%', 0) / 100
-                        row['Dist 0-200%'] = metrics.get('distribution_0_200_%', 0) / 100
-                        row['Dist -50-0%'] = metrics.get('distribution_neg50_0_%', 0) / 100
-                        row['Dist <-50%'] = metrics.get('distribution_below_neg50_%', 0) / 100
                         
                         wallet_rows.append(row)
                     
-                    wallet_df = pd.DataFrame(wallet_rows)
-                    wallet_df.to_excel(writer, sheet_name='Active Traders', index=False)
-                    
-                    # Format wallet sheet
-                    wallet_sheet = writer.sheets['Active Traders']
-                    
-                    # Apply header format
-                    for col_num, value in enumerate(wallet_df.columns.values):
-                        wallet_sheet.write(0, col_num, value, header_format)
-                    
-                    # Apply conditional formatting for scores
-                    score_col = wallet_df.columns.get_loc('Score')
-                    wallet_sheet.conditional_format(f'{chr(65 + score_col)}2:{chr(65 + score_col)}{len(wallet_df) + 1}', {
-                        'type': 'cell',
-                        'criteria': '>=',
-                        'value': 81,
-                        'format': score_excellent_format
-                    })
-                    
-                    wallet_sheet.conditional_format(f'{chr(65 + score_col)}2:{chr(65 + score_col)}{len(wallet_df) + 1}', {
-                        'type': 'cell',
-                        'criteria': 'between',
-                        'minimum': 61,
-                        'maximum': 80.99,
-                        'format': score_good_format
-                    })
-                    
-                    wallet_sheet.conditional_format(f'{chr(65 + score_col)}2:{chr(65 + score_col)}{len(wallet_df) + 1}', {
-                        'type': 'cell',
-                        'criteria': 'between',
-                        'minimum': 41,
-                        'maximum': 60.99,
-                        'format': score_average_format
-                    })
-                    
-                    wallet_sheet.conditional_format(f'{chr(65 + score_col)}2:{chr(65 + score_col)}{len(wallet_df) + 1}', {
-                        'type': 'cell',
-                        'criteria': 'between',
-                        'minimum': 21,
-                        'maximum': 40.99,
-                        'format': score_poor_format
-                    })
-                    
-                    wallet_sheet.conditional_format(f'{chr(65 + score_col)}2:{chr(65 + score_col)}{len(wallet_df) + 1}', {
-                        'type': 'cell',
-                        'criteria': '<=',
-                        'value': 20.99,
-                        'format': score_very_poor_format
-                    })
-                    
-                    # Apply percentage format to percentage columns
-                    percent_cols = ['Win Rate 7d', 'Avg ROI', 'Max ROI', 'Gem Rate (5x+)', 
-                                   'Avg First TP %', 'Missed Gains %', 'Avg Exit ROI',
-                                   'TP1 %', 'TP2 %',
-                                   'Dist 500%+', 'Dist 200-500%', 'Dist 0-200%', 
-                                   'Dist -50-0%', 'Dist <-50%']
-                    
-                    for row_num in range(1, len(wallet_df) + 1):
-                        for col_name in percent_cols:
-                            if col_name in wallet_df.columns:
-                                col_idx = wallet_df.columns.get_loc(col_name)
-                                value = wallet_df.iloc[row_num-1][col_name]
-                                wallet_sheet.write(row_num, col_idx, value, percent_format)
-                    
-                    # Apply money format to profit and market cap columns
-                    money_cols = ['Profit 7d', 'Avg MCap Buy']
-                    for row_num in range(1, len(wallet_df) + 1):
-                        for col_name in money_cols:
-                            if col_name in wallet_df.columns:
-                                col_idx = wallet_df.columns.get_loc(col_name)
-                                value = wallet_df.iloc[row_num-1][col_name]
-                                wallet_sheet.write(row_num, col_idx, value, money_format)
-                    
-                    # Set column widths
-                    wallet_sheet.set_column('A:A', 8)   # Rank
-                    wallet_sheet.set_column('B:B', 50)  # Wallet
-                    wallet_sheet.set_column('C:C', 12)  # Copy Decision
-                    wallet_sheet.set_column('D:D', 10)  # Score
-                    wallet_sheet.set_column('E:E', 15)  # Type
-                    wallet_sheet.set_column('F:G', 10)  # Trades
-                    wallet_sheet.set_column('H:H', 12)  # Win Rate 7d
-                    wallet_sheet.set_column('I:I', 15)  # Profit Factor
-                    wallet_sheet.set_column('J:J', 15)  # Profit 7d
-                    wallet_sheet.set_column('K:L', 12)  # ROI columns
-                    wallet_sheet.set_column('M:M', 15)  # Gem Rate
-                    wallet_sheet.set_column('N:N', 15)  # Hold Time
-                    wallet_sheet.set_column('O:O', 15)  # First TP
-                    wallet_sheet.set_column('P:P', 10)  # Active
-                    wallet_sheet.set_column('Q:Q', 12)  # Follow Sells
-                    wallet_sheet.set_column('R:S', 10)  # TPs
-                    wallet_sheet.set_column('T:T', 15)  # Sell Strategy
-                    wallet_sheet.set_column('U:U', 30)  # TP Guidance
-                    wallet_sheet.set_column('V:V', 15)  # Avg MCap Buy
-                    wallet_sheet.set_column('W:AA', 15) # Entry/Exit
-                    wallet_sheet.set_column('AB:AF', 12) # Distribution
+                    if wallet_rows:
+                        wallet_df = pd.DataFrame(wallet_rows)
+                        wallet_df.to_excel(writer, sheet_name='Top Wallets', index=False)
             
             logger.info(f"Successfully exported comprehensive analysis to Excel: {output_file}")
             return True
@@ -605,10 +800,10 @@ def generate_memecoin_analysis_report(telegram_data: Dict[str, Any],
                                     wallet_data: Dict[str, Any], 
                                     output_file: str) -> bool:
     """
-    Generate a comprehensive analysis report with enhanced KOL analysis.
+    Generate a comprehensive analysis report with enhanced SPYDEFI analysis.
     
     Args:
-        telegram_data: Comprehensive telegram analysis results
+        telegram_data: SPYDEFI analysis results
         wallet_data: Wallet analysis results
         output_file: Output text file path
         
@@ -622,47 +817,54 @@ def generate_memecoin_analysis_report(telegram_data: Dict[str, Any],
             f.write(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
             f.write("=" * 80 + "\n\n")
             
-            # Comprehensive Telegram Analysis Section
-            if telegram_data and "ranked_kols" in telegram_data:
-                f.write("📱 COMPREHENSIVE SPYDEFI ANALYSIS\n")
+            # SPYDEFI Analysis Section
+            if telegram_data and telegram_data.get('kol_performances'):
+                f.write("📱 SPYDEFI KOL ANALYSIS\n")
                 f.write("-" * 40 + "\n")
-                f.write(f"Analysis Type: Top 50 KOLs + 72h Comprehensive\n")
-                f.write(f"SpyDefi Scan Period: {telegram_data.get('spydefi_scan_hours', 24)} hours\n")
-                f.write(f"KOL Analysis Period: {telegram_data.get('analysis_hours_per_kol', 72)} hours each\n")
-                f.write(f"Total KOLs analyzed: {telegram_data.get('total_kols_analyzed', 0)}\n")
-                f.write(f"Deep analyses performed: {telegram_data.get('deep_analyses_performed', 0)}\n")
-                f.write(f"Total calls analyzed: {telegram_data.get('total_calls', 0)}\n")
-                f.write(f"2x success rate: {telegram_data.get('success_rate_2x', 0):.2f}%\n")
-                f.write(f"5x success rate: {telegram_data.get('success_rate_5x', 0):.2f}%\n\n")
                 
-                f.write("Top 10 Comprehensive KOLs:\n")
-                ranked_kols = telegram_data.get('ranked_kols', {})
+                kol_performances = telegram_data['kol_performances']
+                metadata = telegram_data.get('metadata', {})
                 
-                # Handle both dictionary and list formats
-                if isinstance(ranked_kols, list):
-                    # Convert list to dictionary format
-                    temp_dict = {}
-                    for item in ranked_kols:
-                        if isinstance(item, dict) and 'kol' in item:
-                            kol_name = item['kol']
-                            temp_dict[kol_name] = item
-                    ranked_kols = temp_dict
+                f.write(f"Analysis Type: Professional KOL Performance Tracking\n")
+                f.write(f"KOLs Analyzed: {len(kol_performances)}\n")
+                f.write(f"Total Calls Tracked: {metadata.get('total_calls_analyzed', 0)}\n")
+                f.write(f"Overall Success Rate: {metadata.get('overall_success_rate', 0):.2f}%\n")
+                f.write(f"Overall 2x Rate: {metadata.get('overall_2x_rate', 0):.2f}%\n")
+                f.write(f"Overall 5x Rate: {metadata.get('overall_5x_rate', 0):.2f}%\n\n")
                 
-                if isinstance(ranked_kols, dict):
-                    for i, (kol, data) in enumerate(list(ranked_kols.items())[:10], 1):
-                        f.write(f"{i}. @{kol}\n")
-                        f.write(f"   Composite Score: {data.get('composite_score', 0):.1f}\n")
-                        f.write(f"   SpyDefi Mentions: {data.get('spydefi_mentions', 0)}\n")
-                        f.write(f"   Tokens Analyzed: {data.get('tokens_mentioned', 0)}\n")
-                        f.write(f"   2x Success Rate: {data.get('success_rate_2x', 0):.1f}% ({data.get('tokens_2x_plus', 0)} tokens)\n")
-                        f.write(f"   5x Success Rate: {data.get('success_rate_5x', 0):.1f}% ({data.get('tokens_5x_plus', 0)} tokens)\n")
-                        f.write(f"   Avg ATH ROI: {data.get('avg_ath_roi', 0):.1f}%\n")
-                        f.write(f"   Max ROI: {data.get('max_roi', 0):.1f}%\n")
-                        f.write(f"   Avg Time to 2x: {data.get('avg_time_to_2x_minutes', 0):.1f} minutes\n")
-                        f.write(f"   Avg Max Pullback: {data.get('avg_max_pullback_percent', 0):.1f}%\n")
-                        f.write(f"   Analysis Type: {data.get('analysis_type', 'comprehensive')}\n")
-                        f.write(f"   Analysis Hours: {data.get('analysis_hours', 72)}\n")
-                        f.write("\n")
+                f.write("Top 10 SPYDEFI KOLs:\n")
+                
+                # Convert to list and sort
+                kol_list = []
+                for kol, performance in kol_performances.items():
+                    if isinstance(performance, dict):
+                        data = performance.copy()
+                        data['kol'] = kol
+                    else:
+                        data = {
+                            'kol': kol,
+                            'composite_score': performance.composite_score,
+                            'strategy_classification': performance.strategy_classification,
+                            'success_rate': performance.success_rate,
+                            'success_rate_2x': performance.success_rate_2x,
+                            'success_rate_5x': performance.success_rate_5x,
+                            'total_calls': performance.total_calls,
+                            'subscriber_count': performance.subscriber_count
+                        }
+                    kol_list.append(data)
+                
+                kol_list.sort(key=lambda x: x.get('composite_score', 0), reverse=True)
+                
+                for i, data in enumerate(kol_list[:10], 1):
+                    f.write(f"{i}. @{data['kol']}\n")
+                    f.write(f"   Composite Score: {data.get('composite_score', 0):.1f}/100\n")
+                    f.write(f"   Strategy: {data.get('strategy_classification', 'UNKNOWN')}\n")
+                    f.write(f"   Subscribers: {data.get('subscriber_count', 0):,}\n")
+                    f.write(f"   Total Calls: {data.get('total_calls', 0)}\n")
+                    f.write(f"   Success Rate: {data.get('success_rate', 0):.1f}%\n")
+                    f.write(f"   2x Rate: {data.get('success_rate_2x', 0):.1f}%\n")
+                    f.write(f"   5x Rate: {data.get('success_rate_5x', 0):.1f}%\n")
+                    f.write("\n")
             
             # Wallet Analysis Section (unchanged for compatibility)
             if wallet_data and wallet_data.get('success'):
@@ -701,115 +903,6 @@ def generate_memecoin_analysis_report(telegram_data: Dict[str, Any],
                 f.write("COPY DECISIONS:\n")
                 f.write(f"✅ Copy YES: {copy_yes_count}\n")
                 f.write(f"❌ Copy NO: {copy_no_count}\n\n")
-                
-                f.write("WALLET TYPE BREAKDOWN:\n")
-                f.write(f"🎯 Snipers (<1 min): {len(wallet_data.get('snipers', []))}\n")
-                f.write(f"⚡ Flippers (1-10 min): {len(wallet_data.get('flippers', []))}\n")
-                f.write(f"📊 Scalpers (10-60 min): {len(wallet_data.get('scalpers', []))}\n")
-                f.write(f"💎 Gem Hunters (5x+ focus): {len(wallet_data.get('gem_hunters', []))}\n")
-                f.write(f"📈 Swing Traders (1-24h): {len(wallet_data.get('swing_traders', []))}\n")
-                f.write(f"🏆 Position Traders (24h+): {len(wallet_data.get('position_traders', []))}\n")
-                f.write(f"✅ Consistent: {len(wallet_data.get('consistent', []))}\n")
-                f.write(f"🔀 Mixed: {len(wallet_data.get('mixed', []))}\n")
-                f.write(f"❓ Unknown: {len(wallet_data.get('unknown', []))}\n\n")
-                
-                # Combine all wallets and sort by score
-                all_wallets = []
-                for category in ['snipers', 'flippers', 'scalpers', 'gem_hunters', 
-                               'swing_traders', 'position_traders', 'consistent', 'mixed', 'unknown']:
-                    all_wallets.extend(wallet_data.get(category, []))
-                
-                all_wallets.sort(key=lambda x: x.get('composite_score', x['metrics'].get('composite_score', 0)), reverse=True)
-                
-                # Filter for active traders only in top 10
-                active_wallets = [w for w in all_wallets if w.get('metrics', {}).get('active_trader', False)]
-                
-                f.write("🏆 TOP 10 ACTIVE TRADERS (7-DAY):\n")
-                for i, wallet in enumerate(active_wallets[:10], 1):
-                    metrics = wallet['metrics']
-                    score = wallet.get('composite_score', metrics.get('composite_score', 0))
-                    strategy = wallet.get('strategy', {})
-                    
-                    # Calculate copy decision
-                    copy_decision = "YES" if (
-                        score >= 60 and 
-                        metrics.get('active_trader', False) and
-                        metrics.get('trades_last_7_days', 0) > 0
-                    ) else "NO"
-                    
-                    # Cap profit factor
-                    profit_factor = metrics['profit_factor']
-                    if profit_factor > 999.99:
-                        profit_factor_display = "999.99x"
-                    else:
-                        profit_factor_display = f"{profit_factor:.2f}x"
-                    
-                    f.write(f"\n{i}. {wallet['wallet_address'][:8]}...{wallet['wallet_address'][-4:]}\n")
-                    f.write(f"   Copy Decision: {copy_decision}\n")
-                    f.write(f"   Score: {score:.1f}/100\n")
-                    f.write(f"   Type: {wallet['wallet_type']}\n")
-                    f.write(f"   7-day trades: {metrics.get('trades_last_7_days', 0)}\n")
-                    f.write(f"   7-day win rate: {metrics.get('win_rate_7d', 0):.1f}%\n")
-                    f.write(f"   7-day profit: ${metrics.get('profit_7d', 0):.2f}\n")
-                    f.write(f"   Profit Factor: {profit_factor_display}\n")
-                    f.write(f"   Total Trades: {metrics['total_trades']}\n")
-                    f.write(f"   Gem Rate (5x+): {metrics.get('gem_rate_5x_plus', 0):.1f}%\n")
-                    f.write(f"   Avg First TP: {metrics.get('avg_first_take_profit_percent', 0):.1f}%\n")
-                    f.write(f"   Avg Hold Time: {metrics.get('avg_hold_time_minutes', 0):.1f} minutes\n")
-                    f.write(f"   Avg Buy Market Cap: ${metrics.get('avg_buy_market_cap_usd', 0):,.0f}\n")
-                    
-                    # Strategy info
-                    f.write(f"   Follow Sells: {'YES' if strategy.get('follow_sells', False) else 'NO'}\n")
-                    f.write(f"   TP1: {strategy.get('tp1_percent', 0)}% | TP2: {strategy.get('tp2_percent', 0)}%\n")
-                    f.write(f"   Guidance: {strategy.get('tp_guidance', '')}\n")
-                    
-                    # Entry/exit analysis
-                    if 'entry_exit_analysis' in wallet and wallet['entry_exit_analysis']:
-                        ee_analysis = wallet['entry_exit_analysis']
-                        f.write(f"   Entry/Exit: {ee_analysis.get('entry_quality', 'UNKNOWN')}/{ee_analysis.get('exit_quality', 'UNKNOWN')}\n")
-                        if ee_analysis.get('missed_gains_percent', 0) > 0:
-                            f.write(f"   Missed Gains: {ee_analysis.get('missed_gains_percent', 0):.1f}%\n")
-                
-                # Key insights
-                f.write("\n\n📊 KEY INSIGHTS:\n")
-                f.write("-" * 40 + "\n")
-                
-                # Calculate averages for active traders only
-                if active_wallets:
-                    avg_7d_trades = sum(w['metrics'].get('trades_last_7_days', 0) for w in active_wallets) / len(active_wallets)
-                    avg_7d_win_rate = sum(w['metrics'].get('win_rate_7d', 0) for w in active_wallets) / len(active_wallets)
-                    avg_gem_rate = sum(w['metrics'].get('gem_rate_5x_plus', 0) for w in active_wallets) / len(active_wallets)
-                    
-                    f.write(f"Average 7-day trades: {avg_7d_trades:.1f}\n")
-                    f.write(f"Average 7-day win rate: {avg_7d_win_rate:.1f}%\n")
-                    f.write(f"Average Gem Rate (5x+): {avg_gem_rate:.1f}%\n")
-                    
-                    # Who hit 5x in last 7 days
-                    recent_5x_count = sum(1 for w in active_wallets 
-                                        if w.get('seven_day_metrics', {}).get('has_5x_last_7_days', False))
-                    if recent_5x_count > 0:
-                        f.write(f"\n🚀 {recent_5x_count} wallets hit 5x+ in the last 7 days!\n")
-            
-            # Comprehensive Analysis Summary
-            f.write("\n\n" + "=" * 80 + "\n")
-            f.write("COMPREHENSIVE ANALYSIS SUMMARY\n")
-            f.write("=" * 80 + "\n")
-            
-            if telegram_data:
-                f.write("\n📊 SPYDEFI COMPREHENSIVE STATS:\n")
-                f.write(f"   • Analysis Method: Top 50 KOLs + 72h per KOL\n")
-                f.write(f"   • Total KOLs Analyzed: {telegram_data.get('total_kols_analyzed', 0)}\n")
-                f.write(f"   • Total Token Calls: {telegram_data.get('total_calls', 0)}\n")
-                f.write(f"   • 2x Success Rate: {telegram_data.get('success_rate_2x', 0):.1f}%\n")
-                f.write(f"   • 5x Success Rate: {telegram_data.get('success_rate_5x', 0):.1f}%\n")
-                
-                # API usage stats
-                api_stats = telegram_data.get('api_stats', {})
-                f.write(f"\n📞 API EFFICIENCY:\n")
-                f.write(f"   • Birdeye Calls: {api_stats.get('birdeye', 0)}\n")
-                f.write(f"   • Helius Calls: {api_stats.get('helius', 0)}\n")
-                f.write(f"   • RPC Calls: {api_stats.get('rpc', 0)}\n")
-                f.write(f"   • Price Discovery Success: {api_stats.get('price_discovery_successes', 0)}/{api_stats.get('price_discovery_attempts', 0)}\n")
             
             f.write("\n" + "=" * 80 + "\n")
             f.write("END OF COMPREHENSIVE ANALYSIS REPORT\n")

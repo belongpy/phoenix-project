@@ -1,13 +1,14 @@
 """
-Dual API Manager - Phoenix Project (SMART ROUTING & FALLBACK VERSION)
+Dual API Manager - Phoenix Project (SPYDEFI + WALLET COMPATIBLE VERSION)
 
-CRITICAL FIXES IMPLEMENTED:
+ENHANCED FOR SPYDEFI:
 - Smart API routing: Helius → P9 RPC → DexScreener → Birdeye fallback for pump.fun
 - Proper fallback cascade for all token types
 - Enhanced pump.fun token detection and handling
-- Maintains full compatibility with wallet_module
+- Full compatibility with both SPYDEFI KOL analysis and wallet_module
 - Improved error handling and retry logic
 - Performance optimizations with caching
+- Async support for SPYDEFI batch processing
 
 ROUTING LOGIC:
 - Pump.fun tokens: Helius (bonding curve) → RPC → DexScreener → Birdeye
@@ -26,7 +27,7 @@ from datetime import datetime, timedelta
 logger = logging.getLogger("phoenix.api_manager")
 
 class DualAPIManager:
-    """Enhanced API manager with smart routing and proper fallback logic."""
+    """Enhanced API manager with smart routing and proper fallback logic for SPYDEFI + Wallet analysis."""
     
     # API priority constants
     PUMP_FUN_API_PRIORITY = ['helius', 'rpc', 'dexscreener', 'birdeye']
@@ -85,10 +86,8 @@ class DualAPIManager:
             from birdeye_api import BirdeyeAPI
             self.birdeye_api = BirdeyeAPI(birdeye_api_key)
             logger.info("✅ Birdeye API initialized for mainstream token analysis")
-            print("✅ Birdeye API initialized", flush=True)
         except Exception as e:
             logger.error(f"❌ Failed to initialize Birdeye API: {str(e)}")
-            print(f"❌ Failed to initialize Birdeye API: {str(e)}", flush=True)
             raise ValueError("Birdeye API is required for token analysis")
         
         # Initialize Helius API (RECOMMENDED for pump.fun tokens)
@@ -97,15 +96,11 @@ class DualAPIManager:
                 from helius_api import HeliusAPI
                 self.helius_api = HeliusAPI(helius_api_key)
                 logger.info("✅ Helius API initialized for pump.fun tokens and enhanced parsing")
-                print("✅ Helius API initialized for pump.fun tokens", flush=True)
             except Exception as e:
                 logger.error(f"⚠️ Failed to initialize Helius API: {str(e)}")
                 logger.warning("Pump.fun token analysis will be limited without Helius")
-                print(f"⚠️ Helius API initialization failed: {str(e)}", flush=True)
-                print("⚠️ Pump.fun token analysis will be limited", flush=True)
         else:
             logger.warning("No Helius API key provided. Pump.fun token analysis will be limited.")
-            print("⚠️ No Helius API key - pump.fun analysis limited", flush=True)
         
         # Initialize Cielo Finance API (REQUIRED for wallet analysis)
         if cielo_api_key:
@@ -113,15 +108,11 @@ class DualAPIManager:
                 from cielo_api import CieloFinanceAPI
                 self.cielo_api = CieloFinanceAPI(cielo_api_key)
                 logger.info("✅ Cielo Finance API initialized for WALLET analysis ONLY")
-                print("✅ Cielo Finance API initialized for wallet analysis", flush=True)
             except Exception as e:
                 logger.error(f"❌ Failed to initialize Cielo Finance API: {str(e)}")
                 logger.warning("Wallet analysis will NOT work without Cielo Finance API")
-                print(f"❌ Cielo Finance API initialization failed: {str(e)}", flush=True)
-                print("❌ Wallet analysis will NOT work", flush=True)
         else:
             logger.warning("No Cielo Finance API key provided. Wallet analysis will NOT work.")
-            print("⚠️ No Cielo Finance API key - wallet analysis disabled", flush=True)
     
     def _is_pump_fun_token(self, token_address: str) -> bool:
         """Enhanced pump.fun token detection."""
@@ -347,17 +338,20 @@ class DualAPIManager:
                         else:
                             # Use regular swap analysis
                             swap_result = self.helius_api.analyze_token_swaps("", token_address, 5)
-                            if swap_result.get("success") and swap_result.get("latest_price", 0) > 0:
-                                self.api_stats['helius']['success'] += 1
-                                result = {
-                                    "success": True,
-                                    "data": {"value": swap_result["latest_price"], "solPrice": swap_result["latest_price"]},
-                                    "source": "helius_swap"
-                                }
-                                break
-                            else:
-                                self.api_stats['helius']['errors'] += 1
-                                errors.append(f"helius_swap: {swap_result.get('error', 'No swaps found')}")
+                            if swap_result.get("success") and swap_result.get("data"):
+                                swaps = swap_result.get("data", [])
+                                if swaps and len(swaps) > 0:
+                                    latest_price = swaps[0].get("price", 0)
+                                    if latest_price > 0:
+                                        self.api_stats['helius']['success'] += 1
+                                        result = {
+                                            "success": True,
+                                            "data": {"value": latest_price, "solPrice": latest_price},
+                                            "source": "helius_swap"
+                                        }
+                                        break
+                            self.api_stats['helius']['errors'] += 1
+                            errors.append(f"helius_swap: {swap_result.get('error', 'No swaps found')}")
                     
                     elif api_name == 'birdeye' and self.birdeye_api:
                         self.api_stats['birdeye']['calls'] += 1
@@ -708,6 +702,35 @@ class DualAPIManager:
                 "error": f"Cielo Finance API error: {str(e)}"
             }
     
+    def get_wallet_trading_stats(self, wallet_address: str) -> Dict[str, Any]:
+        """Get wallet trading stats using Cielo Finance API ONLY."""
+        if not self.cielo_api:
+            logger.error("Cielo Finance API not configured. Cannot get wallet trading stats.")
+            return {
+                "success": False,
+                "error": "Cielo Finance API required for wallet analysis."
+            }
+        
+        try:
+            if not wallet_address or len(wallet_address) < 32:
+                return {"success": False, "error": "Invalid wallet address"}
+            
+            self.api_stats['cielo']['calls'] += 1
+            result = self.cielo_api.get_wallet_trading_stats(wallet_address)
+            if result.get("success"):
+                self.api_stats['cielo']['success'] += 1
+                result["source"] = "cielo"
+            else:
+                self.api_stats['cielo']['errors'] += 1
+            return result
+        except Exception as e:
+            self.api_stats['cielo']['errors'] += 1
+            logger.error(f"Cielo Finance API failed for wallet trading stats: {str(e)}")
+            return {
+                "success": False,
+                "error": f"Cielo Finance API error: {str(e)}"
+            }
+    
     def get_api_status(self) -> Dict[str, Any]:
         """Check the status of all configured APIs with enhanced statistics."""
         status = {
@@ -724,7 +747,9 @@ class DualAPIManager:
             "routing": {
                 "pump_fun_priority": self.PUMP_FUN_API_PRIORITY,
                 "regular_token_priority": self.REGULAR_TOKEN_API_PRIORITY
-            }
+            },
+            "spydefi_compatible": True,
+            "wallet_compatible": True
         }
         
         # Check Birdeye API
@@ -774,10 +799,15 @@ class DualAPIManager:
                     status["api_status"]["cielo"] = f"error: {str(e)}"
         else:
             status["api_status"]["cielo"] = "not_configured"
+            status["wallet_compatible"] = False
         
         # Add DexScreener and RPC status
         status["api_status"]["dexscreener"] = "external_api"
         status["api_status"]["rpc"] = f"configured: {self.rpc_url}"
+        
+        # Check SPYDEFI compatibility
+        if not self.birdeye_api:
+            status["spydefi_compatible"] = False
         
         return status
     
@@ -787,7 +817,7 @@ class DualAPIManager:
         
         for api_name, stats in self.api_stats.items():
             total_calls = stats['calls']
-            success_calls = stats['success']
+            success_calls = stats['success'] 
             error_calls = stats['errors']
             
             success_rate = (success_calls / total_calls * 100) if total_calls > 0 else 0
@@ -822,12 +852,13 @@ class DualAPIManager:
             "pump_fun_tokens": "helius" if self.helius_api else "limited_analysis",
             "mainstream_tokens": "birdeye" if self.birdeye_api else "not_available",
             "wallet_analysis": "cielo" if self.cielo_api else "not_available",
+            "spydefi_analysis": "ready" if (self.birdeye_api and self.helius_api) else "limited",
             "price_fallbacks": "dexscreener + rpc" if self.helius_api or self.birdeye_api else "none",
             "notes": []
         }
         
         if not self.helius_api:
-            config["notes"].append("RECOMMENDED: Add Helius API key for pump.fun token analysis")
+            config["notes"].append("RECOMMENDED: Add Helius API key for enhanced pump.fun analysis in SPYDEFI")
             config["notes"].append("Command: python phoenix.py configure --helius-api-key YOUR_KEY")
         
         if not self.cielo_api:
@@ -835,10 +866,11 @@ class DualAPIManager:
             config["notes"].append("Command: python phoenix.py configure --cielo-api-key YOUR_KEY")
         
         if not self.birdeye_api:
-            config["notes"].append("CRITICAL: Birdeye API key required for token analysis")
+            config["notes"].append("CRITICAL: Birdeye API key required for SPYDEFI and token analysis")
             config["notes"].append("Command: python phoenix.py configure --birdeye-api-key YOUR_KEY")
         
-        config["notes"].append("Smart Routing: Helius→RPC→DexScreener→Birdeye (pump.fun)")
-        config["notes"].append("Smart Routing: Birdeye→DexScreener→RPC→Helius (regular)")
+        config["notes"].append("SPYDEFI Routing: Helius→RPC→DexScreener→Birdeye (pump.fun)")
+        config["notes"].append("Token Routing: Birdeye→DexScreener→RPC→Helius (regular)")
+        config["notes"].append("Wallet Routing: Cielo Finance ONLY (no fallbacks)")
         
         return config
