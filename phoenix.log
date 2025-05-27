@@ -12228,3 +12228,982 @@ TypeError: TelegramBaseClient.__init__() got an unexpected keyword argument 'ret
 2025-05-27 09:56:55,785 - phoenix.spydefi - INFO - ✅ Analysis complete for @nikola_calls (Score: 104.0)
 2025-05-27 09:56:55,806 - phoenix.spydefi - INFO - 📊 Analyzing 7/25: @thanos_call (51 mentions)
 2025-05-27 09:56:56,806 - phoenix.spydefi - INFO - 📊 Analyzing performance for @thanos_call (51 mentions)...
+2025-05-27 10:02:18,027 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-27 10:02:18,027 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-27 10:02:18,417 - phoenix - INFO - ✅ Imported FIXED SPYDEFI module
+2025-05-27 10:02:18,417 - phoenix - INFO - 🚀 Starting FIXED SPYDEFI KOL analysis
+2025-05-27 10:02:18,417 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-27 10:02:18,808 - phoenix.api_manager - INFO - ✅ Birdeye API initialized for mainstream token analysis
+2025-05-27 10:02:18,808 - phoenix.api_manager - INFO - ✅ Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-27 10:02:18,808 - phoenix.api_manager - INFO - ✅ Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-27 10:02:18,808 - phoenix - INFO - ✅ API manager initialized successfully
+2025-05-27 10:02:18,808 - phoenix.spydefi - INFO - ✅ API manager configured for SpyDefi analysis
+2025-05-27 10:02:18,808 - phoenix.spydefi - INFO - 🔧 Configuration updated and enforced: {'spydefi_scan_hours': 8, 'kol_analysis_days': 7, 'top_kols_count': 50, 'min_mentions': 2, 'max_market_cap_usd': 10000000, 'min_subscribers': 100, 'win_threshold_percent': 50, 'max_messages_limit': 6000, 'early_termination_kol_count': 100, 'cache_refresh_hours': 6}
+2025-05-27 10:02:18,808 - phoenix.spydefi - INFO - 🎯 KEY SETTINGS ENFORCED:
+2025-05-27 10:02:18,808 - phoenix.spydefi - INFO -    📅 Peak scanning: 8 hours
+2025-05-27 10:02:18,808 - phoenix.spydefi - INFO -    🏆 Top KOLs: 50
+2025-05-27 10:02:18,808 - phoenix.spydefi - INFO -    👥 Min subscribers: 100
+2025-05-27 10:02:18,808 - phoenix.spydefi - INFO -    📊 Min mentions: 2
+2025-05-27 10:02:18,808 - phoenix - INFO - ✅ FIXED SPYDEFI analyzer initialized successfully
+2025-05-27 10:02:18,808 - phoenix.spydefi - INFO - 🔌 Connecting to Telegram...
+2025-05-27 10:02:18,823 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-27 10:02:18,933 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-27 10:02:19,765 - phoenix.spydefi - INFO - ✅ Telegram connection successful
+2025-05-27 10:02:19,765 - phoenix.spydefi - INFO - 🚀 Starting comprehensive SpyDefi KOL analysis...
+2025-05-27 10:02:19,765 - phoenix.spydefi - INFO - 🎯 Target: Top 50 KOLs with ≥2 mentions
+2025-05-27 10:02:19,765 - phoenix.spydefi - INFO - 📋 ACTUAL CONFIGURATION IN USE:
+2025-05-27 10:02:19,765 - phoenix.spydefi - INFO -    📅 Scan period: 8 hours (PEAK MEMECOIN HOURS)
+2025-05-27 10:02:19,765 - phoenix.spydefi - INFO -    🏆 Top KOLs to analyze: 50
+2025-05-27 10:02:19,765 - phoenix.spydefi - INFO -    📊 Min mentions required: 2
+2025-05-27 10:02:19,765 - phoenix.spydefi - INFO -    👥 Min subscribers: 100 (RELAXED)
+2025-05-27 10:02:19,765 - phoenix.spydefi - INFO -    💰 Max market cap: $10,000,000
+2025-05-27 10:02:19,765 - phoenix.spydefi - INFO -    🎯 Win threshold: 50%
+2025-05-27 10:02:19,765 - phoenix.spydefi - INFO - 📥 Step 1: Retrieving SpyDefi messages...
+2025-05-27 10:02:19,765 - phoenix.spydefi - INFO - 🔍 Trying to access channel: spydefi
+2025-05-27 10:02:19,901 - phoenix.spydefi - INFO - ✅ Successfully accessed SpyDefi channel: SpyDefi (ID: 1960616143)
+2025-05-27 10:02:19,901 - phoenix.spydefi - INFO - 🧪 Testing channel message access...
+2025-05-27 10:02:20,040 - phoenix.spydefi - INFO - ✅ Channel access confirmed - 5 test messages found
+2025-05-27 10:02:20,040 - phoenix.spydefi - INFO - 📅 Retrieving messages from 2025-05-27 09:02:20.040793+00:00 to 2025-05-27 17:02:20.040793+00:00
+2025-05-27 10:02:20,040 - phoenix.spydefi - INFO - ⏰ Time window: 8 hours (PEAK MEMECOIN SCANNING)
+2025-05-27 10:02:20,040 - phoenix.spydefi - INFO - 🎯 Targeting peak crypto activity period for maximum KOL discovery
+2025-05-27 10:02:20,040 - phoenix.spydefi - INFO - 📥 Method 1: Retrieving recent messages...
+2025-05-27 10:02:28,402 - phoenix.spydefi - INFO - 📊 Method 1 results: 891 messages in time range
+2025-05-27 10:02:28,402 - phoenix.spydefi - INFO - 📊 Total unique messages retrieved: 891
+2025-05-27 10:02:28,402 - phoenix.spydefi - INFO - 🔍 Step 2: Extracting KOL mentions...
+2025-05-27 10:02:28,402 - phoenix.spydefi - INFO - 🔍 Processing 891 messages for KOL extraction...
+2025-05-27 10:02:28,526 - phoenix.spydefi - INFO - 📊 Message processing stats:
+2025-05-27 10:02:28,526 - phoenix.spydefi - INFO -    Total messages processed: 891
+2025-05-27 10:02:28,526 - phoenix.spydefi - INFO -    Relevant messages: 887
+2025-05-27 10:02:28,526 - phoenix.spydefi - INFO -    Relevance rate: 99.6%
+2025-05-27 10:02:28,526 - phoenix.spydefi - INFO -    Unique KOLs extracted: 259
+2025-05-27 10:02:28,526 - phoenix.spydefi - INFO - 📊 Step 3: Filtering and ranking KOLs...
+2025-05-27 10:02:28,526 - phoenix.spydefi - INFO - 📊 KOL filtering results:
+2025-05-27 10:02:28,526 - phoenix.spydefi - INFO -    Raw KOLs found: 259
+2025-05-27 10:02:28,526 - phoenix.spydefi - INFO -    After min mentions filter (≥2): 259
+2025-05-27 10:02:28,526 - phoenix.spydefi - INFO -    Top 50 KOLs selected for analysis
+2025-05-27 10:02:28,526 - phoenix.spydefi - INFO - 🏆 Top 10 KOLs by mention count:
+2025-05-27 10:02:28,526 - phoenix.spydefi - INFO -    1. @kariusgemscalls (60 mentions)
+2025-05-27 10:02:28,526 - phoenix.spydefi - INFO -    2. @zen_call (51 mentions)
+2025-05-27 10:02:28,526 - phoenix.spydefi - INFO -    3. @marksgems (35 mentions)
+2025-05-27 10:02:28,526 - phoenix.spydefi - INFO -    4. @topcallerschannel (30 mentions)
+2025-05-27 10:02:28,526 - phoenix.spydefi - INFO -    5. @maybac_whales (26 mentions)
+2025-05-27 10:02:28,526 - phoenix.spydefi - INFO -    6. @insider_eca (24 mentions)
+2025-05-27 10:02:28,526 - phoenix.spydefi - INFO -    7. @crikeycallz (24 mentions)
+2025-05-27 10:02:28,526 - phoenix.spydefi - INFO -    8. @pepe_calls28 (19 mentions)
+2025-05-27 10:02:28,526 - phoenix.spydefi - INFO -    9. @poetcalls (18 mentions)
+2025-05-27 10:02:28,526 - phoenix.spydefi - INFO -    10. @donald_call (17 mentions)
+2025-05-27 10:02:28,526 - phoenix.spydefi - INFO - 🎯 Step 4: Analyzing performance for top 50 KOLs...
+2025-05-27 10:02:28,526 - phoenix.spydefi - INFO - 📊 Analyzing 1/50: @kariusgemscalls (60 mentions)
+2025-05-27 10:02:28,526 - phoenix.spydefi - INFO - 📊 Analyzing performance for @kariusgemscalls (60 mentions)...
+2025-05-27 10:02:36,482 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @kariusgemscalls - creating placeholder performance
+2025-05-27 10:02:36,482 - phoenix.spydefi - INFO - ✅ Analysis complete for @kariusgemscalls (Score: 120.0)
+2025-05-27 10:02:36,496 - phoenix.spydefi - INFO - 📊 Analyzing 2/50: @zen_call (51 mentions)
+2025-05-27 10:02:37,499 - phoenix.spydefi - INFO - 📊 Analyzing performance for @zen_call (51 mentions)...
+2025-05-27 10:02:45,445 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @zen_call - creating placeholder performance
+2025-05-27 10:02:45,445 - phoenix.spydefi - INFO - ✅ Analysis complete for @zen_call (Score: 102.0)
+2025-05-27 10:02:45,445 - phoenix.spydefi - INFO - 📊 Analyzing 3/50: @marksgems (35 mentions)
+2025-05-27 10:02:46,446 - phoenix.spydefi - INFO - 📊 Analyzing performance for @marksgems (35 mentions)...
+2025-05-27 10:02:52,902 - phoenix.spydefi - WARNING - ⚠️ Flood wait for 15962s - waiting...
+2025-05-27 10:24:16,096 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-27 10:24:16,096 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-27 10:24:16,484 - phoenix - INFO - ✅ Imported FIXED SPYDEFI module
+2025-05-27 10:24:16,484 - phoenix - INFO - 🚀 Starting SPYDEFI KOL analysis with MODULE CONFIG ONLY
+2025-05-27 10:24:16,484 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-27 10:24:16,736 - phoenix.api_manager - INFO - ✅ Birdeye API initialized for mainstream token analysis
+2025-05-27 10:24:16,736 - phoenix.api_manager - INFO - ✅ Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-27 10:24:16,736 - phoenix.api_manager - INFO - ✅ Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-27 10:24:16,736 - phoenix - INFO - ✅ API manager initialized successfully
+2025-05-27 10:24:16,736 - phoenix.spydefi - INFO - ✅ API manager configured for SpyDefi analysis
+2025-05-27 10:24:16,736 - phoenix - INFO - 🔧 Using SpyDefi module config ONLY - NO CLI override
+2025-05-27 10:24:16,736 - phoenix - INFO - 📊 Module enforces: 8h peak scanning, Top 50 KOLs, Min 100 subs
+2025-05-27 10:24:16,736 - phoenix - INFO - ✅ SPYDEFI analyzer initialized with MODULE CONFIG
+2025-05-27 10:24:16,736 - phoenix.spydefi - INFO - 🔌 Connecting to Telegram...
+2025-05-27 10:24:16,736 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-27 10:24:16,864 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-27 10:24:17,632 - phoenix.spydefi - INFO - ✅ Telegram connection successful
+2025-05-27 10:24:17,632 - phoenix.spydefi - INFO - 🚀 Starting comprehensive SpyDefi KOL analysis...
+2025-05-27 10:24:17,632 - phoenix.spydefi - INFO - 🎯 ENFORCED CONFIG: 8h peak scanning | Top 50 KOLs | ≥2 mentions
+2025-05-27 10:24:17,632 - phoenix.spydefi - INFO - 📥 Step 1: Retrieving SpyDefi messages...
+2025-05-27 10:24:17,632 - phoenix.spydefi - INFO - 🔍 Trying to access channel: spydefi
+2025-05-27 10:24:17,759 - phoenix.spydefi - INFO - ✅ Successfully accessed SpyDefi channel: SpyDefi (ID: 1960616143)
+2025-05-27 10:24:17,759 - phoenix.spydefi - INFO - 🧪 Testing channel message access...
+2025-05-27 10:24:17,908 - phoenix.spydefi - INFO - ✅ Channel access confirmed - 5 test messages found
+2025-05-27 10:24:17,908 - phoenix.spydefi - INFO - 📅 PEAK MEMECOIN SCANNING: 8 hours
+2025-05-27 10:24:17,908 - phoenix.spydefi - INFO - ⏰ Time window: 2025-05-27 09:24 UTC to 2025-05-27 17:24 UTC
+2025-05-27 10:24:17,908 - phoenix.spydefi - INFO - 🎯 Targeting peak crypto activity period for maximum KOL discovery
+2025-05-27 10:24:17,908 - phoenix.spydefi - INFO - 📥 Method 1: Retrieving recent messages...
+2025-05-27 10:24:26,323 - phoenix.spydefi - INFO - 📊 Method 1 results: 863 messages in time range
+2025-05-27 10:24:26,323 - phoenix.spydefi - INFO - 📊 Total unique messages retrieved: 863
+2025-05-27 10:24:26,323 - phoenix.spydefi - INFO - 🔍 Step 2: Extracting KOL mentions with enhanced filtering...
+2025-05-27 10:24:26,323 - phoenix.spydefi - INFO - 🔍 Processing 863 messages for KOL extraction...
+2025-05-27 10:24:26,432 - phoenix.spydefi - INFO - 📊 Message processing stats:
+2025-05-27 10:24:26,432 - phoenix.spydefi - INFO -    Total messages processed: 863
+2025-05-27 10:24:26,432 - phoenix.spydefi - INFO -    Relevant messages: 859
+2025-05-27 10:24:26,432 - phoenix.spydefi - INFO -    Relevance rate: 99.5%
+2025-05-27 10:24:26,432 - phoenix.spydefi - INFO -    Unique KOLs extracted: 247
+2025-05-27 10:24:26,432 - phoenix.spydefi - INFO - 📊 Step 3: Filtering and ranking KOLs (targeting top 50)...
+2025-05-27 10:24:26,432 - phoenix.spydefi - INFO - 📊 KOL filtering results:
+2025-05-27 10:24:26,432 - phoenix.spydefi - INFO -    Raw KOLs found: 247
+2025-05-27 10:24:26,432 - phoenix.spydefi - INFO -    After min mentions filter (≥2): 247
+2025-05-27 10:24:26,432 - phoenix.spydefi - INFO -    Top 50 KOLs selected for analysis
+2025-05-27 10:24:26,432 - phoenix.spydefi - INFO - 🏆 Top 10 KOLs by mention count:
+2025-05-27 10:24:26,448 - phoenix.spydefi - INFO -    1. @kariusgemscalls (63 mentions)
+2025-05-27 10:24:26,448 - phoenix.spydefi - INFO -    2. @zen_call (49 mentions)
+2025-05-27 10:24:26,448 - phoenix.spydefi - INFO -    3. @marksgems (35 mentions)
+2025-05-27 10:24:26,448 - phoenix.spydefi - INFO -    4. @maybac_whales (28 mentions)
+2025-05-27 10:24:26,448 - phoenix.spydefi - INFO -    5. @topcallerschannel (28 mentions)
+2025-05-27 10:24:26,448 - phoenix.spydefi - INFO -    6. @crikeycallz (24 mentions)
+2025-05-27 10:24:26,448 - phoenix.spydefi - INFO -    7. @insider_eca (22 mentions)
+2025-05-27 10:24:26,448 - phoenix.spydefi - INFO -    8. @donald_call (20 mentions)
+2025-05-27 10:24:26,448 - phoenix.spydefi - INFO -    9. @pepe_calls28 (19 mentions)
+2025-05-27 10:24:26,448 - phoenix.spydefi - INFO -    10. @cluelesscalls (17 mentions)
+2025-05-27 10:24:26,448 - phoenix.spydefi - INFO - 🎯 Step 4: Analyzing performance for top 50 KOLs...
+2025-05-27 10:24:26,448 - phoenix.spydefi - INFO - 📊 Analyzing 1/50: @kariusgemscalls (63 mentions)
+2025-05-27 10:24:26,448 - phoenix.spydefi - INFO - 📊 Analyzing performance for @kariusgemscalls (63 mentions)...
+2025-05-27 10:24:26,448 - phoenix.spydefi - INFO - 🔍 Looking for channel: @kariusgemscalls
+2025-05-27 10:24:26,448 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: kariusgemscalls
+2025-05-27 10:24:26,698 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 2: @kariusgemscalls
+2025-05-27 10:24:26,698 - phoenix.spydefi - INFO -    ⏱️ Rate limiting: waiting 1 second...
+2025-05-27 10:24:27,950 - phoenix.spydefi - INFO -    🔄 Primary variants failed, trying backup variants...
+2025-05-27 10:24:34,317 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT in backup: 14660s - ABORTING backup search
+2025-05-27 10:24:34,317 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @kariusgemscalls - creating SpyDefi-based performance
+2025-05-27 10:24:34,317 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @kariusgemscalls (Score: 70.0)
+2025-05-27 10:24:34,317 - phoenix.spydefi - INFO - 📊 Analyzing 2/50: @zen_call (49 mentions)
+2025-05-27 10:24:35,330 - phoenix.spydefi - INFO - 📊 Analyzing performance for @zen_call (49 mentions)...
+2025-05-27 10:24:35,330 - phoenix.spydefi - INFO - 🔍 Looking for channel: @zen_call
+2025-05-27 10:24:35,330 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: zen_call
+2025-05-27 10:24:35,330 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14659 seconds for @zen_call
+2025-05-27 10:24:35,330 - phoenix.spydefi - ERROR -    Flood wait too long (14659s) - SKIPPING this KOL
+2025-05-27 10:24:35,330 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @zen_call - creating SpyDefi-based performance
+2025-05-27 10:24:35,330 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @zen_call (Score: 70.0)
+2025-05-27 10:24:35,330 - phoenix.spydefi - INFO - 📊 Analyzing 3/50: @marksgems (35 mentions)
+2025-05-27 10:24:36,331 - phoenix.spydefi - INFO - 📊 Analyzing performance for @marksgems (35 mentions)...
+2025-05-27 10:24:36,339 - phoenix.spydefi - INFO - 🔍 Looking for channel: @marksgems
+2025-05-27 10:24:36,339 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: marksgems
+2025-05-27 10:24:36,339 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14658 seconds for @marksgems
+2025-05-27 10:24:36,339 - phoenix.spydefi - ERROR -    Flood wait too long (14658s) - SKIPPING this KOL
+2025-05-27 10:24:36,339 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @marksgems - creating SpyDefi-based performance
+2025-05-27 10:24:36,339 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @marksgems (Score: 70.0)
+2025-05-27 10:24:36,339 - phoenix.spydefi - INFO - 📊 Analyzing 4/50: @maybac_whales (28 mentions)
+2025-05-27 10:24:37,347 - phoenix.spydefi - INFO - 📊 Analyzing performance for @maybac_whales (28 mentions)...
+2025-05-27 10:24:37,347 - phoenix.spydefi - INFO - 🔍 Looking for channel: @maybac_whales
+2025-05-27 10:24:37,347 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: maybac_whales
+2025-05-27 10:24:37,347 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14657 seconds for @maybac_whales
+2025-05-27 10:24:37,347 - phoenix.spydefi - ERROR -    Flood wait too long (14657s) - SKIPPING this KOL
+2025-05-27 10:24:37,347 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @maybac_whales - creating SpyDefi-based performance
+2025-05-27 10:24:37,347 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @maybac_whales (Score: 70.0)
+2025-05-27 10:24:37,347 - phoenix.spydefi - INFO - 📊 Analyzing 5/50: @topcallerschannel (28 mentions)
+2025-05-27 10:24:38,348 - phoenix.spydefi - INFO - 📊 Analyzing performance for @topcallerschannel (28 mentions)...
+2025-05-27 10:24:38,348 - phoenix.spydefi - INFO - 🔍 Looking for channel: @topcallerschannel
+2025-05-27 10:24:38,348 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: topcallerschannel
+2025-05-27 10:24:38,348 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14656 seconds for @topcallerschannel
+2025-05-27 10:24:38,348 - phoenix.spydefi - ERROR -    Flood wait too long (14656s) - SKIPPING this KOL
+2025-05-27 10:24:38,348 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @topcallerschannel - creating SpyDefi-based performance
+2025-05-27 10:24:38,348 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @topcallerschannel (Score: 70.0)
+2025-05-27 10:24:38,348 - phoenix.spydefi - INFO - 📊 Analyzing 6/50: @crikeycallz (24 mentions)
+2025-05-27 10:24:39,349 - phoenix.spydefi - INFO - 📊 Analyzing performance for @crikeycallz (24 mentions)...
+2025-05-27 10:24:39,349 - phoenix.spydefi - INFO - 🔍 Looking for channel: @crikeycallz
+2025-05-27 10:24:39,349 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: crikeycallz
+2025-05-27 10:24:39,349 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14655 seconds for @crikeycallz
+2025-05-27 10:24:39,349 - phoenix.spydefi - ERROR -    Flood wait too long (14655s) - SKIPPING this KOL
+2025-05-27 10:24:39,349 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @crikeycallz - creating SpyDefi-based performance
+2025-05-27 10:24:39,349 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @crikeycallz (Score: 70.0)
+2025-05-27 10:24:39,349 - phoenix.spydefi - INFO - 📊 Analyzing 7/50: @insider_eca (22 mentions)
+2025-05-27 10:24:40,365 - phoenix.spydefi - INFO - 📊 Analyzing performance for @insider_eca (22 mentions)...
+2025-05-27 10:24:40,365 - phoenix.spydefi - INFO - 🔍 Looking for channel: @insider_eca
+2025-05-27 10:24:40,365 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: insider_eca
+2025-05-27 10:24:40,365 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14654 seconds for @insider_eca
+2025-05-27 10:24:40,365 - phoenix.spydefi - ERROR -    Flood wait too long (14654s) - SKIPPING this KOL
+2025-05-27 10:24:40,365 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @insider_eca - creating SpyDefi-based performance
+2025-05-27 10:24:40,365 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @insider_eca (Score: 70.0)
+2025-05-27 10:24:40,365 - phoenix.spydefi - INFO - 📊 Analyzing 8/50: @donald_call (20 mentions)
+2025-05-27 10:24:41,365 - phoenix.spydefi - INFO - 📊 Analyzing performance for @donald_call (20 mentions)...
+2025-05-27 10:24:41,365 - phoenix.spydefi - INFO - 🔍 Looking for channel: @donald_call
+2025-05-27 10:24:41,365 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: donald_call
+2025-05-27 10:24:41,365 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14653 seconds for @donald_call
+2025-05-27 10:24:41,365 - phoenix.spydefi - ERROR -    Flood wait too long (14653s) - SKIPPING this KOL
+2025-05-27 10:24:41,365 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @donald_call - creating SpyDefi-based performance
+2025-05-27 10:24:41,365 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @donald_call (Score: 70.0)
+2025-05-27 10:24:41,365 - phoenix.spydefi - INFO - 📊 Analyzing 9/50: @pepe_calls28 (19 mentions)
+2025-05-27 10:24:42,367 - phoenix.spydefi - INFO - 📊 Analyzing performance for @pepe_calls28 (19 mentions)...
+2025-05-27 10:24:42,367 - phoenix.spydefi - INFO - 🔍 Looking for channel: @pepe_calls28
+2025-05-27 10:24:42,367 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: pepe_calls28
+2025-05-27 10:24:42,367 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14652 seconds for @pepe_calls28
+2025-05-27 10:24:42,367 - phoenix.spydefi - ERROR -    Flood wait too long (14652s) - SKIPPING this KOL
+2025-05-27 10:24:42,367 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @pepe_calls28 - creating SpyDefi-based performance
+2025-05-27 10:24:42,367 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @pepe_calls28 (Score: 70.0)
+2025-05-27 10:24:42,367 - phoenix.spydefi - INFO - 📊 Analyzing 10/50: @cluelesscalls (17 mentions)
+2025-05-27 10:24:43,368 - phoenix.spydefi - INFO - 📊 Analyzing performance for @cluelesscalls (17 mentions)...
+2025-05-27 10:24:43,368 - phoenix.spydefi - INFO - 🔍 Looking for channel: @cluelesscalls
+2025-05-27 10:24:43,368 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: cluelesscalls
+2025-05-27 10:24:43,368 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14651 seconds for @cluelesscalls
+2025-05-27 10:24:43,368 - phoenix.spydefi - ERROR -    Flood wait too long (14651s) - SKIPPING this KOL
+2025-05-27 10:24:43,368 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @cluelesscalls - creating SpyDefi-based performance
+2025-05-27 10:24:43,368 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @cluelesscalls (Score: 70.0)
+2025-05-27 10:24:43,368 - phoenix.spydefi - INFO - 📈 Progress: 10/50 KOLs processed (10 successful, 0 with channels)
+2025-05-27 10:24:43,368 - phoenix.spydefi - INFO - 📊 Analyzing 11/50: @poetcalls (16 mentions)
+2025-05-27 10:24:44,384 - phoenix.spydefi - INFO - 📊 Analyzing performance for @poetcalls (16 mentions)...
+2025-05-27 10:24:44,384 - phoenix.spydefi - INFO - 🔍 Looking for channel: @poetcalls
+2025-05-27 10:24:44,384 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: poetcalls
+2025-05-27 10:24:44,384 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14650 seconds for @poetcalls
+2025-05-27 10:24:44,384 - phoenix.spydefi - ERROR -    Flood wait too long (14650s) - SKIPPING this KOL
+2025-05-27 10:24:44,384 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @poetcalls - creating SpyDefi-based performance
+2025-05-27 10:24:44,384 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @poetcalls (Score: 70.0)
+2025-05-27 10:24:44,384 - phoenix.spydefi - INFO - 📊 Analyzing 12/50: @bruisersgambles (16 mentions)
+2025-05-27 10:24:45,385 - phoenix.spydefi - INFO - 📊 Analyzing performance for @bruisersgambles (16 mentions)...
+2025-05-27 10:24:45,385 - phoenix.spydefi - INFO - 🔍 Looking for channel: @bruisersgambles
+2025-05-27 10:24:45,385 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: bruisersgambles
+2025-05-27 10:24:45,385 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14649 seconds for @bruisersgambles
+2025-05-27 10:24:45,385 - phoenix.spydefi - ERROR -    Flood wait too long (14649s) - SKIPPING this KOL
+2025-05-27 10:24:45,385 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @bruisersgambles - creating SpyDefi-based performance
+2025-05-27 10:24:45,385 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @bruisersgambles (Score: 70.0)
+2025-05-27 10:24:45,385 - phoenix.spydefi - INFO - 📊 Analyzing 13/50: @baseddegengems (16 mentions)
+2025-05-27 10:24:46,386 - phoenix.spydefi - INFO - 📊 Analyzing performance for @baseddegengems (16 mentions)...
+2025-05-27 10:24:46,386 - phoenix.spydefi - INFO - 🔍 Looking for channel: @baseddegengems
+2025-05-27 10:24:46,386 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: baseddegengems
+2025-05-27 10:24:46,386 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14648 seconds for @baseddegengems
+2025-05-27 10:24:46,386 - phoenix.spydefi - ERROR -    Flood wait too long (14648s) - SKIPPING this KOL
+2025-05-27 10:24:46,386 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @baseddegengems - creating SpyDefi-based performance
+2025-05-27 10:24:46,386 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @baseddegengems (Score: 70.0)
+2025-05-27 10:24:46,386 - phoenix.spydefi - INFO - 📊 Analyzing 14/50: @gemsmineeth (16 mentions)
+2025-05-27 10:24:47,387 - phoenix.spydefi - INFO - 📊 Analyzing performance for @gemsmineeth (16 mentions)...
+2025-05-27 10:24:47,387 - phoenix.spydefi - INFO - 🔍 Looking for channel: @gemsmineeth
+2025-05-27 10:24:47,387 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: gemsmineeth
+2025-05-27 10:24:47,387 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14647 seconds for @gemsmineeth
+2025-05-27 10:24:47,387 - phoenix.spydefi - ERROR -    Flood wait too long (14647s) - SKIPPING this KOL
+2025-05-27 10:24:47,387 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @gemsmineeth - creating SpyDefi-based performance
+2025-05-27 10:24:47,387 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @gemsmineeth (Score: 70.0)
+2025-05-27 10:24:47,387 - phoenix.spydefi - INFO - 📊 Analyzing 15/50: @itachi_calls (16 mentions)
+2025-05-27 10:24:48,388 - phoenix.spydefi - INFO - 📊 Analyzing performance for @itachi_calls (16 mentions)...
+2025-05-27 10:24:48,388 - phoenix.spydefi - INFO - 🔍 Looking for channel: @itachi_calls
+2025-05-27 10:24:48,388 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: itachi_calls
+2025-05-27 10:24:48,388 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14646 seconds for @itachi_calls
+2025-05-27 10:24:48,388 - phoenix.spydefi - ERROR -    Flood wait too long (14646s) - SKIPPING this KOL
+2025-05-27 10:24:48,388 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @itachi_calls - creating SpyDefi-based performance
+2025-05-27 10:24:48,388 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @itachi_calls (Score: 70.0)
+2025-05-27 10:24:48,388 - phoenix.spydefi - INFO - 📊 Analyzing 16/50: @poseidon_degen_calls (15 mentions)
+2025-05-27 10:24:49,389 - phoenix.spydefi - INFO - 📊 Analyzing performance for @poseidon_degen_calls (15 mentions)...
+2025-05-27 10:24:49,389 - phoenix.spydefi - INFO - 🔍 Looking for channel: @poseidon_degen_calls
+2025-05-27 10:24:49,389 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: poseidon_degen_calls
+2025-05-27 10:24:49,389 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14645 seconds for @poseidon_degen_calls
+2025-05-27 10:24:49,389 - phoenix.spydefi - ERROR -    Flood wait too long (14645s) - SKIPPING this KOL
+2025-05-27 10:24:49,389 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @poseidon_degen_calls - creating SpyDefi-based performance
+2025-05-27 10:24:49,389 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @poseidon_degen_calls (Score: 70.0)
+2025-05-27 10:24:49,389 - phoenix.spydefi - INFO - 📊 Analyzing 17/50: @marine_cryptocalls (15 mentions)
+2025-05-27 10:24:50,402 - phoenix.spydefi - INFO - 📊 Analyzing performance for @marine_cryptocalls (15 mentions)...
+2025-05-27 10:24:50,402 - phoenix.spydefi - INFO - 🔍 Looking for channel: @marine_cryptocalls
+2025-05-27 10:24:50,402 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: marine_cryptocalls
+2025-05-27 10:24:50,402 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14644 seconds for @marine_cryptocalls
+2025-05-27 10:24:50,402 - phoenix.spydefi - ERROR -    Flood wait too long (14644s) - SKIPPING this KOL
+2025-05-27 10:24:50,402 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @marine_cryptocalls - creating SpyDefi-based performance
+2025-05-27 10:24:50,402 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @marine_cryptocalls (Score: 70.0)
+2025-05-27 10:24:50,402 - phoenix.spydefi - INFO - 📊 Analyzing 18/50: @ggcalls_eth (15 mentions)
+2025-05-27 10:24:51,402 - phoenix.spydefi - INFO - 📊 Analyzing performance for @ggcalls_eth (15 mentions)...
+2025-05-27 10:24:51,402 - phoenix.spydefi - INFO - 🔍 Looking for channel: @ggcalls_eth
+2025-05-27 10:24:51,402 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: ggcalls_eth
+2025-05-27 10:24:51,402 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14643 seconds for @ggcalls_eth
+2025-05-27 10:24:51,402 - phoenix.spydefi - ERROR -    Flood wait too long (14643s) - SKIPPING this KOL
+2025-05-27 10:24:51,402 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @ggcalls_eth - creating SpyDefi-based performance
+2025-05-27 10:24:51,402 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @ggcalls_eth (Score: 70.0)
+2025-05-27 10:24:51,402 - phoenix.spydefi - INFO - 📊 Analyzing 19/50: @cryptsycalls (14 mentions)
+2025-05-27 10:24:52,405 - phoenix.spydefi - INFO - 📊 Analyzing performance for @cryptsycalls (14 mentions)...
+2025-05-27 10:24:52,405 - phoenix.spydefi - INFO - 🔍 Looking for channel: @cryptsycalls
+2025-05-27 10:24:52,405 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: cryptsycalls
+2025-05-27 10:24:52,405 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14642 seconds for @cryptsycalls
+2025-05-27 10:24:52,405 - phoenix.spydefi - ERROR -    Flood wait too long (14642s) - SKIPPING this KOL
+2025-05-27 10:24:52,405 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @cryptsycalls - creating SpyDefi-based performance
+2025-05-27 10:24:52,405 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @cryptsycalls (Score: 70.0)
+2025-05-27 10:24:52,405 - phoenix.spydefi - INFO - 📊 Analyzing 20/50: @chiggajogambles (14 mentions)
+2025-05-27 10:24:53,406 - phoenix.spydefi - INFO - 📊 Analyzing performance for @chiggajogambles (14 mentions)...
+2025-05-27 10:24:53,406 - phoenix.spydefi - INFO - 🔍 Looking for channel: @chiggajogambles
+2025-05-27 10:24:53,406 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: chiggajogambles
+2025-05-27 10:24:53,406 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14641 seconds for @chiggajogambles
+2025-05-27 10:24:53,406 - phoenix.spydefi - ERROR -    Flood wait too long (14641s) - SKIPPING this KOL
+2025-05-27 10:24:53,406 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @chiggajogambles - creating SpyDefi-based performance
+2025-05-27 10:24:53,406 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @chiggajogambles (Score: 70.0)
+2025-05-27 10:24:53,406 - phoenix.spydefi - INFO - 📈 Progress: 20/50 KOLs processed (20 successful, 0 with channels)
+2025-05-27 10:24:53,406 - phoenix.spydefi - INFO - 📊 Analyzing 21/50: @icallings (14 mentions)
+2025-05-27 10:24:54,406 - phoenix.spydefi - INFO - 📊 Analyzing performance for @icallings (14 mentions)...
+2025-05-27 10:24:54,406 - phoenix.spydefi - INFO - 🔍 Looking for channel: @icallings
+2025-05-27 10:24:54,406 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: icallings
+2025-05-27 10:24:54,406 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14640 seconds for @icallings
+2025-05-27 10:24:54,406 - phoenix.spydefi - ERROR -    Flood wait too long (14640s) - SKIPPING this KOL
+2025-05-27 10:24:54,406 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @icallings - creating SpyDefi-based performance
+2025-05-27 10:24:54,406 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @icallings (Score: 70.0)
+2025-05-27 10:24:54,406 - phoenix.spydefi - INFO - 📊 Analyzing 22/50: @metagambler (14 mentions)
+2025-05-27 10:24:55,407 - phoenix.spydefi - INFO - 📊 Analyzing performance for @metagambler (14 mentions)...
+2025-05-27 10:24:55,407 - phoenix.spydefi - INFO - 🔍 Looking for channel: @metagambler
+2025-05-27 10:24:55,407 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: metagambler
+2025-05-27 10:24:55,407 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14639 seconds for @metagambler
+2025-05-27 10:24:55,407 - phoenix.spydefi - ERROR -    Flood wait too long (14639s) - SKIPPING this KOL
+2025-05-27 10:24:55,407 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @metagambler - creating SpyDefi-based performance
+2025-05-27 10:24:55,407 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @metagambler (Score: 70.0)
+2025-05-27 10:24:55,407 - phoenix.spydefi - INFO - 📊 Analyzing 23/50: @fanboycalls (14 mentions)
+2025-05-27 10:24:56,407 - phoenix.spydefi - INFO - 📊 Analyzing performance for @fanboycalls (14 mentions)...
+2025-05-27 10:24:56,407 - phoenix.spydefi - INFO - 🔍 Looking for channel: @fanboycalls
+2025-05-27 10:24:56,407 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: fanboycalls
+2025-05-27 10:24:56,407 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14638 seconds for @fanboycalls
+2025-05-27 10:24:56,407 - phoenix.spydefi - ERROR -    Flood wait too long (14638s) - SKIPPING this KOL
+2025-05-27 10:24:56,407 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @fanboycalls - creating SpyDefi-based performance
+2025-05-27 10:24:56,407 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @fanboycalls (Score: 70.0)
+2025-05-27 10:24:56,407 - phoenix.spydefi - INFO - 📊 Analyzing 24/50: @kulture_kall (14 mentions)
+2025-05-27 10:24:57,407 - phoenix.spydefi - INFO - 📊 Analyzing performance for @kulture_kall (14 mentions)...
+2025-05-27 10:24:57,407 - phoenix.spydefi - INFO - 🔍 Looking for channel: @kulture_kall
+2025-05-27 10:24:57,407 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: kulture_kall
+2025-05-27 10:24:57,407 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14637 seconds for @kulture_kall
+2025-05-27 10:24:57,407 - phoenix.spydefi - ERROR -    Flood wait too long (14637s) - SKIPPING this KOL
+2025-05-27 10:24:57,407 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @kulture_kall - creating SpyDefi-based performance
+2025-05-27 10:24:57,407 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @kulture_kall (Score: 70.0)
+2025-05-27 10:24:57,407 - phoenix.spydefi - INFO - 📊 Analyzing 25/50: @michacalls (14 mentions)
+2025-05-27 10:24:58,408 - phoenix.spydefi - INFO - 📊 Analyzing performance for @michacalls (14 mentions)...
+2025-05-27 10:24:58,408 - phoenix.spydefi - INFO - 🔍 Looking for channel: @michacalls
+2025-05-27 10:24:58,408 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: michacalls
+2025-05-27 10:24:58,408 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14636 seconds for @michacalls
+2025-05-27 10:24:58,408 - phoenix.spydefi - ERROR -    Flood wait too long (14636s) - SKIPPING this KOL
+2025-05-27 10:24:58,408 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @michacalls - creating SpyDefi-based performance
+2025-05-27 10:24:58,408 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @michacalls (Score: 70.0)
+2025-05-27 10:24:58,408 - phoenix.spydefi - INFO - 📊 Analyzing 26/50: @degenprintors (14 mentions)
+2025-05-27 10:24:59,409 - phoenix.spydefi - INFO - 📊 Analyzing performance for @degenprintors (14 mentions)...
+2025-05-27 10:24:59,409 - phoenix.spydefi - INFO - 🔍 Looking for channel: @degenprintors
+2025-05-27 10:24:59,409 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: degenprintors
+2025-05-27 10:24:59,409 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14635 seconds for @degenprintors
+2025-05-27 10:24:59,409 - phoenix.spydefi - ERROR -    Flood wait too long (14635s) - SKIPPING this KOL
+2025-05-27 10:24:59,409 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @degenprintors - creating SpyDefi-based performance
+2025-05-27 10:24:59,409 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @degenprintors (Score: 70.0)
+2025-05-27 10:24:59,409 - phoenix.spydefi - INFO - 📊 Analyzing 27/50: @iloverugging (14 mentions)
+2025-05-27 10:25:00,416 - phoenix.spydefi - INFO - 📊 Analyzing performance for @iloverugging (14 mentions)...
+2025-05-27 10:25:00,416 - phoenix.spydefi - INFO - 🔍 Looking for channel: @iloverugging
+2025-05-27 10:25:00,416 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: iloverugging
+2025-05-27 10:25:00,416 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14634 seconds for @iloverugging
+2025-05-27 10:25:00,416 - phoenix.spydefi - ERROR -    Flood wait too long (14634s) - SKIPPING this KOL
+2025-05-27 10:25:00,416 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @iloverugging - creating SpyDefi-based performance
+2025-05-27 10:25:00,416 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @iloverugging (Score: 70.0)
+2025-05-27 10:25:00,416 - phoenix.spydefi - INFO - 📊 Analyzing 28/50: @thanos_call (13 mentions)
+2025-05-27 10:25:01,417 - phoenix.spydefi - INFO - 📊 Analyzing performance for @thanos_call (13 mentions)...
+2025-05-27 10:25:01,417 - phoenix.spydefi - INFO - 🔍 Looking for channel: @thanos_call
+2025-05-27 10:25:01,417 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: thanos_call
+2025-05-27 10:25:01,417 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14633 seconds for @thanos_call
+2025-05-27 10:25:01,417 - phoenix.spydefi - ERROR -    Flood wait too long (14633s) - SKIPPING this KOL
+2025-05-27 10:25:01,417 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @thanos_call - creating SpyDefi-based performance
+2025-05-27 10:25:01,417 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @thanos_call (Score: 70.0)
+2025-05-27 10:25:01,417 - phoenix.spydefi - INFO - 📊 Analyzing 29/50: @fanboydegen (13 mentions)
+2025-05-27 10:25:02,418 - phoenix.spydefi - INFO - 📊 Analyzing performance for @fanboydegen (13 mentions)...
+2025-05-27 10:25:02,418 - phoenix.spydefi - INFO - 🔍 Looking for channel: @fanboydegen
+2025-05-27 10:25:02,418 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: fanboydegen
+2025-05-27 10:25:02,418 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14632 seconds for @fanboydegen
+2025-05-27 10:25:02,418 - phoenix.spydefi - ERROR -    Flood wait too long (14632s) - SKIPPING this KOL
+2025-05-27 10:25:02,418 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @fanboydegen - creating SpyDefi-based performance
+2025-05-27 10:25:02,418 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @fanboydegen (Score: 70.0)
+2025-05-27 10:25:02,418 - phoenix.spydefi - INFO - 📊 Analyzing 30/50: @doxxedchannel (13 mentions)
+2025-05-27 10:25:03,419 - phoenix.spydefi - INFO - 📊 Analyzing performance for @doxxedchannel (13 mentions)...
+2025-05-27 10:25:03,419 - phoenix.spydefi - INFO - 🔍 Looking for channel: @doxxedchannel
+2025-05-27 10:25:03,419 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: doxxedchannel
+2025-05-27 10:25:03,419 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14631 seconds for @doxxedchannel
+2025-05-27 10:25:03,419 - phoenix.spydefi - ERROR -    Flood wait too long (14631s) - SKIPPING this KOL
+2025-05-27 10:25:03,419 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @doxxedchannel - creating SpyDefi-based performance
+2025-05-27 10:25:03,419 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @doxxedchannel (Score: 70.0)
+2025-05-27 10:25:03,419 - phoenix.spydefi - INFO - 📈 Progress: 30/50 KOLs processed (30 successful, 0 with channels)
+2025-05-27 10:25:03,419 - phoenix.spydefi - INFO - 📊 Analyzing 31/50: @nikola_calls (12 mentions)
+2025-05-27 10:25:04,419 - phoenix.spydefi - INFO - 📊 Analyzing performance for @nikola_calls (12 mentions)...
+2025-05-27 10:25:04,419 - phoenix.spydefi - INFO - 🔍 Looking for channel: @nikola_calls
+2025-05-27 10:25:04,419 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: nikola_calls
+2025-05-27 10:25:04,419 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14630 seconds for @nikola_calls
+2025-05-27 10:25:04,419 - phoenix.spydefi - ERROR -    Flood wait too long (14630s) - SKIPPING this KOL
+2025-05-27 10:25:04,419 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @nikola_calls - creating SpyDefi-based performance
+2025-05-27 10:25:04,419 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @nikola_calls (Score: 70.0)
+2025-05-27 10:25:04,419 - phoenix.spydefi - INFO - 📊 Analyzing 32/50: @ethafterdark (12 mentions)
+2025-05-27 10:25:05,432 - phoenix.spydefi - INFO - 📊 Analyzing performance for @ethafterdark (12 mentions)...
+2025-05-27 10:25:05,432 - phoenix.spydefi - INFO - 🔍 Looking for channel: @ethafterdark
+2025-05-27 10:25:05,432 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: ethafterdark
+2025-05-27 10:25:05,432 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14629 seconds for @ethafterdark
+2025-05-27 10:25:05,432 - phoenix.spydefi - ERROR -    Flood wait too long (14629s) - SKIPPING this KOL
+2025-05-27 10:25:05,432 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @ethafterdark - creating SpyDefi-based performance
+2025-05-27 10:25:05,432 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @ethafterdark (Score: 70.0)
+2025-05-27 10:25:05,432 - phoenix.spydefi - INFO - 📊 Analyzing 33/50: @jyue_secretbase (12 mentions)
+2025-05-27 10:25:06,448 - phoenix.spydefi - INFO - 📊 Analyzing performance for @jyue_secretbase (12 mentions)...
+2025-05-27 10:25:06,448 - phoenix.spydefi - INFO - 🔍 Looking for channel: @jyue_secretbase
+2025-05-27 10:25:06,448 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: jyue_secretbase
+2025-05-27 10:25:06,448 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14628 seconds for @jyue_secretbase
+2025-05-27 10:25:06,448 - phoenix.spydefi - ERROR -    Flood wait too long (14628s) - SKIPPING this KOL
+2025-05-27 10:25:06,448 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @jyue_secretbase - creating SpyDefi-based performance
+2025-05-27 10:25:06,448 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @jyue_secretbase (Score: 70.0)
+2025-05-27 10:25:06,448 - phoenix.spydefi - INFO - 📊 Analyzing 34/50: @lionjungle (12 mentions)
+2025-05-27 10:25:07,448 - phoenix.spydefi - INFO - 📊 Analyzing performance for @lionjungle (12 mentions)...
+2025-05-27 10:25:07,448 - phoenix.spydefi - INFO - 🔍 Looking for channel: @lionjungle
+2025-05-27 10:25:07,448 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: lionjungle
+2025-05-27 10:25:07,448 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14627 seconds for @lionjungle
+2025-05-27 10:25:07,448 - phoenix.spydefi - ERROR -    Flood wait too long (14627s) - SKIPPING this KOL
+2025-05-27 10:25:07,448 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @lionjungle - creating SpyDefi-based performance
+2025-05-27 10:25:07,448 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @lionjungle (Score: 70.0)
+2025-05-27 10:25:07,448 - phoenix.spydefi - INFO - 📊 Analyzing 35/50: @cryptomole0 (12 mentions)
+2025-05-27 10:25:08,450 - phoenix.spydefi - INFO - 📊 Analyzing performance for @cryptomole0 (12 mentions)...
+2025-05-27 10:25:08,450 - phoenix.spydefi - INFO - 🔍 Looking for channel: @cryptomole0
+2025-05-27 10:25:08,450 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: cryptomole0
+2025-05-27 10:25:08,450 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14626 seconds for @cryptomole0
+2025-05-27 10:25:08,450 - phoenix.spydefi - ERROR -    Flood wait too long (14626s) - SKIPPING this KOL
+2025-05-27 10:25:08,450 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @cryptomole0 - creating SpyDefi-based performance
+2025-05-27 10:25:08,450 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @cryptomole0 (Score: 70.0)
+2025-05-27 10:25:08,450 - phoenix.spydefi - INFO - 📊 Analyzing 36/50: @craftygambles (12 mentions)
+2025-05-27 10:25:09,451 - phoenix.spydefi - INFO - 📊 Analyzing performance for @craftygambles (12 mentions)...
+2025-05-27 10:25:09,451 - phoenix.spydefi - INFO - 🔍 Looking for channel: @craftygambles
+2025-05-27 10:25:09,451 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: craftygambles
+2025-05-27 10:25:09,451 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14625 seconds for @craftygambles
+2025-05-27 10:25:09,451 - phoenix.spydefi - ERROR -    Flood wait too long (14625s) - SKIPPING this KOL
+2025-05-27 10:25:09,451 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @craftygambles - creating SpyDefi-based performance
+2025-05-27 10:25:09,451 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @craftygambles (Score: 70.0)
+2025-05-27 10:25:09,451 - phoenix.spydefi - INFO - 📊 Analyzing 37/50: @cryptosparrowcall9 (12 mentions)
+2025-05-27 10:25:10,451 - phoenix.spydefi - INFO - 📊 Analyzing performance for @cryptosparrowcall9 (12 mentions)...
+2025-05-27 10:25:10,451 - phoenix.spydefi - INFO - 🔍 Looking for channel: @cryptosparrowcall9
+2025-05-27 10:25:10,451 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: cryptosparrowcall9
+2025-05-27 10:25:10,451 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14624 seconds for @cryptosparrowcall9
+2025-05-27 10:25:10,451 - phoenix.spydefi - ERROR -    Flood wait too long (14624s) - SKIPPING this KOL
+2025-05-27 10:25:10,451 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @cryptosparrowcall9 - creating SpyDefi-based performance
+2025-05-27 10:25:10,451 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @cryptosparrowcall9 (Score: 70.0)
+2025-05-27 10:25:10,451 - phoenix.spydefi - INFO - 📊 Analyzing 38/50: @familycalls (12 mentions)
+2025-05-27 10:25:11,453 - phoenix.spydefi - INFO - 📊 Analyzing performance for @familycalls (12 mentions)...
+2025-05-27 10:25:11,453 - phoenix.spydefi - INFO - 🔍 Looking for channel: @familycalls
+2025-05-27 10:25:11,453 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: familycalls
+2025-05-27 10:25:11,453 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14623 seconds for @familycalls
+2025-05-27 10:25:11,453 - phoenix.spydefi - ERROR -    Flood wait too long (14623s) - SKIPPING this KOL
+2025-05-27 10:25:11,453 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @familycalls - creating SpyDefi-based performance
+2025-05-27 10:25:11,453 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @familycalls (Score: 70.0)
+2025-05-27 10:25:11,453 - phoenix.spydefi - INFO - 📊 Analyzing 39/50: @degensbygem (12 mentions)
+2025-05-27 10:25:12,462 - phoenix.spydefi - INFO - 📊 Analyzing performance for @degensbygem (12 mentions)...
+2025-05-27 10:25:12,462 - phoenix.spydefi - INFO - 🔍 Looking for channel: @degensbygem
+2025-05-27 10:25:12,462 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: degensbygem
+2025-05-27 10:25:12,462 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14622 seconds for @degensbygem
+2025-05-27 10:25:12,462 - phoenix.spydefi - ERROR -    Flood wait too long (14622s) - SKIPPING this KOL
+2025-05-27 10:25:12,462 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @degensbygem - creating SpyDefi-based performance
+2025-05-27 10:25:12,462 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @degensbygem (Score: 70.0)
+2025-05-27 10:25:12,462 - phoenix.spydefi - INFO - 📊 Analyzing 40/50: @iamskem (12 mentions)
+2025-05-27 10:25:13,462 - phoenix.spydefi - INFO - 📊 Analyzing performance for @iamskem (12 mentions)...
+2025-05-27 10:25:13,463 - phoenix.spydefi - INFO - 🔍 Looking for channel: @iamskem
+2025-05-27 10:25:13,464 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: iamskem
+2025-05-27 10:25:13,464 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14621 seconds for @iamskem
+2025-05-27 10:25:13,465 - phoenix.spydefi - ERROR -    Flood wait too long (14621s) - SKIPPING this KOL
+2025-05-27 10:25:13,465 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @iamskem - creating SpyDefi-based performance
+2025-05-27 10:25:13,465 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @iamskem (Score: 70.0)
+2025-05-27 10:25:13,466 - phoenix.spydefi - INFO - 📈 Progress: 40/50 KOLs processed (40 successful, 0 with channels)
+2025-05-27 10:25:13,466 - phoenix.spydefi - INFO - 📊 Analyzing 41/50: @nunudegens (12 mentions)
+2025-05-27 10:25:14,478 - phoenix.spydefi - INFO - 📊 Analyzing performance for @nunudegens (12 mentions)...
+2025-05-27 10:25:14,478 - phoenix.spydefi - INFO - 🔍 Looking for channel: @nunudegens
+2025-05-27 10:25:14,478 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: nunudegens
+2025-05-27 10:25:14,478 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14620 seconds for @nunudegens
+2025-05-27 10:25:14,478 - phoenix.spydefi - ERROR -    Flood wait too long (14620s) - SKIPPING this KOL
+2025-05-27 10:25:14,478 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @nunudegens - creating SpyDefi-based performance
+2025-05-27 10:25:14,478 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @nunudegens (Score: 70.0)
+2025-05-27 10:25:14,478 - phoenix.spydefi - INFO - 📊 Analyzing 42/50: @nunuplays (12 mentions)
+2025-05-27 10:25:15,479 - phoenix.spydefi - INFO - 📊 Analyzing performance for @nunuplays (12 mentions)...
+2025-05-27 10:25:15,479 - phoenix.spydefi - INFO - 🔍 Looking for channel: @nunuplays
+2025-05-27 10:25:15,479 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: nunuplays
+2025-05-27 10:25:15,479 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14619 seconds for @nunuplays
+2025-05-27 10:25:15,479 - phoenix.spydefi - ERROR -    Flood wait too long (14619s) - SKIPPING this KOL
+2025-05-27 10:25:15,479 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @nunuplays - creating SpyDefi-based performance
+2025-05-27 10:25:15,479 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @nunuplays (Score: 70.0)
+2025-05-27 10:25:15,479 - phoenix.spydefi - INFO - 📊 Analyzing 43/50: @chapoinsider (12 mentions)
+2025-05-27 10:25:16,495 - phoenix.spydefi - INFO - 📊 Analyzing performance for @chapoinsider (12 mentions)...
+2025-05-27 10:25:16,495 - phoenix.spydefi - INFO - 🔍 Looking for channel: @chapoinsider
+2025-05-27 10:25:16,495 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: chapoinsider
+2025-05-27 10:25:16,495 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14618 seconds for @chapoinsider
+2025-05-27 10:25:16,495 - phoenix.spydefi - ERROR -    Flood wait too long (14618s) - SKIPPING this KOL
+2025-05-27 10:25:16,495 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @chapoinsider - creating SpyDefi-based performance
+2025-05-27 10:25:16,495 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @chapoinsider (Score: 70.0)
+2025-05-27 10:25:16,495 - phoenix.spydefi - INFO - 📊 Analyzing 44/50: @jacob1_community (12 mentions)
+2025-05-27 10:25:17,512 - phoenix.spydefi - INFO - 📊 Analyzing performance for @jacob1_community (12 mentions)...
+2025-05-27 10:25:17,512 - phoenix.spydefi - INFO - 🔍 Looking for channel: @jacob1_community
+2025-05-27 10:25:17,512 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: jacob1_community
+2025-05-27 10:25:17,512 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14617 seconds for @jacob1_community
+2025-05-27 10:25:17,512 - phoenix.spydefi - ERROR -    Flood wait too long (14617s) - SKIPPING this KOL
+2025-05-27 10:25:17,512 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @jacob1_community - creating SpyDefi-based performance
+2025-05-27 10:25:17,512 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @jacob1_community (Score: 70.0)
+2025-05-27 10:25:17,512 - phoenix.spydefi - INFO - 📊 Analyzing 45/50: @millionsgems (12 mentions)
+2025-05-27 10:25:18,513 - phoenix.spydefi - INFO - 📊 Analyzing performance for @millionsgems (12 mentions)...
+2025-05-27 10:25:18,513 - phoenix.spydefi - INFO - 🔍 Looking for channel: @millionsgems
+2025-05-27 10:25:18,513 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: millionsgems
+2025-05-27 10:25:18,513 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14616 seconds for @millionsgems
+2025-05-27 10:25:18,513 - phoenix.spydefi - ERROR -    Flood wait too long (14616s) - SKIPPING this KOL
+2025-05-27 10:25:18,513 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @millionsgems - creating SpyDefi-based performance
+2025-05-27 10:25:18,513 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @millionsgems (Score: 70.0)
+2025-05-27 10:25:18,513 - phoenix.spydefi - INFO - 📊 Analyzing 46/50: @nakamoto_gamble (12 mentions)
+2025-05-27 10:25:19,514 - phoenix.spydefi - INFO - 📊 Analyzing performance for @nakamoto_gamble (12 mentions)...
+2025-05-27 10:25:19,514 - phoenix.spydefi - INFO - 🔍 Looking for channel: @nakamoto_gamble
+2025-05-27 10:25:19,514 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: nakamoto_gamble
+2025-05-27 10:25:19,514 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14615 seconds for @nakamoto_gamble
+2025-05-27 10:25:19,514 - phoenix.spydefi - ERROR -    Flood wait too long (14615s) - SKIPPING this KOL
+2025-05-27 10:25:19,514 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @nakamoto_gamble - creating SpyDefi-based performance
+2025-05-27 10:25:19,514 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @nakamoto_gamble (Score: 70.0)
+2025-05-27 10:25:19,514 - phoenix.spydefi - INFO - 📊 Analyzing 47/50: @blockchainbrothersgambles (12 mentions)
+2025-05-27 10:25:20,527 - phoenix.spydefi - INFO - 📊 Analyzing performance for @blockchainbrothersgambles (12 mentions)...
+2025-05-27 10:25:20,527 - phoenix.spydefi - INFO - 🔍 Looking for channel: @blockchainbrothersgambles
+2025-05-27 10:25:20,527 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: blockchainbrothersgambles
+2025-05-27 10:25:20,527 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14614 seconds for @blockchainbrothersgambles
+2025-05-27 10:25:20,527 - phoenix.spydefi - ERROR -    Flood wait too long (14614s) - SKIPPING this KOL
+2025-05-27 10:25:20,527 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @blockchainbrothersgambles - creating SpyDefi-based performance
+2025-05-27 10:25:20,527 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @blockchainbrothersgambles (Score: 70.0)
+2025-05-27 10:25:20,527 - phoenix.spydefi - INFO - 📊 Analyzing 48/50: @rimberiogamble (12 mentions)
+2025-05-27 10:25:21,528 - phoenix.spydefi - INFO - 📊 Analyzing performance for @rimberiogamble (12 mentions)...
+2025-05-27 10:25:21,528 - phoenix.spydefi - INFO - 🔍 Looking for channel: @rimberiogamble
+2025-05-27 10:25:21,528 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: rimberiogamble
+2025-05-27 10:25:21,528 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14613 seconds for @rimberiogamble
+2025-05-27 10:25:21,528 - phoenix.spydefi - ERROR -    Flood wait too long (14613s) - SKIPPING this KOL
+2025-05-27 10:25:21,528 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @rimberiogamble - creating SpyDefi-based performance
+2025-05-27 10:25:21,528 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @rimberiogamble (Score: 70.0)
+2025-05-27 10:25:21,528 - phoenix.spydefi - INFO - 📊 Analyzing 49/50: @sersgemsnipes (12 mentions)
+2025-05-27 10:25:22,529 - phoenix.spydefi - INFO - 📊 Analyzing performance for @sersgemsnipes (12 mentions)...
+2025-05-27 10:25:22,529 - phoenix.spydefi - INFO - 🔍 Looking for channel: @sersgemsnipes
+2025-05-27 10:25:22,529 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: sersgemsnipes
+2025-05-27 10:25:22,529 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14612 seconds for @sersgemsnipes
+2025-05-27 10:25:22,529 - phoenix.spydefi - ERROR -    Flood wait too long (14612s) - SKIPPING this KOL
+2025-05-27 10:25:22,529 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @sersgemsnipes - creating SpyDefi-based performance
+2025-05-27 10:25:22,529 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @sersgemsnipes (Score: 70.0)
+2025-05-27 10:25:22,529 - phoenix.spydefi - INFO - 📊 Analyzing 50/50: @alcaponesplay (12 mentions)
+2025-05-27 10:25:23,530 - phoenix.spydefi - INFO - 📊 Analyzing performance for @alcaponesplay (12 mentions)...
+2025-05-27 10:25:23,530 - phoenix.spydefi - INFO - 🔍 Looking for channel: @alcaponesplay
+2025-05-27 10:25:23,530 - phoenix.spydefi - INFO -    🎯 Trying PRIMARY variant 1: alcaponesplay
+2025-05-27 10:25:23,530 - phoenix.spydefi - ERROR - ❌ FLOOD WAIT: 14611 seconds for @alcaponesplay
+2025-05-27 10:25:23,530 - phoenix.spydefi - ERROR -    Flood wait too long (14611s) - SKIPPING this KOL
+2025-05-27 10:25:23,530 - phoenix.spydefi - WARNING - ⚠️ Could not find channel for @alcaponesplay - creating SpyDefi-based performance
+2025-05-27 10:25:23,530 - phoenix.spydefi - INFO - ✅ SpyDefi-based analysis for @alcaponesplay (Score: 70.0)
+2025-05-27 10:25:23,530 - phoenix.spydefi - INFO - 📈 Progress: 50/50 KOLs processed (50 successful, 0 with channels)
+2025-05-27 10:25:23,530 - phoenix.spydefi - INFO - 📊 FINAL ANALYSIS STATS:
+2025-05-27 10:25:23,530 - phoenix.spydefi - INFO -    ✅ Successfully analyzed: 50
+2025-05-27 10:25:23,530 - phoenix.spydefi - INFO -    📺 Channels found: 0
+2025-05-27 10:25:23,530 - phoenix.spydefi - INFO -    📊 SpyDefi-based: 50
+2025-05-27 10:25:23,530 - phoenix.spydefi - INFO -    ⏭️ Skipped due to flood waits: 0
+2025-05-27 10:25:23,530 - phoenix.spydefi - INFO - ✅ SpyDefi KOL analysis completed successfully!
+2025-05-27 10:25:23,530 - phoenix.spydefi - INFO - 📊 Results: 50 KOLs analyzed in 65.9s
+2025-05-27 10:25:23,530 - phoenix.spydefi - INFO - 🎯 Metrics: 79.0% success, 27.8% 2x rate, 13.4% 5x rate
+2025-05-27 10:25:23,530 - phoenix.spydefi - INFO - 📺 Channel Discovery: 0/50 KOLs had discoverable channels
+2025-05-27 10:25:23,921 - phoenix.export - INFO - ✅ Exported 50 KOLs to SPYDEFI CSV: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-27 10:25:23,921 - phoenix.export - INFO - ✅ Exported SPYDEFI summary to TXT: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis_summary.txt
+2025-05-27 10:25:23,921 - phoenix - INFO - ✅ SPYDEFI results exported successfully
+2025-05-27 10:25:23,921 - phoenix - INFO - 📄 CSV: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-27 10:25:23,921 - phoenix - INFO - 📄 Summary: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis_summary.txt
+2025-05-27 10:25:23,952 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-27 10:25:23,952 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-27 10:25:23,968 - phoenix.spydefi - INFO - 🔌 Telegram disconnected
+2025-05-27 10:25:23,968 - phoenix - INFO - ✅ SPYDEFI analysis completed successfully!
+2025-05-27 10:25:23,968 - phoenix - INFO - 📁 Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-27 10:41:53,324 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-27 10:41:53,324 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-27 10:41:53,664 - phoenix - INFO - ✅ Imported FIXED SPYDEFI module
+2025-05-27 10:41:53,673 - phoenix - INFO - 🚀 Starting SPYDEFI KOL analysis with MODULE CONFIG ONLY
+2025-05-27 10:41:53,673 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-27 10:41:53,894 - phoenix.api_manager - INFO - ✅ Birdeye API initialized for mainstream token analysis
+2025-05-27 10:41:53,894 - phoenix.api_manager - INFO - ✅ Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-27 10:41:53,894 - phoenix.api_manager - INFO - ✅ Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-27 10:41:53,894 - phoenix - INFO - ✅ API manager initialized successfully
+2025-05-27 10:41:53,894 - phoenix.spydefi - INFO - ✅ API manager configured for SpyDefi analysis
+2025-05-27 10:41:53,894 - phoenix - INFO - 🔧 Using SpyDefi module config ONLY - NO CLI override
+2025-05-27 10:41:53,894 - phoenix - INFO - 📊 Module enforces: 8h peak scanning, Top 50 KOLs, Min 100 subs
+2025-05-27 10:41:53,894 - phoenix - INFO - ✅ SPYDEFI analyzer initialized with MODULE CONFIG
+2025-05-27 10:41:53,910 - phoenix.spydefi - INFO - 🔌 Connecting to Telegram...
+2025-05-27 10:41:53,910 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-27 10:41:54,021 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-27 10:41:54,813 - phoenix.spydefi - INFO - ✅ Telegram connection successful
+2025-05-27 10:41:54,813 - phoenix.spydefi - INFO - 🚀 Starting DIRECT SpyDefi KOL analysis (NO channel discovery)...
+2025-05-27 10:41:54,813 - phoenix.spydefi - INFO - 🎯 ENFORCED CONFIG: 8h peak scanning | Top 50 KOLs | ≥2 mentions
+2025-05-27 10:41:54,813 - phoenix.spydefi - INFO - 📥 Step 1: Retrieving SpyDefi messages...
+2025-05-27 10:41:54,813 - phoenix.spydefi - INFO - 🔍 Trying to access channel: spydefi
+2025-05-27 10:41:54,939 - phoenix.spydefi - INFO - ✅ Successfully accessed SpyDefi channel: SpyDefi (ID: 1960616143)
+2025-05-27 10:41:54,939 - phoenix.spydefi - INFO - 🧪 Testing channel message access...
+2025-05-27 10:41:55,082 - phoenix.spydefi - INFO - ✅ Channel access confirmed - 5 test messages found
+2025-05-27 10:41:55,082 - phoenix.spydefi - INFO - 📅 PEAK MEMECOIN SCANNING: 8 hours
+2025-05-27 10:41:55,082 - phoenix.spydefi - INFO - ⏰ Time window: 2025-05-27 09:41 UTC to 2025-05-27 17:41 UTC
+2025-05-27 10:41:55,082 - phoenix.spydefi - INFO - 📥 Method 1: Retrieving recent messages...
+2025-05-27 10:42:03,445 - phoenix.spydefi - INFO - 📊 Method 1 results: 870 messages in time range
+2025-05-27 10:42:03,445 - phoenix.spydefi - INFO - 📊 Total unique messages retrieved: 870
+2025-05-27 10:42:03,445 - phoenix.spydefi - INFO - 🔍 Step 2: Extracting KOLs with performance data from SpyDefi messages...
+2025-05-27 10:42:03,445 - phoenix.spydefi - INFO - 🔍 Processing 870 messages for KOL extraction and performance analysis...
+2025-05-27 10:42:03,585 - phoenix.spydefi - INFO - 📊 SpyDefi message processing stats:
+2025-05-27 10:42:03,585 - phoenix.spydefi - INFO -    Total messages processed: 870
+2025-05-27 10:42:03,585 - phoenix.spydefi - INFO -    Achievement Unlocked messages: 0
+2025-05-27 10:42:03,585 - phoenix.spydefi - INFO -    Unique KOLs with data: 245
+2025-05-27 10:42:03,585 - phoenix.spydefi - INFO - 📊 Step 3: Filtering and ranking KOLs (targeting top 50)...
+2025-05-27 10:42:03,585 - phoenix.spydefi - INFO - 📊 KOL filtering results:
+2025-05-27 10:42:03,585 - phoenix.spydefi - INFO -    Raw KOLs found: 245
+2025-05-27 10:42:03,585 - phoenix.spydefi - INFO -    After min mentions filter (≥2): 167
+2025-05-27 10:42:03,585 - phoenix.spydefi - INFO -    Top 50 KOLs selected for analysis
+2025-05-27 10:42:03,585 - phoenix.spydefi - INFO - 🏆 Top 10 KOLs by performance score:
+2025-05-27 10:42:03,585 - phoenix.spydefi - INFO -    1. @kariusgemscalls (Score: 330, Mentions: 33, Achievements: 0)
+2025-05-27 10:42:03,585 - phoenix.spydefi - INFO -    2. @zen_call (Score: 260, Mentions: 26, Achievements: 0)
+2025-05-27 10:42:03,585 - phoenix.spydefi - INFO -    3. @marksgems (Score: 170, Mentions: 17, Achievements: 0)
+2025-05-27 10:42:03,585 - phoenix.spydefi - INFO -    4. @topcallerschannel (Score: 160, Mentions: 16, Achievements: 0)
+2025-05-27 10:42:03,585 - phoenix.spydefi - INFO -    5. @crikeycallz (Score: 160, Mentions: 16, Achievements: 0)
+2025-05-27 10:42:03,585 - phoenix.spydefi - INFO -    6. @maybac_whales (Score: 140, Mentions: 14, Achievements: 0)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO -    7. @donald_call (Score: 120, Mentions: 12, Achievements: 0)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO -    8. @poseidon_degen_calls (Score: 110, Mentions: 11, Achievements: 0)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO -    9. @insider_eca (Score: 110, Mentions: 11, Achievements: 0)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO -    10. @pepe_calls28 (Score: 100, Mentions: 10, Achievements: 0)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - 🎯 Step 4: Analyzing performance for top 50 KOLs using REAL SpyDefi data...
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - 📊 Analyzing 1/50: @kariusgemscalls (Mentions: 33, Achievements: 0)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - ✅ Analysis complete for @kariusgemscalls (Score: 22.8, Strategy: MIXED)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - 📊 Analyzing 2/50: @zen_call (Mentions: 26, Achievements: 0)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - ✅ Analysis complete for @zen_call (Score: 30.8, Strategy: MIXED)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - 📊 Analyzing 3/50: @marksgems (Mentions: 17, Achievements: 0)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - ✅ Analysis complete for @marksgems (Score: 21.3, Strategy: MIXED)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - 📊 Analyzing 4/50: @topcallerschannel (Mentions: 16, Achievements: 0)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - ✅ Analysis complete for @topcallerschannel (Score: 31.2, Strategy: MIXED)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - 📊 Analyzing 5/50: @crikeycallz (Mentions: 16, Achievements: 0)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - ✅ Analysis complete for @crikeycallz (Score: 30.8, Strategy: MIXED)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - 📊 Analyzing 6/50: @maybac_whales (Mentions: 14, Achievements: 0)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - ✅ Analysis complete for @maybac_whales (Score: 20.0, Strategy: MIXED)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - 📊 Analyzing 7/50: @donald_call (Mentions: 12, Achievements: 0)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - ✅ Analysis complete for @donald_call (Score: 25.6, Strategy: MIXED)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - 📊 Analyzing 8/50: @poseidon_degen_calls (Mentions: 11, Achievements: 0)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - ✅ Analysis complete for @poseidon_degen_calls (Score: 25.1, Strategy: MIXED)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - 📊 Analyzing 9/50: @insider_eca (Mentions: 11, Achievements: 0)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - ✅ Analysis complete for @insider_eca (Score: 20.0, Strategy: MIXED)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - 📊 Analyzing 10/50: @pepe_calls28 (Mentions: 10, Achievements: 0)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - ✅ Analysis complete for @pepe_calls28 (Score: 25.4, Strategy: MIXED)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - 📈 Progress: 10/50 KOLs processed (10 successful)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - 📊 Analyzing 11/50: @chiggajogambles (Mentions: 9, Achievements: 0)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - ✅ Analysis complete for @chiggajogambles (Score: 20.0, Strategy: MIXED)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - 📊 Analyzing 12/50: @cluelesscalls (Mentions: 9, Achievements: 0)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - ✅ Analysis complete for @cluelesscalls (Score: 23.6, Strategy: MIXED)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - 📊 Analyzing 13/50: @craftygambles (Mentions: 8, Achievements: 0)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - ✅ Analysis complete for @craftygambles (Score: 22.1, Strategy: MIXED)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - 📊 Analyzing 14/50: @michacalls (Mentions: 8, Achievements: 0)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - ✅ Analysis complete for @michacalls (Score: 27.1, Strategy: MIXED)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - 📊 Analyzing 15/50: @thanos_call (Mentions: 8, Achievements: 0)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - ✅ Analysis complete for @thanos_call (Score: 22.4, Strategy: MIXED)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - 📊 Analyzing 16/50: @poetcalls (Mentions: 8, Achievements: 0)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - ✅ Analysis complete for @poetcalls (Score: 24.9, Strategy: MIXED)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - 📊 Analyzing 17/50: @bruisersgambles (Mentions: 8, Achievements: 0)
+2025-05-27 10:42:03,601 - phoenix.spydefi - INFO - ✅ Analysis complete for @bruisersgambles (Score: 20.0, Strategy: MIXED)
+2025-05-27 10:42:03,617 - phoenix.spydefi - INFO - 📊 Analyzing 18/50: @ggcalls_eth (Mentions: 8, Achievements: 0)
+2025-05-27 10:42:03,617 - phoenix.spydefi - INFO - ✅ Analysis complete for @ggcalls_eth (Score: 27.1, Strategy: MIXED)
+2025-05-27 10:42:03,617 - phoenix.spydefi - INFO - 📊 Analyzing 19/50: @gemsmineeth (Mentions: 8, Achievements: 0)
+2025-05-27 10:42:03,617 - phoenix.spydefi - INFO - ✅ Analysis complete for @gemsmineeth (Score: 22.8, Strategy: MIXED)
+2025-05-27 10:42:03,617 - phoenix.spydefi - INFO - 📊 Analyzing 20/50: @redbullcallz (Mentions: 7, Achievements: 0)
+2025-05-27 10:42:03,617 - phoenix.spydefi - INFO - ✅ Analysis complete for @redbullcallz (Score: 20.0, Strategy: MIXED)
+2025-05-27 10:42:03,617 - phoenix.spydefi - INFO - 📈 Progress: 20/50 KOLs processed (20 successful)
+2025-05-27 10:42:03,617 - phoenix.spydefi - INFO - 📊 Analyzing 21/50: @cryptosparrowcall9 (Mentions: 7, Achievements: 0)
+2025-05-27 10:42:03,617 - phoenix.spydefi - INFO - ✅ Analysis complete for @cryptosparrowcall9 (Score: 26.3, Strategy: MIXED)
+2025-05-27 10:42:03,617 - phoenix.spydefi - INFO - 📊 Analyzing 22/50: @lionjungle (Mentions: 7, Achievements: 0)
+2025-05-27 10:42:03,617 - phoenix.spydefi - INFO - ✅ Analysis complete for @lionjungle (Score: 20.0, Strategy: MIXED)
+2025-05-27 10:42:03,617 - phoenix.spydefi - INFO - 📊 Analyzing 23/50: @ethafterdark (Mentions: 7, Achievements: 0)
+2025-05-27 10:42:03,617 - phoenix.spydefi - INFO - ✅ Analysis complete for @ethafterdark (Score: 26.4, Strategy: MIXED)
+2025-05-27 10:42:03,617 - phoenix.spydefi - INFO - 📊 Analyzing 24/50: @apollo_degen_calls (Mentions: 7, Achievements: 0)
+2025-05-27 10:42:03,617 - phoenix.spydefi - INFO - ✅ Analysis complete for @apollo_degen_calls (Score: 21.5, Strategy: MIXED)
+2025-05-27 10:42:03,617 - phoenix.spydefi - INFO - 📊 Analyzing 25/50: @jyue_secretbase (Mentions: 7, Achievements: 0)
+2025-05-27 10:42:03,617 - phoenix.spydefi - INFO - ✅ Analysis complete for @jyue_secretbase (Score: 27.9, Strategy: MIXED)
+2025-05-27 10:42:03,617 - phoenix.spydefi - INFO - 📊 Analyzing 26/50: @marine_cryptocalls (Mentions: 7, Achievements: 0)
+2025-05-27 10:42:03,617 - phoenix.spydefi - INFO - ✅ Analysis complete for @marine_cryptocalls (Score: 20.0, Strategy: MIXED)
+2025-05-27 10:42:03,617 - phoenix.spydefi - INFO - 📊 Analyzing 27/50: @baseddegengems (Mentions: 7, Achievements: 0)
+2025-05-27 10:42:03,617 - phoenix.spydefi - INFO - ✅ Analysis complete for @baseddegengems (Score: 28.5, Strategy: MIXED)
+2025-05-27 10:42:03,617 - phoenix.spydefi - INFO - 📊 Analyzing 28/50: @cryptsycalls (Mentions: 7, Achievements: 0)
+2025-05-27 10:42:03,617 - phoenix.spydefi - INFO - ✅ Analysis complete for @cryptsycalls (Score: 24.4, Strategy: MIXED)
+2025-05-27 10:42:03,617 - phoenix.spydefi - INFO - 📊 Analyzing 29/50: @icallings (Mentions: 7, Achievements: 0)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - ✅ Analysis complete for @icallings (Score: 31.7, Strategy: MIXED)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - 📊 Analyzing 30/50: @metagambler (Mentions: 7, Achievements: 0)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - ✅ Analysis complete for @metagambler (Score: 27.5, Strategy: MIXED)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - 📈 Progress: 30/50 KOLs processed (30 successful)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - 📊 Analyzing 31/50: @fanboycalls (Mentions: 7, Achievements: 0)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - ✅ Analysis complete for @fanboycalls (Score: 20.0, Strategy: MIXED)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - 📊 Analyzing 32/50: @fanboydegen (Mentions: 7, Achievements: 0)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - ✅ Analysis complete for @fanboydegen (Score: 20.0, Strategy: MIXED)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - 📊 Analyzing 33/50: @kulture_kall (Mentions: 7, Achievements: 0)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - ✅ Analysis complete for @kulture_kall (Score: 20.0, Strategy: MIXED)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - 📊 Analyzing 34/50: @sersgemsnipes (Mentions: 7, Achievements: 0)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - ✅ Analysis complete for @sersgemsnipes (Score: 23.6, Strategy: MIXED)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - 📊 Analyzing 35/50: @degenprintors (Mentions: 7, Achievements: 0)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - ✅ Analysis complete for @degenprintors (Score: 20.5, Strategy: MIXED)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - 📊 Analyzing 36/50: @bane_calls (Mentions: 6, Achievements: 0)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - ✅ Analysis complete for @bane_calls (Score: 20.0, Strategy: MIXED)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - 📊 Analyzing 37/50: @gemskungems (Mentions: 6, Achievements: 0)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - ✅ Analysis complete for @gemskungems (Score: 23.6, Strategy: MIXED)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - 📊 Analyzing 38/50: @topgcalls (Mentions: 6, Achievements: 0)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - ✅ Analysis complete for @topgcalls (Score: 28.4, Strategy: MIXED)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - 📊 Analyzing 39/50: @nikola_calls (Mentions: 6, Achievements: 0)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - ✅ Analysis complete for @nikola_calls (Score: 20.0, Strategy: MIXED)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - 📊 Analyzing 40/50: @familycalls (Mentions: 6, Achievements: 0)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - ✅ Analysis complete for @familycalls (Score: 20.6, Strategy: MIXED)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - 📈 Progress: 40/50 KOLs processed (40 successful)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - 📊 Analyzing 41/50: @degensbygem (Mentions: 6, Achievements: 0)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - ✅ Analysis complete for @degensbygem (Score: 21.3, Strategy: MIXED)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - 📊 Analyzing 42/50: @iamskem (Mentions: 6, Achievements: 0)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - ✅ Analysis complete for @iamskem (Score: 20.0, Strategy: MIXED)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - 📊 Analyzing 43/50: @nunudegens (Mentions: 6, Achievements: 0)
+2025-05-27 10:42:03,632 - phoenix.spydefi - INFO - ✅ Analysis complete for @nunudegens (Score: 20.0, Strategy: MIXED)
+2025-05-27 10:42:03,648 - phoenix.spydefi - INFO - 📊 Analyzing 44/50: @nunuplays (Mentions: 6, Achievements: 0)
+2025-05-27 10:42:03,648 - phoenix.spydefi - INFO - ✅ Analysis complete for @nunuplays (Score: 22.8, Strategy: MIXED)
+2025-05-27 10:42:03,648 - phoenix.spydefi - INFO - 📊 Analyzing 45/50: @chapoinsider (Mentions: 6, Achievements: 0)
+2025-05-27 10:42:03,648 - phoenix.spydefi - INFO - ✅ Analysis complete for @chapoinsider (Score: 23.1, Strategy: MIXED)
+2025-05-27 10:42:03,648 - phoenix.spydefi - INFO - 📊 Analyzing 46/50: @jacob1_community (Mentions: 6, Achievements: 0)
+2025-05-27 10:42:03,648 - phoenix.spydefi - INFO - ✅ Analysis complete for @jacob1_community (Score: 20.0, Strategy: MIXED)
+2025-05-27 10:42:03,648 - phoenix.spydefi - INFO - 📊 Analyzing 47/50: @nakamoto_gamble (Mentions: 6, Achievements: 0)
+2025-05-27 10:42:03,648 - phoenix.spydefi - INFO - ✅ Analysis complete for @nakamoto_gamble (Score: 24.6, Strategy: MIXED)
+2025-05-27 10:42:03,648 - phoenix.spydefi - INFO - 📊 Analyzing 48/50: @emilyssafugems (Mentions: 6, Achievements: 0)
+2025-05-27 10:42:03,648 - phoenix.spydefi - INFO - ✅ Analysis complete for @emilyssafugems (Score: 24.4, Strategy: MIXED)
+2025-05-27 10:42:03,648 - phoenix.spydefi - INFO - 📊 Analyzing 49/50: @rimberiogamble (Mentions: 6, Achievements: 0)
+2025-05-27 10:42:03,648 - phoenix.spydefi - INFO - ✅ Analysis complete for @rimberiogamble (Score: 24.3, Strategy: MIXED)
+2025-05-27 10:42:03,648 - phoenix.spydefi - INFO - 📊 Analyzing 50/50: @alcaponesplay (Mentions: 6, Achievements: 0)
+2025-05-27 10:42:03,648 - phoenix.spydefi - INFO - ✅ Analysis complete for @alcaponesplay (Score: 20.0, Strategy: MIXED)
+2025-05-27 10:42:03,648 - phoenix.spydefi - INFO - 📈 Progress: 50/50 KOLs processed (50 successful)
+2025-05-27 10:42:03,648 - phoenix.spydefi - INFO - 📊 FINAL ANALYSIS STATS:
+2025-05-27 10:42:03,648 - phoenix.spydefi - INFO -    ✅ Successfully analyzed: 50
+2025-05-27 10:42:03,648 - phoenix.spydefi - INFO -    📊 All analyses based on REAL SpyDefi data
+2025-05-27 10:42:03,648 - phoenix.spydefi - INFO -    🚫 NO channel discovery = NO flood waits
+2025-05-27 10:42:03,648 - phoenix.spydefi - INFO - ✅ SpyDefi DIRECT analysis completed successfully!
+2025-05-27 10:42:03,648 - phoenix.spydefi - INFO - 📊 Results: 50 KOLs analyzed in 8.8s
+2025-05-27 10:42:03,648 - phoenix.spydefi - INFO - 🎯 Metrics: 39.1% success, 20.9% 2x rate, 9.5% 5x rate
+2025-05-27 10:42:03,648 - phoenix.spydefi - INFO - 🚫 ZERO flood waits - analysis based purely on SpyDefi data
+2025-05-27 10:42:03,976 - phoenix.export - ERROR - ❌ Error exporting SPYDEFI CSV: 'KOLPerformance' object has no attribute 'avg_max_pullback_percent'
+2025-05-27 10:42:03,976 - phoenix.export - INFO - ✅ Exported SPYDEFI summary to TXT: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis_summary.txt
+2025-05-27 10:42:03,976 - phoenix - ERROR - ❌ Export failed for both CSV and TXT
+2025-05-27 10:42:04,007 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-27 10:42:04,007 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-27 10:42:04,023 - phoenix.spydefi - INFO - 🔌 Telegram disconnected
+2025-05-27 10:42:04,023 - phoenix - INFO - ✅ SPYDEFI analysis completed successfully!
+2025-05-27 10:42:04,023 - phoenix - INFO - 📁 Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-27 11:01:58,016 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-27 11:01:58,032 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-27 11:01:58,461 - phoenix - INFO - ✅ Imported FIXED SPYDEFI module
+2025-05-27 11:01:58,461 - phoenix - INFO - 🚀 Starting SPYDEFI KOL analysis with MODULE CONFIG ONLY
+2025-05-27 11:01:58,461 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-27 11:01:58,651 - phoenix.api_manager - INFO - ✅ Birdeye API initialized for mainstream token analysis
+2025-05-27 11:01:58,667 - phoenix.api_manager - INFO - ✅ Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-27 11:01:58,667 - phoenix.api_manager - INFO - ✅ Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-27 11:01:58,667 - phoenix - INFO - ✅ API manager initialized successfully
+2025-05-27 11:01:58,670 - phoenix.spydefi - INFO - 🎯 SpyDefi Analyzer initialized
+2025-05-27 11:01:58,670 - phoenix.spydefi - INFO - ⚙️ Configuration: 8h scan, Top 50 KOLs
+2025-05-27 11:01:58,670 - phoenix.spydefi - INFO - ✅ API manager configured for real token analysis
+2025-05-27 11:01:58,670 - phoenix - INFO - 🔧 Using SpyDefi module config ONLY - NO CLI override
+2025-05-27 11:01:58,670 - phoenix - INFO - 📊 Module enforces: 8h peak scanning, Top 50 KOLs, Min 100 subs
+2025-05-27 11:01:58,670 - phoenix - INFO - ✅ SPYDEFI analyzer initialized with MODULE CONFIG
+2025-05-27 11:01:58,670 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-27 11:01:58,779 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-27 11:01:59,576 - phoenix.spydefi - INFO - 📱 Telegram client started
+2025-05-27 11:01:59,576 - phoenix.spydefi - INFO - 🚀 Starting SpyDefi KOL analysis...
+2025-05-27 11:01:59,576 - phoenix.spydefi - INFO - ⚙️ Configuration: 8h scan, Top 50 KOLs
+2025-05-27 11:01:59,585 - phoenix.spydefi - INFO - 📱 Fetching SpyDefi messages...
+2025-05-27 11:01:59,712 - phoenix.spydefi - INFO - ✅ Found SpyDefi channel: SpyDefi
+2025-05-27 11:01:59,712 - phoenix.spydefi - INFO - ⏰ Scanning last 8 hours (peak crypto hours)
+2025-05-27 11:02:09,121 - phoenix.spydefi - INFO - 📊 Processed 1000 messages, found 465 achievement messages
+2025-05-27 11:02:19,203 - phoenix.spydefi - INFO - 📊 Processed 2000 messages, found 1114 achievement messages
+2025-05-27 11:02:29,327 - phoenix.spydefi - INFO - 📊 Processed 3000 messages, found 1711 achievement messages
+2025-05-27 11:02:39,394 - phoenix.spydefi - INFO - 📊 Processed 4000 messages, found 2226 achievement messages
+2025-05-27 11:02:49,514 - phoenix.spydefi - INFO - 📊 Processed 5000 messages, found 2763 achievement messages
+2025-05-27 11:02:59,614 - phoenix.spydefi - INFO - 📊 Processed 6000 messages, found 3406 achievement messages
+2025-05-27 11:02:59,614 - phoenix.spydefi - INFO - ✅ Found 3406 Achievement Unlocked messages from 6000 total messages
+2025-05-27 11:02:59,614 - phoenix.spydefi - INFO - 🔍 Extracting KOL mentions from messages...
+2025-05-27 11:02:59,614 - phoenix.spydefi - INFO - ✅ Extracted 50 valid KOLs from 409 total mentions
+2025-05-27 11:02:59,614 - phoenix.spydefi - INFO - 🏆 Top 10 KOLs: ['kariusgemscalls', 'ChapoInsider', 'Zen_call', 'hulkgemscalls_real', 'MarksGems', 'PEPE_Calls28', 'Thanos_Call', 'GemsmineEth', 'POSEIDON_DEGEN_CALLS', 'Insider_ECA']
+2025-05-27 11:02:59,614 - phoenix.spydefi - INFO - 📊 Analyzing 50 KOLs...
+2025-05-27 11:02:59,614 - phoenix.spydefi - INFO - [1/50] Analyzing @kariusgemscalls
+2025-05-27 11:02:59,614 - phoenix.spydefi - INFO - 📊 Analyzing performance for @kariusgemscalls (100 mentions)
+2025-05-27 11:03:00,016 - phoenix.spydefi - INFO - ✅ Found 20 token calls for @kariusgemscalls
+2025-05-27 11:03:00,016 - phoenix.spydefi - INFO - 🔍 Analyzing 20 token calls for @kariusgemscalls
+2025-05-27 11:03:08,290 - phoenix.birdeye - WARNING - Rejecting all-lowercase address: acffxsnhwupqu4bmzp3tveyrkqfwfku181zkgcgzb2zr
+2025-05-27 11:03:08,290 - phoenix.birdeye - WARNING - Invalid token address format: acffxsnhwupqu4bmzp3tveyrkqfwfku181zkgcgzb2zr
+2025-05-27 11:03:34,710 - phoenix.helius - ERROR - Helius API request failed: 400 Client Error: Bad Request for url: https://api.helius.xyz/v0/addresses/evvzvjmg7n5t1etqxx9i5oxuaaczv9ezhtker4uzpump/transactions?limit=50&type=SWAP&api-key=a6fdbc80-e49e-427c-a554-f27ae9949e5c
+2025-05-27 11:03:34,710 - phoenix.helius - ERROR - Failed to get enhanced transactions: 400 Client Error: Bad Request for url: https://api.helius.xyz/v0/addresses/evvzvjmg7n5t1etqxx9i5oxuaaczv9ezhtker4uzpump/transactions?limit=50&type=SWAP&api-key=a6fdbc80-e49e-427c-a554-f27ae9949e5c
+2025-05-27 11:03:34,827 - phoenix.helius - ERROR - Helius API request failed: 400 Client Error: Bad Request for url: https://api.helius.xyz/v0/addresses/evvzvjmg7n5t1etqxx9i5oxuaaczv9ezhtker4uzpump/transactions?limit=1&api-key=a6fdbc80-e49e-427c-a554-f27ae9949e5c
+2025-05-27 11:03:34,933 - phoenix.helius - ERROR - Helius API request failed: 400 Client Error: Bad Request for url: https://api.helius.xyz/v0/addresses/evvzvjmg7n5t1etqxx9i5oxuaaczv9ezhtker4uzpump/transactions?limit=50&type=SWAP&api-key=a6fdbc80-e49e-427c-a554-f27ae9949e5c
+2025-05-27 11:03:34,933 - phoenix.helius - ERROR - Failed to get enhanced transactions: 400 Client Error: Bad Request for url: https://api.helius.xyz/v0/addresses/evvzvjmg7n5t1etqxx9i5oxuaaczv9ezhtker4uzpump/transactions?limit=50&type=SWAP&api-key=a6fdbc80-e49e-427c-a554-f27ae9949e5c
+2025-05-27 11:03:35,020 - phoenix.helius - ERROR - Helius API request failed: 400 Client Error: Bad Request for url: https://api.helius.xyz/v0/addresses/evvzvjmg7n5t1etqxx9i5oxuaaczv9ezhtker4uzpump/transactions?limit=1&api-key=a6fdbc80-e49e-427c-a554-f27ae9949e5c
+2025-05-27 11:07:58,156 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-27 11:07:58,156 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-27 11:07:58,593 - phoenix - INFO - ✅ Imported FIXED SPYDEFI module
+2025-05-27 11:07:58,593 - phoenix - INFO - 🚀 Starting SPYDEFI KOL analysis with MODULE CONFIG ONLY
+2025-05-27 11:07:58,593 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-27 11:07:58,797 - phoenix.api_manager - INFO - ✅ Birdeye API initialized for mainstream token analysis
+2025-05-27 11:07:58,797 - phoenix.api_manager - INFO - ✅ Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-27 11:07:58,797 - phoenix.api_manager - INFO - ✅ Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-27 11:07:58,797 - phoenix - INFO - ✅ API manager initialized successfully
+2025-05-27 11:07:58,797 - phoenix.spydefi - INFO - 🎯 SpyDefi Analyzer initialized
+2025-05-27 11:07:58,797 - phoenix.spydefi - INFO - ⚙️ Configuration: 8h scan, Top 50 KOLs
+2025-05-27 11:07:58,797 - phoenix.spydefi - INFO - ✅ API manager configured for real token analysis
+2025-05-27 11:07:58,797 - phoenix - INFO - 🔧 Using SpyDefi module config ONLY - NO CLI override
+2025-05-27 11:07:58,797 - phoenix - INFO - 📊 Module enforces: 8h peak scanning, Top 50 KOLs, Min 100 subs
+2025-05-27 11:07:58,797 - phoenix - INFO - ✅ SPYDEFI analyzer initialized with MODULE CONFIG
+2025-05-27 11:07:58,797 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-27 11:07:58,922 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-27 11:07:59,690 - phoenix.spydefi - INFO - 📱 Telegram client started
+2025-05-27 11:07:59,690 - phoenix.spydefi - INFO - 🚀 Starting SpyDefi KOL analysis...
+2025-05-27 11:07:59,690 - phoenix.spydefi - INFO - ⚙️ Configuration: 8h scan, Top 50 KOLs
+2025-05-27 11:07:59,690 - phoenix.spydefi - INFO - 📱 Fetching SpyDefi messages...
+2025-05-27 11:07:59,828 - phoenix.spydefi - INFO - ✅ Found SpyDefi channel: SpyDefi
+2025-05-27 11:07:59,828 - phoenix.spydefi - INFO - ⏰ Scanning last 8 hours (peak crypto hours)
+2025-05-27 11:08:09,219 - phoenix.spydefi - INFO - 📊 Processed 1000 messages, found 467 achievement messages
+2025-05-27 11:08:19,325 - phoenix.spydefi - INFO - 📊 Processed 2000 messages, found 1124 achievement messages
+2025-05-27 11:09:02,124 - phoenix.spydefi - INFO - 📊 Processed 3000 messages, found 1709 achievement messages
+2025-05-27 11:09:12,248 - phoenix.spydefi - INFO - 📊 Processed 4000 messages, found 2229 achievement messages
+2025-05-27 11:09:22,316 - phoenix.spydefi - INFO - 📊 Processed 5000 messages, found 2763 achievement messages
+2025-05-27 11:09:32,403 - phoenix.spydefi - INFO - 📊 Processed 6000 messages, found 3409 achievement messages
+2025-05-27 11:09:32,403 - phoenix.spydefi - INFO - ✅ Found 3409 Achievement Unlocked messages from 6000 total messages
+2025-05-27 11:09:32,403 - phoenix.spydefi - INFO - 🔍 Extracting KOL mentions from messages...
+2025-05-27 11:09:32,419 - phoenix.spydefi - INFO - ✅ Extracted 50 valid KOLs from 408 total mentions
+2025-05-27 11:09:32,419 - phoenix.spydefi - INFO - 🏆 Top 10 KOLs: ['kariusgemscalls', 'ChapoInsider', 'Zen_call', 'MarksGems', 'hulkgemscalls_real', 'PEPE_Calls28', 'GemsmineEth', 'Thanos_Call', 'POSEIDON_DEGEN_CALLS', 'Insider_ECA']
+2025-05-27 11:09:32,419 - phoenix.spydefi - INFO - 📊 Analyzing 50 KOLs...
+2025-05-27 11:09:32,419 - phoenix.spydefi - INFO - [1/50] Analyzing @kariusgemscalls
+2025-05-27 11:09:32,419 - phoenix.spydefi - INFO - 📊 Analyzing performance for @kariusgemscalls (102 mentions)
+2025-05-27 11:09:32,797 - phoenix.spydefi - INFO - ✅ Found 20 token calls for @kariusgemscalls
+2025-05-27 11:09:32,797 - phoenix.spydefi - INFO - 🔍 Analyzing 20 token calls for @kariusgemscalls
+2025-05-27 11:10:26,756 - phoenix.spydefi - INFO - ✅ Real analysis for @kariusgemscalls: 68.4 score
+2025-05-27 11:10:27,267 - phoenix.spydefi - INFO - [2/50] Analyzing @ChapoInsider
+2025-05-27 11:10:27,267 - phoenix.spydefi - INFO - 📊 Analyzing performance for @ChapoInsider (96 mentions)
+2025-05-27 11:10:27,393 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @ChapoInsider: 69.1 score
+2025-05-27 11:10:27,907 - phoenix.spydefi - INFO - [3/50] Analyzing @Zen_call
+2025-05-27 11:10:27,907 - phoenix.spydefi - INFO - 📊 Analyzing performance for @Zen_call (80 mentions)
+2025-05-27 11:10:27,908 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @Zen_call: 65.9 score
+2025-05-27 11:10:28,409 - phoenix.spydefi - INFO - [4/50] Analyzing @MarksGems
+2025-05-27 11:10:28,409 - phoenix.spydefi - INFO - 📊 Analyzing performance for @MarksGems (74 mentions)
+2025-05-27 11:10:28,409 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @MarksGems: 69.7 score
+2025-05-27 11:10:28,912 - phoenix.spydefi - INFO - [5/50] Analyzing @hulkgemscalls_real
+2025-05-27 11:10:28,912 - phoenix.spydefi - INFO - 📊 Analyzing performance for @hulkgemscalls_real (72 mentions)
+2025-05-27 11:10:28,913 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @hulkgemscalls_real: 68.7 score
+2025-05-27 11:10:29,414 - phoenix.spydefi - INFO - [6/50] Analyzing @PEPE_Calls28
+2025-05-27 11:10:29,416 - phoenix.spydefi - INFO - 📊 Analyzing performance for @PEPE_Calls28 (64 mentions)
+2025-05-27 11:10:29,416 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @PEPE_Calls28: 65.3 score
+2025-05-27 11:10:29,925 - phoenix.spydefi - INFO - [7/50] Analyzing @GemsmineEth
+2025-05-27 11:10:29,925 - phoenix.spydefi - INFO - 📊 Analyzing performance for @GemsmineEth (62 mentions)
+2025-05-27 11:10:29,925 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @GemsmineEth: 75.0 score
+2025-05-27 11:10:30,439 - phoenix.spydefi - INFO - [8/50] Analyzing @Thanos_Call
+2025-05-27 11:10:30,439 - phoenix.spydefi - INFO - 📊 Analyzing performance for @Thanos_Call (61 mentions)
+2025-05-27 11:10:30,440 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @Thanos_Call: 71.8 score
+2025-05-27 11:10:30,952 - phoenix.spydefi - INFO - [9/50] Analyzing @POSEIDON_DEGEN_CALLS
+2025-05-27 11:10:30,952 - phoenix.spydefi - INFO - 📊 Analyzing performance for @POSEIDON_DEGEN_CALLS (50 mentions)
+2025-05-27 11:10:30,954 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @POSEIDON_DEGEN_CALLS: 68.9 score
+2025-05-27 11:10:31,456 - phoenix.spydefi - INFO - [10/50] Analyzing @Insider_ECA
+2025-05-27 11:10:31,456 - phoenix.spydefi - INFO - 📊 Analyzing performance for @Insider_ECA (48 mentions)
+2025-05-27 11:10:31,456 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @Insider_ECA: 63.9 score
+2025-05-27 11:10:31,456 - phoenix.spydefi - INFO - ✅ Completed 10/50 KOLs
+2025-05-27 11:10:31,970 - phoenix.spydefi - INFO - [11/50] Analyzing @michiosuzukiofsatoshicall
+2025-05-27 11:10:31,970 - phoenix.spydefi - INFO - 📊 Analyzing performance for @michiosuzukiofsatoshicall (44 mentions)
+2025-05-27 11:10:31,971 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @michiosuzukiofsatoshicall: 68.3 score
+2025-05-27 11:10:32,472 - phoenix.spydefi - INFO - [12/50] Analyzing @NIKOLA_CALLS
+2025-05-27 11:10:32,472 - phoenix.spydefi - INFO - 📊 Analyzing performance for @NIKOLA_CALLS (43 mentions)
+2025-05-27 11:10:32,473 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @NIKOLA_CALLS: 77.6 score
+2025-05-27 11:10:32,985 - phoenix.spydefi - INFO - [13/50] Analyzing @Mrbigbagcalls
+2025-05-27 11:10:32,985 - phoenix.spydefi - INFO - 📊 Analyzing performance for @Mrbigbagcalls (42 mentions)
+2025-05-27 11:10:32,985 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @Mrbigbagcalls: 74.9 score
+2025-05-27 11:10:33,496 - phoenix.spydefi - INFO - [14/50] Analyzing @SofiaCallss
+2025-05-27 11:10:33,496 - phoenix.spydefi - INFO - 📊 Analyzing performance for @SofiaCallss (37 mentions)
+2025-05-27 11:10:33,496 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @SofiaCallss: 60.8 score
+2025-05-27 11:10:34,004 - phoenix.spydefi - INFO - [15/50] Analyzing @dextradegems
+2025-05-27 11:10:34,004 - phoenix.spydefi - INFO - 📊 Analyzing performance for @dextradegems (36 mentions)
+2025-05-27 11:10:34,004 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @dextradegems: 77.8 score
+2025-05-27 11:10:34,517 - phoenix.spydefi - INFO - [16/50] Analyzing @DONALD_CALL
+2025-05-27 11:10:34,517 - phoenix.spydefi - INFO - 📊 Analyzing performance for @DONALD_CALL (36 mentions)
+2025-05-27 11:10:34,517 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @DONALD_CALL: 74.5 score
+2025-05-27 11:10:35,017 - phoenix.spydefi - INFO - [17/50] Analyzing @ZionGems
+2025-05-27 11:10:35,017 - phoenix.spydefi - INFO - 📊 Analyzing performance for @ZionGems (35 mentions)
+2025-05-27 11:10:35,017 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @ZionGems: 68.0 score
+2025-05-27 11:10:35,529 - phoenix.spydefi - INFO - [18/50] Analyzing @avrugs
+2025-05-27 11:10:35,529 - phoenix.spydefi - INFO - 📊 Analyzing performance for @avrugs (34 mentions)
+2025-05-27 11:10:35,529 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @avrugs: 66.6 score
+2025-05-27 11:10:36,039 - phoenix.spydefi - INFO - [19/50] Analyzing @QuartzETH
+2025-05-27 11:10:36,039 - phoenix.spydefi - INFO - 📊 Analyzing performance for @QuartzETH (33 mentions)
+2025-05-27 11:10:36,039 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @QuartzETH: 66.6 score
+2025-05-27 11:10:36,545 - phoenix.spydefi - INFO - [20/50] Analyzing @APOLLO_DEGEN_CALLS
+2025-05-27 11:10:36,545 - phoenix.spydefi - INFO - 📊 Analyzing performance for @APOLLO_DEGEN_CALLS (31 mentions)
+2025-05-27 11:10:36,546 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @APOLLO_DEGEN_CALLS: 62.0 score
+2025-05-27 11:10:36,546 - phoenix.spydefi - INFO - ✅ Completed 20/50 KOLs
+2025-05-27 11:10:37,057 - phoenix.spydefi - INFO - [21/50] Analyzing @MarkDegens
+2025-05-27 11:10:37,057 - phoenix.spydefi - INFO - 📊 Analyzing performance for @MarkDegens (30 mentions)
+2025-05-27 11:10:37,057 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @MarkDegens: 71.5 score
+2025-05-27 11:10:37,564 - phoenix.spydefi - INFO - [22/50] Analyzing @mattfuriecalls1
+2025-05-27 11:10:37,564 - phoenix.spydefi - INFO - 📊 Analyzing performance for @mattfuriecalls1 (30 mentions)
+2025-05-27 11:10:37,565 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @mattfuriecalls1: 67.0 score
+2025-05-27 11:10:38,077 - phoenix.spydefi - INFO - [23/50] Analyzing @baseddegengems
+2025-05-27 11:10:38,077 - phoenix.spydefi - INFO - 📊 Analyzing performance for @baseddegengems (29 mentions)
+2025-05-27 11:10:38,079 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @baseddegengems: 75.0 score
+2025-05-27 11:10:38,594 - phoenix.spydefi - INFO - [24/50] Analyzing @logiciancalls
+2025-05-27 11:10:38,594 - phoenix.spydefi - INFO - 📊 Analyzing performance for @logiciancalls (29 mentions)
+2025-05-27 11:10:38,595 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @logiciancalls: 73.5 score
+2025-05-27 11:10:39,095 - phoenix.spydefi - INFO - [25/50] Analyzing @Milagrosdegencalls
+2025-05-27 11:10:39,095 - phoenix.spydefi - INFO - 📊 Analyzing performance for @Milagrosdegencalls (28 mentions)
+2025-05-27 11:10:39,096 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @Milagrosdegencalls: 74.2 score
+2025-05-27 11:10:39,611 - phoenix.spydefi - INFO - [26/50] Analyzing @cortezgems
+2025-05-27 11:10:39,611 - phoenix.spydefi - INFO - 📊 Analyzing performance for @cortezgems (28 mentions)
+2025-05-27 11:10:39,611 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @cortezgems: 72.1 score
+2025-05-27 11:10:40,111 - phoenix.spydefi - INFO - [27/50] Analyzing @SirWilliams_Call
+2025-05-27 11:10:40,111 - phoenix.spydefi - INFO - 📊 Analyzing performance for @SirWilliams_Call (26 mentions)
+2025-05-27 11:10:40,111 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @SirWilliams_Call: 63.6 score
+2025-05-27 11:10:40,621 - phoenix.spydefi - INFO - [28/50] Analyzing @GM_Degencalls
+2025-05-27 11:10:40,628 - phoenix.spydefi - INFO - 📊 Analyzing performance for @GM_Degencalls (26 mentions)
+2025-05-27 11:10:40,628 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @GM_Degencalls: 60.4 score
+2025-05-27 11:10:41,141 - phoenix.spydefi - INFO - [29/50] Analyzing @Parkergamblles
+2025-05-27 11:10:41,141 - phoenix.spydefi - INFO - 📊 Analyzing performance for @Parkergamblles (25 mentions)
+2025-05-27 11:10:41,141 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @Parkergamblles: 83.7 score
+2025-05-27 11:10:41,652 - phoenix.spydefi - INFO - [30/50] Analyzing @Cryptosparrowcall9
+2025-05-27 11:10:41,652 - phoenix.spydefi - INFO - 📊 Analyzing performance for @Cryptosparrowcall9 (25 mentions)
+2025-05-27 11:10:41,652 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @Cryptosparrowcall9: 67.4 score
+2025-05-27 11:10:41,652 - phoenix.spydefi - INFO - ✅ Completed 30/50 KOLs
+2025-05-27 11:10:42,153 - phoenix.spydefi - INFO - [31/50] Analyzing @jacob1_community
+2025-05-27 11:10:42,153 - phoenix.spydefi - INFO - 📊 Analyzing performance for @jacob1_community (24 mentions)
+2025-05-27 11:10:42,153 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @jacob1_community: 67.7 score
+2025-05-27 11:10:42,663 - phoenix.spydefi - INFO - [32/50] Analyzing @mewgambles
+2025-05-27 11:10:42,663 - phoenix.spydefi - INFO - 📊 Analyzing performance for @mewgambles (24 mentions)
+2025-05-27 11:10:42,664 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @mewgambles: 74.4 score
+2025-05-27 11:10:43,173 - phoenix.spydefi - INFO - [33/50] Analyzing @michacalls
+2025-05-27 11:10:43,173 - phoenix.spydefi - INFO - 📊 Analyzing performance for @michacalls (23 mentions)
+2025-05-27 11:10:43,173 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @michacalls: 70.7 score
+2025-05-27 11:10:43,686 - phoenix.spydefi - INFO - [34/50] Analyzing @RimberioGamble
+2025-05-27 11:10:43,686 - phoenix.spydefi - INFO - 📊 Analyzing performance for @RimberioGamble (23 mentions)
+2025-05-27 11:10:43,686 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @RimberioGamble: 72.4 score
+2025-05-27 11:10:44,187 - phoenix.spydefi - INFO - [35/50] Analyzing @onchainalphatrench
+2025-05-27 11:10:44,187 - phoenix.spydefi - INFO - 📊 Analyzing performance for @onchainalphatrench (22 mentions)
+2025-05-27 11:10:44,187 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @onchainalphatrench: 76.3 score
+2025-05-27 11:10:44,687 - phoenix.spydefi - INFO - [36/50] Analyzing @Vortex_Gamble
+2025-05-27 11:10:44,687 - phoenix.spydefi - INFO - 📊 Analyzing performance for @Vortex_Gamble (21 mentions)
+2025-05-27 11:10:44,687 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @Vortex_Gamble: 75.1 score
+2025-05-27 11:10:45,197 - phoenix.spydefi - INFO - [37/50] Analyzing @TopCallersChannel
+2025-05-27 11:10:45,197 - phoenix.spydefi - INFO - 📊 Analyzing performance for @TopCallersChannel (20 mentions)
+2025-05-27 11:10:45,197 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @TopCallersChannel: 70.2 score
+2025-05-27 11:10:45,713 - phoenix.spydefi - INFO - [38/50] Analyzing @GoonsCalls
+2025-05-27 11:10:45,713 - phoenix.spydefi - INFO - 📊 Analyzing performance for @GoonsCalls (20 mentions)
+2025-05-27 11:10:45,713 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @GoonsCalls: 68.2 score
+2025-05-27 11:10:46,221 - phoenix.spydefi - INFO - [39/50] Analyzing @JuLzLabs
+2025-05-27 11:10:46,221 - phoenix.spydefi - INFO - 📊 Analyzing performance for @JuLzLabs (20 mentions)
+2025-05-27 11:10:46,222 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @JuLzLabs: 63.2 score
+2025-05-27 11:10:46,735 - phoenix.spydefi - INFO - [40/50] Analyzing @BlockChainBrothersGambles
+2025-05-27 11:10:46,735 - phoenix.spydefi - INFO - 📊 Analyzing performance for @BlockChainBrothersGambles (19 mentions)
+2025-05-27 11:10:46,735 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @BlockChainBrothersGambles: 70.8 score
+2025-05-27 11:10:46,735 - phoenix.spydefi - INFO - ✅ Completed 40/50 KOLs
+2025-05-27 11:10:47,236 - phoenix.spydefi - INFO - [41/50] Analyzing @DegenSeals
+2025-05-27 11:10:47,236 - phoenix.spydefi - INFO - 📊 Analyzing performance for @DegenSeals (19 mentions)
+2025-05-27 11:10:47,236 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @DegenSeals: 74.2 score
+2025-05-27 11:10:47,750 - phoenix.spydefi - INFO - [42/50] Analyzing @MrEduDotFun
+2025-05-27 11:10:47,750 - phoenix.spydefi - INFO - 📊 Analyzing performance for @MrEduDotFun (19 mentions)
+2025-05-27 11:10:47,750 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @MrEduDotFun: 76.8 score
+2025-05-27 11:10:48,258 - phoenix.spydefi - INFO - [43/50] Analyzing @CrikeyCallz
+2025-05-27 11:10:48,258 - phoenix.spydefi - INFO - 📊 Analyzing performance for @CrikeyCallz (18 mentions)
+2025-05-27 11:10:48,259 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @CrikeyCallz: 74.3 score
+2025-05-27 11:10:48,767 - phoenix.spydefi - INFO - [44/50] Analyzing @callsbyremy
+2025-05-27 11:10:48,767 - phoenix.spydefi - INFO - 📊 Analyzing performance for @callsbyremy (18 mentions)
+2025-05-27 11:10:48,767 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @callsbyremy: 70.7 score
+2025-05-27 11:10:49,271 - phoenix.spydefi - INFO - [45/50] Analyzing @wagmiplays
+2025-05-27 11:10:49,271 - phoenix.spydefi - INFO - 📊 Analyzing performance for @wagmiplays (18 mentions)
+2025-05-27 11:10:49,271 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @wagmiplays: 75.9 score
+2025-05-27 11:10:49,783 - phoenix.spydefi - INFO - [46/50] Analyzing @strixsclub
+2025-05-27 11:10:49,783 - phoenix.spydefi - INFO - 📊 Analyzing performance for @strixsclub (18 mentions)
+2025-05-27 11:10:49,784 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @strixsclub: 72.0 score
+2025-05-27 11:10:50,286 - phoenix.spydefi - INFO - [47/50] Analyzing @alcaponesplay
+2025-05-27 11:10:50,286 - phoenix.spydefi - INFO - 📊 Analyzing performance for @alcaponesplay (18 mentions)
+2025-05-27 11:10:50,287 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @alcaponesplay: 76.7 score
+2025-05-27 11:10:50,796 - phoenix.spydefi - INFO - [48/50] Analyzing @RockefellerJ0
+2025-05-27 11:10:50,796 - phoenix.spydefi - INFO - 📊 Analyzing performance for @RockefellerJ0 (18 mentions)
+2025-05-27 11:10:50,798 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @RockefellerJ0: 68.6 score
+2025-05-27 11:10:51,313 - phoenix.spydefi - INFO - [49/50] Analyzing @WhaleWalletWatchers
+2025-05-27 11:10:51,313 - phoenix.spydefi - INFO - 📊 Analyzing performance for @WhaleWalletWatchers (18 mentions)
+2025-05-27 11:10:51,314 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @WhaleWalletWatchers: 68.1 score
+2025-05-27 11:10:51,820 - phoenix.spydefi - INFO - [50/50] Analyzing @bruisersgambles
+2025-05-27 11:10:51,827 - phoenix.spydefi - INFO - 📊 Analyzing performance for @bruisersgambles (18 mentions)
+2025-05-27 11:10:51,829 - phoenix.spydefi - INFO - 📊 Mention-based analysis for @bruisersgambles: 65.0 score
+2025-05-27 11:10:51,829 - phoenix.spydefi - INFO - ✅ Completed 50/50 KOLs
+2025-05-27 11:10:52,330 - phoenix.spydefi - INFO - 💾 Cache saved with 50 KOLs
+2025-05-27 11:10:52,330 - phoenix.spydefi - INFO - ✅ Analysis complete! 50 KOLs analyzed in 172.6s
+2025-05-27 11:10:52,330 - phoenix.spydefi - INFO - 📊 Overall: 79.6% success, 58.2% 2x rate
+2025-05-27 11:10:52,710 - phoenix.export - INFO - ✅ Exported 50 KOLs to SPYDEFI CSV: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-27 11:10:52,710 - phoenix.export - INFO - ✅ Exported SPYDEFI summary to TXT: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis_summary.txt
+2025-05-27 11:10:52,710 - phoenix - INFO - ✅ SPYDEFI results exported successfully
+2025-05-27 11:10:52,710 - phoenix - INFO - 📄 CSV: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-27 11:10:52,710 - phoenix - INFO - 📄 Summary: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis_summary.txt
+2025-05-27 11:10:52,741 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-27 11:10:52,741 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-27 11:10:52,766 - phoenix.spydefi - INFO - 📱 Telegram client disconnected
+2025-05-27 11:10:52,766 - phoenix - INFO - ✅ SPYDEFI analysis completed successfully!
+2025-05-27 11:10:52,766 - phoenix - INFO - 📁 Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv

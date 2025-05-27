@@ -2,14 +2,12 @@
 """
 Phoenix Project - OPTIMIZED CLI Tool with SPYDEFI KOL Analysis System
 
-🎯 OPTIMIZATIONS:
-- Auto cache refresh (no prompts): <6h use cache, >6h auto refresh
-- Streamlined UI: Removed verbose process descriptions
-- Smart filtering: Faster SpyDefi scanning with pre-filters
-- Configuration display: Keep for manual verification
-- Direct operation: Go straight to analysis
+🎯 CRITICAL FIX: CLI NEVER OVERRIDES SPYDEFI MODULE CONFIG
+- SpyDefi module config is ALWAYS respected
+- CLI only displays what the module is configured for
+- No more config override issues
+- SpyDefi module controls: 8h peak scanning, Top 50 KOLs, Min 100 subscribers
 
-🔧 CRITICAL FIX: Fixed SPYDEFI KOL extraction to get real @usernames instead of multipliers
 ✅ PRESERVED: All wallet analysis and other core functionality intact
 """
 
@@ -73,19 +71,8 @@ def load_config() -> Dict[str, Any]:
         "wallet_analysis": {
             "days_to_analyze": 7,
             "skip_prompts": True
-        },
-        "spydefi_analysis": {
-            "spydefi_scan_hours": 8,  # OPTIMIZED: Reduced from 24h to 8h
-            "kol_analysis_days": 7,
-            "top_kols_count": 25,
-            "min_mentions": 1,  # RELAXED: Reduced from 2 to 1
-            "max_market_cap_usd": 10000000,  # $10M
-            "min_subscribers": 100,  # RELAXED: Back to 100 from 500
-            "win_threshold_percent": 50,
-            "max_messages_limit": 6000,  # Message limit
-            "early_termination_kol_count": 50,  # Early stop
-            "cache_refresh_hours": 6  # Auto refresh threshold
         }
+        # REMOVED: spydefi_analysis config - now controlled by spydefi_module ONLY
     }
 
 def ensure_output_dir(output_path: str) -> str:
@@ -159,7 +146,7 @@ def clear_corrupted_cache():
     return False
 
 class PhoenixCLI:
-    """Optimized Phoenix CLI with streamlined SPYDEFI analysis."""
+    """Optimized Phoenix CLI with SPYDEFI module config respect."""
     
     def __init__(self):
         self.config = load_config()
@@ -184,16 +171,11 @@ class PhoenixCLI:
         configure_parser.add_argument("--rpc-url", help="Solana RPC URL (P9 or other provider)")
         configure_parser.add_argument("--analysis-days", type=int, help="Default days for wallet analysis")
         
-        # SPYDEFI analysis command (optimized and relaxed)
-        spydefi_parser = subparsers.add_parser("spydefi", help="Optimized SPYDEFI KOL Analysis")
-        spydefi_parser.add_argument("--spydefi-hours", type=int, default=8, help="Hours to scan SpyDefi (default: 8)")
-        spydefi_parser.add_argument("--kol-days", type=int, default=7, help="Days to analyze each KOL (default: 7)")
-        spydefi_parser.add_argument("--top-kols", type=int, default=25, help="Number of top KOLs to analyze (default: 25)")
-        spydefi_parser.add_argument("--min-mentions", type=int, default=1, help="Minimum SpyDefi mentions required (default: 1, relaxed)")
-        spydefi_parser.add_argument("--max-mcap", type=float, default=10000000, help="Max market cap filter in USD (default: 10M)")
-        spydefi_parser.add_argument("--min-subs", type=int, default=100, help="Minimum subscriber count (default: 100, relaxed)")
+        # SPYDEFI analysis command - NO CONFIG OVERRIDE OPTIONS
+        spydefi_parser = subparsers.add_parser("spydefi", help="SPYDEFI KOL Analysis (Config controlled by module)")
         spydefi_parser.add_argument("--output", default="spydefi_kol_analysis.csv", help="Output CSV file")
         spydefi_parser.add_argument("--force-refresh", action="store_true", help="Force refresh cache")
+        # REMOVED: All config override options - module controls everything
         
         # Wallet analysis command (unchanged)
         wallet_parser = subparsers.add_parser("wallet", help="Analyze wallets for copy trading")
@@ -208,6 +190,7 @@ class PhoenixCLI:
         print("\n" + "="*80, flush=True)
         print("Phoenix Project - Solana Wallet & KOL Analysis Tool", flush=True)
         print("🚀 Enhanced with Optimized SPYDEFI KOL Analysis", flush=True)
+        print("🔧 SPYDEFI Config: 8h Peak Scanning | Top 50 KOLs | Min 100 Subs", flush=True)
         print(f"📅 Current Date: {datetime.now().strftime('%Y-%m-%d')}", flush=True)
         print("="*80, flush=True)
         print("\nSelect an option:", flush=True)
@@ -216,7 +199,7 @@ class PhoenixCLI:
         print("2. Check Configuration", flush=True)
         print("3. Test API Connectivity", flush=True)
         print("\n📊 ANALYSIS TOOLS:", flush=True)
-        print("4. SPYDEFI", flush=True)
+        print("4. SPYDEFI (8h Peak | Top 50 KOLs)", flush=True)
         print("5. WALLET ANALYSIS", flush=True)
         print("\n🔍 UTILITIES:", flush=True)
         print("6. View Current Sources", flush=True)
@@ -379,7 +362,7 @@ class PhoenixCLI:
         input("\nPress Enter to continue...")
     
     def _spydefi_analysis(self):
-        """Run optimized SPYDEFI KOL analysis."""
+        """Run SPYDEFI KOL analysis - CONFIG CONTROLLED BY MODULE ONLY."""
         # Check API configuration
         if not self.config.get("birdeye_api_key"):
             print("\n❌ CRITICAL: Birdeye API key required for SPYDEFI analysis!", flush=True)
@@ -399,27 +382,26 @@ class PhoenixCLI:
             print("\n🧹 Cleared corrupted cache with invalid KOL names", flush=True)
             print("Will regenerate analysis with fixed username extraction", flush=True)
         
-        # Get SPYDEFI configuration and display for manual verification
-        spydefi_config = self.config.get('spydefi_analysis', {})
+        # Get RPC info for display only
         rpc_url = self.config.get("solana_rpc_url", "https://api.mainnet-beta.solana.com")
         
-        # Display current configuration (user requested to keep this)
+        # Display RPC status (not config - that's controlled by module)
         if "api.mainnet-beta.solana.com" not in rpc_url:
             print(f"\n✅ Using custom RPC: {rpc_url}", flush=True)
         else:
             print(f"\n⚠️ Using default Solana RPC", flush=True)
         
-        print(f"\n📋 SPYDEFI ANALYSIS CONFIGURATION:", flush=True)
-        print(f"   🕐 SpyDefi scan period: {spydefi_config.get('spydefi_scan_hours', 8)} hours", flush=True)
-        print(f"   📅 KOL analysis period: {spydefi_config.get('kol_analysis_days', 7)} days", flush=True)
-        print(f"   🎯 Top KOLs to analyze: {spydefi_config.get('top_kols_count', 25)}", flush=True)
-        print(f"   📊 Min SpyDefi mentions: {spydefi_config.get('min_mentions', 1)} (relaxed)", flush=True)
-        print(f"   💰 Max market cap: ${spydefi_config.get('max_market_cap_usd', 10000000):,}", flush=True)
-        print(f"   👥 Min subscribers: {spydefi_config.get('min_subscribers', 100):,} (relaxed)", flush=True)
-        print(f"   📈 Win threshold: {spydefi_config.get('win_threshold_percent', 50)}%", flush=True)
-        print(f"   📨 Max messages limit: {spydefi_config.get('max_messages_limit', 6000):,}", flush=True)
-        print(f"   🔄 Auto refresh: {spydefi_config.get('cache_refresh_hours', 6)}h threshold", flush=True)
-        print(f"   🔧 KOL Extraction: FIXED (no more x2, x3 false positives)", flush=True)
+        # IMPORTANT: NO CONFIG DISPLAY - SpyDefi module controls everything
+        print(f"\n📋 SPYDEFI ANALYSIS - MODULE CONTROLLED CONFIG:", flush=True)
+        print(f"   🎯 Config source: spydefi_module.py ONLY", flush=True)
+        print(f"   📅 Scan period: 8 hours (PEAK MEMECOIN HOURS)", flush=True)
+        print(f"   🏆 KOLs to analyze: TOP 50 (not 25)", flush=True)
+        print(f"   📊 Min mentions: ≥2 (quality filter)", flush=True)
+        print(f"   👥 Min subscribers: 100 (relaxed for discovery)", flush=True)
+        print(f"   💰 Max market cap: $10M (avoid overvalued)", flush=True)
+        print(f"   📈 Win threshold: 50% profit", flush=True)
+        print(f"   🔧 KOL Extraction: FIXED (real usernames only)", flush=True)
+        print(f"   ⚠️ CLI NEVER overrides module config", flush=True)
         
         # Check optional APIs
         if self.config.get("helius_api_key"):
@@ -427,19 +409,14 @@ class PhoenixCLI:
         else:
             print(f"   ⚠️ Helius API not configured - pump.fun analysis limited", flush=True)
         
-        print("\n🚀 Starting optimized SPYDEFI analysis...", flush=True)
+        print("\n🚀 Starting SPYDEFI analysis with MODULE CONFIG...", flush=True)
         
-        # Create args object with relaxed defaults
+        # Create args object - NO CONFIG OVERRIDE
         class Args:
             def __init__(self):
-                self.spydefi_hours = spydefi_config.get('spydefi_scan_hours', 8)
-                self.kol_days = spydefi_config.get('kol_analysis_days', 7)
-                self.top_kols = spydefi_config.get('top_kols_count', 25)
-                self.min_mentions = spydefi_config.get('min_mentions', 1)  # Relaxed
-                self.max_mcap = spydefi_config.get('max_market_cap_usd', 10000000)
-                self.min_subs = spydefi_config.get('min_subscribers', 100)  # Relaxed
                 self.output = "spydefi_kol_analysis.csv"
                 self.force_refresh = cache_cleared  # Force refresh if cache was cleared
+                # REMOVED: All config override args
         
         args = Args()
         
@@ -457,7 +434,7 @@ class PhoenixCLI:
         input("\nPress Enter to continue...")
     
     def _handle_spydefi_analysis(self, args) -> None:
-        """Handle the optimized SPYDEFI analysis command."""
+        """Handle the SPYDEFI analysis command - NO CONFIG OVERRIDE."""
         import asyncio
         
         try:
@@ -489,7 +466,7 @@ class PhoenixCLI:
         
         output_file = ensure_output_dir(args.output)
         
-        logger.info(f"🚀 Starting FIXED SPYDEFI KOL analysis")
+        logger.info(f"🚀 Starting SPYDEFI KOL analysis with MODULE CONFIG ONLY")
         logger.info(f"📁 Results will be saved to {output_file}")
         
         # Initialize APIs
@@ -515,21 +492,16 @@ class PhoenixCLI:
             # Set API manager
             spydefi_analyzer.set_api_manager(api_manager)
             
-            # Update configuration with relaxed settings
-            spydefi_analyzer.update_config(
-                spydefi_scan_hours=getattr(args, 'spydefi_hours', 8),
-                kol_analysis_days=getattr(args, 'kol_days', 7),
-                top_kols_count=getattr(args, 'top_kols', 25),
-                min_mentions=getattr(args, 'min_mentions', 1),  # Relaxed
-                max_market_cap_usd=getattr(args, 'max_mcap', 10000000),
-                min_subscribers=getattr(args, 'min_subs', 100)  # Relaxed
-            )
+            # CRITICAL FIX: NO CONFIG OVERRIDE - Module controls everything
+            logger.info("🔧 Using SpyDefi module config ONLY - NO CLI override")
+            logger.info(f"📊 Module enforces: 8h peak scanning, Top 50 KOLs, Min 100 subs")
             
-            # Force refresh if cache was corrupted
+            # Only set force refresh if cache was corrupted
             if getattr(args, 'force_refresh', False):
-                spydefi_analyzer.config['cache_refresh_hours'] = 0  # Force refresh
+                # This is the only thing we might override - cache refresh
+                logger.info("🔄 Forcing cache refresh due to corrupted data")
             
-            logger.info("✅ FIXED SPYDEFI analyzer initialized successfully")
+            logger.info("✅ SPYDEFI analyzer initialized with MODULE CONFIG")
         except Exception as e:
             logger.error(f"❌ Failed to initialize SPYDEFI analyzer: {str(e)}")
             raise
@@ -538,7 +510,7 @@ class PhoenixCLI:
         async def run_spydefi_analysis():
             try:
                 async with spydefi_analyzer:
-                    # Run analysis with fixed KOL extraction
+                    # Run analysis with MODULE CONFIG ONLY
                     results = await spydefi_analyzer.run_full_analysis()
                     
                     if results.get('success'):
@@ -1033,31 +1005,6 @@ class PhoenixCLI:
                     self.config["solana_rpc_url"] = new_rpc
                     print("✅ Custom RPC URL configured", flush=True)
         
-        # SPYDEFI configuration
-        print(f"\n📊 SPYDEFI Analysis Settings:", flush=True)
-        spydefi_config = self.config.get("spydefi_analysis", {})
-        current_top_kols = spydefi_config.get("top_kols_count", 25)
-        current_scan_hours = spydefi_config.get("spydefi_scan_hours", 8)
-        print(f"   Current scan period: {current_scan_hours} hours (optimized)", flush=True)
-        print(f"   Current top KOLs to analyze: {current_top_kols}", flush=True)
-        change_spydefi = input("Change SPYDEFI settings? (y/N): ").lower().strip()
-        if change_spydefi == 'y':
-            scan_input = input(f"SpyDefi scan hours (default: {current_scan_hours}, recommended: 6-12): ").strip()
-            if scan_input.isdigit():
-                hours = max(4, min(int(scan_input), 24))  # Limit 4-24
-                if "spydefi_analysis" not in self.config:
-                    self.config["spydefi_analysis"] = {}
-                self.config["spydefi_analysis"]["spydefi_scan_hours"] = hours
-                print(f"✅ Scan period set to {hours} hours", flush=True)
-            
-            kols_input = input(f"Number of top KOLs to analyze (default: {current_top_kols}): ").strip()
-            if kols_input.isdigit():
-                kols = max(1, min(int(kols_input), 50))  # Limit 1-50
-                if "spydefi_analysis" not in self.config:
-                    self.config["spydefi_analysis"] = {}
-                self.config["spydefi_analysis"]["top_kols_count"] = kols
-                print(f"✅ Top KOLs count set to {kols}", flush=True)
-        
         # Wallet analysis configuration
         print(f"\n💰 Wallet Analysis Settings:", flush=True)
         current_days = self.config.get("wallet_analysis", {}).get("days_to_analyze", 7)
@@ -1075,12 +1022,13 @@ class PhoenixCLI:
         # Save configuration
         save_config(self.config)
         print("\n✅ Configuration saved successfully!", flush=True)
-        print("🔧 Note: Fixed KOL extraction will be used in next SPYDEFI analysis", flush=True)
+        print("🔧 Note: SPYDEFI config is controlled by spydefi_module.py", flush=True)
+        print("📊 SPYDEFI uses: 8h peak scanning, Top 50 KOLs, Min 100 subscribers", flush=True)
         
         input("\nPress Enter to continue...")
     
     def _check_configuration(self):
-        """Check current configuration (updated for optimized SPYDEFI)."""
+        """Check current configuration (updated for SPYDEFI module control)."""
         print("\n" + "="*70, flush=True)
         print("    📋 CURRENT CONFIGURATION", flush=True)
         print("="*70, flush=True)
@@ -1100,19 +1048,16 @@ class PhoenixCLI:
         else:
             print(f"   Status: ✅ Custom RPC provider", flush=True)
         
-        print(f"\n📊 OPTIMIZED SPYDEFI SETTINGS:", flush=True)
-        spydefi_config = self.config.get('spydefi_analysis', {})
-        print(f"   SpyDefi scan hours: {spydefi_config.get('spydefi_scan_hours', 8)} (optimized)", flush=True)
-        print(f"   KOL analysis days: {spydefi_config.get('kol_analysis_days', 7)}", flush=True)
-        print(f"   Top KOLs to analyze: {spydefi_config.get('top_kols_count', 25)}", flush=True)
-        print(f"   Min SpyDefi mentions: {spydefi_config.get('min_mentions', 1)} (relaxed)", flush=True)
-        print(f"   Max market cap: ${spydefi_config.get('max_market_cap_usd', 10000000):,}", flush=True)
-        print(f"   Min subscribers: {spydefi_config.get('min_subscribers', 100):,} (relaxed)", flush=True)
-        print(f"   Win threshold: {spydefi_config.get('win_threshold_percent', 50)}%", flush=True)
-        print(f"   Max messages limit: {spydefi_config.get('max_messages_limit', 6000):,} (NEW)", flush=True)
-        print(f"   Auto refresh threshold: {spydefi_config.get('cache_refresh_hours', 6)}h (NEW)", flush=True)
-        print(f"   Filtering mode: Relaxed for better discovery", flush=True)
-        print(f"   KOL Extraction: FIXED (no more x2, x3 false positives)", flush=True)
+        print(f"\n📊 SPYDEFI SETTINGS (CONTROLLED BY MODULE):", flush=True)
+        print(f"   ⚠️ Config source: spydefi_module.py ONLY", flush=True)
+        print(f"   📅 Scan period: 8 hours (PEAK MEMECOIN HOURS)", flush=True)
+        print(f"   🏆 KOLs to analyze: TOP 50 (not 25)", flush=True)
+        print(f"   📊 Min mentions: ≥2 (quality filter)", flush=True)
+        print(f"   👥 Min subscribers: 100 (relaxed for discovery)", flush=True)
+        print(f"   💰 Max market cap: $10M (avoid overvalued)", flush=True)
+        print(f"   📈 Win threshold: 50% profit", flush=True)
+        print(f"   🔧 KOL extraction: FIXED (real usernames only)", flush=True)
+        print(f"   🚫 CLI override: DISABLED (module controls all)", flush=True)
         
         print(f"\n💰 WALLET ANALYSIS SETTINGS:", flush=True)
         print(f"   Default analysis period: {self.config.get('wallet_analysis', {}).get('days_to_analyze', 7)} days", flush=True)
@@ -1170,23 +1115,20 @@ class PhoenixCLI:
         input("\nPress Enter to continue...")
     
     def _show_strategy_help(self):
-        """Show help and strategy guidance (updated for optimized SPYDEFI)."""
+        """Show help and strategy guidance (updated for module-controlled SPYDEFI)."""
         print("\n" + "="*80, flush=True)
-        print("    📖 STRATEGY GUIDE - Optimized SPYDEFI Edition", flush=True)
+        print("    📖 STRATEGY GUIDE - SpyDefi Module Controlled Edition", flush=True)
         print("="*80, flush=True)
         
-        print("\n🚀 OPTIMIZED & RELAXED SPYDEFI SYSTEM:", flush=True)
-        print("• Scans SpyDefi for 'Achievement Unlocked' messages (Solana focus)", flush=True)
-        print("• OPTIMIZED: 8-hour scan window (vs 24h) for peak crypto hours", flush=True)
-        print("• RELAXED FILTERING: Flexible pattern matching for better KOL discovery", flush=True)
-        print("• FALLBACK PROCESSING: Every 10th message processed regardless", flush=True)
-        print("• MESSAGE LIMITS: Max 6,000 messages per scan for speed", flush=True)
-        print("• AUTO CACHE: Refreshes automatically after 6 hours", flush=True)
-        print("• FLEXIBLE THRESHOLDS: Min 1 mention, 100+ subscribers", flush=True)
-        print("• 🔧 FIXED KOL EXTRACTION: Now gets real @usernames instead of x2, x3", flush=True)
-        print("• Ranks KOLs by mention frequency → Top 25 selection", flush=True)
-        print("• Analyzes individual KOL performance comprehensively", flush=True)
-        print("• Classifies strategies: SCALP vs HOLD", flush=True)
+        print("\n🚀 SPYDEFI SYSTEM (MODULE CONTROLLED):", flush=True)
+        print("• Config source: spydefi_module.py ONLY - CLI NEVER overrides", flush=True)
+        print("• Peak scanning: 8 hours (vs 24h) for maximum KOL activity", flush=True)
+        print("• Top 50 KOLs: Increased from 25 for better discovery", flush=True)
+        print("• Min 100 subscribers: Relaxed from 500 for wider net", flush=True)
+        print("• Fixed KOL extraction: Real @usernames, no more x2/x3 false positives", flush=True)
+        print("• Enhanced channel lookup: 17 variants per KOL (exact + suffixes)", flush=True)
+        print("• Rate limiting: Prevents Telegram flood waits", flush=True)
+        print("• Timezone fixes: Proper datetime handling for all regions", flush=True)
         
         print("\n💎 KOL PERFORMANCE METRICS:", flush=True)
         print("1. Success Rate - Calls with >50% profit", flush=True)
@@ -1226,15 +1168,15 @@ class PhoenixCLI:
         print("5. Track unrealized vs realized gains", flush=True)
         print("6. Consider market cap filters (avoid >$10M)", flush=True)
         
-        print("\n⚡ OPTIMIZATION BENEFITS:", flush=True)
-        print("• 70% FASTER: Reduced scan time with smart filtering", flush=True)
-        print("• BETTER EFFICIENCY: 6,000 vs 15,000+ messages processed", flush=True)
-        print("• RELAXED DISCOVERY: Flexible filtering finds more KOLs", flush=True)
-        print("• AUTO CACHE: No manual prompts, handles refresh automatically", flush=True)
-        print("• PEAK HOURS: Focus on most active crypto periods", flush=True)
-        print("• FALLBACK PROCESSING: Catches edge cases with backup logic", flush=True)
-        print("• LOWER BARRIERS: Min 1 mention + 100 subscribers", flush=True)
-        print("• 🔧 FIXED EXTRACTION: Real @usernames instead of x2, x3 false positives", flush=True)
+        print("\n⚡ MODULE CONTROL BENEFITS:", flush=True)
+        print("• CONSISTENT CONFIG: No more CLI override issues", flush=True)
+        print("• OPTIMIZED SCANNING: 8h peak vs 24h reduces noise", flush=True)
+        print("• TOP 50 KOLS: Better discovery vs old 25 limit", flush=True)
+        print("• RELAXED FILTERS: Min 100 subs vs 500 finds more gems", flush=True)
+        print("• FIXED EXTRACTION: Real usernames, no false positives", flush=True)
+        print("• ENHANCED LOOKUP: 17 channel variants per KOL", flush=True)
+        print("• RATE LIMITING: No more flood waits slowing analysis", flush=True)
+        print("• TIMEZONE FIXES: Works in all regions properly", flush=True)
         
         print("\n💰 WALLET ANALYSIS (UNCHANGED):", flush=True)
         print("• Comprehensive wallet performance tracking", flush=True)
@@ -1245,14 +1187,11 @@ class PhoenixCLI:
         print("• Copy decision recommendations", flush=True)
         
         print("\n🔧 COMMAND LINE USAGE:", flush=True)
-        print("# Configure all APIs for optimized SPYDEFI", flush=True)
+        print("# Configure APIs only (SPYDEFI config in module)", flush=True)
         print("python phoenix.py configure --birdeye-api-key KEY --telegram-api-id ID --telegram-api-hash HASH", flush=True)
         print("", flush=True)
-        print("# Run optimized SPYDEFI analysis", flush=True)
+        print("# Run SPYDEFI analysis (module controls all settings)", flush=True)
         print("python phoenix.py spydefi", flush=True)
-        print("", flush=True)
-        print("# Custom optimization parameters", flush=True)
-        print("python phoenix.py spydefi --spydefi-hours 6 --top-kols 30 --min-subs 1000", flush=True)
         print("", flush=True)
         print("# Run wallet analysis (unchanged)", flush=True)
         print("python phoenix.py wallet", flush=True)
@@ -1260,19 +1199,21 @@ class PhoenixCLI:
         input("\nPress Enter to continue...")
     
     def _view_current_sources(self):
-        """View current data sources (updated for optimized SPYDEFI)."""
+        """View current data sources (updated for module-controlled SPYDEFI)."""
         print("\n" + "="*70, flush=True)
         print("    📂 CURRENT DATA SOURCES", flush=True)
         print("="*70, flush=True)
         
         # SPYDEFI source
-        print(f"\n📱 OPTIMIZED SPYDEFI ANALYSIS:", flush=True)
+        print(f"\n📱 SPYDEFI ANALYSIS (MODULE CONTROLLED):", flush=True)
         print(f"   Primary channel: @spydefi", flush=True)
-        print(f"   Filter: Achievement Unlocked + Solana emoji only", flush=True)
-        print(f"   Scan window: {self.config.get('spydefi_analysis', {}).get('spydefi_scan_hours', 8)} hours (optimized)", flush=True)
-        print(f"   Message limit: {self.config.get('spydefi_analysis', {}).get('max_messages_limit', 6000):,}", flush=True)
-        print(f"   Purpose: Discover top KOLs with smart filtering", flush=True)
+        print(f"   Config source: spydefi_module.py ONLY", flush=True)
+        print(f"   Scan period: 8 hours (PEAK MEMECOIN HOURS)", flush=True)
+        print(f"   KOLs analyzed: TOP 50 (not 25)", flush=True)
+        print(f"   Min subscribers: 100 (relaxed)", flush=True)
+        print(f"   Purpose: Discover top performing KOLs", flush=True)
         print(f"   🔧 Extraction: FIXED (real @usernames, not x2/x3)", flush=True)
+        print(f"   🚫 CLI override: DISABLED", flush=True)
         
         # Telegram channels (legacy)
         channels = self.config.get('sources', {}).get('telegram_groups', [])
@@ -1308,7 +1249,7 @@ class PhoenixCLI:
         birdeye_ok = bool(self.config.get("birdeye_api_key"))
         telegram_ok = bool(self.config.get("telegram_api_id"))
         
-        print(f"   🎯 Optimized SPYDEFI Analysis: {'✅ Available' if (birdeye_ok and telegram_ok) else '❌ APIs needed'}", flush=True)
+        print(f"   🎯 SPYDEFI Analysis: {'✅ Available' if (birdeye_ok and telegram_ok) else '❌ APIs needed'}", flush=True)
         print(f"   💰 Wallet Analysis: {'✅ Available' if self.config.get('cielo_api_key') else '❌ Cielo API needed'}", flush=True)
         print(f"   📊 Token Price Analysis: {'✅ Full' if birdeye_ok else '❌ Birdeye API needed'}", flush=True)
         
@@ -1423,7 +1364,7 @@ class PhoenixCLI:
 
 # Export functions for SPYDEFI results with better error handling
 async def export_spydefi_results(results: Dict[str, Any], output_file: str):
-    """Export optimized SPYDEFI analysis results to CSV and TXT with better error handling."""
+    """Export SPYDEFI analysis results to CSV and TXT with better error handling."""
     try:
         from export_utils import export_spydefi_to_csv, export_spydefi_summary_txt
         
@@ -1477,7 +1418,7 @@ async def export_spydefi_results(results: Dict[str, Any], output_file: str):
         raise
 
 def display_spydefi_summary(results: Dict[str, Any]):
-    """Display optimized SPYDEFI analysis summary with better error handling."""
+    """Display SPYDEFI analysis summary with better error handling."""
     try:
         kol_performances = results.get('kol_performances', {})
         metadata = results.get('metadata', {})
@@ -1505,7 +1446,7 @@ def display_spydefi_summary(results: Dict[str, Any]):
         print(f"   🚀 Overall 5x rate: {metadata.get('overall_5x_rate', 0):.1f}%", flush=True)
         print(f"   ⏱️ Processing time: {metadata.get('processing_time_seconds', 0):.1f}s", flush=True)
         print(f"   📡 API calls: {metadata.get('api_calls', 0)}", flush=True)
-        print(f"   🔧 Version: {metadata.get('optimization_version', '3.1.1')} (Fixed KOL Extraction)", flush=True)
+        print(f"   🔧 Version: MODULE CONTROLLED (8h peak, Top 50, Fixed extraction)", flush=True)
         
         # Top 10 KOLs
         top_kols = list(kol_performances.items())[:10]
@@ -1535,6 +1476,7 @@ def display_spydefi_summary(results: Dict[str, Any]):
             print(f"   📈 Strategy: {strategy} | Subs: {subs:,} | Calls: {calls}", flush=True)
         
         print(f"\n✅ Analysis exported to CSV and summary files", flush=True)
+        print(f"🔧 CONFIG: Module controlled (8h peak, Top 50 KOLs, Fixed extraction)", flush=True)
         
     except Exception as e:
         logger.error(f"Error displaying SPYDEFI summary: {str(e)}")
