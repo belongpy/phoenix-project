@@ -13516,3 +13516,15 @@ TypeError: TelegramBaseClient.__init__() got an unexpected keyword argument 'ret
 2025-05-27 14:16:54,746 - phoenix.spydefi - INFO - 📱 Telegram client disconnected
 2025-05-27 14:16:54,746 - phoenix - INFO - ✅ SPYDEFI analysis completed successfully!
 2025-05-27 14:16:54,746 - phoenix - INFO - 📁 Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-27 14:29:12,425 - phoenix - ERROR - ❌ Error importing modules: invalid syntax (spydefi_module.py, line 105)
+2025-05-27 14:29:12,425 - phoenix - ERROR - SPYDEFI analysis error: invalid syntax (spydefi_module.py, line 105)
+2025-05-27 14:29:12,425 - phoenix - ERROR - Full traceback: Traceback (most recent call last):
+  File "C:\Users\Administrator\Desktop\phoenix-project\phoenix_cli.py", line 403, in _spydefi_analysis
+    self._handle_spydefi_analysis(args)
+  File "C:\Users\Administrator\Desktop\phoenix-project\phoenix_cli.py", line 431, in _handle_spydefi_analysis
+    from spydefi_module import SpyDefiAnalyzer
+  File "C:\Users\Administrator\Desktop\phoenix-project\spydefi_module.py", line 105
+    if
+      ^
+SyntaxError: invalid syntax
+

@@ -9,6 +9,7 @@ CRITICAL FIXES IMPLEMENTED:
 5. FIXED composite_score to properly weight pullback at 25%
 6. FIXED FloodWaitError handling to prevent crashes
 7. FIXED token analysis to get actual price data and calculate real metrics
+8. FORCE CLEAR BROKEN CACHE to prevent loading old data
 """
 
 import asyncio
@@ -101,8 +102,61 @@ class SpyDefiAnalyzer:
             logger.info("📱 Telegram client disconnected")
     
     def _should_use_cache(self) -> bool:
-        """FIXED: Force clear old cache with broken data and run fresh analysis."""
-        if
+        """FIXED: Force clear old cache with broken data - run fresh analysis."""
+        # FORCE CLEAR CACHE to prevent loading broken data with winning/losing calls
+        if self.cache_file.exists():
+            try:
+                with open(self.cache_file, 'r') as f:
+                    cache_data = json.load(f)
+                
+                # Check if cache has broken data structure
+                kol_performances = cache_data.get('kol_performances', {})
+                if kol_performances:
+                    # Check if any KOL performance has winning_calls/losing_calls (broken data)
+                    first_kol = next(iter(kol_performances.values()))
+                    if isinstance(first_kol, dict):
+                        if 'winning_calls' in first_kol or 'losing_calls' in first_kol:
+                            logger.info("🧹 CLEARING BROKEN CACHE: Contains winning/losing calls")
+                            self.cache_file.unlink()
+                            return False
+                    
+                    # Check for fake channel IDs
+                    if first_kol.get('channel_id', '').startswith('spydefi_based_'):
+                        logger.info("🧹 CLEARING BROKEN CACHE: Contains fake channel IDs")
+                        self.cache_file.unlink()
+                        return False
+                    
+                    # Check for zero pullback data (indicates broken calculations)
+                    if first_kol.get('avg_max_pullback_percent', -999) == 0:
+                        logger.info("🧹 CLEARING BROKEN CACHE: Contains zero pullback data")
+                        self.cache_file.unlink()  
+                        return False
+                    
+                    # Check for zero ROI data
+                    if first_kol.get('avg_roi', -999) == 0:
+                        logger.info("🧹 CLEARING BROKEN CACHE: Contains zero ROI data")
+                        self.cache_file.unlink()
+                        return False
+                
+                # Check version to force refresh for fixes
+                version = cache_data.get('version', '')
+                if version != '4.3_FIXED':
+                    logger.info(f"🧹 CLEARING OLD CACHE: Version {version} != 4.3_FIXED")
+                    self.cache_file.unlink()
+                    return False
+                
+                # If we get here, cache might be valid - but let's force fresh for safety
+                logger.info("🧹 FORCING FRESH ANALYSIS: Clearing cache to ensure fixed data")
+                self.cache_file.unlink()
+                return False
+                
+            except Exception as e:
+                logger.error(f"📦 Cache error, clearing: {str(e)}")
+                if self.cache_file.exists():
+                    self.cache_file.unlink()
+                return False
+        
+        return False  # Never use cache, always run fresh
     
     def _load_cache(self) -> Optional[Dict[str, Any]]:
         """Load cached analysis results."""
@@ -143,7 +197,7 @@ class SpyDefiAnalyzer:
         try:
             logger.info("🚀 Starting SpyDefi KOL analysis with REAL channel IDs and pullback data...")
             
-            # Check cache first
+            # Check cache first (will force clear broken cache)
             if self._should_use_cache():
                 cached_results = self._load_cache()
                 if cached_results:
