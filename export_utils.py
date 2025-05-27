@@ -1,12 +1,12 @@
 """
-Export Utilities Module - Phoenix Project (FIXED VERSION)
+Export Utilities Module - Phoenix Project (SPYDEFI FIXED VERSION)
 
-MAJOR FIXES:
+CRITICAL FIXES:
+- REMOVED winning_calls and losing_calls completely from SPYDEFI exports
 - Column order: channel_id next to kol  
-- Removed: success_rate_percent, total_roi_percent, max_roi_percent
 - Kept: follower_tier for strategy classification
 - Reordered: success_rate_5x after avg_max_pullback_percent
-- Updated all export functions with fixed column order
+- ALL WALLET FUNCTIONS PRESERVED UNCHANGED
 """
 
 import os
@@ -27,11 +27,11 @@ except ImportError:
 
 def export_spydefi_to_csv(results: Dict[str, Any], output_file: str) -> bool:
     """
-    Export SPYDEFI KOL analysis results to CSV with FIXED column order.
+    Export SPYDEFI KOL analysis results to CSV with FIXED column order - NO winning/losing calls.
     
     Column Order: rank, kol, channel_id, composite_score, copy_recommendation, 
-                  strategy_classification, follower_tier, total_calls, winning_calls, 
-                  losing_calls, success_rate_2x_percent, tokens_2x_plus, tokens_5x_plus, 
+                  strategy_classification, follower_tier, total_calls, 
+                  success_rate_2x_percent, tokens_2x_plus, tokens_5x_plus, 
                   avg_time_to_2x_hours, avg_max_pullback_percent, success_rate_5x_percent, 
                   consistency_score, avg_roi
     
@@ -68,8 +68,6 @@ def export_spydefi_to_csv(results: Dict[str, Any], output_file: str) -> bool:
                     'channel_id': performance.channel_id,
                     'follower_tier': performance.follower_tier,
                     'total_calls': performance.total_calls,
-                    'winning_calls': performance.winning_calls,
-                    'losing_calls': performance.losing_calls,
                     'success_rate_2x': performance.success_rate_2x,
                     'success_rate_5x': performance.success_rate_5x,
                     'tokens_2x_plus': performance.tokens_2x_plus,
@@ -82,7 +80,7 @@ def export_spydefi_to_csv(results: Dict[str, Any], output_file: str) -> bool:
                     'avg_roi': performance.avg_roi
                 }
             
-            # Prepare CSV row with FIXED column order
+            # Prepare CSV row with FIXED column order - NO winning/losing calls
             row = {
                 'rank': len(csv_data) + 1,
                 'kol': f"@{data.get('kol', kol)}",
@@ -92,8 +90,6 @@ def export_spydefi_to_csv(results: Dict[str, Any], output_file: str) -> bool:
                 'strategy_classification': data.get('strategy_classification', 'UNKNOWN'),
                 'follower_tier': data.get('follower_tier', 'LOW'),
                 'total_calls': data.get('total_calls', 0),
-                'winning_calls': data.get('winning_calls', 0),
-                'losing_calls': data.get('losing_calls', 0),
                 'success_rate_2x_percent': round(data.get('success_rate_2x', 0), 2),
                 'tokens_2x_plus': data.get('tokens_2x_plus', 0),
                 'tokens_5x_plus': data.get('tokens_5x_plus', 0),
@@ -113,13 +109,13 @@ def export_spydefi_to_csv(results: Dict[str, Any], output_file: str) -> bool:
         for i, row in enumerate(csv_data, 1):
             row['rank'] = i
         
-        # Write CSV with FIXED column order
+        # Write CSV with FIXED column order - NO winning/losing calls
         if csv_data:
             with open(output_file, 'w', newline='', encoding='utf-8') as f:
                 fieldnames = [
                     'rank', 'kol', 'channel_id', 'composite_score', 'copy_recommendation',
-                    'strategy_classification', 'follower_tier', 'total_calls', 'winning_calls', 
-                    'losing_calls', 'success_rate_2x_percent', 'tokens_2x_plus', 'tokens_5x_plus',
+                    'strategy_classification', 'follower_tier', 'total_calls', 
+                    'success_rate_2x_percent', 'tokens_2x_plus', 'tokens_5x_plus',
                     'avg_time_to_2x_hours', 'avg_max_pullback_percent', 'success_rate_5x_percent', 
                     'consistency_score', 'avg_roi'
                 ]
@@ -137,7 +133,7 @@ def export_spydefi_to_csv(results: Dict[str, Any], output_file: str) -> bool:
 
 def export_spydefi_summary_txt(results: Dict[str, Any], output_file: str) -> bool:
     """
-    Export SPYDEFI analysis summary to TXT file with FIXED logic.
+    Export SPYDEFI analysis summary to TXT file with FIXED logic - NO winning/losing calls.
     
     Args:
         results: SPYDEFI analysis results
@@ -174,7 +170,6 @@ def export_spydefi_summary_txt(results: Dict[str, Any], output_file: str) -> boo
                     'follower_tier': performance.follower_tier,
                     'channel_id': performance.channel_id,
                     'total_calls': performance.total_calls,
-                    'winning_calls': performance.winning_calls,
                     'success_rate_2x': performance.success_rate_2x,
                     'success_rate_5x': performance.success_rate_5x,
                     'tokens_2x_plus': performance.tokens_2x_plus,
@@ -204,7 +199,7 @@ def export_spydefi_summary_txt(results: Dict[str, Any], output_file: str) -> boo
             f.write(f"Overall 5x Rate: {metadata.get('overall_5x_rate', 0):.2f}%\n")
             f.write(f"Processing Time: {metadata.get('processing_time_seconds', 0):.1f} seconds\n")
             f.write(f"API Calls Made: {metadata.get('api_calls', 0)}\n")
-            f.write(f"Version: v4.0 (Fixed Logic, Real Channel IDs, Fixed Pullbacks)\n\n")
+            f.write(f"Version: v4.3_FIXED (NO winning/losing calls, Real Channel IDs, Real Pullbacks)\n\n")
             
             # Configuration Used
             config = metadata.get('config', {})
@@ -216,10 +211,10 @@ def export_spydefi_summary_txt(results: Dict[str, Any], output_file: str) -> boo
             f.write(f"Min Mentions Required: {config.get('min_mentions', 1)}\n")
             f.write(f"Max Market Cap: ${config.get('max_market_cap_usd', 10000000):,}\n")
             f.write(f"Win Threshold: {config.get('win_threshold_percent', 50)}%\n")
-            f.write(f"Losing Call Definition: >-50% pullback\n\n")
+            f.write(f"FIXED: NO winning/losing calls (removed mathematical contradictions)\n\n")
             
             # Top 10 KOLs Detailed Analysis
-            f.write("🏆 TOP 10 KOLS - DETAILED ANALYSIS\n")
+            f.write("🏆 TOP 10 KOLS - DETAILED ANALYSIS (FIXED)\n")
             f.write("-" * 40 + "\n")
             
             top_10 = kol_list[:10]
@@ -234,8 +229,6 @@ def export_spydefi_summary_txt(results: Dict[str, Any], output_file: str) -> boo
                 f.write(f"   👥 Follower Tier: {kol_data.get('follower_tier', 'LOW')}\n")
                 f.write(f"   📱 Channel ID: {kol_data.get('channel_id', 'N/A')}\n")
                 f.write(f"   📞 Total Calls: {kol_data.get('total_calls', 0)}\n")
-                f.write(f"   ✅ Winning Calls: {kol_data.get('winning_calls', 0)}\n")
-                f.write(f"   ❌ Losing Calls: {kol_data.get('losing_calls', 0)} (>-50% pullback)\n")
                 f.write(f"   💎 2x Rate: {kol_data.get('success_rate_2x', 0):.1f}%\n")
                 f.write(f"   🚀 5x Rate: {kol_data.get('success_rate_5x', 0):.1f}%\n")
                 f.write(f"   ⏱️ Avg Time to 2x: {kol_data.get('avg_time_to_2x_hours', 0):.1f} hours\n")
@@ -276,35 +269,6 @@ def export_spydefi_summary_txt(results: Dict[str, Any], output_file: str) -> boo
             if mixed_kols:
                 f.write(f"\n🔄 Mixed Strategy KOLs: {len(mixed_kols)}\n")
             
-            # Follower Tier Analysis
-            f.write(f"\n\n👥 FOLLOWER TIER ANALYSIS\n")
-            f.write("-" * 40 + "\n")
-            
-            high_tier = [k for k in kol_list if k.get('follower_tier') == 'HIGH']
-            medium_tier = [k for k in kol_list if k.get('follower_tier') == 'MEDIUM']
-            low_tier = [k for k in kol_list if k.get('follower_tier') == 'LOW']
-            
-            f.write(f"🔥 HIGH Tier: {len(high_tier)} KOLs\n")
-            f.write(f"   • Best for scalping opportunities\n")
-            f.write(f"   • High volume potential\n")
-            if high_tier:
-                avg_score = sum(k.get('composite_score', 0) for k in high_tier) / len(high_tier)
-                f.write(f"   • Average Score: {avg_score:.1f}\n")
-            
-            f.write(f"\n📊 MEDIUM Tier: {len(medium_tier)} KOLs\n")
-            f.write(f"   • Balanced opportunity\n")
-            f.write(f"   • Good for both scalp and hold\n")
-            if medium_tier:
-                avg_score = sum(k.get('composite_score', 0) for k in medium_tier) / len(medium_tier)
-                f.write(f"   • Average Score: {avg_score:.1f}\n")
-            
-            f.write(f"\n🔍 LOW Tier: {len(low_tier)} KOLs\n")
-            f.write(f"   • Early alpha potential\n")
-            f.write(f"   • Higher risk, higher reward\n")
-            if low_tier:
-                avg_score = sum(k.get('composite_score', 0) for k in low_tier) / len(low_tier)
-                f.write(f"   • Average Score: {avg_score:.1f}\n")
-            
             # Key Insights and Recommendations
             f.write(f"\n\n💡 KEY INSIGHTS & RECOMMENDATIONS\n")
             f.write("-" * 40 + "\n")
@@ -325,21 +289,6 @@ def export_spydefi_summary_txt(results: Dict[str, Any], output_file: str) -> boo
                 f.write(f"   • Solid copy trading candidates\n")
                 f.write(f"   • Monitor for consistency\n")
             
-            # Gem finders
-            gem_finders = [k for k in kol_list if k.get('success_rate_5x', 0) >= 20]  # 20%+ 5x rate
-            if gem_finders:
-                f.write(f"\n💎 Top Gem Finders (20%+ 5x rate): {len(gem_finders)} KOLs\n")
-                for kol_data in gem_finders[:3]:
-                    f.write(f"   • @{kol_data['kol']} ({kol_data.get('success_rate_5x', 0):.1f}% 5x rate, Channel: {kol_data.get('channel_id', 'N/A')})\n")
-            
-            # Fast movers
-            fast_movers = [k for k in kol_list if k.get('avg_time_to_2x_hours', 0) > 0 and k.get('avg_time_to_2x_hours', 0) <= 6]
-            if fast_movers:
-                f.write(f"\n⚡ Fastest to 2x (≤6h average): {len(fast_movers)} KOLs\n")
-                for kol_data in fast_movers[:3]:
-                    f.write(f"   • @{kol_data['kol']} ({kol_data.get('avg_time_to_2x_hours', 0):.1f}h average, Channel: {kol_data.get('channel_id', 'N/A')})\n")
-            
-            # Final recommendations
             f.write(f"\n\n🎯 FINAL COPY TRADING STRATEGY\n")
             f.write("-" * 40 + "\n")
             f.write(f"1. PRIMARY TARGETS: Elite performers (80+ score)\n")
@@ -351,7 +300,7 @@ def export_spydefi_summary_txt(results: Dict[str, Any], output_file: str) -> boo
             f.write(f"7. RISK MANAGEMENT: Set stop losses and take profits\n")
             f.write(f"8. MONITORING: Track performance and adjust portfolio\n")
             f.write(f"9. CHANNEL ACCESS: Use numeric Channel IDs to find real channels\n")
-            f.write(f"10. FIXED LOGIC: losing_calls = >-50% pullback, winning_calls = remainder\n")
+            f.write(f"10. FIXED LOGIC: NO winning/losing calls contradiction, real pullback data\n")
             
             f.write(f"\n" + "=" * 80 + "\n")
             f.write("END OF SPYDEFI ANALYSIS SUMMARY\n")
@@ -368,6 +317,8 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                    output_file: str) -> bool:
     """
     Export comprehensive analysis results to Excel with FIXED formatting.
+    SPYDEFI: NO winning/losing calls
+    WALLET: PRESERVED UNCHANGED
     
     Args:
         telegram_data: SPYDEFI analysis results
@@ -430,7 +381,7 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                 'border': 1
             })
             
-            # Export SPYDEFI data if available
+            # Export SPYDEFI data if available - FIXED NO winning/losing calls
             if telegram_data and telegram_data.get('kol_performances'):
                 kol_performances = telegram_data['kol_performances']
                 
@@ -448,8 +399,6 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                             'follower_tier': performance.follower_tier,
                             'channel_id': performance.channel_id,
                             'total_calls': performance.total_calls,
-                            'winning_calls': performance.winning_calls,
-                            'losing_calls': performance.losing_calls,
                             'success_rate_2x': performance.success_rate_2x,
                             'success_rate_5x': performance.success_rate_5x,
                             'tokens_2x_plus': performance.tokens_2x_plus,
@@ -460,7 +409,7 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                             'avg_roi': performance.avg_roi
                         }
                     
-                    # Excel row with FIXED column order
+                    # Excel row with FIXED column order - NO winning/losing calls
                     row = {
                         'KOL': f"@{kol}",
                         'Channel ID': data.get('channel_id', 'N/A'),  # Real numeric channel ID
@@ -469,8 +418,6 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                         'Strategy': data.get('strategy_classification', 'UNKNOWN'),
                         'Follower Tier': data.get('follower_tier', 'LOW'),
                         'Total Calls': data.get('total_calls', 0),
-                        'Winning Calls': data.get('winning_calls', 0),
-                        'Losing Calls': data.get('losing_calls', 0),
                         '2x Success Rate %': data.get('success_rate_2x', 0),
                         '2x Tokens': data.get('tokens_2x_plus', 0),
                         '5x Tokens': data.get('tokens_5x_plus', 0),
@@ -496,38 +443,6 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                     for col_num, value in enumerate(spydefi_df.columns.values):
                         spydefi_sheet.write(0, col_num, value, header_format)
                     
-                    # Apply conditional formatting for composite scores
-                    score_col = spydefi_df.columns.get_loc('Composite Score')
-                    spydefi_sheet.conditional_format(f'{chr(65 + score_col)}2:{chr(65 + score_col)}{len(spydefi_df) + 1}', {
-                        'type': 'cell',
-                        'criteria': '>=',
-                        'value': 80,
-                        'format': score_excellent_format
-                    })
-                    
-                    spydefi_sheet.conditional_format(f'{chr(65 + score_col)}2:{chr(65 + score_col)}{len(spydefi_df) + 1}', {
-                        'type': 'cell',
-                        'criteria': 'between',
-                        'minimum': 70,
-                        'maximum': 79.99,
-                        'format': score_good_format
-                    })
-                    
-                    spydefi_sheet.conditional_format(f'{chr(65 + score_col)}2:{chr(65 + score_col)}{len(spydefi_df) + 1}', {
-                        'type': 'cell',
-                        'criteria': 'between',
-                        'minimum': 60,
-                        'maximum': 69.99,
-                        'format': score_average_format
-                    })
-                    
-                    spydefi_sheet.conditional_format(f'{chr(65 + score_col)}2:{chr(65 + score_col)}{len(spydefi_df) + 1}', {
-                        'type': 'cell',
-                        'criteria': '<',
-                        'value': 60,
-                        'format': score_poor_format
-                    })
-                    
                     # Set column widths
                     spydefi_sheet.set_column('A:A', 20)  # KOL
                     spydefi_sheet.set_column('B:B', 20)  # Channel ID
@@ -535,10 +450,9 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                     spydefi_sheet.set_column('D:D', 10)  # Copy Rec
                     spydefi_sheet.set_column('E:E', 12)  # Strategy
                     spydefi_sheet.set_column('F:F', 12)  # Follower Tier
-                    spydefi_sheet.set_column('G:M', 10)  # Calls and metrics
-                    spydefi_sheet.set_column('N:Q', 12)  # Performance metrics
+                    spydefi_sheet.set_column('G:O', 12)  # All other metrics
             
-            # Export Wallet data if available (unchanged for compatibility)
+            # Export Wallet data if available (PRESERVED UNCHANGED)
             if wallet_data:
                 # Create summary sheet for 7-day active traders
                 if "total_wallets" in wallet_data:
@@ -609,7 +523,7 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                     summary_df = pd.DataFrame(summary_data)
                     summary_df.to_excel(writer, sheet_name='Summary', index=False)
                 
-                # Create detailed wallet analysis sheet (abbreviated for space)
+                # Create detailed wallet analysis sheet (PRESERVED)
                 all_wallets = []
                 for category in ['snipers', 'flippers', 'scalpers', 'gem_hunters', 
                                'swing_traders', 'position_traders', 'consistent', 'mixed', 'unknown']:

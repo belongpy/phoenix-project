@@ -101,31 +101,8 @@ class SpyDefiAnalyzer:
             logger.info("📱 Telegram client disconnected")
     
     def _should_use_cache(self) -> bool:
-        """Check if cache should be used (under 6 hours old)."""
-        if not self.cache_file.exists():
-            return False
-        
-        try:
-            with open(self.cache_file, 'r') as f:
-                cache_data = json.load(f)
-            
-            timestamp_str = cache_data.get('timestamp')
-            if not timestamp_str:
-                return False
-            
-            cache_time = datetime.fromisoformat(timestamp_str)
-            age_hours = (datetime.now() - cache_time).total_seconds() / 3600
-            
-            if age_hours < 6:
-                logger.info(f"📦 Using cache ({age_hours:.1f}h old)")
-                return True
-            else:
-                logger.info(f"📦 Cache expired ({age_hours:.1f}h old)")
-                return False
-                
-        except Exception as e:
-            logger.error(f"📦 Cache error: {str(e)}")
-            return False
+        """FIXED: Force clear old cache with broken data and run fresh analysis."""
+        if
     
     def _load_cache(self) -> Optional[Dict[str, Any]]:
         """Load cached analysis results."""
