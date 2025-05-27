@@ -7,6 +7,9 @@ UPDATES:
 - Enhanced composite scoring display and strategy classification
 - Maintains full compatibility with wallet_module
 - Added professional TXT summary generation
+- FIXED: Removed subscriber_count, avg_unrealized_gains_percent
+- FIXED: Channel IDs now show real numeric Telegram channel IDs
+- KEPT: follower_tier for strategy classification
 """
 
 import os
@@ -28,6 +31,9 @@ except ImportError:
 def export_spydefi_to_csv(results: Dict[str, Any], output_file: str) -> bool:
     """
     Export SPYDEFI KOL analysis results to CSV.
+    FIXED: Removed subscriber_count, avg_unrealized_gains_percent columns
+    FIXED: Channel IDs now show real numeric Telegram channel IDs
+    KEPT: follower_tier for strategy classification
     
     Args:
         results: SPYDEFI analysis results
@@ -60,7 +66,7 @@ def export_spydefi_to_csv(results: Dict[str, Any], output_file: str) -> bool:
                 data = {
                     'kol': performance.kol,
                     'channel_id': performance.channel_id,
-                    'subscriber_count': performance.subscriber_count,
+                    'follower_tier': performance.follower_tier,
                     'total_calls': performance.total_calls,
                     'winning_calls': performance.winning_calls,
                     'losing_calls': performance.losing_calls,
@@ -71,24 +77,21 @@ def export_spydefi_to_csv(results: Dict[str, Any], output_file: str) -> bool:
                     'success_rate_5x': performance.success_rate_5x,
                     'avg_time_to_2x_hours': performance.avg_time_to_2x_hours,
                     'avg_max_pullback_percent': performance.avg_max_pullback_percent,
-                    'avg_unrealized_gains_percent': performance.avg_unrealized_gains_percent,
                     'consistency_score': performance.consistency_score,
                     'composite_score': performance.composite_score,
                     'strategy_classification': performance.strategy_classification,
-                    'follower_tier': performance.follower_tier,
                     'total_roi_percent': performance.total_roi_percent,
                     'max_roi_percent': performance.max_roi_percent
                 }
             
-            # Prepare CSV row
+            # Prepare CSV row - REMOVED: subscriber_count, avg_unrealized_gains_percent (KEPT: follower_tier)
             row = {
                 'rank': len(csv_data) + 1,
                 'kol': f"@{data.get('kol', kol)}",
                 'composite_score': round(data.get('composite_score', 0), 1),
                 'strategy_classification': data.get('strategy_classification', 'UNKNOWN'),
                 'follower_tier': data.get('follower_tier', 'LOW'),
-                'channel_id': data.get('channel_id', ''),
-                'subscriber_count': data.get('subscriber_count', 0),
+                'channel_id': data.get('channel_id', 'N/A'),
                 'total_calls': data.get('total_calls', 0),
                 'winning_calls': data.get('winning_calls', 0),
                 'losing_calls': data.get('losing_calls', 0),
@@ -99,7 +102,6 @@ def export_spydefi_to_csv(results: Dict[str, Any], output_file: str) -> bool:
                 'success_rate_5x_percent': round(data.get('success_rate_5x', 0), 2),
                 'avg_time_to_2x_hours': round(data.get('avg_time_to_2x_hours', 0), 2),
                 'avg_max_pullback_percent': round(data.get('avg_max_pullback_percent', 0), 2),
-                'avg_unrealized_gains_percent': round(data.get('avg_unrealized_gains_percent', 0), 2),
                 'consistency_score': round(data.get('consistency_score', 0), 1),
                 'total_roi_percent': round(data.get('total_roi_percent', 0), 2),
                 'max_roi_percent': round(data.get('max_roi_percent', 0), 2),
@@ -115,15 +117,15 @@ def export_spydefi_to_csv(results: Dict[str, Any], output_file: str) -> bool:
         for i, row in enumerate(csv_data, 1):
             row['rank'] = i
         
-        # Write CSV
+        # Write CSV - REMOVED: subscriber_count, avg_unrealized_gains_percent (KEPT: follower_tier)
         if csv_data:
             with open(output_file, 'w', newline='', encoding='utf-8') as f:
                 fieldnames = [
                     'rank', 'kol', 'composite_score', 'copy_recommendation',
-                    'strategy_classification', 'follower_tier', 'channel_id', 'subscriber_count',
+                    'strategy_classification', 'follower_tier', 'channel_id',
                     'total_calls', 'winning_calls', 'losing_calls', 'success_rate_percent',
                     'tokens_2x_plus', 'tokens_5x_plus', 'success_rate_2x_percent', 'success_rate_5x_percent',
-                    'avg_time_to_2x_hours', 'avg_max_pullback_percent', 'avg_unrealized_gains_percent',
+                    'avg_time_to_2x_hours', 'avg_max_pullback_percent',
                     'consistency_score', 'total_roi_percent', 'max_roi_percent'
                 ]
                 
@@ -141,6 +143,9 @@ def export_spydefi_to_csv(results: Dict[str, Any], output_file: str) -> bool:
 def export_spydefi_summary_txt(results: Dict[str, Any], output_file: str) -> bool:
     """
     Export SPYDEFI analysis summary to TXT file.
+    FIXED: Removed references to subscriber_count, avg_unrealized_gains_percent
+    FIXED: Channel IDs now show real numeric Telegram channel IDs
+    KEPT: follower_tier for strategy classification
     
     Args:
         results: SPYDEFI analysis results
@@ -175,7 +180,7 @@ def export_spydefi_summary_txt(results: Dict[str, Any], output_file: str) -> boo
                     'composite_score': performance.composite_score,
                     'strategy_classification': performance.strategy_classification,
                     'follower_tier': performance.follower_tier,
-                    'subscriber_count': performance.subscriber_count,
+                    'channel_id': performance.channel_id,
                     'total_calls': performance.total_calls,
                     'winning_calls': performance.winning_calls,
                     'success_rate': performance.success_rate,
@@ -219,7 +224,6 @@ def export_spydefi_summary_txt(results: Dict[str, Any], output_file: str) -> boo
             f.write(f"Top KOLs Count: {config.get('top_kols_count', 25)}\n")
             f.write(f"Min Mentions Required: {config.get('min_mentions', 2)}\n")
             f.write(f"Max Market Cap: ${config.get('max_market_cap_usd', 100000000):,}\n")
-            f.write(f"Min Subscribers: {config.get('min_subscribers', 100):,}\n")
             f.write(f"Win Threshold: {config.get('win_threshold_percent', 50)}%\n\n")
             
             # Top 10 KOLs Detailed Analysis
@@ -235,7 +239,8 @@ def export_spydefi_summary_txt(results: Dict[str, Any], output_file: str) -> boo
                 f.write(f"   🎭 SpyDefi Mentions: {spydefi_mentions}\n")
                 f.write(f"   📊 Composite Score: {kol_data.get('composite_score', 0):.1f}/100\n")
                 f.write(f"   🎯 Strategy: {kol_data.get('strategy_classification', 'UNKNOWN')}\n")
-                f.write(f"   👥 Followers: {kol_data.get('subscriber_count', 0):,} ({kol_data.get('follower_tier', 'LOW')} tier)\n")
+                f.write(f"   👥 Follower Tier: {kol_data.get('follower_tier', 'LOW')}\n")
+                f.write(f"   📱 Channel ID: {kol_data.get('channel_id', 'N/A')}\n")
                 f.write(f"   📞 Total Calls: {kol_data.get('total_calls', 0)}\n")
                 f.write(f"   ✅ Winning Calls: {kol_data.get('winning_calls', 0)}\n")
                 f.write(f"   📈 Success Rate: {kol_data.get('success_rate', 0):.1f}%\n")
@@ -268,7 +273,7 @@ def export_spydefi_summary_txt(results: Dict[str, Any], output_file: str) -> boo
             if scalp_kols:
                 for kol_data in scalp_kols[:5]:  # Top 5 scalp KOLs
                     f.write(f"   • @{kol_data['kol']} (Score: {kol_data.get('composite_score', 0):.1f}, "
-                           f"Subs: {kol_data.get('subscriber_count', 0):,})\n")
+                           f"Channel: {kol_data.get('channel_id', 'N/A')})\n")
             
             f.write(f"\n💎 HOLD Strategy KOLs: {len(hold_kols)}\n")
             if hold_kols:
@@ -321,7 +326,7 @@ def export_spydefi_summary_txt(results: Dict[str, Any], output_file: str) -> boo
                 f.write(f"   • Top recommendation for copy trading\n")
                 f.write(f"   • Consistent high performance\n")
                 for kol_data in elite_kols:
-                    f.write(f"   • @{kol_data['kol']} ({kol_data.get('composite_score', 0):.1f} score)\n")
+                    f.write(f"   • @{kol_data['kol']} ({kol_data.get('composite_score', 0):.1f} score, Channel: {kol_data.get('channel_id', 'N/A')})\n")
             
             f.write(f"\n⭐ Good Performers (70-79 score): {len(good_kols)} KOLs\n")
             if good_kols:
@@ -333,25 +338,27 @@ def export_spydefi_summary_txt(results: Dict[str, Any], output_file: str) -> boo
             if gem_finders:
                 f.write(f"\n💎 Top Gem Finders (20%+ 5x rate): {len(gem_finders)} KOLs\n")
                 for kol_data in gem_finders[:3]:
-                    f.write(f"   • @{kol_data['kol']} ({kol_data.get('success_rate_5x', 0):.1f}% 5x rate)\n")
+                    f.write(f"   • @{kol_data['kol']} ({kol_data.get('success_rate_5x', 0):.1f}% 5x rate, Channel: {kol_data.get('channel_id', 'N/A')})\n")
             
             # Fast movers
             fast_movers = [k for k in kol_list if k.get('avg_time_to_2x_hours', 0) > 0 and k.get('avg_time_to_2x_hours', 0) <= 6]
             if fast_movers:
                 f.write(f"\n⚡ Fastest to 2x (≤6h average): {len(fast_movers)} KOLs\n")
                 for kol_data in fast_movers[:3]:
-                    f.write(f"   • @{kol_data['kol']} ({kol_data.get('avg_time_to_2x_hours', 0):.1f}h average)\n")
+                    f.write(f"   • @{kol_data['kol']} ({kol_data.get('avg_time_to_2x_hours', 0):.1f}h average, Channel: {kol_data.get('channel_id', 'N/A')})\n")
             
             # Final recommendations
             f.write(f"\n\n🎯 FINAL COPY TRADING STRATEGY\n")
             f.write("-" * 40 + "\n")
             f.write(f"1. PRIMARY TARGETS: Elite performers (80+ score)\n")
             f.write(f"2. SECONDARY TARGETS: Good performers (70-79 score)\n")
-            f.write(f"3. SCALP STRATEGY: Focus on high-follower KOLs for quick trades\n")
+            f.write(f"3. SCALP STRATEGY: Focus on SCALP classified KOLs for quick trades\n")
             f.write(f"4. HOLD STRATEGY: Focus on gem finders for longer positions\n")
-            f.write(f"5. DIVERSIFICATION: Follow 3-5 KOLs across different tiers\n")
-            f.write(f"6. RISK MANAGEMENT: Set stop losses and take profits\n")
-            f.write(f"7. MONITORING: Track performance and adjust portfolio\n")
+            f.write(f"5. TIER STRATEGY: Mix HIGH/MEDIUM/LOW tiers for diversification\n")
+            f.write(f"6. DIVERSIFICATION: Follow 3-5 KOLs across different strategies\n")
+            f.write(f"7. RISK MANAGEMENT: Set stop losses and take profits\n")
+            f.write(f"8. MONITORING: Track performance and adjust portfolio\n")
+            f.write(f"9. CHANNEL ACCESS: Use numeric Channel IDs to find real channels\n")
             
             f.write(f"\n" + "=" * 80 + "\n")
             f.write("END OF SPYDEFI ANALYSIS SUMMARY\n")
@@ -369,6 +376,8 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
     """
     Export comprehensive analysis results to Excel with enhanced formatting.
     Updated to handle SPYDEFI data format.
+    FIXED: Removed subscriber_count, avg_unrealized_gains_percent columns
+    KEPT: follower_tier for strategy classification
     
     Args:
         telegram_data: SPYDEFI analysis results
@@ -458,7 +467,7 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                             'composite_score': performance.composite_score,
                             'strategy_classification': performance.strategy_classification,
                             'follower_tier': performance.follower_tier,
-                            'subscriber_count': performance.subscriber_count,
+                            'channel_id': performance.channel_id,
                             'total_calls': performance.total_calls,
                             'winning_calls': performance.winning_calls,
                             'success_rate': performance.success_rate,
@@ -472,12 +481,13 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                             'max_roi_percent': performance.max_roi_percent
                         }
                     
+                    # REMOVED: Subscribers column, KEPT: Follower Tier
                     row = {
                         'KOL': f"@{kol}",
                         'Composite Score': data.get('composite_score', 0),
                         'Strategy': data.get('strategy_classification', 'UNKNOWN'),
                         'Follower Tier': data.get('follower_tier', 'LOW'),
-                        'Subscribers': data.get('subscriber_count', 0),
+                        'Channel ID': data.get('channel_id', 'N/A'),
                         'Total Calls': data.get('total_calls', 0),
                         'Winning Calls': data.get('winning_calls', 0),
                         'Success Rate %': data.get('success_rate', 0),
@@ -544,10 +554,10 @@ def export_to_excel(telegram_data: Dict[str, Any], wallet_data: Dict[str, Any],
                     spydefi_sheet.set_column('B:B', 15)  # Composite Score
                     spydefi_sheet.set_column('C:C', 12)  # Strategy
                     spydefi_sheet.set_column('D:D', 12)  # Follower Tier
-                    spydefi_sheet.set_column('E:E', 12)  # Subscribers
+                    spydefi_sheet.set_column('E:E', 15)  # Channel ID
                     spydefi_sheet.set_column('F:K', 10)  # Calls and metrics
-                    spydefi_sheet.set_column('L:P', 12)  # Performance metrics
-                    spydefi_sheet.set_column('Q:Q', 10)  # Copy Rec
+                    spydefi_sheet.set_column('L:Q', 12)  # Performance metrics
+                    spydefi_sheet.set_column('R:R', 10)  # Copy Rec
             
             # Export Wallet data if available (unchanged - preserved for wallet_module compatibility)
             if wallet_data:
@@ -801,6 +811,7 @@ def generate_memecoin_analysis_report(telegram_data: Dict[str, Any],
                                     output_file: str) -> bool:
     """
     Generate a comprehensive analysis report with enhanced SPYDEFI analysis.
+    FIXED: Removed references to subscriber_count, avg_unrealized_gains_percent (KEPT: follower_tier)
     
     Args:
         telegram_data: SPYDEFI analysis results
@@ -845,11 +856,12 @@ def generate_memecoin_analysis_report(telegram_data: Dict[str, Any],
                             'kol': kol,
                             'composite_score': performance.composite_score,
                             'strategy_classification': performance.strategy_classification,
+                            'follower_tier': performance.follower_tier,
                             'success_rate': performance.success_rate,
                             'success_rate_2x': performance.success_rate_2x,
                             'success_rate_5x': performance.success_rate_5x,
                             'total_calls': performance.total_calls,
-                            'subscriber_count': performance.subscriber_count
+                            'channel_id': performance.channel_id
                         }
                     kol_list.append(data)
                 
@@ -859,7 +871,8 @@ def generate_memecoin_analysis_report(telegram_data: Dict[str, Any],
                     f.write(f"{i}. @{data['kol']}\n")
                     f.write(f"   Composite Score: {data.get('composite_score', 0):.1f}/100\n")
                     f.write(f"   Strategy: {data.get('strategy_classification', 'UNKNOWN')}\n")
-                    f.write(f"   Subscribers: {data.get('subscriber_count', 0):,}\n")
+                    f.write(f"   Follower Tier: {data.get('follower_tier', 'LOW')}\n")
+                    f.write(f"   Channel ID: {data.get('channel_id', 'N/A')}\n")
                     f.write(f"   Total Calls: {data.get('total_calls', 0)}\n")
                     f.write(f"   Success Rate: {data.get('success_rate', 0):.1f}%\n")
                     f.write(f"   2x Rate: {data.get('success_rate_2x', 0):.1f}%\n")
