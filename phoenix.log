@@ -13590,3 +13590,57 @@ SyntaxError: invalid syntax
 2025-05-27 14:36:37,966 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
 2025-05-27 14:36:37,997 - phoenix.spydefi - INFO - 📱 Telegram client disconnected
 2025-05-27 14:36:37,997 - phoenix - ERROR - ❌ SPYDEFI analysis failed: No KOL mentions found and no cache available
+2025-05-27 14:39:18,456 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-27 14:39:18,456 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-27 14:39:18,836 - phoenix - INFO - ✅ Imported FIXED SPYDEFI module with real channel ID lookup
+2025-05-27 14:39:18,836 - phoenix - INFO - 🚀 Starting SPYDEFI KOL analysis with FIXED LOGIC & REAL CHANNEL IDs
+2025-05-27 14:39:18,836 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-27 14:39:18,836 - phoenix - INFO - 🔢 Channel IDs will be REAL numeric Telegram IDs
+2025-05-27 14:39:18,852 - phoenix - INFO - 🧮 Fixed: losing_calls = >-50% pullback, real pullback calculation
+2025-05-27 14:39:19,089 - phoenix.api_manager - INFO - ✅ Birdeye API initialized for mainstream token analysis
+2025-05-27 14:39:19,089 - phoenix.api_manager - INFO - ✅ Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-27 14:39:19,089 - phoenix.api_manager - INFO - ✅ Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-27 14:39:19,089 - phoenix - INFO - ✅ API manager initialized successfully
+2025-05-27 14:39:19,089 - phoenix.spydefi - INFO - 🎯 SpyDefi Analyzer initialized with REAL channel IDs and pullback data
+2025-05-27 14:39:19,089 - phoenix.spydefi - INFO - ✅ API manager configured for REAL token analysis
+2025-05-27 14:39:19,089 - phoenix - INFO - 🔧 Using SpyDefi module config with FIXED logic
+2025-05-27 14:39:19,089 - phoenix - INFO - 📊 FIXES: Real channel lookup, fixed token counting, pullback calc
+2025-05-27 14:39:19,089 - phoenix - INFO - 🔢 Real channel ID lookup: ENABLED
+2025-05-27 14:39:19,089 - phoenix - INFO - ✅ SPYDEFI analyzer initialized with FIXED LOGIC
+2025-05-27 14:39:19,089 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-27 14:39:19,216 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-27 14:39:20,025 - phoenix.spydefi - INFO - 📱 Telegram client started
+2025-05-27 14:39:20,025 - phoenix.spydefi - INFO - 🚀 Starting SpyDefi KOL analysis with REAL channel IDs and pullback data...
+2025-05-27 14:39:20,025 - phoenix.spydefi - INFO - 📱 Scanning SpyDefi channel for KOL mentions...
+2025-05-27 14:39:20,157 - phoenix.spydefi - INFO - ✅ Successfully connected to SpyDefi channel
+2025-05-27 14:39:20,157 - phoenix.spydefi - INFO - 📊 Channel type: Channel
+2025-05-27 14:39:20,157 - phoenix.spydefi - INFO - 📊 Channel title: SpyDefi
+2025-05-27 14:39:20,157 - phoenix.spydefi - INFO - 📊 Participants: None
+2025-05-27 14:39:20,157 - phoenix.spydefi - INFO - 📅 Scanning from 2025-05-27 13:39 UTC to 2025-05-27 21:39 UTC
+2025-05-27 14:39:20,157 - phoenix.spydefi - INFO - 🔍 Testing channel access with recent messages...
+2025-05-27 14:39:20,305 - phoenix.spydefi - INFO - ✅ Channel access works - found 10 recent messages
+2025-05-27 14:39:20,641 - phoenix.spydefi - INFO - 📊 Processed 100 messages, found 65 KOLs so far
+2025-05-27 14:39:21,063 - phoenix.spydefi - INFO - 📊 Processed 200 messages, found 91 KOLs so far
+2025-05-27 14:39:21,454 - phoenix.spydefi - INFO - 📊 Processed 300 messages, found 97 KOLs so far
+2025-05-27 14:39:21,876 - phoenix.spydefi - INFO - 📊 Processed 400 messages, found 120 KOLs so far
+2025-05-27 14:39:22,303 - phoenix.spydefi - INFO - 📊 Processed 500 messages, found 148 KOLs so far
+2025-05-27 14:39:22,704 - phoenix.spydefi - INFO - 📊 Processed 600 messages, found 163 KOLs so far
+2025-05-27 14:39:23,126 - phoenix.spydefi - INFO - 📊 Processed 700 messages, found 181 KOLs so far
+2025-05-27 14:39:23,516 - phoenix.spydefi - INFO - 📊 Processed 800 messages, found 200 KOLs so far
+2025-05-27 14:39:23,923 - phoenix.spydefi - INFO - 📊 Processed 900 messages, found 212 KOLs so far
+2025-05-27 14:39:24,345 - phoenix.spydefi - INFO - 📊 Scanned 971 messages, found 230 unique KOLs
+2025-05-27 14:39:24,345 - phoenix.spydefi - INFO - 📊 Final results: 230 KOLs with ≥1 mentions
+2025-05-27 14:39:24,345 - phoenix.spydefi - INFO - 🏆 Top KOLs found:
+2025-05-27 14:39:24,345 - phoenix.spydefi - INFO -    1. @Zen_call (28 mentions)
+2025-05-27 14:39:24,345 - phoenix.spydefi - INFO -    2. @TopCallersChannel (27 mentions)
+2025-05-27 14:39:24,345 - phoenix.spydefi - INFO -    3. @kariusgemscalls (23 mentions)
+2025-05-27 14:39:24,345 - phoenix.spydefi - INFO -    4. @hulkgemscalls_real (20 mentions)
+2025-05-27 14:39:24,345 - phoenix.spydefi - INFO -    5. @ethafterdark (17 mentions)
+2025-05-27 14:39:24,345 - phoenix.spydefi - INFO -    6. @Zaydan_Gems (16 mentions)
+2025-05-27 14:39:24,345 - phoenix.spydefi - INFO -    7. @michacalls (15 mentions)
+2025-05-27 14:39:24,345 - phoenix.spydefi - INFO -    8. @KhronosAllChain (14 mentions)
+2025-05-27 14:39:24,345 - phoenix.spydefi - INFO -    9. @itachi_calls (14 mentions)
+2025-05-27 14:39:24,345 - phoenix.spydefi - INFO -    10. @bruisersgambles (13 mentions)
+2025-05-27 14:39:24,345 - phoenix.spydefi - INFO - 📊 Found 230 unique KOLs mentioned
+2025-05-27 14:39:24,345 - phoenix.spydefi - INFO - 🔍 Analyzing top 50 KOLs with REAL data...
+2025-05-27 14:39:24,345 - phoenix.spydefi - INFO - 📊 Analyzing KOL 1/50: @Zen_call
