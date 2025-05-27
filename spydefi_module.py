@@ -362,11 +362,32 @@ class SpyDefiAnalyzer:
             if not spydefi_entity:
                 return {}
             
-            # Calculate time range - FIXED: Use UTC timezone for Telegram compatibility
-            end_time = datetime.now(timezone.utc)
-            start_time = end_time - timedelta(hours=self.config['spydefi_scan_hours'])
+            # Debug: Check channel info
+            logger.info(f"✅ Successfully connected to SpyDefi channel")
+            logger.info(f"📊 Channel type: {type(spydefi_entity).__name__}")
+            if hasattr(spydefi_entity, 'title'):
+                logger.info(f"📊 Channel title: {spydefi_entity.title}")
+            if hasattr(spydefi_entity, 'participants_count'):
+                logger.info(f"📊 Participants: {spydefi_entity.participants_count}")
             
-            logger.info(f"📅 Scanning from {start_time.strftime('%Y-%m-%d %H:%M UTC')} to {end_time.strftime('%Y-%m-%d %H:%M UTC')}")
+            # Calculate time range - FIXED: Use UTC timezone for Telegram compatibility
+            current_time = datetime.now(timezone.utc)
+            start_time = current_time - timedelta(hours=self.config['spydefi_scan_hours'])
+            
+            logger.info(f"📅 Scanning from {start_time.strftime('%Y-%m-%d %H:%M UTC')} to {current_time.strftime('%Y-%m-%d %H:%M UTC')}")
+            
+            # Test: Get just a few recent messages to see if channel access works
+            logger.info("🔍 Testing channel access with recent messages...")
+            test_count = 0
+            try:
+                async for message in self.client.iter_messages(spydefi_entity, limit=10):
+                    test_count += 1
+                    if message.text:
+                        logger.debug(f"📝 Sample message: {message.text[:100]}...")
+                logger.info(f"✅ Channel access works - found {test_count} recent messages")
+            except Exception as e:
+                logger.error(f"❌ Channel access test failed: {str(e)}")
+                return {}
             
             kol_mentions = {}
             message_count = 0
@@ -374,10 +395,9 @@ class SpyDefiAnalyzer:
             try:
                 async for message in self.client.iter_messages(
                     spydefi_entity,
-                    offset_date=end_time,
-                    reverse=True,
-                    limit=2000
+                    limit=2000  # Remove offset_date, just get recent messages
                 ):
+                    # Check if message is within our time range
                     if message.date < start_time:
                         break
                     
@@ -390,7 +410,9 @@ class SpyDefiAnalyzer:
                             if self._is_valid_kol_username(username):
                                 kol_mentions[username] = kol_mentions.get(username, 0) + 1
                     
-                    if message_count % 50 == 0:
+                    # Log progress every 100 messages
+                    if message_count % 100 == 0:
+                        logger.info(f"📊 Processed {message_count} messages, found {len(kol_mentions)} KOLs so far")
                         await asyncio.sleep(0.1)
                         
             except FloodWaitError as e:
@@ -399,8 +421,45 @@ class SpyDefiAnalyzer:
                 
             except Exception as e:
                 logger.error(f"❌ Error during message iteration: {str(e)}")
+                logger.info(f"📊 Processed {message_count} messages before error")
             
             logger.info(f"📊 Scanned {message_count} messages, found {len(kol_mentions)} unique KOLs")
+            
+            # If we didn't find enough messages, try expanding the time window
+            if message_count < 50:
+                logger.warning(f"⚠️ Only found {message_count} messages in {self.config['spydefi_scan_hours']}h window")
+                logger.info("🔍 Expanding search to 24 hours...")
+                
+                # Expand to 24 hours
+                start_time_expanded = current_time - timedelta(hours=24)
+                additional_messages = 0
+                
+                try:
+                    async for message in self.client.iter_messages(spydefi_entity, limit=5000):
+                        if message.date < start_time_expanded:
+                            break
+                        
+                        # Skip messages we already processed
+                        if message.date >= start_time:
+                            continue
+                            
+                        additional_messages += 1
+                        
+                        if message.text:
+                            usernames = self._extract_kol_usernames(message.text)
+                            
+                            for username in usernames:
+                                if self._is_valid_kol_username(username):
+                                    kol_mentions[username] = kol_mentions.get(username, 0) + 1
+                        
+                        if additional_messages % 100 == 0:
+                            logger.info(f"📊 Processed {additional_messages} additional messages")
+                            await asyncio.sleep(0.1)
+                            
+                except Exception as e:
+                    logger.error(f"❌ Error during expanded search: {str(e)}")
+                
+                logger.info(f"📊 Expanded search: +{additional_messages} messages, total KOLs: {len(kol_mentions)}")
             
             # Filter by minimum mentions
             filtered_kols = {k: v for k, v in kol_mentions.items() 
@@ -410,6 +469,14 @@ class SpyDefiAnalyzer:
             sorted_kols = dict(sorted(filtered_kols.items(), 
                                     key=lambda x: x[1], 
                                     reverse=True))
+            
+            logger.info(f"📊 Final results: {len(sorted_kols)} KOLs with ≥{self.config['min_mentions']} mentions")
+            
+            # Log top KOLs found
+            if sorted_kols:
+                logger.info("🏆 Top KOLs found:")
+                for i, (kol, mentions) in enumerate(list(sorted_kols.items())[:10], 1):
+                    logger.info(f"   {i}. @{kol} ({mentions} mentions)")
             
             return sorted_kols
             
@@ -586,8 +653,8 @@ class SpyDefiAnalyzer:
                 return []
             
             # Get messages from last N days - FIXED: Use UTC timezone
-            end_time = datetime.now(timezone.utc)
-            start_time = end_time - timedelta(days=self.config['kol_analysis_days'])
+            current_time = datetime.now(timezone.utc)
+            start_time = current_time - timedelta(days=self.config['kol_analysis_days'])
             
             token_calls = []
             message_count = 0
@@ -595,9 +662,9 @@ class SpyDefiAnalyzer:
             try:
                 async for message in self.client.iter_messages(
                     entity,
-                    offset_date=end_time,
-                    limit=100
+                    limit=200  # Increase limit and remove offset_date
                 ):
+                    # Check if message is within our time range
                     if message.date < start_time:
                         break
                     
@@ -614,7 +681,7 @@ class SpyDefiAnalyzer:
                                 'kol': kol
                             })
                     
-                    if message_count % 20 == 0:
+                    if message_count % 50 == 0:
                         await asyncio.sleep(0.2)
                         
             except FloodWaitError as e:
