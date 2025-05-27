@@ -8,6 +8,9 @@ Phoenix Project - OPTIMIZED CLI Tool with SPYDEFI KOL Analysis System
 - Smart filtering: Faster SpyDefi scanning with pre-filters
 - Configuration display: Keep for manual verification
 - Direct operation: Go straight to analysis
+
+🔧 CRITICAL FIX: Fixed SPYDEFI KOL extraction to get real @usernames instead of multipliers
+✅ PRESERVED: All wallet analysis and other core functionality intact
 """
 
 import os
@@ -126,6 +129,35 @@ def load_wallets_from_file(file_path: str = "wallets.txt") -> List[str]:
         logger.error(f"Error reading wallets file {file_path}: {str(e)}")
         return []
 
+def clear_corrupted_cache():
+    """Clear potentially corrupted SPYDEFI cache."""
+    cache_dir = Path.home() / ".phoenix_cache"
+    spydefi_cache = cache_dir / "spydefi_kol_analysis.json"
+    
+    if spydefi_cache.exists():
+        try:
+            # Check if cache contains corrupted data (old format with wrong KOL names)
+            with open(spydefi_cache, 'r') as f:
+                cache_data = json.load(f)
+            
+            kol_performances = cache_data.get('kol_performances', {})
+            
+            # Check for known corrupted KOL names
+            corrupted_names = {'x2', 'x3', 'x4', 'x5', 'x6', 'x7', 'x8', 'x9', 'x10', 'x15', 'x20', 'x30', 'x40', 'x50', 'x60'}
+            has_corrupted_data = any(kol in corrupted_names for kol in kol_performances.keys())
+            
+            if has_corrupted_data or not kol_performances:
+                logger.info("🧹 Clearing corrupted SPYDEFI cache with invalid KOL names...")
+                spydefi_cache.unlink()
+                logger.info("✅ Corrupted cache cleared - will regenerate with fixed extraction")
+                return True
+        except Exception as e:
+            logger.warning(f"Error checking cache: {str(e)} - clearing cache")
+            spydefi_cache.unlink()
+            return True
+    
+    return False
+
 class PhoenixCLI:
     """Optimized Phoenix CLI with streamlined SPYDEFI analysis."""
     
@@ -161,6 +193,7 @@ class PhoenixCLI:
         spydefi_parser.add_argument("--max-mcap", type=float, default=10000000, help="Max market cap filter in USD (default: 10M)")
         spydefi_parser.add_argument("--min-subs", type=int, default=100, help="Minimum subscriber count (default: 100, relaxed)")
         spydefi_parser.add_argument("--output", default="spydefi_kol_analysis.csv", help="Output CSV file")
+        spydefi_parser.add_argument("--force-refresh", action="store_true", help="Force refresh cache")
         
         # Wallet analysis command (unchanged)
         wallet_parser = subparsers.add_parser("wallet", help="Analyze wallets for copy trading")
@@ -269,21 +302,32 @@ class PhoenixCLI:
                     print(f"\n📋 SPYDEFI KOL Analysis Cache:", flush=True)
                     print(f"   File: {cache_file.name}", flush=True)
                     print(f"   Size: {size:.2f} KB", flush=True)
-                    print(f"   Version: {version} (Optimized)", flush=True)
+                    print(f"   Version: {version} (Fixed KOL Extraction)", flush=True)
                     print(f"   Created: {timestamp}", flush=True)
                     print(f"   KOLs analyzed: {kol_count}", flush=True)
                     print(f"   SpyDefi scan: {scan_hours}h", flush=True)
                     print(f"   KOL analysis: {analysis_days}d each", flush=True)
                     
-                    # Check age
-                    if timestamp != 'Unknown':
-                        cache_age = datetime.now() - datetime.fromisoformat(timestamp)
-                        hours_old = cache_age.total_seconds() / 3600
-                        
-                        if hours_old < 6:
-                            print(f"   Status: ✅ Fresh ({hours_old:.1f} hours old)", flush=True)
-                        else:
-                            print(f"   Status: ⚠️ Expired ({hours_old:.1f} hours old)", flush=True)
+                    # Check for corrupted data
+                    kol_performances = cache_data.get('kol_performances', {})
+                    corrupted_names = {'x2', 'x3', 'x4', 'x5', 'x6', 'x7', 'x8', 'x9', 'x10'}
+                    has_corrupted_data = any(kol in corrupted_names for kol in kol_performances.keys())
+                    
+                    if has_corrupted_data:
+                        print(f"   Status: ❌ CORRUPTED (contains invalid KOL names like x2, x3)", flush=True)
+                        print(f"   Action: Should be cleared and regenerated", flush=True)
+                    elif not kol_performances:
+                        print(f"   Status: ⚠️ EMPTY (no valid KOL performances)", flush=True)
+                    else:
+                        # Check age
+                        if timestamp != 'Unknown':
+                            cache_age = datetime.now() - datetime.fromisoformat(timestamp)
+                            hours_old = cache_age.total_seconds() / 3600
+                            
+                            if hours_old < 6:
+                                print(f"   Status: ✅ Fresh ({hours_old:.1f} hours old)", flush=True)
+                            else:
+                                print(f"   Status: ⚠️ Expired ({hours_old:.1f} hours old)", flush=True)
                             
                 except Exception as e:
                     print(f"   Error reading cache: {str(e)}", flush=True)
@@ -296,10 +340,11 @@ class PhoenixCLI:
         
         print("\n🔧 CACHE ACTIONS:", flush=True)
         print("1. Clear all cache", flush=True)
-        print("2. View cache details", flush=True)
+        print("2. Clear only corrupted SPYDEFI cache", flush=True)
+        print("3. View cache details", flush=True)
         print("0. Back to main menu", flush=True)
         
-        choice = input("\nEnter your choice (0-2): ").strip()
+        choice = input("\nEnter your choice (0-3): ").strip()
         
         if choice == '1':
             confirm = input("\n⚠️ Clear all cache files? (y/N): ").lower().strip()
@@ -310,11 +355,17 @@ class PhoenixCLI:
                         print(f"✅ Deleted: {cache_file.name}", flush=True)
                     except Exception as e:
                         print(f"❌ Error deleting {cache_file.name}: {str(e)}", flush=True)
-                print("\n✅ Cache cleared!", flush=True)
+                print("\n✅ All cache cleared!", flush=True)
             else:
                 print("❌ Cache clear cancelled.", flush=True)
-                
+        
         elif choice == '2':
+            if clear_corrupted_cache():
+                print("✅ Corrupted SPYDEFI cache cleared!", flush=True)
+            else:
+                print("ℹ️ No corrupted cache found.", flush=True)
+                
+        elif choice == '3':
             print("\n📄 CACHE DETAILS:", flush=True)
             for cache_file in cache_files:
                 print(f"\nFile: {cache_file}", flush=True)
@@ -342,6 +393,12 @@ class PhoenixCLI:
             input("Press Enter to continue...")
             return
         
+        # CRITICAL FIX: Check and clear corrupted cache before starting
+        cache_cleared = clear_corrupted_cache()
+        if cache_cleared:
+            print("\n🧹 Cleared corrupted cache with invalid KOL names", flush=True)
+            print("Will regenerate analysis with fixed username extraction", flush=True)
+        
         # Get SPYDEFI configuration and display for manual verification
         spydefi_config = self.config.get('spydefi_analysis', {})
         rpc_url = self.config.get("solana_rpc_url", "https://api.mainnet-beta.solana.com")
@@ -362,7 +419,7 @@ class PhoenixCLI:
         print(f"   📈 Win threshold: {spydefi_config.get('win_threshold_percent', 50)}%", flush=True)
         print(f"   📨 Max messages limit: {spydefi_config.get('max_messages_limit', 6000):,}", flush=True)
         print(f"   🔄 Auto refresh: {spydefi_config.get('cache_refresh_hours', 6)}h threshold", flush=True)
-        print(f"   🎛️ Filtering: Relaxed for better KOL discovery", flush=True)
+        print(f"   🔧 KOL Extraction: FIXED (no more x2, x3 false positives)", flush=True)
         
         # Check optional APIs
         if self.config.get("helius_api_key"):
@@ -382,6 +439,7 @@ class PhoenixCLI:
                 self.max_mcap = spydefi_config.get('max_market_cap_usd', 10000000)
                 self.min_subs = spydefi_config.get('min_subscribers', 100)  # Relaxed
                 self.output = "spydefi_kol_analysis.csv"
+                self.force_refresh = cache_cleared  # Force refresh if cache was cleared
         
         args = Args()
         
@@ -393,6 +451,8 @@ class PhoenixCLI:
         except Exception as e:
             print(f"\n❌ SPYDEFI analysis failed: {str(e)}", flush=True)
             logger.error(f"SPYDEFI analysis error: {str(e)}")
+            import traceback
+            logger.error(f"Full traceback: {traceback.format_exc()}")
         
         input("\nPress Enter to continue...")
     
@@ -404,7 +464,7 @@ class PhoenixCLI:
             import importlib
             import sys
             
-            # Clear any existing modules
+            # Clear any existing modules to get the fixed version
             modules_to_clear = ['spydefi_module']
             for module in modules_to_clear:
                 if module in sys.modules:
@@ -413,7 +473,7 @@ class PhoenixCLI:
             from spydefi_module import SpyDefiAnalyzer
             from dual_api_manager import DualAPIManager
             
-            logger.info("✅ Imported optimized SPYDEFI module")
+            logger.info("✅ Imported FIXED SPYDEFI module")
             
         except Exception as e:
             logger.error(f"❌ Error importing modules: {str(e)}")
@@ -429,7 +489,7 @@ class PhoenixCLI:
         
         output_file = ensure_output_dir(args.output)
         
-        logger.info(f"🚀 Starting optimized SPYDEFI KOL analysis")
+        logger.info(f"🚀 Starting FIXED SPYDEFI KOL analysis")
         logger.info(f"📁 Results will be saved to {output_file}")
         
         # Initialize APIs
@@ -465,7 +525,11 @@ class PhoenixCLI:
                 min_subscribers=getattr(args, 'min_subs', 100)  # Relaxed
             )
             
-            logger.info("✅ Optimized SPYDEFI analyzer initialized successfully")
+            # Force refresh if cache was corrupted
+            if getattr(args, 'force_refresh', False):
+                spydefi_analyzer.config['cache_refresh_hours'] = 0  # Force refresh
+            
+            logger.info("✅ FIXED SPYDEFI analyzer initialized successfully")
         except Exception as e:
             logger.error(f"❌ Failed to initialize SPYDEFI analyzer: {str(e)}")
             raise
@@ -474,19 +538,28 @@ class PhoenixCLI:
         async def run_spydefi_analysis():
             try:
                 async with spydefi_analyzer:
-                    # Auto-determine refresh (no prompt)
+                    # Run analysis with fixed KOL extraction
                     results = await spydefi_analyzer.run_full_analysis()
                     
                     if results.get('success'):
-                        # Export results
-                        await export_spydefi_results(results, output_file)
-                        
-                        # Display summary
-                        display_spydefi_summary(results)
+                        # IMPROVED: Better error handling for export
+                        try:
+                            await export_spydefi_results(results, output_file)
+                            display_spydefi_summary(results)
+                        except Exception as export_error:
+                            logger.error(f"❌ Export failed: {str(export_error)}")
+                            # Still return results even if export fails
+                            print(f"\n⚠️ Analysis completed but export failed: {str(export_error)}", flush=True)
+                            
+                            # Try to show basic summary
+                            kol_count = len(results.get('kol_performances', {}))
+                            print(f"📊 Analysis found {kol_count} valid KOLs", flush=True)
                         
                         return results
                     else:
-                        logger.error(f"❌ SPYDEFI analysis failed: {results.get('error', 'Unknown error')}")
+                        error_msg = results.get('error', 'Unknown error')
+                        logger.error(f"❌ SPYDEFI analysis failed: {error_msg}")
+                        print(f"❌ Analysis failed: {error_msg}", flush=True)
                         return results
                         
             except Exception as e:
@@ -500,7 +573,7 @@ class PhoenixCLI:
         
         if results.get('success'):
             logger.info(f"✅ SPYDEFI analysis completed successfully!")
-            logger.info(f"📁 Results exported to {output_file}")
+            logger.info(f"📁 Results saved to {output_file}")
         else:
             logger.error(f"❌ SPYDEFI analysis failed: {results.get('error', 'Unknown error')}")
     
@@ -1002,6 +1075,7 @@ class PhoenixCLI:
         # Save configuration
         save_config(self.config)
         print("\n✅ Configuration saved successfully!", flush=True)
+        print("🔧 Note: Fixed KOL extraction will be used in next SPYDEFI analysis", flush=True)
         
         input("\nPress Enter to continue...")
     
@@ -1038,6 +1112,7 @@ class PhoenixCLI:
         print(f"   Max messages limit: {spydefi_config.get('max_messages_limit', 6000):,} (NEW)", flush=True)
         print(f"   Auto refresh threshold: {spydefi_config.get('cache_refresh_hours', 6)}h (NEW)", flush=True)
         print(f"   Filtering mode: Relaxed for better discovery", flush=True)
+        print(f"   KOL Extraction: FIXED (no more x2, x3 false positives)", flush=True)
         
         print(f"\n💰 WALLET ANALYSIS SETTINGS:", flush=True)
         print(f"   Default analysis period: {self.config.get('wallet_analysis', {}).get('days_to_analyze', 7)} days", flush=True)
@@ -1108,6 +1183,7 @@ class PhoenixCLI:
         print("• MESSAGE LIMITS: Max 6,000 messages per scan for speed", flush=True)
         print("• AUTO CACHE: Refreshes automatically after 6 hours", flush=True)
         print("• FLEXIBLE THRESHOLDS: Min 1 mention, 100+ subscribers", flush=True)
+        print("• 🔧 FIXED KOL EXTRACTION: Now gets real @usernames instead of x2, x3", flush=True)
         print("• Ranks KOLs by mention frequency → Top 25 selection", flush=True)
         print("• Analyzes individual KOL performance comprehensively", flush=True)
         print("• Classifies strategies: SCALP vs HOLD", flush=True)
@@ -1158,6 +1234,15 @@ class PhoenixCLI:
         print("• PEAK HOURS: Focus on most active crypto periods", flush=True)
         print("• FALLBACK PROCESSING: Catches edge cases with backup logic", flush=True)
         print("• LOWER BARRIERS: Min 1 mention + 100 subscribers", flush=True)
+        print("• 🔧 FIXED EXTRACTION: Real @usernames instead of x2, x3 false positives", flush=True)
+        
+        print("\n💰 WALLET ANALYSIS (UNCHANGED):", flush=True)
+        print("• Comprehensive wallet performance tracking", flush=True)
+        print("• 7-day active trader focus with recent activity", flush=True)
+        print("• Smart exit timing analysis and TP guidance", flush=True)
+        print("• Entry/exit quality scoring", flush=True)
+        print("• Distribution analysis (5x+, 2x+, etc.)", flush=True)
+        print("• Copy decision recommendations", flush=True)
         
         print("\n🔧 COMMAND LINE USAGE:", flush=True)
         print("# Configure all APIs for optimized SPYDEFI", flush=True)
@@ -1168,6 +1253,9 @@ class PhoenixCLI:
         print("", flush=True)
         print("# Custom optimization parameters", flush=True)
         print("python phoenix.py spydefi --spydefi-hours 6 --top-kols 30 --min-subs 1000", flush=True)
+        print("", flush=True)
+        print("# Run wallet analysis (unchanged)", flush=True)
+        print("python phoenix.py wallet", flush=True)
         
         input("\nPress Enter to continue...")
     
@@ -1184,6 +1272,7 @@ class PhoenixCLI:
         print(f"   Scan window: {self.config.get('spydefi_analysis', {}).get('spydefi_scan_hours', 8)} hours (optimized)", flush=True)
         print(f"   Message limit: {self.config.get('spydefi_analysis', {}).get('max_messages_limit', 6000):,}", flush=True)
         print(f"   Purpose: Discover top KOLs with smart filtering", flush=True)
+        print(f"   🔧 Extraction: FIXED (real @usernames, not x2/x3)", flush=True)
         
         # Telegram channels (legacy)
         channels = self.config.get('sources', {}).get('telegram_groups', [])
@@ -1332,13 +1421,41 @@ class PhoenixCLI:
         except Exception as e:
             logger.error(f"Error during wallet analysis: {str(e)}")
 
-# Export functions for SPYDEFI results
+# Export functions for SPYDEFI results with better error handling
 async def export_spydefi_results(results: Dict[str, Any], output_file: str):
-    """Export optimized SPYDEFI analysis results to CSV and TXT."""
+    """Export optimized SPYDEFI analysis results to CSV and TXT with better error handling."""
     try:
         from export_utils import export_spydefi_to_csv, export_spydefi_summary_txt
         
-        # Export CSV
+        # Check if we have valid results
+        kol_performances = results.get('kol_performances', {})
+        
+        if not kol_performances:
+            logger.warning("⚠️ No valid KOL performances found - creating empty export files")
+            
+            # Create empty CSV file with headers
+            import csv
+            with open(output_file, 'w', newline='', encoding='utf-8') as f:
+                writer = csv.writer(f)
+                writer.writerow(['rank', 'kol', 'composite_score', 'copy_recommendation', 'note'])
+                writer.writerow([1, 'NO_VALID_KOLS_FOUND', 0, 'RERUN_ANALYSIS', 'Cache was corrupted with invalid KOL names'])
+            
+            # Create basic TXT summary
+            txt_file = output_file.replace('.csv', '_summary.txt')
+            with open(txt_file, 'w', encoding='utf-8') as f:
+                f.write("SPYDEFI Analysis Results\n")
+                f.write("="*50 + "\n\n")
+                f.write("❌ NO VALID KOLS FOUND\n\n")
+                f.write("This usually means:\n")
+                f.write("1. Cache contained corrupted data (x2, x3 false positives)\n")
+                f.write("2. KOL extraction needs to be fixed\n")
+                f.write("3. Need to rerun analysis with fresh cache\n\n")
+                f.write("SOLUTION: Clear cache and rerun analysis\n")
+            
+            logger.info(f"📄 Empty export files created: {output_file}")
+            return
+        
+        # Normal export process
         csv_success = export_spydefi_to_csv(results, output_file)
         
         # Export TXT summary
@@ -1346,26 +1463,39 @@ async def export_spydefi_results(results: Dict[str, Any], output_file: str):
         txt_success = export_spydefi_summary_txt(results, txt_file)
         
         if csv_success and txt_success:
-            logger.info(f"✅ Optimized SPYDEFI results exported successfully")
+            logger.info(f"✅ SPYDEFI results exported successfully")
             logger.info(f"📄 CSV: {output_file}")
             logger.info(f"📄 Summary: {txt_file}")
+        elif csv_success:
+            logger.info(f"✅ CSV exported: {output_file}")
+            logger.warning(f"⚠️ TXT export failed: {txt_file}")
+        else:
+            logger.error(f"❌ Export failed for both CSV and TXT")
         
     except Exception as e:
         logger.error(f"❌ Error exporting SPYDEFI results: {str(e)}")
+        raise
 
 def display_spydefi_summary(results: Dict[str, Any]):
-    """Display optimized SPYDEFI analysis summary."""
+    """Display optimized SPYDEFI analysis summary with better error handling."""
     try:
         kol_performances = results.get('kol_performances', {})
         metadata = results.get('metadata', {})
         
-        if not kol_performances:
-            print("❌ No KOL performance data to display", flush=True)
-            return
-        
         print("\n" + "="*80, flush=True)
-        print("    🎉 OPTIMIZED SPYDEFI ANALYSIS COMPLETE", flush=True)
+        print("    🎉 SPYDEFI ANALYSIS COMPLETE", flush=True)
         print("="*80, flush=True)
+        
+        if not kol_performances:
+            print("\n❌ NO VALID KOL PERFORMANCES FOUND", flush=True)
+            print("\nThis usually indicates:", flush=True)
+            print("• Cache contained corrupted data (x2, x3 false positives)", flush=True)
+            print("• KOL username extraction failed", flush=True)
+            print("• All extracted KOLs were filtered as invalid", flush=True)
+            print("\nSOLUTION:", flush=True)
+            print("• Clear cache: Option 8 → Clear corrupted SPYDEFI cache", flush=True)
+            print("• Rerun analysis with fresh cache and fixed extraction", flush=True)
+            return
         
         print(f"\n📊 OVERALL STATISTICS:", flush=True)
         print(f"   🎯 KOLs analyzed: {len(kol_performances)}", flush=True)
@@ -1375,12 +1505,12 @@ def display_spydefi_summary(results: Dict[str, Any]):
         print(f"   🚀 Overall 5x rate: {metadata.get('overall_5x_rate', 0):.1f}%", flush=True)
         print(f"   ⏱️ Processing time: {metadata.get('processing_time_seconds', 0):.1f}s", flush=True)
         print(f"   📡 API calls: {metadata.get('api_calls', 0)}", flush=True)
-        print(f"   🚀 Optimization version: {metadata.get('optimization_version', '3.1')}", flush=True)
+        print(f"   🔧 Version: {metadata.get('optimization_version', '3.1.1')} (Fixed KOL Extraction)", flush=True)
         
         # Top 10 KOLs
         top_kols = list(kol_performances.items())[:10]
         
-        print(f"\n🏆 TOP 10 KOLS:", flush=True)
+        print(f"\n🏆 TOP {min(10, len(top_kols))} KOLS:", flush=True)
         for i, (kol, perf) in enumerate(top_kols, 1):
             if isinstance(perf, dict):
                 score = perf.get('composite_score', 0)
@@ -1404,13 +1534,14 @@ def display_spydefi_summary(results: Dict[str, Any]):
             print(f"   🎯 Success: {success_rate:.1f}% | 2x: {success_rate_2x:.1f}% | 5x: {success_rate_5x:.1f}%", flush=True)
             print(f"   📈 Strategy: {strategy} | Subs: {subs:,} | Calls: {calls}", flush=True)
         
-        print(f"\n✅ Optimized analysis exported to CSV and summary files", flush=True)
+        print(f"\n✅ Analysis exported to CSV and summary files", flush=True)
         
     except Exception as e:
         logger.error(f"Error displaying SPYDEFI summary: {str(e)}")
+        print(f"\n❌ Error displaying summary: {str(e)}", flush=True)
 
 def main():
-    """Main entry point for the optimized Phoenix CLI."""
+    """Main entry point for the fixed Phoenix CLI."""
     try:
         cli = PhoenixCLI()
         cli.run()
