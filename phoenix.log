@@ -13344,3 +13344,33 @@ TypeError: TelegramBaseClient.__init__() got an unexpected keyword argument 'ret
 2025-05-27 13:22:29,713 - phoenix.spydefi - INFO - 📱 Telegram client disconnected
 2025-05-27 13:22:29,713 - phoenix - INFO - ✅ SPYDEFI analysis completed successfully!
 2025-05-27 13:22:29,713 - phoenix - INFO - 📁 Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-27 13:40:17,548 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-27 13:40:17,548 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-27 13:40:17,912 - phoenix - INFO - ✅ Imported FIXED SPYDEFI module with real channel ID lookup
+2025-05-27 13:40:17,912 - phoenix - INFO - 🚀 Starting SPYDEFI KOL analysis with FIXED LOGIC & REAL CHANNEL IDs
+2025-05-27 13:40:17,912 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-27 13:40:17,912 - phoenix - INFO - 🔢 Channel IDs will be REAL numeric Telegram IDs
+2025-05-27 13:40:17,912 - phoenix - INFO - 🧮 Fixed: losing_calls = >-50% pullback, real pullback calculation
+2025-05-27 13:40:18,149 - phoenix.api_manager - INFO - ✅ Birdeye API initialized for mainstream token analysis
+2025-05-27 13:40:18,156 - phoenix.api_manager - INFO - ✅ Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-27 13:40:18,156 - phoenix.api_manager - INFO - ✅ Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-27 13:40:18,156 - phoenix - INFO - ✅ API manager initialized successfully
+2025-05-27 13:40:18,156 - phoenix.spydefi - INFO - 🎯 SpyDefi Analyzer initialized with REAL WORKING logic
+2025-05-27 13:40:18,156 - phoenix.spydefi - INFO - ✅ API manager configured for REAL token analysis
+2025-05-27 13:40:18,156 - phoenix - INFO - 🔧 Using SpyDefi module config with FIXED logic
+2025-05-27 13:40:18,156 - phoenix - INFO - 📊 FIXES: Real channel lookup, fixed token counting, pullback calc
+2025-05-27 13:40:18,156 - phoenix - INFO - 🔢 Real channel ID lookup: ENABLED
+2025-05-27 13:40:18,156 - phoenix - INFO - ✅ SPYDEFI analyzer initialized with FIXED LOGIC
+2025-05-27 13:40:18,156 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-27 13:40:18,281 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-27 13:40:19,068 - phoenix.spydefi - INFO - 📱 Telegram client started
+2025-05-27 13:40:19,068 - phoenix.spydefi - INFO - 🚀 Starting SpyDefi KOL analysis with REAL WORKING logic...
+2025-05-27 13:40:19,068 - phoenix.spydefi - INFO - 🔄 Forcing fresh analysis to test REAL logic...
+2025-05-27 13:40:19,068 - phoenix.spydefi - INFO - 📱 Scanning SpyDefi channel for KOL mentions...
+2025-05-27 13:40:19,210 - phoenix.spydefi - ERROR - ❌ Error scanning SpyDefi: A wait of 2915 seconds is required (caused by ResolveUsernameRequest)
+2025-05-27 13:40:19,210 - phoenix.spydefi - ERROR - ❌ No KOL mentions found in SpyDefi
+2025-05-27 13:40:19,210 - phoenix - ERROR - ❌ SPYDEFI analysis failed: No KOL mentions found
+2025-05-27 13:40:19,210 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-27 13:40:19,210 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-27 13:40:19,226 - phoenix.spydefi - INFO - 📱 Telegram client disconnected
+2025-05-27 13:40:19,226 - phoenix - ERROR - ❌ SPYDEFI analysis failed: No KOL mentions found
