@@ -13374,3 +13374,111 @@ TypeError: TelegramBaseClient.__init__() got an unexpected keyword argument 'ret
 2025-05-27 13:40:19,210 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
 2025-05-27 13:40:19,226 - phoenix.spydefi - INFO - 📱 Telegram client disconnected
 2025-05-27 13:40:19,226 - phoenix - ERROR - ❌ SPYDEFI analysis failed: No KOL mentions found
+2025-05-27 13:48:42,759 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-27 13:48:42,774 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-27 13:48:43,159 - phoenix - INFO - ✅ Imported FIXED SPYDEFI module with real channel ID lookup
+2025-05-27 13:48:43,159 - phoenix - INFO - 🚀 Starting SPYDEFI KOL analysis with FIXED LOGIC & REAL CHANNEL IDs
+2025-05-27 13:48:43,159 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-27 13:48:43,159 - phoenix - INFO - 🔢 Channel IDs will be REAL numeric Telegram IDs
+2025-05-27 13:48:43,159 - phoenix - INFO - 🧮 Fixed: losing_calls = >-50% pullback, real pullback calculation
+2025-05-27 13:48:43,377 - phoenix.api_manager - INFO - ✅ Birdeye API initialized for mainstream token analysis
+2025-05-27 13:48:43,377 - phoenix.api_manager - INFO - ✅ Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-27 13:48:43,377 - phoenix.api_manager - INFO - ✅ Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-27 13:48:43,377 - phoenix - INFO - ✅ API manager initialized successfully
+2025-05-27 13:48:43,377 - phoenix.spydefi - INFO - 🎯 SpyDefi Analyzer initialized with FIXED FloodWait handling
+2025-05-27 13:48:43,377 - phoenix.spydefi - INFO - ⚙️ Configuration: 8h scan, Top 50 KOLs
+2025-05-27 13:48:43,377 - phoenix.spydefi - INFO - ✅ API manager configured for REAL token analysis
+2025-05-27 13:48:43,377 - phoenix - INFO - 🔧 Using SpyDefi module config with FIXED logic
+2025-05-27 13:48:43,377 - phoenix - INFO - 📊 FIXES: Real channel lookup, fixed token counting, pullback calc
+2025-05-27 13:48:43,377 - phoenix - INFO - 🔢 Real channel ID lookup: ENABLED
+2025-05-27 13:48:43,377 - phoenix - INFO - ✅ SPYDEFI analyzer initialized with FIXED LOGIC
+2025-05-27 13:48:43,377 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-27 13:48:43,487 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-27 13:48:44,284 - phoenix.spydefi - INFO - 📱 Telegram client started
+2025-05-27 13:48:44,284 - phoenix.spydefi - INFO - 🚀 Starting SpyDefi KOL analysis with FIXED FloodWait handling...
+2025-05-27 13:48:44,284 - phoenix.spydefi - INFO - ⚙️ Configuration: 8h scan, Top 50 KOLs
+2025-05-27 13:48:44,284 - phoenix.spydefi - INFO - 📦 Using cache (2.6h old)
+2025-05-27 13:48:44,284 - phoenix.spydefi - INFO - 📦 Loaded cache with 50 KOLs
+2025-05-27 13:48:44,284 - phoenix.spydefi - INFO - 📦 Using cached analysis
+2025-05-27 13:48:44,690 - phoenix.export - INFO - ✅ Exported 50 KOLs to SPYDEFI CSV: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-27 13:48:44,690 - phoenix.export - INFO - ✅ Exported SPYDEFI summary to TXT: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis_summary.txt
+2025-05-27 13:48:44,702 - phoenix - INFO - ✅ SPYDEFI results exported successfully with FIXED logic
+2025-05-27 13:48:44,702 - phoenix - INFO - 📄 CSV: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-27 13:48:44,702 - phoenix - INFO - 📄 Summary: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis_summary.txt
+2025-05-27 13:48:44,734 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-27 13:48:44,734 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-27 13:48:44,753 - phoenix.spydefi - INFO - 📱 Telegram client disconnected
+2025-05-27 13:48:44,753 - phoenix - INFO - ✅ SPYDEFI analysis completed successfully!
+2025-05-27 13:48:44,753 - phoenix - INFO - 📁 Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-27 14:04:30,148 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-27 14:04:30,148 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-27 14:04:30,507 - phoenix - INFO - ✅ Imported FIXED SPYDEFI module with real channel ID lookup
+2025-05-27 14:04:30,507 - phoenix - INFO - 🚀 Starting SPYDEFI KOL analysis with FIXED LOGIC & REAL CHANNEL IDs
+2025-05-27 14:04:30,507 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-27 14:04:30,507 - phoenix - INFO - 🔢 Channel IDs will be REAL numeric Telegram IDs
+2025-05-27 14:04:30,507 - phoenix - INFO - 🧮 Fixed: losing_calls = >-50% pullback, real pullback calculation
+2025-05-27 14:04:30,726 - phoenix.api_manager - INFO - ✅ Birdeye API initialized for mainstream token analysis
+2025-05-27 14:04:30,726 - phoenix.api_manager - INFO - ✅ Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-27 14:04:30,726 - phoenix.api_manager - INFO - ✅ Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-27 14:04:30,726 - phoenix - INFO - ✅ API manager initialized successfully
+2025-05-27 14:04:30,726 - phoenix.spydefi - INFO - 🎯 SpyDefi Analyzer initialized with FIXED math and REAL data
+2025-05-27 14:04:30,726 - phoenix.spydefi - INFO - ⚙️ Configuration: 8h scan, Top 50 KOLs
+2025-05-27 14:04:30,726 - phoenix.spydefi - INFO - ✅ API manager configured for REAL token analysis
+2025-05-27 14:04:30,726 - phoenix - INFO - 🔧 Using SpyDefi module config with FIXED logic
+2025-05-27 14:04:30,726 - phoenix - INFO - 📊 FIXES: Real channel lookup, fixed token counting, pullback calc
+2025-05-27 14:04:30,726 - phoenix - INFO - 🔢 Real channel ID lookup: ENABLED
+2025-05-27 14:04:30,726 - phoenix - INFO - ✅ SPYDEFI analyzer initialized with FIXED LOGIC
+2025-05-27 14:04:30,726 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-27 14:04:30,851 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-27 14:04:31,655 - phoenix.spydefi - INFO - 📱 Telegram client started
+2025-05-27 14:04:31,655 - phoenix.spydefi - INFO - 🚀 Starting SpyDefi KOL analysis with FIXED math and REAL data...
+2025-05-27 14:04:31,664 - phoenix.spydefi - INFO - ⚙️ Configuration: 8h scan, Top 50 KOLs
+2025-05-27 14:04:31,664 - phoenix.spydefi - INFO - 📦 Using cache (2.9h old)
+2025-05-27 14:04:31,664 - phoenix.spydefi - INFO - 📦 Loaded cache with 50 KOLs
+2025-05-27 14:04:31,664 - phoenix.spydefi - INFO - 📦 Using cached analysis
+2025-05-27 14:04:32,020 - phoenix.export - INFO - ✅ Exported 50 KOLs to SPYDEFI CSV: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-27 14:04:32,020 - phoenix.export - INFO - ✅ Exported SPYDEFI summary to TXT: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis_summary.txt
+2025-05-27 14:04:32,020 - phoenix - INFO - ✅ SPYDEFI results exported successfully with FIXED logic
+2025-05-27 14:04:32,020 - phoenix - INFO - 📄 CSV: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-27 14:04:32,020 - phoenix - INFO - 📄 Summary: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis_summary.txt
+2025-05-27 14:04:32,070 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-27 14:04:32,070 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-27 14:04:32,084 - phoenix.spydefi - INFO - 📱 Telegram client disconnected
+2025-05-27 14:04:32,084 - phoenix - INFO - ✅ SPYDEFI analysis completed successfully!
+2025-05-27 14:04:32,084 - phoenix - INFO - 📁 Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-27 14:06:17,312 - telethon.crypto.libssl - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2025-05-27 14:06:17,312 - telethon.crypto.aes - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2025-05-27 14:06:17,661 - phoenix - INFO - ✅ Imported FIXED SPYDEFI module with real channel ID lookup
+2025-05-27 14:06:17,661 - phoenix - INFO - 🚀 Starting SPYDEFI KOL analysis with FIXED LOGIC & REAL CHANNEL IDs
+2025-05-27 14:06:17,661 - phoenix - INFO - 📁 Results will be saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-27 14:06:17,661 - phoenix - INFO - 🔢 Channel IDs will be REAL numeric Telegram IDs
+2025-05-27 14:06:17,661 - phoenix - INFO - 🧮 Fixed: losing_calls = >-50% pullback, real pullback calculation
+2025-05-27 14:06:17,883 - phoenix.api_manager - INFO - ✅ Birdeye API initialized for mainstream token analysis
+2025-05-27 14:06:17,883 - phoenix.api_manager - INFO - ✅ Helius API initialized for pump.fun tokens and enhanced parsing
+2025-05-27 14:06:17,883 - phoenix.api_manager - INFO - ✅ Cielo Finance API initialized for WALLET analysis ONLY
+2025-05-27 14:06:17,883 - phoenix - INFO - ✅ API manager initialized successfully
+2025-05-27 14:06:17,883 - phoenix.spydefi - INFO - 🎯 SpyDefi Analyzer initialized with FIXED math and REAL data
+2025-05-27 14:06:17,883 - phoenix.spydefi - INFO - ⚙️ Configuration: 8h scan, Top 50 KOLs
+2025-05-27 14:06:17,883 - phoenix.spydefi - INFO - ✅ API manager configured for REAL token analysis
+2025-05-27 14:06:17,883 - phoenix - INFO - 🔧 Using SpyDefi module config with FIXED logic
+2025-05-27 14:06:17,883 - phoenix - INFO - 📊 FIXES: Real channel lookup, fixed token counting, pullback calc
+2025-05-27 14:06:17,883 - phoenix - INFO - 🔢 Real channel ID lookup: ENABLED
+2025-05-27 14:06:17,883 - phoenix - INFO - ✅ SPYDEFI analyzer initialized with FIXED LOGIC
+2025-05-27 14:06:17,883 - telethon.network.mtprotosender - INFO - Connecting to 149.154.175.57:443/TcpFull...
+2025-05-27 14:06:17,992 - telethon.network.mtprotosender - INFO - Connection to 149.154.175.57:443/TcpFull complete!
+2025-05-27 14:06:18,833 - phoenix.spydefi - INFO - 📱 Telegram client started
+2025-05-27 14:06:18,833 - phoenix.spydefi - INFO - 🚀 Starting SpyDefi KOL analysis with FIXED math and REAL data...
+2025-05-27 14:06:18,833 - phoenix.spydefi - INFO - ⚙️ Configuration: 8h scan, Top 50 KOLs
+2025-05-27 14:06:18,833 - phoenix.spydefi - INFO - 📦 Using cache (2.9h old)
+2025-05-27 14:06:18,849 - phoenix.spydefi - INFO - 📦 Loaded cache with 50 KOLs
+2025-05-27 14:06:18,849 - phoenix.spydefi - INFO - 📦 Using cached analysis
+2025-05-27 14:06:19,164 - phoenix.export - INFO - ✅ Exported 50 KOLs to SPYDEFI CSV: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-27 14:06:19,164 - phoenix.export - INFO - ✅ Exported SPYDEFI summary to TXT: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis_summary.txt
+2025-05-27 14:06:19,164 - phoenix - INFO - ✅ SPYDEFI results exported successfully with FIXED logic
+2025-05-27 14:06:19,164 - phoenix - INFO - 📄 CSV: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv
+2025-05-27 14:06:19,164 - phoenix - INFO - 📄 Summary: C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis_summary.txt
+2025-05-27 14:06:19,211 - telethon.network.mtprotosender - INFO - Disconnecting from 149.154.175.57:443/TcpFull...
+2025-05-27 14:06:19,211 - telethon.network.mtprotosender - INFO - Disconnection from 149.154.175.57:443/TcpFull complete!
+2025-05-27 14:06:19,233 - phoenix.spydefi - INFO - 📱 Telegram client disconnected
+2025-05-27 14:06:19,233 - phoenix - INFO - ✅ SPYDEFI analysis completed successfully!
+2025-05-27 14:06:19,233 - phoenix - INFO - 📁 Results saved to C:\Users\Administrator\Desktop\phoenix-project\outputs\spydefi_kol_analysis.csv

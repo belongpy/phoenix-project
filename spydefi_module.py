@@ -1,14 +1,17 @@
 """
-SpyDefi KOL Analysis Module - Phoenix Project (ACTUALLY WORKING VERSION)
+SpyDefi KOL Analysis Module - Phoenix Project (FIXED MATH & REAL DATA VERSION)
 
-REAL FIXES IMPLEMENTED:
-- REAL Telegram channel ID lookup with actual API calls
-- REAL token analysis with actual price data and pullback calculation
-- REAL math that makes sense (no more impossible success rates)
-- REAL ROI calculation from actual token performance
-- losing_calls = tokens with >-50% pullback FROM REAL DATA
-- winning_calls = total_calls - losing_calls
-- All metrics calculated from REAL token analysis, not fake cached data
+MAJOR FIXES:
+- REMOVED: losing_calls and winning_calls (caused mathematical contradictions)
+- FIXED: avg_max_pullback_percent now shows REAL pullback data for stop loss placement
+- FIXED: avg_roi now shows REAL average ROI data
+- FIXED: consistency_score based on real ROI variance
+- FIXED: FloodWaitError handling in main scanning function
+- FIXED: Uses cached data when rate limited
+- Real Telegram channel ID lookup (numeric IDs like -1001234567890)
+- Fixed token analysis logic (proper 2x/5x counting)
+- Fixed composite score calculation
+- If 15/15 calls hit 2x, then success_rate_2x = 100% (math that makes sense)
 """
 
 import asyncio
@@ -33,26 +36,24 @@ logger = logging.getLogger("phoenix.spydefi")
 
 @dataclass
 class KOLPerformance:
-    """KOL performance metrics with REAL data."""
+    """Fixed KOL performance metrics with real data and consistent math."""
     kol: str
-    channel_id: str  # REAL numeric Telegram channel ID
+    channel_id: str  # Real numeric Telegram channel ID
     follower_tier: str  # HIGH/MEDIUM/LOW
     total_calls: int
-    winning_calls: int  # total_calls - losing_calls
-    losing_calls: int   # tokens with >-50% pullback FROM REAL DATA
     tokens_2x_plus: int
     tokens_5x_plus: int
-    success_rate_2x: float      # tokens_2x_plus / total_calls (REAL MATH)
-    success_rate_5x: float      # tokens_5x_plus / total_calls  
+    success_rate_2x: float      # tokens_2x_plus / total_calls * 100
+    success_rate_5x: float      # tokens_5x_plus / total_calls * 100  
     avg_time_to_2x_hours: float
-    avg_max_pullback_percent: float  # REAL pullback from REAL price data
-    consistency_score: float
-    composite_score: float      # Based on REAL metrics
-    strategy_classification: str  # SCALP/HOLD/MIXED
-    avg_roi: float             # REAL Average ROI from REAL token analysis
+    avg_max_pullback_percent: float  # REAL pullback data for stop loss placement
+    consistency_score: float         # Based on ROI variance (real data)
+    composite_score: float          # Based on 2x rate, 5x rate, time, pullback, avg_roi
+    strategy_classification: str    # SCALP/HOLD/MIXED
+    avg_roi: float                 # REAL average ROI across all tokens
 
 class SpyDefiAnalyzer:
-    """SpyDefi analyzer that ACTUALLY WORKS with real data."""
+    """Enhanced SpyDefi analyzer with FIXED math and real financial data."""
     
     def __init__(self, api_id: str, api_hash: str, session_name: str = "phoenix_spydefi"):
         if not TELETHON_AVAILABLE:
@@ -64,15 +65,15 @@ class SpyDefiAnalyzer:
         self.client = None
         self.api_manager = None
         
-        # Configuration
+        # Fixed configuration - NEVER override from CLI
         self.config = {
-            'spydefi_scan_hours': 8,
-            'kol_analysis_days': 7,
-            'top_kols_count': 50,
-            'min_mentions': 1,
-            'max_market_cap_usd': 10_000_000,
-            'win_threshold_percent': 50,
-            'timeout_minutes': 30,
+            'spydefi_scan_hours': 8,          # Peak memecoin hours
+            'kol_analysis_days': 7,           # Days to analyze each KOL
+            'top_kols_count': 50,             # Increased from 25
+            'min_mentions': 1,                # Quality filter
+            'max_market_cap_usd': 10_000_000, # $10M max
+            'win_threshold_percent': 50,      # 50% profit threshold
+            'timeout_minutes': 30,            # Analysis timeout
         }
         
         # Cache setup
@@ -80,10 +81,11 @@ class SpyDefiAnalyzer:
         self.cache_dir.mkdir(exist_ok=True)
         self.cache_file = self.cache_dir / "spydefi_kol_analysis.json"
         
-        logger.info("🎯 SpyDefi Analyzer initialized with REAL WORKING logic")
+        logger.info("🎯 SpyDefi Analyzer initialized with FIXED math and REAL data")
+        logger.info(f"⚙️ Configuration: {self.config['spydefi_scan_hours']}h scan, Top {self.config['top_kols_count']} KOLs")
     
     def set_api_manager(self, api_manager):
-        """Set the API manager for REAL token analysis."""
+        """Set the API manager for token analysis."""
         self.api_manager = api_manager
         logger.info("✅ API manager configured for REAL token analysis")
     
@@ -148,7 +150,7 @@ class SpyDefiAnalyzer:
         try:
             cache_data = {
                 'timestamp': datetime.now().isoformat(),
-                'version': '4.0',
+                'version': '4.2',
                 'config': self.config,
                 **results
             }
@@ -162,30 +164,51 @@ class SpyDefiAnalyzer:
             logger.error(f"📦 Error saving cache: {str(e)}")
     
     async def run_full_analysis(self) -> Dict[str, Any]:
-        """Run the complete SpyDefi KOL analysis with REAL WORKING logic."""
+        """Run the complete SpyDefi KOL analysis with FIXED math and real data."""
         start_time = time.time()
         
         try:
-            logger.info("🚀 Starting SpyDefi KOL analysis with REAL WORKING logic...")
+            logger.info("🚀 Starting SpyDefi KOL analysis with FIXED math and REAL data...")
+            logger.info(f"⚙️ Configuration: {self.config['spydefi_scan_hours']}h scan, Top {self.config['top_kols_count']} KOLs")
             
-            # FOR NOW: Skip cache to force real analysis
-            logger.info("🔄 Forcing fresh analysis to test REAL logic...")
+            # Check cache first
+            if self._should_use_cache():
+                cached_results = self._load_cache()
+                if cached_results:
+                    logger.info("📦 Using cached analysis")
+                    return {
+                        'success': True,
+                        **cached_results
+                    }
             
-            # Scan SpyDefi for KOL mentions
+            # Scan SpyDefi for KOL mentions with FIXED error handling
             logger.info("📱 Scanning SpyDefi channel for KOL mentions...")
             kol_mentions = await self._scan_spydefi_for_kols()
             
             if not kol_mentions:
                 logger.error("❌ No KOL mentions found in SpyDefi")
-                return {'success': False, 'error': 'No KOL mentions found'}
+                
+                # FIXED: Try to use cached data if available even if expired
+                if self.cache_file.exists():
+                    logger.info("📦 Attempting to use expired cache due to scan failure...")
+                    cached_results = self._load_cache()
+                    if cached_results and cached_results.get('kol_performances'):
+                        logger.info("📦 Using expired cache as fallback")
+                        return {
+                            'success': True,
+                            'fallback_cache': True,
+                            **cached_results
+                        }
+                
+                return {'success': False, 'error': 'No KOL mentions found and no cache available'}
             
             logger.info(f"📊 Found {len(kol_mentions)} unique KOLs mentioned")
             
             # Get top KOLs
             top_kols = list(kol_mentions.keys())[:self.config['top_kols_count']]
             
-            # Analyze each KOL with REAL data
-            logger.info(f"🔍 Analyzing top {len(top_kols)} KOLs with REAL token analysis...")
+            # Analyze each KOL with real channel lookup
+            logger.info(f"🔍 Analyzing top {len(top_kols)} KOLs with real channel lookup...")
             kol_performances = {}
             api_calls = 0
             
@@ -193,21 +216,19 @@ class SpyDefiAnalyzer:
                 try:
                     logger.info(f"📊 Analyzing KOL {i}/{len(top_kols)}: @{kol}")
                     
-                    # STEP 1: Get REAL channel ID
+                    # Get real channel ID
                     real_channel_id = await self._get_real_channel_id(kol)
-                    logger.debug(f"🔢 Channel ID for @{kol}: {real_channel_id}")
                     
-                    # STEP 2: Analyze KOL performance with REAL data
-                    performance = await self._analyze_kol_performance_real(kol, real_channel_id)
+                    # Analyze KOL performance with fixed logic
+                    performance = await self._analyze_kol_performance(kol, real_channel_id)
                     
                     if performance:
                         kol_performances[kol] = performance
-                        api_calls += 10  # Estimate API calls used
+                        api_calls += getattr(performance, 'api_calls_used', 5)  # Estimate
                         
                         logger.info(f"✅ @{kol}: Score {performance.composite_score:.1f}, "
                                   f"2x Rate {performance.success_rate_2x:.1f}%, "
-                                  f"Pullback {performance.avg_max_pullback_percent:.1f}%, "
-                                  f"ROI {performance.avg_roi:.1f}%")
+                                  f"Avg Pullback {performance.avg_max_pullback_percent:.1f}%")
                     else:
                         logger.warning(f"⚠️ Failed to analyze @{kol}")
                         
@@ -225,7 +246,7 @@ class SpyDefiAnalyzer:
                                reverse=True)
             kol_performances = dict(sorted_kols)
             
-            # Calculate overall statistics with REAL data
+            # Calculate overall statistics
             total_calls = sum(p.total_calls for p in kol_performances.values())
             total_2x = sum(p.tokens_2x_plus for p in kol_performances.values())
             total_5x = sum(p.tokens_5x_plus for p in kol_performances.values())
@@ -247,14 +268,14 @@ class SpyDefiAnalyzer:
                     'processing_time_seconds': processing_time,
                     'api_calls': api_calls,
                     'config': self.config,
-                    'version': '4.0-REAL'
+                    'version': '4.2'
                 }
             }
             
             # Cache results
             self._save_cache(results)
             
-            logger.info(f"✅ REAL analysis complete: {len(kol_performances)} KOLs analyzed")
+            logger.info(f"✅ Analysis complete: {len(kol_performances)} KOLs analyzed")
             logger.info(f"📊 Overall 2x rate: {overall_2x_rate:.1f}%")
             logger.info(f"📊 Overall 5x rate: {overall_5x_rate:.1f}%")
             
@@ -265,10 +286,43 @@ class SpyDefiAnalyzer:
             return {'success': False, 'error': str(e)}
     
     async def _scan_spydefi_for_kols(self) -> Dict[str, int]:
-        """Scan SpyDefi channel for KOL mentions with REAL extraction."""
+        """FIXED: Scan SpyDefi channel for KOL mentions with proper FloodWaitError handling."""
         try:
-            # Get SpyDefi channel
-            spydefi_entity = await self.client.get_entity("spydefi")
+            # FIXED: Proper FloodWaitError handling for get_entity
+            spydefi_entity = None
+            max_retries = 3
+            
+            for attempt in range(max_retries):
+                try:
+                    logger.debug(f"📱 Attempting to get SpyDefi entity (attempt {attempt + 1}/{max_retries})")
+                    spydefi_entity = await self.client.get_entity("spydefi")
+                    break
+                    
+                except FloodWaitError as e:
+                    wait_time = e.seconds
+                    logger.warning(f"⚠️ FloodWait when accessing SpyDefi: {wait_time}s")
+                    
+                    if wait_time > 300:  # More than 5 minutes
+                        logger.error(f"❌ FloodWait too long ({wait_time}s), using cache if available")
+                        return {}
+                    
+                    logger.info(f"⏳ Waiting {wait_time} seconds for flood wait...")
+                    await asyncio.sleep(wait_time)
+                    continue
+                    
+                except Exception as e:
+                    logger.error(f"❌ Error getting SpyDefi entity (attempt {attempt + 1}): {str(e)}")
+                    if attempt < max_retries - 1:
+                        await asyncio.sleep(5)  # Wait 5 seconds before retry
+                        continue
+                    else:
+                        raise
+            
+            if not spydefi_entity:
+                logger.error("❌ Failed to get SpyDefi entity after all retries")
+                return {}
+            
+            logger.info("✅ Successfully connected to SpyDefi channel")
             
             # Calculate time range for scanning
             end_time = datetime.now()
@@ -279,25 +333,40 @@ class SpyDefiAnalyzer:
             kol_mentions = {}
             message_count = 0
             
-            async for message in self.client.iter_messages(
-                spydefi_entity,
-                offset_date=end_time,
-                reverse=True,
-                limit=2000
-            ):
-                if message.date < start_time:
-                    break
-                
-                message_count += 1
-                
-                if message.text:
-                    # Extract KOL usernames with REAL regex
-                    usernames = self._extract_kol_usernames_real(message.text)
+            # FIXED: Add FloodWaitError handling for message iteration
+            try:
+                async for message in self.client.iter_messages(
+                    spydefi_entity,
+                    offset_date=end_time,
+                    reverse=True,
+                    limit=2000
+                ):
+                    if message.date < start_time:
+                        break
                     
-                    for username in usernames:
-                        # Validate username (no x2, x3, etc. false positives)
-                        if self._is_valid_kol_username(username):
-                            kol_mentions[username] = kol_mentions.get(username, 0) + 1
+                    message_count += 1
+                    
+                    if message.text:
+                        # Extract KOL usernames with fixed regex
+                        usernames = self._extract_kol_usernames(message.text)
+                        
+                        for username in usernames:
+                            # Validate username (no x2, x3, etc. false positives)
+                            if self._is_valid_kol_username(username):
+                                kol_mentions[username] = kol_mentions.get(username, 0) + 1
+                    
+                    # Add small delay every 50 messages to avoid rate limits
+                    if message_count % 50 == 0:
+                        await asyncio.sleep(0.1)
+                        
+            except FloodWaitError as e:
+                logger.warning(f"⚠️ FloodWait during message iteration: {e.seconds}s")
+                logger.info(f"📊 Processed {message_count} messages before rate limit")
+                # Continue with what we have so far
+                
+            except Exception as e:
+                logger.error(f"❌ Error during message iteration: {str(e)}")
+                # Continue with what we have so far
             
             logger.info(f"📊 Scanned {message_count} messages")
             logger.info(f"🎯 Found {len(kol_mentions)} unique KOLs")
@@ -315,13 +384,17 @@ class SpyDefiAnalyzer:
             
             return sorted_kols
             
+        except FloodWaitError as e:
+            logger.error(f"❌ Final FloodWaitError in scan: {e.seconds}s")
+            return {}
+            
         except Exception as e:
             logger.error(f"❌ Error scanning SpyDefi: {str(e)}")
             return {}
     
-    def _extract_kol_usernames_real(self, text: str) -> List[str]:
-        """Extract KOL usernames from text with REAL logic."""
-        # REAL regex to avoid x2, x3, etc. false positives
+    def _extract_kol_usernames(self, text: str) -> List[str]:
+        """Extract KOL usernames from text with fixed logic."""
+        # Fixed regex to avoid x2, x3, etc. false positives
         username_pattern = r'@([a-zA-Z][a-zA-Z0-9_]{2,30})'
         matches = re.findall(username_pattern, text, re.IGNORECASE)
         
@@ -372,7 +445,7 @@ class SpyDefiAnalyzer:
         return True
     
     async def _get_real_channel_id(self, kol_username: str) -> str:
-        """Get REAL numeric Telegram channel ID for KOL."""
+        """Get real numeric Telegram channel ID for KOL with proper FloodWait handling."""
         try:
             # List of possible channel variations to try
             channel_variants = [
@@ -398,69 +471,63 @@ class SpyDefiAnalyzer:
             for variant in channel_variants:
                 try:
                     # Add rate limiting to avoid flood waits
-                    await asyncio.sleep(0.3)
+                    await asyncio.sleep(0.5)
                     
                     entity = await self.client.get_entity(variant)
                     
                     if isinstance(entity, (Channel, Chat)):
-                        # Return REAL numeric channel ID
-                        if isinstance(entity, Channel):
+                        # Return real numeric channel ID
+                        channel_id = str(entity.id)
+                        if hasattr(entity, 'access_hash') and entity.access_hash:
                             # For channels, use the full ID format
                             channel_id = f"-100{entity.id}"
-                        else:
-                            # For chats, use regular ID
-                            channel_id = str(entity.id)
                         
-                        logger.debug(f"✅ Found REAL channel ID for @{kol_username}: {channel_id}")
+                        logger.debug(f"✅ Found real channel ID for @{kol_username}: {channel_id}")
                         return channel_id
                 
+                except FloodWaitError as e:
+                    logger.warning(f"⚠️ FloodWait during channel lookup for @{kol_username}: {e.seconds}s")
+                    if e.seconds > 60:  # More than 1 minute
+                        logger.warning(f"⚠️ Skipping @{kol_username} due to long FloodWait")
+                        return f"flood_wait_{kol_username}"
+                    await asyncio.sleep(e.seconds)
+                    continue
+                    
                 except (ChannelPrivateError, ChatAdminRequiredError):
-                    # Channel exists but is private - try to get ID anyway
-                    try:
-                        channel_id = f"-100{entity.id}" if isinstance(entity, Channel) else str(entity.id)
-                        logger.debug(f"✅ Found private channel ID for @{kol_username}: {channel_id}")
-                        return channel_id
-                    except:
-                        continue
+                    # Channel exists but is private - still return the ID if we got it
+                    continue
                 except Exception:
                     # Channel doesn't exist with this variant
                     continue
             
-            # If no real channel found, return not found
+            # If no real channel found, return placeholder
             logger.warning(f"⚠️ No real channel found for @{kol_username}")
-            return f"not_found"
-            
-        except FloodWaitError as e:
-            logger.warning(f"⚠️ Flood wait for @{kol_username}: {e.seconds}s")
-            await asyncio.sleep(e.seconds)
-            return f"flood_wait"
+            return f"not_found_{kol_username}"
             
         except Exception as e:
             logger.error(f"❌ Error getting channel ID for @{kol_username}: {str(e)}")
-            return f"error"
+            return f"error_{kol_username}"
     
-    async def _analyze_kol_performance_real(self, kol: str, channel_id: str) -> Optional[KOLPerformance]:
-        """Analyze KOL performance with REAL data and REAL calculations."""
+    async def _analyze_kol_performance(self, kol: str, channel_id: str) -> Optional[KOLPerformance]:
+        """Analyze KOL performance with FIXED math and REAL pullback/ROI calculation."""
         try:
             if not self.api_manager:
                 logger.error("❌ API manager not configured")
                 return None
             
-            # Get recent token calls from the KOL with REAL extraction
-            token_calls = await self._get_kol_token_calls_real(kol, channel_id)
+            # Get recent token calls from the KOL
+            token_calls = await self._get_kol_token_calls(kol, channel_id)
             
-            if not token_calls or len(token_calls) < 3:
+            if not token_calls or len(token_calls) < 5:
                 logger.warning(f"⚠️ Insufficient token calls for @{kol} ({len(token_calls) if token_calls else 0})")
-                # Create dummy performance with minimal data for testing
-                return self._create_dummy_performance(kol, channel_id, len(token_calls) if token_calls else 0)
+                return None
             
-            # Analyze each token call with REAL API data
+            # Analyze each token call with REAL data
             analyzed_tokens = []
             
-            for i, token_call in enumerate(token_calls):
+            for token_call in token_calls:
                 try:
-                    logger.debug(f"🔍 Analyzing token {i+1}/{len(token_calls)} for @{kol}")
-                    token_analysis = await self._analyze_token_call_real(token_call)
+                    token_analysis = await self._analyze_token_call(token_call)
                     if token_analysis:
                         analyzed_tokens.append(token_analysis)
                         
@@ -470,116 +537,43 @@ class SpyDefiAnalyzer:
             
             if not analyzed_tokens:
                 logger.warning(f"⚠️ No valid token analyses for @{kol}")
-                # Create dummy performance for testing
-                return self._create_dummy_performance(kol, channel_id, len(token_calls))
+                return None
             
-            # Calculate performance metrics with REAL data
-            return self._calculate_kol_metrics_real(kol, channel_id, analyzed_tokens)
+            # Calculate performance metrics with FIXED MATH
+            return self._calculate_kol_metrics(kol, channel_id, analyzed_tokens)
             
         except Exception as e:
             logger.error(f"❌ Error analyzing KOL @{kol}: {str(e)}")
             return None
     
-    def _create_dummy_performance(self, kol: str, channel_id: str, token_count: int) -> KOLPerformance:
-        """Create dummy performance for testing purposes with REALISTIC data."""
-        import random
-        
-        # Generate realistic but varied dummy data
-        total_calls = max(10, token_count + random.randint(5, 15))
-        
-        # Generate realistic success rates
-        success_rate_2x = random.uniform(30, 90)  # 30-90% success rate
-        success_rate_5x = random.uniform(5, 30)   # 5-30% gem rate
-        
-        tokens_2x_plus = int(total_calls * success_rate_2x / 100)
-        tokens_5x_plus = int(total_calls * success_rate_5x / 100)
-        
-        # Generate realistic pullback data (NOT ZERO)
-        avg_pullback = random.uniform(-60, -10)  # -60% to -10% pullback
-        
-        # Generate realistic ROI data (NOT ZERO)
-        avg_roi = random.uniform(50, 300)  # 50% to 300% average ROI
-        
-        # Calculate losing calls (>-50% pullback)
-        losing_calls = random.randint(1, max(1, total_calls // 4))  # 1 to 25% losing calls
-        winning_calls = total_calls - losing_calls
-        
-        # Generate other realistic metrics
-        avg_time_to_2x = random.uniform(1, 12)  # 1-12 hours
-        consistency_score = random.uniform(60, 95)  # 60-95% consistency
-        
-        # Calculate composite score
-        composite_score = (
-            success_rate_2x * 0.30 +
-            success_rate_5x * 0.25 +
-            (1 / max(avg_time_to_2x, 0.1)) * 100 * 0.20 +  # Speed bonus
-            abs(avg_pullback) * 0.15 +  # Pullback management
-            (avg_roi / 10) * 0.10  # ROI contribution
-        )
-        composite_score = min(100, composite_score)
-        
-        # Determine strategy
-        if success_rate_2x >= 35 and avg_time_to_2x <= 8:
-            strategy = "SCALP"
-        elif success_rate_5x >= 15:
-            strategy = "HOLD"
-        else:
-            strategy = "MIXED"
-        
-        # Determine follower tier based on score
-        if composite_score >= 75:
-            follower_tier = "HIGH"
-        elif composite_score >= 60:
-            follower_tier = "MEDIUM"
-        else:
-            follower_tier = "LOW"
-        
-        return KOLPerformance(
-            kol=kol,
-            channel_id=channel_id,  # REAL channel ID from lookup
-            follower_tier=follower_tier,
-            total_calls=total_calls,
-            winning_calls=winning_calls,
-            losing_calls=losing_calls,
-            tokens_2x_plus=tokens_2x_plus,
-            tokens_5x_plus=tokens_5x_plus,
-            success_rate_2x=success_rate_2x,
-            success_rate_5x=success_rate_5x,
-            avg_time_to_2x_hours=avg_time_to_2x,
-            avg_max_pullback_percent=avg_pullback,  # REAL pullback data
-            consistency_score=consistency_score,
-            composite_score=composite_score,
-            strategy_classification=strategy,
-            avg_roi=avg_roi  # REAL ROI data
-        )
-    
-    async def _get_kol_token_calls_real(self, kol: str, channel_id: str) -> List[Dict[str, Any]]:
-        """Get recent token calls from KOL channel with REAL extraction."""
+    async def _get_kol_token_calls(self, kol: str, channel_id: str) -> List[Dict[str, Any]]:
+        """Get recent token calls from KOL channel with FloodWait handling."""
         try:
             # Try to get entity using channel_id or username
             entity = None
             
-            if channel_id.startswith('-100') or (channel_id.isdigit() and not channel_id.startswith('not_found')):
-                try:
-                    # Convert channel ID to proper format
-                    if channel_id.startswith('-100'):
-                        entity_id = int(channel_id.replace('-100', ''))
-                    else:
-                        entity_id = int(channel_id)
-                    entity = await self.client.get_entity(entity_id)
-                except Exception as e:
-                    logger.debug(f"Could not get entity by ID {channel_id}: {str(e)}")
-            
-            # Fallback to username
-            if not entity:
+            try:
+                if channel_id.startswith('-100') or channel_id.isdigit():
+                    try:
+                        entity = await self.client.get_entity(int(channel_id.replace('-100', '')))
+                    except:
+                        entity = await self.client.get_entity(kol)
+                else:
+                    entity = await self.client.get_entity(kol)
+                    
+            except FloodWaitError as e:
+                logger.warning(f"⚠️ FloodWait getting entity for @{kol}: {e.seconds}s")
+                if e.seconds > 120:  # More than 2 minutes
+                    logger.warning(f"⚠️ Skipping @{kol} due to long FloodWait")
+                    return []
+                await asyncio.sleep(e.seconds)
+                # Try one more time
                 try:
                     entity = await self.client.get_entity(kol)
-                except Exception as e:
-                    logger.debug(f"Could not get entity by username @{kol}: {str(e)}")
+                except:
                     return []
             
             if not entity:
-                logger.warning(f"Could not find entity for @{kol}")
                 return []
             
             # Get messages from last N days
@@ -589,37 +583,50 @@ class SpyDefiAnalyzer:
             token_calls = []
             message_count = 0
             
-            async for message in self.client.iter_messages(
-                entity,
-                offset_date=end_time,
-                limit=50  # Limit to avoid too many API calls
-            ):
-                if message.date < start_time:
-                    break
-                
-                message_count += 1
-                
-                if message.text:
-                    # Extract token addresses from message
-                    token_addresses = self._extract_token_addresses_real(message.text)
+            try:
+                async for message in self.client.iter_messages(
+                    entity,
+                    offset_date=end_time,
+                    limit=100  # Limit to avoid too many API calls
+                ):
+                    if message.date < start_time:
+                        break
                     
-                    for address in token_addresses:
-                        token_calls.append({
-                            'address': address,
-                            'call_time': message.date,
-                            'message_text': message.text[:200],  # First 200 chars
-                            'kol': kol
-                        })
+                    message_count += 1
+                    
+                    if message.text:
+                        # Extract token addresses from message
+                        token_addresses = self._extract_token_addresses(message.text)
+                        
+                        for address in token_addresses:
+                            token_calls.append({
+                                'address': address,
+                                'call_time': message.date,
+                                'message_text': message.text[:200],  # First 200 chars
+                                'kol': kol
+                            })
+                    
+                    # Add delay every 20 messages
+                    if message_count % 20 == 0:
+                        await asyncio.sleep(0.2)
+                        
+            except FloodWaitError as e:
+                logger.warning(f"⚠️ FloodWait during message iteration for @{kol}: {e.seconds}s")
+                # Continue with what we have
+                
+            except Exception as e:
+                logger.error(f"❌ Error iterating messages for @{kol}: {str(e)}")
+                # Continue with what we have
             
             logger.debug(f"📊 Found {len(token_calls)} token calls from @{kol} ({message_count} messages)")
-            return token_calls[:20]  # Limit to 20 most recent calls
+            return token_calls[:30]  # Limit to 30 most recent calls
             
         except Exception as e:
             logger.error(f"❌ Error getting token calls from @{kol}: {str(e)}")
             return []
     
-    def _extract_token_addresses_real(self, text: str) -> List[str]:
-        """Extract Solana token addresses from message text with REAL validation."""
+    def _extract_token_addresses(self, text: str) -> List[str]:
+        """Extract Solana token addresses from message text."""
         # Solana address pattern (base58, 32-44 characters)
         address_pattern = r'\b([1-9A-HJ-NP-Za-km-z]{32,44})\b'
         matches = re.findall(address_pattern, text)
@@ -636,57 +643,47 @@ class SpyDefiAnalyzer:
             if (address not in system_addresses and 
                 len(address) >= 32 and 
                 not address.isdigit() and
-                # Additional validation: check if it looks like a real Solana address
-                all(c in '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz' for c in address)):
+                address not in text.lower()):  # Avoid false positives from usernames
                 valid_addresses.append(address)
         
         return list(set(valid_addresses))  # Remove duplicates
     
-    async def _analyze_token_call_real(self, token_call: Dict[str, Any]) -> Optional[Dict[str, Any]]:
-        """Analyze individual token call with REAL API data and REAL calculations."""
+    async def _analyze_token_call(self, token_call: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        """Analyze individual token call with REAL pullback and ROI calculation."""
         try:
             token_address = token_call['address']
             call_time = token_call['call_time']
             
-            # Get REAL token performance from call time to now using API manager
-            logger.debug(f"🔍 Getting REAL performance data for {token_address}")
+            # Get token performance from call time to now
+            performance = self.api_manager.calculate_token_performance(
+                token_address, 
+                call_time
+            )
             
-            if hasattr(self.api_manager, 'calculate_token_performance'):
-                performance = self.api_manager.calculate_token_performance(token_address, call_time)
-            else:
-                # Fallback to sync method
-                performance = await asyncio.get_event_loop().run_in_executor(
-                    None, 
-                    self.api_manager.calculate_token_performance, 
-                    token_address, 
-                    call_time
-                )
-            
-            if not performance or not performance.get('success'):
+            if not performance.get('success'):
                 logger.debug(f"⚠️ No performance data for {token_address}")
-                # Return dummy data for testing
-                return self._create_dummy_token_analysis(token_call)
+                return None
             
-            # Extract REAL metrics from API response
+            # Extract key metrics
             initial_price = performance.get('initial_price', 0)
             current_price = performance.get('current_price', 0)
             max_price = performance.get('max_price', 0)
             min_price = performance.get('min_price', 0)
             
             if not initial_price or initial_price <= 0:
-                return self._create_dummy_token_analysis(token_call)
+                return None
             
-            # Calculate REAL metrics
+            # Calculate key metrics
             current_roi = ((current_price / initial_price) - 1) * 100 if current_price > 0 else -100
             max_roi = ((max_price / initial_price) - 1) * 100 if max_price > 0 else -100
             min_roi = ((min_price / initial_price) - 1) * 100 if min_price > 0 else -100
             
-            # REAL pullback calculation
+            # FIXED: Calculate REAL pullback percentage
             if max_price > initial_price:
-                # Pullback from max to min
+                # Pullback from max to min (this is what traders care about for stop losses)
                 max_pullback = ((min_price / max_price) - 1) * 100 if min_price > 0 else -100
             else:
-                # If never went above initial, pullback is current loss
+                # If never went above initial, pullback is just the loss from initial
                 max_pullback = min_roi
             
             # Determine if hit 2x or 5x
@@ -696,10 +693,7 @@ class SpyDefiAnalyzer:
             # Calculate time to 2x if applicable
             time_to_2x_hours = 0
             if hit_2x:
-                time_to_2x_hours = performance.get('time_to_max_roi_hours', 12)  # Default 12h if not available
-            
-            # Determine if this is a losing call (>-50% pullback)
-            is_losing_call = max_pullback < -50  # More than 50% pullback = losing call
+                time_to_2x_hours = performance.get('time_to_max_roi_hours', 24)  # Default 24h if not available
             
             return {
                 'token_address': token_address,
@@ -711,80 +705,27 @@ class SpyDefiAnalyzer:
                 'current_roi': current_roi,
                 'max_roi': max_roi,
                 'min_roi': min_roi,
-                'max_pullback': max_pullback,  # REAL pullback calculation
+                'max_pullback': max_pullback,  # REAL pullback for stop loss calculation
                 'hit_2x': hit_2x,
                 'hit_5x': hit_5x,
                 'time_to_2x_hours': time_to_2x_hours,
-                'is_losing_call': is_losing_call,  # REAL logic: >-50% pullback
                 'kol': token_call['kol']
             }
             
         except Exception as e:
             logger.error(f"❌ Error analyzing token call: {str(e)}")
-            return self._create_dummy_token_analysis(token_call)
+            return None
     
-    def _create_dummy_token_analysis(self, token_call: Dict[str, Any]) -> Dict[str, Any]:
-        """Create dummy token analysis for testing with REALISTIC data."""
-        import random
-        
-        # Generate realistic price data
-        initial_price = random.uniform(0.0001, 0.01)  # $0.0001 to $0.01
-        
-        # Generate realistic performance
-        roi_multiplier = random.uniform(0.2, 8.0)  # 0.2x to 8x performance
-        max_roi = (roi_multiplier - 1) * 100
-        current_roi = max_roi * random.uniform(0.3, 1.0)  # Current is 30-100% of max
-        
-        # Generate realistic pullback (NOT ZERO)
-        max_pullback = random.uniform(-70, -5)  # -70% to -5% pullback
-        
-        # Calculate prices based on ROI
-        max_price = initial_price * roi_multiplier
-        current_price = initial_price * (1 + current_roi / 100)
-        min_price = max_price * (1 + max_pullback / 100)
-        
-        # Determine 2x/5x status
-        hit_2x = max_roi >= 100
-        hit_5x = max_roi >= 400
-        
-        # Time to 2x
-        time_to_2x_hours = random.uniform(0.5, 24) if hit_2x else 0
-        
-        # Losing call determination
-        is_losing_call = max_pullback < -50
-        
-        return {
-            'token_address': token_call['address'],
-            'call_time': token_call['call_time'],
-            'initial_price': initial_price,
-            'current_price': current_price,
-            'max_price': max_price,
-            'min_price': min_price,
-            'current_roi': current_roi,
-            'max_roi': max_roi,
-            'min_roi': max_pullback,  # Use pullback as min ROI
-            'max_pullback': max_pullback,  # REAL pullback data
-            'hit_2x': hit_2x,
-            'hit_5x': hit_5x,
-            'time_to_2x_hours': time_to_2x_hours,
-            'is_losing_call': is_losing_call,  # REAL logic
-            'kol': token_call['kol']
-        }
-    
-    def _calculate_kol_metrics_real(self, kol: str, channel_id: str, analyzed_tokens: List[Dict[str, Any]]) -> KOLPerformance:
-        """Calculate KOL performance metrics with REAL data and REAL math."""
+    def _calculate_kol_metrics(self, kol: str, channel_id: str, analyzed_tokens: List[Dict[str, Any]]) -> KOLPerformance:
+        """Calculate KOL performance metrics with FIXED MATH and REAL data."""
         try:
             total_calls = len(analyzed_tokens)
             
-            # REAL math: Count losing calls (>-50% pullback)
-            losing_calls = sum(1 for token in analyzed_tokens if token['is_losing_call'])
-            winning_calls = total_calls - losing_calls
-            
-            # REAL math: Count 2x and 5x tokens properly
+            # FIXED: Simple math that makes sense
             tokens_2x_plus = sum(1 for token in analyzed_tokens if token['hit_2x'])
             tokens_5x_plus = sum(1 for token in analyzed_tokens if token['hit_5x'])
             
-            # REAL math: Calculate success rates with proper math
+            # FIXED: Calculate success rates with proper math
             success_rate_2x = (tokens_2x_plus / total_calls * 100) if total_calls > 0 else 0
             success_rate_5x = (tokens_5x_plus / total_calls * 100) if total_calls > 0 else 0
             
@@ -795,45 +736,48 @@ class SpyDefiAnalyzer:
                 if tokens_that_hit_2x else 0
             )
             
-            # REAL calculation: Average max pullback for 2x tokens only
+            # FIXED: Calculate REAL average max pullback for 2x tokens (for stop loss guidance)
             if tokens_that_hit_2x:
                 avg_max_pullback_percent = sum(t['max_pullback'] for t in tokens_that_hit_2x) / len(tokens_that_hit_2x)
             else:
                 # If no 2x tokens, use overall average pullback
                 avg_max_pullback_percent = sum(t['max_pullback'] for t in analyzed_tokens) / len(analyzed_tokens)
             
-            # REAL calculation: Average ROI from current ROI of all tokens
+            # FIXED: Calculate REAL average ROI
             avg_roi = sum(t['current_roi'] for t in analyzed_tokens) / len(analyzed_tokens)
             
-            # Calculate consistency score
+            # FIXED: Calculate REAL consistency score based on ROI variance
             roi_values = [t['current_roi'] for t in analyzed_tokens]
             if len(roi_values) > 1:
                 mean_roi = sum(roi_values) / len(roi_values)
                 variance = sum((x - mean_roi) ** 2 for x in roi_values) / len(roi_values)
                 std_dev = variance ** 0.5
                 # Convert to consistency score (0-100, higher is better)
-                consistency_score = max(0, min(100, 100 - (std_dev / 10)))
+                consistency_score = max(0, min(100, 100 - (std_dev / 20)))  # Adjusted for real data
             else:
                 consistency_score = 90  # Default high consistency for single token
             
-            # REAL composite score calculation
             # Normalize time to 2x (lower is better, max 48 hours)
             time_score = max(0, (48 - min(avg_time_to_2x_hours, 48)) / 48 * 100) if avg_time_to_2x_hours > 0 else 50
             
-            # Normalize pullback (less negative is better, -100% to 0%)
-            pullback_score = max(0, min(100, (avg_max_pullback_percent + 100)))  # Convert -100 to 0, 0 to 100
+            # CRITICAL: Normalize pullback score (smaller pullback = higher score)
+            # -5% pullback = 95 score, -25% pullback = 75 score, -50% pullback = 50 score
+            pullback_score = max(0, min(100, 100 + avg_max_pullback_percent))  # -50% = 50, -10% = 90, 0% = 100
             
             # Normalize avg ROI (cap at 1000%)
             roi_score = max(0, min(100, (avg_roi + 100) / 10))  # -100% = 0, 900% = 100
             
-            # Composite score calculation
+            # FIXED: Composite score calculation with pullback properly weighted
             composite_score = (
-                success_rate_2x * 0.30 +        # 30% weight on 2x success rate
-                success_rate_5x * 0.25 +        # 25% weight on 5x success rate  
+                success_rate_2x * 0.25 +        # 25% weight on 2x success rate
+                success_rate_5x * 0.20 +        # 20% weight on 5x success rate  
                 time_score * 0.20 +             # 20% weight on speed to 2x
-                pullback_score * 0.15 +         # 15% weight on pullback management
+                pullback_score * 0.25 +         # 25% weight on pullback management (CRITICAL FOR STOP LOSS)
                 roi_score * 0.10                # 10% weight on average ROI
             )
+            
+            # Ensure composite score is between 0 and 100
+            composite_score = max(0, min(100, composite_score))
             
             # Determine strategy classification
             if success_rate_2x >= 35 and avg_time_to_2x_hours <= 12 and avg_time_to_2x_hours > 0:
@@ -843,8 +787,9 @@ class SpyDefiAnalyzer:
             else:
                 strategy_classification = "MIXED"
             
-            # Determine follower tier based on composite score
-            if composite_score >= 75:
+            # Determine follower tier (simplified - would need real subscriber count)
+            # For now, use composite score as proxy
+            if composite_score >= 80:
                 follower_tier = "HIGH"
             elif composite_score >= 60:
                 follower_tier = "MEDIUM"
@@ -853,21 +798,19 @@ class SpyDefiAnalyzer:
             
             return KOLPerformance(
                 kol=kol,
-                channel_id=channel_id,  # REAL numeric channel ID
+                channel_id=channel_id,  # Real numeric channel ID
                 follower_tier=follower_tier,
                 total_calls=total_calls,
-                winning_calls=winning_calls,    # REAL: total_calls - losing_calls
-                losing_calls=losing_calls,      # REAL: tokens with >-50% pullback
                 tokens_2x_plus=tokens_2x_plus,
                 tokens_5x_plus=tokens_5x_plus,
-                success_rate_2x=success_rate_2x,        # REAL: tokens_2x_plus/total_calls
-                success_rate_5x=success_rate_5x,        # REAL: tokens_5x_plus/total_calls
+                success_rate_2x=success_rate_2x,        # FIXED: Real 2x rate
+                success_rate_5x=success_rate_5x,        # FIXED: Real 5x rate
                 avg_time_to_2x_hours=avg_time_to_2x_hours,
-                avg_max_pullback_percent=avg_max_pullback_percent,  # REAL: Not zero
-                consistency_score=consistency_score,
-                composite_score=composite_score,        # REAL: Based on real data
+                avg_max_pullback_percent=avg_max_pullback_percent,  # REAL pullback for stop loss
+                consistency_score=consistency_score,    # REAL consistency based on ROI variance
+                composite_score=composite_score,        # FIXED: Includes pullback weighting
                 strategy_classification=strategy_classification,
-                avg_roi=avg_roi                        # REAL: Not zero
+                avg_roi=avg_roi                        # REAL average ROI
             )
             
         except Exception as e:
