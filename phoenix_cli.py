@@ -6,7 +6,7 @@ Phoenix Project - OPTIMIZED CLI Tool with SPYDEFI KOL Analysis System
 - SpyDefi module config is ALWAYS respected
 - CLI only displays what the module is configured for
 - No more config override issues
-- SpyDefi module controls: 8h peak scanning, Top 50 KOLs, Min 100 subscribers
+- SpyDefi module controls: 8h peak scanning, Top 50 KOLs
 
 ✅ PRESERVED: All wallet analysis and other core functionality intact
 """
@@ -190,7 +190,6 @@ class PhoenixCLI:
         print("\n" + "="*80, flush=True)
         print("Phoenix Project - Solana Wallet & KOL Analysis Tool", flush=True)
         print("🚀 Enhanced with Optimized SPYDEFI KOL Analysis", flush=True)
-        print("🔧 SPYDEFI Config: 8h Peak Scanning | Top 50 KOLs | Min 100 Subs", flush=True)
         print(f"📅 Current Date: {datetime.now().strftime('%Y-%m-%d')}", flush=True)
         print("="*80, flush=True)
         print("\nSelect an option:", flush=True)
@@ -277,7 +276,7 @@ class PhoenixCLI:
                     
                     timestamp = cache_data.get('timestamp', 'Unknown')
                     kol_count = len(cache_data.get('kol_performances', {}))
-                    version = cache_data.get('version', '3.1')
+                    version = cache_data.get('version', '4.0')
                     config = cache_data.get('config', {})
                     scan_hours = config.get('spydefi_scan_hours', 8)
                     analysis_days = config.get('kol_analysis_days', 7)
@@ -285,7 +284,7 @@ class PhoenixCLI:
                     print(f"\n📋 SPYDEFI KOL Analysis Cache:", flush=True)
                     print(f"   File: {cache_file.name}", flush=True)
                     print(f"   Size: {size:.2f} KB", flush=True)
-                    print(f"   Version: {version} (Fixed KOL Extraction)", flush=True)
+                    print(f"   Version: {version} (Fixed Logic & Columns)", flush=True)
                     print(f"   Created: {timestamp}", flush=True)
                     print(f"   KOLs analyzed: {kol_count}", flush=True)
                     print(f"   SpyDefi scan: {scan_hours}h", flush=True)
@@ -382,41 +381,19 @@ class PhoenixCLI:
             print("\n🧹 Cleared corrupted cache with invalid KOL names", flush=True)
             print("Will regenerate analysis with fixed username extraction", flush=True)
         
-        # Get RPC info for display only
-        rpc_url = self.config.get("solana_rpc_url", "https://api.mainnet-beta.solana.com")
-        
-        # Display RPC status (not config - that's controlled by module)
-        if "api.mainnet-beta.solana.com" not in rpc_url:
-            print(f"\n✅ Using custom RPC: {rpc_url}", flush=True)
-        else:
-            print(f"\n⚠️ Using default Solana RPC", flush=True)
-        
-        # IMPORTANT: NO CONFIG DISPLAY - SpyDefi module controls everything
-        print(f"\n📋 SPYDEFI ANALYSIS - MODULE CONTROLLED CONFIG:", flush=True)
-        print(f"   🎯 Config source: spydefi_module.py ONLY", flush=True)
-        print(f"   📅 Scan period: 8 hours (PEAK MEMECOIN HOURS)", flush=True)
-        print(f"   🏆 KOLs to analyze: TOP 50 (not 25)", flush=True)
-        print(f"   📊 Min mentions: ≥2 (quality filter)", flush=True)
-        print(f"   👥 Min subscribers: 100 (relaxed for discovery)", flush=True)
-        print(f"   💰 Max market cap: $10M (avoid overvalued)", flush=True)
-        print(f"   📈 Win threshold: 50% profit", flush=True)
-        print(f"   🔧 KOL Extraction: FIXED (real usernames only)", flush=True)
-        print(f"   ⚠️ CLI NEVER overrides module config", flush=True)
-        
         # Check optional APIs
         if self.config.get("helius_api_key"):
-            print(f"   ✅ Helius API configured for enhanced pump.fun analysis", flush=True)
+            print(f"\n✅ Helius API configured for enhanced pump.fun analysis", flush=True)
         else:
-            print(f"   ⚠️ Helius API not configured - pump.fun analysis limited", flush=True)
+            print(f"\n⚠️ Helius API not configured - pump.fun analysis limited", flush=True)
         
-        print("\n🚀 Starting SPYDEFI analysis with MODULE CONFIG...", flush=True)
+        print("\n🚀 Starting SPYDEFI analysis...", flush=True)
         
         # Create args object - NO CONFIG OVERRIDE
         class Args:
             def __init__(self):
                 self.output = "spydefi_kol_analysis.csv"
                 self.force_refresh = cache_cleared  # Force refresh if cache was cleared
-                # REMOVED: All config override args
         
         args = Args()
         
@@ -494,7 +471,7 @@ class PhoenixCLI:
             
             # CRITICAL FIX: NO CONFIG OVERRIDE - Module controls everything
             logger.info("🔧 Using SpyDefi module config ONLY - NO CLI override")
-            logger.info(f"📊 Module enforces: 8h peak scanning, Top 50 KOLs, Min 100 subs")
+            logger.info(f"📊 Module enforces: 8h peak scanning, Top 50 KOLs")
             
             # Only set force refresh if cache was corrupted
             if getattr(args, 'force_refresh', False):
@@ -1023,7 +1000,7 @@ class PhoenixCLI:
         save_config(self.config)
         print("\n✅ Configuration saved successfully!", flush=True)
         print("🔧 Note: SPYDEFI config is controlled by spydefi_module.py", flush=True)
-        print("📊 SPYDEFI uses: 8h peak scanning, Top 50 KOLs, Min 100 subscribers", flush=True)
+        print("📊 SPYDEFI uses: 8h peak scanning, Top 50 KOLs", flush=True)
         
         input("\nPress Enter to continue...")
     
@@ -1052,8 +1029,7 @@ class PhoenixCLI:
         print(f"   ⚠️ Config source: spydefi_module.py ONLY", flush=True)
         print(f"   📅 Scan period: 8 hours (PEAK MEMECOIN HOURS)", flush=True)
         print(f"   🏆 KOLs to analyze: TOP 50 (not 25)", flush=True)
-        print(f"   📊 Min mentions: ≥2 (quality filter)", flush=True)
-        print(f"   👥 Min subscribers: 100 (relaxed for discovery)", flush=True)
+        print(f"   📊 Min mentions: ≥1 (quality filter)", flush=True)
         print(f"   💰 Max market cap: $10M (avoid overvalued)", flush=True)
         print(f"   📈 Win threshold: 50% profit", flush=True)
         print(f"   🔧 KOL extraction: FIXED (real usernames only)", flush=True)
@@ -1089,7 +1065,7 @@ class PhoenixCLI:
                             with open(cache_file, 'r') as f:
                                 cache_data = json.load(f)
                             timestamp = cache_data.get('timestamp', 'Unknown')
-                            version = cache_data.get('version', '3.1')
+                            version = cache_data.get('version', '4.0')
                             
                             if timestamp != 'Unknown':
                                 cache_age = datetime.now() - datetime.fromisoformat(timestamp)
@@ -1124,18 +1100,20 @@ class PhoenixCLI:
         print("• Config source: spydefi_module.py ONLY - CLI NEVER overrides", flush=True)
         print("• Peak scanning: 8 hours (vs 24h) for maximum KOL activity", flush=True)
         print("• Top 50 KOLs: Increased from 25 for better discovery", flush=True)
-        print("• Min 100 subscribers: Relaxed from 500 for wider net", flush=True)
         print("• Fixed KOL extraction: Real @usernames, no more x2/x3 false positives", flush=True)
         print("• Enhanced channel lookup: 17 variants per KOL (exact + suffixes)", flush=True)
         print("• Rate limiting: Prevents Telegram flood waits", flush=True)
         print("• Timezone fixes: Proper datetime handling for all regions", flush=True)
+        print("• Numeric Channel IDs: Real channel numbers for copy-worthy KOLs", flush=True)
+        print("• Fixed Success Logic: Consistent rate calculations", flush=True)
+        print("• Real Pullback Data: Actual max pullback percentages", flush=True)
         
         print("\n💎 KOL PERFORMANCE METRICS:", flush=True)
         print("1. Success Rate - Calls with >50% profit", flush=True)
         print("2. 2x Success Rate - Tokens that hit 2x+ from call price", flush=True)
         print("3. 5x Success Rate - Gem finding ability (5x+ tokens)", flush=True)
         print("4. Time to 2x - Average time for successful 2x calls", flush=True)
-        print("5. Max Pullback % - Average maximum loss from ATH", flush=True)
+        print("5. Max Pullback % - Average maximum pullback before reaching 2x", flush=True)
         print("6. Consistency Score - Performance stability over time", flush=True)
         print("7. Composite Score - Weighted overall performance (0-100)", flush=True)
         
@@ -1149,34 +1127,34 @@ class PhoenixCLI:
         print("\n📊 STRATEGY CLASSIFICATION:", flush=True)
         
         print("\n🏃 SCALP Strategy KOLs:", flush=True)
-        print("   When: High followers (5K+) + Fast 2x (≤12h) + Good success rate", flush=True)
-        print("   Why: Large follower base creates volume spikes", flush=True)
-        print("   Action: Quick entry/exit, ride the follower wave", flush=True)
+        print("   When: High 2x rate (35%+) + Fast 2x (≤12h) + Good success rate", flush=True)
+        print("   Why: Quick gains, ideal for fast trading", flush=True)
+        print("   Action: Quick entry/exit, ride the momentum", flush=True)
         print("   Risk: High competition, fast moves", flush=True)
         
         print("\n💎 HOLD Strategy KOLs:", flush=True)
-        print("   When: High gem rate (15%+ 5x tokens) + Consistent performance", flush=True)
+        print("   When: High gem rate (12%+ 5x tokens) + Consistent performance", flush=True)
         print("   Why: Good at finding long-term winners", flush=True)
         print("   Action: Hold for larger gains, be patient", flush=True)
         print("   Risk: Longer time commitment, requires patience", flush=True)
         
         print("\n📈 RECOMMENDED COPY TRADING STRATEGY:", flush=True)
-        print("1. Focus on KOLs with Composite Score ≥70", flush=True)
-        print("2. SCALP KOLs: Quick trades, 2-5x targets", flush=True)
-        print("3. HOLD KOLs: Longer holds, 5-20x targets", flush=True)
-        print("4. Diversify across multiple top KOLs", flush=True)
-        print("5. Track unrealized vs realized gains", flush=True)
-        print("6. Consider market cap filters (avoid >$10M)", flush=True)
+        print("1. Focus on KOLs with Composite Score ≥70 (COPY recommendation)", flush=True)
+        print("2. Use numeric Channel IDs to find their actual channels", flush=True)
+        print("3. SCALP KOLs: Quick trades, 2-3x targets, watch pullbacks", flush=True)
+        print("4. HOLD KOLs: Longer holds, 5-20x targets, ignore short-term pullbacks", flush=True)
+        print("5. Diversify across multiple top KOLs", flush=True)
+        print("6. Consider avg_max_pullback_percent for position sizing", flush=True)
         
         print("\n⚡ MODULE CONTROL BENEFITS:", flush=True)
         print("• CONSISTENT CONFIG: No more CLI override issues", flush=True)
         print("• OPTIMIZED SCANNING: 8h peak vs 24h reduces noise", flush=True)
         print("• TOP 50 KOLS: Better discovery vs old 25 limit", flush=True)
-        print("• RELAXED FILTERS: Min 100 subs vs 500 finds more gems", flush=True)
         print("• FIXED EXTRACTION: Real usernames, no false positives", flush=True)
-        print("• ENHANCED LOOKUP: 17 channel variants per KOL", flush=True)
-        print("• RATE LIMITING: No more flood waits slowing analysis", flush=True)
-        print("• TIMEZONE FIXES: Works in all regions properly", flush=True)
+        print("• NUMERIC CHANNEL IDS: Actual channel numbers for verification", flush=True)
+        print("• FIXED SUCCESS LOGIC: No more inconsistent rate calculations", flush=True)
+        print("• REAL PULLBACK DATA: Actual percentages instead of zeros", flush=True)
+        print("• CLEANED CSV: Only relevant columns, no subscriber clutter", flush=True)
         
         print("\n💰 WALLET ANALYSIS (UNCHANGED):", flush=True)
         print("• Comprehensive wallet performance tracking", flush=True)
@@ -1210,10 +1188,11 @@ class PhoenixCLI:
         print(f"   Config source: spydefi_module.py ONLY", flush=True)
         print(f"   Scan period: 8 hours (PEAK MEMECOIN HOURS)", flush=True)
         print(f"   KOLs analyzed: TOP 50 (not 25)", flush=True)
-        print(f"   Min subscribers: 100 (relaxed)", flush=True)
         print(f"   Purpose: Discover top performing KOLs", flush=True)
         print(f"   🔧 Extraction: FIXED (real @usernames, not x2/x3)", flush=True)
         print(f"   🚫 CLI override: DISABLED", flush=True)
+        print(f"   📊 Data quality: Numeric channel IDs, fixed success rates", flush=True)
+        print(f"   📈 Metrics: Real pullback data, cleaned CSV output", flush=True)
         
         # Telegram channels (legacy)
         channels = self.config.get('sources', {}).get('telegram_groups', [])
@@ -1446,7 +1425,7 @@ def display_spydefi_summary(results: Dict[str, Any]):
         print(f"   🚀 Overall 5x rate: {metadata.get('overall_5x_rate', 0):.1f}%", flush=True)
         print(f"   ⏱️ Processing time: {metadata.get('processing_time_seconds', 0):.1f}s", flush=True)
         print(f"   📡 API calls: {metadata.get('api_calls', 0)}", flush=True)
-        print(f"   🔧 Version: MODULE CONTROLLED (8h peak, Top 50, Fixed extraction)", flush=True)
+        print(f"   🔧 Version: v4.0 (Fixed Logic, Numeric IDs, Clean CSV)", flush=True)
         
         # Top 10 KOLs
         top_kols = list(kol_performances.items())[:10]
@@ -1459,24 +1438,29 @@ def display_spydefi_summary(results: Dict[str, Any]):
                 success_rate_2x = perf.get('success_rate_2x', 0)
                 success_rate_5x = perf.get('success_rate_5x', 0)
                 strategy = perf.get('strategy_classification', 'UNKNOWN')
-                subs = perf.get('subscriber_count', 0)
                 calls = perf.get('total_calls', 0)
+                channel_id = perf.get('channel_id', 'N/A')
+                pullback = perf.get('avg_max_pullback_percent', 0)
             else:
                 score = perf.composite_score
                 success_rate = perf.success_rate
                 success_rate_2x = perf.success_rate_2x
                 success_rate_5x = perf.success_rate_5x
                 strategy = perf.strategy_classification
-                subs = perf.subscriber_count
                 calls = perf.total_calls
+                channel_id = perf.channel_id
+                pullback = perf.avg_max_pullback_percent
+            
+            copy_rec = "COPY" if score >= 70 else "AVOID"
             
             print(f"\n{i}. @{kol}", flush=True)
-            print(f"   📊 Score: {score:.1f}/100", flush=True)
+            print(f"   📊 Score: {score:.1f}/100 | Rec: {copy_rec}", flush=True)
             print(f"   🎯 Success: {success_rate:.1f}% | 2x: {success_rate_2x:.1f}% | 5x: {success_rate_5x:.1f}%", flush=True)
-            print(f"   📈 Strategy: {strategy} | Subs: {subs:,} | Calls: {calls}", flush=True)
+            print(f"   📈 Strategy: {strategy} | Calls: {calls} | Channel: {channel_id}", flush=True)
+            print(f"   📉 Avg Pullback: {pullback:.1f}%", flush=True)
         
-        print(f"\n✅ Analysis exported to CSV and summary files", flush=True)
-        print(f"🔧 CONFIG: Module controlled (8h peak, Top 50 KOLs, Fixed extraction)", flush=True)
+        print(f"\n✅ Analysis exported to CSV with fixed data format", flush=True)
+        print(f"🔧 FIXES: Numeric channel IDs, consistent success rates, real pullback data", flush=True)
         
     except Exception as e:
         logger.error(f"Error displaying SPYDEFI summary: {str(e)}")
