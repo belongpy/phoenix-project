@@ -16,7 +16,7 @@ import asyncio
 import logging
 import json
 import re
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Any, Optional, Tuple
 from dataclasses import dataclass, asdict
 from pathlib import Path
@@ -138,12 +138,29 @@ class SpyDefiAnalyzer:
                         self.cache_file.unlink()
                         return False
                 
-                # Check version to force refresh for fixes
-                version = cache_data.get('version', '')
-                if version != '4.3_FIXED':
-                    logger.info(f"🧹 CLEARING OLD CACHE: Version {version} != 4.3_FIXED")
-                    self.cache_file.unlink()
-                    return False
+                    # Check version to force refresh for fixes
+                    version = cache_data.get('version', '')
+                    if version != '4.3_FIXED':
+                        logger.info(f"🧹 CLEARING OLD CACHE: Version {version} != 4.3_FIXED")
+                        self.cache_file.unlink()
+                        return False
+                    
+                    # Check timestamp age using timezone-aware comparison
+                    timestamp_str = cache_data.get('timestamp')
+                    if timestamp_str:
+                        try:
+                            cache_time = datetime.fromisoformat(timestamp_str.replace('Z', '+00:00'))
+                            current_time = datetime.now(timezone.utc)
+                            age_hours = (current_time - cache_time).total_seconds() / 3600
+                            
+                            if age_hours > 6:  # Cache older than 6 hours
+                                logger.info(f"🧹 CLEARING EXPIRED CACHE: {age_hours:.1f} hours old")
+                                self.cache_file.unlink()
+                                return False
+                        except Exception as e:
+                            logger.warning(f"🧹 CLEARING CACHE: Invalid timestamp format: {str(e)}")
+                            self.cache_file.unlink()
+                            return False
                 
                 # If we get here, cache might be valid - but let's force fresh for safety
                 logger.info("🧹 FORCING FRESH ANALYSIS: Clearing cache to ensure fixed data")
@@ -176,7 +193,7 @@ class SpyDefiAnalyzer:
         """Save analysis results to cache."""
         try:
             cache_data = {
-                'timestamp': datetime.now().isoformat(),
+                'timestamp': datetime.now(timezone.utc).isoformat(),
                 'version': '4.3_FIXED',
                 'config': self.config,
                 **results
@@ -287,7 +304,7 @@ class SpyDefiAnalyzer:
                 'kol_performances': {k: asdict(v) for k, v in kol_performances.items()},
                 'kol_mentions': kol_mentions,
                 'metadata': {
-                    'timestamp': datetime.now().isoformat(),
+                    'timestamp': datetime.now(timezone.utc).isoformat(),
                     'total_calls_analyzed': total_calls,
                     'overall_2x_rate': overall_2x_rate,
                     'overall_5x_rate': overall_5x_rate,
@@ -345,11 +362,11 @@ class SpyDefiAnalyzer:
             if not spydefi_entity:
                 return {}
             
-            # Calculate time range
-            end_time = datetime.now()
+            # Calculate time range - FIXED: Use UTC timezone for Telegram compatibility
+            end_time = datetime.now(timezone.utc)
             start_time = end_time - timedelta(hours=self.config['spydefi_scan_hours'])
             
-            logger.info(f"📅 Scanning from {start_time.strftime('%Y-%m-%d %H:%M')} to {end_time.strftime('%Y-%m-%d %H:%M')}")
+            logger.info(f"📅 Scanning from {start_time.strftime('%Y-%m-%d %H:%M UTC')} to {end_time.strftime('%Y-%m-%d %H:%M UTC')}")
             
             kol_mentions = {}
             message_count = 0
@@ -568,8 +585,8 @@ class SpyDefiAnalyzer:
             if not entity:
                 return []
             
-            # Get messages from last N days
-            end_time = datetime.now()
+            # Get messages from last N days - FIXED: Use UTC timezone
+            end_time = datetime.now(timezone.utc)
             start_time = end_time - timedelta(days=self.config['kol_analysis_days'])
             
             token_calls = []
